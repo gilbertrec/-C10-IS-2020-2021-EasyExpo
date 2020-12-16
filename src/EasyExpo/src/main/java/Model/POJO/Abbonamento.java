@@ -1,6 +1,6 @@
 package Model.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Abbonamento {
     public Abbonamento(int idAbbonamento, String partitaIva, Date dataInizio, Date dataFine) {
@@ -9,7 +9,9 @@ public class Abbonamento {
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
     }
+public Abbonamento(){
 
+}
     public int getIdAbbonamento() {
         return idAbbonamento;
     }

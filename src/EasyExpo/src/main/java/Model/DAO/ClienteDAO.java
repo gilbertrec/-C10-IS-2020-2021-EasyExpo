@@ -58,8 +58,7 @@ public class ClienteDAO {
     public void createCliente(Cliente cliente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione) VALUES(?,?,?,?,?,?,?)",
-                    Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, cliente.getCodiceFiscale());
             ps.setString(2, cliente.getNome());
             ps.setString(3, cliente.getCognome());
@@ -101,7 +100,7 @@ public class ClienteDAO {
         }
     }
 
-    public void doDelete(String codiceFiscale) {
+    public void deleteCliente(String codiceFiscale) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);

@@ -1,6 +1,6 @@
 package Model.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProdottoRichiesta {
     public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, Date dataInizioNoleggio, Date dataFineNoleggio, float prezzo) {

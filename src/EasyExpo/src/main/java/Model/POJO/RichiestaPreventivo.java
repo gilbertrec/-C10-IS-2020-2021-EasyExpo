@@ -11,6 +11,10 @@ public class RichiestaPreventivo {
         this.nota = nota;
     }
 
+    public RichiestaPreventivo(){
+
+    }
+
     public int getIdRichiesta() {
         return idRichiesta;
     }

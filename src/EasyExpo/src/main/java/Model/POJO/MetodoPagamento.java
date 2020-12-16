@@ -1,6 +1,6 @@
 package Model.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MetodoPagamento {
     public MetodoPagamento(int numeroCarta, String partitaIva, String nomeIntestatario, Date dataScadenza, int cvv) {
@@ -9,6 +9,10 @@ public class MetodoPagamento {
         this.nomeIntestatario = nomeIntestatario;
         this.dataScadenza = dataScadenza;
         this.cvv = cvv;
+    }
+
+    public MetodoPagamento(){
+
     }
 
     public int getNumeroCarta() {

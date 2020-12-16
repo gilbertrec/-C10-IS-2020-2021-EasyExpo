@@ -11,6 +11,9 @@ public class Fornitore {
         this.luogoUbicazione = luogoUbicazione;
         this.ragioneSociale = ragioneSociale;
     }
+    public Fornitore(){
+
+    }
 
     public String getEmail() {
         return email;
