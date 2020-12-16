@@ -12,7 +12,7 @@ public class ProdottoDAO {
     public Prodotto doRetrieveByIdProdotto(int idProdotto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantità  FROM Prodotto WHERE idProdotto=?");
+                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita  FROM Prodotto WHERE idProdotto=?");
             ps.setInt(1, idProdotto);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -34,7 +34,7 @@ public class ProdottoDAO {
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantità FROM Prodotto LIMIT ?, ?");
+                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita FROM Prodotto LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -59,7 +59,7 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantità) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, prodotto.getIdProdotto());
