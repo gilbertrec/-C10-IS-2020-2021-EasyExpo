@@ -9,7 +9,7 @@ import java.util.List;
 public class PreventivoDAO {
 
     public Preventivo doRetriveByIdPreventivo(int idPreventivo){
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale  FROM Preventivo WHERE idPreventivo=?");
             ps.setInt(1, idPreventivo);
@@ -31,7 +31,7 @@ public class PreventivoDAO {
     }
 
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale FROM Preventivo LIMIT ?, ?");
             ps.setInt(1, offset);
@@ -55,9 +55,9 @@ public class PreventivoDAO {
     }
 
     public void createPreventivo(Preventivo preventivo) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, preventivo.getIdPreventivo());
             ps.setInt(2, preventivo.getIdRichiesta());
@@ -79,7 +79,7 @@ public class PreventivoDAO {
 
 
     public void deletePreventivo(int idPreventivo) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Preventivo WHERE idPreventivo=?");
             ps.setInt(1, idPreventivo);
             if (ps.executeUpdate() != 1) {

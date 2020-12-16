@@ -9,7 +9,7 @@ import java.util.List;
 public class MetodiDiPagamentoDAO {
 
     public List<MetodoPagamento> doRetrieveAll() {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv FROM MetodoPagamento");
             ArrayList<MetodoPagamento> metodiPagamenti = new ArrayList<>();
@@ -29,9 +29,9 @@ public class MetodiDiPagamentoDAO {
         }
     }
     public void createCliente(MetodoPagamento metodoPagamento) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, metodoPagamento.getNumeroCarta());
             ps.setString(2, metodoPagamento.getPartitaIva());

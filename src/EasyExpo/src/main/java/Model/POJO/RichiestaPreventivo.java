@@ -1,7 +1,9 @@
 package Model.POJO;
 
+import java.sql.Date;
+
 public class RichiestaPreventivo {
-    public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva, String titolo, String luogoEvento, String descrizioneEvento, String nota) {
+    public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva, String titolo, String luogoEvento, String descrizioneEvento, String nota, Date dataRichiesta) {
         this.idRichiesta = idRichiesta;
         this.codiceFiscale = codiceFiscale;
         this.partitaIva = partitaIva;
@@ -9,11 +11,16 @@ public class RichiestaPreventivo {
         this.luogoEvento = luogoEvento;
         this.descrizioneEvento = descrizioneEvento;
         this.nota = nota;
+        this.dataRichiesta = dataRichiesta;
     }
 
     public RichiestaPreventivo(){
 
     }
+
+    public Date getDataRichiesta() { return dataRichiesta; }
+
+    public void setDataRichiesta(Date dataRichiesta) { this.dataRichiesta = dataRichiesta; }
 
     public int getIdRichiesta() {
         return idRichiesta;
@@ -81,6 +88,7 @@ public class RichiestaPreventivo {
                 ", luogoEvento='" + luogoEvento + '\'' +
                 ", descrizioneEvento='" + descrizioneEvento + '\'' +
                 ", nota='" + nota + '\'' +
+                ", dataRichiesta=" + dataRichiesta +
                 '}';
     }
 
@@ -91,4 +99,5 @@ public class RichiestaPreventivo {
     private String luogoEvento;
     private String descrizioneEvento;
     private String nota;
+    private Date dataRichiesta;
 }

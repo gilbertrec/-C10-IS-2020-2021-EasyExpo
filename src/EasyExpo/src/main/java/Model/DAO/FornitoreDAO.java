@@ -11,7 +11,7 @@ import java.util.List;
 public class FornitoreDAO {
 
     public Fornitore doRetrieveByPIVA(String partitaIva) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale  FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
@@ -35,7 +35,7 @@ public class FornitoreDAO {
     }
 
     public List<Fornitore> doRetrieveAll(int offset, int limit) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale FROM Fornitore LIMIT ?, ?");
             ps.setInt(1, offset);
@@ -61,7 +61,7 @@ public class FornitoreDAO {
     }
 
     public void createFornitore(Fornitore fornitore) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Fornitore (partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale) VALUES(?,?,?,?,?,?,?,?)");
 
@@ -84,7 +84,7 @@ public class FornitoreDAO {
         }
     }
     public Fornitore doRetrieveByEmail(String email) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale FROM Fornitore WHERE email=?");
             ps.setString(1, email);
@@ -108,7 +108,7 @@ public class FornitoreDAO {
     }
 
     public void deleteFornitore(String partitaIva) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
             if (ps.executeUpdate() != 1) {

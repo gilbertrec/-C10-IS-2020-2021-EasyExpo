@@ -9,7 +9,7 @@ import java.util.List;
 public class ClienteDAO {
 
     public Cliente doRetrieveByCF(String codiceFiscale) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);
@@ -32,7 +32,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> doRetrieveAll(int offset, int limit) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente LIMIT ?, ?");
             ps.setInt(1, offset);
@@ -56,7 +56,7 @@ public class ClienteDAO {
         }
     }
     public void createCliente(Cliente cliente) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Cliente (codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, cliente.getCodiceFiscale());
@@ -78,7 +78,7 @@ public class ClienteDAO {
     }
 
     public Cliente doRetrieveByEmail(String email) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente WHERE email=?");
             ps.setString(1, email);
@@ -101,7 +101,7 @@ public class ClienteDAO {
     }
 
     public void deleteCliente(String codiceFiscale) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);
             if (ps.executeUpdate() != 1) {

@@ -12,7 +12,9 @@ public class ProdottoRichiesta {
         this.dataFineNoleggio = dataFineNoleggio;
         this.prezzo = prezzo;
     }
+    public ProdottoRichiesta(){
 
+}
     public int getId() {
         return id;
     }

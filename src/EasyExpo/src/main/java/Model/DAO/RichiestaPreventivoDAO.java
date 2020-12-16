@@ -9,9 +9,9 @@ import java.util.List;
 
 public class RichiestaPreventivoDAO {
     public RichiestaPreventivo doRetrieveByIdRichiesta(int idRichiesta) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota FROM RichiestaPreventivo WHERE idRichiesta=?");
+                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo WHERE idRichiesta=?");
             ps.setInt(1, idRichiesta);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -19,10 +19,11 @@ public class RichiestaPreventivoDAO {
                 r.setIdRichiesta(rs.getInt(1));
                 r.setCodiceFiscale(rs.getString(2));
                 r.setPartitaIva(rs.getString(3));
-                r.setTitolo(rs.getString(3));
-                r.setLuogoEvento(rs.getString(4));
-                r.setDescrizioneEvento(rs.getString(5));
-                r.setNota(rs.getString(6));
+                r.setTitolo(rs.getString(4));
+                r.setLuogoEvento(rs.getString(5));
+                r.setDescrizioneEvento(rs.getString(6));
+                r.setNota(rs.getString(7));
+                r.setDataRichiesta(rs.getDate (8));
                 return r;
             }
             return null;
@@ -31,9 +32,9 @@ public class RichiestaPreventivoDAO {
         }
     }
     public List<RichiestaPreventivo> doRetrieveAll(int offset, int limit) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota FROM RichiestaPreventivo LIMIT ?, ?");
+                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
@@ -43,10 +44,11 @@ public class RichiestaPreventivoDAO {
                 r.setIdRichiesta(rs.getInt(1));
                 r.setCodiceFiscale(rs.getString(2));
                 r.setPartitaIva(rs.getString(3));
-                r.setTitolo(rs.getString(3));
-                r.setLuogoEvento(rs.getString(4));
-                r.setDescrizioneEvento(rs.getString(5));
-                r.setNota(rs.getString(6));
+                r.setTitolo(rs.getString(4));
+                r.setLuogoEvento(rs.getString(5));
+                r.setDescrizioneEvento(rs.getString(6));
+                r.setNota(rs.getString(7));
+                r.setDataRichiesta(rs.getDate(8));
                 richieste.add(r);
             }
             return richieste;
@@ -55,9 +57,9 @@ public class RichiestaPreventivoDAO {
         }
     }
     public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta) VALUES(?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, richiestaPreventivo.getIdRichiesta());
@@ -67,6 +69,7 @@ public class RichiestaPreventivoDAO {
             ps.setString(5, richiestaPreventivo.getLuogoEvento());
             ps.setString(6, richiestaPreventivo.getDescrizioneEvento());
             ps.setString(7, richiestaPreventivo.getNota());
+            ps.setDate(8, richiestaPreventivo.getDataRichiesta());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -79,7 +82,7 @@ public class RichiestaPreventivoDAO {
     }
 
     public void deleteRichiestePreventivo(int idRichiesta) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM RichiestaPreventivo WHERE idRichiesta=?");
             ps.setInt(1, idRichiesta);
             if (ps.executeUpdate() != 1) {

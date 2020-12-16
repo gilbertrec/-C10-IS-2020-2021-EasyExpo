@@ -7,7 +7,7 @@ import java.sql.Date;
 
 public class AbbonamentoDAO {
     public Abbonamento doRetrieveByIdAbbonamento(int idAbbonamento) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT idAbbonamento, partitaIva, dataInizio, dataFine  FROM Abbonamento WHERE idAbbonamento=?");
             ps.setInt(1, idAbbonamento);
@@ -27,9 +27,9 @@ public class AbbonamentoDAO {
     }
 
     public void createAbbonamento(Abbonamento abbonamento) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Abbonamento (idAbbonamento, partitaIva, dataInizio, dataFine) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Abbonamento (idAbbonamento, partitaIva, dataInizio, dataFine) VALUES(?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, abbonamento.getIdAbbonamento());
             ps.setString(2, abbonamento.getPartitaIva());
@@ -47,7 +47,7 @@ public class AbbonamentoDAO {
     }
 
     public void doDelete(int idAbbonamento) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Abbonamento WHERE idAbbonamento=?");
             ps.setInt(1, idAbbonamento);
             if (ps.executeUpdate() != 1) {

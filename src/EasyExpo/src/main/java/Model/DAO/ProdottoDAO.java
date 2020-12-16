@@ -10,7 +10,7 @@ import java.util.List;
 public class ProdottoDAO {
 
     public Prodotto doRetrieveByIdProdotto(int idProdotto) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita  FROM Prodotto WHERE idProdotto=?");
             ps.setInt(1, idProdotto);
@@ -32,7 +32,7 @@ public class ProdottoDAO {
         }
     }
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita FROM Prodotto LIMIT ?, ?");
             ps.setInt(1, offset);
@@ -57,7 +57,7 @@ public class ProdottoDAO {
     }
 
     public void createProdotto(Prodotto prodotto) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
@@ -81,7 +81,7 @@ public class ProdottoDAO {
     }
 
     public void deleteProdotto(int idProdotto) {
-        try (Connection con = ConPool.getConnection()) {
+        try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE idProdotto=?");
             ps.setInt(1, idProdotto);
             if (ps.executeUpdate() != 1) {
