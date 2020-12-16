@@ -1,4 +1,4 @@
-package Model;
+package Model.POJO;
 
 public class Prodotto {
     public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, float prezzo, String tipo, int quantità) {

@@ -1,4 +1,4 @@
-package Model;
+package Model.POJO;
 
 public class RichiestaPreventivo {
     public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva, String titolo, String luogoEvento, String descrizioneEvento, String nota) {

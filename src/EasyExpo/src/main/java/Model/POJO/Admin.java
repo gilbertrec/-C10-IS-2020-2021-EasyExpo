@@ -1,4 +1,4 @@
-package Model;
+package Model.POJO;
 
 public class Admin {
     public Admin(String email, String password) {
