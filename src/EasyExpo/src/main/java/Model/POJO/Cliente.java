@@ -10,6 +10,9 @@ public class Cliente {
         this.telefono = telefono;
         this.luogoUbicazione = luogoUbicazione;
     }
+    public Cliente(){
+
+    }
 
     public String getEmail() {
         return email;
