@@ -58,14 +58,14 @@ public class ClienteDAO {
     public void createCliente(Cliente cliente) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione) VALUES(?,?,?,?,?,?,?)");
+                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, cliente.getCodiceFiscale());
             ps.setString(2, cliente.getNome());
             ps.setString(3, cliente.getCognome());
-            ps.setString(4, cliente.getEmail());
-            ps.setString(5, cliente.getPassword());
-            ps.setInt(6, cliente.getTelefono());
-            ps.setString(7, cliente.getLuogoUbicazione());
+            ps.setString(6, cliente.getEmail());
+            ps.setString(7, cliente.getPassword());
+            ps.setInt(4, cliente.getTelefono());
+            ps.setString(5, cliente.getLuogoUbicazione());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

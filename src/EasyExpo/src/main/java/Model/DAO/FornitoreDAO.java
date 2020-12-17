@@ -63,15 +63,15 @@ public class FornitoreDAO {
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Fornitore (partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,?,?)");
 
             ps.setString(1, fornitore.getPartitaIva());
             ps.setString(2, fornitore.getNome());
             ps.setString(3, fornitore.getCognome());
-            ps.setString(4, fornitore.getEmail());
-            ps.setString(5, fornitore.getPassword());
-            ps.setInt(6, fornitore.getTelefono());
-            ps.setString(7, fornitore.getLuogoUbicazione());
+            ps.setString(6, fornitore.getEmail());
+            ps.setString(7, fornitore.getPassword());
+            ps.setInt(4, fornitore.getTelefono());
+            ps.setString(5, fornitore.getLuogoUbicazione());
             ps.setString(8, fornitore.getRagioneSociale());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");

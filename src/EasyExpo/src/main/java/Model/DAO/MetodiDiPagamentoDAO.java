@@ -8,10 +8,11 @@ import java.util.List;
 
 public class MetodiDiPagamentoDAO {
 
-    public List<MetodoPagamento> doRetrieveAll() {
+    public List<MetodoPagamento> doRetrieveAllByPartitaIva(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv FROM MetodoPagamento");
+                    .prepareStatement("SELECT numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv FROM MetodoPagamento as mp, Fornitore as f WHERE partitaIva=? AND mp.partitaIva=f.partitaIva");
+            ps.setString(1, partitaIva);
             ArrayList<MetodoPagamento> metodiPagamenti = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -28,7 +29,8 @@ public class MetodiDiPagamentoDAO {
             throw new RuntimeException(e);
         }
     }
-    public void createCliente(MetodoPagamento metodoPagamento) {
+
+    public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?)",
@@ -44,6 +46,18 @@ public class MetodiDiPagamentoDAO {
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
             metodoPagamento.setNumeroCarta(rs.getInt(1));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteMetodoPagamento(int numeroCarta) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM MetodoPagamento WHERE numeroCarta=?");
+            ps.setInt(1, numeroCarta);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("DELETE error.");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

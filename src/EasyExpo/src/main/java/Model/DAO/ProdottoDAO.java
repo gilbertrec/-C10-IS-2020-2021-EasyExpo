@@ -12,7 +12,7 @@ public class ProdottoDAO {
     public Prodotto doRetrieveByIdProdotto(int idProdotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita  FROM Prodotto WHERE idProdotto=?");
+                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, tipo, quantita  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
             ps.setInt(1, idProdotto);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -21,9 +21,8 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setPrezzo(rs.getFloat(5));
-                p.setTipo(rs.getString(6));
-                p.setQuantità(rs.getInt(7));
+                p.setTipo(rs.getString(5));
+                p.setQuantità(rs.getInt(6));
                 return p;
             }
             return null;
@@ -31,10 +30,11 @@ public class ProdottoDAO {
             throw new RuntimeException(e);
         }
     }
+
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita FROM Prodotto LIMIT ?, ?");
+                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, tipo, quantita FROM Prodotto as p, Fornitore as f WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -45,9 +45,8 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setPrezzo(rs.getFloat(5));
-                p.setTipo(rs.getString(6));
-                p.setQuantità(rs.getInt(7));
+                p.setTipo(rs.getString(5));
+                p.setQuantità(rs.getInt(6));
                 prodotti.add(p);
             }
             return prodotti;
@@ -59,16 +58,15 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, prezzo, tipo, quantita) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, tipo, quantita) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, prodotto.getIdProdotto());
-            ps.setString(2,prodotto.getPartitaIva());
+            ps.setString(2, prodotto.getPartitaIva());
             ps.setString(3, prodotto.getTitolo());
             ps.setString(4, prodotto.getDescrizione());
-            ps.setFloat(5, prodotto.getPrezzo());
-            ps.setString(6, prodotto.getTipo());
-            ps.setInt(7, prodotto.getQuantità());
+            ps.setString(5, prodotto.getTipo());
+            ps.setInt(6, prodotto.getQuantità());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

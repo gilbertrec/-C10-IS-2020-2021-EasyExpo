@@ -11,7 +11,8 @@ public class RichiestaPreventivoDAO {
     public RichiestaPreventivo doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo WHERE idRichiesta=?");
+                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE idRichiesta=?" +
+                            "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
             ps.setInt(1, idRichiesta);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -34,7 +35,8 @@ public class RichiestaPreventivoDAO {
     public List<RichiestaPreventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo LIMIT ?, ?");
+                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE" +
+                            "rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
