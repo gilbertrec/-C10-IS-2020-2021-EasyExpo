@@ -47,7 +47,7 @@ CREATE TABLE Tag(
     nome varchar(20) not null
 );
 
-CREATE TABLE Identificatore(
+CREATE TABLE TagProdotto(
     idTag int not null,
     idProdotto int not null,
     primary key(idTag, idProdotto),
