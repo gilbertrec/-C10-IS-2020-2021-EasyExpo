@@ -7,6 +7,10 @@ public class TagProdotto {
         this.partitaIva = partitaIva;
     }
 
+    public TagProdotto() {
+
+    }
+
     public int getIdTag() {
         return idTag;
     }
@@ -23,9 +27,13 @@ public class TagProdotto {
         this.idProdotto = idProdotto;
     }
 
-    public String getPartitaIva() { return partitaIva; }
+    public String getPartitaIva() {
+        return partitaIva;
+    }
 
-    public void setPartitaIva(String partitaIva) { this.partitaIva = partitaIva; }
+    public void setPartitaIva(String partitaIva) {
+        this.partitaIva = partitaIva;
+    }
 
     @Override
     public String toString() {

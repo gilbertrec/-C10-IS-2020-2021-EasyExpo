@@ -6,6 +6,10 @@ public class Tag {
         this.nome = nome;
     }
 
+    public Tag() {
+
+    }
+
     public int getIdTag() {
         return idTag;
     }
