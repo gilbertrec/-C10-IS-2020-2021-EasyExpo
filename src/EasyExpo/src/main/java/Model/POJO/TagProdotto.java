@@ -1,9 +1,10 @@
 package Model.POJO;
 
 public class TagProdotto {
-    public TagProdotto(int idTag, int idProdotto) {
+    public TagProdotto(int idTag, int idProdotto, String partitaIva) {
         this.idTag = idTag;
         this.idProdotto = idProdotto;
+        this.partitaIva = partitaIva;
     }
 
     public int getIdTag() {
@@ -22,6 +23,10 @@ public class TagProdotto {
         this.idProdotto = idProdotto;
     }
 
+    public String getPartitaIva() { return partitaIva; }
+
+    public void setPartitaIva(String partitaIva) { this.partitaIva = partitaIva; }
+
     @Override
     public String toString() {
         return "TagProdotto{" +
@@ -32,4 +37,5 @@ public class TagProdotto {
 
     private int idTag;
     private int idProdotto;
+    private String partitaIva;
 }
