@@ -48,10 +48,9 @@ CREATE TABLE Tag(
 );
 
 CREATE TABLE Identificatore(
-	idIdentificatore int auto_increment not null,
     idTag int not null,
     idProdotto int not null,
-    primary key(idIdentificatore, idTag, idProdotto),
+    primary key(idTag, idProdotto),
 	foreign key(idTag) references Tag(idTag)
     on delete cascade
     on update cascade,
