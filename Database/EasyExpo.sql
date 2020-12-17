@@ -29,15 +29,33 @@ CREATE TABLE Admin(
 );
 
 CREATE TABLE Prodotto(
-	idProdotto int auto_increment not null primary key,
+	idProdotto int auto_increment not null,
     partitaIva varchar(11) not null,
     titolo varchar(30) not null,
     descrizione varchar(1024) not null,
     prezzo decimal not null,
-    tipo varchar(20) not null, 
-    /*aggiungere il tag e mettere tipo enum*/
+    tipo varchar(20) not null,
     quantita int not null,
+    primary key(idProdotto, partitaIva),
     foreign key(partitaIva) references Fornitore(partitaIva)
+    on delete cascade
+    on update cascade
+);
+
+CREATE TABLE Tag(
+	idTag int auto_increment not null primary key, 
+    nome varchar(20) not null
+);
+
+CREATE TABLE Identificatore(
+	idIdentificatore int auto_increment not null,
+    idTag int not null,
+    idProdotto int not null,
+    primary key(idIdentificatore, idTag, idProdotto),
+	foreign key(idTag) references Tag(idTag)
+    on delete cascade
+    on update cascade,
+	foreign key(idProdotto) references Prodotto(idProdotto)
     on delete cascade
     on update cascade
 );
