@@ -3,14 +3,13 @@ package Model.POJO;
 import java.sql.Date;
 
 public class ProdottoRichiesta {
-    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, Date dataInizioNoleggio, Date dataFineNoleggio, float prezzo) {
+    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, Date dataInizioNoleggio, Date dataFineNoleggio) {
         this.id = id;
         this.idRichiesta = idRichiesta;
         this.idProdotto = idProdotto;
         this.numColli = numColli;
         this.dataInizioNoleggio = dataInizioNoleggio;
         this.dataFineNoleggio = dataFineNoleggio;
-        this.prezzo = prezzo;
     }
     public ProdottoRichiesta(){
 
@@ -63,14 +62,6 @@ public class ProdottoRichiesta {
         this.dataFineNoleggio = dataFineNoleggio;
     }
 
-    public float getPrezzo() {
-        return prezzo;
-    }
-
-    public void setPrezzo(float prezzo) {
-        this.prezzo = prezzo;
-    }
-
     @Override
     public String toString() {
         return "ProdottoRichiesta{" +
@@ -80,7 +71,6 @@ public class ProdottoRichiesta {
                 ", numColli=" + numColli +
                 ", dataInizioNoleggio=" + dataInizioNoleggio +
                 ", dataFineNoleggio=" + dataFineNoleggio +
-                ", prezzo=" + prezzo +
                 '}';
     }
 
@@ -90,5 +80,4 @@ public class ProdottoRichiesta {
     private int numColli;
     private Date dataInizioNoleggio;
     private Date dataFineNoleggio;
-    private float prezzo;
 }

@@ -32,6 +32,7 @@ public class TagProdotto {
         return "TagProdotto{" +
                 "idTag=" + idTag +
                 ", idProdotto=" + idProdotto +
+                ", partitaIva='" + partitaIva + '\'' +
                 '}';
     }
 
