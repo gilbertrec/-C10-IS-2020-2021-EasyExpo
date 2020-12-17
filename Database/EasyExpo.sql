@@ -107,7 +107,7 @@ CREATE TABLE Preventivo(
     foreign key(partitaIva) references Fornitore(partitaIva)
     on delete cascade
     on update cascade,
-     foreign key(codiceFiscale) references Cliente(codiceFiscale)
+	foreign key(codiceFiscale) references Cliente(codiceFiscale)
     on delete cascade
     on update cascade
 );
