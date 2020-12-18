@@ -1,9 +1,13 @@
-package Model;
+package Model.POJO;
 
 public class Admin {
     public Admin(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public Admin() {
+
     }
 
     public String getEmail() {

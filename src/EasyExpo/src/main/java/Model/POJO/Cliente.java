@@ -1,4 +1,4 @@
-package Model;
+package Model.POJO;
 
 public class Cliente {
     public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, int telefono, String luogoUbicazione) {
@@ -9,6 +9,9 @@ public class Cliente {
         this.cognome = cognome;
         this.telefono = telefono;
         this.luogoUbicazione = luogoUbicazione;
+    }
+    public Cliente(){
+
     }
 
     public String getEmail() {

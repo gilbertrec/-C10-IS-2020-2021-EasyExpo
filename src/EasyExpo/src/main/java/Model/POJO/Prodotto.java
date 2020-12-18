@@ -1,14 +1,17 @@
-package Model;
+package Model.POJO;
 
 public class Prodotto {
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, float prezzo, String tipo, int quantità) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, String tipo, int quantità) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
         this.descrizione = descrizione;
-        this.prezzo = prezzo;
         this.tipo = tipo;
         this.quantità = quantità;
+    }
+
+    public Prodotto(){
+
     }
 
     public int getIdProdotto() {
@@ -43,14 +46,6 @@ public class Prodotto {
         this.descrizione = descrizione;
     }
 
-    public float getPrezzo() {
-        return prezzo;
-    }
-
-    public void setPrezzo(float prezzo) {
-        this.prezzo = prezzo;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -74,7 +69,6 @@ public class Prodotto {
                 ", partitaIva='" + partitaIva + '\'' +
                 ", titolo='" + titolo + '\'' +
                 ", descrizione='" + descrizione + '\'' +
-                ", prezzo=" + prezzo +
                 ", tipo='" + tipo + '\'' +
                 ", quantità=" + quantità +
                 '}';
@@ -84,7 +78,6 @@ public class Prodotto {
     private String partitaIva;
     private String titolo;
     private String descrizione;
-    private float prezzo;
     private String tipo;
     private int quantità;
 }

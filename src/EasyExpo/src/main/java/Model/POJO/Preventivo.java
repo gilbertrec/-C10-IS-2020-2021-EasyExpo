@@ -1,15 +1,18 @@
-package Model;
+package Model.POJO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Preventivo {
-    public Preventivo(int idPreventivo, int idRichiesta, String partitaIva, String codiceFiscale, Date data, float prezzoTotale) {
+    public Preventivo(int idPreventivo, int idRichiesta, String partitaIva, String codiceFiscale, Date dataPreventivo, float prezzoTotale) {
         this.idPreventivo = idPreventivo;
         this.idRichiesta = idRichiesta;
         this.partitaIva = partitaIva;
         this.codiceFiscale = codiceFiscale;
-        this.data = data;
+        this.dataPreventivo = dataPreventivo;
         this.prezzoTotale = prezzoTotale;
+    }
+    public Preventivo(){
+
     }
 
     public int getIdPreventivo() {
@@ -44,12 +47,12 @@ public class Preventivo {
         this.codiceFiscale = codiceFiscale;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDataPreventivo() {
+        return dataPreventivo;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataPreventivo(Date data) {
+        this.dataPreventivo = dataPreventivo;
     }
 
     public float getPrezzoTotale() {
@@ -67,7 +70,7 @@ public class Preventivo {
                 ", idRichiesta=" + idRichiesta +
                 ", partitaIva='" + partitaIva + '\'' +
                 ", codiceFiscale='" + codiceFiscale + '\'' +
-                ", data=" + data +
+                ", data=" + dataPreventivo +
                 ", prezzoTotale=" + prezzoTotale +
                 '}';
     }
@@ -76,6 +79,6 @@ public class Preventivo {
     private int idRichiesta;
     private String partitaIva;
     private String codiceFiscale;
-    private Date data;
+    private Date dataPreventivo;
     private float prezzoTotale;
 }
