@@ -105,6 +105,10 @@ public class FornitoreDAO {
         }
     }
 
+    public Fornitore doRetrieveByEmailandPassword(String email, String password){
+
+    }
+
     public void deleteFornitore(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Fornitore WHERE partitaIva=?");
