@@ -17,7 +17,7 @@ public class MetodiDiPagamentoDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 MetodoPagamento c = new MetodoPagamento();
-                c.setNumeroCarta(rs.getInt(1));
+                c.setNumeroCarta(rs.getString(1));
                 c.setPartitaIva(rs.getString(2));
                 c.setNomeIntestatario(rs.getString(3));
                 c.setDataScadenza(rs.getDate(4));
@@ -33,9 +33,8 @@ public class MetodiDiPagamentoDAO {
     public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?)",
-                    Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, metodoPagamento.getNumeroCarta());
+                    "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?)");
+            ps.setString(1, metodoPagamento.getNumeroCarta());
             ps.setString(2, metodoPagamento.getPartitaIva());
             ps.setString(3, metodoPagamento.getNomeIntestatario());
             ps.setDate(4, metodoPagamento.getDataScadenza());
@@ -51,10 +50,10 @@ public class MetodiDiPagamentoDAO {
         }
     }
 
-    public void deleteMetodoPagamento(int numeroCarta) {
+    public void deleteMetodoPagamento(String numeroCarta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM MetodoPagamento WHERE numeroCarta=?");
-            ps.setInt(1, numeroCarta);
+            ps.setString(1, numeroCarta);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
             }
