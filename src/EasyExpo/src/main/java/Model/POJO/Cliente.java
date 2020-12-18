@@ -1,7 +1,7 @@
 package Model.POJO;
 
 public class Cliente {
-    public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, int telefono, String luogoUbicazione) {
+    public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione) {
         this.email = email;
         this.password = password;
         this.codiceFiscale = codiceFiscale;
@@ -54,11 +54,11 @@ public class Cliente {
         this.cognome = cognome;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
