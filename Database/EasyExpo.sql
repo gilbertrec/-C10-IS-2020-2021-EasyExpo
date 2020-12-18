@@ -6,7 +6,7 @@ CREATE TABLE Cliente(
 	codiceFiscale varchar(16) not null primary key,
     nome varchar(30) not null,
     cognome varchar(30) not null,
-    telefono bigint unsigned,
+    telefono varchar(10),
     luogoUbicazione varchar(30),
     email varchar(50) not null,
     password varchar(512) not null
@@ -16,7 +16,7 @@ CREATE TABLE Fornitore(
 	partitaIva varchar(11) not null primary key,
     nome varchar(30) not null,
     cognome varchar(30) not null,
-    telefono bigint unsigned,
+    telefono varchar(10),
     luogoUbicazione varchar(30),
     email varchar(50) not null,
 	password varchar(512) not null,
@@ -35,6 +35,7 @@ CREATE TABLE Prodotto(
     descrizione varchar(1024) not null,
     tipo ENUM('servizio', 'attrezzatura'),
     quantita int not null,
+    prezzo decimal not null,
     primary key(idProdotto, partitaIva),
     foreign key(partitaIva) references Fornitore(partitaIva)
     on delete cascade
@@ -71,7 +72,7 @@ CREATE TABLE RichiestaPreventivo(
     descrizioneEvento varchar(1024) not null,
     nota varchar(300),
     dataRichiesta date not null,
-    stato ENUM('in attesa', 'confermato', 'rifiutato') not null,
+    stato ENUM('in_attesa', 'confermato', 'rifiutato') not null,
     foreign key(codiceFiscale) references Cliente(codiceFiscale)
     on delete cascade
     on update cascade,
@@ -85,6 +86,7 @@ CREATE TABLE ProdottoRichiesta(
     idRichiesta int not null,
     idProdotto int not null,
     numColli int not null,
+    prezzo decimal not null,
     dataInizioNoleggio date not null,
     dataFineNoleggio date not null,
     foreign key(idRichiesta) references RichiestaPreventivo(idRichiesta)
@@ -124,7 +126,7 @@ CREATE TABLE Abbonamento(
 );
 
 CREATE TABLE MetodoPagamento(
-	numeroCarta bigint unsigned not null primary key,
+	numeroCarta varchar(16) not null primary key,
     partitaIva varchar(11) not null,
     nomeIntestatario varchar(50) not null,
     dataScadenza date not null,
@@ -153,10 +155,10 @@ INSERT INTO Admin VALUES
 ("strumolos@virgilio.it", sha2('sabatinostrumolo*', 512));
 
 INSERT INTO Prodotto VALUES
-(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "attrezzatura", 5),
-(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "servizio", 9),
-(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "attrezzatura", 50),
-(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "servizio", 40);
+(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "attrezzatura", 5, 99.90),
+(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "servizio", 9, 50.00),
+(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "attrezzatura", 50, 150.00),
+(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "servizio", 40, 180.00);
 
 INSERT INTO Abbonamento VALUES
 (1,"01391350129", 20191101, 20191201),
