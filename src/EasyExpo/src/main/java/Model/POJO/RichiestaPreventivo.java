@@ -3,7 +3,7 @@ package Model.POJO;
 import java.sql.Date;
 
 public class RichiestaPreventivo {
-    public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva, String titolo, String luogoEvento, String descrizioneEvento, String nota, Date dataRichiesta) {
+    public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva, String titolo, String luogoEvento, String descrizioneEvento, String nota, Date dataRichiesta, Stato stato) {
         this.idRichiesta = idRichiesta;
         this.codiceFiscale = codiceFiscale;
         this.partitaIva = partitaIva;
@@ -12,15 +12,20 @@ public class RichiestaPreventivo {
         this.descrizioneEvento = descrizioneEvento;
         this.nota = nota;
         this.dataRichiesta = dataRichiesta;
+        this.stato = stato;
     }
 
-    public RichiestaPreventivo(){
+    public RichiestaPreventivo() {
 
     }
 
-    public Date getDataRichiesta() { return dataRichiesta; }
+    public Date getDataRichiesta() {
+        return dataRichiesta;
+    }
 
-    public void setDataRichiesta(Date dataRichiesta) { this.dataRichiesta = dataRichiesta; }
+    public void setDataRichiesta(Date dataRichiesta) {
+        this.dataRichiesta = dataRichiesta;
+    }
 
     public int getIdRichiesta() {
         return idRichiesta;
@@ -78,6 +83,14 @@ public class RichiestaPreventivo {
         this.nota = nota;
     }
 
+    public Stato getStato() {
+        return stato;
+    }
+
+    public void setStato(Stato stato) {
+        this.stato = stato;
+    }
+
     @Override
     public String toString() {
         return "RichiestaPreventivo{" +
@@ -100,4 +113,9 @@ public class RichiestaPreventivo {
     private String descrizioneEvento;
     private String nota;
     private Date dataRichiesta;
+
+    private enum Stato {IN_ATTESA, CONFERMATO, RIFIUTATO}
+
+    ;
+    private Stato stato;
 }
