@@ -66,7 +66,7 @@ public class MetodoPagamento {
                 '}';
     }
 
-    private int numeroCarta;
+    private String numeroCarta;
     private String partitaIva;
     private String nomeIntestatario;
     private Date dataScadenza;

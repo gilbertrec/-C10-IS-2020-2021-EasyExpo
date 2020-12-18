@@ -98,7 +98,7 @@ public class Fornitore {
     private String partitaIva;
     private String nome;
     private String cognome;
-    private int telefono;
+    private String telefono;
     private String luogoUbicazione;
     private String ragioneSociale;
 }
