@@ -3,17 +3,20 @@ package Model.POJO;
 import java.sql.Date;
 
 public class ProdottoRichiesta {
-    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, Date dataInizioNoleggio, Date dataFineNoleggio) {
+    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, float prezzo, Date dataInizioNoleggio, Date dataFineNoleggio) {
         this.id = id;
         this.idRichiesta = idRichiesta;
         this.idProdotto = idProdotto;
         this.numColli = numColli;
+        this.prezzo = prezzo;
         this.dataInizioNoleggio = dataInizioNoleggio;
         this.dataFineNoleggio = dataFineNoleggio;
     }
-    public ProdottoRichiesta(){
 
-}
+    public ProdottoRichiesta() {
+
+    }
+
     public int getId() {
         return id;
     }
@@ -44,6 +47,14 @@ public class ProdottoRichiesta {
 
     public void setNumColli(int numColli) {
         this.numColli = numColli;
+    }
+
+    public float getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(float prezzo) {
+        this.prezzo = prezzo;
     }
 
     public Date getDataInizioNoleggio() {
@@ -78,6 +89,7 @@ public class ProdottoRichiesta {
     private int idRichiesta;
     private int idProdotto;
     private int numColli;
+    private float prezzo;
     private Date dataInizioNoleggio;
     private Date dataFineNoleggio;
 }
