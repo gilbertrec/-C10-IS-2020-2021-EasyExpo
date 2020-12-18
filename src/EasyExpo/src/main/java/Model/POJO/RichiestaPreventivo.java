@@ -102,6 +102,7 @@ public class RichiestaPreventivo {
                 ", descrizioneEvento='" + descrizioneEvento + '\'' +
                 ", nota='" + nota + '\'' +
                 ", dataRichiesta=" + dataRichiesta +
+                ", stato=" + stato +
                 '}';
     }
 
@@ -114,8 +115,6 @@ public class RichiestaPreventivo {
     private String nota;
     private Date dataRichiesta;
 
-    private enum Stato {IN_ATTESA, CONFERMATO, RIFIUTATO}
-
-    ;
+    public enum Stato {IN_ATTESA, CONFERMATO, RIFIUTATO};
     private Stato stato;
 }

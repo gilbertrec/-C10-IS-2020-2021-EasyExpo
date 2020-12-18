@@ -78,8 +78,9 @@ public class Prodotto {
                 ", partitaIva='" + partitaIva + '\'' +
                 ", titolo='" + titolo + '\'' +
                 ", descrizione='" + descrizione + '\'' +
-                ", tipo='" + Tipo. + '\'' +
+                ", tipo=" + tipo +
                 ", quantità=" + quantità +
+                ", prezzo=" + prezzo +
                 '}';
     }
 
@@ -88,9 +89,7 @@ public class Prodotto {
     private String titolo;
     private String descrizione;
 
-    private enum Tipo {SERVIZIO, ATTREZZATURA}
-
-    ;
+    public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
     private int quantità;
     private float prezzo;
