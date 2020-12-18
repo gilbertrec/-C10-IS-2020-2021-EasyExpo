@@ -21,7 +21,7 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 return c;
             }
@@ -46,7 +46,7 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 clienti.add(c);
             }
@@ -64,7 +64,7 @@ public class ClienteDAO {
             ps.setString(3, cliente.getCognome());
             ps.setString(6, cliente.getEmail());
             ps.setString(7, cliente.getPassword());
-            ps.setInt(4, cliente.getTelefono());
+            ps.setString(4, cliente.getTelefono());
             ps.setString(5, cliente.getLuogoUbicazione());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -90,7 +90,7 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 return c;
             }

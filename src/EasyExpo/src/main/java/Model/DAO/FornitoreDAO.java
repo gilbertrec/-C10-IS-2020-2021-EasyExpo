@@ -1,7 +1,5 @@
 package Model.DAO;
 
-
-import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 
 import java.sql.*;
@@ -23,7 +21,7 @@ public class FornitoreDAO {
                 f.setCognome(rs.getString(3));
                 f.setEmail(rs.getString(4));
                 f.setPassword(rs.getString(5));
-                f.setTelefono(rs.getInt(6));
+                f.setTelefono(rs.getString(6));
                 f.setLuogoUbicazione(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
                 return f;
@@ -49,7 +47,7 @@ public class FornitoreDAO {
                 f.setCognome(rs.getString(3));
                 f.setEmail(rs.getString(4));
                 f.setPassword(rs.getString(5));
-                f.setTelefono(rs.getInt(6));
+                f.setTelefono(rs.getString(6));
                 f.setLuogoUbicazione(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
                 fornitori.add(f);
@@ -70,7 +68,7 @@ public class FornitoreDAO {
             ps.setString(3, fornitore.getCognome());
             ps.setString(6, fornitore.getEmail());
             ps.setString(7, fornitore.getPassword());
-            ps.setInt(4, fornitore.getTelefono());
+            ps.setString(4, fornitore.getTelefono());
             ps.setString(5, fornitore.getLuogoUbicazione());
             ps.setString(8, fornitore.getRagioneSociale());
             if (ps.executeUpdate() != 1) {
@@ -96,7 +94,7 @@ public class FornitoreDAO {
                 f.setCognome(rs.getString(3));
                 f.setEmail(rs.getString(4));
                 f.setPassword(rs.getString(5));
-                f.setTelefono(rs.getInt(6));
+                f.setTelefono(rs.getString(6));
                 f.setLuogoUbicazione(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
                 return f;

@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 
 import java.sql.*;
