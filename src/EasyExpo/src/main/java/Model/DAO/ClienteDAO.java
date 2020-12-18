@@ -11,7 +11,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByCF(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
+                    .prepareStatement("SELECT *  FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -34,7 +34,7 @@ public class ClienteDAO {
     public List<Cliente> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Cliente LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Cliente> clienti = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByEmail(String email) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente WHERE email=?");
+                    "SELECT * FROM Cliente WHERE email=?");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

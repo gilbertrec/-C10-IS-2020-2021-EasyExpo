@@ -11,7 +11,7 @@ public class MetodiDiPagamentoDAO {
     public List<MetodoPagamento> doRetrieveAllByPartitaIva(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv FROM MetodoPagamento as mp, Fornitore as f WHERE partitaIva=? AND mp.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT * FROM MetodoPagamento as mp, Fornitore as f WHERE partitaIva=? AND mp.partitaIva=f.partitaIva");
             ps.setString(1, partitaIva);
             ArrayList<MetodoPagamento> metodiPagamenti = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
@@ -44,7 +44,7 @@ public class MetodiDiPagamentoDAO {
             }
             ResultSet rs = ps.getGeneratedKeys();
             rs.next();
-            metodoPagamento.setNumeroCarta(rs.getInt(1));
+            metodoPagamento.setNumeroCarta(rs.getString(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

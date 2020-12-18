@@ -9,7 +9,7 @@ public class ProdottoRichiestaDAO {
     public ProdottoRichiesta doRetrieveById(int id) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT id, idRichiesta, idProdotto, numColli, prezzo, dataInizioNoleggio, dataFineNoleggio  FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p  WHERE id=? " +
+                    .prepareStatement("SELECT *  FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p  WHERE id=? " +
                             "AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

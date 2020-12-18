@@ -11,7 +11,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByPIVA(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale  FROM Fornitore WHERE partitaIva=?");
+                    .prepareStatement("SELECT *  FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -35,7 +35,7 @@ public class FornitoreDAO {
     public List<Fornitore> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale FROM Fornitore LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Fornitore LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Fornitore> fornitori = new ArrayList<>();
@@ -84,7 +84,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByEmail(String email) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT partitaIva, nome, cognome, email, password, telefono, luogoUbicazione, ragioneSociale FROM Fornitore WHERE email=?");
+                    "SELECT * FROM Fornitore WHERE email=?");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

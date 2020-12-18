@@ -11,7 +11,7 @@ public class ProdottoDAO {
     public Prodotto doRetrieveByIdProdotto(int idProdotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, tipo, quantita, prezzo  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
             ps.setInt(1, idProdotto);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -20,7 +20,7 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setTipo(rs.getString(5));
+                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 return p;
@@ -34,7 +34,7 @@ public class ProdottoDAO {
     public List<Prodotto> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idProdotto, partitaIva, titolo, descrizione, tipo, quantita, prezzo FROM Prodotto as p, Fornitore as f WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Prodotto as p, Fornitore as f WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -45,7 +45,7 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setTipo(rs.getString(5));
+                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 prodotti.add(p);
@@ -66,7 +66,7 @@ public class ProdottoDAO {
             ps.setString(2, prodotto.getPartitaIva());
             ps.setString(3, prodotto.getTitolo());
             ps.setString(4, prodotto.getDescrizione());
-            ps.setString(5, prodotto.getTipo());
+            ps.setString(5, prodotto.getTipo().toString());
             ps.setInt(6, prodotto.getQuantità());
             ps.setFloat(7, prodotto.getPrezzo());
             if (ps.executeUpdate() != 1) {

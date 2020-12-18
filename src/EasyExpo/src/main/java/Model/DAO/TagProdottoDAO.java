@@ -10,7 +10,7 @@ public class TagProdottoDAO {
     public TagProdotto doRetrieveByIdTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idTag, idProdotto, partitaIva FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idTag=? " +
+                    .prepareStatement("SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idTag=? " +
                             "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag AND tp.partitaIva=f.partitaIva");
             ps.setInt(1, idTag);
             ResultSet rs = ps.executeQuery();
@@ -65,7 +65,7 @@ public class TagProdottoDAO {
     public TagProdotto doRetrieveByIdProdottoandPartitaIva(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idTag, idProdotto, partitaIva FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idProdotto=? AND partitaIva=?" +
+                    .prepareStatement("SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idProdotto=? AND partitaIva=?" +
                             "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag AND tp.partitaIva=f.partitaIva");
             ps.setInt(1, idProdotto);
             ps.setString(1, partitaIva);

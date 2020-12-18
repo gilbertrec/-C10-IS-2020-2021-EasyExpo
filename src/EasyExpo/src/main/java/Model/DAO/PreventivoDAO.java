@@ -11,7 +11,7 @@ public class PreventivoDAO {
     public Preventivo doRetriveByIdPreventivo(int idPreventivo){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                    .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
                             "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
             ps.setInt(1, idPreventivo);
             ResultSet rs = ps.executeQuery();
@@ -34,7 +34,7 @@ public class PreventivoDAO {
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale FROM Preventivo, Fornitore, Cliente, RichiestaPreventivo" +
+                    .prepareStatement("SELECT * FROM Preventivo, Fornitore, Cliente, RichiestaPreventivo" +
                             "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
