@@ -69,7 +69,7 @@ public class ProdottoDAO {
             ps.setString(4, prodotto.getDescrizione());
             ps.setString(5, prodotto.getTipo());
             ps.setInt(6, prodotto.getQuantità());
-            ps.setInt(7, prodotto.setPrezzo());
+            ps.setFloat(7, prodotto.getPrezzo());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
