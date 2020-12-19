@@ -99,6 +99,29 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
+    public Cliente doRetrieveByEmailandPassword(String email, String password){
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * FROM Cliente WHERE email=? AND password=?");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Cliente c = new Cliente();
+                c.setCodiceFiscale(rs.getString(1));
+                c.setNome(rs.getString(2));
+                c.setCognome(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPassword(rs.getString(5));
+                c.setTelefono(rs.getString(6));
+                c.setLuogoUbicazione(rs.getString(7));
+                return c;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void deleteCliente(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {

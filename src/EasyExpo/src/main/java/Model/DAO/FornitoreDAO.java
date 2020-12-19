@@ -106,8 +106,29 @@ public class FornitoreDAO {
     }
 
     public Fornitore doRetrieveByEmailandPassword(String email, String password){
-
-    }
+            try (Connection con = DBConnection.getConnection()) {
+                PreparedStatement ps = con.prepareStatement(
+                        "SELECT * FROM Fornitore WHERE email=? AND password=?");
+                ps.setString(1, email);
+                ps.setString(2, password);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    Fornitore f = new Fornitore();
+                    f.setPartitaIva(rs.getString(1));
+                    f.setNome(rs.getString(2));
+                    f.setCognome(rs.getString(3));
+                    f.setEmail(rs.getString(4));
+                    f.setPassword(rs.getString(5));
+                    f.setTelefono(rs.getString(6));
+                    f.setLuogoUbicazione(rs.getString(7));
+                    f.setRagioneSociale(rs.getString(8));
+                    return f;
+                }
+                return null;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     public void deleteFornitore(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
