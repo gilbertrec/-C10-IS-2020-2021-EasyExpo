@@ -12,3 +12,6 @@ src/EasyExpo/EasyExpo.iml
 src/EasyExpo/target/classes/Model/DAO/DBConnection.class
 src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT/WEB-INF/classes/Model/DAO/DBConnection.class
 .DS_Store
+src/EasyExpo/target/classes/Model/DAO/DBConnection.class
+src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT.war
+src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT/META-INF/MANIFEST.MF
