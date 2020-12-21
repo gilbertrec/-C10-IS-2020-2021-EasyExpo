@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet")
+@WebServlet(name = "LoginServlet", urlPatterns = "", loadOnStartup = 1)
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -32,13 +32,14 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("cliente", cliente);
             response.sendRedirect("HomeCliente");
         }
-
+        request.getSession().setAttribute("cliente", cliente);
         if (fornitore == null) {
             throw new MyServletException("Email e/o password non validi.");
         } else {
             request.getSession().setAttribute("fornitore", fornitore);
             response.sendRedirect("AreaFornitore");
         }
+        request.getSession().setAttribute("fornitore", fornitore);
         String address = ".";
 
         RequestDispatcher dispatcher =
