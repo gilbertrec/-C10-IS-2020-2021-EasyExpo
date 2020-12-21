@@ -59,7 +59,7 @@
     <!-- header -->
     <header>
         <jsp:include page="/WEB-INF/jsp/header.jsp">
-            <jsp:param name="pageTitle" value="Homepage"/>
+            <jsp:param name="pageTitle" value="Chi Siamo"/>
         </jsp:include>
     </header>
 

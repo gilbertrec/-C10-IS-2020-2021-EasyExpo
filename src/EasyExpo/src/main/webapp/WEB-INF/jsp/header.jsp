@@ -65,11 +65,11 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li class="dropdown active"><a href="HomeServlet" class="dropdown-toggle"
+                        <li class="dropdown active"><a href="./" class="dropdown-toggle"
                                                        data-toggle="dropdown">Home</a>
                         </li>
                         <li><a href="ChiSiamoServlet">Chi siamo </a></li>
-                        <li><a href="contatti.jsp"> Contatti</a></li>
+                        <li><a href="ContattiServlet"> Contatti</a></li>
                     </ul>
                 </div>
 
