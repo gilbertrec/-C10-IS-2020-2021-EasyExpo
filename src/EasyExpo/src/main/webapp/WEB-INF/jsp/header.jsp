@@ -51,7 +51,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo"><a href="index.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
+            <div class="logo"><a href="./"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
             </div>
             <nav class="navbar ownmenu">
                 <div class="navbar-header">
@@ -64,27 +64,11 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li class="dropdown active"><a href="./index.jsp" class="dropdown-toggle"
+                        <li class="dropdown active"><a href="#" class="dropdown-toggle"
                                                        data-toggle="dropdown">Home</a>
                         </li>
-                        <!--<li class="dropdown"><a href="#." class="dropdown-toggle" data-toggle="dropdown">Pages</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="shop_01.html">Shop 01 </a></li>
-                                <li><a href="shop_04.html">Shop 04 </a></li>
-                                <li><a href="product-detail_01.html">Product Detail 01</a></li>
-                                <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="about-us_01.html">About 01</a></li>
-                                <li><a href="about-us_02.html">About 02</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="blog-list_01.html">Blog List 01</a></li>
-                                <li><a href="blog-list_02.html">Blog List 02</a></li>
-                                <li><a href="blog-list_03.html">Blog List 03 </a></li>
-                                <li><a href="blog-detail_01.html">Blog Detail 01 </a></li>
-                            </ul>
-                        </li>-->
-                        <li><a href="about-us_01.html">Chi siamo </a></li>
-                        <li><a href="contact.html"> Contatti</a></li>
+                        <li><a href="/Controller/ChiSiamoServlet">Chi siamo </a></li>
+                        <li><a href="contatti.jsp"> Contatti</a></li>
                     </ul>
                 </div>
 
