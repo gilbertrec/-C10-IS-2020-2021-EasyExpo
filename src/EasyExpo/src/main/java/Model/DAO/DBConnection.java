@@ -13,9 +13,9 @@ public class DBConnection {
         if (datasource == null) {
             PoolProperties p = new PoolProperties();
             p.setUrl("jdbc:mysql://localhost:3306/EasyExpo?serverTimezone=" + TimeZone.getDefault().getID());
-            p.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            p.setDriverClassName("com.mysql.jdbc.Driver");
             p.setUsername("root");
-            p.setPassword("basedidati");
+            p.setPassword("peppe0113");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);

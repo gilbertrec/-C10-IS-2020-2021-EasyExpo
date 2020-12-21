@@ -1,5 +1,8 @@
 package Model.POJO;
 
+
+import java.util.Objects;
+
 public class Cliente {
     public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione) {
         this.email = email;
@@ -10,7 +13,8 @@ public class Cliente {
         this.telefono = telefono;
         this.luogoUbicazione = luogoUbicazione;
     }
-    public Cliente(){
+
+    public Cliente() {
 
     }
 
@@ -26,9 +30,7 @@ public class Cliente {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public String getCodiceFiscale() {
         return codiceFiscale;
@@ -81,6 +83,10 @@ public class Cliente {
                 ", telefono=" + telefono +
                 ", luogoUbicazione='" + luogoUbicazione + '\'' +
                 '}';
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password, codiceFiscale, nome, cognome, telefono, luogoUbicazione);
     }
 
     private String email;

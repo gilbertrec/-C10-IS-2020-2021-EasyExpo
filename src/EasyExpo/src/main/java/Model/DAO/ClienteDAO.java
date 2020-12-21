@@ -5,7 +5,8 @@ import Model.POJO.Cliente;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.sql.SQLException;
+import java.sql.Connection;
 public class ClienteDAO {
 
     public Cliente doRetrieveByCF(String codiceFiscale) {
@@ -58,7 +59,7 @@ public class ClienteDAO {
     public void createCliente(Cliente cliente) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,?)");
+                    "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,sha2(?, 512))");
             ps.setString(1, cliente.getCodiceFiscale());
             ps.setString(2, cliente.getNome());
             ps.setString(3, cliente.getCognome());
@@ -88,10 +89,10 @@ public class ClienteDAO {
                 c.setCodiceFiscale(rs.getString(1));
                 c.setNome(rs.getString(2));
                 c.setCognome(rs.getString(3));
-                c.setEmail(rs.getString(4));
-                c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getString(6));
-                c.setLuogoUbicazione(rs.getString(7));
+                c.setEmail(rs.getString(6));
+                c.setPassword(rs.getString(7));
+                c.setTelefono(rs.getString(4));
+                c.setLuogoUbicazione(rs.getString(5));
                 return c;
             }
             return null;
@@ -102,7 +103,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByEmailandPassword(String email, String password){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT * FROM Cliente WHERE email=? AND password=?");
+                    "SELECT * FROM Cliente WHERE email=? AND password=sha2(?, 512)");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -111,10 +112,10 @@ public class ClienteDAO {
                 c.setCodiceFiscale(rs.getString(1));
                 c.setNome(rs.getString(2));
                 c.setCognome(rs.getString(3));
-                c.setEmail(rs.getString(4));
-                c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getString(6));
-                c.setLuogoUbicazione(rs.getString(7));
+                c.setTelefono(rs.getString(4));
+                c.setLuogoUbicazione(rs.getString(5));
+                c.setEmail(rs.getString(6));
+                c.setPassword(rs.getString(7));
                 return c;
             }
             return null;

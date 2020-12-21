@@ -5,6 +5,8 @@ import Model.POJO.Fornitore;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 public class FornitoreDAO {
 
@@ -61,7 +63,7 @@ public class FornitoreDAO {
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
 
             ps.setString(1, fornitore.getPartitaIva());
             ps.setString(2, fornitore.getNome());
@@ -108,7 +110,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByEmailandPassword(String email, String password){
             try (Connection con = DBConnection.getConnection()) {
                 PreparedStatement ps = con.prepareStatement(
-                        "SELECT * FROM Fornitore WHERE email=? AND password=?");
+                        "SELECT * FROM Fornitore WHERE email=? AND password=sha2(?, 512)");
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "", loadOnStartup = 1)
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -26,27 +26,19 @@ public class LoginServlet extends HttpServlet {
             cliente = clienteDAO.doRetrieveByEmailandPassword(email, password);
             fornitore = fornitoreDAO.doRetrieveByEmailandPassword(email, password);
         }
-        if (cliente == null) {
+        if (cliente == null && fornitore == null) {
             throw new MyServletException("Email e/o password non validi.");
-        } else {
+        }else if(cliente !=null && fornitore == null){
             request.getSession().setAttribute("cliente", cliente);
-            response.sendRedirect("HomeCliente");
-        }
-        request.getSession().setAttribute("cliente", cliente);
-        if (fornitore == null) {
-            throw new MyServletException("Email e/o password non validi.");
-        } else {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/HomeCliente.jsp");
+            requestDispatcher.forward(request,response);
+        }else if(cliente == null && fornitore != null){
             request.getSession().setAttribute("fornitore", fornitore);
-            response.sendRedirect("AreaFornitore");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/HomeFornitore.jsp");
+            requestDispatcher.forward(request,response);
         }
-        request.getSession().setAttribute("fornitore", fornitore);
-        String address = ".";
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
     }
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,5 +1,7 @@
 package Model.POJO;
 
+import java.util.Objects;
+
 public class Fornitore {
     public Fornitore(String email, String password, String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String ragioneSociale) {
         this.email = email;
@@ -11,7 +13,8 @@ public class Fornitore {
         this.luogoUbicazione = luogoUbicazione;
         this.ragioneSociale = ragioneSociale;
     }
-    public Fornitore(){
+
+    public Fornitore() {
 
     }
 
@@ -27,9 +30,7 @@ public class Fornitore {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public String getPartitaIva() {
         return partitaIva;
@@ -79,6 +80,7 @@ public class Fornitore {
         this.ragioneSociale = ragioneSociale;
     }
 
+
     @Override
     public String toString() {
         return "Fornitore{" +
@@ -91,6 +93,10 @@ public class Fornitore {
                 ", luogoUbicazione='" + luogoUbicazione + '\'' +
                 ", ragioneSociale='" + ragioneSociale + '\'' +
                 '}';
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password, partitaIva, nome, cognome, telefono, luogoUbicazione, ragioneSociale);
     }
 
     private String email;
