@@ -132,7 +132,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">
-                            The Latest Product from EASYESPO
+                            The Latest Product from EASYEXPO
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-regular tp-resizeme letter-space-4"
@@ -595,61 +595,9 @@
             </div>
         </section>
     </div>
-
-    <!--======= FOOTER =========-->
+    <!--FOOTER-->
     <footer>
-        <div class="container">
-
-            <!-- ABOUT Location -->
-            <div class="col-md-3">
-                <div class="about-footer"><img class="margin-bottom-30" src="images/logomacchia.png" alt="">
-                    <p><i class="icon-pointer"></i> Via Giovanni Paolo II, 132 . <br>
-                        - 84084 Fisciano (SA)</p>
-                    <p><i class="icon-call-end"></i> 081 564738</p>
-                    <p><i class="icon-envelope"></i> info@EASYEXPO.com</p>
-                </div>
-            </div>
-
-            <!-- HELPFUL LINKS -->
-            <div class="col-md-3">
-                <h6>HELPFUL LINKS</h6>
-                <ul class="link">
-
-                </ul>
-            </div>
-
-            <!-- SHOP -->
-            <div class="col-md-3">
-                <h6>SHOP</h6>
-                <ul class="link">
-                    <li><a href="#."> About Us</a></li>
-                    <li><a href="#."> Career</a></li>
-                    <li><a href="#."> Shipping Methods</a></li>
-                    <li><a href="#."> Contact</a></li>
-                    <li><a href="#."> Support</a></li>
-                    <li><a href="#."> Retailer</a></li>
-                </ul>
-            </div>
-
-            <!-- MY ACCOUNT -->
-            <div class="col-md-3">
-                <h6>MY ACCOUNT</h6>
-                <ul class="link">
-                    <li><a href="#."> Login</a></li>
-                    <li><a href="#."> My Account</a></li>
-                    <li><a href="#."> My Cart</a></li>
-                    <li><a href="#."> Wishlist</a></li>
-                    <li><a href="#."> Checkout</a></li>
-                </ul>
-            </div>
-
-            <!-- Rights -->
-
-            <div class="rights">
-                <p>© 2020 EASYESPO Tutti i diritti riservati. </p>
-                <div class="scroll"><a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a></div>
-            </div>
-        </div>
+        <jsp:include page="footer.jsp"/>
     </footer>
 
     <!--======= RIGHTS =========-->
