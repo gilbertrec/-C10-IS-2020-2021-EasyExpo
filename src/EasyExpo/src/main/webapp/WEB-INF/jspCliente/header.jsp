@@ -51,7 +51,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo"><a href="index.html"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
+            <div class="logo"><a href="index.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
             </div>
             <nav class="navbar ownmenu">
                 <div class="navbar-header">
@@ -64,7 +64,7 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li class="dropdown active"><a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                        <li class="dropdown active"><a href="index.jsp" class="dropdown-toggle" data-toggle="dropdown">Home</a>
                         </li>
                         <li class="dropdown"><a href="#." class="dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <ul class="dropdown-menu">
