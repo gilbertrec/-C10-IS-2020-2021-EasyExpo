@@ -3,15 +3,17 @@ package Model.POJO;
 import java.sql.Date;
 
 public class Preventivo {
-    public Preventivo(int idPreventivo, int idRichiesta, String partitaIva, String codiceFiscale, Date dataPreventivo, float prezzoTotale) {
+    public Preventivo(int idPreventivo, int idRichiesta, String partitaIva, String codiceFiscale, Date dataPreventivo, float prezzoTotale, String nota) {
         this.idPreventivo = idPreventivo;
         this.idRichiesta = idRichiesta;
         this.partitaIva = partitaIva;
         this.codiceFiscale = codiceFiscale;
         this.dataPreventivo = dataPreventivo;
         this.prezzoTotale = prezzoTotale;
+        this.nota = nota;
     }
-    public Preventivo(){
+
+    public Preventivo() {
 
     }
 
@@ -63,6 +65,10 @@ public class Preventivo {
         this.prezzoTotale = prezzoTotale;
     }
 
+    public String getNota() { return nota; }
+
+    public void setNota(String nota) { this.nota = nota; }
+
     @Override
     public String toString() {
         return "Preventivo{" +
@@ -70,8 +76,9 @@ public class Preventivo {
                 ", idRichiesta=" + idRichiesta +
                 ", partitaIva='" + partitaIva + '\'' +
                 ", codiceFiscale='" + codiceFiscale + '\'' +
-                ", data=" + dataPreventivo +
+                ", dataPreventivo=" + dataPreventivo +
                 ", prezzoTotale=" + prezzoTotale +
+                ", nota='" + nota + '\'' +
                 '}';
     }
 
@@ -81,4 +88,5 @@ public class Preventivo {
     private String codiceFiscale;
     private Date dataPreventivo;
     private float prezzoTotale;
+    private String nota;
 }
