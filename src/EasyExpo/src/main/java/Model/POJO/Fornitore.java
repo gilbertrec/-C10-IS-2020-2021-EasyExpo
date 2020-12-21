@@ -1,7 +1,7 @@
 package Model.POJO;
 
 public class Fornitore {
-    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, int telefono, String luogoUbicazione, String ragioneSociale) {
+    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String ragioneSociale) {
         this.email = email;
         this.password = password;
         this.partitaIva = partitaIva;
@@ -55,11 +55,11 @@ public class Fornitore {
         this.cognome = cognome;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -98,7 +98,7 @@ public class Fornitore {
     private String partitaIva;
     private String nome;
     private String cognome;
-    private int telefono;
+    private String telefono;
     private String luogoUbicazione;
     private String ragioneSociale;
 }

@@ -3,7 +3,7 @@ package Model.POJO;
 import java.sql.Date;
 
 public class MetodoPagamento {
-    public MetodoPagamento(int numeroCarta, String partitaIva, String nomeIntestatario, Date dataScadenza, int cvv) {
+    public MetodoPagamento(String numeroCarta, String partitaIva, String nomeIntestatario, Date dataScadenza, int cvv) {
         this.numeroCarta = numeroCarta;
         this.partitaIva = partitaIva;
         this.nomeIntestatario = nomeIntestatario;
@@ -15,11 +15,11 @@ public class MetodoPagamento {
 
     }
 
-    public int getNumeroCarta() {
+    public String getNumeroCarta() {
         return numeroCarta;
     }
 
-    public void setNumeroCarta(int numeroCarta) {
+    public void setNumeroCarta(String numeroCarta) {
         this.numeroCarta = numeroCarta;
     }
 
@@ -66,7 +66,7 @@ public class MetodoPagamento {
                 '}';
     }
 
-    private int numeroCarta;
+    private String numeroCarta;
     private String partitaIva;
     private String nomeIntestatario;
     private Date dataScadenza;

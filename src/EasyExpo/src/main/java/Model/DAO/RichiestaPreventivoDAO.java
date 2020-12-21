@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.Prodotto;
 import Model.POJO.RichiestaPreventivo;
 
 import java.sql.*;
@@ -11,7 +10,7 @@ public class RichiestaPreventivoDAO {
     public RichiestaPreventivo doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE idRichiesta=?" +
+                    .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE idRichiesta=?" +
                             "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
             ps.setInt(1, idRichiesta);
             ResultSet rs = ps.executeQuery();
@@ -24,7 +23,8 @@ public class RichiestaPreventivoDAO {
                 r.setLuogoEvento(rs.getString(5));
                 r.setDescrizioneEvento(rs.getString(6));
                 r.setNota(rs.getString(7));
-                r.setDataRichiesta(rs.getDate (8));
+                r.setDataRichiesta(rs.getDate(8));
+                r.setStato(RichiestaPreventivo.Stato.valueOf(rs.getString(9)));
                 return r;
             }
             return null;
@@ -35,7 +35,7 @@ public class RichiestaPreventivoDAO {
     public List<RichiestaPreventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE" +
+                    .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE" +
                             "rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
@@ -51,6 +51,7 @@ public class RichiestaPreventivoDAO {
                 r.setDescrizioneEvento(rs.getString(6));
                 r.setNota(rs.getString(7));
                 r.setDataRichiesta(rs.getDate(8));
+                r.setStato(RichiestaPreventivo.Stato.valueOf(rs.getString(9)));
                 richieste.add(r);
             }
             return richieste;
@@ -61,7 +62,7 @@ public class RichiestaPreventivoDAO {
     public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta) VALUES(?,?,?,?,?,?,?,?)",
+                    "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta, stato) VALUES(?,?,?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, richiestaPreventivo.getIdRichiesta());
@@ -72,6 +73,7 @@ public class RichiestaPreventivoDAO {
             ps.setString(6, richiestaPreventivo.getDescrizioneEvento());
             ps.setString(7, richiestaPreventivo.getNota());
             ps.setDate(8, richiestaPreventivo.getDataRichiesta());
+            ps.setString(9, richiestaPreventivo.getStato().toString());//oppure .name() per caratteri uguali
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

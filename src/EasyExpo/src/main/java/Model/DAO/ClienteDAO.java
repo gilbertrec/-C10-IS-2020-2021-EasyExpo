@@ -11,7 +11,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByCF(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
+                    .prepareStatement("SELECT *  FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -21,7 +21,7 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 return c;
             }
@@ -34,7 +34,7 @@ public class ClienteDAO {
     public List<Cliente> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Cliente LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Cliente> clienti = new ArrayList<>();
@@ -46,7 +46,7 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 clienti.add(c);
             }
@@ -64,7 +64,7 @@ public class ClienteDAO {
             ps.setString(3, cliente.getCognome());
             ps.setString(6, cliente.getEmail());
             ps.setString(7, cliente.getPassword());
-            ps.setInt(4, cliente.getTelefono());
+            ps.setString(4, cliente.getTelefono());
             ps.setString(5, cliente.getLuogoUbicazione());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
@@ -80,7 +80,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByEmail(String email) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione FROM Cliente WHERE email=?");
+                    "SELECT * FROM Cliente WHERE email=?");
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -90,7 +90,30 @@ public class ClienteDAO {
                 c.setCognome(rs.getString(3));
                 c.setEmail(rs.getString(4));
                 c.setPassword(rs.getString(5));
-                c.setTelefono(rs.getInt(6));
+                c.setTelefono(rs.getString(6));
+                c.setLuogoUbicazione(rs.getString(7));
+                return c;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public Cliente doRetrieveByEmailandPassword(String email, String password){
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * FROM Cliente WHERE email=? AND password=?");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Cliente c = new Cliente();
+                c.setCodiceFiscale(rs.getString(1));
+                c.setNome(rs.getString(2));
+                c.setCognome(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPassword(rs.getString(5));
+                c.setTelefono(rs.getString(6));
                 c.setLuogoUbicazione(rs.getString(7));
                 return c;
             }
