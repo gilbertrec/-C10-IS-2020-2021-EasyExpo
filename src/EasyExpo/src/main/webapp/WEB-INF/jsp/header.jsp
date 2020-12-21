@@ -65,8 +65,7 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li class="dropdown active"><a href="./" class="dropdown-toggle"
-                                                       data-toggle="dropdown">Home</a>
+                        <li class="dropdown active"><a href="./" class="dropdown-toggle">Home</a>
                         </li>
                         <li><a href="ChiSiamoServlet">Chi siamo </a></li>
                         <li><a href="ContattiServlet"> Contatti</a></li>
@@ -129,5 +128,16 @@
         </div>
     </div>
 </header>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/own-menu.js"></script>
+<script src="js/jquery.lighter.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

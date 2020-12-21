@@ -66,12 +66,11 @@
 <section class="sub-bnr" data-stellar-background-ratio="0.5">
     <div class="position-center-center">
         <div class="container">
-            <h4>contact us now</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                Sed feugiat, tellus vel tristique posuere, diam</p>
+            <h4>contattaci ora</h4>
+            <p>Ti lasciamo di seguito i nostri recapiti per contattarci. I nostri operatori ti risponderanno nel minor tempo possibile!</p>
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li class="active">contact</li>
+                <li class="active">contatti</li>
             </ol>
         </div>
     </div>
@@ -84,57 +83,17 @@
     <section class="contact padding-top-100 padding-bottom-100">
         <div class="container">
             <div class="contact-form">
-                <h5>PLEASE fill-up FEW details</h5>
                 <div class="row">
-                    <div class="col-md-8">
-
-                        <!--======= Success Msg =========-->
-                        <div id="contact_message" class="success-msg"> <i class="fa fa-paper-plane-o"></i>Thank You. Your Message has been Submitted</div>
-
-                        <!--======= FORM  =========-->
-                        <form role="form" id="contact_form" class="contact-form" method="post" onSubmit="return false">
-                            <ul class="row">
-                                <li class="col-sm-6">
-                                    <label>full name *
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <label>Email *
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <label>Phone *
-                                        <input type="text" class="form-control" name="company" id="company" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-6">
-                                    <label>SUBJECT
-                                        <input type="text" class="form-control" name="website" id="website" placeholder="">
-                                    </label>
-                                </li>
-                                <li class="col-sm-12">
-                                    <label>Message
-                                        <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
-                                    </label>
-                                </li>
-                                <li class="col-sm-12">
-                                    <button type="submit" value="submit" class="btn" id="btn_submit" onClick="proceed();">SEND MAIL</button>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
 
                     <!--======= ADDRESS INFO  =========-->
                     <div class="col-md-4">
                         <div class="contact-info">
-                            <h6>OUR ADDRESS</h6>
+                            <h6>I NOSTRI INDIRIZZI</h6>
                             <ul>
-                                <li> <i class="icon-map-pin"></i> Street No. 12, Newyork 12,<br>
-                                    MD - 123, USA.</li>
-                                <li> <i class="icon-call-end"></i> 1.800.123.456789</li>
-                                <li> <i class="icon-envelope"></i> <a href="mailto:someone@example.com" target="_top">info@PAVSHOP.com</a> </li>
+                                <li> <i class="icon-map-pin"></i> Via Giovanni Paolo II, 132 . <br>
+                                    - 84084 Fisciano (SA)</li>
+                                <li> <i class="icon-call-end"></i> 081 564738</li>
+                                <li> <i class="icon-envelope"></i> <a href="mailto:someone@example.com" target="_top">info@EASYEXPO.com</a> </li>
                                 <li>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam erat turpis, pellentesque non leo eget.</p>
                                 </li>
