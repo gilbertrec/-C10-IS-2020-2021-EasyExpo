@@ -22,7 +22,7 @@
 <div id="wrap">
 
     <header>
-        <jsp:include page="header.jsp">
+        <jsp:include page="/WEB-INF/jsp/header.jsp">
             <jsp:param name="pageTitle" value="Homepage"/>
         </jsp:include>
     </header>
@@ -53,7 +53,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">
-                            The Latest Product from EASYEXPO
+                            Prodotto da EASYEXPO
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfl font-extra-bold tp-resizeme"
@@ -68,7 +68,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:80px; color:#2d3a4b; text-transform:uppercase; white-space: nowrap;">
-                            <small class="font-regular">$</small>299 <!-- PREZZO --> </div>
+                            <small class="font-regular">€</small>${prezzo} </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme"
                              data-x="left" data-hoffset="0"
@@ -81,7 +81,7 @@
                              data-elementdelay="0.07"
                              data-endelementdelay="0.1"
                              data-endspeed="300"
-                             style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">
+                             style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
                             casse
                         </div>
                         <!-- LAYER NR. 2 -->
@@ -96,7 +96,7 @@
                              data-elementdelay="0.07"
                              data-endelementdelay="0.1"
                              data-endspeed="300"
-                             style="z-index: 6; font-size:120px; color:#fff; text-transform:uppercase; white-space: nowrap;">
+                             style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
                             da palco
                         </div>
                         <!-- LAYER NR. 4 -->
@@ -110,7 +110,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn">RICHIEDI ORA</a></div>
+                             style="z-index: 8;"><a href="#." class="btn">AGGIUNGI AL CARRELLO</a></div>
                     </li>
 
                     <!-- SLIDE  -->
@@ -132,7 +132,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">
-                            The Latest Product from EASYEXPO
+                            Prodotto da EASYEXPO
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-regular tp-resizeme letter-space-4"
@@ -146,7 +146,7 @@
                              data-elementdelay="0.07"
                              data-endelementdelay="0.1"
                              data-endspeed="300"
-                             style="z-index: 6; font-size:78px; color:#fff; text-transform:uppercase; white-space: nowrap;">
+                             style="z-index: 6; font-size:68px; color:#fff; text-transform:uppercase; white-space: nowrap;">
                             richiedi
                         </div>
                         <!-- LAYER NR. 2 -->
@@ -161,7 +161,7 @@
                              data-elementdelay="0.07"
                              data-endelementdelay="0.1"
                              data-endspeed="300"
-                             style="z-index: 6; font-size:140px; color:#fff; text-transform:uppercase; white-space: nowrap;">
+                             style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
                             un preventivo
                         </div>
                         <!-- LAYER NR. 4 -->
@@ -177,7 +177,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:60px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            <small class="font-regular">$</small> 299
+                            <small class="font-regular">€</small> ${prezzo}
                         </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption lfb tp-scrollbelowslider tp-resizeme"
@@ -200,182 +200,14 @@
     <!-- Content -->
     <div id="content">
 
-        <!-- New Arrival -->
-        <section class="padding-top-100 padding-bottom-100">
-            <div class="container">
-
-                <!-- Main Heading -->
-                <div class="heading text-center">
-                    <h4>nuovi arrivi</h4>
-                    <span>Tutti i nuovi prodotti aggiunti al sito dai nostri Fornitori di fiducia!</span></div>
-            </div>
-
-            <!-- New Arrival -->
-            <div class="arrival-block">
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-1.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-1.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">wooden chair</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-2.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-2.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">MINIMALIST WOO TOYS</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-3.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-3.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">Concrete Shaving Kit</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-4.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-4.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">PARAGON PENDANT</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-5.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-5.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">crative lamp</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-6.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-6.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">ECO FRIENDLY</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-7.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-7.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">GEOMETRY STOOL</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="item">
-                    <!-- Images -->
-                    <img class="img-1" src="images/item-img-1-8.jpg" alt=""> <img class="img-2"
-                                                                                  src="images/item-img-1-1-1.jpg"
-                                                                                  alt="">
-                    <!-- Overlay  -->
-                    <div class="overlay">
-                        <!-- Price -->
-                        <span class="price"><small>$</small>299</span>
-                        <div class="position-center-center"><a href="images/item-img-1-8.jpg" data-lighter><i
-                                class="icon-magnifier"></i></a></div>
-                    </div>
-                    <!-- Item Name -->
-                    <div class="item-name"><a href="#.">CERAMIC STONE VASE</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Popular Products -->
+        <!-- Nuovi arrivi -->
         <section class="padding-top-50 padding-bottom-150">
             <div class="container">
 
                 <!-- Main Heading -->
                 <div class="heading text-center">
-                    <h4>popular products</h4>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-          Sed feugiat, tellus vel tristique posuere, diam</span></div>
+                    <h4>Nuovi arrivi</h4>
+                    <span>Tutti i nuovi prodotti aggiunti al sito dai nostri Fornitori di fiducia!</span></div>
 
                 <!-- Popular Item Slide -->
                 <div class="papular-block block-slide">
@@ -404,7 +236,7 @@
                             <p>Lorem ipsum dolor sit amet</p>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>$</small>299</span></div>
+                        <span class="price"><small>€</small>${prezzo}</span></div>
 
                     <!-- Item -->
                     <div class="item">
@@ -430,7 +262,7 @@
                             <p>Lorem ipsum dolor sit amet</p>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>$</small>299</span></div>
+                        <span class="price"><small>€</small>${prezzo}</span></div>
 
                     <!-- Item -->
                     <div class="item">
@@ -456,7 +288,7 @@
                             <p>Lorem ipsum dolor sit amet</p>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>$</small>299</span></div>
+                        <span class="price"><small>€</small>${prezzo}</span></div>
 
                     <!-- Item -->
                     <div class="item">
@@ -482,80 +314,7 @@
                             <p>Lorem ipsum dolor sit amet</p>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>$</small>299</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Knowledge Share -->
-        <section class="light-gray-bg padding-top-150 padding-bottom-150">
-            <div class="container">
-
-                <!-- Main Heading -->
-                <div class="heading text-center">
-                    <h4>knowledge share</h4>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-          Sed feugiat, tellus vel tristique posuere, diam</span></div>
-                <div class="knowledge-share">
-                    <ul class="row">
-
-                        <!-- Post 1 -->
-                        <li class="col-md-6">
-                            <div class="date"><span>December</span> <span class="huge">27</span></div>
-                            <a href="#.">Donec commo is vulputate</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                                Sed feugiat, tellus vel tristique posuere, diam</p>
-                            <span>By <strong>Admin</strong></span></li>
-
-                        <!-- Post 2 -->
-                        <li class="col-md-6">
-                            <div class="date"><span>December</span> <span class="huge">09</span></div>
-                            <a href="#.">Donec commo is vulputate</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                                Sed feugiat, tellus vel tristique posuere, diam</p>
-                            <span>By <strong>Admin</strong></span></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonial -->
-        <section class="testimonial padding-top-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-
-                        <!-- SLide -->
-                        <div class="single-slide">
-
-                            <!-- Slide -->
-                            <div class="testi-in"><i class="fa fa-quote-left"></i>
-                                <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus. Sed ullamcorper sapien lacus, eu posuere odio luctus non. Nulla
-                                    lacinia, eros vel fermentum consectetur, risus p</p>
-                                <h5>john smith</h5>
-                            </div>
-
-                            <!-- Slide -->
-                            <div class="testi-in"><i class="fa fa-quote-left"></i>
-                                <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus. Sed ullamcorper sapien lacus, eu posuere odio luctus non. Nulla
-                                    lacinia, eros vel fermentum consectetur, risus p</p>
-                                <h5>john smith</h5>
-                            </div>
-
-                            <!-- Slide -->
-                            <div class="testi-in"><i class="fa fa-quote-left"></i>
-                                <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus. Sed ullamcorper sapien lacus, eu posuere odio luctus non. Nulla
-                                    lacinia, eros vel fermentum consectetur, risus p</p>
-                                <h5>john smith</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Img -->
-                    <div class="col-sm-6"><img class="img-responsive" src="images/testi-avatar.jpg" alt=""></div>
+                        <span class="price"><small>€</small>${prezzo}</span></div>
                 </div>
             </div>
         </section>
@@ -566,10 +325,10 @@
 
                 <!-- Main Heading -->
                 <div class="heading text-center">
-                    <h4>about PAVSHOP</h4>
-                    <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu
-                        posuere odio luctus non. Nulla lacinia,
-                        eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+                    <h4>Cos'è EASYEXPO</h4>
+                    <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
+                        eventi e i Fornitori di attrezzature. Avere un portale dove confrontare i vari
+                        preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
                 </div>
 
                 <!-- Social Icons -->
@@ -582,22 +341,10 @@
                 </ul>
             </div>
         </section>
-        <section class="news-letter padding-top-150 padding-bottom-150">
-            <div class="container">
-                <div class="heading light-head text-center margin-bottom-30">
-                    <h4>NEWSLETTER</h4>
-                    <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span>
-                </div>
-                <form>
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">SEND ME</button>
-                </form>
-            </div>
-        </section>
     </div>
     <!--FOOTER-->
     <footer>
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
     </footer>
 
     <!--======= RIGHTS =========-->
