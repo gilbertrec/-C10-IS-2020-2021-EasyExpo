@@ -43,6 +43,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 <body>
 <!-- header -->
@@ -64,10 +65,10 @@
                 <!-- NAV -->
                 <div class="collapse navbar-collapse" id="nav-open-btn">
                     <ul class="nav">
-                        <li class="dropdown active"><a href="#" class="dropdown-toggle"
+                        <li class="dropdown active"><a href="HomeServlet" class="dropdown-toggle"
                                                        data-toggle="dropdown">Home</a>
                         </li>
-                        <li><a href="/Controller/ChiSiamoServlet">Chi siamo </a></li>
+                        <li><a href="ChiSiamoServlet">Chi siamo </a></li>
                         <li><a href="contatti.jsp"> Contatti</a></li>
                     </ul>
                 </div>
