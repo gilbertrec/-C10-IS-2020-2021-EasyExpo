@@ -106,7 +106,7 @@
 
                             <!-- IMG -->
                             <div class="relative"><img class="img-responsive margin-top-80 margin-bottom-80"
-                                                       src="images/about-img-1.jpg" alt="">
+                                                       src="images/chiSiamo2.jpg" alt="">
                                 <div class="position-center-center"> <span class="huge-text">il nostro
                                 team</span></div>
                             </div>
@@ -120,16 +120,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Culture BLOCK -->
-        <section class="cultur-block">
-            <ul>
-                <li><img src="images/cultur-img-1.jpg" alt=""></li>
-                <li><img src="images/cultur-img-2.jpg" alt=""></li>
-                <li><img src="images/cultur-img-3.jpg" alt=""></li>
-                <li><img src="images/cultur-img-4.jpg" alt=""></li>
-            </ul>
         </section>
 
         <!-- IL NOSTRO TEAM -->
@@ -158,15 +148,15 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>JOSEPH MARK</h6>
-                                        <p>CEO & FOUNDER</p>
+                                        <h6>GAETANO IULIANO</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -181,15 +171,14 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a></div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>jennifer rod</h6>
-                                        <p>DESIGNER</p>
+                                        <h6>LUCREZIA ROBUSTELLI</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -204,15 +193,15 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>natasha singh</h6>
-                                        <p>DEVELOPER</p>
+                                        <h6>GIUSEPPE AVINO</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -227,15 +216,15 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>JOSEPH MARK</h6>
-                                        <p>Product Designer</p>
+                                        <h6>KATIA MONACO DE SIMONE</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -250,15 +239,15 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>jennifer rod</h6>
-                                        <p>Quality Head</p>
+                                        <h6>SABATINO STRUMOLO</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -273,15 +262,15 @@
                                             <div class="position-center-center">
                                                 <div class="social-icons"><a href="#."><i
                                                         class="icon-social-facebook"></i></a> <a href="#."><i
-                                                        class="icon-social-twitter"></i></a> <a href="#."><i
-                                                        class="icon-social-dribbble"></i></a></div>
+                                                        class="icon-social-twitter"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Team Detail -->
                                     <div class="team-names">
-                                        <h6>natasha singh</h6>
-                                        <p>DEVELOPER</p>
+                                        <h6>DAVIDE PAPPALARDO</h6>
+                                        <p>MEMBRO</p>
                                     </div>
                                 </article>
                             </li>
@@ -325,17 +314,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- TWEET -->
-        <section class="tweet padding-top-100 padding-bottom-100">
-            <div class="container">
-                <div class="col-md-8 center-block"><i class="icon-social-twitter"></i>
-                    <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu
-                        posuere
-                        eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
-                    <span><span class="primary-color">@johnsmith</span> 4 hours ago via Twitter</span></div>
             </div>
         </section>
     </div>
