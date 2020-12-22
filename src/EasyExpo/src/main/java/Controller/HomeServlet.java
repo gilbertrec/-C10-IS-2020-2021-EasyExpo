@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeServlet", urlPatterns = "", loadOnStartup = 1)//loadon indica che questa servlet deve essere caricata per prima
+@WebServlet("/HomeServlet")
 public class HomeServlet extends javax.servlet.http.HttpServlet {
     @Override
 

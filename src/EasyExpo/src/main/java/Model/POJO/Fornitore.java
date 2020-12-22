@@ -1,7 +1,9 @@
 package Model.POJO;
 
+import java.util.Objects;
+
 public class Fornitore {
-    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, int telefono, String luogoUbicazione, String ragioneSociale) {
+    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String ragioneSociale) {
         this.email = email;
         this.password = password;
         this.partitaIva = partitaIva;
@@ -11,7 +13,8 @@ public class Fornitore {
         this.luogoUbicazione = luogoUbicazione;
         this.ragioneSociale = ragioneSociale;
     }
-    public Fornitore(){
+
+    public Fornitore() {
 
     }
 
@@ -27,9 +30,7 @@ public class Fornitore {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public String getPartitaIva() {
         return partitaIva;
@@ -55,11 +56,11 @@ public class Fornitore {
         this.cognome = cognome;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -79,6 +80,7 @@ public class Fornitore {
         this.ragioneSociale = ragioneSociale;
     }
 
+
     @Override
     public String toString() {
         return "Fornitore{" +
@@ -92,13 +94,17 @@ public class Fornitore {
                 ", ragioneSociale='" + ragioneSociale + '\'' +
                 '}';
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password, partitaIva, nome, cognome, telefono, luogoUbicazione, ragioneSociale);
+    }
 
     private String email;
     private String password;
     private String partitaIva;
     private String nome;
     private String cognome;
-    private int telefono;
+    private String telefono;
     private String luogoUbicazione;
     private String ragioneSociale;
 }

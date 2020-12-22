@@ -9,7 +9,7 @@ public class TagDAO {
     public Tag doRetrieveByIdTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idTag, nome FROM Tag WHERE idTag=?");
+                    .prepareStatement("SELECT * FROM Tag WHERE idTag=?");
             ps.setInt(1, idTag);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

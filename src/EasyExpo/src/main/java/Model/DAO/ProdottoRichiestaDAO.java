@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 
 import java.sql.*;
@@ -10,7 +9,7 @@ public class ProdottoRichiestaDAO {
     public ProdottoRichiesta doRetrieveById(int id) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT id, idRichiesta, idProdotto, numColli, dataInizioNoleggio, dataFineNoleggio  FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p  WHERE id=? " +
+                    .prepareStatement("SELECT *  FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p  WHERE id=? " +
                             "AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -20,8 +19,9 @@ public class ProdottoRichiestaDAO {
                 pr.setIdRichiesta(rs.getInt(2));
                 pr.setIdProdotto(rs.getInt(3));
                 pr.setNumColli(rs.getInt(4));
-                pr.setDataInizioNoleggio(rs.getDate(5));
-                pr.setDataFineNoleggio(rs.getDate(6));
+                pr.setPrezzo(rs.getFloat(5));
+                pr.setDataInizioNoleggio(rs.getDate(6));
+                pr.setDataFineNoleggio(rs.getDate(7));
                 return pr;
             }
             return null;
@@ -32,15 +32,16 @@ public class ProdottoRichiestaDAO {
     public void createProdottoRichiesta(ProdottoRichiesta prodottoRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO ProdottoRichiesta (id, idRichiesta, idProdotto, numColli, dataInizioNoleggio, dataFineNoleggio) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO ProdottoRichiesta (id, idRichiesta, idProdotto, numColli, prezzo, dataInizioNoleggio, dataFineNoleggio) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, prodottoRichiesta.getId());
             ps.setInt(2,prodottoRichiesta.getIdRichiesta());
             ps.setInt(3, prodottoRichiesta.getIdProdotto());
             ps.setInt(4, prodottoRichiesta.getNumColli());
-            ps.setDate(5, prodottoRichiesta.getDataInizioNoleggio());
-            ps.setDate(6, prodottoRichiesta.getDataFineNoleggio());
+            ps.setFloat(5, prodottoRichiesta.getPrezzo());
+            ps.setDate(6, prodottoRichiesta.getDataInizioNoleggio());
+            ps.setDate(7, prodottoRichiesta.getDataFineNoleggio());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
