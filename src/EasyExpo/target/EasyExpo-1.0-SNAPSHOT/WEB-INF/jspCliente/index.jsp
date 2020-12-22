@@ -223,11 +223,9 @@
                                 <div class="position-center-center">
                                     <div class="inn"><a href="images/product-1.jpg" data-lighter><i
                                             class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top" title="Add To Cart"><i
-                                            class="icon-basket"></i></a> <a href="#." data-toggle="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Add To WishList"><i
-                                            class="icon-heart"></i></a></div>
+                                                                               data-placement="top"
+                                                                               title="Aggiungi al Carrello"><i
+                                            class="icon-basket"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -249,11 +247,9 @@
                                 <div class="position-center-center">
                                     <div class="inn"><a href="images/product-2.jpg" data-lighter><i
                                             class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top" title="Add To Cart"><i
-                                            class="icon-basket"></i></a> <a href="#." data-toggle="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Add To WishList"><i
-                                            class="icon-heart"></i></a></div>
+                                                                               data-placement="top"
+                                                                               title="Aggiungi al Carrello"><i
+                                            class="icon-basket"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -275,11 +271,9 @@
                                 <div class="position-center-center">
                                     <div class="inn"><a href="images/product-3.jpg" data-lighter><i
                                             class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top" title="Add To Cart"><i
-                                            class="icon-basket"></i></a> <a href="#." data-toggle="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Add To WishList"><i
-                                            class="icon-heart"></i></a></div>
+                                                                               data-placement="top"
+                                                                               title="Aggiungi al Carrello"><i
+                                            class="icon-basket"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -301,11 +295,9 @@
                                 <div class="position-center-center">
                                     <div class="inn"><a href="images/product-4.jpg" data-lighter><i
                                             class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top" title="Add To Cart"><i
-                                            class="icon-basket"></i></a> <a href="#." data-toggle="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Add To WishList"><i
-                                            class="icon-heart"></i></a></div>
+                                                                               data-placement="top"
+                                                                               title="Aggiungi al Carrello"><i
+                                            class="icon-basket"></i></a></div>
                                 </div>
                             </div>
                         </div>
