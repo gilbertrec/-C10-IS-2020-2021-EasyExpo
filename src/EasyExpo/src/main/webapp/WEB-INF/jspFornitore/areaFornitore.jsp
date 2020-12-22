@@ -92,7 +92,7 @@
                                     <li><a href="#">CATALOGO</a></li>
                                     <li><a href="#">AREA CLIENTE</a></li>
                                     <li><a href="#">ABBONAMENTO</a></li>
-                                    <li><a href="#">LOG OUT</a></li>
+                                    <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </ul>
                             </li>
                                 </ul>

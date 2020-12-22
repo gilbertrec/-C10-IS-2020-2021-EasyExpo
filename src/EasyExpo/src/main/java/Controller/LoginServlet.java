@@ -30,17 +30,16 @@ public class LoginServlet extends HttpServlet {
             throw new MyServletException("Email e/o password non validi.");
         }else if(cliente !=null && fornitore == null){
             request.getSession().setAttribute("cliente", cliente);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/HomeCliente.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jspCliente/index.jsp");
             requestDispatcher.forward(request,response);
         }else if(cliente == null && fornitore != null){
             request.getSession().setAttribute("fornitore", fornitore);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/HomeFornitore.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jspFornitore/areaFornitore.jsp");
             requestDispatcher.forward(request,response);
         }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
