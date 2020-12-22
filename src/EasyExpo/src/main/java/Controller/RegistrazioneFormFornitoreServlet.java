@@ -1,7 +1,5 @@
 package Controller;
 
-import Controller.MyServletException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/RegistrazioneForm")
-public class RegistrazioneFormServlet extends HttpServlet {
+@WebServlet("/RegistrazioneFormFornitore")
+public class RegistrazioneFormFornitoreServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("cliente") != null) {
-            throw new MyServletException("Cliente loggato.");
+        if (request.getSession().getAttribute("fornitore") != null) {
+            throw new MyServletException("Fornitore loggato.");
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/formRegistrazione.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/formRegistrazioneF.jsp");
         requestDispatcher.forward(request, response);
     }
 }

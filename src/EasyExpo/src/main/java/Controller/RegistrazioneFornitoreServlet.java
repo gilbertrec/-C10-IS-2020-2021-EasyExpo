@@ -46,8 +46,8 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
         }
 
         String partitaIVA = request.getParameter("partitaIVA");
-        if(!(partitaIVA != null && partitaIVA.matches("[A-Z 0-9]{16}"))){
-            throw new MyServletException("CodiceFiscale non valido.");
+        if(!(partitaIVA != null && partitaIVA.matches("[0-9]{11}"))){
+            throw new MyServletException("Partita Iva non valida.");
         }
 
         String cognome = request.getParameter("cognome");
@@ -63,7 +63,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
             throw new MyServletException("Numero di telefono non valido.");
         }
         String ragioneSociale = request.getParameter("ragioneSociale");
-        if(!(ragioneSociale != null && ragioneSociale.matches("[0-9]{10}"))){
+        if(!(ragioneSociale != null && ragioneSociale.matches("[A-Z a-z]{1,30}"))){
             throw new MyServletException("Ragione sociale non valida.");
         }
 

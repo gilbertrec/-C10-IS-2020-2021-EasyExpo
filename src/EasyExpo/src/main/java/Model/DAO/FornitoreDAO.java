@@ -76,9 +76,6 @@ public class FornitoreDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            fornitore.setPartitaIva(rs.getString(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

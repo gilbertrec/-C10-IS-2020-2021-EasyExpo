@@ -18,7 +18,11 @@
             </form>
 
             <div class="registrazione">
-                <a href="RegistrazioneForm" id="buttonRegistrazione">Registrazione</a>
+                <a href="RegistrazioneFormCliente" id="buttonRegistrazione">Registrazione Cliente</a>
             </div>
+            <div class="registrazione">
+                <a href="RegistrazioneFormFornitore" id="buttonRegistrazione2">Registrazione Fornitore</a>
+            </div>
+
 </body>
 </html>
