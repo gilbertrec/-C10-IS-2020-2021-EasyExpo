@@ -70,9 +70,6 @@ public class ClienteDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            cliente.setCodiceFiscale(rs.getString(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

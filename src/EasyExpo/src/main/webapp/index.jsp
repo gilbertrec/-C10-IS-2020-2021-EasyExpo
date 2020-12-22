@@ -16,5 +16,9 @@
                 <input type="password" name="password" placeholder="Password">
                 <input type="submit" id="buttonLogin" value="Login">
             </form>
+
+            <div class="registrazione">
+                <a href="RegistrazioneForm" id="buttonRegistrazione">Registrazione</a>
+            </div>
 </body>
 </html>
