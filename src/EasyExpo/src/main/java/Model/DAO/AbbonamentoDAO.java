@@ -9,7 +9,7 @@ public class AbbonamentoDAO {
     public Abbonamento doRetrieveByIdAbbonamento(int idAbbonamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT idAbbonamento, partitaIva, dataInizio, dataFine  FROM Abbonamento as a, Fornitore as f WHERE idAbbonamento=? AND a.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT *  FROM Abbonamento as a, Fornitore as f WHERE idAbbonamento=? AND a.partitaIva=f.partitaIva");
             ps.setInt(1, idAbbonamento);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
