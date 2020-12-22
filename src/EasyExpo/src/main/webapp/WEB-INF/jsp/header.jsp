@@ -68,7 +68,7 @@
                         <li class="dropdown active"><a href="./" class="dropdown-toggle">Home</a>
                         </li>
                         <li><a href="ChiSiamoServlet">Chi siamo</a></li>
-                        <li><a href="ContattiServlet"> Contatti</a></li>
+                        <li><a href="ContattiServlet">Contatti</a></li>
                     </ul>
                 </div>
 
