@@ -319,7 +319,7 @@
                 <div class="heading text-center">
                     <h4>Cos'è EASYEXPO</h4>
                     <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
-                        eventi e i Fornitori di attrezzature. Avere un portale dove confrontare i vari
+                        eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
                         preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
                 </div>
 

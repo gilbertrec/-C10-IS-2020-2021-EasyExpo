@@ -65,15 +65,15 @@
 
     <!--======= SUB BANNER =========-->
     <section class="sub-bnr" data-stellar-background-ratio="0.5"
-             style="background:url(images/sub-bnr-bg-1.jpg) center center no-repeat">
+             style="background:url(images/chiSiamo.jpg) center center no-repeat">
         <div class="position-center-center">
             <div class="container">
-                <h4>ABOUT PAVSHOP</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <h4>CHI SIAMO?</h4>
+                <p>In questa pagina è presente la nostra storia, le specifiche del sito e i componenti del Team
+                    che ha sviluppato questo portale!</p>
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li class="active">ABOUT</li>
+                    <li class="active">CHI SIAMO</li>
                 </ol>
             </div>
         </div>
@@ -88,41 +88,35 @@
                 <div class="row">
                     <div class="col-xs-10 center-block">
                         <div class="col-sm-10 center-block">
-                            <h4>A Brief History</h4>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus
-                                aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc
-                                ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis.
-                                Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare
-                                viverra. Nunc at blandit neque, bibendum varius purus. <br>
+                            <h4>La nostra Storia</h4>
+                            <p> Siamo un gruppo di universitari che sognano la laurea in Informatica. Il progetto nasce
+                                per conseguire il nostro sogno e fornire uno strumento di supporto agli organizzatori di eventi
+                                e ai fornitori di attrezzature, per consentire loro una facile comunicazione con trasparenza, rapidità ed efficienza
+                                tramite scambio di preventivi per il noleggio di attrezzature o servizi.
                                 <br>
-                                Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et
-                                magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate.
-                                Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse
-                                tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis
-                                sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada,
-                                erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel
-                                ligula. </p>
+                                <br>
+                                Ogni cliente potrà usare il portale per ricercare nell'apposita barra di ricerca, tramite nome o tag,
+                                un prodotto o un fornitore dal quale desidera rifornirsi, potrà visionare le specifiche di ogni prodotto, aggiungerlo al carrello
+                                e procedere alla compilazione, tramite apposito pulsante, di una richiesta di preventivo grazie alla quale
+                                potrà prendere accordi dettagliati con il fornitore in questione.
+                                Ogni fornitore invece, dopo aver sottoscritto un abbonamento mensile, potrà aggiungere prodotti al proprio catalogo e utilizzare
+                                la propria area personale come se fosse una vetrina, tramite la quale potrà ampliare la propria clientela. Potrà ricevere e visualizzare le richieste per
+                                i prodotti che sono presenti nel catalogo personale e potrà procedere, tramite apposito pulsante, alla compilazione di un preventivo grazie al quale
+                                stipulerà accordi dettagliati con il cliente in questione.</p>
 
                             <!-- IMG -->
                             <div class="relative"><img class="img-responsive margin-top-80 margin-bottom-80"
                                                        src="images/about-img-1.jpg" alt="">
-                                <div class="position-center-center"> <span class="huge-text">our team
-                  united by love</span></div>
+                                <div class="position-center-center"> <span class="huge-text">il nostro
+                                team</span></div>
                             </div>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus
-                                aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc
-                                ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis.
-                                Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare
-                                viverra. Nunc at blandit neque, bibendum varius purus. <br>
+                            <p> Avere un portale dove confrontare i vari preventivi e poter essere in collegamento diretto con i vari Fornitori
+                                giova sia ai Fornitori meno conosciuti, pubblicando le proprie attrezzature e i propri servizi,
+                                sia agli organizzatori di eventi, che hanno modo di trovare l’offerta più conveniente per le proprie
+                                necessità richiedendo uno o anche più preventivi. <br>
                                 <br>
-                                Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et
-                                magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate.
-                                Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse
-                                tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis
-                                sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada,
-                                erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel
-                                ligula. </p>
-                            <img class="margin-top-50" src="images/signature.jpg" alt=""></div>
+                                </p>
+                            <img class="margin-top-50" src="images/firma.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -136,20 +130,9 @@
                 <li><img src="images/cultur-img-3.jpg" alt=""></li>
                 <li><img src="images/cultur-img-4.jpg" alt=""></li>
             </ul>
-
-            <!-- Culture Text -->
-            <div class="position-center-center">
-                <div class="container">
-                    <div class="col-sm-6 center-block">
-                        <h4>awesome work culture</h4>
-                        <p>Phasellus lacinia fermentutm bibendum. Interdum et malante ipuctus non. Nulla lacinia,
-                            eros vel fermentum consectetur, ris dolor in ex. </p>
-                    </div>
-                </div>
-            </div>
         </section>
 
-        <!-- OUR TEAM -->
+        <!-- IL NOSTRO TEAM -->
         <section class="our-team our-team-small  light-gray-bg padding-top-150 padding-bottom-80">
             <div class="container">
                 <div class="row">
@@ -157,8 +140,8 @@
 
                         <!-- HEADING -->
                         <div class="heading style-left">
-                            <h4>our Team</h4>
-                            <span>United by love & help to build great brands</span></div>
+                            <h4>il nostro team</h4>
+                            <span>Uniti per supportare e aiutare gli stakeholder!</span></div>
                     </div>
 
                     <!-- TEAM -->
@@ -308,29 +291,6 @@
             </div>
         </section>
 
-        <!-- Client Img  -->
-        <section class="client-img-2 padding-top-150 padding-bottom-80">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-
-                        <!-- HEADING -->
-                        <div class="heading style-left">
-                            <h4>our sponsors</h4>
-                            <span>Proud that we have awesome sponsors</span></div>
-                    </div>
-
-                    <!-- TEAM -->
-                    <div class="col-lg-8">
-                        <ul class="row">
-                            <li class="col-sm-4"><img src="images/c-mg-1.png" alt=""></li>
-                            <li class="col-sm-4"><img src="images/c-mg-2.png" alt=""></li>
-                            <li class="col-sm-4"><img src="images/c-mg-3.png" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Client Img  -->
         <section class="fun-facts padding-top-150 padding-bottom-80">
@@ -340,27 +300,27 @@
 
                         <!-- HEADING -->
                         <div class="heading style-left padding-right-20">
-                            <h4>few Facts</h4>
-                            <span>Awesome Numbers are good :)</span></div>
+                            <h4>qualche Dato</h4>
+                            <span>La nostra grande Community :)</span></div>
                     </div>
 
-                    <!-- FUN FACTS -->
+                    <!-- Qualche Dato -->
                     <div class="col-lg-8">
                         <ul class="row">
 
-                            <!-- SALES -->
-                            <li class="col-sm-4"><i class="icon-handbag"></i> <span>457</span>
-                                <h5>sales</h5>
+                            <!-- Fornitori -->
+                            <li class="col-sm-4"><i class="icon-handbag"></i> <span> 3 ${prezzo}</span>
+                                <h5>fornitori</h5>
                             </li>
 
-                            <!-- Products -->
-                            <li class="col-sm-4"><i class="icon-grid"></i> <span>571</span>
-                                <h5>products</h5>
+                            <!-- Prodotti -->
+                            <li class="col-sm-4"><i class="icon-grid"></i> <span> 4 ${prezzo}</span>
+                                <h5>prodotti</h5>
                             </li>
 
-                            <!-- Clients -->
-                            <li class="col-sm-4"><i class="icon-users"></i> <span>289</span>
-                                <h5>clients</h5>
+                            <!-- Clienti -->
+                            <li class="col-sm-4"><i class="icon-users"></i> <span> 3 ${prezzo}</span>
+                                <h5>clienti</h5>
                             </li>
                         </ul>
                     </div>
@@ -376,20 +336,6 @@
                         posuere
                         eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
                     <span><span class="primary-color">@johnsmith</span> 4 hours ago via Twitter</span></div>
-            </div>
-        </section>
-
-        <!-- News Letter -->
-        <section class="news-letter padding-top-150 padding-bottom-150">
-            <div class="container">
-                <div class="heading light-head text-center margin-bottom-30">
-                    <h4>NEWSLETTER</h4>
-                    <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span>
-                </div>
-                <form>
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">SEND ME</button>
-                </form>
             </div>
         </section>
     </div>
