@@ -152,7 +152,13 @@
                                         <!-- TIPO -->
                                         <li class="col-md-6">
                                             <label> TIPO
-                                                <input type="text" name="tipo" value="" placeholder="">
+                                                <div class="quinty">
+                                                    <select class="selectpicker">
+                                                        <option>ATTREZZATURA</option>
+                                                        <option>SERVIZIO</option>
+                                                    </select>
+                                                </div>
+                                                <!--<input type="text" name="tipo" value="" placeholder="">-->
                                             </label>
                                         </li>
 

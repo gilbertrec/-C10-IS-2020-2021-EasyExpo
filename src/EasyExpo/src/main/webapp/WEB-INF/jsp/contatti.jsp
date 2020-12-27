@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="M_Adnan">
-    <title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+    <title>EASYEXPO - Contatti</title>
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen"/>
@@ -87,7 +87,7 @@
 
                     <!--======= ADDRESS INFO  =========-->
                     <div class="col-md-4">
-                        <div class="contact-info">
+                        <div class="contact-info" style="margin-left: 410px; margin-right: -410px">
                             <h6>I NOSTRI INDIRIZZI</h6>
                             <ul>
                                 <li> <i class="icon-map-pin"></i> Via Giovanni Paolo II, 132 . <br>
@@ -114,32 +114,17 @@
 
             <!-- Main Heading -->
             <div class="heading text-center">
-                <h4>Circa EASYEXPO</h4>
-                <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
-                    eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+                <h4>Cos'è EASYEXPO</h4>
+                <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
+                    eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
+                    preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
             </div>
 
             <!-- Social Icons -->
             <ul class="social_icons">
                 <li><a href="#."><i class="icon-social-facebook"></i></a></li>
                 <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
-                <li><a href="#."><i class="icon-social-youtube"></i></a></li>
-                <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
             </ul>
-        </div>
-    </section>
-
-    <!-- News Letter -->
-    <section class="news-letter padding-top-150 padding-bottom-150">
-        <div class="container">
-            <div class="heading light-head text-center margin-bottom-30">
-                <h4>NEWSLETTER</h4>
-                <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
-            <form>
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">SEND ME</button>
-            </form>
         </div>
     </section>
 </div>
@@ -166,7 +151,7 @@
     var map;
     function initialize_map() {
         if ($('#map').length) {
-            var myLatLng = new google.maps.LatLng(-37.814199, 144.961560);
+            var myLatLng = new google.maps.LatLng(40.7687676088294, 14.79166543928102);
             var mapOptions = {
                 zoom: 17,
                 center: myLatLng,
