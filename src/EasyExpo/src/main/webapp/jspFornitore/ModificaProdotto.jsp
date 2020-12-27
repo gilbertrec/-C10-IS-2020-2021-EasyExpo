@@ -114,7 +114,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
                 <ol class="breadcrumb">
-                    <li><a href="#">Area Personale</a></li>
+                    <li><a href="areaFornitore.jsp">Area Personale</a></li>
                     <li><a href="#">titolo.prodotto</a></li>
                     <li class="active">Modifica Prodotto</li>
                 </ol>
@@ -206,7 +206,7 @@
 
             <!-- ABOUT Location -->
             <div class="col-md-3">
-                <div class="about-footer"><img class="margin-bottom-30" src="images/logomacchia.png" alt="">
+                <div class="about-footer"><img class="margin-bottom-30" src="/images/logomacchia.png" alt="">
                     <p><i class="icon-pointer"></i> Via Giovanni Paolo II, 132 . <br>
                         - 84084 Fisciano (SA)</p>
                     <p><i class="icon-call-end"></i> 081 564738</p>
@@ -219,8 +219,8 @@
             <div class="col-md-3">
                 <h6>INFO</h6>
                 <ul class="link">
-                    <li><a href="#."> Chi Siamo</a></li>
-                    <li><a href="contact.jsp"> Contatti</a></li>
+                    <li><a href="/jsp/chiSiamo.jsp"> Chi Siamo</a></li>
+                    <li><a href="/jsp/contatti.jsp"> Contatti</a></li>
                 </ul>
             </div>
 
@@ -228,8 +228,8 @@
             <div class="col-md-3">
                 <h6>ACCOUNT FORNITORE</h6>
                 <ul class="link">
-                    <li><a href="#."> Area Fornitore</a></li>
-                    <li><a href="#."> Catalogo</a></li>
+                    <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
+                    <li><a href="areaFornitore.jsp"> Catalogo</a></li>
                     <li><a href="#."> Abbonamento</a></li>
                 </ul>
             </div>

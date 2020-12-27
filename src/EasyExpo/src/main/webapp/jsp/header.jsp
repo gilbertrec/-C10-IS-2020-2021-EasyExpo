@@ -89,7 +89,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <div class="logo"><a href="./"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
+            <div class="logo"><a href="./"><img class="img-responsive" src="/images/logomacchia2.png" alt=""></a>
             </div>
             <nav class="navbar ownmenu">
                 <div class="navbar-header">

@@ -30,8 +30,8 @@
         <div class="col-md-3">
             <h6>INFO</h6>
             <ul class="link">
-                <li><a href="#."> Chi Siamo</a></li>
-                <li><a href="./contatti.jsp"> Contatti</a></li>
+                <li><a href="chiSiamo.jsp"> Chi Siamo</a></li>
+                <li><a href="contatti.jsp"> Contatti</a></li>
             </ul>
         </div>
 

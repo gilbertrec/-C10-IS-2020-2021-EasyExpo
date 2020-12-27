@@ -17,17 +17,17 @@
     <title>EASYEXPO - </title>
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/css/ionicons.min.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/responsive.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/ionicons.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
 
     <!-- JavaScripts -->
     <script src="js/modernizr.js"></script>
@@ -151,7 +151,7 @@
                                 <!-- Overlay -->
                                 <div class="overlay">
                                     <div class="position-center-center">
-                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i><a href=".#"><i class="icon-trash"></i><a href="ModificaProdottoServlet"><i class="icon-pencil"></i></a></div>
+                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i><a href=".#"><i class="icon-trash"></i><a href="ModificaProdotto.jsp"><i class="icon-pencil"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -455,16 +455,16 @@
     <!--======= RIGHTS =========-->
 
 </div>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/own-menu.js"></script>
-<script src="/js/jquery.lighter.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/own-menu.js"></script>
+<script src="js/jquery.lighter.js"></script>
+<script src="js/owl.carousel.min.js"></script>
 
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="/rs-plugin/js/jquery.tp.t.min.js"></script>
-<script type="text/javascript" src="/rs-plugin/js/jquery.tp.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/main.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
