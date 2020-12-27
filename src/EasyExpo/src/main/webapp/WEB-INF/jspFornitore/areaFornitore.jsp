@@ -113,7 +113,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
                 <ol class="breadcrumb">
-                    <li><a href="#">Area Fornitore</a></li>
+                    <li><a href="action">Area Fornitore</a></li>
                 </ol>
             </div>
         </div>
@@ -134,7 +134,7 @@
                             <div class="pull-right">
 
                                 <ol class="breadcrumb">
-                                    <li><a href="#">Aggiungi Prodotto</a></li>
+                                    <li><a href="AggiungiProdottoServlet">Aggiungi Prodotto</a></li>
                                 </ol>
                         </div>
                     </div>
