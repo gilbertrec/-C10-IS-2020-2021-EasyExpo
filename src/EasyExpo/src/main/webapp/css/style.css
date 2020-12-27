@@ -186,6 +186,16 @@ a:hover, a:focus {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
+.position-center-top {
+	left: 50%;
+	position: absolute;
+	top: 20%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
 .font-playfair {
 	font-family: 'Playfair Display', serif;
 }
@@ -1000,6 +1010,10 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	position: relative;
 }
 .search-inside .position-center-center {
+	width: 100%;
+	padding: 0 20px;
+}
+.search-inside .position-center-top {
 	width: 100%;
 	padding: 0 20px;
 }
