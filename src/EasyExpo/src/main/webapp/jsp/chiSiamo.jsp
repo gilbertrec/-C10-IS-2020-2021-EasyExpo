@@ -72,7 +72,7 @@
                 <p>In questa pagina è presente la nostra storia, le specifiche del sito e i componenti del Team
                     che ha sviluppato questo portale!</p>
                 <ol class="breadcrumb">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li class="active">CHI SIAMO</li>
                 </ol>
             </div>

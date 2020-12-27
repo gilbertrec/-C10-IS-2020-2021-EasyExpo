@@ -218,8 +218,8 @@
             <div class="col-md-3">
                 <h6>INFO</h6>
                 <ul class="link">
-                    <li><a href="/jsp/chiSiamo.jsp"> Chi Siamo</a></li>
-                    <li><a href="/jsp/contatti.jsp"> Contatti</a></li>
+                    <li><a href="#."> Chi Siamo</a></li>
+                    <li><a href="contact.jsp"> Contatti</a></li>
                 </ul>
             </div>
 
