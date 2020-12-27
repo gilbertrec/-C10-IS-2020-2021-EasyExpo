@@ -58,7 +58,7 @@
 
     <!-- header -->
     <header>
-        <jsp:include page="/WEB-INF/jsp/header.jsp">
+        <jsp:include page="/jsp/header.jsp">
             <jsp:param name="pageTitle" value="Contatti"/>
         </jsp:include>
     </header>
@@ -145,7 +145,7 @@
 </div>
 <!--======= FOOTER =========-->
 <footer>
-    <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
+    <jsp:include page="/jsp/footer.jsp"/>
 </footer>
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>
