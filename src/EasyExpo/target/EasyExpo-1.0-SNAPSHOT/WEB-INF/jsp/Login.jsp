@@ -21,7 +21,7 @@
 <div id="wrap">
 
     <header>
-        <jsp:include page="/jsp/header.jsp">
+        <jsp:include page="/WEB-INF/jsp/header.jsp">
             <jsp:param name="pageTitle" value="Login"/>
         </jsp:include>
     </header>
@@ -122,7 +122,7 @@
 </div>
     <!--======= FOOTER =========-->
     <footer>
-        <jsp:include page="/jsp/footer.jsp"/>
+        <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
     </footer>
 
 </body>
