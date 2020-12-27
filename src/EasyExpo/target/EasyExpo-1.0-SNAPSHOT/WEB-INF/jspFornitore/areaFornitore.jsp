@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="M_Adnan">
-    <title>PAVSHOP - Multipurpose eCommerce HTML5 Template</title>
+    <title>EASYEXPO - </title>
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
@@ -92,7 +92,7 @@
                                     <li><a href="#">CATALOGO</a></li>
                                     <li><a href="#">AREA CLIENTE</a></li>
                                     <li><a href="#">ABBONAMENTO</a></li>
-                                    <li><a href="#">LOG OUT</a></li>
+                                    <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </ul>
                             </li>
                                 </ul>
@@ -135,11 +135,7 @@
 
                                 <ol class="breadcrumb">
                                     <li><a href="#">Aggiungi Prodotto</a></li>
-                                    <li><a href="#">Elimina Prodotto</a></li>
                                 </ol>
-
-                                <!-- GRID & LIST -->
-                                <a href="#." class="grid-style"><i class="icon-grid"></i></a> <a href="#." class="list-style"><i class="icon-list"></i></a> </div>
                         </div>
                     </div>
                 </div>
@@ -155,7 +151,7 @@
                                 <!-- Overlay -->
                                 <div class="overlay">
                                     <div class="position-center-center">
-                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i></a></div>
+                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i><a href=".#"><i class="icon-trash"></i><a href=".#"><i class="icon-pencil"></i></a></div>
                                     </div>
                                 </div>
                             </div>

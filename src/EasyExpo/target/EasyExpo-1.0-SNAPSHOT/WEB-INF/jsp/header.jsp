@@ -85,7 +85,7 @@
                                 </li>
                                 <li><a href="#">CARRELLO</a></li>
                                 <li><a href="#">AREA CLIENTE</a></li>
-                                <li><a href="#">LOG OUT</a></li>
+                                <li><a href="LogoutServlet">LOGOUT</a></li>
                             </ul>
                         </li>
 
