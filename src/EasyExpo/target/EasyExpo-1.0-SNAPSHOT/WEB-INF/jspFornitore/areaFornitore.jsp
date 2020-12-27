@@ -151,7 +151,7 @@
                                 <!-- Overlay -->
                                 <div class="overlay">
                                     <div class="position-center-center">
-                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i><a href=".#"><i class="icon-trash"></i><a href="ModificaProdottoServlet"><i class="icon-pencil"></i></a></div>
+                                        <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i><a href=".#"><i class="icon-trash"></i><a href=".#"><i class="icon-pencil"></i></a></div>
                                     </div>
                                 </div>
                             </div>

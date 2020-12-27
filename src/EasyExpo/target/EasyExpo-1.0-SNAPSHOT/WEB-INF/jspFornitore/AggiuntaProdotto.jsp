@@ -164,31 +164,23 @@
 
                                         <!-- QUANTITÀ -->
                                         <li class="col-md-6">
-                                            <label> QUANTITÀ (1-999)
-                                                <input type="number" name="quantita" value="" placeholder="" min="1" max="999">
+                                            <label> QUANTITÀ
+                                                <input type="text" name="descrizione" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
-                                                <textarea type="textArea" name="descrizione" value="" placeholder="" style="height: 150px; width: 550px">
-
-                                                </textarea>
+                                                <input type="textArea" name="descrizione" value="" placeholder="" style="height: 150px">
                                             </label>
                                         </li>
 
+                                        <!-- PHONE -->
                                         <li class="col-md-6">
-                                            <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="" multiple>
-                                            </label>
+                                            <button type="submit" class="btn">AGGIUNGI PRODOTTO</button>
                                         </li>
-
                                     </ul>
-                                    <!-- PHONE -->
-                                    <li class="col-md-6">
-                                        <button type="submit" class="btn">AGGIUNGI PRODOTTO</button>
-                                    </li>
                                 </form>
                             </div>
                         </div>
@@ -197,6 +189,40 @@
             </div>
         </section>
 
+        <!-- About -->
+        <section class="small-about padding-top-150 padding-bottom-150">
+            <div class="container">
+
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>about PAVSHOP</h4>
+                    <p>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odio luctus non. Nulla lacinia,
+                        eros vel fermentum consectetur, risus purus tempc, et iaculis odio dolor in ex. </p>
+                </div>
+
+                <!-- Social Icons -->
+                <ul class="social_icons">
+                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                    <li><a href="#."><i class="icon-social-tumblr"></i></a></li>
+                    <li><a href="#."><i class="icon-social-youtube"></i></a></li>
+                    <li><a href="#."><i class="icon-social-dribbble"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- News Letter -->
+        <section class="news-letter padding-top-150 padding-bottom-150">
+            <div class="container">
+                <div class="heading light-head text-center margin-bottom-30">
+                    <h4>NEWSLETTER</h4>
+                    <span>Phasellus lacinia fermentum bibendum. Interdum et malesuada fames ac ante ipsumien lacus, eu posuere odi </span> </div>
+                <form>
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">SEND ME</button>
+                </form>
+            </div>
+        </section>
     </div>
 
     <!--======= FOOTER =========-->
@@ -205,43 +231,60 @@
 
             <!-- ABOUT Location -->
             <div class="col-md-3">
-                <div class="about-footer"><img class="margin-bottom-30" src="images/logomacchia.png" alt="">
-                    <p><i class="icon-pointer"></i> Via Giovanni Paolo II, 132 . <br>
-                        - 84084 Fisciano (SA)</p>
-                    <p><i class="icon-call-end"></i> 081 564738</p>
-                    <p><i class="icon-envelope"></i> info@EASYEXPO.com</p>
+                <div class="about-footer"> <img class="margin-bottom-30" src="images/logo-foot.png" alt="" >
+                    <p><i class="icon-pointer"></i> Street No. 12, Newyork 12, <br>
+                        MD - 123, USA.</p>
+                    <p><i class="icon-call-end"></i> 1.800.123.456789</p>
+                    <p><i class="icon-envelope"></i> info@PAVSHOP.com</p>
                 </div>
             </div>
 
-
-            <!-- INFO -->
+            <!-- HELPFUL LINKS -->
             <div class="col-md-3">
-                <h6>INFO</h6>
+                <h6>HELPFUL LINKS</h6>
                 <ul class="link">
-                    <li><a href="#."> Chi Siamo</a></li>
-                    <li><a href="contact.jsp"> Contatti</a></li>
+                    <li><a href="#."> Products</a></li>
+                    <li><a href="#."> Find a Store</a></li>
+                    <li><a href="#."> Features</a></li>
+                    <li><a href="#."> Privacy Policy</a></li>
+                    <li><a href="#."> Blog</a></li>
+                    <li><a href="#."> Press Kit </a></li>
+                </ul>
+            </div>
+
+            <!-- SHOP -->
+            <div class="col-md-3">
+                <h6>SHOP</h6>
+                <ul class="link">
+                    <li><a href="#."> About Us</a></li>
+                    <li><a href="#."> Career</a></li>
+                    <li><a href="#."> Shipping Methods</a></li>
+                    <li><a href="#."> Contact</a></li>
+                    <li><a href="#."> Support</a></li>
+                    <li><a href="#."> Retailer</a></li>
                 </ul>
             </div>
 
             <!-- MY ACCOUNT -->
             <div class="col-md-3">
-                <h6>ACCOUNT FORNITORE</h6>
+                <h6>MY ACCOUNT</h6>
                 <ul class="link">
-                    <li><a href="#."> Area Fornitore</a></li>
-                    <li><a href="#."> Catalogo</a></li>
-                    <li><a href="#."> Abbonamento</a></li>
+                    <li><a href="#."> Login</a></li>
+                    <li><a href="#."> My Account</a></li>
+                    <li><a href="#."> My Cart</a></li>
+                    <li><a href="#."> Wishlist</a></li>
+                    <li><a href="#."> Checkout</a></li>
                 </ul>
             </div>
 
             <!-- Rights -->
 
             <div class="rights">
-                <p>© 2020 EASYEXPO Tutti i diritti riservati. </p>
-                <div class="scroll"><a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a></div>
+                <p>©  2016 PAVSHOP All right reserved. </p>
+                <div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
             </div>
         </div>
     </footer>
-
 
     <!--======= RIGHTS =========-->
 
