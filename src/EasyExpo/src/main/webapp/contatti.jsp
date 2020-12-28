@@ -62,32 +62,20 @@
             <jsp:param name="pageTitle" value="Contatti"/>
         </jsp:include>
     </header>
-<<<<<<< HEAD:src/EasyExpo/src/main/webapp/contatti.jsp
-<!--======= SUB BANNER =========-->
-<section class="sub-bnr-contatti" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>contattaci ora</h4>
-            <p>Ti lasciamo di seguito i nostri recapiti per contattarci. I nostri operatori ti risponderanno nel minor tempo possibile!</p>
-            <ol class="breadcrumb">
-                <li><a href="index.jsp">Home</a></li>
-                <li class="active">contatti</li>
-            </ol>
-=======
+
     <!--======= SUB BANNER =========-->
     <section class="sub-bnr-contatti" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
                 <h4 style="color: #ffe115;">contattaci ora</h4>
-                <p style="    color: #2d3a4b;
-    background-color: rgba(255,255,255,0.60);">Ti lasciamo di seguito i nostri recapiti per contattarci. I nostri
+                <p style="color: #2d3a4b; background-color: rgba(255,255,255,0.60);">Ti lasciamo di
+                    seguito i nostri recapiti per contattarci. I nostri
                     operatori ti risponderanno nel minor tempo possibile!</p>
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">contatti</li>
                 </ol>
             </div>
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d:src/EasyExpo/src/main/webapp/WEB-INF/jsp/contatti.jsp
         </div>
     </section>
 
@@ -109,8 +97,8 @@
                                         - 84084 Fisciano (SA)
                                     </li>
                                     <li><i class="icon-call-end"></i> 081 564738</li>
-                                    <li><i class="icon-envelope"></i> <a href="mailto:someone@example.com"
-                                                                         target="_top">info@EASYEXPO.com</a></li>
+                                    <li><i class="icon-envelope"></i> <a href="#" target="_top">info@EASYEXPO.com</a>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -135,20 +123,6 @@
                         preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
                 </div>
 
-<<<<<<< HEAD:src/EasyExpo/src/main/webapp/contatti.jsp
-            <!-- Social Icons -->
-            <ul class="social_icons">
-                <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-            </ul>
-        </div>
-    </section>
-</div>
-<!--======= FOOTER =========-->
-<footer>
-    <jsp:include page="/footer.jsp"/>
-</footer>
-=======
                 <!-- Social Icons -->
                 <ul class="social_icons">
                     <li><a href="#."><i class="icon-social-facebook"></i></a></li>
@@ -159,9 +133,9 @@
     </div>
     <!--======= FOOTER =========-->
     <footer>
-        <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
+        <jsp:include page="/footer.jsp"/>
     </footer>
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d:src/EasyExpo/src/main/webapp/WEB-INF/jsp/contatti.jsp
+
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

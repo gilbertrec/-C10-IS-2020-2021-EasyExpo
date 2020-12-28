@@ -3448,36 +3448,21 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-family: 'Simple-Line-Icons';
 }
 
-<<<<<<< HEAD
-.sub-bnr {
-	background: url(../images/login-img2.png) no-repeat;
-=======
 .sub-bnr-contatti {
 	background: url(../images/contatti_img.jpg) no-repeat;
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	background-size: cover !important;
 	min-height: 610px;
 	text-align: center;
 	position: relative;
 }
-<<<<<<< HEAD
-.sub-bnr h4 {
-=======
 .sub-bnr-contatti h4 {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	font-size: 25px;
 	color: #fff;
 	font-weight: bold;
 	letter-spacing: 6px;
-<<<<<<< HEAD
-	margin-top: 0px;
-}
-.sub-bnr p {
-=======
 	margin-top: -210px;
 }
 .sub-bnr-contatti p {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	color: #666666;
 	letter-spacing: 0px;
 	font-family: 'Playfair Display', serif;
@@ -3486,11 +3471,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	max-width: 590px;
 	margin: 0 auto;
 }
-<<<<<<< HEAD
-.sub-bnr .breadcrumb {
-=======
 .sub-bnr-contatti .breadcrumb {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	background: none;
 	margin: 0px;
 	height: 40px;
@@ -3503,11 +3484,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .breadcrumb>li+li:before {
 	padding: 0 10px;
 }
-<<<<<<< HEAD
-.sub-bnr h6 {
-=======
 .sub-bnr-contatti h6 {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	display: inline-block;
 	color: #fff;
 	font-weight: 500;
@@ -3517,11 +3494,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	margin: 0px;
 	letter-spacing: 1px;
 }
-<<<<<<< HEAD
-.sub-bnr .breadcrumb li {
-=======
 .sub-bnr-contatti .breadcrumb li {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	color: #fff;
 	letter-spacing: 1px;
 	text-transform: uppercase;
@@ -3530,11 +3503,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-size: 10px;
 	margin: 0px 0;
 }
-<<<<<<< HEAD
-.sub-bnr .breadcrumb li a {
-=======
 .sub-bnr-contatti .breadcrumb li a {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	color: #fff;
 	text-transform: none;
 	color: #fff;
@@ -3542,11 +3511,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-weight: normal;
 	font-size: 10px;
 }
-<<<<<<< HEAD
-.sub-bnr .breadcrumb>li+li:before {
-=======
 .sub-bnr-contatti .breadcrumb>li+li:before {
->>>>>>> 8341f7d544825fd7df35aa2544706456e6b4494d
 	color: #7a8798;
 	float: left;
 	content: "\e079";
