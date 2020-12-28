@@ -22,14 +22,18 @@
                         document.getElementById("item").innerHTML= "";
                         for (var i = 0;i<x[0].data.length;i++)
                         {
-                            var html =
-                                <!--'<div class="immagine" data-idprodotto="'+x[0].data[i].id+'" data-partitaIva="'+x[0].data[i].partitaIVA+'" onclick="prodotto(this.dataset.idprodotto, this.dataset.partitaIva)">' + -->
-                                <!--'<img class="preview" src="img/'+ x[0].data[i].img +'">' +-->
-                                '<div class="item-name" style="padding: 3px">'+
-                                '<h5>' + x[0].data[i].titolo +'</h5>'+
-                                '</div>';
-
-
+                            if(x[0].data[i].titolo!=null) {
+                                var html =
+                                    '<div class="item-prodotto" style="padding: 3px">' +
+                                    '<h5>' + x[0].data[i].titolo + '</h5>' +
+                                    '</div>';
+                            }
+                            if(x[0].data[i].nome!=null) {
+                                var html =
+                                    '<div class="item-fornitore" style="padding: 3px">' +
+                                    '<h5 style="color: #606021">' + x[0].data[i].nome + '</h5>' +
+                                    '</div>';
+                            }
 
                             document.getElementById("item").innerHTML += html;
                         }
