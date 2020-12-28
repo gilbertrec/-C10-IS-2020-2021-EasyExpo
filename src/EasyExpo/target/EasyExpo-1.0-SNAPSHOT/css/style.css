@@ -3447,6 +3447,76 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	content: "\e079";
 	font-family: 'Simple-Line-Icons';
 }
+
+.sub-bnr-contatti {
+	background: url(../images/contatti_img.jpg) no-repeat;
+	background-size: cover !important;
+	min-height: 610px;
+	text-align: center;
+	position: relative;
+}
+.sub-bnr-contatti h4 {
+	font-size: 25px;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 6px;
+	margin-top: -210px;
+}
+.sub-bnr-contatti p {
+	color: #666666;
+	letter-spacing: 0px;
+	font-family: 'Playfair Display', serif;
+	font-size: 14px;
+	margin-top: 20px;
+	max-width: 590px;
+	margin: 0 auto;
+}
+.sub-bnr-contatti .breadcrumb {
+	background: none;
+	margin: 0px;
+	height: 40px;
+	margin-top: 30px;
+	padding: 0px 40px;
+	background: #2d3a4b;
+	display: inline-block;
+	border-radius: 20px;
+}
+.breadcrumb>li+li:before {
+	padding: 0 10px;
+}
+.sub-bnr-contatti h6 {
+	display: inline-block;
+	color: #fff;
+	font-weight: 500;
+	font-size: 16px;
+	float: left;
+	line-height: 58px;
+	margin: 0px;
+	letter-spacing: 1px;
+}
+.sub-bnr-contatti .breadcrumb li {
+	color: #fff;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	line-height: 38px;
+	font-weight: normal;
+	font-size: 10px;
+	margin: 0px 0;
+}
+.sub-bnr-contatti .breadcrumb li a {
+	color: #fff;
+	text-transform: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 10px;
+}
+.sub-bnr-contatti .breadcrumb>li+li:before {
+	color: #7a8798;
+	float: left;
+	content: "\e079";
+	font-family: 'Simple-Line-Icons';
+}
 /*=======================================================
 			FOOTER
 ========================================================*/

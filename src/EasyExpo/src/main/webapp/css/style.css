@@ -3448,21 +3448,21 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-family: 'Simple-Line-Icons';
 }
 
-.sub-bnr {
-	background: url(../images/login-img2.png) no-repeat;
+.sub-bnr-contatti {
+	background: url(../images/contatti_img.jpg) no-repeat;
 	background-size: cover !important;
 	min-height: 610px;
 	text-align: center;
 	position: relative;
 }
-.sub-bnr h4 {
+.sub-bnr-contatti h4 {
 	font-size: 25px;
 	color: #fff;
 	font-weight: bold;
 	letter-spacing: 6px;
-	margin-top: 0px;
+	margin-top: -210px;
 }
-.sub-bnr p {
+.sub-bnr-contatti p {
 	color: #666666;
 	letter-spacing: 0px;
 	font-family: 'Playfair Display', serif;
@@ -3471,7 +3471,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	max-width: 590px;
 	margin: 0 auto;
 }
-.sub-bnr .breadcrumb {
+.sub-bnr-contatti .breadcrumb {
 	background: none;
 	margin: 0px;
 	height: 40px;
@@ -3484,7 +3484,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 .breadcrumb>li+li:before {
 	padding: 0 10px;
 }
-.sub-bnr h6 {
+.sub-bnr-contatti h6 {
 	display: inline-block;
 	color: #fff;
 	font-weight: 500;
@@ -3494,7 +3494,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	margin: 0px;
 	letter-spacing: 1px;
 }
-.sub-bnr .breadcrumb li {
+.sub-bnr-contatti .breadcrumb li {
 	color: #fff;
 	letter-spacing: 1px;
 	text-transform: uppercase;
@@ -3503,7 +3503,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-size: 10px;
 	margin: 0px 0;
 }
-.sub-bnr .breadcrumb li a {
+.sub-bnr-contatti .breadcrumb li a {
 	color: #fff;
 	text-transform: none;
 	color: #fff;
@@ -3511,7 +3511,7 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	font-weight: normal;
 	font-size: 10px;
 }
-.sub-bnr .breadcrumb>li+li:before {
+.sub-bnr-contatti .breadcrumb>li+li:before {
 	color: #7a8798;
 	float: left;
 	content: "\e079";
