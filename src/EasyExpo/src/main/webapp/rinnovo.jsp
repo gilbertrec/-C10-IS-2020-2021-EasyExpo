@@ -144,13 +144,16 @@
                                 <form action="SottoscrizioneAbbonamentoServlet" method="post">
                                     <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                                     <ul class="row">
-
+                                        <c:forEach items="${metodi}" var="pr">
+                                            <h4><c:out value="${pr.numeroCarta}" /></h4>
+                                        </c:forEach>
                                         <!-- CARTE INSERITE -->
                                         <li class="col-md-6">
+
                                             <label> CARTE
                                                 <div class="quinty">
                                                     <select class="selectpicker" name="tipo">
-                                                        <option></option>
+
                                                     </select>
                                                 </div>
                                             </label>
@@ -159,7 +162,7 @@
                                     <!-- PHONE -->
                                     <li class="col-md-6">
                                         <form action="abbonamento.jsp">
-                                        <button type="submit" class="btn">NUOVO METODO</button>
+                                            <button type="submit" class="btn">NUOVO METODO</button>
                                         </form>
                                     </li>
                                 </form>

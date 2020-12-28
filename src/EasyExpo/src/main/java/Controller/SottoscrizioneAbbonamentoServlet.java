@@ -2,8 +2,10 @@ package Controller;
 
 import Model.DAO.AbbonamentoDAO;
 import Model.DAO.FornitoreDAO;
+import Model.DAO.MetodiDiPagamentoDAO;
 import Model.POJO.Abbonamento;
 import Model.POJO.Fornitore;
+import Model.POJO.MetodoPagamento;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +21,10 @@ import java.util.List;
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
-        HttpSession session = request.getSession();
-        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");
+        MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
+        /*HttpSession session = request.getSession();
+        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
         String partitaIva = request.getParameter("partitaIva");
-        System.out.println(partitaIva);
         List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
 
         if (abbonamenti.size() == 0) {
@@ -31,6 +33,11 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
         } else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
             requestDispatcher.forward(request, response);
+            List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
+            for(MetodoPagamento m:metodi){
+                System.out.println(m.toString());
+            }
+            request.setAttribute("metodi", metodi);
         }
 
     }
