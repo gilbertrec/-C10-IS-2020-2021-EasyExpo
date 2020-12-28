@@ -43,44 +43,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script>
-        function ricerca() {
-            var ricercato=document.getElementById("search").value;
-            var http= new XMLHttpRequest();
-            http.open("GET", "RicercaServlet?search="+ricercato, true);
-            http.onreadystatechange=function()
-            {
-                if(this.readyState==4 && this.status==200)
-                {
-                    var x = JSON.parse(this.responseText);
-                    if(x[0].success)
-                    {
-                        document.getElementById("prodotti").innerHTML = "";
-                        for (var i = 0;i<x[0].data.length;i++)
-                        {
-                            var html =
-                                '<div class="immagine" data-idprodotto="'+x[0].data[i].id+'" onclick="prodotto(this.dataset.idprodotto)">' +
-                                '<img class="preview" src="img/'+ x[0].data[i].img +'">' +
-                                '<h4>' + x[0].data[i].titolo +'</h4>' +
-                                '<h5>' + x[0].data[i].tipo + '</h5>' +
-                                '</div>';
-                            document.getElementById("prodotti").innerHTML += html;
-                        }
-                    }else{
-                        alert(x[0].message);
-                    }
-                }
-            };
-            http.send();
-        }
-
-        function prodotto(id) {
-            location.href="ProdottoServlet?id="+id;
-        }
-
-
-    </script>
-
 </head>
 <body>
 <!-- header -->
