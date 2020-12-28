@@ -18,11 +18,12 @@ import java.util.List;
 @WebServlet("/SottoscrizioneAbbonamentoServlet")
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
-        List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(request.getParameter("partitaIva"));
-        for (Abbonamento a: abbonamenti) {
-        System.out.println(a);
-        }
+       AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
+        /*HttpSession session = request.getSession();
+        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
+        String partitaIva = request.getParameter("partitaIva");
+        List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
+
         if (abbonamenti == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
             requestDispatcher.forward(request, response);

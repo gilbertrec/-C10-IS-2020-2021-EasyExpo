@@ -94,12 +94,6 @@
                                     </li>
                                     <li><a href="areaFornitore.jsp">CATALOGO</a></li>
                                     <li><a href="areaFornitore.jsp">AREA CLIENTE</a></li>
-                                    <form action="SottoscrizioneAbbonamentoServlet" method="post">
-                                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
-                                        <li>
-                                            <a href="SottoscrizioneAbbonamentoServlet">ABBONAMENTO ${fornitore.partitaIva}</a>
-                                        </li>
-                                    </form>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </ul>
                             </li>
@@ -124,7 +118,10 @@
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
                 <ol class="breadcrumb">
-                    <li><a href="action">Area Fornitore</a></li>
+                    <li><form action="SottoscrizioneAbbonamentoServlet" method="post">
+                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
+                        <a href="SottoscrizioneAbbonamentoServlet">ABBONAMENTO</a>
+                    </form></li>
                 </ol>
             </div>
         </div>

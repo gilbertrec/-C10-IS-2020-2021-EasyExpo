@@ -44,7 +44,7 @@ public class AbbonamentoDAO {
                 a.setDataFine(rs.getDate(4));
                 abbonamenti.add(a);
             }
-            return null;
+            return abbonamenti;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
