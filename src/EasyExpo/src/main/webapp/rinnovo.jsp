@@ -158,50 +158,9 @@
                                     </ul>
                                     <!-- PHONE -->
                                     <li class="col-md-6">
-                                        <button type="submit" class="btn" onclick="azione('inserimento')">ABBONA
-                                        </button>
-                                    </li>
-                                </form>
-                            </div>
-
-                            <div class="col-sm-12" id="inserimento">
-                                <h6>Inserisci metodo di pagamento</h6>
-                                <form action="SottoscrizioneAbbonamentoServlet" method="post">
-                                    <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
-                                    <ul class="row">
-
-                                        <!-- NUMERO CARTA -->
-                                        <li class="col-md-6">
-                                            <label> NUMERO CARTA
-                                                <input type="text" name="numeroCarta" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- NOME INTESTATARIO -->
-                                        <li class="col-md-6">
-                                            <label> NOME INTESTATARIO
-                                                <input type="text" name="nomeIntestario" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- DATA SCADENZA -->
-                                        <li class="col-md-6">
-                                            <label> DATA SCADENZA
-                                                <input type="date" id="datascadenza" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- CVV -->
-                                        <li class="col-md-6">
-                                            <label> CVV
-                                                <input type="number" name="cvv" value="" placeholder="" min="100"
-                                                       max="999">
-                                            </label>
-                                        </li>
-                                    </ul>
-                                    <!-- PHONE -->
-                                    <li class="col-md-6">
-                                        <button type="submit" class="btn">ABBONA</button>
+                                        <form action="abbonamento.jsp">
+                                        <button type="submit" class="btn">NUOVO METODO</button>
+                                        </form>
                                     </li>
                                 </form>
                             </div>
@@ -271,14 +230,5 @@
 <script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/main.js"></script>
-<script>
-    //Dichiaro la funzione
-    function azione(variabile) {
-        if (document.getElementById(variabile).style.display == '') {
-            document.getElementById(variabile).style.display = 'none';
-        } else {
-            document.getElementById(variabile).style.display = '';
-        }
-</script>
 </body>
 </html>

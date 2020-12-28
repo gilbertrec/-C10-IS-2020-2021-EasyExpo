@@ -164,7 +164,7 @@
                                         <div class="position-center-center">
                                             <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i
                                                     class="icon-magnifier"></i><a href="EliminaProdottoServlet"><i
-                                                    class="icon-trash"></i><a href="ModificaProdottoServlet" name="idProdotto" <c:out value="${prodotto.id}"/><i
+                                                    class="icon-trash"></i><a href=ModificaProdottoServlet"><i
                                                     class="icon-pencil"></i></a></div>
                                         </div>
                                     </div>
