@@ -19,12 +19,13 @@ import java.util.List;
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
-        /*HttpSession session = request.getSession();
-        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
+        HttpSession session = request.getSession();
+        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");
         String partitaIva = request.getParameter("partitaIva");
+        System.out.println(partitaIva);
         List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
 
-        if (abbonamenti == null) {
+        if (abbonamenti.size() == 0) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
             requestDispatcher.forward(request, response);
         } else {

@@ -23,12 +23,9 @@
                         for (var i = 0;i<x[0].data.length;i++)
                         {
                             var html =
-                                <!--'<div class="immagine" data-idprodotto="'+x[0].data[i].id+'" data-partitaIva="'+x[0].data[i].partitaIVA+'" onclick="prodotto(this.dataset.idprodotto, this.dataset.partitaIva)">' + -->
-                                <!--'<img class="preview" src="img/'+ x[0].data[i].img +'">' +-->
                                 '<div class="item-name" style="padding: 3px">'+
                                 '<h5>' + x[0].data[i].titolo +'</h5>'+
                                 '</div>';
-
 
 
                             document.getElementById("item").innerHTML += html;
