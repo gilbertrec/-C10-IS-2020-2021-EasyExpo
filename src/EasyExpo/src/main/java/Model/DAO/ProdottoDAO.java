@@ -37,7 +37,7 @@ public class ProdottoDAO {
             PreparedStatement ps = con
                     .prepareStatement("SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
             ps.setInt(1, idProdotto);
-            ps.setString(2,partitaIva);
+            ps.setString(2, partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Prodotto p = new Prodotto();
@@ -84,16 +84,15 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (idProdotto, partitaIva, titolo, descrizione, tipo, quantita, prezzo) VALUES(?,?,?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, prodotto.getIdProdotto());
-            ps.setString(2, prodotto.getPartitaIva());
-            ps.setString(3, prodotto.getTitolo());
-            ps.setString(4, prodotto.getDescrizione());
-            ps.setString(5, prodotto.getTipo().toString());
-            ps.setInt(6, prodotto.getQuantità());
-            ps.setFloat(7, prodotto.getPrezzo());
+            ps.setString(1, prodotto.getPartitaIva());
+            ps.setString(2, prodotto.getTitolo());
+            ps.setString(3, prodotto.getDescrizione());
+            ps.setString(4, prodotto.getTipo().toString());
+            ps.setInt(5, prodotto.getQuantità());
+            ps.setFloat(6, prodotto.getPrezzo());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -117,16 +116,16 @@ public class ProdottoDAO {
         }
     }
 
-    public List<Prodotto> doRetrieveByTitolo(String ricercato){
+    public List<Prodotto> doRetrieveByTitolo(String ricercato) {
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(
                     "SELECT idProdotto, partitaIva, titolo, tipo, prezzo FROM Prodotto WHERE titolo LIKE ? ");
-            ps.setString(1, "%"+ ricercato + "%");
+            ps.setString(1, "%" + ricercato + "%");
 
             ArrayList<Prodotto> prodotto = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Prodotto p = new Prodotto();
                 p.setIdProdotto(rs.getInt(1));
                 p.setPartitaIva(rs.getString(2));
@@ -136,7 +135,7 @@ public class ProdottoDAO {
                 prodotto.add(p);
             }
             return prodotto;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
