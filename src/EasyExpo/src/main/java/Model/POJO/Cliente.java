@@ -86,11 +86,7 @@ public class Cliente {
                 '}';
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(codiceFiscale, nome,cognome, telefono, luogoUbicazione, email);
-    }
-
+   
     private String codiceFiscale;
     private String nome;
     private String cognome;
