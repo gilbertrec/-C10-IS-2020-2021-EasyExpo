@@ -15,7 +15,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/aaggiuntaProdotto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/aggiuntaProdotto.jsp");
         requestDispatcher.forward(request, response);
     }
 }
