@@ -116,10 +116,10 @@ public class FornitoreDAO {
                     f.setPartitaIva(rs.getString(1));
                     f.setNome(rs.getString(2));
                     f.setCognome(rs.getString(3));
-                    f.setEmail(rs.getString(4));
-                    f.setPassword(rs.getString(5));
-                    f.setTelefono(rs.getString(6));
-                    f.setLuogoUbicazione(rs.getString(7));
+                    f.setTelefono(rs.getString(4));
+                    f.setLuogoUbicazione(rs.getString(5));
+                    f.setEmail(rs.getString(6));
+                    f.setPassword(rs.getString(7));
                     f.setRagioneSociale(rs.getString(8));
                     return f;
                 }

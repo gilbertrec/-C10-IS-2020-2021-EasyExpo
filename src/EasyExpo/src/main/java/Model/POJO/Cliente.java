@@ -86,7 +86,7 @@ public class Cliente {
                 '}';
     }
 
-   
+
     private String codiceFiscale;
     private String nome;
     private String cognome;

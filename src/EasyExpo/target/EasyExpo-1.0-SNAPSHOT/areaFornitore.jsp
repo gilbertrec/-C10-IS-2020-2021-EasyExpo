@@ -120,7 +120,7 @@
                 <h4>${fornitore.nome} ${fornitore.cognome}</h4>
                 <p> P. IVA : ${fornitore.partitaIva} <br>
                     Telefono: ${fornitore.telefono}<br>
-                    Luogo di ubicazione: ${fornitore.password}<br>
+                    Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
                 <ol class="breadcrumb">

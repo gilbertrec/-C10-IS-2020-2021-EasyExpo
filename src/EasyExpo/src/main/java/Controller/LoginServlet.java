@@ -20,8 +20,8 @@ public class LoginServlet extends HttpServlet {
         FornitoreDAO fornitoreDAO = new FornitoreDAO();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        Cliente cliente = new Cliente();
-        Fornitore fornitore = new Fornitore();
+        Cliente cliente = null;
+        Fornitore fornitore = null;
         if (email != null && password != null) {
             cliente = clienteDAO.doRetrieveByEmailandPassword(email, password);
             fornitore = fornitoreDAO.doRetrieveByEmailandPassword(email, password);
