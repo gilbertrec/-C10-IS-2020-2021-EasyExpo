@@ -24,7 +24,18 @@ public class RicercaServlet extends HttpServlet{
 
         ProdottoDAO prodottoDao = new ProdottoDAO();
 
+        System.out.println(request.getParameter("search"));
         List<Prodotto> prodotti = prodottoDao.doRetrieveByTitolo(request.getParameter("search"));
+        if(prodotti!=null){
+        for(int i=0; i<prodotti.size(); i++){
+            System.out.println("ECCOCI!");
+            System.out.println("- "+prodotti.toString());
+        }
+        }else{
+            System.out.println("NON C'E' NIENTE QUA!");
+        }
+
+
         if(prodotti!=null){
             json = "[";
             Boolean first = true;

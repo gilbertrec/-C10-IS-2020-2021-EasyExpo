@@ -16,7 +16,7 @@
                     var x = JSON.parse(this.responseText);
                     if(x[0].success)
                     {
-                        document.getElementById("item").innerHTML = "";
+                        document.getElementById("prodotti").innerHTML = "";
                         for (var i = 0;i<x[0].data.length;i++)
                         {
                             var html =
@@ -66,34 +66,12 @@
 
         <div class="search">
             <form>
-                <input type="search" id="search" placeholder="Prodotto, Fornitore, Tag..." oninput="ricerca()" style="width: 90%; display: block; margin: auto; border: 2px solid #100f0f; border-radius: 5px">
+                <input type="text" id="search" placeholder="Prodotto, Fornitore, Tag..." oninput="ricerca()" style="width: 90%; display: block; margin: auto; border: 2px solid #100f0f; border-radius: 5px">
 
             </form>
         </div>
 
-<!-- Item -->
-<div id="item "class="item">
-    <!-- Item img -->
-    <div class="item-img"><img class="img-1" src="images/product-1.jpg" alt=""> <img class="img-2"
-                                                                                     src="images/product-2.jpg"
-                                                                                     alt="">
-        <!-- Overlay -->
-        <div class="overlay">
-            <div class="position-center-center">
-                <div class="inn"><a href="images/product-1.jpg" data-lighter><i
-                        class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top"
-                                                           title="Aggiungi al Carrello"><i
-                        class="icon-basket"></i></a></div>
-            </div>
-        </div>
-    </div>
-    <!-- Item Name -->
-    <div class="item-name"><a href="SpecificheProdottoServlet">stone cup</a>
-        <p>Lorem ipsum dolor sit amet</p>
-    </div>
-    <!-- Price -->
-    <span class="price"><small>€</small>${prezzo}</span></div>
-
+    <div id="prodotti"></div>
 
 </body>
 </html>
