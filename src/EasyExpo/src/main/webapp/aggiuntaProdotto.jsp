@@ -138,7 +138,8 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-12">
                                 <h6>AGGIUNGI PRODOTTO</h6>
-                                <form>
+                                <form action="AggiungiProdottoServlet" method="post">
+                                    <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                                     <ul class="row">
 
                                         <!-- TITOLO -->
@@ -152,7 +153,7 @@
                                         <li class="col-md-6">
                                             <label> TIPO
                                                 <div class="quinty">
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" name="tipo">
                                                     <option>ATTREZZATURA</option>
                                                     <option>SERVIZIO</option>
                                                 </select>
@@ -178,9 +179,7 @@
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
-                                                <textarea type="textArea" name="descrizione" value="" placeholder="" style="height: 150px; width: 550px">
-
-                                                </textarea>
+                                                <textarea name="descrizione" rows="5" cols="80"></textarea>
                                             </label>
                                         </li>
 

@@ -2433,13 +2433,14 @@ header .is-sticky .sticky .user-basket .dropdown-menu {
 	text-transform: none;
 }
 .search input {
-	display: inline-block;
-	width: 100%;
+	display: block;
+	margin: auto;
+	width: 90%;
 	height: 45px;
 	background: #fff;
 	box-shadow: none;
 	border-radius: 0px;
-	border: 1px solid #e6e6e6;
+	border: 2px solid #e6e6e6;
 }
 .search button {
 	float: right;
