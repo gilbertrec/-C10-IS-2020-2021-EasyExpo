@@ -1,5 +1,8 @@
 package Controller;
 
+import Model.DAO.ProdottoDAO;
+import Model.POJO.Prodotto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +18,10 @@ public class ModificaProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/mmodificaProdotto.jsp");
+        int id = Integer.parseInt(request.getParameter("prodottoId"));
+        ProdottoDAO prodottodao = new ProdottoDAO() ;
+        Prodotto prodotto = prodottodao.doRetrieveByIdProdotto(id);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/modificaProdotto.jsp");
         requestDispatcher.forward(request, response);
     }
 }
