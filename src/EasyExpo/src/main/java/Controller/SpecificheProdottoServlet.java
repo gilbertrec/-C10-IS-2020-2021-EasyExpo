@@ -15,7 +15,7 @@ public class SpecificheProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/SpecificheProdotto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificheProdotto.jsp");
         requestDispatcher.forward(request, response);
     }
 }

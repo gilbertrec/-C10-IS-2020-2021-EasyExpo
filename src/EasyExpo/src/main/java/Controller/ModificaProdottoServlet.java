@@ -15,7 +15,7 @@ public class ModificaProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jspFornitore/ModificaProdotto.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/mmodificaProdotto.jsp");
         requestDispatcher.forward(request, response);
     }
 }
