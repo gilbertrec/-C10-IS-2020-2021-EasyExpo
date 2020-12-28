@@ -63,7 +63,7 @@
         </jsp:include>
     </header>
 <!--======= SUB BANNER =========-->
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
+<section class="sub-bnr-contatti" data-stellar-background-ratio="0.5">
     <div class="position-center-center">
         <div class="container">
             <h4>contattaci ora</h4>
@@ -94,9 +94,7 @@
                                     - 84084 Fisciano (SA)</li>
                                 <li> <i class="icon-call-end"></i> 081 564738</li>
                                 <li> <i class="icon-envelope"></i> <a href="mailto:someone@example.com" target="_top">info@EASYEXPO.com</a> </li>
-                                <li>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam erat turpis, pellentesque non leo eget.</p>
-                                </li>
+
                             </ul>
                         </div>
                     </div>

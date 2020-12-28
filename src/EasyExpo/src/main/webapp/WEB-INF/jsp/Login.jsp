@@ -30,7 +30,7 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>LOGIN</h4>
+                <h4>EASYEXPO</h4>
                 <ol class="breadcrumb">
                     <li class="active">LOGIN</li>
                 </ol>
