@@ -13,23 +13,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/SottoscrizioneAbbonamentoServlet")
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //HttpSession session = request.getSession();
-        //Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");
-        String partitaIva = (String) request.getAttribute("abbonamento");
-        System.out.println(partitaIva);
         AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
-        Abbonamento a = new Abbonamento();
-        a = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
-        if(a == null){
+        List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(request.getParameter("partitaIva"));
+        for (Abbonamento a: abbonamenti) {
+        System.out.println(a);
+        }
+        if (abbonamenti == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
-            requestDispatcher.forward(request,response);
-        }else{
+            requestDispatcher.forward(request, response);
+        } else {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         }
 
     }

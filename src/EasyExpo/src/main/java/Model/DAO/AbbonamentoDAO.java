@@ -1,8 +1,11 @@
 package Model.DAO;
 
 import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AbbonamentoDAO {
@@ -26,19 +29,20 @@ public class AbbonamentoDAO {
         }
     }
 
-    public Abbonamento doRetrieveByPartitaIva(String partitaIva){
+    public List<Abbonamento> doRetrieveByPartitaIva(String partitaIva){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Abbonamento as a, Fornitore as f WHERE partitaIva=? AND a.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT * FROM Abbonamento as a, Fornitore as f WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva");
             ps.setString(1, partitaIva);
+            ArrayList<Abbonamento> abbonamenti = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Abbonamento a = new Abbonamento();
                 a.setIdAbbonamento(rs.getInt(1));
                 a.setPartitaIva(rs.getString(2));
                 a.setDataInizio(rs.getDate(3));
                 a.setDataFine(rs.getDate(4));
-                return a;
+                abbonamenti.add(a);
             }
             return null;
         } catch (SQLException e) {

@@ -95,8 +95,8 @@
                                     <li><a href="areaFornitore.jsp">CATALOGO</a></li>
                                     <li><a href="areaFornitore.jsp">AREA CLIENTE</a></li>
                                     <form action="SottoscrizioneAbbonamentoServlet" method="post">
-                                        <input type="hidden" name="abbonamento" value="${fornitore.partitaIva}">
-                                        <li><a href="SottoscrizioneAbbonamentoServlet">ABBONAMENTO</a></li>
+                                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
+                                        <li><a href="SottoscrizioneAbbonamentoServlet">ABBONAMENTO ${fornitore.partitaIva}</a></li>
                                     </form>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </ul>
