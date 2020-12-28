@@ -129,6 +129,29 @@ public class FornitoreDAO {
             }
         }
 
+    public List<Fornitore> doRetrieveByNome(String ricercato) {
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT partitaIva, nome FROM Fornitore WHERE nome LIKE ? ");
+            ps.setString(1, "%" + ricercato + "%");
+
+            ArrayList<Fornitore> fornitore = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                fornitore.add(f);
+            }
+            return fornitore;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public void deleteFornitore(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Fornitore WHERE partitaIva=?");
