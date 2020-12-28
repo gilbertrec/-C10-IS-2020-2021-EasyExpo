@@ -2,6 +2,7 @@ package Model.DAO;
 
 import Model.POJO.Prodotto;
 
+import java.lang.reflect.Array;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,30 @@ public class ProdottoDAO {
             PreparedStatement ps = con
                     .prepareStatement("SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
             ps.setInt(1, idProdotto);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Prodotto p = new Prodotto();
+                p.setIdProdotto(rs.getInt(1));
+                p.setPartitaIva(rs.getString(2));
+                p.setTitolo(rs.getString(3));
+                p.setDescrizione(rs.getString(4));
+                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
+                p.setQuantità(rs.getInt(6));
+                p.setPrezzo(rs.getFloat(7));
+                return p;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Prodotto doRetrieveByIdProdottoEPartitaIva(int idProdotto, String partitaIva) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
+            ps.setInt(1, idProdotto);
+            ps.setString(2,partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Prodotto p = new Prodotto();
@@ -90,6 +115,31 @@ public class ProdottoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Prodotto> doRetrieveByTitolo(String ricercato){
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT idProdotto, partitaIva, titolo, tipo, prezzo FROM Prodotto WHERE titolo LIKE ? ");
+            ps.setString(1, "%"+ ricercato + "%");
+
+            ArrayList<Prodotto> prodotto = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Prodotto p = new Prodotto();
+                p.setIdProdotto(rs.getInt(1));
+                p.setPartitaIva(rs.getString(2));
+                p.setTitolo(rs.getString(3));
+                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(4)));
+                p.setPrezzo(rs.getFloat(5));
+                prodotto.add(p);
+            }
+            return prodotto;
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
