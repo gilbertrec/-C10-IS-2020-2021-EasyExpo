@@ -26,6 +26,26 @@ public class AbbonamentoDAO {
         }
     }
 
+    public Abbonamento doRetrieveByPartitaIva(String partitaIva){
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Abbonamento as a, Fornitore as f WHERE partitaIva=? AND a.partitaIva=f.partitaIva");
+            ps.setString(1, partitaIva);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Abbonamento a = new Abbonamento();
+                a.setIdAbbonamento(rs.getInt(1));
+                a.setPartitaIva(rs.getString(2));
+                a.setDataInizio(rs.getDate(3));
+                a.setDataFine(rs.getDate(4));
+                return a;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void createAbbonamento(Abbonamento abbonamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
