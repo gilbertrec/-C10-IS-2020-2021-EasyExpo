@@ -9,23 +9,26 @@
             var ricercato=document.getElementById("search").value;
             var http= new XMLHttpRequest();
             http.open("GET", "RicercaServlet?search="+ricercato, true);
+
             http.onreadystatechange=function()
             {
+
                 if(this.readyState==4 && this.status==200)
                 {
                     var x = JSON.parse(this.responseText);
+
                     if(x[0].success)
                     {
-                        document.getElementById("prodotti").innerHTML = "";
+                        document.getElementById("item").innerHTML= "";
                         for (var i = 0;i<x[0].data.length;i++)
                         {
                             var html =
-                                '<div class="immagine" data-idprodotto="'+x[0].data[i].id+'" data-partitaIva="'+x[0].data[i].partitaIVA+'" onclick="prodotto(this.dataset.idprodotto, this.dataset.partitaIva)">' +
-                                <!--'<img class="preview" src="img/'+ x[0].data[i].img +'">' +-->
-                                '<h4>' + x[0].data[i].titolo +'</h4>' +
-                                '<h5>' + x[0].data[i].tipo + '</h5>' +
+                                '<div class="item-name" style="padding: 3px">'+
+                                '<h5>' + x[0].data[i].titolo +'</h5>'+
                                 '</div>';
-                            document.getElementById("prodotti").innerHTML += html;
+
+
+                            document.getElementById("item").innerHTML += html;
                         }
                     }else{
                         alert(x[0].message);
@@ -53,7 +56,7 @@
 </div>
 
 <!-- Wrap -->
-
+<div id="wrap">
 
     <header>
         <jsp:include page="/header.jsp">
@@ -67,11 +70,22 @@
         <div class="search">
             <form>
                 <input type="text" id="search" placeholder="Prodotto, Fornitore, Tag..." oninput="ricerca()" style="width: 90%; display: block; margin: auto; border: 2px solid #100f0f; border-radius: 5px">
-
             </form>
         </div>
 
-    <div id="prodotti"></div>
+    <div id="item" style="margin-left: 70px"></div>
 
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/own-menu.js"></script>
+<script src="js/jquery.lighter.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

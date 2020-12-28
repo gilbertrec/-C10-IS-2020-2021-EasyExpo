@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
+import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 
 import javax.servlet.annotation.WebServlet;
@@ -24,16 +26,13 @@ public class RicercaServlet extends HttpServlet{
 
         ProdottoDAO prodottoDao = new ProdottoDAO();
 
-        System.out.println(request.getParameter("search"));
-        List<Prodotto> prodotti = prodottoDao.doRetrieveByTitolo(request.getParameter("search"));
-        if(prodotti!=null){
-        for(int i=0; i<prodotti.size(); i++){
-            System.out.println("ECCOCI!");
-            System.out.println("- "+prodotti.toString());
-        }
-        }else{
-            System.out.println("NON C'E' NIENTE QUA!");
-        }
+        FornitoreDAO fornitoreDAO = new FornitoreDAO();
+
+        String search = request.getParameter("search");
+
+
+        List<Prodotto> prodotti = prodottoDao.doRetrieveByTitolo(search);
+        List<Fornitore> fornitori = fornitoreDAO.doRetrieveByNome(search);
 
 
         if(prodotti!=null){
@@ -45,9 +44,7 @@ public class RicercaServlet extends HttpServlet{
                 json += "{"+
                         "\"id\":\"" + prodotti.get(i).getIdProdotto() + "\","+
                         "\"partitaIVA\":\"" + prodotti.get(i).getPartitaIva() + "\","+
-                        "\"titolo\":\""+prodotti.get(i).getTitolo()+"\","+
-                        "\"prezzo\":\""+prodotti.get(i).getPrezzo()+"\","+
-                        "\"tipo\":\""+prodotti.get(i).getTipo()+"\"" +
+                        "\"titolo\":\""+prodotti.get(i).getTitolo()+"\"" +
                         "}";
                 first = false;
             }

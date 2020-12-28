@@ -120,7 +120,7 @@ public class ProdottoDAO {
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT idProdotto, partitaIva, titolo, tipo, prezzo FROM Prodotto WHERE titolo LIKE ? ");
+                    "SELECT idProdotto, partitaIva, titolo FROM Prodotto WHERE titolo LIKE ? ");
             ps.setString(1, "%" + ricercato + "%");
 
             ArrayList<Prodotto> prodotto = new ArrayList<>();
@@ -130,11 +130,10 @@ public class ProdottoDAO {
                 p.setIdProdotto(rs.getInt(1));
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
-                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(4)));
-                p.setPrezzo(rs.getFloat(5));
                 prodotto.add(p);
             }
             return prodotto;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
