@@ -17,7 +17,7 @@
     <title>EASYEXPO - </title>
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -62,10 +62,13 @@
             <div class="container">
 
                 <!-- Logo -->
-                <div class="logo"> <a href="areaFornitore.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt="" ></a> </div>
+                <div class="logo"><a href="areaFornitore.jsp"><img class="img-responsive" src="images/logomacchia2.png"
+                                                                   alt=""></a></div>
                 <nav class="navbar ownmenu">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-open-btn" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"><i class="fa fa-navicon"></i></span> </button>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#nav-open-btn" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"><i class="fa fa-navicon"></i></span></button>
                     </div>
 
                     <!-- NAV -->
@@ -153,10 +156,10 @@
                                         <li class="col-md-6">
                                             <label> TIPO
                                                 <div class="quinty">
-                                                <select class="selectpicker" name="tipo">
-                                                    <option>ATTREZZATURA</option>
-                                                    <option>SERVIZIO</option>
-                                                </select>
+                                                    <select class="selectpicker" name="tipo">
+                                                        <option>ATTREZZATURA</option>
+                                                        <option>SERVIZIO</option>
+                                                    </select>
                                                 </div>
                                                 <!--<input type="text" name="tipo" value="" placeholder="">-->
                                             </label>
@@ -172,7 +175,8 @@
                                         <!-- QUANTITÀ -->
                                         <li class="col-md-6">
                                             <label> QUANTITÀ (1-999)
-                                                <input type="number" name="quantita" value="" placeholder="" min="1" max="999">
+                                                <input type="number" name="quantita" value="" placeholder="" min="1"
+                                                       max="999">
                                             </label>
                                         </li>
 
@@ -185,7 +189,8 @@
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="" multiple>
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
+                                                       placeholder="" multiple>
                                             </label>
                                         </li>
 

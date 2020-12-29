@@ -38,7 +38,6 @@
     <![endif]-->
 
 
-
 </head>
 <body>
 <!-- header -->
@@ -116,7 +115,7 @@
                         </li>
 
                         <!-- SEARCH BAR -->
-                        
+
                         <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
                                 class=" icon-magnifier"></i></a>
                         </li>

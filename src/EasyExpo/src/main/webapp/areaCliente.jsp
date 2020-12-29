@@ -91,9 +91,9 @@
 
                                         <!-- CODICE FISCALE -->
                                         <li class="col-md-6">
-                                        <label> CODICE FISCALE
-                                            <input type="text" name="address" value="" placeholder="">
-                                        </label>
+                                            <label> CODICE FISCALE
+                                                <input type="text" name="address" value="" placeholder="">
+                                            </label>
                                         </li>
 
                                         <!-- Telefono -->
@@ -111,7 +111,7 @@
                                         </li>
                                         <li class="col-md-6">
 
-                                        <!-- BOTTONE -->
+                                            <!-- BOTTONE -->
                                         <li class="col-md-6">
                                             <button type="submit" class="btn">ELIMINA ACCOUNT</button>
                                         </li>
