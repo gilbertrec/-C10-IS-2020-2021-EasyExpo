@@ -300,8 +300,7 @@
                             <div class="overlay">
                                 <div class="position-center-center">
                                     <div class="inn"><a href="images/product-1.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top"
+                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip" data-placement="top"
                                                                                title="Aggiungi al Carrello"><i
                                             class="icon-basket"></i></a></div>
                                 </div>

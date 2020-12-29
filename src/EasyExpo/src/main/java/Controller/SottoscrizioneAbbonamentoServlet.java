@@ -19,29 +19,27 @@ import java.util.List;
 
 @WebServlet("/SottoscrizioneAbbonamentoServlet")
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
-    MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
+        MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
         /*HttpSession session = request.getSession();
         Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
-    String partitaIva = request.getParameter("partitaIva");
-    List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
+        String partitaIva = request.getParameter("partitaIva");
+        List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
 
-    if (abbonamenti.size() == 0) {
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
-      requestDispatcher.forward(request, response);
-    } else {
-      List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
-      request.setAttribute("metodi", metodi);
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
-      requestDispatcher.forward(request, response);
+        if (abbonamenti.size() == 0) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
+            request.setAttribute("metodi", metodi);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
+            requestDispatcher.forward(request, response);
+        }
+
     }
 
-  }
-
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    doPost(request, response);
-  }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
 }

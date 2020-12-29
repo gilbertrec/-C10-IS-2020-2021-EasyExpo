@@ -1,39 +1,39 @@
 package Model.POJO;
 
 public class Admin {
-  public Admin(String email, String password) {
-    this.email = email;
-    this.password = password;
-  }
+    public Admin(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
-  public Admin() {
+    public Admin() {
 
-  }
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public String getPassword() {
+        return password;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  @Override
-  public String toString() {
-    return "Admin{" +
-        "email='" + email + '\'' +
-        ", password='" + password + '\'' +
-        '}';
-  }
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 
-  private String email;
-  private String password;
+    private String email;
+    private String password;
 }

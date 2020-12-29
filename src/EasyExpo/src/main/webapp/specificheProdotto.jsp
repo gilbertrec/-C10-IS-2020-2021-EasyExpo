@@ -115,8 +115,7 @@
                                 <div class="position-center-top">
                                     <div class="search">
                                         <form>
-                                            <input type="search" id="search" placeholder="Prodotto, Fornitore, Tag..."
-                                                   oninput="ricerca()">
+                                            <input type="search" id="search" placeholder="Prodotto, Fornitore, Tag..." oninput="ricerca()">
                                             <!-- <button type="submit"><i class="icon-check"></i></button> -->
                                         </form>
                                     </div>
@@ -130,178 +129,167 @@
     </div>
 </header>
 
-<!--======= SUB BANNER =========-->
-<section class="sub-bnr" data-stellar-background-ratio="0.5">
-    <div class="position-center-center">
-        <div class="container">
-            <h4>WOOD CHAIR</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                Sed feugiat, tellus vel tristique posuere, diam</p>
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Data</li>
-            </ol>
+    <!--======= SUB BANNER =========-->
+    <section class="sub-bnr" data-stellar-background-ratio="0.5">
+        <div class="position-center-center">
+            <div class="container">
+                <h4>WOOD CHAIR</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
+                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Data</li>
+                </ol>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Content -->
-<div id="content">
+    <!-- Content -->
+    <div id="content">
 
-    <!-- Popular Products -->
-    <section class="padding-top-100 padding-bottom-100">
-        <div class="container">
+        <!-- Popular Products -->
+        <section class="padding-top-100 padding-bottom-100">
+            <div class="container">
 
-            <!-- SHOP DETAIL -->
-            <div class="shop-detail">
-                <div class="row">
+                <!-- SHOP DETAIL -->
+                <div class="shop-detail">
+                    <div class="row">
 
-                    <!-- Popular Images Slider -->
-                    <div class="col-md-7">
+                        <!-- Popular Images Slider -->
+                        <div class="col-md-7">
 
-                        <!-- Images Slider -->
-                        <div class="images-slider">
-                            <ul class="slides">
-                                <li data-thumb="images/large-img-1.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-1.jpg" alt=""></li>
-                                <li data-thumb="images/large-img-2.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-2.jpg" alt=""></li>
-                                <li data-thumb="images/large-img-3.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-3.jpg" alt=""></li>
-                            </ul>
+                            <!-- Images Slider -->
+                            <div class="images-slider">
+                                <ul class="slides">
+                                    <li data-thumb="images/large-img-1.jpg"> <img class="img-responsive" src="images/large-img-1.jpg"  alt=""> </li>
+                                    <li data-thumb="images/large-img-2.jpg"> <img class="img-responsive" src="images/large-img-2.jpg"  alt=""> </li>
+                                    <li data-thumb="images/large-img-3.jpg"> <img class="img-responsive" src="images/large-img-3.jpg"  alt=""> </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Content -->
-                    <div class="col-md-5">
-                        <h4>wood chair</h4>
-                        <span class="price"><small>$</small>299</span>
+                        <!-- Content -->
+                        <div class="col-md-5">
+                            <h4>wood chair</h4>
+                            <span class="price"><small>$</small>299</span>
 
-                        <!-- Item Detail -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a
-                            scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing
-                            elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
+                            <!-- Item Detail -->
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
 
-                        <!-- Short By -->
-                        <div class="some-info">
-                            <ul class="row margin-top-30">
-                                <li class="col-xs-4">
-                                    <div class="quinty">
-                                        <!-- QTY -->
-                                        <select class="selectpicker">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                    </div>
-                                </li>
+                            <!-- Short By -->
+                            <div class="some-info">
+                                <ul class="row margin-top-30">
+                                    <li class="col-xs-4">
+                                        <div class="quinty">
+                                            <!-- QTY -->
+                                            <select class="selectpicker">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                        </div>
+                                    </li>
 
-                                <!-- AGGIUNGI AL CARRELLO -->
-                                <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
-
-                            </ul>
-
-                            <!-- INFOMATION -->
-                            <div class="inner-info">
-                                <h6>INFORMAZIONI FORNITORE</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a
-                                    scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur
-                                    adipiscing elit. </p>
-
-                                <!-- TAGS -->
-                                <h5 class="shop-tittle margin-top-60 margin-bottom-30">POPULAR TAGS</h5>
-                                <ul class="shop-tags">
-                                    <li><a href="#.">Musica</a></li>
-                                    <li><a href="#.">Casse</a></li>
+                                    <!-- AGGIUNGI AL CARRELLO -->
+                                    <li class="col-xs-6"> <a href="#." class="btn">AGGIUNGI</a> </li>
 
                                 </ul>
 
-                                <!-- Social Icons -->
-                                <ul class="social_icons">
-                                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                                </ul>
+                                <!-- INFOMATION -->
+                                <div class="inner-info">
+                                    <h6>INFORMAZIONI FORNITORE</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. </p>
+
+                                    <!-- TAGS -->
+                                    <h5 class="shop-tittle margin-top-60 margin-bottom-30">POPULAR TAGS</h5>
+                                    <ul class="shop-tags">
+                                        <li><a href="#.">Musica</a></li>
+                                        <li><a href="#.">Casse</a></li>
+
+                                    </ul>
+
+                                    <!-- Social Icons -->
+                                    <ul class="social_icons">
+                                        <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                                        <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!--======= PRODUCT DESCRIPTION =========-->
-            <div class="item-decribe">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
-                    <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a>
-                    </li>
-                </ul>
+                <!--======= PRODUCT DESCRIPTION =========-->
+                <div class="item-decribe">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+                        <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a></li>
+                    </ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
-                    <!-- DESCRIPTION -->
-                    <div role="tabpanel" class="tab-pane fade in active" id="descr">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lectus id nisi interdum
-                            mollis. Nam congue tellus quis elit mattis congue. Aenean eu massa sed mauris hendrerit
-                            ornare sed eget ante.
-                            Vestibulum id eros quam. Nunc volutpat at magna gravida eleifend. Phasellus sit amet nisi
-                            tempus, tincidunt elit ac, tempor metus. <br>
-                        </p>
-                        <h6>THE SIMPLE FACTS</h6>
-                        <ul>
-                            <li>
-                                <p>Praesent faucibus, leo vitae maximus dictum,</p>
-                            </li>
-                            <li>
-                                <p> Donec porta ut lectus </p>
-                            </li>
-                            <li>
-                                <p> Phasellus maximus velit id nisl</p>
-                            </li>
-                            <li>
-                                <p> Quisque a tellus et sapien aliquam sus</p>
-                            </li>
-                            <li>
-                                <p> Donec porta ut lectus </p>
-                            </li>
-                            <li>
-                                <p> Phasellus maximus velit id nisl</p>
-                            </li>
-                        </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
+                        <!-- DESCRIPTION -->
+                        <div role="tabpanel" class="tab-pane fade in active" id="descr">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lectus id nisi interdum mollis. Nam congue tellus quis elit mattis congue. Aenean eu massa sed mauris hendrerit ornare sed eget ante.
+                                Vestibulum id eros quam. Nunc volutpat at magna gravida eleifend. Phasellus sit amet nisi tempus, tincidunt elit ac, tempor metus. <br>
+                            </p>
+                            <h6>THE SIMPLE FACTS</h6>
+                            <ul>
+                                <li>
+                                    <p>Praesent faucibus, leo vitae maximus dictum,</p>
+                                </li>
+                                <li>
+                                    <p> Donec porta ut lectus </p>
+                                </li>
+                                <li>
+                                    <p> Phasellus maximus velit id nisl</p>
+                                </li>
+                                <li>
+                                    <p> Quisque a tellus et sapien aliquam sus</p>
+                                </li>
+                                <li>
+                                    <p> Donec porta ut lectus </p>
+                                </li>
+                                <li>
+                                    <p> Phasellus maximus velit id nisl</p>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <!-- About -->
-    <section class="small-about padding-top-150 padding-bottom-150">
-        <div class="container">
+        <!-- About -->
+        <section class="small-about padding-top-150 padding-bottom-150">
+            <div class="container">
 
-            <!-- Main Heading -->
-            <div class="heading text-center">
-                <h4>Cos'è EASYEXPO</h4>
-                <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
-                    eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
-                    preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>Cos'è EASYEXPO</h4>
+                    <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
+                        eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
+                        preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
+                </div>
+
+                <!-- Social Icons -->
+                <ul class="social_icons">
+                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                </ul>
             </div>
+        </section>
 
-            <!-- Social Icons -->
-            <ul class="social_icons">
-                <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-            </ul>
-        </div>
-    </section>
+    </div>
 
-</div>
+    <!--======= FOOTER =========-->
+    <footer>
+        <jsp:include page="/footer.jsp"/>
+    </footer>
 
-<!--======= FOOTER =========-->
-<footer>
-    <jsp:include page="/footer.jsp"/>
-</footer>
-
-<!--======= RIGHTS =========-->
+    <!--======= RIGHTS =========-->
 
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>
