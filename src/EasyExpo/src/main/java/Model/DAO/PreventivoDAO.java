@@ -1,13 +1,28 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
+import Model.POJO.MetodoPagamento;
 import Model.POJO.Preventivo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> PreventivoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Preventivo </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class PreventivoDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input
+     * @param  idPreventivo  codice identificativco, Intero
+     * @return  Preventivo - Oggetto di tipo {@link Preventivo}
+     *
+     */
     public Preventivo doRetriveByIdPreventivo(int idPreventivo){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -31,6 +46,13 @@ public class PreventivoDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  Preventivo - Oggetto di tipo {@link Preventivo}
+     *
+     */
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -56,6 +78,11 @@ public class PreventivoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Preventivo
+     * @param preventivo  Oggetto di tipo {@link Preventivo}
+     *
+     */
     public void createPreventivo(Preventivo preventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -79,8 +106,10 @@ public class PreventivoDAO {
         }
     }
 
-
-
+    /**
+     * Metodo che elimina dal DB l'istanza Preventivo correlata all'idPreventivo dato in input
+     * @param idPreventivo  codice identificativo Preventivo, Intero
+     */
     public void deletePreventivo(int idPreventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Preventivo WHERE idPreventivo=?");

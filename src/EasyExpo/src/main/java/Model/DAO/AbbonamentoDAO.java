@@ -4,8 +4,21 @@ import Model.POJO.Abbonamento;
 
 import java.sql.*;
 
-
+/**
+ * <p> AbbonamentoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Abbonamento </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class AbbonamentoDAO {
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo Abbonamento correlato ad un IdAbbonamento dato in input
+     * @param   idAbbonamento  Codice Identificativo Abbonamento, Intero
+     * @return  Abbonamento - Oggetto di tipo {@link Abbonamento}
+     *
+     */
     public Abbonamento doRetrieveByIdAbbonamento(int idAbbonamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -26,6 +39,11 @@ public class AbbonamentoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Abbonamento
+     * @param abbonamento  Oggetto di tipo {@link Abbonamento}
+     *
+     */
     public void createAbbonamento(Abbonamento abbonamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -46,6 +64,10 @@ public class AbbonamentoDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza Abbonamento correlata all'IdAbbonamento dato in input
+     * @param idAbbonamento  Codice Identificativo Abbonamento, intero
+     */
     public void deleteAbbonamento(int idAbbonamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Abbonamento WHERE idAbbonamento=?");

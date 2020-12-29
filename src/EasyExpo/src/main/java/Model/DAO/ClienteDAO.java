@@ -1,13 +1,28 @@
 package Model.DAO;
 
+import Model.POJO.Abbonamento;
+import Model.POJO.Admin;
 import Model.POJO.Cliente;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> ClienteDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Cliente </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class ClienteDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Cliente correlato al codiceFiscale dato in input
+     * @param  codiceFiscale  codice alfanumerico identificativo cliente, String
+     * @return  Cliente - Oggetto di tipo {@link Cliente}
+     *
+     */
     public Cliente doRetrieveByCF(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -31,6 +46,13 @@ public class ClienteDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  Cliente - Oggetto di tipo {@link Cliente}
+     *
+     */
     public List<Cliente> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -55,6 +77,12 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Cliente
+     * @param cliente  Oggetto di tipo {@link Cliente}
+     *
+     */
     public void createCliente(Cliente cliente) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -77,6 +105,12 @@ public class ClienteDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email data in input
+     * @param  email  Indirizzo email identificativo, String
+     * @return Cliente - Oggetto di tipo {@link Cliente}
+     *
+     */
     public Cliente doRetrieveByEmail(String email) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -99,6 +133,14 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email e password dati in input
+     * @param  email  Indirizzo email identificativo, String
+     * @param password Caratteri alfanumerici per accesso al sistema, String
+     * @return Cliente - Oggetto di tipo {@link Cliente}
+     *
+     */
     public Cliente doRetrieveByEmailandPassword(String email, String password){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -123,6 +165,10 @@ public class ClienteDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza Cliente correlata al codiceFiscale dato in input
+     * @param codiceFiscale  codice alfanumerico identificativo cliente, String
+     */
     public void deleteCliente(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Cliente WHERE codiceFiscale=?");

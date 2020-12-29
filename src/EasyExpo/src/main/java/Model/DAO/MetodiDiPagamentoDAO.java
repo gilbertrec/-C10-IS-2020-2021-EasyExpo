@@ -1,13 +1,27 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
 import Model.POJO.MetodoPagamento;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> MetodoDiPagamentoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto MetodoPagamento </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class MetodiDiPagamentoDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo MetodoPagamento correlato ad una partitaIva data in input
+     * @param  partitaIva  codice alfanumerico identificativo fornitore, String
+     * @return  MetodoPagamento - Oggetto di tipo {@link MetodoPagamento}
+     *
+     */
     public List<MetodoPagamento> doRetrieveAllByPartitaIva(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -30,6 +44,11 @@ public class MetodiDiPagamentoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo MetodoPagamento
+     * @param metodoPagamento  Oggetto di tipo {@link MetodoPagamento}
+     *
+     */
     public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -50,6 +69,10 @@ public class MetodiDiPagamentoDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza MetodoPagamento correlata al numeroCarta dato in input
+     * @param numeroCarta  codice alfanumerico identificativo metodoPagamento, String
+     */
     public void deleteMetodoPagamento(String numeroCarta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM MetodoPagamento WHERE numeroCarta=?");
