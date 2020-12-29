@@ -42,7 +42,6 @@
 </head>
 <body>
 <!-- header -->
-<header>
     <div class="sticky">
         <div class="container">
 
@@ -78,7 +77,6 @@
                                 <c:choose>
                                     <c:when test="${cliente != null}">
                                         <li>
-                                            <h6>Ciao! ${cliente.nome}</h6>
                                             <h6>Ciao ${cliente.nome} !</h6>
                                         </li>
                                         <li><a href="#">CARRELLO</a></li>
@@ -126,7 +124,6 @@
             </nav>
         </div>
     </div>
-</header>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/own-menu.js"></script>

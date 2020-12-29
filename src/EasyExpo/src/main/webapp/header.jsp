@@ -42,7 +42,6 @@
 </head>
 <body>
 <!-- header -->
-<header>
     <div class="sticky">
         <div class="container">
 
@@ -125,7 +124,6 @@
             </nav>
         </div>
     </div>
-</header>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/own-menu.js"></script>
