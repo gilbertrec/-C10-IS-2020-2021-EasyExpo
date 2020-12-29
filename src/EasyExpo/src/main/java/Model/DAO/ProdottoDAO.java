@@ -21,7 +21,7 @@ public class ProdottoDAO {
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
                 p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
-                p.setQuantità(rs.getInt(6));
+                p.setQuantita(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 return p;
             }
@@ -46,7 +46,7 @@ public class ProdottoDAO {
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
                 p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
-                p.setQuantità(rs.getInt(6));
+                p.setQuantita(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 prodotti.add(p);
             }
@@ -67,7 +67,7 @@ public class ProdottoDAO {
             ps.setString(3, prodotto.getTitolo());
             ps.setString(4, prodotto.getDescrizione());
             ps.setString(5, prodotto.getTipo().toString());
-            ps.setInt(6, prodotto.getQuantità());
+            ps.setInt(6, prodotto.getQuantita());
             ps.setFloat(7, prodotto.getPrezzo());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
