@@ -162,7 +162,7 @@
                                         </li>
                                     </ul>
 
-                                    <li class="col-md-6">
+                                    <li class="col-md-6" style="width: 20%">
                                         <form action="#">
                                             <button type="submit" class="btn">RINNOVA</button>
                                         </form>
