@@ -31,13 +31,10 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
             requestDispatcher.forward(request, response);
         } else {
+            List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
+            request.setAttribute("metodi", metodi);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
             requestDispatcher.forward(request, response);
-            List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
-            for(MetodoPagamento m:metodi){
-                System.out.println(m.toString());
-            }
-            request.setAttribute("metodi", metodi);
         }
 
     }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,21 +145,29 @@
                                 <form action="SottoscrizioneAbbonamentoServlet" method="post">
                                     <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                                     <ul class="row">
-                                        <c:forEach items="${metodi}" var="pr">
-                                            <h4><c:out value="${pr.numeroCarta}" /></h4>
-                                        </c:forEach>
+
                                         <!-- CARTE INSERITE -->
                                         <li class="col-md-6">
 
                                             <label> CARTE
                                                 <div class="quinty">
                                                     <select class="selectpicker" name="tipo">
-
+                                                        <c:forEach items="${metodi}" var="pr">
+                                                            <option><c:out value="${pr.numeroCarta}"/></option>
+                                                        </c:forEach>
                                                     </select>
                                                 </div>
                                             </label>
+
                                         </li>
                                     </ul>
+
+                                    <li class="col-md-6">
+                                        <form action="#">
+                                            <button type="submit" class="btn">RINNOVA</button>
+                                        </form>
+                                    </li>
+
                                     <!-- PHONE -->
                                     <li class="col-md-6">
                                         <form action="abbonamento.jsp">
