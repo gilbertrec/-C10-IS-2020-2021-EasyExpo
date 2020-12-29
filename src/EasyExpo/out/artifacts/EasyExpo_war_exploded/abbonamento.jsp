@@ -152,14 +152,14 @@
                                         <!-- NOME INTESTATARIO -->
                                         <li class="col-md-6">
                                             <label> NOME INTESTATARIO
-                                                <input type="text" name="nomeIntestario" value="" placeholder="">
+                                                <input type="text" name="nomeIntestatario" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- DATA SCADENZA -->
                                         <li class="col-md-6">
                                             <label> DATA SCADENZA
-                                                <input type="date" id="datascadenza" value="" placeholder="">
+                                                <input type="date" name="dataScadenza" value="" placeholder="">
                                             </label>
                                         </li>
 

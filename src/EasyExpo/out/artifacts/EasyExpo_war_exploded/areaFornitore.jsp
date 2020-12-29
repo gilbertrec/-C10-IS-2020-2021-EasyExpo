@@ -32,7 +32,7 @@
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
                     <li>
-                        <form action="SottoscrizioneAbbonamentoServlet" method="post">
+                        <form action="AbbonamentoServlet" method="post">
                             <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                             <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
                              padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">ABBONAMENTO</button>
