@@ -45,7 +45,10 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
+                String a = rs.getString(5);
+                Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
+                p.setTipo(t);
+                //p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 return p;

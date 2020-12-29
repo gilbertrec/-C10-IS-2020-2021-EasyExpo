@@ -89,6 +89,7 @@ public class Prodotto {
     private String titolo;
     private String descrizione;
 
+
     public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
     private int quantità;
