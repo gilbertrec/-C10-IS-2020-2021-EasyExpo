@@ -1,3 +1,4 @@
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'basedidati';
 Drop Database if exists EasyExpo;
 CREATE DATABASE EasyExpo;
 use EasyExpo;
@@ -33,7 +34,7 @@ CREATE TABLE Prodotto(
     partitaIva varchar(11) not null,
     titolo varchar(100) not null,
     descrizione varchar(1024) not null,
-    tipo ENUM('servizio', 'attrezzatura'),
+    tipo ENUM('SERVIZIO', 'ATTREZZATURA'),
     quantita int not null,
     prezzo decimal not null,
     primary key(idProdotto, partitaIva),
@@ -51,14 +52,14 @@ CREATE TABLE TagProdotto(
     idTag int not null,
     idProdotto int not null,
     partitaIva varchar(11) not null,
-    primary key(idTag, idProdotto, partitaIva),
+    primary key(idTag, partitaIva, idProdotto),
 	foreign key(idTag) references Tag(idTag)
     on delete cascade
     on update cascade,
 	foreign key(idProdotto) references Prodotto(idProdotto)
     on delete cascade
     on update cascade,
-    foreign key(partitaIva) references Fornitore(partitaIva)
+    foreign key(partitaIva) references Prodotto(partitaIva)
     on delete cascade
     on update cascade
 );
@@ -72,7 +73,7 @@ CREATE TABLE RichiestaPreventivo(
     descrizioneEvento varchar(1024) not null,
     nota varchar(300),
     dataRichiesta date not null,
-    stato ENUM('in_attesa', 'confermato', 'rifiutato') not null,
+    stato ENUM('IN_ATTESA', 'CONFERMATO', 'RIFIUTATO') not null,
     foreign key(codiceFiscale) references Cliente(codiceFiscale)
     on delete cascade
     on update cascade,
@@ -85,6 +86,7 @@ CREATE TABLE ProdottoRichiesta(
 	id int auto_increment not null primary key,
     idRichiesta int not null,
     idProdotto int not null,
+    partitaIva varchar(11) not null,
     numColli int not null,
     prezzo decimal not null,
     dataInizioNoleggio date not null,
@@ -93,6 +95,9 @@ CREATE TABLE ProdottoRichiesta(
     on delete cascade
     on update cascade,
     foreign key(idProdotto) references Prodotto(idProdotto)
+    on delete cascade
+    on update cascade,
+    foreign key(partitaIva) references Fornitore(partitaIva)
     on delete cascade
     on update cascade
 );
@@ -104,6 +109,7 @@ CREATE TABLE Preventivo(
     codiceFiscale varchar(16) not null,
     dataPreventivo date not null,
     prezzoTotale decimal not null,
+    nota varchar(200), 
 	foreign key(idRichiesta) references RichiestaPreventivo(idRichiesta)
     on delete cascade
     on update cascade,
@@ -155,10 +161,10 @@ INSERT INTO Admin VALUES
 ("strumolos@virgilio.it", sha2('sabatinostrumolo*', 512));
 
 INSERT INTO Prodotto VALUES
-(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "attrezzatura", 5, 99.90),
-(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "servizio", 9, 50.00),
-(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "attrezzatura", 50, 150.00),
-(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "servizio", 40, 180.00);
+(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "ATTREZZATURA", 5, 99.90),
+(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "SERVIZIO", 9, 50.00),
+(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "ATTREZZATURA", 50, 150.00),
+(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00);
 
 INSERT INTO Abbonamento VALUES
 (1,"01391350129", 20191101, 20191201),
@@ -168,15 +174,12 @@ INSERT INTO Abbonamento VALUES
 INSERT INTO MetodoPagamento VALUES
 ("1452896574587589", "03271170361", "Susanna Zaidane", 20221210, "523"),
 ("8000425678567582", "01391350129", "Filomena Blevi", 20230925, "412"),
-("4522656596232265", "01391350129", "Filomena Blevi", 20200514, "278"),
-("1232566511515165", "01602620930", "Nicola Bortuzzo", 20230612, "148");
+("4522656596232265", "01391350129", "Filomena Blevi", 20200514, "278");
 
 INSERT INTO Tag VALUES
 (123, "Musica"),
 (124, "Catering");
 
 INSERT INTO TagProdotto VALUES
-(123, 1, "01391350129"),
+(123, 1, "03271170361"),
 (124, 2, "01602620930");
-
-
