@@ -1,4 +1,4 @@
-
+src/EasyExpo/src/main/webapp/WEB-INF/lib/jstl-1.2.jar
 src/EasyExpo/src/main/java/Model/DAO/DBConnection.java
 src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT/META-INF/*
 src/EasyExpo/src/main/webapp/css/.DS_Store
@@ -16,4 +16,6 @@ src/EasyExpo/target/classes/Model/DAO/DBConnection.class
 src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT.war
 src/EasyExpo/target/EasyExpo-1.0-SNAPSHOT/META-INF/MANIFEST.MF
 src/EasyExpo/.idea/dataSources/f083806a-c6f6-4987-bc28-e1ce50fe9075.xml
+
 src/EasyExpo/.idea/dataSources/f083806a-c6f6-4987-bc28-e1ce50fe9075/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
+src/EasyExpo/src/main/webapp/WEB-INF/lib/jstl-1.2.jar
