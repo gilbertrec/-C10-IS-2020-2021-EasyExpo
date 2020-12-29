@@ -75,7 +75,7 @@ public class RegistrazioneClienteServlet extends HttpServlet {
         clienteDAO.createCliente(cliente);
         request.getSession().setAttribute("cliente", cliente);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/registrazionesuccesso.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(request, response);
     }
 }

@@ -81,7 +81,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
         fornitoreDAO.createFornitore(fornitore);
         request.getSession().setAttribute("fornitore", fornitore);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/registrazionesuccesso.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(request, response);
     }
 }

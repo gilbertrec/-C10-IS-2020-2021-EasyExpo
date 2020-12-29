@@ -80,6 +80,22 @@
                                 </form>
 
                             </div>
+                            <!-- SUB TOTAL -->
+                            <div class="col-sm-5">
+                                <h6 style="margin-bottom: 80px">REGISTRATI COME...</h6>
+
+                                <ul class="login-with">
+                                    <li>
+                                        <a href="registrazioneCliente.jsp" style="background: #2d3a4b; color: white">CLIENTE</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="registrazioneFornitore.jsp" style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
+
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
