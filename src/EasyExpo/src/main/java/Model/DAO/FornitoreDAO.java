@@ -50,7 +50,7 @@ public class FornitoreDAO {
      * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  Fornitore - Oggetto di tipo {@link Fornitore}
+     * @return List <Fornitore> - {@link List} di oggetti di tipo {@link Fornitore}
      *
      */
     public List<Fornitore> doRetrieveAll(int offset, int limit) {

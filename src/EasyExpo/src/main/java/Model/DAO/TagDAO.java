@@ -1,10 +1,26 @@
 package Model.DAO;
 
+import Model.POJO.RichiestaPreventivo;
 import Model.POJO.Tag;
 
 import java.sql.*;
 
+/**
+ * <p> TagDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Tag </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class TagDAO {
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo Tag correlato ad un idTag dato in input
+     * @param  idTag  codice identificativo, Intero
+     * @return  Tag - Oggetto di tipo {@link Tag}
+     *
+     */
 
     public Tag doRetrieveByIdTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {
@@ -24,6 +40,12 @@ public class TagDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Tag
+     * @param tag  Oggetto di tipo {@link Tag}
+     *
+     */
+
     public void createTag(Tag tag) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -41,6 +63,11 @@ public class TagDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che elimina dal DB l'istanza Tag correlata all'idTag dato in input
+     * @param idTag codice identificativo, Intero
+     */
 
     public void deleteTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {

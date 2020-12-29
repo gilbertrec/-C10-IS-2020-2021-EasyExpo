@@ -1,12 +1,30 @@
 package Model.DAO;
 
+import Model.POJO.Prodotto;
+import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> RichiestaPreventivoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto RichiestaPreventivo </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class RichiestaPreventivoDAO {
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo RichiestaPreventivo correlato ad un idRichiesta dato in input
+     * @param  idRichiesta  codice identificativo, Intero
+     * @return  RichiestaPreventivo - Oggetto di tipo {@link RichiestaPreventivo}
+     *
+     */
+
     public RichiestaPreventivo doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -32,6 +50,15 @@ public class RichiestaPreventivoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  List <RichiestaPreventivo> - {@link List} di oggetti di tipo {@link RichiestaPreventivo}
+     *
+     */
+
     public List<RichiestaPreventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -59,6 +86,13 @@ public class RichiestaPreventivoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo RichiestaPreventivo
+     * @param richiestaPreventivo  Oggetto di tipo {@link RichiestaPreventivo}
+     *
+     */
+
     public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -84,6 +118,11 @@ public class RichiestaPreventivoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che elimina dal DB l'istanza RichiestaPreventivo correlata all'idRichiesta dato in input
+     * @param idRichiesta codice identificativo, Intero
+     */
 
     public void deleteRichiestePreventivo(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {

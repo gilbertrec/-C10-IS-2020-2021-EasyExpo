@@ -19,7 +19,7 @@ public class PreventivoDAO {
 
     /**
      * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input
-     * @param  idPreventivo  codice identificativco, Intero
+     * @param  idPreventivo  codice identificativo, Intero
      * @return  Preventivo - Oggetto di tipo {@link Preventivo}
      *
      */
@@ -50,7 +50,7 @@ public class PreventivoDAO {
      * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  Preventivo - Oggetto di tipo {@link Preventivo}
+     * @return  List <Preventivo> - {@link List} di oggetti di tipo {@link Preventivo}
      *
      */
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
