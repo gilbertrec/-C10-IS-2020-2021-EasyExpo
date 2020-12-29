@@ -74,14 +74,11 @@
 
                                         <!-- LOGIN -->
                                         <li class="col-md-4">
-                                            <button type="submit" class="btn">LOGIN</button><br>
+                                            <button type="submit" class="btn">LOGIN</button>
                                         </li>
                                     </ul>
                                 </form>
-                                <!-- Registrati come fornitore -->
-                                <a href="RegistrazioneFornitore" class="btn" style="margin-top: 20px; margin-right: 20px">REGISTRATI COME FORNITORE</a>
-                                <!-- Registrati come cliente -->
-                                <a href="RegistrazioneCliente" class="btn" style="margin-top: 20px; margin-right: 20px">REGISTRATI COME CLIENTE</a>
+
                             </div>
                         </div>
                     </div>

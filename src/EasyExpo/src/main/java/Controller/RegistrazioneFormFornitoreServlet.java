@@ -18,7 +18,7 @@ public class RegistrazioneFormFornitoreServlet extends HttpServlet {
         if (request.getSession().getAttribute("fornitore") != null) {
             throw new MyServletException("Fornitore loggato.");
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/formRegistrazione.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/formRegistrazioneF.jsp");
         requestDispatcher.forward(request, response);
     }
 }
