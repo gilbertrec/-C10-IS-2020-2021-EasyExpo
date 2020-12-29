@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lucreziarobustelli
-  Date: 21/12/2020
-  Time: 10:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,12 +75,25 @@
                         <li class="dropdown user-acc"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                                          role="button"><i class="icon-user"></i> </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <h6>Ciao! ${cliente.nome}</h6>
-                                </li>
-                                <li><a href="#">CARRELLO</a></li>
-                                <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
-                                <li><a href="LogoutServlet">LOGOUT</a></li>
+                                <c:choose>
+                                    <c:when test="${cliente != null}">
+                                        <li>
+                                            <h6>Ciao ${cliente.nome} !</h6>
+                                        </li>
+                                        <li><a href="#">CARRELLO</a></li>
+                                        <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
+                                        <li><a href="LogoutServlet">LOGOUT</a></li>
+                                    </c:when>
+                                    <c:when test="${fornitore != null}">
+                                        <li>
+                                            <h6>Ciao ${fornitore.nome} !</h6>
+                                        </li>
+                                        <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
+                                        <li><a href="areaFornitore.jsp"> Catalogo</a></li>
+                                        <li><a href="#."> Abbonamento</a></li>
+                                        <li><a href="LogoutServlet">LOGOUT</a></li>
+                                    </c:when>
+                                </c:choose>
                             </ul>
                         </li>
 

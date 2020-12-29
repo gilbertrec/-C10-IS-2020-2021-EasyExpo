@@ -58,53 +58,9 @@
 
     <!-- header -->
     <header>
-        <div class="sticky">
-            <div class="container">
-
-                <!-- Logo -->
-                <div class="logo"><a href="areaFornitore.jsp"><img class="img-responsive" src="images/logomacchia2.png"
-                                                                   alt=""></a></div>
-                <nav class="navbar ownmenu">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#nav-open-btn" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"><i class="fa fa-navicon"></i></span></button>
-                    </div>
-
-                    <!-- NAV -->
-                    <div class="collapse navbar-collapse" id="nav-open-btn">
-                        <ul class="nav">
-                            <li class="dropdown active"><a href="areaFornitore.jsp" class="dropdown-toggle">Profilo</a>
-                            </li>
-                            <li><a href="chiSiamo.jsp">Chi siamo</a></li>
-                            <li><a href="contatti.jsp">Contatti</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Nav Right -->
-                    <div class="nav-right">
-                        <ul class="navbar-right">
-
-                            <!-- USER INFO -->
-                            <li class="dropdown user-acc"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                             role="button"><i class="icon-user"></i> </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <h6>Ciao! ${fornitore.nome}</h6>
-                                    </li>
-                                    <li><a href="areaFornitore.jsp">CATALOGO</a></li>
-                                    <li><a href="areaFornitore.jsp">AREA CLIENTE</a></li>
-                                    <li><a href="LogoutServlet">LOGOUT</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        </li>
-
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <jsp:include page="/header.jsp">
+            <jsp:param name="pageTitle" value="Area Fornitore"/>
+        </jsp:include>
     </header>
 
     <!--======= SUB BANNER =========-->
@@ -117,13 +73,15 @@
                     Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
-                    <li>
-                        <form action="SottoscrizioneAbbonamentoServlet" method="post">
-                            <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
-                            <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
-                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">ABBONAMENTO</button>
-                        </form>
-                    </li>
+                <li>
+                    <form action="SottoscrizioneAbbonamentoServlet" method="post">
+                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
+                        <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
+                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">
+                            ABBONAMENTO
+                        </button>
+                    </form>
+                </li>
             </div>
         </div>
     </section>
@@ -164,7 +122,7 @@
                                         <div class="position-center-center">
                                             <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i
                                                     class="icon-magnifier"></i><a href="EliminaProdottoServlet"><i
-                                                    class="icon-trash"></i><a href=ModificaProdottoServlet"><i
+                                                    class="icon-trash"></i><a href="ModificaProdottoServlet"><i
                                                     class="icon-pencil"></i></a></div>
                                         </div>
                                     </div>

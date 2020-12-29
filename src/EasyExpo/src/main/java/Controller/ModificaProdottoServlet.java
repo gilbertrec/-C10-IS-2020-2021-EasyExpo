@@ -18,9 +18,9 @@ public class ModificaProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("prodottoId"));
+       /* int id = Integer.parseInt(request.getParameter("prodottoId"));
         ProdottoDAO prodottodao = new ProdottoDAO() ;
-        Prodotto prodotto = prodottodao.doRetrieveByIdProdotto(id);
+        Prodotto prodotto = prodottodao.doRetrieveByIdProdotto(id);*/
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/modificaProdotto.jsp");
         requestDispatcher.forward(request, response);
     }

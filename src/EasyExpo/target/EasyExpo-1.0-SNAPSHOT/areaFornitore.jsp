@@ -93,7 +93,7 @@
                                         <h6>Ciao! ${fornitore.nome}</h6>
                                     </li>
                                     <li><a href="areaFornitore.jsp">CATALOGO</a></li>
-                                    <li><a href="areaFornitore.jsp">AREA CLIENTE</a></li>
+                                    <li><a href="areaFornitore.jsp">AREA FORNITORE</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </ul>
                             </li>
@@ -117,13 +117,15 @@
                     Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
-                    <li>
-                        <form action="SottoscrizioneAbbonamentoServlet" method="post">
-                            <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
-                            <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
-                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">ABBONAMENTO</button>
-                        </form>
-                    </li>
+                <li>
+                    <form action="SottoscrizioneAbbonamentoServlet" method="post">
+                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
+                        <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
+                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">
+                            ABBONAMENTO
+                        </button>
+                    </form>
+                </li>
             </div>
         </div>
     </section>
@@ -164,7 +166,7 @@
                                         <div class="position-center-center">
                                             <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i
                                                     class="icon-magnifier"></i><a href="EliminaProdottoServlet"><i
-                                                    class="icon-trash"></i><a href=ModificaProdottoServlet"><i
+                                                    class="icon-trash"></i><a href="ModificaProdottoServlet"><i
                                                     class="icon-pencil"></i></a></div>
                                         </div>
                                     </div>
