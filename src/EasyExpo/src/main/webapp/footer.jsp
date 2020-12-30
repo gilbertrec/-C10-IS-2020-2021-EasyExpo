@@ -8,11 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
 </head>
 <body>
 <!--======= FOOTER =========-->
-<footer>
     <div class="container">
 
         <!-- ABOUT Location -->
@@ -51,7 +49,6 @@
             <div class="scroll"><a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a></div>
         </div>
     </div>
-</footer>
 
 </body>
 </html>

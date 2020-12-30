@@ -38,92 +38,100 @@
     <![endif]-->
 
 
-
 </head>
 <body>
 <!-- header -->
-    <div class="sticky">
-        <div class="container">
+<div class="sticky">
+    <div class="container">
 
-            <!-- Logo -->
-            <div class="logo"><a href="index.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
-            </div>
-            <nav class="navbar ownmenu">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#nav-open-btn" aria-expanded="false"><span
-                            class="sr-only">Toggle navigation</span> <span class="icon-bar"><i
-                            class="fa fa-navicon"></i></span></button>
-                </div>
-
-                <!-- NAV -->
-                <div class="collapse navbar-collapse" id="nav-open-btn">
-                    <ul class="nav">
-                        <li class="dropdown active"><a href="index.jsp" class="dropdown-toggle">Home</a>
-                        </li>
-                        <li><a href="chiSiamo.jsp">Chi siamo</a></li>
-                        <li><a href="contatti.jsp">Contatti</a></li>
-                    </ul>
-                </div>
-
-                <!-- Nav Right -->
-                <div class="nav-right">
-                    <ul class="navbar-right">
-
-                        <!-- USER INFO -->
-                        <li class="dropdown user-acc"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                         role="button"><i class="icon-user"></i> </a>
-                            <ul class="dropdown-menu">
-                                <c:choose>
-                                    <c:when test="${cliente != null}">
-                                        <li>
-                                            <h6>Ciao ${cliente.nome} !</h6>
-                                        </li>
-                                        <li><a href="#">CARRELLO</a></li>
-                                        <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
-                                        <li><a href="LogoutServlet">LOGOUT</a></li>
-                                    </c:when>
-                                    <c:when test="${fornitore != null}">
-                                        <li>
-                                            <h6>Ciao ${fornitore.nome} !</h6>
-                                        </li>
-                                        <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
-                                        <li><a href="areaFornitore.jsp"> Catalogo</a></li>
-                                        <li><a href="#."> Abbonamento</a></li>
-                                        <li><a href="LogoutServlet">LOGOUT</a></li>
-                                    </c:when>
-                                </c:choose>
-                            </ul>
-                        </li>
-
-                        <!-- USER BASKET -->
-                        <li class="dropdown user-basket"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            role="button" aria-haspopup="true" aria-expanded="true"><i
-                                class="icon-basket-loaded"></i> </a>
-                            <ul class="dropdown-menu">
-
-                                <li>
-                                    <h5 class="text-center">TOTALE: ${prezzo}</h5>
-                                </li>
-                                <li class="margin-0">
-                                    <div class="row">
-                                        <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <!-- SEARCH BAR -->
-                        
-                        <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
-                                class=" icon-magnifier"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <!-- Logo -->
+        <div class="logo"><a href="index.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
         </div>
+        <nav class="navbar ownmenu">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#nav-open-btn" aria-expanded="false"><span
+                        class="sr-only">Toggle navigation</span> <span class="icon-bar"><i
+                        class="fa fa-navicon"></i></span></button>
+            </div>
+
+            <!-- NAV -->
+            <div class="collapse navbar-collapse" id="nav-open-btn">
+                <ul class="nav">
+                    <c:choose>
+                        <c:when test="${cliente == null and fornitore == null}">
+                            <li><a href="chiSiamo.jsp">Chi siamo</a></li>
+                            <li><a href="contatti.jsp">Contatti</a></li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <li class="dropdown active"><a href="index.jsp" class="dropdown-toggle">Home</a></li>
+                            <li><a href="chiSiamo.jsp">Chi siamo</a></li>
+                            <li><a href="contatti.jsp">Contatti</a></li>
+                        </c:otherwise>
+
+                    </c:choose>
+                </ul>
+            </div>
+
+            <!-- Nav Right -->
+            <div class="nav-right">
+                <ul class="navbar-right">
+
+                    <!-- USER INFO -->
+                    <li class="dropdown user-acc"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                     role="button"><i class="icon-user"></i> </a>
+                        <ul class="dropdown-menu">
+                            <c:choose>
+                                <c:when test="${cliente != null}">
+                                    <li>
+                                        <h6>Ciao ${cliente.nome} !</h6>
+                                    </li>
+                                    <li><a href="#">CARRELLO</a></li>
+                                    <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
+                                    <li><a href="LogoutServlet">LOGOUT</a></li>
+                                </c:when>
+                                <c:when test="${fornitore != null}">
+                                    <li>
+                                        <h6>Ciao ${fornitore.nome} !</h6>
+                                    </li>
+                                    <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
+                                    <li><a href="areaFornitore.jsp"> Catalogo</a></li>
+                                    <li><a href="#."> Abbonamento</a></li>
+                                    <li><a href="LogoutServlet">LOGOUT</a></li>
+                                </c:when>
+                            </c:choose>
+                        </ul>
+                    </li>
+
+                    <!-- USER BASKET -->
+                    <li class="dropdown user-basket"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                        role="button" aria-haspopup="true" aria-expanded="true"><i
+                            class="icon-basket-loaded"></i> </a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <h5 class="text-center">TOTALE: ${prezzo}</h5>
+                            </li>
+                            <li class="margin-0">
+                                <div class="row">
+                                    <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- SEARCH BAR -->
+
+                    <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
+                            class=" icon-magnifier"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+</div>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/own-menu.js"></script>
