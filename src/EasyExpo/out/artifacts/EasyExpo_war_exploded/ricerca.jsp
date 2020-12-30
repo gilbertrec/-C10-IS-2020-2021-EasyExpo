@@ -3,7 +3,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="css/ricerca.css" rel="stylesheet">
     <script>
         function ricerca() {
             var ricercato=document.getElementById("search").value;
@@ -24,14 +26,16 @@
                         {
                             if(x[0].data[i].titolo!=null) {
                                 var html =
-                                    '<div class="item-prodotto" style="padding: 3px">' +
-                                    '<h5>' + x[0].data[i].titolo + '</h5>' +
+                                    '<div class="item-prodotto" style="padding: 3px; display: inline-block; width: 10%; margin: 40px 2%">' +
+                                    '<div id="flip-bob" class="flip-card-front">'+
+                                    '<h7>' + x[0].data[i].titolo + '</h7>' +
+                                    '</div>'+
                                     '</div>';
                             }
                             if(x[0].data[i].nome!=null) {
                                 var html =
-                                    '<div class="item-fornitore" style="padding: 3px">' +
-                                    '<h5 style="color: #606021">' + x[0].data[i].nome + '</h5>' +
+                                    '<div class="item-fornitore" style="padding: 3px; display: inline-block; width: 10%; margin: 40px 2%">' +
+                                    '<h7 style="color: #606021">' + x[0].data[i].nome + '</h7>' +
                                     '</div>';
                             }
 
