@@ -61,8 +61,17 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
 
         try {
             java.util.Date utilDate = format.parse(dataScadenza);
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            metodo.setDataScadenza(sqlDate);
+            java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(corrente);
+            java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
+            if(utilDate.before(sc)){
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+                metodo.setDataScadenza(sqlDate);
+            }else{
+                throw new MyServletException("Carta scaduta");
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

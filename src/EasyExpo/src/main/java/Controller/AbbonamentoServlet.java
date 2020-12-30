@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -28,7 +29,7 @@ import java.util.Locale;
 @WebServlet("/AbbonamentoServlet")
 public class AbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
+        AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
         MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
         /*HttpSession session = request.getSession();
         Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
@@ -42,10 +43,24 @@ public class AbbonamentoServlet extends HttpServlet {
             List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
             request.setAttribute("metodi", metodi);
 
-            //controllo della scadenza della data
+            java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(corrente);
+            java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
+            boolean flag = false;
+            for (Abbonamento a : abbonamenti) {
+                if (a.getDataFine().after(sc)) {
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
+                requestDispatcher.forward(request, response);
+            } else {
+                throw new MyServletException("Sei gia abbonato!");
+            }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
-            requestDispatcher.forward(request, response);
+
         }
 
     }

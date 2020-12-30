@@ -142,7 +142,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-12">
                                 <h6>Inserisci metodo di pagamento</h6>
-                                <form action="SottoscrizioneAbbonamentoServlet" method="post">
+                                <form action="RinnovoAbbonamentoServlet" method="post">
                                     <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                                     <ul class="row">
 
@@ -163,7 +163,7 @@
                                     </ul>
 
                                     <li class="col-md-6" style="width: 20%">
-                                        <form action="#">
+                                        <form>
                                             <button type="submit" class="btn">RINNOVA</button>
                                         </form>
                                     </li>
