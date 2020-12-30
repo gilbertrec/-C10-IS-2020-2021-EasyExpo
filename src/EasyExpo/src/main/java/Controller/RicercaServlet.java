@@ -44,7 +44,7 @@ public class RicercaServlet extends HttpServlet{
 
 
         List<Prodotto> prodotti = prodottoDao.doRetrieveByTitolo(search);
-        List<Fornitore> fornitori = fornitoreDAO.doRetrieveByNome(search);
+        List<Fornitore> fornitori = fornitoreDAO.doRetrieveByNomeECognome(search);
         List<Tag> tag = tagDAO.doRetrieveByNome(search);
 
 
@@ -55,7 +55,8 @@ public class RicercaServlet extends HttpServlet{
             json += "{" +
                     "\"id\":\"" + prodotti.get(i).getIdProdotto() + "\"," +
                     "\"partitaIVA\":\"" + prodotti.get(i).getPartitaIva() + "\"," +
-                    "\"titolo\":\"" + prodotti.get(i).getTitolo() + "\"" +
+                    "\"titolo\":\"" + prodotti.get(i).getTitolo() + "\"," +
+                    "\"prezzo\":\"" + prodotti.get(i).getPrezzo() + "\"" +
                     "}";
             first = false;
         }
@@ -67,7 +68,9 @@ public class RicercaServlet extends HttpServlet{
 
             json += "{" +
                     "\"partitaIVAfornitore\":\"" + fornitori.get(i).getPartitaIva() + "\"," +
-                    "\"nome\":\"" + fornitori.get(i).getNome() + "\"" +
+                    "\"luogoUbicazione\":\"" + fornitori.get(i).getLuogoUbicazione() + "\"," +
+                    "\"nome\":\"" + fornitori.get(i).getNome() + "\"," +
+                    "\"cognome\":\"" + fornitori.get(i).getCognome() + "\"" +
                     "}";
             first = false;
         }
@@ -86,8 +89,8 @@ public class RicercaServlet extends HttpServlet{
                 json += ",";
             json += "{" +
                     "\"id\":\"" + prod.getIdProdotto() + "\"," +
-                    "\"partitaIVA\":\"" + prod.getPartitaIva() + "\"," +
-                    "\"titolo\":\"" + prod.getTitolo() + "\"" +
+                    "\"titolo\":\"" + prod.getTitolo() + "\"," +
+                    "\"prezzo\":\"" + prod.getPrezzo() + "\"" +
                     "}";
         }
 

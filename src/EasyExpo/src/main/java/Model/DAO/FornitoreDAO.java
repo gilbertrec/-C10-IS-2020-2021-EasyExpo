@@ -152,6 +152,32 @@ public class FornitoreDAO {
 
     }
 
+    public List<Fornitore> doRetrieveByNomeECognome(String ricercato) {
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT partitaIva, nome, cognome, luogoUbicazione FROM Fornitore WHERE nome LIKE ? OR cognome LIKE ? ");
+            ps.setString(1, "%" + ricercato + "%");
+            ps.setString(2,"%" + ricercato + "%");
+
+            ArrayList<Fornitore> fornitore = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                f.setCognome(rs.getString(3));
+                f.setLuogoUbicazione(rs.getString(4));
+                fornitore.add(f);
+            }
+            return fornitore;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public void deleteFornitore(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Fornitore WHERE partitaIva=?");

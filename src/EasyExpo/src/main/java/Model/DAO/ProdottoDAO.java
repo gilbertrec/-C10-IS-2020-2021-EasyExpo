@@ -21,7 +21,9 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
+                String a = rs.getString(5);
+                Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
+                p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 return p;
@@ -48,12 +50,39 @@ public class ProdottoDAO {
                 String a = rs.getString(5);
                 Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
                 p.setTipo(t);
-                //p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 return p;
             }
             return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Prodotto> doRetrieveByPartitaIva(String partitaIva) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT *  FROM Prodotto as p WHERE p.partitaIva=?");
+            ps.setString(1, partitaIva);
+
+            ArrayList<Prodotto> prodotti = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Prodotto p = new Prodotto();
+                p.setIdProdotto(rs.getInt(1));
+                p.setPartitaIva(rs.getString(2));
+                p.setTitolo(rs.getString(3));
+                p.setDescrizione(rs.getString(4));
+                String a = rs.getString(5);
+                Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
+                p.setTipo(t);
+                p.setQuantità(rs.getInt(6));
+                p.setPrezzo(rs.getFloat(7));
+                prodotti.add(p);
+            }
+            return prodotti;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -73,7 +102,9 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setDescrizione(rs.getString(4));
-                p.setTipo(Prodotto.Tipo.valueOf(rs.getString(5)));
+                String a = rs.getString(5);
+                Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
+                p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
                 prodotti.add(p);
@@ -123,7 +154,7 @@ public class ProdottoDAO {
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT idProdotto, partitaIva, titolo FROM Prodotto WHERE titolo LIKE ? ");
+                    "SELECT idProdotto, partitaIva, titolo, prezzo FROM Prodotto WHERE titolo LIKE ? ");
             ps.setString(1, "%" + ricercato + "%");
 
             ArrayList<Prodotto> prodotto = new ArrayList<>();
@@ -133,6 +164,7 @@ public class ProdottoDAO {
                 p.setIdProdotto(rs.getInt(1));
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
+                p.setPrezzo(rs.getFloat(4));
                 prodotto.add(p);
             }
             return prodotto;
