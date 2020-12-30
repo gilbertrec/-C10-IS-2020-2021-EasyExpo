@@ -2,9 +2,12 @@ package Controller;
 
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoDAO;
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 
+import Model.POJO.Prodotto;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +37,9 @@ public class LoginServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }else if(cliente == null && fornitore != null){
             request.getSession().setAttribute("fornitore", fornitore);
-
+            ProdottoDAO prodottoDAO = new ProdottoDAO();
+            List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(fornitore.getPartitaIva());
+            request.getSession().setAttribute("prodotti", prodotti);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
             requestDispatcher.forward(request,response);
         }

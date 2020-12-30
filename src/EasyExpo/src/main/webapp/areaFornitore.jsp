@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,7 +85,7 @@
                                                         class="icon-magnifier"></i></a>
                                                 <a href="EliminaProdottoServlet"><i
                                                         class="icon-trash"></i></a>
-                                                <a href="ModificaProdottoServlet?id=5&?partitaIva=10"><i
+                                                <a href="ModificaProdottoServlet?id=${contenuto.id}&?partitaIva=${contenuto.partitaIva}"><i
                                                         class="icon-pencil"></i></a>
                                             </div>
                                         </div>
@@ -93,9 +94,8 @@
                                 <!-- Item Name -->
                                 <!-- devo aggiungere anche la partita iva -->
                                 <div class="item-name"><a
-                                        href="Prodotto?id=<c:out value="${contenuto.id}"/>&?partitaIva=<c:out value="${contenuto.partitaIva}"/>"><c:out
-                                        value="${contenuto.titolo}"/></a>
-                                    <p>Lorem ipsum dolor sit amet</p>
+                                        href="Prodotto?id=${contenuto.id}&?partitaIva=${contenuto.partitaIva}"></a>
+                                    <p>${contenuto.id},${contenuto.partitaIva}</p>
                                 </div>
                                 <!-- Price -->
                                 <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span>
