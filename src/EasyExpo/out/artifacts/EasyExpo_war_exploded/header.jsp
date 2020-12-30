@@ -63,13 +63,16 @@
                             <li><a href="chiSiamo.jsp">Chi siamo</a></li>
                             <li><a href="contatti.jsp">Contatti</a></li>
                         </c:when>
-
-                        <c:otherwise>
+                        <c:when test="${cliente != null}">
                             <li class="dropdown active"><a href="index.jsp" class="dropdown-toggle">Home</a></li>
                             <li><a href="chiSiamo.jsp">Chi siamo</a></li>
                             <li><a href="contatti.jsp">Contatti</a></li>
-                        </c:otherwise>
-
+                        </c:when>
+                        <c:when test="${fornitore != null}">
+                            <li class="dropdown active"><a href="areaFornitore.jsp" class="dropdown-toggle">Profilo</a></li>
+                            <li><a href="chiSiamo.jsp">Chi siamo</a></li>
+                            <li><a href="contatti.jsp">Contatti</a></li>
+                        </c:when>
                     </c:choose>
                 </ul>
             </div>
@@ -97,7 +100,6 @@
                                     </li>
                                     <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
                                     <li><a href="areaFornitore.jsp"> Catalogo</a></li>
-                                    <li><a href="#."> Abbonamento</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                             </c:choose>

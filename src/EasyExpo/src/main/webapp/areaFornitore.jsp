@@ -70,29 +70,41 @@
                         <!-- Item -->
                         <div class="col-md-3">
                             <div class="item">
-                                <!-- Item img -->
-                                <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
-                                        class="img-2" src="images/product-2.jpg" alt="">
-                                    <!-- Overlay -->
-                                    <div class="overlay">
-                                        <div class="position-center-center">
-                                            <div class="inn"><a href="images/product-2-1.jpg" data-lighter><i
-                                                    class="icon-magnifier"></i><a href="EliminaProdottoServlet"><i
-                                                    class="icon-trash"></i><a href=ModificaProdottoServlet"><i
-                                                    class="icon-pencil"></i></a></div>
+                                <c:forEach items="${prodotti}" var="contenuto">
+                                    <!-- Item img -->
+                                    <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
+                                            class="img-2" src="images/product-2.jpg" alt="">
+                                        <!-- Overlay -->
+                                        <div class="overlay">
+                                            <div class="position-center-center">
+                                                <div class="inn">
+                                                        <a href="images/product-2-1.jpg" data-lighter><i
+                                                                class="icon-magnifier"></i></a>
+                                                            <a href="EliminaProdottoServlet"><i
+                                                                    class="icon-trash"></i></a>
+                                                                <a href=ModificaProdottoServlet"><i
+                                                        class="icon-pencil"></i></a>
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- Item Name -->
+                                    <!-- devo aggiungere anche la partita iva -->
+                                    <div class="item-name"><a href="Prodotto?id?partitaIva=<c:out value="${contenuto.id}"/>"><c:out value="${contenuto.titolo}" /></a>
+                                        <p>Lorem ipsum dolor sit amet</p>
+                                    </div>
+                                    <!-- Price -->
+                                    <span class="price"><small>€</small><c:out value="${contenuto.prezzo_v}"/></span>
+                                </c:forEach>
+
                                 </div>
-                                <!-- Item Name -->
-                                <div class="item-name"><a href="#.">stone cup</a>
-                                    <p>Lorem ipsum dolor sit amet</p>
-                                </div>
-                                <!-- Price -->
-                                <span class="price"><small>$</small>299</span></div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
+
         </section>
 
         <!-- About -->
@@ -160,19 +172,6 @@
         </div>
     </footer>
 
-    <!--======= RIGHTS =========-->
-
 </div>
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/own-menu.js"></script>
-<script src="js/jquery.lighter.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
-<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>

@@ -41,6 +41,9 @@ public class AbbonamentoServlet extends HttpServlet {
         } else {
             List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
             request.setAttribute("metodi", metodi);
+
+            //controllo della scadenza della data
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
             requestDispatcher.forward(request, response);
         }
