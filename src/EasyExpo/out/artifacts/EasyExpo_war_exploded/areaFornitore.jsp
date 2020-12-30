@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +30,15 @@
                     Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
                     Ragione Sociale: ${fornitore.ragioneSociale}</p>
-                    <li>
-                        <form action="AbbonamentoServlet" method="post">
-                            <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
-                            <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
-                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">ABBONAMENTO</button>
-                        </form>
-                    </li>
+                <li>
+                    <form action="AbbonamentoServlet" method="post">
+                        <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
+                        <button style="webkit-appearance: button; cursor: pointer; background: none; margin: 0px; height: 40px; margin-top: 30px;
+                             padding: 0px 40px; background: #2d3a4b; display: inline-block; border-radius: 20px; color: white; font-size: 12px; border: 0px">
+                            ABBONAMENTO
+                        </button>
+                    </form>
+                </li>
             </div>
         </div>
     </section>
@@ -68,42 +69,44 @@
                     <div class="papular-block row">
 
                         <!-- Item -->
+                        <c:forEach items="${prodotti}" var="contenuto">
                         <div class="col-md-3">
                             <div class="item">
-                                <c:forEach items="${prodotti}" var="contenuto">
-                                    <!-- Item img -->
-                                    <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
-                                            class="img-2" src="images/product-2.jpg" alt="">
-                                        <!-- Overlay -->
-                                        <div class="overlay">
-                                            <div class="position-center-center">
-                                                <div class="inn">
-                                                        <a href="images/product-2-1.jpg" data-lighter><i
-                                                                class="icon-magnifier"></i></a>
-                                                            <a href="EliminaProdottoServlet"><i
-                                                                    class="icon-trash"></i></a>
-                                                                <a href=ModificaProdottoServlet"><i
-                                                        class="icon-pencil"></i></a>
 
-                                                </div>
+                                <!-- Item img -->
+                                <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
+                                        class="img-2" src="images/product-2.jpg" alt="">
+                                    <!-- Overlay -->
+                                    <div class="overlay">
+                                        <div class="position-center-center">
+                                            <div class="inn">
+                                                <a href="images/product-2-1.jpg" data-lighter><i
+                                                        class="icon-magnifier"></i></a>
+                                                <a href="EliminaProdottoServlet"><i
+                                                        class="icon-trash"></i></a>
+                                                <a href="ModificaProdottoServlet?id=5&?partitaIva=10"><i
+                                                        class="icon-pencil"></i></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Item Name -->
-                                    <!-- devo aggiungere anche la partita iva -->
-                                    <div class="item-name"><a href="Prodotto?id?partitaIva=<c:out value="${contenuto.id}"/>"><c:out value="${contenuto.titolo}" /></a>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                    <!-- Price -->
-                                    <span class="price"><small>€</small><c:out value="${contenuto.prezzo_v}"/></span>
+                                </div>
+                                <!-- Item Name -->
+                                <!-- devo aggiungere anche la partita iva -->
+                                <div class="item-name"><a
+                                        href="Prodotto?id=<c:out value="${contenuto.id}"/>&?partitaIva=<c:out value="${contenuto.partitaIva}"/>"><c:out
+                                        value="${contenuto.titolo}"/></a>
+                                    <p>Lorem ipsum dolor sit amet</p>
+                                </div>
+                                <!-- Price -->
+                                <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span>
                                 </c:forEach>
 
-                                </div>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
+            </div>
 
         </section>
 

@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }else if(cliente == null && fornitore != null){
             request.getSession().setAttribute("fornitore", fornitore);
+
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
             requestDispatcher.forward(request,response);
         }
