@@ -71,7 +71,7 @@ public class MetodiDiPagamentoDAO {
 
     /**
      * Metodo che elimina dal DB l'istanza MetodoPagamento correlata al numeroCarta dato in input
-     * @param numeroCarta  codice alfanumerico identificativo metodoPagamento, String
+     * @param numeroCarta Codice numerico identificativo metodoPagamento, String
      */
     public void deleteMetodoPagamento(String numeroCarta) {
         try (Connection con = DBConnection.getConnection()) {
