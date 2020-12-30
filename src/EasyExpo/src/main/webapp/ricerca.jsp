@@ -26,16 +26,17 @@
                         {
                             if(x[0].data[i].titolo!=null) {
                                 var html =
-                                    '<div class="item-prodotto" style="padding: 3px; display: inline-block; width: 10%; margin: 40px 2%">' +
-                                    '<div id="flip-bob" class="flip-card-front">'+
-                                    '<h7>' + x[0].data[i].titolo + '</h7>' +
-                                    '</div>'+
+                                    '<div class="item-prodotto">' +
+                                    '<h5>' + x[0].data[i].titolo + '</h5>' +
+                                    '<h4>' + x[0].data[i].prezzo + '€' + '</h5>' +
                                     '</div>';
                             }
                             if(x[0].data[i].nome!=null) {
                                 var html =
-                                    '<div class="item-fornitore" style="padding: 3px; display: inline-block; width: 10%; margin: 40px 2%">' +
-                                    '<h7 style="color: #606021">' + x[0].data[i].nome + '</h7>' +
+                                    '<div class="item-fornitore">' +
+                                    '<h5>' + x[0].data[i].nome + '</h5>' +
+                                    '<h5>' + x[0].data[i].cognome + '</h5>' +
+                                    '<h4>' + x[0].data[i].luogoUbicazione + '</h5>' +
                                     '</div>';
                             }
 
@@ -85,6 +86,8 @@
         </div>
 
     <div id="item" style="margin-left: 70px"></div>
+
+
 
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>
