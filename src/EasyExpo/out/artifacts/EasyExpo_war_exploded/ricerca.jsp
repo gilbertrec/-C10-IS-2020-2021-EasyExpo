@@ -25,18 +25,27 @@
                         for (var i = 0;i<x[0].data.length;i++)
                         {
                             if(x[0].data[i].titolo!=null) {
+                                /*var pa = new String("Una nuova stringa");*/
+                                /* data-idprodotto="'+x[0].data[i].id+'" */
+                                /*onClick="prodotto(this.dataset.id,\'' + x[0].data[i].partitaIVA + '\')"*/
                                 var html =
-                                    '<div class="item-prodotto">' +
+                                    '<div class="wrapper">' +
+                                    '<div class="item-prodotto" data-id="'+x[0].data[i].id+'" data-partitaIVA="'+x[0].data[i].partitaIVA+'" onclick="prodotto(this.dataset.id,\''+x[0].data[i].partitaIVA+'\')">' +
                                     '<h5>' + x[0].data[i].titolo + '</h5>' +
-                                    '<h4>' + x[0].data[i].prezzo + '€' + '</h5>' +
+
+                                    '<h6>' + x[0].data[i].prezzo + '€' + '</h6>' +
+                                    '</div>' +
                                     '</div>';
                             }
                             if(x[0].data[i].nome!=null) {
                                 var html =
+                                    '<div class="wrapper">' +
                                     '<div class="item-fornitore">' +
                                     '<h5>' + x[0].data[i].nome + '</h5>' +
                                     '<h5>' + x[0].data[i].cognome + '</h5>' +
-                                    '<h4>' + x[0].data[i].luogoUbicazione + '</h5>' +
+                                    '<h8>' + 'si trova a:' + '<h8>' +
+                                    '<h6 style="margin-top: 5px">' + x[0].data[i].luogoUbicazione + '</h6>' +
+                                    '</div>' +
                                     '</div>';
                             }
 
@@ -51,7 +60,7 @@
         }
 
         function prodotto(id, partitaIva) {
-            location.href="ProdottoServlet?id="+id+"?partitaIva="+partitaIva;
+            location.href="ProdottoServlet?id="+ id + "&partitaIva="+partitaIva;
         }
 
 
@@ -85,7 +94,7 @@
             </form>
         </div>
 
-    <div id="item" style="margin-left: 70px"></div>
+    <div id="item" style="margin-left: 50px"></div>
 
 
 
