@@ -138,10 +138,11 @@ public class ProdottoDAO {
         }
     }
 
-    public void deleteProdotto(int idProdotto) {
+    public void deleteProdotto(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE idProdotto=?");
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE idProdotto=? AND partitaIva=?");
             ps.setInt(1, idProdotto);
+            ps.setString(2, partitaIva);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
             }

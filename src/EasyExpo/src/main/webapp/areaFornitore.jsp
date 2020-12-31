@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,38 +68,31 @@
 
                     <!-- Popular Item Slide -->
                     <div class="papular-block row">
-
-                        <!-- Item -->
+                                <!-- Item -->
                         <c:forEach items="${prodotti}" var="contenuto">
-                        <div class="col-md-3">
-                            <div class="item">
-
-                                <!-- Item img -->
-                                <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
-                                        class="img-2" src="images/product-2.jpg" alt="">
-                                    <!-- Overlay -->
-                                    <div class="overlay">
-                                        <div class="position-center-center">
-                                            <div class="inn">
-                                                <a href="images/product-2-1.jpg" data-lighter><i
-                                                        class="icon-magnifier"></i></a>
-                                                <a href="EliminaProdottoServlet"><i
-                                                        class="icon-trash"></i></a>
-                                                <a href="ModificaProdottoServlet?id=${contenuto.id}&?partitaIva=${contenuto.partitaIva}"><i
-                                                        class="icon-pencil"></i></a>
+                                <div class="col-md-3">
+                                    <div class="item">
+                                        <!-- Item img -->
+                                        <div class="item-img"> <img class="img-1" src="images/product-2-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
+                                            <!-- Overlay -->
+                                            <div class="overlay">
+                                                <div class="position-center-center">
+                                                    <div class="inn">
+                                                        <a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i></a>
+                                                        <a href="ModificaProdottoServlet"><i class="icon-trash"></i></a>
+                                                        <a href="ELiminaProdottoServlet" ><i class="icon-pencil"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- Item Name -->
+                                        <
+                                        <div class="item-name"><a href="SpecificheProdottoServlet">${contenuto.titolo}</a>
+                                        </div>
+                                        <!-- Price -->
+                                        <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span> </div>
                                 </div>
-                                <!-- Item Name -->
-                                <!-- devo aggiungere anche la partita iva -->
-                                <div class="item-name"><a
-                                        href="Prodotto?id=${contenuto.id}&?partitaIva=${contenuto.partitaIva}"></a>
-                                    <p>${contenuto.id},${contenuto.partitaIva}</p>
-                                </div>
-                                <!-- Price -->
-                                <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span>
-                                </c:forEach>
+                        </c:forEach>
 
                             </div>
                         </div>
