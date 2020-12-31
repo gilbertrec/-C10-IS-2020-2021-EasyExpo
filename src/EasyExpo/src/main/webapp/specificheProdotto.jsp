@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="M_Adnan">
-    <title>EASYEXPO - ${param.pageTitle}</title>
+    <title>EASYEXPO - ${prodotti.titolo}</title>
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen"/>
@@ -133,9 +134,9 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>${prodotti.titolo}</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <h1 style="color: #ffe115; font-weight: 900;">${prodotti.titolo}</h1>
+                <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
+                    Sed feugiat, tellus vel tristique posuere, diam</p>-->
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">Data</li>
@@ -170,11 +171,11 @@
 
                         <!-- Content -->
                         <div class="col-md-5">
-                            <h4>wood chair</h4>
-                            <span class="price"><small>$</small>299</span>
+                            <h4>${prodotti.titolo}</h4>
+                            <span class="price"><small>€</small>${prodotti.prezzo}</span>
 
                             <!-- Item Detail -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam</p>
+                            <h6>${prodotti.tipo}</h6>
 
                             <!-- Short By -->
                             <div class="some-info">
@@ -186,6 +187,7 @@
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
+                                                <option>${prodotti.quantità}</option>
                                             </select>
                                         </div>
                                     </li>
@@ -208,11 +210,7 @@
 
                                     </ul>
 
-                                    <!-- Social Icons -->
-                                    <ul class="social_icons">
-                                        <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                                        <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                                    </ul>
+
                                 </div>
                             </div>
                         </div>
@@ -230,30 +228,7 @@
                     <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
                         <!-- DESCRIPTION -->
                         <div role="tabpanel" class="tab-pane fade in active" id="descr">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed lectus id nisi interdum mollis. Nam congue tellus quis elit mattis congue. Aenean eu massa sed mauris hendrerit ornare sed eget ante.
-                                Vestibulum id eros quam. Nunc volutpat at magna gravida eleifend. Phasellus sit amet nisi tempus, tincidunt elit ac, tempor metus. <br>
-                            </p>
-                            <h6>THE SIMPLE FACTS</h6>
-                            <ul>
-                                <li>
-                                    <p>Praesent faucibus, leo vitae maximus dictum,</p>
-                                </li>
-                                <li>
-                                    <p> Donec porta ut lectus </p>
-                                </li>
-                                <li>
-                                    <p> Phasellus maximus velit id nisl</p>
-                                </li>
-                                <li>
-                                    <p> Quisque a tellus et sapien aliquam sus</p>
-                                </li>
-                                <li>
-                                    <p> Donec porta ut lectus </p>
-                                </li>
-                                <li>
-                                    <p> Phasellus maximus velit id nisl</p>
-                                </li>
-                            </ul>
+                            <p style="font-size: 20px"> ${prodotti.descrizione} </p>
                         </div>
 
                     </div>
@@ -274,11 +249,7 @@
                         preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
                 </div>
 
-                <!-- Social Icons -->
-                <ul class="social_icons">
-                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                </ul>
+
             </div>
         </section>
 

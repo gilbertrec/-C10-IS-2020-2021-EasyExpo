@@ -89,6 +89,7 @@ public class RicercaServlet extends HttpServlet{
                 json += ",";
             json += "{" +
                     "\"id\":\"" + prod.getIdProdotto() + "\"," +
+                    "\"partitaIVA\":\"" + prod.getPartitaIva() + "\"," +
                     "\"titolo\":\"" + prod.getTitolo() + "\"," +
                     "\"prezzo\":\"" + prod.getPrezzo() + "\"" +
                     "}";
