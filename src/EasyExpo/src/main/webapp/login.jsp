@@ -1,5 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: lucreziarobustelli
+  Date: 22/12/2020
+  Time: 21:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -24,10 +30,8 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>EASYEXPO</h4>
-                <ol class="breadcrumb">
-                    <li class="active">LOGIN</li>
-                </ol>
+                <img class="easy" src="images/scritta-sola.png" width="500" height="300">
+                <!--<h1 style="font-weight: 1000; color: #0f3e68"> <span class="scritta" style="color: #ffe115; background: #0f3e68; padding: 1px 6px;">EASY</span>EXPO</h1>-->
             </div>
         </div>
     </section>
@@ -49,7 +53,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-7">
                                 <h6>ACCEDI AL TUO ACCOUNT</h6>
-                                <form action="LoginServlet" method="post">
+                                <form action = "LoginServlet" method="post">
                                     <ul class="row">
 
                                         <!-- Name -->
@@ -85,8 +89,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="registrazioneFornitore.jsp"
-                                           style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
+                                        <a href="registrazioneFornitore.jsp" style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
 
                                     </li>
                                 </ul>
