@@ -21,7 +21,6 @@ public class ModificaProdottoServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
         String partitaIva = request.getParameter("partitaIva");
-
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
 

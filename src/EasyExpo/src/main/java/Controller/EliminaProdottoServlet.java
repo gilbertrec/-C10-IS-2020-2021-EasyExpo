@@ -18,10 +18,9 @@ public class EliminaProdottoServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String partitaIva = request.getParameter("partitaIva");
-        int idprodotto =Integer.parseInt(request.getParameter("idProdotto"));
-
         ProdottoDAO prodottoDAO = new ProdottoDAO();
-        prodottoDAO.deleteProdotto(idprodotto, partitaIva);
+        prodottoDAO.deleteProdotto(id, partitaIva);
     }
 }
