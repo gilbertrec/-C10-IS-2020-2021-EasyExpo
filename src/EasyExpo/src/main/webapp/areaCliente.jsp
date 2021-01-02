@@ -31,8 +31,8 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>AREA UTENTE</h4>
-                <p>Di seguito sono riportati tutti i dati personali del cliente ${nomedelcliente}</p>
+                <h4>AREA CLIENTE</h4>
+                <p>Di seguito sono riportati tutti i dati personali del cliente ${cliente.nome}</p>
                 <ol class="breadcrumb">
                     <li><a href="index.jsp">Home</a></li>
                     <li><a href="#">Pages</a></li>

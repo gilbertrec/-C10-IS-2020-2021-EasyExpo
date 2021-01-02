@@ -91,7 +91,6 @@
                                     <li>
                                         <h6>Ciao ${cliente.nome} !</h6>
                                     </li>
-                                    <li><a href="#">CARRELLO</a></li>
                                     <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
@@ -134,14 +133,6 @@
                                 </ul>
                             </li>
 
-                            <!-- ICONA SEARCH -->
-
-                            <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
-                                    class=" icon-magnifier"></i></a>
-                            </li>
-                        </c:when>
-                        <c:when test="${fornitore != null}">
-                            
                             <!-- ICONA SEARCH -->
 
                             <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
