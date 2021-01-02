@@ -51,7 +51,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-12">
                                 <h6>AGGIUNGI PRODOTTO</h6>
-                                <form action="AggiungiProdottoServlet" method="post">
+                                <form action="AggiungiProdottoServlet" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
                                     <ul class="row">
 
@@ -99,8 +99,7 @@
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
-                                                       placeholder="" multiple>
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="">
                                             </label>
                                         </li>
 

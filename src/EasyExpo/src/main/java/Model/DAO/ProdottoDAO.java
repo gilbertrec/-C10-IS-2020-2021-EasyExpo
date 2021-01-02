@@ -118,7 +118,7 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, prodotto.getPartitaIva());
@@ -127,6 +127,7 @@ public class ProdottoDAO {
             ps.setString(4, prodotto.getTipo().toString());
             ps.setInt(5, prodotto.getQuantità());
             ps.setFloat(6, prodotto.getPrezzo());
+            ps.setString(7, prodotto.getFoto());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

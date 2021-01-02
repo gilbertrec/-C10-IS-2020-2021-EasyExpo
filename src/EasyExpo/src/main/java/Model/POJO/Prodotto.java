@@ -1,7 +1,7 @@
 package Model.POJO;
 
 public class Prodotto {
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String foto) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
@@ -9,6 +9,7 @@ public class Prodotto {
         this.tipo = tipo;
         this.quantità = quantità;
         this.prezzo = prezzo;
+        this.foto = foto;
     }
 
     public Prodotto() {
@@ -71,6 +72,10 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
+    public String getFoto() { return foto; }
+
+    public void setFoto(String foto) { this.foto = foto; }
+
     @Override
     public String toString() {
         return "Prodotto{" +
@@ -81,6 +86,7 @@ public class Prodotto {
                 ", tipo=" + tipo +
                 ", quantità=" + quantità +
                 ", prezzo=" + prezzo +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 
@@ -90,8 +96,11 @@ public class Prodotto {
     private String descrizione;
 
 
-    public enum Tipo {SERVIZIO, ATTREZZATURA};
+    public enum Tipo {SERVIZIO, ATTREZZATURA}
+
+    ;
     private Tipo tipo;
     private int quantità;
     private float prezzo;
+    private String foto;
 }
