@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +68,8 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="${prodotto.titolo}" placeholder="">
+                                                <input type="text" name="titolo" value="${prodotto.titolo}"
+                                                       placeholder="">
                                             </label>
                                         </li>
 
@@ -88,21 +89,25 @@
                                         <!-- PREZZO -->
                                         <li class="col-md-6">
                                             <label> PREZZO
-                                                <input type="text" name="prezzo" value="${prodotto.prezzo}" placeholder="">
+                                                <input type="text" name="prezzo" value="${prodotto.prezzo}"
+                                                       placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- QUANTITÀ -->
                                         <li class="col-md-6">
                                             <label> QUANTITÀ (1-999)
-                                                <input type="number" name="quantita" value="${prodotto.quantità}" placeholder="" min="1" max="999">
+                                                <input type="number" name="quantita" value="${prodotto.quantità}"
+                                                       placeholder="" min="1" max="999">
                                             </label>
                                         </li>
 
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
-                                                <textarea type="textArea" name="descrizione" value="${prodotto.descrizione}" placeholder="" style="height: 150px; width: 550px">
+                                                <textarea type="textArea" name="descrizione"
+                                                          value="${prodotto.descrizione}" placeholder=""
+                                                          style="height: 150px; width: 550px">
 
                                                 </textarea>
                                             </label>
@@ -110,7 +115,8 @@
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="" multiple>
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
+                                                       placeholder="" multiple>
                                             </label>
                                         </li>
 

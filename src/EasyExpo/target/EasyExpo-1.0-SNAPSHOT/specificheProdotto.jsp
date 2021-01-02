@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lucreziarobustelli
-  Date: 27/12/2020
-  Time: 18:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -60,32 +53,7 @@
                         </div>
                     </div>
 
-<<<<<<< Updated upstream
-                        <!-- Content -->
-                        <div class="col-md-5">
-                            <h4>${prodotti.titolo}</h4>
-                            <span class="price"><small>€</small>${prodotti.prezzo}</span>
-
-                            <!-- Item Detail -->
-                            <h6>${prodotti.tipo}</h6>
-
-                            <!-- Short By -->
-                            <div class="some-info">
-                                <ul class="row margin-top-30">
-                                    <li class="col-xs-4">
-                                        <div class="quinty">
-                                            <!-- QTY -->
-                                            <select class="selectpicker">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
-                                        </div>
-                                    </li>
-
-                                    <!-- AGGIUNGI AL CARRELLO -->
-                                    <li class="col-xs-6"> <a href="#." class="btn">AGGIUNGI</a> </li>
-=======
+                    <<<<<<< Updated upstream
                     <!-- Content -->
                     <div class="col-md-5">
                         <h4>${prodotti.titolo}</h4>
@@ -104,57 +72,84 @@
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
-                                            <option>${prodotti.quantità}</option>
                                         </select>
                                     </div>
                                 </li>
 
                                 <!-- AGGIUNGI AL CARRELLO -->
                                 <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
+                                =======
+                                <!-- Content -->
+                                <div class="col-md-5">
+                                    <h4>${prodotti.titolo}</h4>
+                                    <span class="price"><small>€</small>${prodotti.prezzo}</span>
 
-                            </ul>
+                                    <!-- Item Detail -->
+                                    <h6>${prodotti.tipo}</h6>
 
-                            <!-- INFOMATION -->
-                            <div class="inner-info">
-                                <h6>INFORMAZIONI FORNITORE</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a
-                                    scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur
-                                    adipiscing elit. </p>
+                                    <!-- Short By -->
+                                    <div class="some-info">
+                                        <ul class="row margin-top-30">
+                                            <li class="col-xs-4">
+                                                <div class="quinty">
+                                                    <!-- QTY -->
+                                                    <select class="selectpicker">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>${prodotti.quantità}</option>
+                                                    </select>
+                                                </div>
+                                            </li>
 
-                                <!-- TAGS -->
-                                <h5 class="shop-tittle margin-top-60 margin-bottom-30">POPULAR TAGS</h5>
-                                <ul class="shop-tags">
-                                    <li><a href="#.">Musica</a></li>
-                                    <li><a href="#.">Casse</a></li>
->>>>>>> Stashed changes
+                                            <!-- AGGIUNGI AL CARRELLO -->
+                                            <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
 
-                                </ul>
+                                        </ul>
+
+                                        <!-- INFOMATION -->
+                                        <div class="inner-info">
+                                            <h6>INFORMAZIONI FORNITORE</h6>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+                                                finibus ligula a
+                                                scelerisque gravida. Nullam laoreet tortor ac maximus alique met,
+                                                consectetur
+                                                adipiscing elit. </p>
+
+                                            <!-- TAGS -->
+                                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">POPULAR TAGS</h5>
+                                            <ul class="shop-tags">
+                                                <li><a href="#.">Musica</a></li>
+                                                <li><a href="#.">Casse</a></li>
+                                                >>>>>>> Stashed changes
+
+                                            </ul>
 
 
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!--======= PRODUCT DESCRIPTION =========-->
+                    <div class="item-decribe">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+                            <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
+                            <!-- DESCRIPTION -->
+                            <div role="tabpanel" class="tab-pane fade in active" id="descr">
+                                <p style="font-size: 20px"> ${prodotti.descrizione} </p>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!--======= PRODUCT DESCRIPTION =========-->
-            <div class="item-decribe">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
-                    <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a>
-                    </li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
-                    <!-- DESCRIPTION -->
-                    <div role="tabpanel" class="tab-pane fade in active" id="descr">
-                        <p style="font-size: 20px"> ${prodotti.descrizione} </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </section>
 
 
