@@ -23,7 +23,6 @@ public class ModificaProdottoServlet extends HttpServlet {
         String partitaIva = request.getParameter("partitaIva");
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
-
         request.setAttribute("prodotto", prodotto);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/modificaProdotto.jsp");
         requestDispatcher.forward(request, response);
