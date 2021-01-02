@@ -79,8 +79,8 @@
                                                 <div class="position-center-center">
                                                     <div class="inn">
                                                         <a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i></a>
-                                                        <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>"><i class="icon-pencil"></i></a>
-                                                        <a href="ELiminaProdottoServlet" ><i class="icon-trash"></i></a>
+                                                        <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i class="icon-pencil"></i></a>
+                                                        <a href="ELiminaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>" ><i class="icon-trash"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
