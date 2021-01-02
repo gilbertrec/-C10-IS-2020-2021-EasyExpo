@@ -1,5 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: lucreziarobustelli
+  Date: 22/12/2020
+  Time: 21:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -49,7 +55,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-7">
                                 <h6>ACCEDI AL TUO ACCOUNT</h6>
-                                <form action="LoginServlet" method="post">
+                                <form action = "LoginServlet" method="post">
                                     <ul class="row">
 
                                         <!-- Name -->
@@ -85,8 +91,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="registrazioneFornitore.jsp"
-                                           style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
+                                        <a href="registrazioneFornitore.jsp" style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
 
                                     </li>
                                 </ul>
@@ -118,10 +123,10 @@
         </section>
     </div>
 </div>
-<!--======= FOOTER =========-->
-<footer>
-    <jsp:include page="/footer.jsp"/>
-</footer>
+    <!--======= FOOTER =========-->
+    <footer>
+        <jsp:include page="/footer.jsp"/>
+    </footer>
 
 </body>
 </html>

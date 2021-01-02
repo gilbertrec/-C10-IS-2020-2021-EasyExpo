@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: lucreziarobustelli
+  Date: 29/12/2020
+  Time: 21:18
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,9 +122,7 @@
 
                                         <!-- PHONE -->
                                         <li class="col-md-6">
-                                            <form>
-                                                <button type="submit" class="btn">REGISTRAMI</button>
-                                            </form>
+                                            <form><button type="submit" class="btn">REGISTRAMI</button></form>
                                             <button type="submit" class="btn">REGISTRAMI</button>
                                         </li>
                                     </ul>
@@ -149,11 +154,11 @@
             </div>
         </section>
 
-        <!--======= FOOTER =========-->
-        <footer>
-            <jsp:include page="/footer.jsp"/>
-        </footer>
+    <!--======= FOOTER =========-->
+    <footer>
+        <jsp:include page="/footer.jsp"/>
+    </footer>
 
-    </div>
+</div>
 </body>
 </html>

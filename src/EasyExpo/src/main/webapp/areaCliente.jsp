@@ -23,7 +23,7 @@
     <!-- header -->
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Area Cliente"/>
+            <jsp:param name="pageTitle" value="Chi Siamo"/>
         </jsp:include>
     </header>
 
@@ -91,9 +91,9 @@
 
                                         <!-- CODICE FISCALE -->
                                         <li class="col-md-6">
-                                            <label> CODICE FISCALE
-                                                <input type="text" name="address" value="" placeholder="">
-                                            </label>
+                                        <label> CODICE FISCALE
+                                            <input type="text" name="address" value="" placeholder="">
+                                        </label>
                                         </li>
 
                                         <!-- Telefono -->
@@ -111,7 +111,7 @@
                                         </li>
                                         <li class="col-md-6">
 
-                                            <!-- BOTTONE -->
+                                        <!-- BOTTONE -->
                                         <li class="col-md-6">
                                             <button type="submit" class="btn">ELIMINA ACCOUNT</button>
                                         </li>
@@ -151,6 +151,16 @@
         <jsp:include page="/footer.jsp"/>
     </footer>
 </div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/own-menu.js"></script>
+<script src="js/jquery.lighter.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
