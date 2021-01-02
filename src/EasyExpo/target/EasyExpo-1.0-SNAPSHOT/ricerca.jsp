@@ -38,7 +38,7 @@
                             if(x[0].data[i].nome!=null) {
                                 var html =
                                     '<div class="wrapper">' +
-                                    '<div class="item-fornitore">' +
+                                    '<div class="item-fornitore" data-partitaIVA="'+x[0].data[i].partitaIVA+'" onclick="fornitore(\''+x[0].data[i].partitaIVA+'\')">' +
                                     '<h5>' + x[0].data[i].nome + '</h5>' +
                                     '<h5>' + x[0].data[i].cognome + '</h5>' +
                                     '<h8>' + 'si trova a:' + '<h8>' +
@@ -63,7 +63,7 @@
 
         function fornitore(partitaIva){
             location.href="FornitoreServlet?partitaIva=" + partitaIva;
-        };
+        }
 
 
     </script>

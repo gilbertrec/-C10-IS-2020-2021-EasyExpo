@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,105 +68,109 @@
 
                     <!-- Popular Item Slide -->
                     <div class="papular-block row">
-                                <!-- Item -->
+                        <!-- Item -->
                         <c:forEach items="${prodotti}" var="contenuto">
-                                <div class="col-md-3">
-                                    <div class="item">
-                                        <!-- Item img -->
-                                        <div class="item-img"> <img class="img-1" src="images/product-2-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
-                                            <!-- Overlay -->
-                                            <div class="overlay">
-                                                <div class="position-center-center">
-                                                    <div class="inn">
-                                                        <a href="images/product-2-1.jpg" data-lighter><i class="icon-magnifier"></i></a>
-                                                        <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i class="icon-pencil"></i></a>
-                                                        <a href="ELiminaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>" ><i class="icon-trash"></i></a>
-                                                    </div>
+                            <div class="col-md-3">
+                                <div class="item">
+                                    <!-- Item img -->
+                                    <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
+                                            class="img-2" src="images/product-2.jpg" alt="">
+                                        <!-- Overlay -->
+                                        <div class="overlay">
+                                            <div class="position-center-center">
+                                                <div class="inn">
+                                                    <a href="images/product-2-1.jpg" data-lighter><i
+                                                            class="icon-magnifier"></i></a>
+                                                    <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
+                                                            class="icon-pencil"></i></a>
+                                                    <a href="ELiminaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
+                                                            class="icon-trash"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Item Name -->
-                                        <
-                                        <div class="item-name"><a href="SpecificheProdottoServlet">${contenuto.titolo}</a>
-                                        </div>
-                                        <!-- Price -->
-                                        <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span> </div>
+                                    </div>
+                                    <!-- Item Name -->
+                                    <div class="item-name"><a href="ProdottoServlet">${contenuto.titolo}</a>
+                                    </div>
+                                    <!-- Price -->
+                                    <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span>
                                 </div>
+                            </div>
                         </c:forEach>
 
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
-
-        </section>
-
-        <!-- About -->
-        <section class="small-about padding-top-150 padding-bottom-150">
-            <div class="container">
-
-                <!-- Main Heading -->
-                <div class="heading text-center">
-                    <h4>Cos'è EASYEXPO</h4>
-                    <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
-                        eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
-                        preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
-                </div>
-
-                <!-- Social Icons -->
-                <ul class="social_icons">
-                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                </ul>
-            </div>
-        </section>
 
     </div>
+</div>
 
-    <!--======= FOOTER =========-->
-    <footer>
-        <div class="container">
+</section>
 
-            <!-- ABOUT Location -->
-            <div class="col-md-3">
-                <div class="about-footer"><img class="margin-bottom-30" src="images/logomacchia.png" alt="">
-                    <p><i class="icon-pointer"></i> Via Giovanni Paolo II, 132 . <br>
-                        - 84084 Fisciano (SA)</p>
-                    <p><i class="icon-call-end"></i> 081 564738</p>
-                    <p><i class="icon-envelope"></i> info@EASYEXPO.com</p>
-                </div>
-            </div>
+<!-- About -->
+<section class="small-about padding-top-150 padding-bottom-150">
+    <div class="container">
 
+        <!-- Main Heading -->
+        <div class="heading text-center">
+            <h4>Cos'è EASYEXPO</h4>
+            <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
+                eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
+                preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
+        </div>
 
-            <!-- INFO -->
-            <div class="col-md-3">
-                <h6>INFO</h6>
-                <ul class="link">
-                    <li><a href="chiSiamo.jsp"> Chi Siamo</a></li>
-                    <li><a href="contatti.jsp"> Contatti</a></li>
-                </ul>
-            </div>
+        <!-- Social Icons -->
+        <ul class="social_icons">
+            <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+            <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+        </ul>
+    </div>
+</section>
 
-            <!-- MY ACCOUNT -->
-            <div class="col-md-3">
-                <h6>ACCOUNT FORNITORE</h6>
-                <ul class="link">
-                    <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
-                    <li><a href="areaFornitore.jsp"> Catalogo</a></li>
-                    <li><a href="#."> Abbonamento</a></li>
-                </ul>
-            </div>
+</div>
 
-            <!-- Rights -->
+<!--======= FOOTER =========-->
+<footer>
+    <div class="container">
 
-            <div class="rights">
-                <p>© 2020 EASYEXPO Tutti i diritti riservati. </p>
-                <div class="scroll"><a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a></div>
+        <!-- ABOUT Location -->
+        <div class="col-md-3">
+            <div class="about-footer"><img class="margin-bottom-30" src="images/logomacchia.png" alt="">
+                <p><i class="icon-pointer"></i> Via Giovanni Paolo II, 132 . <br>
+                    - 84084 Fisciano (SA)</p>
+                <p><i class="icon-call-end"></i> 081 564738</p>
+                <p><i class="icon-envelope"></i> info@EASYEXPO.com</p>
             </div>
         </div>
-    </footer>
+
+
+        <!-- INFO -->
+        <div class="col-md-3">
+            <h6>INFO</h6>
+            <ul class="link">
+                <li><a href="chiSiamo.jsp"> Chi Siamo</a></li>
+                <li><a href="contatti.jsp"> Contatti</a></li>
+            </ul>
+        </div>
+
+        <!-- MY ACCOUNT -->
+        <div class="col-md-3">
+            <h6>ACCOUNT FORNITORE</h6>
+            <ul class="link">
+                <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
+                <li><a href="areaFornitore.jsp"> Catalogo</a></li>
+                <li><a href="#."> Abbonamento</a></li>
+            </ul>
+        </div>
+
+        <!-- Rights -->
+
+        <div class="rights">
+            <p>© 2020 EASYEXPO Tutti i diritti riservati. </p>
+            <div class="scroll"><a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a></div>
+        </div>
+    </div>
+</footer>
 
 </div>
 </body>
