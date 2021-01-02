@@ -69,7 +69,8 @@
                             <li><a href="contatti.jsp">Contatti</a></li>
                         </c:when>
                         <c:when test="${fornitore != null}">
-                            <li class="dropdown active"><a href="areaFornitore.jsp" class="dropdown-toggle">Profilo</a></li>
+                            <li class="dropdown active"><a href="areaFornitore.jsp" class="dropdown-toggle">Profilo</a>
+                            </li>
                             <li><a href="chiSiamo.jsp">Chi siamo</a></li>
                             <li><a href="contatti.jsp">Contatti</a></li>
                         </c:when>
@@ -82,7 +83,7 @@
                 <ul class="navbar-right">
 
                     <!-- USER INFO -->
-                    <li class="dropdown user-acc"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                    <li class="dropdown user-acc"><a href="login.jsp" class="dropdown-toggle" data-toggle="dropdown"
                                                      role="button"><i class="icon-user"></i> </a>
                         <ul class="dropdown-menu">
                             <c:choose>
@@ -102,33 +103,55 @@
                                     <li><a href="areaFornitore.jsp"> Catalogo</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
+                                <c:otherwise>
+                                    <li>
+                                        <h6>Ciao Nuovo Utente !</h6>
+                                    </li>
+                                    <li><a href="login.jsp"> Login</a></li>
+                                    <li><a href="registrazioneCliente.jsp"> Registrazione Cliente</a></li>
+                                    <li><a href="registrazioneFornitore.jsp"> Registrazione Fornitore</a></li>
+                                </c:otherwise>
                             </c:choose>
                         </ul>
                     </li>
+                    <c:choose>
+                        <c:when test="${cliente != null}">
+                            <!-- ICONA CARRELLO -->
+                            <li class="dropdown user-basket"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                                role="button" aria-haspopup="true" aria-expanded="true"><i
+                                    class="icon-basket-loaded"></i> </a>
+                                <ul class="dropdown-menu">
 
-                    <!-- USER BASKET -->
-                    <li class="dropdown user-basket"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                        role="button" aria-haspopup="true" aria-expanded="true"><i
-                            class="icon-basket-loaded"></i> </a>
-                        <ul class="dropdown-menu">
-
-                            <li>
-                                <h5 class="text-center">TOTALE: ${prezzo}</h5>
+                                    <li>
+                                        <h5 class="text-center">TOTALE: ${prezzo}</h5>
+                                    </li>
+                                    <li class="margin-0">
+                                        <div class="row">
+                                            <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="margin-0">
-                                <div class="row">
-                                    <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
-                                    </div>
-                                </div>
+
+                            <!-- ICONA SEARCH -->
+
+                            <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
+                                    class=" icon-magnifier"></i></a>
                             </li>
-                        </ul>
-                    </li>
+                        </c:when>
+                        <c:when test="${fornitore != null}">
+                            
+                            <!-- ICONA SEARCH -->
 
-                    <!-- SEARCH BAR -->
+                            <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
+                                    class=" icon-magnifier"></i></a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
 
-                    <li class="dropdown"><a href="ricerca.jsp" class="search-open"><i
-                            class=" icon-magnifier"></i></a>
-                    </li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </nav>
