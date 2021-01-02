@@ -1,7 +1,7 @@
 package Model.POJO;
 
 /**
- * Cliente è la classe che gestisce un
+ * Cliente e' la classe che gestisce un
  * ordinario oggetto Cliente
  *
  * @author

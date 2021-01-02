@@ -1,7 +1,7 @@
 package Model.POJO;
 
 /**
- * Admin è la classe che gestisce un
+ * Admin e' la classe che gestisce un
  * ordinario oggetto Admin
  *
  * @author

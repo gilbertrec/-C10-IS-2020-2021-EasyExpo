@@ -1,7 +1,7 @@
 package Model.POJO;
 
 /**
- * Prodotto è la classe che gestisce un
+ * Prodotto e' la classe che gestisce un
  * ordinario oggetto Prodotto
  *
  * @author

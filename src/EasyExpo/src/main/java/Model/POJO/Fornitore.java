@@ -1,7 +1,7 @@
 package Model.POJO;
 
 /**
- * Fornitore è la classe che gestisce un
+ * Fornitore e' la classe che gestisce un
  * ordinario oggetto Fornitore
  *
  * @author

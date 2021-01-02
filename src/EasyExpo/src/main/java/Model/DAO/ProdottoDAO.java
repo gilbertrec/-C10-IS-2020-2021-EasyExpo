@@ -51,7 +51,7 @@ public class ProdottoDAO {
      * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  List <Prodotto> - {@link List} di oggetti di tipo {@link Prodotto}
+     * @return  List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
      *
      */
 

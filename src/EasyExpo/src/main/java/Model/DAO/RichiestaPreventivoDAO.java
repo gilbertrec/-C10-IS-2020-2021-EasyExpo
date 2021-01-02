@@ -55,7 +55,7 @@ public class RichiestaPreventivoDAO {
      * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  List <RichiestaPreventivo> - {@link List} di oggetti di tipo {@link RichiestaPreventivo}
+     * @return  List &lt;RichiestaPreventivo&gt; - {@link List} di oggetti di tipo {@link RichiestaPreventivo}
      *
      */
 

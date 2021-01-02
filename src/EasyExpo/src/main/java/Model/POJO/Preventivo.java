@@ -3,7 +3,7 @@ package Model.POJO;
 import java.sql.Date;
 
 /**
- * Preventivo è la classe che gestisce un
+ * Preventivo e' la classe che gestisce un
  * ordinario oggetto Preventivo
  *
  * @author

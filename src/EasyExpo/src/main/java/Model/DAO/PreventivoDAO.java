@@ -50,7 +50,7 @@ public class PreventivoDAO {
      * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  List <Preventivo> - {@link List} di oggetti di tipo {@link Preventivo}
+     * @return  List &lt;Preventivo&gt; - {@link List} di oggetti di tipo {@link Preventivo}
      *
      */
     public List<Preventivo> doRetrieveAll(int offset, int limit) {

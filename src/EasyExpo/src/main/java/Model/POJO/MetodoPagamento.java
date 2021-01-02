@@ -3,7 +3,7 @@ package Model.POJO;
 import java.sql.Date;
 
 /**
- * MetodoPagamento è la classe che gestisce un
+ * MetodoPagamento e' la classe che gestisce un
  * ordinario oggetto MetodoPagamento
  *
  * @author

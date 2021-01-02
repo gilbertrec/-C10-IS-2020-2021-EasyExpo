@@ -3,7 +3,7 @@ package Model.POJO;
 import java.sql.Date;
 
 /**
- * Abbonamento è la classe che gestisce un
+ * Abbonamento e' la classe che gestisce un
  * ordinario oggetto Abbonamento
  *
  * @author

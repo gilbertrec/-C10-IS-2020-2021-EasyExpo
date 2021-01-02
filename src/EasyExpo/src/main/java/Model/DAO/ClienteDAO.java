@@ -50,7 +50,7 @@ public class ClienteDAO {
      * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
      * @param  offset  indice partenza, Intero
      * @param limit  indice fine , Intero
-     * @return  List <Cliente> - {@link List} di oggetti di tipo {@link Cliente}
+     * @return  List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
      *
      */
     public List<Cliente> doRetrieveAll(int offset, int limit) {
