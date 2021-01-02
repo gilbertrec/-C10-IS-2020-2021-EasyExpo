@@ -25,9 +25,7 @@
                         for (var i = 0;i<x[0].data.length;i++)
                         {
                             if(x[0].data[i].titolo!=null) {
-                                /*var pa = new String("Una nuova stringa");*/
-                                /* data-idprodotto="'+x[0].data[i].id+'" */
-                                /*onClick="prodotto(this.dataset.id,\'' + x[0].data[i].partitaIVA + '\')"*/
+
                                 var html =
                                     '<div class="wrapper">' +
                                     '<div class="item-prodotto" data-id="'+x[0].data[i].id+'" data-partitaIVA="'+x[0].data[i].partitaIVA+'" onclick="prodotto(this.dataset.id,\''+x[0].data[i].partitaIVA+'\')">' +
@@ -62,6 +60,10 @@
         function prodotto(id, partitaIva) {
             location.href="ProdottoServlet?id="+ id + "&partitaIva="+partitaIva;
         }
+
+        function fornitore(partitaIva){
+            location.href="FornitoreServlet?partitaIva=" + partitaIva;
+        };
 
 
     </script>

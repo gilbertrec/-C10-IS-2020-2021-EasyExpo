@@ -27,7 +27,7 @@ public class ProdottoServlet extends HttpServlet{
         try{
             id  =Integer.parseInt(request.getParameter("id"));
             partitaIva = request.getParameter("partitaIva");
-            System.out.println("id: " + id + "partita iva: " + partitaIva);
+            //System.out.println("id: " + id + "partita iva: " + partitaIva);
 
         }catch(NumberFormatException e){
             throw new MyServletException("Id prodotto non valido.");
