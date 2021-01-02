@@ -75,7 +75,6 @@
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
-                                                <option>${prodotti.quantità}</option>
                                             </select>
                                         </div>
                                     </li>

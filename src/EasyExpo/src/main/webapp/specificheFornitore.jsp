@@ -53,16 +53,16 @@
                         <div class="col-xs-6"><span
                                 class="product-num">Mostrando 1 - 10 di 30 prodotti ${num_prodotti}</span></div>
 
-                        <!-- Products Select
+                        <!-- Products Select -->
                         <div class="col-xs-6">
                             <div class="pull-right">
 
-                                <ol class="breadcrumb">
+                                <!-- <ol class="breadcrumb">
                                     <li><a href="aggiuntaProdotto.jsp">Aggiungi Prodotto</a></li>
-                                </ol>
+                                </ol> -->
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
                     <!-- Popular Item Slide -->
                     <div class="papular-block row">
@@ -74,7 +74,7 @@
                                     <div class="item-img"> <img class="img-1" src="images/product-2-1.jpg" alt="" > <img class="img-2" src="images/product-2.jpg" alt="" >
                                     </div>
                                     <!-- Item Name -->
-                                    <div class="item-name"><a href="SpecificheProdottoServlet">${contenuto.titolo}</a>
+                                    <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>">${contenuto.titolo}</a>
                                     </div>
                                     <!-- Price -->
                                     <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span> </div>

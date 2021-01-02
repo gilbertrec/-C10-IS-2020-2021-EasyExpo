@@ -38,7 +38,7 @@
                             if(x[0].data[i].nome!=null) {
                                 var html =
                                     '<div class="wrapper">' +
-                                    '<div class="item-fornitore" data-partitaIVA="'+x[0].data[i].partitaIVA+'" onclick="fornitore(\''+x[0].data[i].partitaIVA+'\')">' +
+                                    '<div class="item-fornitore" onclick="fornitore(\''+x[0].data[i].partitaIVAfornitore+'\')">' +
                                     '<h5>' + x[0].data[i].nome + '</h5>' +
                                     '<h5>' + x[0].data[i].cognome + '</h5>' +
                                     '<h8>' + 'si trova a:' + '<h8>' +

@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                     <!-- Item Name -->
-                                    <div class="item-name"><a href="ProdottoServlet">${contenuto.titolo}</a>
+                                    <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>">${contenuto.titolo}</a>
                                     </div>
                                     <!-- Price -->
                                     <span class="price"><small>€</small><c:out value="${contenuto.prezzo}"/></span>
