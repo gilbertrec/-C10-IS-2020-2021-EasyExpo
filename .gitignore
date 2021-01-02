@@ -21,8 +21,9 @@ src/EasyExpo/.idea/dataSources/f083806a-c6f6-4987-bc28-e1ce50fe9075/storage_v2/_
 src/EasyExpo/src/main/webapp/WEB-INF/lib/jstl-1.2.jar
 *.jar
 *.xml
-*.xml
+*.class
 *.iml
 *.properties
 src/EasyExpo/.idea/libraries/jstl_1_2.xml
 src/EasyExpo/EasyExpo.iml
+
