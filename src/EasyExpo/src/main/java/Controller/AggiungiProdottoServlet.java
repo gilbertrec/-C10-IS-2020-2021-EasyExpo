@@ -51,7 +51,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        int lastIndex = file.getAbsoluteFile().toString().lastIndexOf("\\") + 1; //Inizio nome della foto finale
+        int lastIndex = file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
         int totalLenght = file.getAbsoluteFile().toString().length();//Lunghezza path assoluto
         String finalFileName = file.getAbsolutePath().toString().substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
         String fotoFinale = "./images/" + finalFileName;

@@ -74,7 +74,7 @@
                                 <div class="item">
                                     <!-- Item img -->
                                     <div class="item-img"><img class="img-1" src="images/product-2-1.jpg" alt=""> <img
-                                            class="img-2" src="${contenuto.immagine}" alt="">
+                                            class="img-2" src="images/product-2.jpg" alt="">
                                         <!-- Overlay -->
                                         <div class="overlay">
                                             <div class="position-center-center">

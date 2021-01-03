@@ -37,6 +37,7 @@ CREATE TABLE Prodotto(
     tipo ENUM('SERVIZIO', 'ATTREZZATURA'),
     quantita int not null,
     prezzo decimal not null,
+    immagine varchar(3000),
     primary key(idProdotto, partitaIva),
     foreign key(partitaIva) references Fornitore(partitaIva)
     on delete cascade
@@ -161,10 +162,10 @@ INSERT INTO Admin VALUES
 ("strumolos@virgilio.it", sha2('sabatinostrumolo*', 512));
 
 INSERT INTO Prodotto VALUES
-(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "ATTREZZATURA", 5, 99.90),
-(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "SERVIZIO", 9, 50.00),
-(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "ATTREZZATURA", 50, 150.00),
-(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00);
+(1, "01391350129", "Casse amplificatori da palco", "Il set altoparlanti Fenton SPB-8 e' composto da una cassa attiva e da una passiva e garantisce un sound potente dall'ottima pressione audio. La struttura robusta della coppia di altoparlanti, composta da un telaio in MDF e pratiche maniglie nella parte superiore, ne consente il trasporto e l'utilizzo anche all'aperto.", "ATTREZZATURA", 5, 99.90, null),
+(1, "01602620930", "Catering", "Una certezza nell’organizzazione catering per i vostri eventi. Grazie alla competenza ventennale acquisita, in grado di operare miscelando professionalita', esperienza, attenzione e armonia per trasformare un ricevimento, una festa o un evento in un giorno indimenticabile. Il cliente viene seguito in tutte le fasi, dalla scelta della location alla cura dell’atmosfera e del tema dell’evento, alla creazione del menu'. Il tutto all’insegna dell’innovazione artistica e del buon gusto, spaziando tra Ville d’Epoca e Castelli, case private, sedi di aziende, Centri Congressuali e molto altro ancora.", "SERVIZIO", 9, 50.00, null),
+(2, "01602620930", "Cassa musicale per feste", "McGrey, DJ Party altoparlante 2x300W coppia, efficienza ancora maggiore, di nuova concezione bassi i driver chiave di volta, nuova progettazione in legno", "ATTREZZATURA", 50, 150.00, null),
+(1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00, null);
 
 INSERT INTO Abbonamento VALUES
 (1,"01391350129", 20191101, 20191201),
@@ -172,9 +173,9 @@ INSERT INTO Abbonamento VALUES
 (3,"03271170361", 20200713, 20200813);
 
 INSERT INTO MetodoPagamento VALUES
-("1452896574587589", "03271170361", "Susanna Zaidane", 20221210, "523"),
-("8000425678567582", "01391350129", "Filomena Blevi", 20230925, "412"),
-("4522656596232265", "01391350129", "Filomena Blevi", 20200514, "278");
+("1452896574587589", "03271170361", "Susanna Zaidane", 20221210, 523),
+("8000425678567582", "01391350129", "Filomena Blevi", 20230925, 412),
+("4522656596232265", "01391350129", "Filomena Blevi", 20200514, 278);
 
 INSERT INTO Tag VALUES
 (123, "Musica"),
