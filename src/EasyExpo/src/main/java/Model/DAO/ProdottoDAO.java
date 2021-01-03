@@ -182,4 +182,24 @@ public class ProdottoDAO {
 
     }
 
+    public void updateProdotto(Prodotto prodotto) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
+            ps.setString(1, prodotto.getTitolo());
+            ps.setString(2, prodotto.getDescrizione());
+            ps.setString(3, prodotto.getTipo().toString());
+            ps.setInt(4, prodotto.getQuantità());
+            ps.setFloat(5, prodotto.getPrezzo());
+            ps.setString(6, prodotto.getImmagine());
+            ps.setInt(7, prodotto.getIdProdotto());
+            ps.setString(8, prodotto.getPartitaIva());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
