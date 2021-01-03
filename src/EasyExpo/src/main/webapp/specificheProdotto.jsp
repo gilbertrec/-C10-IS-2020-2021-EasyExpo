@@ -53,7 +53,6 @@
                         </div>
                     </div>
 
-                    <<<<<<< Updated upstream
                     <!-- Content -->
                     <div class="col-md-5">
                         <h4>${prodotti.titolo}</h4>
@@ -68,6 +67,7 @@
                                 <li class="col-xs-4">
                                     <div class="quinty">
                                         <!-- QTY -->
+                                        <c:forEach items="${prodotti.quantita}" var="x">
                                         <select class="selectpicker">
                                             <option>1</option>
                                             <option>2</option>
@@ -78,32 +78,6 @@
 
                                 <!-- AGGIUNGI AL CARRELLO -->
                                 <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
-                                =======
-                                <!-- Content -->
-                                <div class="col-md-5">
-                                    <h4>${prodotti.titolo}</h4>
-                                    <span class="price"><small>€</small>${prodotti.prezzo}</span>
-
-                                    <!-- Item Detail -->
-                                    <h6>${prodotti.tipo}</h6>
-
-                                    <!-- Short By -->
-                                    <div class="some-info">
-                                        <ul class="row margin-top-30">
-                                            <li class="col-xs-4">
-                                                <div class="quinty">
-                                                    <!-- QTY -->
-                                                    <select class="selectpicker">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>${prodotti.quantità}</option>
-                                                    </select>
-                                                </div>
-                                            </li>
-
-                                            <!-- AGGIUNGI AL CARRELLO -->
-                                            <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
 
                                         </ul>
 
@@ -121,7 +95,7 @@
                                             <ul class="shop-tags">
                                                 <li><a href="#.">Musica</a></li>
                                                 <li><a href="#.">Casse</a></li>
-                                                >>>>>>> Stashed changes
+
 
                                             </ul>
 
@@ -171,12 +145,13 @@
 
 </div>
 
+
+
 <!--======= FOOTER =========-->
 <footer>
     <jsp:include page="/footer.jsp"/>
 </footer>
 
-<!--======= RIGHTS =========-->
 
 </div>
 </body>

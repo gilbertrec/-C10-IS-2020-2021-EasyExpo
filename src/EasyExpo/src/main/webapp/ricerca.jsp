@@ -94,10 +94,7 @@
     <div id="item" style="margin-left: 50px"></div>
 
 
-    <!--======= FOOTER =========-->
-    <footer>
-        <jsp:include page="/footer.jsp"/>
-    </footer>
+
 </div>
 </body>
 </html>
