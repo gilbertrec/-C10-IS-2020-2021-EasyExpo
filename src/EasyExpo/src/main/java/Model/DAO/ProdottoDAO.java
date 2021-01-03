@@ -26,7 +26,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
-                p.setImg(rs.getString(8));
+                p.setFoto(rs.getString(8));
                 return p;
             }
             return null;
@@ -53,7 +53,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
-                p.setImg(rs.getString(8));
+                p.setFoto(rs.getString(8));
                 return p;
             }
             return null;
@@ -81,7 +81,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
-                p.setImg(rs.getString(8));
+                p.setFoto(rs.getString(8));
                 prodotti.add(p);
             }
             return prodotti;
@@ -110,7 +110,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
-                p.setImg(rs.getString(8));
+                p.setFoto(rs.getString(8));
                 prodotti.add(p);
             }
             return prodotti;
@@ -131,7 +131,7 @@ public class ProdottoDAO {
             ps.setString(4, prodotto.getTipo().toString());
             ps.setInt(5, prodotto.getQuantità());
             ps.setFloat(6, prodotto.getPrezzo());
-            ps.setString(7, prodotto.getImg());
+            ps.setString(7, prodotto.getFoto());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -171,7 +171,7 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setPrezzo(rs.getFloat(4));
-                p.setImg(rs.getString(5));
+                p.setFoto(rs.getString(5));
                 prodotto.add(p);
             }
             return prodotto;

@@ -1,7 +1,7 @@
 package Model.POJO;
 
 public class Prodotto {
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String img) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String foto) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
@@ -9,7 +9,7 @@ public class Prodotto {
         this.tipo = tipo;
         this.quantità = quantità;
         this.prezzo = prezzo;
-        this.img = img;
+        this.foto = foto;
     }
 
     public Prodotto() {
@@ -72,26 +72,26 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public String getImg() {
-        return img;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     @Override
     public String toString() {
         return "Prodotto{" +
-                "idProdotto=" + idProdotto +
-                ", partitaIva='" + partitaIva + '\'' +
-                ", titolo='" + titolo + '\'' +
-                ", descrizione='" + descrizione + '\'' +
-                ", tipo=" + tipo +
-                ", quantità=" + quantità +
-                ", prezzo=" + prezzo +
-                ", img='" + img + '\'' +
-                '}';
+            "idProdotto=" + idProdotto +
+            ", partitaIva='" + partitaIva + '\'' +
+            ", titolo='" + titolo + '\'' +
+            ", descrizione='" + descrizione + '\'' +
+            ", tipo=" + tipo +
+            ", quantità=" + quantità +
+            ", prezzo=" + prezzo +
+            ", foto='" + foto + '\'' +
+            '}';
     }
 
     private int idProdotto;
@@ -104,5 +104,5 @@ public class Prodotto {
     private Tipo tipo;
     private int quantità;
     private float prezzo;
-    private String img;
+    private String foto;
 }

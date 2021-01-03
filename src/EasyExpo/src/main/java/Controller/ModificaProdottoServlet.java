@@ -41,7 +41,7 @@ public class ModificaProdottoServlet extends HttpServlet {
         if(lenght==0){
             ProdottoDAO prodottoDao = new ProdottoDAO();
             Prodotto prodottofoto = prodottoDao.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
-            //String fotoFinale = prodottofoto.getFoto();
+            String fotoFinale = prodottofoto.getFoto();
 
         }
         else {

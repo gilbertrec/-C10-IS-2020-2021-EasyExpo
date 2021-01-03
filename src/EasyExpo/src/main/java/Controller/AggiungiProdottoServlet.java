@@ -37,10 +37,26 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     String titolo = request.getParameter("titolo");
+    if (!(titolo != null && titolo.matches("[A-Z a-z 0-9]{1,30}"))) {
+      throw new MyServletException("Titolo non valido.");
+    }
+
     String tipo = request.getParameter("tipo");
-    float prezzo = Float.parseFloat(request.getParameter("prezzo"));
-    int quantita = Integer.parseInt(request.getParameter("quantita"));
+
+    String prezzo = request.getParameter("prezzo");
+    if (!(prezzo != null && prezzo.matches("[0-9]{1,5},[0-9]{2}"))) {
+      throw new MyServletException("Prezzo non valido.");
+    }
+
+    String quantita = request.getParameter("quantita");
+    if (!(quantita != null && quantita.matches("[0-9]{3}"))) {
+      throw new MyServletException("Descrizione non valida.");
+    }
+
     String descrizione = request.getParameter("descrizione");
+    if (!(descrizione != null && descrizione.matches("[A-Z a-z .,/()%”]{1,1024}"))) {
+      throw new MyServletException("Descrizione non valida.");
+    }
 
     //foto
     Part filePart = request.getPart("foto");
@@ -75,9 +91,9 @@ public class AggiungiProdottoServlet extends HttpServlet {
     prodotto.setTitolo(titolo);
     prodotto.setDescrizione(descrizione);
     prodotto.setTipo(Prodotto.Tipo.valueOf(tipo));
-    prodotto.setQuantità(quantita);
-    prodotto.setPrezzo(prezzo);
-    prodotto.setImg(fotoFinale);
+    prodotto.setQuantità(Integer.parseInt(quantita));
+    prodotto.setPrezzo(Float.parseFloat(prezzo));
+    prodotto.setFoto(fotoFinale);
     ProdottoDAO prodottodao = new ProdottoDAO();
     prodottodao.createProdotto(prodotto);
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);
