@@ -26,6 +26,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
+                p.setImg(rs.getString(8));
                 return p;
             }
             return null;
@@ -52,6 +53,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
+                p.setImg(rs.getString(8));
                 return p;
             }
             return null;
@@ -79,6 +81,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
+                p.setImg(rs.getString(8));
                 prodotti.add(p);
             }
             return prodotti;
@@ -107,6 +110,7 @@ public class ProdottoDAO {
                 p.setTipo(t);
                 p.setQuantità(rs.getInt(6));
                 p.setPrezzo(rs.getFloat(7));
+                p.setImg(rs.getString(8));
                 prodotti.add(p);
             }
             return prodotti;
@@ -127,7 +131,7 @@ public class ProdottoDAO {
             ps.setString(4, prodotto.getTipo().toString());
             ps.setInt(5, prodotto.getQuantità());
             ps.setFloat(6, prodotto.getPrezzo());
-            ps.setString(7, prodotto.getFoto());
+            ps.setString(7, prodotto.getImg());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -156,7 +160,7 @@ public class ProdottoDAO {
         try (Connection con = DBConnection.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement(
-                    "SELECT idProdotto, partitaIva, titolo, prezzo FROM Prodotto WHERE titolo LIKE ? ");
+                    "SELECT idProdotto, partitaIva, titolo, prezzo, immagine FROM Prodotto WHERE titolo LIKE ? ");
             ps.setString(1, "%" + ricercato + "%");
 
             ArrayList<Prodotto> prodotto = new ArrayList<>();
@@ -167,6 +171,7 @@ public class ProdottoDAO {
                 p.setPartitaIva(rs.getString(2));
                 p.setTitolo(rs.getString(3));
                 p.setPrezzo(rs.getFloat(4));
+                p.setImg(rs.getString(5));
                 prodotto.add(p);
             }
             return prodotto;

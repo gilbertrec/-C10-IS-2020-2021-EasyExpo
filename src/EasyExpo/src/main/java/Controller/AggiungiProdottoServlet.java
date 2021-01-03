@@ -64,7 +64,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
         prodotto.setTipo(Prodotto.Tipo.valueOf(tipo));
         prodotto.setQuantità(quantita);
         prodotto.setPrezzo(prezzo);
-        prodotto.setFoto(fotoFinale);
+        //prodotto.setFoto(fotoFinale);
         ProdottoDAO prodottodao = new ProdottoDAO();
         prodottodao.createProdotto(prodotto);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
