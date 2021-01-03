@@ -14,9 +14,11 @@
 <div id="wrap">
 
     <!-- header -->
-    <jsp:include page="/header.jsp">
-        <jsp:param name="pageTitle" value="Aggiunta Prodotto"/>
-    </jsp:include>
+    <header>
+        <jsp:include page="/header.jsp">
+            <jsp:param name="pageTitle" value="Aggiunta Prodotto"/>
+        </jsp:include>
+    </header>
 
 
     <!--======= SUB BANNER =========-->
