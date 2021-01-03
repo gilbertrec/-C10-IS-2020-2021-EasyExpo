@@ -72,9 +72,13 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public String getImg() { return img; }
+    public String getImg() {
+        return img;
+    }
 
-    public void setImg(String img) { this.img = img; }
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     @Override
     public String toString() {

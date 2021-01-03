@@ -54,7 +54,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
         int lastIndex = file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
         int totalLenght = file.getAbsoluteFile().toString().length();//Lunghezza path assoluto
         String finalFileName = file.getAbsolutePath().toString().substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
-        String fotoFinale = "./images/" + finalFileName;
+        String fotoFinale = "images/" + finalFileName;
 
 
         Prodotto prodotto = new Prodotto();
@@ -64,7 +64,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
         prodotto.setTipo(Prodotto.Tipo.valueOf(tipo));
         prodotto.setQuantità(quantita);
         prodotto.setPrezzo(prezzo);
-        //prodotto.setFoto(fotoFinale);
+        prodotto.setImg(fotoFinale);
         ProdottoDAO prodottodao = new ProdottoDAO();
         prodottodao.createProdotto(prodotto);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
