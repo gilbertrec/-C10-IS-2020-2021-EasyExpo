@@ -26,4 +26,5 @@ src/EasyExpo/src/main/webapp/WEB-INF/lib/jstl-1.2.jar
 *.properties
 src/EasyExpo/.idea/libraries/jstl_1_2.xml
 src/EasyExpo/EasyExpo.iml
+src/EasyExpo/src/main/java/Controller/AggiungiProdottoServlet.java
 
