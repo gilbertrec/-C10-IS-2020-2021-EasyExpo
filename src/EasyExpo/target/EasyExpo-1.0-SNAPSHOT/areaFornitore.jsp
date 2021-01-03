@@ -73,7 +73,7 @@
                             <div class="col-md-3">
                                 <div class="item">
                                     <!-- Item img -->
-                                    <div class="item-img"><img class="img-1" src="images/product-2.jpg" alt=""> <img
+                                    <div class="item-img"><img class="img-1" src="${contenuto.foto}" alt=""> <img
                                             class="img-2" src="images/product-2-1.jpg" alt="">
                                         <!-- Overlay -->
                                         <div class="overlay">

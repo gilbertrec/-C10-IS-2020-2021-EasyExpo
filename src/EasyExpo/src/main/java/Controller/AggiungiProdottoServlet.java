@@ -44,13 +44,13 @@ public class AggiungiProdottoServlet extends HttpServlet {
     String tipo = request.getParameter("tipo");
 
     String prezzo = request.getParameter("prezzo");
-    if (!(prezzo != null && prezzo.matches("[0-9]{1,5},[0-9]{2}"))) {
+    if (!(prezzo != null && prezzo.matches("[0-9]{1,5}.[0-9]{2}"))) {
       throw new MyServletException("Prezzo non valido.");
     }
 
     String quantita = request.getParameter("quantita");
-    if (!(quantita != null && quantita.matches("[0-9]{3}"))) {
-      throw new MyServletException("Descrizione non valida.");
+    if (!(quantita != null && quantita.matches("[0-9]{1,3}"))) {
+      throw new MyServletException("Quantità non valida.");
     }
 
     String descrizione = request.getParameter("descrizione");
@@ -61,7 +61,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
-    String path = getServletContext().getRealPath("") + File.separator + "images";
+    String path = "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" + "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 
