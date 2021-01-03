@@ -2,8 +2,8 @@ package Controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
-import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
+import Model.POJO.Fornitore;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -93,7 +93,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     prodotto.setTipo(Prodotto.Tipo.valueOf(tipo));
     prodotto.setQuantità(Integer.parseInt(quantita));
     prodotto.setPrezzo(Float.parseFloat(prezzo));
-    prodotto.setFoto(fotoFinale);
+    prodotto.setImmagine(fotoFinale);
     ProdottoDAO prodottodao = new ProdottoDAO();
     prodottodao.createProdotto(prodotto);
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);

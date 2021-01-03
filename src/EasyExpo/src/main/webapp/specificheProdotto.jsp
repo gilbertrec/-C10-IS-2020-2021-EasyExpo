@@ -44,11 +44,7 @@
                         <div class="images-slider">
                             <ul class="slides">
                                 <li data-thumb="images/large-img-1.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-1.jpg" alt=""></li>
-                                <li data-thumb="images/large-img-2.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-2.jpg" alt=""></li>
-                                <li data-thumb="images/large-img-3.jpg"><img class="img-responsive"
-                                                                             src="images/large-img-3.jpg" alt=""></li>
+                                                                             src="${prodotti.immagine}" alt=""></li>
                             </ul>
                         </div>
                     </div>
