@@ -41,13 +41,12 @@
                     <div class="col-md-7">
 
                         <!-- Images Slider -->
-                        <div class="images-slider">
                             <ul class="slides">
-                                <li data-thumb="images/large-img-1.jpg"><img class="img-responsive"
-                                                                             src="${prodotti.immagine}" alt=""></li>
+                                <div class="row">
+                                    <div class="col-sm-6 margin-bottom-30"> <img class="img-responsive" src="${prodotti.immagine}" alt=""> </div>
+                                </div>
                             </ul>
                         </div>
-                    </div>
 
                     <!-- Content -->
                     <div class="col-md-5">
@@ -60,16 +59,11 @@
                         <!-- Short By -->
                         <div class="some-info">
                             <ul class="row margin-top-30">
-                                <li class="col-xs-4">
-                                    <div class="quinty">
-                                        <!-- QTY -->
-                                        <c:forEach items="${prodotti.quantita}" var="x">
-                                        <select class="selectpicker">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                    </div>
+                                <!--QUANTITA-->
+                                <li class="col-md-6">
+                                    <label> QUANTITÀ (1-999)
+                                        <input type="number" name="quantita" value="${prodotti.quantità}" placeholder="" min="1" max="999">
+                                    </label>
                                 </li>
 
                                 <!-- AGGIUNGI AL CARRELLO -->
