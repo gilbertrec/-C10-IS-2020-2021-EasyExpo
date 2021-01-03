@@ -43,7 +43,7 @@
                         <!-- Images Slider -->
                             <ul class="slides">
                                 <div class="row">
-                                    <div class="col-sm-6 margin-bottom-30"> <img class="img-responsive" src="${prodotti.immagine}" alt=""> </div>
+                                    <div class="col-sm-6 margin-bottom-30"> <img class="imma" src="${prodotti.immagine}" width="500px" height="600px" alt=""> </div>
                                 </div>
                             </ul>
                         </div>

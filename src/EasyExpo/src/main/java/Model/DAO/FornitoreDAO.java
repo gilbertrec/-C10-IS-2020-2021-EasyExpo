@@ -13,7 +13,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByPIVA(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT *  FROM Fornitore WHERE partitaIva=?");
+                    .prepareStatement("SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale  FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
