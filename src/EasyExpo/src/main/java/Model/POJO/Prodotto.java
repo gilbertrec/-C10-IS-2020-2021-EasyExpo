@@ -90,7 +90,7 @@ public class Prodotto {
                 ", tipo=" + tipo +
                 ", quantità=" + quantità +
                 ", prezzo=" + prezzo +
-                ", foto='" + img + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 
@@ -100,9 +100,7 @@ public class Prodotto {
     private String descrizione;
 
 
-    public enum Tipo {SERVIZIO, ATTREZZATURA}
-
-    ;
+    public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
     private int quantità;
     private float prezzo;
