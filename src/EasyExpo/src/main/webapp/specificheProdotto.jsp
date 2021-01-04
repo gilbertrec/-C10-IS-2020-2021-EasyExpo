@@ -61,7 +61,7 @@
                             <ul class="row margin-top-30">
                                 <!--QUANTITA-->
                                 <li class="col-md-6">
-                                    <label> QUANTITÀ (1-999)
+                                    <label> QUANTITÀ
                                         <input type="number" name="quantita" value="${prodotti.quantità}" placeholder="" min="1" max="999">
                                     </label>
                                 </li>

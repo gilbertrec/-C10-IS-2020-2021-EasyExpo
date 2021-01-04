@@ -2,8 +2,8 @@ package Controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
-import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
+import Model.POJO.Fornitore;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,17 +24,14 @@ import java.util.List;
 @MultipartConfig
 public class AggiungiProdottoServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
     doGet(request, response);
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
+      throws ServletException, IOException {
 
     String partitaIva = request.getParameter("partitaIva");
-    if (!(partitaIva != null && partitaIva.matches("[0-9]{11}"))) {
-      throw new MyServletException("Partita Iva non valida.");
-    }
 
     String titolo = request.getParameter("titolo");
     if (!(titolo != null && titolo.matches("[A-Z a-z 0-9]{1,30}"))) {
@@ -61,7 +58,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
-    String path = "C:\\Users\\Utente\\Documents\\GitHub\\-C10-IS-2020-2021-EasyExpo\\src\\EasyExpo\\src\\main\\webapp\\" + "images";
+    String path = "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" + "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 
@@ -70,7 +67,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     File file = File.createTempFile(fileName.substring(0, lenght - 4),
-            fileName.substring(lenght - 4, lenght), uploads);
+        fileName.substring(lenght - 4, lenght), uploads);
 
     try (InputStream input = filePart.getInputStream()) {
       Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -79,10 +76,10 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     int lastIndex =
-            file.getAbsoluteFile().toString().lastIndexOf("\\") + 1; //Inizio nome della foto finale
+        file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
     int totalLenght = file.getAbsoluteFile().toString().length();//Lunghezza path assoluto
     String finalFileName = file.getAbsolutePath().toString()
-            .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
+        .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
     String fotoFinale = "images/" + finalFileName;
 
 

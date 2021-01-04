@@ -78,7 +78,7 @@
                                         <li class="col-md-6">
                                             <label> TIPO
                                                 <div class="quinty">
-                                                    <select class="selectpicker">
+                                                    <select class="selectpicker" name="tipo">
                                                         <option>${prodotto.tipo}</option>
                                                         <c:choose>
                                                             <c:when test="${prodotto.tipo == 'ATTREZZATURA'}">
