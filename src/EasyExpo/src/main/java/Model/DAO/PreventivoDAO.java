@@ -13,7 +13,7 @@ public class PreventivoDAO {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                            "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+                            "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
             ps.setInt(1, idPreventivo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -35,8 +35,8 @@ public class PreventivoDAO {
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Preventivo, Fornitore, Cliente, RichiestaPreventivo" +
-                            "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp" +
+                            "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Preventivo> preventivi = new ArrayList<>();
@@ -83,7 +83,7 @@ public class PreventivoDAO {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                 .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                    "WHERE partitaIva=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+                    "WHERE p.partitaIva=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
             ps.setString(1, partitaIva);
             ArrayList<Preventivo> preventivi = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
@@ -107,7 +107,7 @@ public class PreventivoDAO {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                 .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                    "WHERE codiceFiscale=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+                    "WHERE p.codiceFiscale=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
             ps.setString(1, codiceFiscale);
             ArrayList<Preventivo> preventivi = new ArrayList<>();
             ResultSet rs = ps.executeQuery();

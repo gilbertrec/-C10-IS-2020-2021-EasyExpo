@@ -47,25 +47,23 @@
             <div class="container">
                 <div class="row" style="margin-left: 110px; margin-right: -110px">
                     <div class="col-md-9">
-
+                        <c:forEach items="${richieste}" var="richieste">
                         <!-- Article -->
-                        <article>
+                            <article>
                             <div class="row" style="margin-left: 170px; margin-right: -210px">
                                 <div class="col-sm-7">
                                     <!-- Title -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">The unique Chair By PAVSHOP</a>
+                                    <div class="post-tittle left"> <a href="#." class="tittle">${richieste.titolo}</a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by ${richieste.partitaIva} </span> <span><i class="primary-color icon-calendar"></i> ${richieste.dataRichiesta}</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                                     <!-- Post Content -->
                                     <div class="text-left">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
-
-                                            Nunc at blandit neque, bibendum varius purus.</p>
+                                        <p>${richieste.descrizione}</p>
                                         <a href="specificaRichiesta.jsp" class="red-more">READ MORE</a> </div>
                                 </div>
                             </div>
                         </article>
-
+                        </c:forEach>
                         <!-- Pagination -->
                         <ul class="pagination in-center">
                             <li><a href="#"><i class="fa fa-angle-left"></i></a></li>

@@ -37,7 +37,7 @@ public class RichiestaPreventivoDAO {
     public List<RichiestaPreventivo> doRetrieveByPartitaIva(String partitaIva){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE partitaIva=?" +
+                .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.partitaIva=?" +
                     "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
             ps.setString(1, partitaIva);
             ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
@@ -64,7 +64,7 @@ public class RichiestaPreventivoDAO {
     public List<RichiestaPreventivo> doRetrieveByCodiceFiscale(String codiceFiscale){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE codiceFiscale=?" +
+                .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.codiceFiscale=?" +
                     "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
             ps.setString(1, codiceFiscale);
             ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();

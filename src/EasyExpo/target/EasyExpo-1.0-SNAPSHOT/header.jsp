@@ -92,7 +92,7 @@
                                         <h6>Ciao ${cliente.nome} !</h6>
                                     </li>
                                     <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
-                                    <li><a href="listaRichieste.jsp">RICHIESTE</a></li>
+                                    <li><a href="RichiesteServlet?codiceFiscale=<c:out value="${contenuto.codiceFiscale}"/>">RICHIESTE</a></li>
                                     <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
@@ -102,7 +102,7 @@
                                     </li>
                                     <li><a href="areaFornitore.jsp"> AREA FORNITORE</a></li>
                                     <li><a href="areaFornitore.jsp"> CATALOGO</a></li>
-                                    <li><a href="listaRichieste.jsp">RICHIESTE</a></li>
+                                    <li><a href="RichiesteServlet?partitaIva=<c:out value="${contenuto.partitaIva}"/>">RICHIESTE</a></li>
                                     <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
