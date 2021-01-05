@@ -61,7 +61,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
 
                                             Nunc at blandit neque, bibendum varius purus.</p>
-                                        <a href="#." class="red-more">READ MORE</a> </div>
+                                        <a href="specificaRichiesta.jsp" class="red-more">READ MORE</a> </div>
                                 </div>
                             </div>
                         </article>
