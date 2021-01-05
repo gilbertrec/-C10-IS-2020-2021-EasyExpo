@@ -31,7 +31,7 @@
     <section class="sub-bnr-contatti" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4 style="color: #ffe115;">contattaci ora</h4>
+                <h4 style="color: #ffe115; text-shadow: 2px 2px 3px black;">contattaci ora</h4>
                 <p style="color: #2d3a4b; background-color: rgba(255,255,255,0.60);">Ti lasciamo di
                     seguito i nostri recapiti per contattarci. I nostri
                     operatori ti risponderanno nel minor tempo possibile!</p>
