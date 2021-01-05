@@ -92,14 +92,21 @@
                                         <h6>Ciao ${cliente.nome} !</h6>
                                     </li>
                                     <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
+                                    <li><a href="listaRichieste.jsp">RICHIESTE</a></li>
+                                    <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                                 <c:when test="${fornitore != null}">
+                                    <c:if test = "${salary > 2000}">
+                                        <p>My salary is:  <c:out value = "${salary}"/><p>
+                                    </c:if>
                                     <li>
                                         <h6>Ciao ${fornitore.nome} !</h6>
                                     </li>
-                                    <li><a href="areaFornitore.jsp"> Area Fornitore</a></li>
-                                    <li><a href="areaFornitore.jsp"> Catalogo</a></li>
+                                    <li><a href="areaFornitore.jsp"> AREA FORNITORE</a></li>
+                                    <li><a href="areaFornitore.jsp"> CATALOGO</a></li>
+                                    <li><a href="listaRichieste.jsp">RICHIESTE</a></li>
+                                    <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                                 <c:otherwise>
