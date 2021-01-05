@@ -97,9 +97,6 @@
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                                 <c:when test="${fornitore != null}">
-                                    <c:if test = "${salary > 2000}">
-                                        <p>My salary is:  <c:out value = "${salary}"/><p>
-                                    </c:if>
                                     <li>
                                         <h6>Ciao ${fornitore.nome} !</h6>
                                     </li>

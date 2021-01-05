@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,10 +35,6 @@
                 <h4>RICHIESTE DI PREVENTIVO</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">BLOG</li>
-                </ol>
             </div>
         </div>
     </section>
@@ -53,9 +50,9 @@
 
                         <!-- Article -->
                         <article>
-                            <div class="row">
+                            <div class="row" style="margin-left: 170px; margin-right: -210px">
                                 <div class="col-sm-7">
-                                    <!-- Tittle -->
+                                    <!-- Title -->
                                     <div class="post-tittle left"> <a href="#." class="tittle">The unique Chair By PAVSHOP</a>
                                         <!-- Post Info -->
                                         <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>

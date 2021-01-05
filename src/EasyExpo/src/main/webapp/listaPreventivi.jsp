@@ -35,10 +35,6 @@
                 <h4>LISTA PREVENTIVI</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">BLOG</li>
-                </ol>
             </div>
         </div>
     </section>
@@ -54,96 +50,10 @@
 
                         <!-- Article -->
                         <article>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <!-- Post Img -->
-                                    <img class="img-responsive" src="images/blog-list-img-1-2.jpg" alt="" > </div>
+                            <div class="row" style="margin-left: 170px; margin-right: -210px">
                                 <div class="col-sm-7">
-                                    <!-- Tittle -->
+                                    <!-- Title -->
                                     <div class="post-tittle left"> <a href="#." class="tittle">The unique Chair By PAVSHOP</a>
-                                        <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                                    <!-- Post Content -->
-                                    <div class="text-left">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
-
-                                            Nunc at blandit neque, bibendum varius purus.</p>
-                                        <a href="#." class="red-more">READ MORE</a> </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Article -->
-                        <article>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <!-- Post Img -->
-                                    <img class="img-responsive" src="images/blog-list-img-1-3.jpg" alt="" > </div>
-                                <div class="col-sm-7">
-                                    <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">The unique Chair By PAVSHOP</a>
-                                        <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                                    <!-- Post Content -->
-                                    <div class="text-left">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
-
-                                            Nunc at blandit neque, bibendum varius purus.</p>
-                                        <a href="#." class="red-more">READ MORE</a> </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Article -->
-                        <article>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <!-- Post Img -->
-                                    <img class="img-responsive" src="images/blog-list-img-1-4.jpg" alt="" > </div>
-                                <div class="col-sm-7">
-                                    <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">We Craft An Awesome for you</a>
-                                        <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                                    <!-- Post Content -->
-                                    <div class="text-left">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
-
-                                            Nunc at blandit neque, bibendum varius purus.</p>
-                                        <a href="#." class="red-more">READ MORE</a> </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Article -->
-                        <article>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <!-- Post Img -->
-                                    <img class="img-responsive" src="images/blog-list-img-1-5.jpg" alt="" > </div>
-                                <div class="col-sm-7">
-                                    <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">The Classic Razor for Man</a>
-                                        <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                                    <!-- Post Content -->
-                                    <div class="text-left">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus.
-
-                                            Nunc at blandit neque, bibendum varius purus.</p>
-                                        <a href="#." class="red-more">READ MORE</a> </div>
-                                </div>
-                            </div>
-                        </article>
-                        <!-- Article -->
-                        <article>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <!-- Post Img -->
-                                    <img class="img-responsive" src="images/blog-list-img-1-6.jpg" alt="" > </div>
-                                <div class="col-sm-7">
-                                    <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">Graffiti Art on White Tshirt</a>
                                         <!-- Post Info -->
                                         <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                                     <!-- Post Content -->
