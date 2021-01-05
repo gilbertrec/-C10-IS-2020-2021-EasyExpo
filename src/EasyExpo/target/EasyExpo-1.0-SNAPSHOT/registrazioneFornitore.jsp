@@ -113,14 +113,11 @@
                                             </label>
                                         </li>
 
-                                        <!-- PHONE -->
-                                        <li class="col-md-6">
-                                            <form>
-                                                <button type="submit" class="btn">REGISTRAMI</button>
-                                            </form>
-                                            <button type="submit" class="btn">REGISTRAMI</button>
-                                        </li>
                                     </ul>
+                                    <!-- PHONE -->
+                                    <li class="col-md-6">
+                                        <button type="submit" class="btn">REGISTRAMI</button>
+                                    </li>
                                 </form>
                             </div>
                         </div>
