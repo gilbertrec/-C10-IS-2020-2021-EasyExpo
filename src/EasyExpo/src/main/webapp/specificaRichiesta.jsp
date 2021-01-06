@@ -63,28 +63,7 @@
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
                                 <p> ${richiesta.descrizioneEvento}</p>
                                 <h6 class="margin-top-80 margin-bottom-30">Nota per il fornitore</h6>
-                                <p> ${richiesta.nota}</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
-                                    <br>
-                                    Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula.</p>
-
-                                <!-- LIST STYLE -->
-                                <ul class="list-group margin-top-50 margin-top-20">
-                                    <li>
-                                        <p>Donec sed dictum leo, et posuere felis. </p>
-                                    </li>
-                                    <li>
-                                        <p> Sed pharetra mauris vel varius suscipit. Aliquam lectus velit, </p>
-                                    </li>
-                                    <li>
-                                        <p> Tempus id est ut, volutpat maximus sapien. </p>
-                                    </li>
-                                </ul>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui aolutpat dui at lacus aliquet, a consequat et lacus aliquet, a consequat enim aliquet. Integer molestie sit ame.</p>
-
-                                <!-- Blockquote -->
-                                <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. </blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. NullamMorbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bociis natoque penatibus et magnnascetiscing elit. NullamMorbi ac scelerisque miscing elit. NullamMorbi ac scelerisque mur ridic volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit ame.</p>
+                                <blockquote>${richiesta.nota}</blockquote>
 
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
                                 <div class="admin-info">
@@ -92,7 +71,7 @@
                                         <div class="admin-pic"> <img src="images/admin-avatar.jpg" alt=""> </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6>NATASHA S. <span>Co-Founder</span></h6>
+                                        <h6>${clifor.nome} ${clifor.cognome} <span>Cliente</span></h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. NullamMorbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bociis natoque penatcing e scelerisque miscing elit. </p>
                                         <div class="admin-social"> <a href="#."><i class="icon-social-facebook"></i></a> <a href="#."><i class="icon-social-twitter"></i></a> <a href="#."><i class="icon-social-dribbble"></i></a> <a href="#."><i class="icon-envelope"></i></a> </div>
                                     </div>
@@ -110,14 +89,12 @@
                             <!-- Recent Post -->
                             <h5 class="shop-tittle margin-top-60 margin-bottom-30">Prodotti richiesti</h5>
                             <ul class="papu-post margin-top-20">
-                                <c:forEach items="${prichiesta}" var="pr">
                                     <c:forEach items="${prodotto}" var="p">
                                         <li class="media">
                                             <div class="media-left"> <a href="#"> <img class="media-object" src="<c:out value="${p.immagine}"/>" alt=""></a> </div>
-                                            <div class="media-body"> <a class="media-heading" href="#."><c:out value="${p.prezzo}"/></a> <span><c:out value="${p.titolo}"/></span></div>
+                                            <div class="media-body"> <a class="media-heading" href="#."><small>€</small><c:out value="${p.prezzo}"/></a> <span><c:out value="${p.titolo}"/></span></div>
                                         </li>
                                     </c:forEach>
-                                </c:forEach>
                             </ul>
 
                         </div>

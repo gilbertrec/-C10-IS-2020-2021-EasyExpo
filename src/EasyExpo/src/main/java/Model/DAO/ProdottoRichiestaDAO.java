@@ -12,9 +12,7 @@ public class ProdottoRichiestaDAO {
     public ProdottoRichiesta doRetrieveById(int id) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p" +
-                    "WHERE pr.id=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto" +
-                    "AND pr.partitaIva=p.partitaIva");
+                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p WHERE pr.id=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -38,9 +36,7 @@ public class ProdottoRichiestaDAO {
     public List<ProdottoRichiesta> doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p" +
-                    "WHERE pr.idRichiesta=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto" +
-                    "AND pr.partitaIva=p.partitaIva");
+                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p WHERE pr.idRichiesta=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva");
             ps.setInt(1, idRichiesta);
             ArrayList<ProdottoRichiesta> prichieste = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
@@ -65,9 +61,7 @@ public class ProdottoRichiestaDAO {
     public List<ProdottoRichiesta> doRetrieveByIdProdottoePartitaIva(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p" +
-                    "WHERE pr.idProdotto=? AND pr.partitaIva=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto" +
-                    "AND pr.partitaIva=p.partitaIva");
+                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p WHERE pr.idProdotto=? AND pr.partitaIva=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva");
             ps.setInt(1, idProdotto);
             ps.setString(2, partitaIva);
             ArrayList<ProdottoRichiesta> prichieste = new ArrayList<>();

@@ -1,9 +1,13 @@
 package Controller;
 
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
 import Model.DAO.PreventivoDAO;
 import Model.DAO.ProdottoDAO;
 import Model.DAO.ProdottoRichiestaDAO;
 import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
 import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
@@ -51,15 +55,23 @@ public class SpecifichePreventiviServlet extends HttpServlet {
        prodotto.add(p);
       }
 
+      ClienteDAO clienteDAO = new ClienteDAO();
+      Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
+
       request.getSession().setAttribute("richiesta", richiesta);
       request.getSession().setAttribute("prichiesta", prichiesta);
       request.getSession().setAttribute("prodotto", prodotto);
+      request.getSession().setAttribute("clifor", cliente);
 
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaRichiesta.jsp");
       requestDispatcher.forward(request, response);
     }else if(idRichiesta == null && idPreventivo != null){
       PreventivoDAO preventivoDAO = new PreventivoDAO();
       Preventivo preventivo = preventivoDAO.doRetriveByIdPreventivo(Integer.parseInt(idPreventivo));
+
+      //FornitoreDAO fornitoreDAO = new FornitoreDAO();
+      //Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(richiesta.getPartitaIva());
+      //request.getSession().setAttribute("clifor", fornitore);
 
       request.getSession().setAttribute("preventivo", preventivo);
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
