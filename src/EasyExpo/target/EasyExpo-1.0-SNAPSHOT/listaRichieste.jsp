@@ -24,7 +24,7 @@
 
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Area Fornitore"/>
+            <jsp:param name="pageTitle" value="Lista Richieste"/>
         </jsp:include>
     </header>
 
@@ -42,28 +42,28 @@
     <!-- Content -->
     <div id="content">
 
-        <!-- Request List -->
+        <!-- Quotation List -->
         <section class="blog-list blog-list-3 padding-top-100 padding-bottom-100">
             <div class="container">
                 <div class="row" style="margin-left: 110px; margin-right: -110px">
                     <div class="col-md-9">
-                        <c:forEach items="${richieste}" var="richieste">
-                        <!-- Article -->
-                            <article>
-                            <div class="row" style="margin-left: 170px; margin-right: -210px">
+
+                    <c:forEach items="${richieste}" var="r">
+                        <article>
+                            <div class="row" style="margin-left: 210px; margin-right: -210px">
                                 <div class="col-sm-7">
-                                    <!-- Title -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">${richieste.titolo}</a>
+                                    <!-- Tittle -->
+                                    <div class="post-tittle left"> <a href="#." class="tittle"><c:out value="${r.titolo}"/></a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by ${richieste.partitaIva} </span> <span><i class="primary-color icon-calendar"></i> ${richieste.dataRichiesta}</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> <c:out value="${r.dataRichiesta}"/></span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                                     <!-- Post Content -->
                                     <div class="text-left">
-                                        <p>${richieste.descrizione}</p>
-                                        <a href="specificaRichiesta.jsp" class="red-more">READ MORE</a> </div>
+                                        <p><c:out value="${r.descrizioneEvento}"/></p>
+                                        <a href="SpecificaServlet?idRichiesta=<c:out value="${r.idRichiesta}"/>" class="red-more">READ MORE</a> </div>
                                 </div>
                             </div>
                         </article>
-                        </c:forEach>
+                    </c:forEach>
                         <!-- Pagination -->
                         <ul class="pagination in-center">
                             <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -77,29 +77,30 @@
             </div>
         </section>
 
-    <!-- About -->
-    <section class="small-about padding-top-150 padding-bottom-150">
-        <div class="container">
 
-            <!-- Main Heading -->
-            <div class="heading text-center">
-                <h4>Cos'è EASYEXPO</h4>
-                <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
-                    eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
-                    preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
+        <!-- About -->
+        <section class="small-about padding-top-150 padding-bottom-150">
+            <div class="container">
+
+                <!-- Main Heading -->
+                <div class="heading text-center">
+                    <h4>Cos'è EASYEXPO</h4>
+                    <p>La piattaforma EasyExpo è un sistema di comunicazione tra gli organizzatori di
+                        eventi e i Fornitori di attrezzature, è un portale dove confrontare i vari
+                        preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
+                </div>
+
+                <!-- Social Icons -->
+                <ul class="social_icons">
+                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
+                </ul>
             </div>
+        </section>
 
-            <!-- Social Icons -->
-            <ul class="social_icons">
-                <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-            </ul>
-        </div>
-    </section>
+    </div>
 
-</div>
-
-<!--======= FOOTER =========-->
+    <!--======= FOOTER =========-->
 <footer>
     <jsp:include page="/footer.jsp"/>
 </footer>
