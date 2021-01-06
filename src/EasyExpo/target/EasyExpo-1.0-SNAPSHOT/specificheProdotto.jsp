@@ -16,8 +16,7 @@
     <div class="position-center-center">
         <div class="container">
             <h1 style="color: #ffe115; font-weight: 900;">${prodotti.titolo}</h1>
-            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                Sed feugiat, tellus vel tristique posuere, diam</p>-->
+
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li class="active">Data</li>
@@ -62,12 +61,18 @@
                                 <!--QUANTITA-->
                                 <li class="col-md-6">
                                     <label> QUANTITÀ
-                                        <input type="number" name="quantita" value="${prodotti.quantità}" placeholder="" min="1" max="999">
+                                        <input type="number" name="quantita" value="1" placeholder="" min="1" max="${prodotti.quantità}">
                                     </label>
                                 </li>
 
                                 <!-- AGGIUNGI AL CARRELLO -->
-                                <li class="col-xs-6"><a href="#." class="btn">AGGIUNGI</a></li>
+                                <form action="Carrello" method="post">
+                                    <input type="hidden" name="prodId" value="${prodotti.idProdotto}">
+                                    <input type="hidden" name="partitaIva" value="${prodotti.partitaIva}">
+                                    <input type="hidden" name="addNum" value="1"> <!-- modifica numero di prodotti aggiunti -->
+                                    <input class="aggiungi" type="submit" value="AGGIUNGI">
+                                <!--<li class="col-xs-6"><a href="carrello.jsp" class="btn">AGGIUNGI</a></li>-->
+                                </form>
 
                                         </ul>
 
@@ -80,14 +85,7 @@
                                                 consectetur
                                                 adipiscing elit. </p>
 
-                                            <!-- TAGS -->
-                                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">POPULAR TAGS</h5>
-                                            <ul class="shop-tags">
-                                                <li><a href="#.">Musica</a></li>
-                                                <li><a href="#.">Casse</a></li>
 
-
-                                            </ul>
 
 
                                         </div>

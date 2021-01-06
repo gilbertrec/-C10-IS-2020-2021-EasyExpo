@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.HttpServlet;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.DAO.TagDAO;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/RicercaServlet")
-public class RicercaServlet extends HttpServlet{
+public class RicercaServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
