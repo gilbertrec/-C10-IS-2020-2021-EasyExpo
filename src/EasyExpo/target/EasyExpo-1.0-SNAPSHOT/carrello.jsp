@@ -72,7 +72,7 @@
                             </li>
                             <!--  -->
                             <li class="col-sm-4 text-left">
-                                <h6>N</h6>
+                                <h6></h6>
                             </li>
                             <!-- PRICE -->
                             <li class="col-sm-2">

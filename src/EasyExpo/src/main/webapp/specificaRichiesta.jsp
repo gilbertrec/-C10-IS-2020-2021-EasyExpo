@@ -60,14 +60,10 @@
                                 <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> ${richiesta.dataRichiesta}</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                             <!-- Post Content  creare il metodo che ti restituisce anche l'altra tabella per i prodotti-->
                             <div class="text-left">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
-                                    <br>
-                                    Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula.</p>
-                                <h6 class="margin-top-80 margin-bottom-30">proeduct history</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. <br>
-                                    <br>
-                                    Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula.</p>
-
+                                <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
+                                <p> ${richiesta.descrizioneEvento}</p>
+                                <h6 class="margin-top-80 margin-bottom-30">Nota per il fornitore</h6>
+                                <p> ${richiesta.nota}</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
                                     <br>
                                     Nam sit amet sapien vitae enim vehicula tincidunt. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc faucibus imperdiet vulputate. Morbi volutpat leo iaculis elit vehicula, eu convallis magna finibus. Suspendisse tristique ullamcorper erat a elementum. Cras eget elit non nunc aliquam ullamcorper quis sed metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada, erat in ullamcorper bibendum, elit lacus mattis lorem, quis luctus diam lorem vel ligula.</p>
@@ -112,23 +108,16 @@
                         <div class="shop-sidebar">
 
                             <!-- Recent Post -->
-                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">recent post</h5>
+                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">Prodotti richiesti</h5>
                             <ul class="papu-post margin-top-20">
-                                <li class="media">
-                                    <div class="media-left"> <a href="#"> <img class="media-object" src="images/sm-post-1.jpg" alt=""></a> </div>
-                                    <div class="media-body"> <a class="media-heading" href="#.">Nullam volutpat dui at
-                                        a consequat enimiquet</a> <span>Posted on Sep 27</span> </div>
-                                </li>
-                                <li class="media">
-                                    <div class="media-left"> <a href="#"> <img class="media-object" src="images/sm-post-2.jpg" alt=""></a> </div>
-                                    <div class="media-body"> <a class="media-heading" href="#.">Nullam volutpat dui at
-                                        a consequat enimiquet</a> <span>Posted on Sep 27</span> </div>
-                                </li>
-                                <li class="media">
-                                    <div class="media-left"> <a href="#"> <img class="media-object" src="images/sm-post-3.jpg" alt=""></a> </div>
-                                    <div class="media-body"> <a class="media-heading" href="#.">Nullam volutpat dui at
-                                        a consequat enimiquet</a> <span>Posted on Sep 27</span> </div>
-                                </li>
+                                <c:forEach items="${prichiesta}" var="pr">
+                                    <c:forEach items="${prodotto}" var="p">
+                                        <li class="media">
+                                            <div class="media-left"> <a href="#"> <img class="media-object" src="<c:out value="${p.immagine}"/>" alt=""></a> </div>
+                                            <div class="media-body"> <a class="media-heading" href="#."><c:out value="${p.prezzo}"/></a> <span><c:out value="${p.titolo}"/></span></div>
+                                        </li>
+                                    </c:forEach>
+                                </c:forEach>
                             </ul>
 
                         </div>
