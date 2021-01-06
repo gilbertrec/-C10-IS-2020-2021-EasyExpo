@@ -50,12 +50,12 @@
 
                     <c:forEach items="${richieste}" var="r">
                         <article>
-                            <div class="row" style="margin-left: 210px; margin-right: -210px">
+                            <div class="row" style="margin-left: 100px; margin-right: -450px">
                                 <div class="col-sm-7">
                                     <!-- Tittle -->
                                     <div class="post-tittle left"> <a href="#." class="tittle"><c:out value="${r.titolo}"/></a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> <c:out value="${r.dataRichiesta}"/></span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> <c:out value="${r.dataRichiesta}"/></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                                     <!-- Post Content -->
                                     <div class="text-left">
                                         <p><c:out value="${r.descrizioneEvento}"/></p>

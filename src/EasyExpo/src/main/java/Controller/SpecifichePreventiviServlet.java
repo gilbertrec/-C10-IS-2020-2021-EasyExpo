@@ -5,6 +5,7 @@ import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,11 +29,15 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       RichiestaPreventivo richiesta = richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
 
       request.getSession().setAttribute("richiesta", richiesta);
+      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaRichiesta.jsp");
+      requestDispatcher.forward(request, response);
     }else if(idRichiesta == null && idPreventivo != null){
       PreventivoDAO preventivoDAO = new PreventivoDAO();
       Preventivo preventivo = preventivoDAO.doRetriveByIdPreventivo(Integer.parseInt(idPreventivo));
 
       request.getSession().setAttribute("preventivo", preventivo);
+      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
+      requestDispatcher.forward(request, response);
     }
 
 

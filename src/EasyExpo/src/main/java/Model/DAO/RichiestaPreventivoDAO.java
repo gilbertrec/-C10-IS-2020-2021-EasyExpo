@@ -11,8 +11,7 @@ public class RichiestaPreventivoDAO {
     public RichiestaPreventivo doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE idRichiesta=?" +
-                            "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.idRichiesta=? AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
             ps.setInt(1, idRichiesta);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

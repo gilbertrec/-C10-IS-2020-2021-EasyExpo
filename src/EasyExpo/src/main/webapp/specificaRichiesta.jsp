@@ -34,9 +34,7 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>THE unique CHAIR BY PAVSHOP</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
+                <h4>${richiesta.titolo}</h4>
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">BLOg details</li>
@@ -57,10 +55,10 @@
                         <!-- Article -->
                         <article>
                             <!-- Title -->
-                            <div class="post-tittle left"> <a href="#." class="tittle">Look Beautiful in this Seasons</a>
+                            <div class="post-tittle left"> <a href="#." class="tittle">${richiesta.titolo}</a>
                                 <!-- Post Info -->
-                                <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> April 27, 2016</span> <span><i class="primary-color icon-bubble"></i> 05</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                            <!-- Post Content -->
+                                <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> ${richiesta.dataRichiesta}</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                            <!-- Post Content  creare il metodo che ti restituisce anche l'altra tabella per i prodotti-->
                             <div class="text-left">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam volutpat dui at lacus aliquet, a consequat enim aliquet. Integer molestie sit amet sem et faucibus. Nunc ornare pharetra dui, vitae auctor orci fringilla eget. Pellentesque in placerat felis. Etiam mollis venenatis luctus. Morbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bibendum varius purus. <br>
                                     <br>
