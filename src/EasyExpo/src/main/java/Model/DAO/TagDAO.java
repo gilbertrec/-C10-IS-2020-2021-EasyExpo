@@ -1,8 +1,11 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
 import Model.POJO.Tag;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TagDAO {
 
@@ -19,6 +22,28 @@ public class TagDAO {
                 return t;
             }
             return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Tag> doRetrieveByNome(String ricercato){
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * FROM Tag WHERE nome LIKE ? ");
+            ps.setString(1, "%" + ricercato + "%");
+
+            ArrayList<Tag> tag = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Tag t = new Tag();
+                t.setIdTag(rs.getInt(1));
+                t.setNome(rs.getString(2));
+                tag.add(t);
+            }
+            return tag;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

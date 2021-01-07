@@ -2,6 +2,7 @@ package Model.DAO;
 
 import Model.POJO.Preventivo;
 
+import Model.POJO.RichiestaPreventivo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class PreventivoDAO {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
                     .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                            "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+                            "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
             ps.setInt(1, idPreventivo);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -34,8 +35,8 @@ public class PreventivoDAO {
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Preventivo, Fornitore, Cliente, RichiestaPreventivo" +
-                            "WHERE idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
+                    .prepareStatement("SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp" +
+                            "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             ArrayList<Preventivo> preventivi = new ArrayList<>();
@@ -78,7 +79,53 @@ public class PreventivoDAO {
         }
     }
 
+    public List<Preventivo> doRetrieveByPartitaIva(String partitaIva){
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                    "WHERE p.partitaIva=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+            ps.setString(1, partitaIva);
+            ArrayList<Preventivo> preventivi = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Preventivo p  = new Preventivo();
+                p.setIdPreventivo(rs.getInt(1));
+                p.setIdRichiesta(rs.getInt(2));
+                p.setPartitaIva(rs.getString(3));
+                p.setCodiceFiscale(rs.getString(4));
+                p.setDataPreventivo(rs.getDate(5));
+                p.setPrezzoTotale(rs.getFloat(6));
+                preventivi.add(p);
+            }
+            return preventivi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public List<Preventivo> doRetrieveByCodiceFiscale(String codiceFiscale){
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                .prepareStatement("SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                    "WHERE p.codiceFiscale=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+            ps.setString(1, codiceFiscale);
+            ArrayList<Preventivo> preventivi = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Preventivo p  = new Preventivo();
+                p.setIdPreventivo(rs.getInt(1));
+                p.setIdRichiesta(rs.getInt(2));
+                p.setPartitaIva(rs.getString(3));
+                p.setCodiceFiscale(rs.getString(4));
+                p.setDataPreventivo(rs.getDate(5));
+                p.setPrezzoTotale(rs.getFloat(6));
+                preventivi.add(p);
+            }
+            return preventivi;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void deletePreventivo(int idPreventivo) {
         try (Connection con = DBConnection.getConnection()) {

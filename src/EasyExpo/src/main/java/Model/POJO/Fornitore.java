@@ -1,34 +1,20 @@
 package Model.POJO;
 
+import java.util.Objects;
+
 public class Fornitore {
-    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String ragioneSociale) {
-        this.email = email;
-        this.password = password;
+    public Fornitore(String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String email, String password, String ragioneSociale) {
         this.partitaIva = partitaIva;
         this.nome = nome;
         this.cognome = cognome;
         this.telefono = telefono;
         this.luogoUbicazione = luogoUbicazione;
+        this.email = email;
+        this.password = password;
         this.ragioneSociale = ragioneSociale;
     }
-    public Fornitore(){
 
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Fornitore() {
     }
 
     public String getPartitaIva() {
@@ -71,6 +57,22 @@ public class Fornitore {
         this.luogoUbicazione = luogoUbicazione;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getRagioneSociale() {
         return ragioneSociale;
     }
@@ -82,23 +84,23 @@ public class Fornitore {
     @Override
     public String toString() {
         return "Fornitore{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", partitaIva='" + partitaIva + '\'' +
+                "partitaIva='" + partitaIva + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", telefono=" + telefono +
+                ", telefono='" + telefono + '\'' +
                 ", luogoUbicazione='" + luogoUbicazione + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", ragioneSociale='" + ragioneSociale + '\'' +
                 '}';
     }
 
-    private String email;
-    private String password;
     private String partitaIva;
     private String nome;
     private String cognome;
     private String telefono;
     private String luogoUbicazione;
+    private String email;
+    private String password;
     private String ragioneSociale;
 }

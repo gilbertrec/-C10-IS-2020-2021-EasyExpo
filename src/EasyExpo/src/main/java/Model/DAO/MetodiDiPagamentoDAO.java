@@ -11,7 +11,7 @@ public class MetodiDiPagamentoDAO {
     public List<MetodoPagamento> doRetrieveAllByPartitaIva(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM MetodoPagamento as mp, Fornitore as f WHERE partitaIva=? AND mp.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT * FROM MetodoPagamento as mp, Fornitore as f WHERE mp.partitaIva=? AND mp.partitaIva=f.partitaIva");
             ps.setString(1, partitaIva);
             ArrayList<MetodoPagamento> metodiPagamenti = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
@@ -29,6 +29,26 @@ public class MetodiDiPagamentoDAO {
             throw new RuntimeException(e);
         }
     }
+        public MetodoPagamento doRetrieveByNumCarta(String numCarta) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT * FROM MetodiPagamento WHERE numCarta=?");
+            ps.setString(1, numCarta);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                MetodoPagamento c = new MetodoPagamento();
+                c.setNumeroCarta(rs.getString(1));
+                c.setPartitaIva(rs.getString(2));
+                c.setNomeIntestatario(rs.getString(3));
+                c.setDataScadenza(rs.getDate(4));
+                c.setCvv(rs.getInt(5));
+                return c;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
         try (Connection con = DBConnection.getConnection()) {
@@ -42,9 +62,6 @@ public class MetodiDiPagamentoDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            metodoPagamento.setNumeroCarta(rs.getString(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

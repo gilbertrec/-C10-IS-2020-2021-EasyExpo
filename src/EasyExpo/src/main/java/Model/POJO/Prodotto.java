@@ -1,7 +1,7 @@
 package Model.POJO;
 
 public class Prodotto {
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String immagine) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
@@ -9,6 +9,7 @@ public class Prodotto {
         this.tipo = tipo;
         this.quantità = quantità;
         this.prezzo = prezzo;
+        this.immagine = immagine;
     }
 
     public Prodotto() {
@@ -71,17 +72,26 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
     @Override
     public String toString() {
         return "Prodotto{" +
-                "idProdotto=" + idProdotto +
-                ", partitaIva='" + partitaIva + '\'' +
-                ", titolo='" + titolo + '\'' +
-                ", descrizione='" + descrizione + '\'' +
-                ", tipo=" + tipo +
-                ", quantità=" + quantità +
-                ", prezzo=" + prezzo +
-                '}';
+            "idProdotto=" + idProdotto +
+            ", partitaIva='" + partitaIva + '\'' +
+            ", titolo='" + titolo + '\'' +
+            ", descrizione='" + descrizione + '\'' +
+            ", tipo=" + tipo +
+            ", quantità=" + quantità +
+            ", prezzo=" + prezzo +
+            ", immagine='" + immagine + '\'' +
+            '}';
     }
 
     private int idProdotto;
@@ -89,8 +99,10 @@ public class Prodotto {
     private String titolo;
     private String descrizione;
 
+
     public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
     private int quantità;
     private float prezzo;
+    private String immagine;
 }

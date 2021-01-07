@@ -10,15 +10,16 @@ public class TagProdottoDAO {
     public TagProdotto doRetrieveByIdTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idTag=? " +
-                            "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag AND tp.partitaIva=f.partitaIva");
+                    .prepareStatement("SELECT tp.idTag, tp.partitaIva, tp.idProdotto FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? " +
+                            "AND tp.idTag=t.idTag AND tp.partitaIva=p.partitaIva AND tp.idProdotto=p.idProdotto");
             ps.setInt(1, idTag);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 TagProdotto tp = new TagProdotto();
                 tp.setIdTag(rs.getInt(1));
-                tp.setIdProdotto(rs.getInt(2));
-                tp.setPartitaIva(rs.getString(3));
+                tp.setPartitaIva(rs.getString(2));
+                tp.setIdProdotto(rs.getInt(3));
+
                 return tp;
             }
             return null;
