@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Model.POJO.Prodotto" %>
+<%@ page import="Model.POJO.ProdottoRichiesta" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -83,36 +85,30 @@
                     </div>
 
                     <!-- Sider Bar -->
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="padding-right: inherit">
                         <div class="shop-sidebar">
 
                             <!-- Recent Post -->
                             <h5 class="shop-tittle margin-top-60 margin-bottom-30">Prodotti richiesti</h5>
                             <ul class="papu-post margin-top-20">
-                                    <c:forEach items="${prodotto}" var="p">
-                                        <li class="media">
-                                            <div class="media-left"> <a href="#"> <img class="media-object" src="<c:out value="${p.immagine}"/>" alt=""></a> </div>
-                                            <div class="media-body"> <a class="media-heading" href="#."><small>€</small><c:out value="${p.prezzo}"/></a> <span><c:out value="${p.titolo}"/></span></div>
-                                        </li>
-                                    </c:forEach>
+                                <%
+                                    ArrayList<Prodotto> prodotto = (ArrayList<Prodotto>) session.getAttribute("prodotto");
+                                    ArrayList<ProdottoRichiesta> prichiesta = (ArrayList<ProdottoRichiesta>) session.getAttribute("prichiesta");
+
+                                    for(int i = 0; i < prodotto.size(); i++){
+                                %>
+
+                                <li class="media">
+                                    <div class="media-left"> <a href="#"> <img class="media-object" src="<%=prodotto.get(i).getImmagine()%>" alt=""></a> </div>
+                                    <div class="media-body"> <a class="media-heading" href="#."><small>€</small><%=prodotto.get(i).getPrezzo()%></a> <span><%=prodotto.get(i).getTitolo()%></span></div>
+                                    <div class="media-body"> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataInizioNoleggio()%></a>  <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%></a></div>
+
+
+                                </li>
+                                      <%}%>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="shop-sidebar">
-
-                            <!-- Recent Post -->
-                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">Periodo richiesta</h5>
-                            <ul class="papu-post margin-top-20">
-                                <c:forEach items="${prichiesta}" var="rp">
-                                    <li class="media">
-                                        <div class="media-left"> <a href="#"></a> </div>
-                                        <div class="media-body"> <a class="media-heading" href="#."><c:out value="${rp.dataFineNoleggio}"/></a> <span><c:out value="${rp.dataInizioNoleggio}"/></span></div>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                </div>
             </div>
         </section>
     </div>
