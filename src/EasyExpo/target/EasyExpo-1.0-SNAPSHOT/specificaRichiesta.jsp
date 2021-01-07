@@ -96,9 +96,22 @@
                                         </li>
                                     </c:forEach>
                             </ul>
-
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="shop-sidebar">
+
+                            <!-- Recent Post -->
+                            <h5 class="shop-tittle margin-top-60 margin-bottom-30">Periodo richiesta</h5>
+                            <ul class="papu-post margin-top-20">
+                                <c:forEach items="${prichiesta}" var="rp">
+                                    <li class="media">
+                                        <div class="media-left"> <a href="#"></a> </div>
+                                        <div class="media-body"> <a class="media-heading" href="#."><c:out value="${rp.dataFineNoleggio}"/></a> <span><c:out value="${rp.dataInizioNoleggio}"/></span></div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
                 </div>
             </div>
         </section>
