@@ -1,7 +1,9 @@
 package Controller;
 
+import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Carrello;
+import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 
 import javax.servlet.RequestDispatcher;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 @WebServlet("/Carrello")
 public class CarrelloServlet extends HttpServlet {
     private final ProdottoDAO prodottoDAO = new ProdottoDAO();
+    private final FornitoreDAO fornitoreDAO = new FornitoreDAO();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -53,6 +56,9 @@ public class CarrelloServlet extends HttpServlet {
                     if(prodotti1==null){  /*se la lista di prodotti assegnata a quel fornitore è vuota*/
                         /* aggiungo partita iva a listaPI */
                         listaPI.add(partitaIva);
+                        /*trovo il fornitore legato a quella partita iva*/
+                        Fornitore forni = fornitoreDAO.doRetrieveByPIVA(partitaIva);
+
                         /* crea l'array list di prodotti da aggiungere */
                         ArrayList<Prodotto> prodotti = new ArrayList<>();
                         /*aggiungi elemento alla lista*/
