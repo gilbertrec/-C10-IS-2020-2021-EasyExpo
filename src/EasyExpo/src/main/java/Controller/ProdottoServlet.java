@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
+import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +15,7 @@ import java.io.IOException;
 @WebServlet("/ProdottoServlet")
 public class ProdottoServlet extends HttpServlet{
     private final ProdottoDAO prodottoDAO = new ProdottoDAO();
+    private final FornitoreDAO fornitoreDAO = new FornitoreDAO();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,6 +38,9 @@ public class ProdottoServlet extends HttpServlet{
 
         Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id,partitaIva);
         request.setAttribute("prodotti", prodotto);
+
+        Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
+        request.setAttribute("fornitore", fornitore);
 
         if(prodotto == null){
             throw new MyServletException("Prodotto non trovato.");

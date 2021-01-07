@@ -28,16 +28,20 @@ public class CarrelloServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         Carrello carrello = (Carrello) session.getAttribute("carrello");
-        if (carrello == null)
+        ArrayList<String> listaPI = (ArrayList<String>) session.getAttribute("listaPI");
+        if (carrello == null) /*se è vuoto il carrello anche listaPI è vuota*/
         {
             carrello = new Carrello();
             session.setAttribute("carrello", carrello);
+            listaPI = new ArrayList<>();
+            session.setAttribute("listaPI", listaPI);
         }
+
 
         String prodIdStr = req.getParameter("prodId");
         String partitaIva = req.getParameter("partitaIva");
 
-        if (prodIdStr != null)
+        if (prodIdStr != null) /*caso aggiunta*/
         {
             int prodId = Integer.parseInt(prodIdStr);
 
@@ -47,7 +51,10 @@ public class CarrelloServlet extends HttpServlet {
                     ArrayList<Prodotto> prodotti1 = carrello.get(partitaIva);
 
                     if(prodotti1==null){  /*se la lista di prodotti assegnata a quel fornitore è vuota*/
-                        /*crea l'array list*/
+                        /* aggiungo partita iva a listaPI */
+                        listaPI.add(partitaIva);
+
+                        /* crea l'array list di prodotti da aggiungere */
                         ArrayList<Prodotto> prodotti = new ArrayList<>();
 
                         /*aggiungi elemento alla lista*/
@@ -55,8 +62,9 @@ public class CarrelloServlet extends HttpServlet {
 
                         /*aggiungi al carrello la nuova lista legata al fornitore*/
                         carrello.put(prodotti);
-                    }//se già c'è devo fare l'aggiornamento!!
+                    }else {//se già c'è devo fare ANCHE l'aggiornamento!!
 
+                    }
 
                 }else{
                         //caso rimozione prodotto

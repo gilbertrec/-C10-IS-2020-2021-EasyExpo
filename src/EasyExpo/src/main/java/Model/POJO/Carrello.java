@@ -10,7 +10,7 @@ public class Carrello {
 
     private LinkedHashMap<String, ArrayList<Prodotto>> ProdottiFornitori = new LinkedHashMap<>();
 
-    public Collection<ArrayList<Prodotto>> getProdottiFornitori() {return ProdottiFornitori.values(); }
+    public Collection<ArrayList<Model.POJO.Prodotto>> getProdottiFornitori() {return ProdottiFornitori.values(); }
 
     public ArrayList<Prodotto> get(String partitaIva) { return ProdottiFornitori.get(partitaIva); }
 
@@ -31,6 +31,14 @@ public class Carrello {
     /*public float  getPrezzoTot() { return (float) prodotti.values().stream().mapToDouble(p -> (double) p.getPrezzo_v()).sum();
     }
      */
+
+    @Override
+    public String toString() {
+        return "Carrello{" +
+                "listaProdotti=" + listaProdotti +
+                ", ProdottiFornitori=" + ProdottiFornitori +
+                '}';
+    }
 
 
 }

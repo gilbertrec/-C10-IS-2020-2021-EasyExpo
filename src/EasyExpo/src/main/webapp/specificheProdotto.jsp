@@ -70,7 +70,7 @@
                                     <input type="hidden" name="prodId" value="${prodotti.idProdotto}">
                                     <input type="hidden" name="partitaIva" value="${prodotti.partitaIva}">
                                     <input type="hidden" name="addNum" value="1"> <!-- modifica numero di prodotti aggiunti -->
-                                    <input class="aggiungi" type="submit" value="AGGIUNGI">
+                                    <li class="col-xs-6"> <input class="btn" type="submit" value="AGGIUNGI"></li>
                                 <!--<li class="col-xs-6"><a href="carrello.jsp" class="btn">AGGIUNGI</a></li>-->
                                 </form>
 
@@ -79,15 +79,8 @@
                                         <!-- INFOMATION -->
                                         <div class="inner-info">
                                             <h6>INFORMAZIONI FORNITORE</h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-                                                finibus ligula a
-                                                scelerisque gravida. Nullam laoreet tortor ac maximus alique met,
-                                                consectetur
-                                                adipiscing elit. </p>
-
-
-
-
+                                            <h5><a href="FornitoreServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>"> ${fornitore.nome} ${fornitore.cognome}</a></h5>
+                                            <h7>Questo fornitore si trova a: ${fornitore.luogoUbicazione}</h7>
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +91,7 @@
                     <div class="item-decribe">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
-                            <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIPTION</a>
+                            <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIZIONE</a>
                             </li>
                         </ul>
 
