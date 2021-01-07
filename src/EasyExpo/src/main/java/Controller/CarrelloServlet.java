@@ -53,17 +53,19 @@ public class CarrelloServlet extends HttpServlet {
                     if(prodotti1==null){  /*se la lista di prodotti assegnata a quel fornitore è vuota*/
                         /* aggiungo partita iva a listaPI */
                         listaPI.add(partitaIva);
-
                         /* crea l'array list di prodotti da aggiungere */
                         ArrayList<Prodotto> prodotti = new ArrayList<>();
-
                         /*aggiungi elemento alla lista*/
                         prodotti.add(prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId,partitaIva));
-
                         /*aggiungi al carrello la nuova lista legata al fornitore*/
                         carrello.put(prodotti);
-                    }else {//se già c'è devo fare ANCHE l'aggiornamento!!
-
+                    }else {//se già c'è la lista di prodotti assegnata a quel fornitore devo fare ANCHE l'aggiornamento!!
+                        //in listaPI c'è già la sua partitaIva
+                        //aggiungo il prodotto a prodotti1
+                        prodotti1.add(prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId,partitaIva));
+                        //devo fare l'aggiornamento dei prodotti legati a quella partita iva prima di reiserirli
+                        carrello.remove(partitaIva);
+                        carrello.put(prodotti1);
                     }
 
                 }else{

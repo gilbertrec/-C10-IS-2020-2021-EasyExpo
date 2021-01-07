@@ -15,6 +15,7 @@ public class Carrello {
     public ArrayList<Prodotto> get(String partitaIva) { return ProdottiFornitori.get(partitaIva); }
 
 
+
     public void put(ArrayList<Prodotto> prodotti) {
         String PI = prodotti.get(0).getPartitaIva();
         ProdottiFornitori.put(PI, prodotti);
