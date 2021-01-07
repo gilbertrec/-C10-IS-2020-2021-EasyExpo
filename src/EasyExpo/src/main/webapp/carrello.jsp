@@ -1,11 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.POJO.Prodotto" %><%--
-  Created by IntelliJ IDEA.
-  User: Katia Monaco De Simone
-  Date: 05/01/2021
-  Time: 18:49
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="Model.POJO.Prodotto" %>
+<%@ page import="Model.POJO.Carrello" %>
+<%@ page import="java.util.LinkedHashMap" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -61,15 +58,28 @@
                         <ul class="row">
                             <!-- FORNITORE -->
                             <li class="col-sm-2 text-left">
-                                <!-- <h6>FORNITORE</h6> -->
+
+                                <!-- CARRELLO -->
 
 
-                            <c:forEach items="${carrello.getLista()}" var="ProdottiFornitori">
-                                <c:forEach items="ProdottiFornitori" var="prodotto">
-                                <h4><c:out value="${carrello.get(prodotto)}" /></h4>
-                                </c:forEach>
-                            </c:forEach>
-                            </li>
+                                <% Carrello carrello = (Carrello) session.getAttribute("carrello");
+                                   ArrayList<String> listaPI = (ArrayList<String>) session.getAttribute("listaPI");
+                                    /*ciclo su listaPI e per ogni stringa get dal carrello*/
+                                    /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
+                                    /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
+                                    /*per ogni prodotto posso stampare gli attributi*/
+
+                                %>
+
+                                    <c:forEach items="${listaPI}" var="partitaIva">
+                                        <c:forEach items="${carrello.get(partitaIva)}" var="ListaProd">
+                                            <h6>Prodotto-titolo: <c:out value="${ListaProd.titolo}" /></h6>
+                                            <h6>Prodotto-prezzo: <c:out value="${ListaProd.prezzo}" /></h6>
+                                        </c:forEach>
+                                    </c:forEach>
+
+
+
                             <!--  -->
                             <li class="col-sm-4 text-left">
                                 <h6></h6>
@@ -273,17 +283,6 @@
 
 
 </div>
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/own-menu.js"></script>
-<script src="js/jquery.lighter.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-
-<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
-<script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/main.js"></script>
 
 
 <!--======= FOOTER =========-->
