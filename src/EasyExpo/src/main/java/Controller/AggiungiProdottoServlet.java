@@ -58,7 +58,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
-    String path = "C:\\Users\\Utente\\Documents\\GitHub\\-C10-IS-2020-2021-EasyExpo\\src\\EasyExpo\\src\\main\\webapp\\" + "images";
+    String path = "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" + "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 
@@ -76,7 +76,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     int lastIndex =
-        file.getAbsoluteFile().toString().lastIndexOf("\\") + 1; //Inizio nome della foto finale
+        file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
     int totalLenght = file.getAbsoluteFile().toString().length();//Lunghezza path assoluto
     String finalFileName = file.getAbsolutePath().toString()
         .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
