@@ -150,7 +150,7 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantità, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, prodotto.getPartitaIva());
