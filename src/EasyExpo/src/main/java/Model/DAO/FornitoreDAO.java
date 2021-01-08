@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 
 import java.sql.*;
@@ -8,8 +9,21 @@ import java.util.List;
 import java.sql.SQLException;
 import java.sql.Connection;
 
+/**
+ * <p> FornitoreDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Fornitore </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class FornitoreDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Fornitore correlato ad una partitaIva data in input
+     * @param  partitaIva  codice alfanumerico identificativo fornitore, String
+     * @return  Fornitore - Oggetto di tipo {@link Fornitore}
+     *
+     */
     public Fornitore doRetrieveByPIVA(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -34,6 +48,13 @@ public class FornitoreDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+     *
+     */
     public List<Fornitore> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -60,6 +81,11 @@ public class FornitoreDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Fornitore
+     * @param fornitore  Oggetto di tipo {@link Fornitore}
+     *
+     */
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -80,6 +106,13 @@ public class FornitoreDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email data in input
+     * @param  email  Indirizzo email identificativo, String
+     * @return Fornitore - Oggetto di tipo {@link Fornitore}
+     *
+     */
     public Fornitore doRetrieveByEmail(String email) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -104,6 +137,13 @@ public class FornitoreDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email e password dati in input
+     * @param  email  Indirizzo email identificativo, String
+     * @param password Caratteri alfanumerici per accesso al sistema, String
+     * @return Fornitore - Oggetto di tipo {@link Fornitore}
+     *
+     */
     public Fornitore doRetrieveByEmailandPassword(String email, String password){
             try (Connection con = DBConnection.getConnection()) {
                 PreparedStatement ps = con.prepareStatement(
@@ -129,6 +169,7 @@ public class FornitoreDAO {
             }
         }
 
+   
     public List<Fornitore> doRetrieveByNome(String ricercato) {
         try (Connection con = DBConnection.getConnection()) {
 
@@ -177,7 +218,10 @@ public class FornitoreDAO {
         }
 
     }
-
+    /**
+     * Metodo che elimina dal DB l'istanza Fornitore correlata alla partitaIva data in input
+     * @param partitaIva  codice alfanumerico identificativo fornitore, String
+     */
     public void deleteFornitore(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Fornitore WHERE partitaIva=?");

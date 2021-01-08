@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
+import Model.POJO.MetodoPagamento;
 import Model.POJO.Preventivo;
 
 import Model.POJO.RichiestaPreventivo;
@@ -7,8 +9,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> PreventivoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Preventivo </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
 public class PreventivoDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input
+     * @param  idPreventivo  codice identificativo, Intero
+     * @return  Preventivo - Oggetto di tipo {@link Preventivo}
+     *
+     */
     public Preventivo doRetriveByIdPreventivo(int idPreventivo){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -32,6 +47,13 @@ public class PreventivoDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  List &lt;Preventivo&gt; - {@link List} di oggetti di tipo {@link Preventivo}
+     *
+     */
     public List<Preventivo> doRetrieveAll(int offset, int limit) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -57,10 +79,15 @@ public class PreventivoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Preventivo
+     * @param preventivo  Oggetto di tipo {@link Preventivo}
+     *
+     */
     public void createPreventivo(Preventivo preventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale) VALUES(?,?,?,?,?,?)",
+                    "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, preventivo.getIdPreventivo());
             ps.setInt(2, preventivo.getIdRichiesta());
@@ -68,6 +95,7 @@ public class PreventivoDAO {
             ps.setString(4, preventivo.getCodiceFiscale());
             ps.setDate(5, preventivo.getDataPreventivo());
             ps.setFloat(6, preventivo.getPrezzoTotale());
+            ps.setString(7, preventivo.getNota());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -79,6 +107,7 @@ public class PreventivoDAO {
         }
     }
 
+   
     public List<Preventivo> doRetrieveByPartitaIva(String partitaIva){
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -127,6 +156,10 @@ public class PreventivoDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza Preventivo correlata all'idPreventivo dato in input
+     * @param idPreventivo  codice identificativo Preventivo, Intero
+     */
     public void deletePreventivo(int idPreventivo) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Preventivo WHERE idPreventivo=?");

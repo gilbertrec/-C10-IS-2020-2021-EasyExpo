@@ -1,11 +1,26 @@
 package Model.DAO;
 
+import Model.POJO.Tag;
 import Model.POJO.TagProdotto;
 
 import java.sql.*;
 
+/**
+ * <p> TagProdottoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto TagProdotto </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class TagProdottoDAO {
 
+    /**
+     * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad un idTag dato in input
+     * @param  idTag  codice identificativo, Intero
+     * @return  TagProdotto - Oggetto di tipo {@link TagProdotto}
+     *
+     */
 
     public TagProdotto doRetrieveByIdTag(int idTag) {
         try (Connection con = DBConnection.getConnection()) {
@@ -28,6 +43,12 @@ public class TagProdottoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo TagProdotto
+     * @param tagProdotto  Oggetto di tipo {@link Tag}
+     *
+     */
+
     public void createTagProdotto(TagProdotto tagProdotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -49,6 +70,13 @@ public class TagProdottoDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza TagProdotto correlata all'idTag, all'idProdotto e alla partitaIva dati in input
+     * @param idTag codice identificativo tag, Intero
+     * @param idProdotto codice identificativo prodotto, Intero
+     * @param partitaIva codice alfanumerico identificativo fornitore, String
+     */
+
     public void deleteTagProdotto(int idTag, int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM TagProdotto WHERE idTag=? AND idProdotto=? AND partitaIva=?");
@@ -62,6 +90,14 @@ public class TagProdottoDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad una partitaIva data in input
+     * @param idProdotto  codice identificativo prodotto, Intero
+     * @param partitaIva codice alfanumerico identificativo fornitore, String
+     * @return  TagProdotto - Oggetto di tipo {@link TagProdotto}
+     *
+     */
 
     public TagProdotto doRetrieveByIdProdottoandPartitaIva(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {

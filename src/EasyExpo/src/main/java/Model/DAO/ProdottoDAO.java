@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 
 import java.lang.reflect.Array;
@@ -7,7 +8,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> ProdottoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Prodotto </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class ProdottoDAO {
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad un idProdotto dato in input
+     * @param  idProdotto  codice identificativo prodotto, Intero
+     * @return  Prodotto - Oggetto di tipo {@link Prodotto}
+     *
+     */
 
     public Prodotto doRetrieveByIdProdotto(int idProdotto) {
         try (Connection con = DBConnection.getConnection()) {
@@ -35,6 +51,13 @@ public class ProdottoDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+     *
+     */
     public Prodotto doRetrieveByIdProdottoEPartitaIva(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -119,6 +142,12 @@ public class ProdottoDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo Prodotto
+     * @param prodotto  Oggetto di tipo {@link Preventivo}
+     *
+     */
+
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -143,6 +172,12 @@ public class ProdottoDAO {
         }
     }
 
+    /**
+     * Metodo che elimina dal DB l'istanza Prodotto correlata all'idProdotto dato in input
+     * @param idProdotto  codice identificativo Preventivo, Intero
+     */
+
+    
     public void deleteProdotto(int idProdotto, String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM Prodotto WHERE idProdotto=? AND partitaIva=?");

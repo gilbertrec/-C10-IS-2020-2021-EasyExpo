@@ -7,7 +7,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> ProdottoRichiestaDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto ProdottoRichiesta </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class ProdottoRichiestaDAO {
+
+    /**
+     * Metodo che ritorna l'oggetto di tipo ProdottoRichiesta correlato ad un id dato in input
+     * @param  id  codice identificativo, Intero
+     * @return  ProdottoRichiesta - Oggetto di tipo {@link ProdottoRichiesta}
+     *
+     */
 
     public ProdottoRichiesta doRetrieveById(int id) {
         try (Connection con = DBConnection.getConnection()) {
@@ -33,6 +48,11 @@ public class ProdottoRichiestaDAO {
         }
     }
 
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo ProdottoRichiesta
+     * @param prodottoRichiesta  Oggetto di tipo {@link ProdottoRichiesta}
+     *
+     */
     public ProdottoRichiesta doRetrieveByIdProdottoPartitaIvaIdRichiesta(int idProdotto, String partitaIva, int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -134,6 +154,12 @@ public class ProdottoRichiestaDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che elimina dal DB l'istanza ProdottoRichiesta correlata all'id dato in input
+     * @param id  codice identificativo, Intero
+     */
+
     public void deleteProdottoRichiesta(int id) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM ProdottoRichiesta WHERE id=?");
