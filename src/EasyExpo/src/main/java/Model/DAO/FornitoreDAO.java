@@ -6,6 +6,8 @@ import Model.POJO.Fornitore;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 /**
  * <p> FornitoreDAO e' una classe di tipo DAO (Data Access Object)
@@ -25,7 +27,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByPIVA(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT *  FROM Fornitore WHERE partitaIva=?");
+                    .prepareStatement("SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale  FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -33,10 +35,10 @@ public class FornitoreDAO {
                 f.setPartitaIva(rs.getString(1));
                 f.setNome(rs.getString(2));
                 f.setCognome(rs.getString(3));
-                f.setEmail(rs.getString(4));
-                f.setPassword(rs.getString(5));
-                f.setTelefono(rs.getString(6));
-                f.setLuogoUbicazione(rs.getString(7));
+                f.setTelefono(rs.getString(4));
+                f.setLuogoUbicazione(rs.getString(5));
+                f.setEmail(rs.getString(6));
+                f.setPassword(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
                 return f;
             }
@@ -87,7 +89,7 @@ public class FornitoreDAO {
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,?,?)");
+                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
 
             ps.setString(1, fornitore.getPartitaIva());
             ps.setString(2, fornitore.getNome());
@@ -100,9 +102,6 @@ public class FornitoreDAO {
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            fornitore.setPartitaIva(rs.getString(1));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -148,7 +147,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByEmailandPassword(String email, String password){
             try (Connection con = DBConnection.getConnection()) {
                 PreparedStatement ps = con.prepareStatement(
-                        "SELECT * FROM Fornitore WHERE email=? AND password=?");
+                        "SELECT * FROM Fornitore WHERE email=? AND password=sha2(?, 512)");
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
@@ -157,10 +156,10 @@ public class FornitoreDAO {
                     f.setPartitaIva(rs.getString(1));
                     f.setNome(rs.getString(2));
                     f.setCognome(rs.getString(3));
-                    f.setEmail(rs.getString(4));
-                    f.setPassword(rs.getString(5));
-                    f.setTelefono(rs.getString(6));
-                    f.setLuogoUbicazione(rs.getString(7));
+                    f.setTelefono(rs.getString(4));
+                    f.setLuogoUbicazione(rs.getString(5));
+                    f.setEmail(rs.getString(6));
+                    f.setPassword(rs.getString(7));
                     f.setRagioneSociale(rs.getString(8));
                     return f;
                 }
@@ -170,6 +169,55 @@ public class FornitoreDAO {
             }
         }
 
+   
+    public List<Fornitore> doRetrieveByNome(String ricercato) {
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT partitaIva, nome FROM Fornitore WHERE nome LIKE ? ");
+            ps.setString(1, "%" + ricercato + "%");
+
+            ArrayList<Fornitore> fornitore = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                fornitore.add(f);
+            }
+            return fornitore;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public List<Fornitore> doRetrieveByNomeECognome(String ricercato) {
+        try (Connection con = DBConnection.getConnection()) {
+
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT partitaIva, nome, cognome, luogoUbicazione FROM Fornitore WHERE nome LIKE ? OR cognome LIKE ? ");
+            ps.setString(1, "%" + ricercato + "%");
+            ps.setString(2,"%" + ricercato + "%");
+
+            ArrayList<Fornitore> fornitore = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                f.setCognome(rs.getString(3));
+                f.setLuogoUbicazione(rs.getString(4));
+                fornitore.add(f);
+            }
+            return fornitore;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
     /**
      * Metodo che elimina dal DB l'istanza Fornitore correlata alla partitaIva data in input
      * @param partitaIva  codice alfanumerico identificativo fornitore, String

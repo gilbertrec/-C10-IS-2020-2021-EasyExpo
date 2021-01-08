@@ -26,6 +26,11 @@ public class Cliente {
     public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione) {
         this.email = email;
         this.password = password;
+
+import java.util.Objects;
+
+public class Cliente {
+    public Cliente(String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione, String email, String password) {
         this.codiceFiscale = codiceFiscale;
         this.nome = nome;
         this.cognome = cognome;
@@ -57,6 +62,7 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+        this.password = password;
     }
 
     /**
@@ -175,21 +181,23 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", codiceFiscale='" + codiceFiscale + '\'' +
+                "codiceFiscale='" + codiceFiscale + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", telefono=" + telefono +
+                ", telefono='" + telefono + '\'' +
                 ", luogoUbicazione='" + luogoUbicazione + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
-    private String email;
-    private String password;
+
     private String codiceFiscale;
     private String nome;
     private String cognome;
     private String telefono;
     private String luogoUbicazione;
+    private String email;
+    private String password;
+
 }

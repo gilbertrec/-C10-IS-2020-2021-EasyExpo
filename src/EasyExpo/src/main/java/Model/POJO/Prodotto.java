@@ -22,7 +22,7 @@ public class Prodotto {
      * @param prezzo Prezzo unitario del prodotto, float
      */
 
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantita, float prezzo) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String immagine) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
@@ -30,6 +30,7 @@ public class Prodotto {
         this.tipo = tipo;
         this.quantita = quantita;
         this.prezzo = prezzo;
+        this.immagine = immagine;
     }
 
     /**
@@ -166,22 +167,30 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
+   
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
     /**
      * Metodo che converte l'oggetto Prodotto in stringa
      * @return String
      */
-
     @Override
     public String toString() {
         return "Prodotto{" +
-                "idProdotto=" + idProdotto +
-                ", partitaIva='" + partitaIva + '\'' +
-                ", titolo='" + titolo + '\'' +
-                ", descrizione='" + descrizione + '\'' +
-                ", tipo=" + tipo +
-                ", quantita=" + quantita +
-                ", prezzo=" + prezzo +
-                '}';
+            "idProdotto=" + idProdotto +
+            ", partitaIva='" + partitaIva + '\'' +
+            ", titolo='" + titolo + '\'' +
+            ", descrizione='" + descrizione + '\'' +
+            ", tipo=" + tipo +
+            ", quantità=" + quantità +
+            ", prezzo=" + prezzo +
+            ", immagine='" + immagine + '\'' +
+            '}';
     }
 
     private int idProdotto;
@@ -189,8 +198,10 @@ public class Prodotto {
     private String titolo;
     private String descrizione;
 
+
     public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
     private int quantita;
     private float prezzo;
+    private String immagine;
 }

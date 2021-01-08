@@ -23,7 +23,7 @@ public class ProdottoRichiesta {
      * @param dataInizioNoleggio Data inizio del noleggio, Date
      * @param dataFineNoleggio Data fine del noleggio, Date
      */
-    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, int numColli, float prezzo, Date dataInizioNoleggio, Date dataFineNoleggio) {
+    public ProdottoRichiesta(int id, int idRichiesta, int idProdotto, String partitaIva, int numColli, float prezzo, Date dataInizioNoleggio, Date dataFineNoleggio) {
         this.id = id;
         this.idRichiesta = idRichiesta;
         this.idProdotto = idProdotto;
@@ -31,6 +31,7 @@ public class ProdottoRichiesta {
         this.prezzo = prezzo;
         this.dataInizioNoleggio = dataInizioNoleggio;
         this.dataFineNoleggio = dataFineNoleggio;
+        this.partitaIva = partitaIva;
     }
 
     /**
@@ -152,22 +153,33 @@ public class ProdottoRichiesta {
         this.dataFineNoleggio = dataFineNoleggio;
     }
 
+    public String getPartitaIva() {
+        return partitaIva;
+    }
+
+    public void setPartitaIva(String partitaIva) {
+        this.partitaIva = partitaIva;
+    }
+
     @Override
     public String toString() {
         return "ProdottoRichiesta{" +
-                "id=" + id +
-                ", idRichiesta=" + idRichiesta +
-                ", idProdotto=" + idProdotto +
-                ", numColli=" + numColli +
-                ", dataInizioNoleggio=" + dataInizioNoleggio +
-                ", dataFineNoleggio=" + dataFineNoleggio +
-                '}';
+            "id=" + id +
+            ", idRichiesta=" + idRichiesta +
+            ", idProdotto=" + idProdotto +
+            ", numColli=" + numColli +
+            ", partitaIva='" + partitaIva + '\'' +
+            ", prezzo=" + prezzo +
+            ", dataInizioNoleggio=" + dataInizioNoleggio +
+            ", dataFineNoleggio=" + dataFineNoleggio +
+            '}';
     }
 
     private int id;
     private int idRichiesta;
     private int idProdotto;
     private int numColli;
+    private String partitaIva;
     private float prezzo;
     private Date dataInizioNoleggio;
     private Date dataFineNoleggio;

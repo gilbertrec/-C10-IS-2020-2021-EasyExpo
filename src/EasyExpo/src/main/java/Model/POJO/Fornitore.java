@@ -24,59 +24,18 @@ public class Fornitore {
      * @param ragioneSociale Ragione sociale del fornitore, String
      */
 
-    public Fornitore(String email, String password, String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String ragioneSociale) {
-        this.email = email;
-        this.password = password;
+    public Fornitore(String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String email, String password, String ragioneSociale) {
         this.partitaIva = partitaIva;
         this.nome = nome;
         this.cognome = cognome;
         this.telefono = telefono;
         this.luogoUbicazione = luogoUbicazione;
+        this.email = email;
+        this.password = password;
         this.ragioneSociale = ragioneSociale;
     }
 
-    /**
-     * Metodo costruttore di dafault della classe Fornitore
-     */
-
-    public Fornitore(){
-
-    }
-
-    /**
-     * Metodo che restituisce l'email
-     * @return String - email
-     */
-
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * Metodo che setta l'email
-     * @param email Indirizzo mail, String
-     */
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Metodo che restituisce la password
-     * @return String - password
-     */
-
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Metodo che setta la password
-     * @param password Caratteri alfanumerici per accesso al sistema, String
-     */
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Fornitore() {
     }
 
     /**
@@ -168,12 +127,39 @@ public class Fornitore {
     public void setLuogoUbicazione(String luogoUbicazione) {
         this.luogoUbicazione = luogoUbicazione;
     }
+    /**
+     * Metodo che restituisce l'email
+     * @return String - email
+     */
+    public String getEmail() {
+        return email;
+    }
+    /**
+     * Metodo che setta l'email
+     * @param email Indirizzo mail, String
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    /**
+     * Metodo che restituisce la password
+     * @return String - password
+     */
+    public String getPassword() {
+        return password;
+    }
+    /**
+     * Metodo che setta la password
+     * @param password Caratteri alfanumerici per accesso al sistema, String
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * Metodo che restituisce la ragioneSociale
      * @return String - ragioneSociale
      */
-
     public String getRagioneSociale() {
         return ragioneSociale;
     }
@@ -195,23 +181,23 @@ public class Fornitore {
     @Override
     public String toString() {
         return "Fornitore{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", partitaIva='" + partitaIva + '\'' +
+                "partitaIva='" + partitaIva + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
-                ", telefono=" + telefono +
+                ", telefono='" + telefono + '\'' +
                 ", luogoUbicazione='" + luogoUbicazione + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", ragioneSociale='" + ragioneSociale + '\'' +
                 '}';
     }
 
-    private String email;
-    private String password;
     private String partitaIva;
     private String nome;
     private String cognome;
     private String telefono;
     private String luogoUbicazione;
+    private String email;
+    private String password;
     private String ragioneSociale;
 }
