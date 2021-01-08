@@ -33,6 +33,32 @@ public class ProdottoRichiestaDAO {
         }
     }
 
+    public ProdottoRichiesta doRetrieveByIdProdottoPartitaIvaIdRichiesta(int idProdotto, String partitaIva, int idRichiesta) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                .prepareStatement("SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p WHERE pr.idProdotto=? AND pr.partitaIva=? AND pr.idRichiesta=? AND pr.idRichiesta=rp.idRichiesta AND pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva");
+            ps.setInt(1, idProdotto);
+            ps.setString(2, partitaIva);
+            ps.setInt(3, idRichiesta);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ProdottoRichiesta pr = new ProdottoRichiesta();
+                pr.setId(rs.getInt(1));
+                pr.setIdRichiesta(rs.getInt(2));
+                pr.setIdProdotto(rs.getInt(3));
+                pr.setPartitaIva(rs.getString(4));
+                pr.setNumColli(rs.getInt(5));
+                pr.setPrezzo(rs.getFloat(6));
+                pr.setDataInizioNoleggio(rs.getDate(7));
+                pr.setDataFineNoleggio(rs.getDate(8));
+                return pr;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<ProdottoRichiesta> doRetrieveByIdRichiesta(int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con

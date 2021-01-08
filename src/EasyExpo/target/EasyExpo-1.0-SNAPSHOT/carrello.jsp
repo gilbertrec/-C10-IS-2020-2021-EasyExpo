@@ -73,8 +73,10 @@
 
                                     <c:forEach items="${listaPI}" var="partitaIva">
                                         <c:forEach items="${carrello.get(partitaIva)}" var="ListaProd">
+                                            <h7>PI Fornitore <c:out value="${partitaIva}"/> </h7>
                                             <h6>Prodotto-titolo: <c:out value="${ListaProd.titolo}" /></h6>
                                             <h6>Prodotto-prezzo: <c:out value="${ListaProd.prezzo}" /></h6>
+
                                         </c:forEach>
                                     </c:forEach>
 

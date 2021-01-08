@@ -15,7 +15,9 @@ import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import javax.servlet.RequestDispatcher;
@@ -46,20 +48,25 @@ public class SpecifichePreventiviServlet extends HttpServlet {
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
       ProdottoDAO prodottoDAO = new ProdottoDAO();
+      //LinkedHashMap<ProdottoRichiesta, Prodotto> pr = new LinkedHashMap<>();
 
       for(ProdottoRichiesta a : prichiesta){
        int idProdotto =  a.getIdProdotto();
        String partitaIva = a.getPartitaIva();
        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
-
+      // ProdottoRichiesta r = prodottoRichiestaDAO.doRetrieveByIdProdottoPartitaIvaIdRichiesta(idProdotto, partitaIva, Integer.parseInt(idRichiesta));
        prodotto.add(p);
+       // pr.put(r, p);
       }
 
       ClienteDAO clienteDAO = new ClienteDAO();
       Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
+      //fai un setattribute in cui ti fai passare la stringa cliente se è un cliente e fornitore se è un fornitore e quindi poi controlla nella jsp
+      //se la stringa è clienteallora stampa la parola cliente altrimenti fornitore
 
       request.getSession().setAttribute("richiesta", richiesta);
       request.getSession().setAttribute("prichiesta", prichiesta);
+      //request.getSession().setAttribute("hash", pr);
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", cliente);
 
