@@ -3,7 +3,6 @@ package Model.DAO;
 import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 
-import java.lang.reflect.Array;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +150,7 @@ public class ProdottoDAO {
     public void createProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantità, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, prodotto.getPartitaIva());
@@ -220,7 +219,7 @@ public class ProdottoDAO {
     public void updateProdotto(Prodotto prodotto) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
+                "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantità=?, prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
             ps.setString(1, prodotto.getTitolo());
             ps.setString(2, prodotto.getDescrizione());
             ps.setString(3, prodotto.getTipo().toString());

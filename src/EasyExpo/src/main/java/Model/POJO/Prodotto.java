@@ -18,7 +18,7 @@ public class Prodotto {
      * @param titolo Titolo del prodotto, String
      * @param descrizione Descrizione del prodotto, String
      * @param tipo Tipo di allestimento, {@link Tipo}
-     * @param quantita Quantita' del prodotto, Intero
+     * @param quantità Quantità' del prodotto, Intero
      * @param prezzo Prezzo unitario del prodotto, float
      */
 
@@ -28,7 +28,7 @@ public class Prodotto {
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.tipo = tipo;
-        this.quantita = quantita;
+        this.quantità = quantità;
         this.prezzo = prezzo;
         this.immagine = immagine;
     }
@@ -132,21 +132,21 @@ public class Prodotto {
     }
 
     /**
-     * Metodo che restituisce la quantita'
-     * @return int - quantita
+     * Metodo che restituisce la quantità'
+     * @return int - quantità
      */
 
-    public int getQuantita() {
-        return quantita;
+    public int getQuantità() {
+        return quantità;
     }
 
     /**
-     * Metodo che setta la quantita'
-     * @param quantita Quantita' del prodotto, Intero
+     * Metodo che setta la quantità'
+     * @param quantità Quantità' del prodotto, Intero
      */
 
-    public void setQuantita(int quantita) {
-        this.quantita = quantita;
+    public void setQuantità(int quantità) {
+        this.quantità = quantità;
     }
 
     /**
@@ -201,7 +201,7 @@ public class Prodotto {
 
     public enum Tipo {SERVIZIO, ATTREZZATURA};
     private Tipo tipo;
-    private int quantita;
+    private int quantità;
     private float prezzo;
     private String immagine;
 }

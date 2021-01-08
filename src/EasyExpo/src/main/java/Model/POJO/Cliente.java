@@ -9,7 +9,6 @@ package Model.POJO;
  * @since 2020-12-29
  */
 
-public class Cliente {
 
     /**
      * Metedo costruttore della classe Cliente

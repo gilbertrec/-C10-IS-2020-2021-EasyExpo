@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 
 import java.sql.*;
@@ -48,11 +47,7 @@ public class ProdottoRichiestaDAO {
         }
     }
 
-    /**
-     * Metodo che crea un'istanza, all'interno del DB, di tipo ProdottoRichiesta
-     * @param prodottoRichiesta  Oggetto di tipo {@link ProdottoRichiesta}
-     *
-     */
+
     public ProdottoRichiesta doRetrieveByIdProdottoPartitaIvaIdRichiesta(int idProdotto, String partitaIva, int idRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
@@ -129,7 +124,11 @@ public class ProdottoRichiestaDAO {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * Metodo che crea un'istanza, all'interno del DB, di tipo ProdottoRichiesta
+     * @param prodottoRichiesta  Oggetto di tipo {@link ProdottoRichiesta}
+     *
+     */
     public void createProdottoRichiesta(ProdottoRichiesta prodottoRichiesta) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

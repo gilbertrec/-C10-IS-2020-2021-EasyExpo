@@ -20,7 +20,7 @@ class TagProdottoTest {
     @Test
     void getIdTag() {
 
-        assertEquals(0,tagprodotto.getIdTag);
+        assertEquals(0,tagprodotto.getIdTag());
     }
 
     @Test
