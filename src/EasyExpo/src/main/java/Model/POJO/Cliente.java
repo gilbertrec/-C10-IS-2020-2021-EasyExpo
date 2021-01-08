@@ -23,12 +23,7 @@ public class Cliente {
      * @param luogoUbicazione Indirizzo del Cliente, String
      */
 
-    public Cliente(String email, String password, String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione) {
-        this.email = email;
-        this.password = password;
-
-import java.util.Objects;
-
+ 
 public class Cliente {
     public Cliente(String codiceFiscale, String nome, String cognome, String telefono, String luogoUbicazione, String email, String password) {
         this.codiceFiscale = codiceFiscale;
