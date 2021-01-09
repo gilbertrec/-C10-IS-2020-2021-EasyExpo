@@ -39,4 +39,23 @@ public class AdminDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public Admin doRetrieveByEmailandPassword(String email, String password) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT email, password FROM Admin WHERE email=? AND password=sha2(?, 512)");
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Admin a = new Admin();
+                a.setEmail(rs.getString(1));
+                a.setPassword(rs.getString(2));
+                return a;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
