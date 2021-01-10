@@ -21,20 +21,10 @@
 <div id="wrap">
 
     <header>
-        <jsp:include page="/header.jsp">
+        <jsp:include page="/headeradmin.jsp">
             <jsp:param name="pageTitle" value="Login Admin"/>
         </jsp:include>
     </header>
-
-    <!--======= SUB BANNER =========-->
-    <section class="sub-bnr" data-stellar-background-ratio="0.5">
-        <div class="position-center-center">
-            <div class="container">
-                <img class="easy" src="images/scritta-sola.png" width="500" height="300">
-                <!--<h1 style="font-weight: 1000; color: #0f3e68"> <span class="scritta" style="color: #ffe115; background: #0f3e68; padding: 1px 6px;">EASY</span>EXPO</h1>-->
-            </div>
-        </div>
-    </section>
 
     <!-- Content -->
     <div id="content">
@@ -85,7 +75,7 @@
 </div>
 <!--======= FOOTER =========-->
 <footer>
-    <jsp:include page="/footer.jsp"/>
+    <jsp:include page="/footeradmin.jsp"/>
 </footer>
 
 </body>
