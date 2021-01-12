@@ -41,6 +41,7 @@
 </head>
 <body>
 <!-- header -->
+<div class="sticky">
 <header style="background-color: #2d3a4b">
 
 
@@ -68,7 +69,7 @@
         </nav>
     </div>
 
-</header>
+</header></div>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/own-menu.js"></script>
