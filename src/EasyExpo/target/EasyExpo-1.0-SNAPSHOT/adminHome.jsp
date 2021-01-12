@@ -15,7 +15,7 @@
 <!-- Wrap -->
 <div id="wrap">
     <header>
-        <jsp:include page="/header.jsp">
+        <jsp:include page="/headeradmin.jsp">
             <jsp:param name="pageTitle" value="Gestione Admin"/>
         </jsp:include>
     </header>
@@ -70,7 +70,7 @@
 </div>
 <!--======= FOOTER =========-->
 <footer>
-    <jsp:include page="/footer.jsp"/>
+    <jsp:include page="/footeradmin.jsp"/>
 </footer>
 
 </body>

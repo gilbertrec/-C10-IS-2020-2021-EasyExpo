@@ -1,6 +1,6 @@
 <%@ page import="Controller.HttpServlet" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Model.POJO.Cliente" %><%--
+<%@ page import="Model.POJO.Fornitore" %><%--
   Created by IntelliJ IDEA.
   User: Sabatino
   Date: 12/01/2021
@@ -16,16 +16,18 @@
 <div id="wrap">
     <header>
         <jsp:include page="/headeradmin.jsp">
-            <jsp:param name="pageTitle" value="Gestione Clienti"/>
+            <jsp:param name="pageTitle" value="Gestione Fornitori Sospesi"/>
         </jsp:include>
     </header>
+    <% /*if (request.getSession().getAttribute("fornitori") == null) {
 
-    <% List<Cliente> cliente = (List<Cliente>) request.getSession().getAttribute("clienti");%>
+    }*/%>
+    <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
     <div id="content">
         <table class="table">
             <tr class="row">
                 <th class="col-6">
-                    Codice Fiscale
+                    Partita IVA
                 </th>
                 <th class="col-6">
                     Nome
@@ -34,33 +36,34 @@
                     Cognome
                 </th>
                 <th class="col-6">
-                    Telefono
+                    Ragione Sociale
                 </th>
                 <th class="col-6">
                     Azioni
                 </th>
             </tr>
-            <% for (int i=0;i<cliente.size();i++) { %>
+            <% for (int i=0;i<fornitori.size();i++) { %>
             <tr>
                 <td></td>
                 <%
-                    out.append("<td>" + cliente.get(i).getCodiceFiscale() + " </td> ");
+                    out.append("<td>" + fornitori.get(i).getPartitaIva() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getNome() + " </td> ");
+                    out.append("<td>" + fornitori.get(i).getNome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getCognome() + " </td> ");
+                    out.append("<td>" + fornitori.get(i).getCognome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getTelefono() + " </td> ");
+                    out.append("<td>" + fornitori.get(i).getRagioneSociale() + " </td> ");
                 %>
 
                 <td>
-                    <button type="submit"  formaction="/SospendiFornitore">Sospendi</button>
+                    <button type="submit"  formaction="/RiabilitaFornitore">Riabilita</button>
+                    <button type="submit"  formaction="/VisualizzaProdotti">Prodotti</button>
                 </td>
             </tr>
             <% } %>

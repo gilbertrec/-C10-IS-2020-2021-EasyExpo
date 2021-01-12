@@ -15,7 +15,7 @@
 <body>
 <div id="wrap">
     <header>
-        <jsp:include page="/header.jsp">
+        <jsp:include page="/headeradmin.jsp">
             <jsp:param name="pageTitle" value="Gestione Fornitori"/>
         </jsp:include>
     </header>
@@ -70,5 +70,9 @@
         </table>
     </div>
 </div>
+<!--======= FOOTER =========-->
+<footer>
+    <jsp:include page="/footeradmin.jsp"/>
+</footer>
 </body>
 </html>

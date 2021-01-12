@@ -23,7 +23,7 @@ public class ListaClientiServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        List<Cliente> clienti = clienteDAO.doRetrieveAll(0,100);
+        List<Cliente> clienti = clienteDAO.doRetrievebyStatoAttivo(0,100);
         request.getSession().setAttribute("clienti", clienti);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneClienti.jsp");
         requestDispatcher.forward(request,response);
