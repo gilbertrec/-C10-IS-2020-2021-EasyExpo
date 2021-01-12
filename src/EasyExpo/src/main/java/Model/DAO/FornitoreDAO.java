@@ -89,7 +89,7 @@ public class FornitoreDAO {
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
+                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale, stato) VALUES(?,?,?,?,?,?,sha2(?, 512),?,?)");
 
             ps.setString(1, fornitore.getPartitaIva());
             ps.setString(2, fornitore.getNome());
@@ -99,6 +99,7 @@ public class FornitoreDAO {
             ps.setString(4, fornitore.getTelefono());
             ps.setString(5, fornitore.getLuogoUbicazione());
             ps.setString(8, fornitore.getRagioneSociale());
+            ps.setString(9,"ATTIVO");
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -234,4 +235,69 @@ public class FornitoreDAO {
         }
     }
 
+    /**
+     * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+     *
+     */
+    public List<Fornitore> doRetrievebyStatoAttivo(int offset, int limit) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Fornitore LIMIT ?, ? WHERE stato='ATTIVO'");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
+            ArrayList<Fornitore> fornitori = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                f.setCognome(rs.getString(3));
+                f.setEmail(rs.getString(4));
+                f.setPassword(rs.getString(5));
+                f.setTelefono(rs.getString(6));
+                f.setLuogoUbicazione(rs.getString(7));
+                f.setRagioneSociale(rs.getString(8));
+                fornitori.add(f);
+            }
+            return fornitori;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+     *
+     */
+    public List<Fornitore> doRetrievebyStatoSospeso(int offset, int limit) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Fornitore LIMIT ?, ? WHERE stato='SOSPESO'");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
+            ArrayList<Fornitore> fornitori = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                f.setCognome(rs.getString(3));
+                f.setEmail(rs.getString(4));
+                f.setPassword(rs.getString(5));
+                f.setTelefono(rs.getString(6));
+                f.setLuogoUbicazione(rs.getString(7));
+                f.setRagioneSociale(rs.getString(8));
+                fornitori.add(f);
+            }
+            return fornitori;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
