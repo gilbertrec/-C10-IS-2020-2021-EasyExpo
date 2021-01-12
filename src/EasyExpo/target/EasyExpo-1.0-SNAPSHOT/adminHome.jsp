@@ -16,7 +16,7 @@
 <div id="wrap">
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Login"/>
+            <jsp:param name="pageTitle" value="Gestione Admin"/>
         </jsp:include>
     </header>
 
@@ -35,62 +35,28 @@
 
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-12">
-                                <h6>DATI PERSONALI</h6>
+                                <h6>GESTIONE ADMIN</h6>
                                 <form>
                                     <ul class="row">
 
-                                        <!-- Nome -->
+                                        <!-- Gestione fornitori -->
                                         <li class="col-md-6">
-                                            <label> NOME
-                                                <input type="text" name="first-name" value="" placeholder="">
-                                            </label>
+                                            <button type="submit" class="btn" formaction="ListaFornitoriServlet">Lista Fornitori</button>
                                         </li>
-                                        <!-- Cognome -->
+                                        <!-- Gestione Clienti -->
                                         <li class="col-md-6">
-                                            <label> COGNOME
-                                                <input type="text" name="last-name" value="" placeholder="">
-                                            </label>
+                                            <button type="submit" class="btn" formaction="ListaClientiServlet">Lista Clienti</button>
                                         </li>
-
-                                        <!-- Email -->
+                                    </ul>
+                                    <ul class="row">
+                                        <!-- Gestione fornitori sospesi -->
                                         <li class="col-md-6">
-                                            <label> EMAIL
-                                                <input type="text" name="contry-state" value="" placeholder="">
-                                            </label>
+                                            <button type="submit" class="btn" formaction="ListaFornitoriSospesiServlet">Lista Fornitori sospesi</button>
                                         </li>
 
-                                        <!-- Password -->
+                                        <!-- Gestione Clienti sospesi -->
                                         <li class="col-md-6">
-                                            <label> PASSWORD
-                                                <input type="password" name="last-name" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- CODICE FISCALE -->
-                                        <li class="col-md-6">
-                                            <label> CODICE FISCALE
-                                                <input type="text" name="address" value="" placeholder="">
-                                            </label>
-                                        </li>
-
-                                        <!-- Telefono -->
-                                        <li class="col-md-6">
-                                            <label> TELEFONO
-                                                <input type="text" name="postal-code" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-
-                                            <!-- Luogo di Ubicazione -->
-                                            <label> LUOGO DI UBICAZIONE
-                                                <input type="text" name="address" value="" placeholder="">
-                                            </label>
-                                        </li>
-                                        <li class="col-md-6">
-
-                                            <!-- BOTTONE -->
-                                        <li class="col-md-6">
-                                            <button type="submit" class="btn">ELIMINA ACCOUNT</button>
+                                            <button type="submit" class="btn" formaction="ListaClientiSospesiServlet">Lista Clienti sospesi</button>
                                         </li>
                                     </ul>
                                 </form>

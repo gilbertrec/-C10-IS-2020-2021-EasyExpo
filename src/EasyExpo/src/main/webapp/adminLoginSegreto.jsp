@@ -43,7 +43,7 @@
                             <!-- Login Form -->
                             <div class="col-sm-7">
                                 <h6>ACCEDI AL TUO ACCOUNT</h6>
-                                <form action = "LoginServlet" method="post">
+                                <form action = "LoginAdminServlet" method="post">
                                     <ul class="row">
 
                                         <!-- Email -->

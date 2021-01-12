@@ -15,7 +15,7 @@
 <body>
 <div id="wrap">
     <header>
-        <jsp:include page="/header.jsp">
+        <jsp:include page="/headeradmin.jsp">
             <jsp:param name="pageTitle" value="Gestione Fornitori"/>
         </jsp:include>
     </header>
@@ -44,35 +44,35 @@
             </tr>
             <% for (int i=0;i<fornitori.size();i++) { %>
             <tr>
-                <td>
+                <td></td>
                     <%
-                        fornitori.get(i).getPartitaIva();
+                        out.append("<td>" + fornitori.get(i).getPartitaIva() + " </td> ");
                     %>
-                </td>
-                <td>
+
                     <%
-                        fornitori.get(i).getNome();
+                        out.append("<td>" + fornitori.get(i).getNome() + " </td> ");
                     %>
-                </td>
-                <td>
+
                     <%
-                        fornitori.get(i).getCognome();
+                        out.append("<td>" + fornitori.get(i).getCognome() + " </td> ");
                     %>
-                </td>
-                <td>
+
                     <%
-                        fornitori.get(i).getRagioneSociale();
+                        out.append("<td>" + fornitori.get(i).getRagioneSociale() + " </td> ");
                     %>
-                </td>
+
                 <td>
-                    <!--da rivedere -->
-                    <button type="submit" class="btn" formaction="/SospendiFornitore">Sospendi</button>
-                    <button type="submit" class="btn" formaction="/VisualizzaProdotti">Prodotti</button>
+                    <button type="submit"  formaction="/SospendiFornitore">Sospendi</button>
+                    <button type="submit"  formaction="/VisualizzaProdotti">Prodotti</button>
                 </td>
             </tr>
             <% } %>
         </table>
     </div>
 </div>
+<!--======= FOOTER =========-->
+<footer>
+    <jsp:include page="/footeradmin.jsp"/>
+</footer>
 </body>
 </html>

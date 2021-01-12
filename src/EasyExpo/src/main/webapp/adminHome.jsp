@@ -15,7 +15,7 @@
 <!-- Wrap -->
 <div id="wrap">
     <header>
-        <jsp:include page="/header.jsp">
+        <jsp:include page="/headeradmin.jsp">
             <jsp:param name="pageTitle" value="Gestione Admin"/>
         </jsp:include>
     </header>
@@ -41,22 +41,22 @@
 
                                         <!-- Gestione fornitori -->
                                         <li class="col-md-6">
-                                            <button type="submit" class="btn" formaction="/gestioneFornitori.jsp">Lista Fornitori</button>
+                                            <button type="submit" class="btn" formaction="ListaFornitoriServlet">Lista Fornitori</button>
                                         </li>
                                         <!-- Gestione Clienti -->
                                         <li class="col-md-6">
-                                            <button type="submit" class="btn" formaction="/gestioneclienti.jsp">Lista Clienti</button>
+                                            <button type="submit" class="btn" formaction="ListaClientiServlet">Lista Clienti</button>
                                         </li>
                                     </ul>
                                     <ul class="row">
                                         <!-- Gestione fornitori sospesi -->
                                         <li class="col-md-6">
-                                            <button type="submit" class="btn" formaction="/fornitoriSospesi.jsp">Lista Fornitori sospesi</button>
+                                            <button type="submit" class="btn" formaction="ListaFornitoriSospesiServlet">Lista Fornitori sospesi</button>
                                         </li>
 
                                         <!-- Gestione Clienti sospesi -->
                                         <li class="col-md-6">
-                                            <button type="submit" class="btn" formaction="/clientiSospesi.jsp">Lista Fornitori sospesi</button>
+                                            <button type="submit" class="btn" formaction="ListaClientiSospesiServlet">Lista Clienti sospesi</button>
                                         </li>
                                     </ul>
                                 </form>
@@ -70,7 +70,7 @@
 </div>
 <!--======= FOOTER =========-->
 <footer>
-    <jsp:include page="/footer.jsp"/>
+    <jsp:include page="/footeradmin.jsp"/>
 </footer>
 
 </body>

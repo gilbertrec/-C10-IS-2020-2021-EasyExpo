@@ -24,7 +24,7 @@ public class LoginAdminServlet extends HttpServlet{
             throw new MyServletException("Email e/o password non validi.");
         }else {
             request.getSession().setAttribute("LeaderSupremo", admin);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin-home.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminHome.jsp");
             requestDispatcher.forward(request,response);
         }
     }
