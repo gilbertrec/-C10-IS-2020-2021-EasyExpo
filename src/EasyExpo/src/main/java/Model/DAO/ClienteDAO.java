@@ -179,4 +179,68 @@ public class ClienteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
+     *
+     */
+    public List<Cliente> doRetrievebyStatoAttivo(int offset, int limit) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Cliente LIMIT ?, ? WHERE stato='ATTIVO'");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
+            ArrayList<Cliente> clienti = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                c.setCodiceFiscale(rs.getString(1));
+                c.setNome(rs.getString(2));
+                c.setCognome(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPassword(rs.getString(5));
+                c.setTelefono(rs.getString(6));
+                c.setLuogoUbicazione(rs.getString(7));
+                clienti.add(c);
+            }
+            return clienti;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+     * @param  offset  indice partenza, Intero
+     * @param limit  indice fine , Intero
+     * @return  List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
+     *
+     */
+    public List<Cliente> doRetrievebyStatoSospeso(int offset, int limit) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Cliente LIMIT ?, ? WHERE stato='SOSPESO'");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
+            ArrayList<Cliente> clienti = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                c.setCodiceFiscale(rs.getString(1));
+                c.setNome(rs.getString(2));
+                c.setCognome(rs.getString(3));
+                c.setEmail(rs.getString(4));
+                c.setPassword(rs.getString(5));
+                c.setTelefono(rs.getString(6));
+                c.setLuogoUbicazione(rs.getString(7));
+                clienti.add(c);
+            }
+            return clienti;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
