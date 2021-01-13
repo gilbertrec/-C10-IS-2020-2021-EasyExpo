@@ -130,7 +130,7 @@
                                             </li>
                                             <li><a href="LogoutServlet">LOGOUT</a></li>
                                         </c:when>
-                                        <c:when test="${fornitore != null}">
+                                        <c:when test="${fornitore != null and fornitore.abbonato == true}">
                                             <li>
                                                 <h6>Ciao ${fornitore.nome} !</h6>
                                             </li>
@@ -142,6 +142,14 @@
                                             <li>
                                                 <a href="PreventiviServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>">PREVENTIVI</a>
                                             </li>
+                                            <li><a href="LogoutServlet">LOGOUT</a></li>
+                                        </c:when>
+                                        <c:when test="${fornitore != null and fornitore.abbonato == false}">
+                                            <li>
+                                                <h6>Ciao ${fornitore.nome} !</h6>
+                                            </li>
+                                            <li><a href="areaFornitore.jsp"> AREA FORNITORE</a></li>
+                                            <li><a href="areaFornitore.jsp"> CATALOGO</a></li>
                                             <li><a href="LogoutServlet">LOGOUT</a></li>
                                         </c:when>
                                         <c:otherwise>
