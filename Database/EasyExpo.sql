@@ -1,4 +1,4 @@
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'basedidati';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'gaetano99';
 Drop Database if exists EasyExpo;
 CREATE DATABASE EasyExpo;
 use EasyExpo;
@@ -21,7 +21,8 @@ CREATE TABLE Fornitore(
     luogoUbicazione varchar(30),
     email varchar(50) not null,
 	password varchar(512) not null,
-    ragioneSociale varchar(30) not null
+    ragioneSociale varchar(30) not null,
+    abbonato boolean
 );
 
 CREATE TABLE Admin(
@@ -149,9 +150,9 @@ INSERT INTO Cliente VALUES
 ("IULGAE99C23R123R", "Gaetano", "Iuliano", 3998765987, "Terzigno", "gaetano99@gmail.com", sha2('gae99*', 512));
 
 INSERT INTO Fornitore VALUES
-("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato"),
-("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato"),
-("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc");
+("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato",false),
+("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato",true),
+("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc",false);
 
 INSERT INTO Admin VALUES
 ("lucrezia.robustelli@gmail.com", sha2('lucry00*', 512)),
@@ -168,7 +169,7 @@ INSERT INTO Prodotto VALUES
 (1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00, "images/download-6.jpg");
 
 INSERT INTO Abbonamento VALUES
-(1,"01391350129", 20191101, 20191201),
+(1,"01391350129", 20201113, 20200113),
 (2,"01391350129", 20190605, 20190705),
 (3,"03271170361", 20200713, 20200813);
 
