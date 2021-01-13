@@ -60,6 +60,7 @@
                                     <div class="text-left">
                                         <p><c:out value="${r.descrizioneEvento}"/></p>
                                         <a href="SpecificaServlet?idRichiesta=<c:out value="${r.idRichiesta}"/>" class="red-more">READ MORE</a> </div>
+                                        <img src="#"><img src="#">
                                 </div>
                             </div>
                         </article>

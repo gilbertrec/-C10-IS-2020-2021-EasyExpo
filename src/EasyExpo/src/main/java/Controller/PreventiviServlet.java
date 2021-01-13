@@ -1,11 +1,14 @@
 package Controller;
 
-import Model.DAO.ProdottoDAO;
+import Model.DAO.PreventivoDAO;
 import Model.DAO.RichiestaPreventivoDAO;
-import Model.POJO.Prodotto;
+import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,13 +26,26 @@ public class PreventiviServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String partitaIva = request.getParameter("partitaIva");
+    String codiceFiscale = request.getParameter("codiceFiscale");
 
+    PreventivoDAO preventivoDAO = new PreventivoDAO();
     RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
 
-    List<RichiestaPreventivo> richieste = richiestaPreventivoDAO.doRetrieveByPartitaIva(partitaIva);
-    request.getSession().setAttribute("richieste", richieste);
+    if(partitaIva != null && codiceFiscale == null){
+      List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva(partitaIva);
+      List<RichiestaPreventivo> richieste = null;
+      for(Preventivo p : preventivi){
+          RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
+          richieste.add(r);
+      }
+      request.getSession().setAttribute("richieste", richieste);
+      request.getSession().setAttribute("preventivi", preventivi);
+    }else if(partitaIva == null && codiceFiscale != null){
+      List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
+      request.getSession().setAttribute("preventivi", preventivi);
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
-    requestDispatcher.forward(request, response);
+      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
+      requestDispatcher.forward(request, response);
+    }
   }
 }

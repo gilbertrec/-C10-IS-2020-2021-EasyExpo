@@ -54,19 +54,14 @@ public class SpecifichePreventiviServlet extends HttpServlet {
        int idProdotto =  a.getIdProdotto();
        String partitaIva = a.getPartitaIva();
        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
-      // ProdottoRichiesta r = prodottoRichiestaDAO.doRetrieveByIdProdottoPartitaIvaIdRichiesta(idProdotto, partitaIva, Integer.parseInt(idRichiesta));
        prodotto.add(p);
-       // pr.put(r, p);
       }
 
       ClienteDAO clienteDAO = new ClienteDAO();
       Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
-      //fai un setattribute in cui ti fai passare la stringa cliente se è un cliente e fornitore se è un fornitore e quindi poi controlla nella jsp
-      //se la stringa è clienteallora stampa la parola cliente altrimenti fornitore
 
       request.getSession().setAttribute("richiesta", richiesta);
       request.getSession().setAttribute("prichiesta", prichiesta);
-      //request.getSession().setAttribute("hash", pr);
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", cliente);
 
@@ -76,11 +71,16 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       PreventivoDAO preventivoDAO = new PreventivoDAO();
       Preventivo preventivo = preventivoDAO.doRetriveByIdPreventivo(Integer.parseInt(idPreventivo));
 
+      RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
+      RichiestaPreventivo richiesta = richiestaPreventivoDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
+
+
       //FornitoreDAO fornitoreDAO = new FornitoreDAO();
       //Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(richiesta.getPartitaIva());
       //request.getSession().setAttribute("clifor", fornitore);
 
       request.getSession().setAttribute("preventivo", preventivo);
+      request.getSession().setAttribute("richiesta", preventivo);
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
       requestDispatcher.forward(request, response);
     }

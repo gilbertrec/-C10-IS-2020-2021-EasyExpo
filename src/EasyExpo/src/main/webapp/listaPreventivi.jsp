@@ -48,7 +48,7 @@
                 <div class="row" style="margin-left: 110px; margin-right: -110px">
                     <div class="col-md-9">
 
-                        <c:forEach items="${richieste}" var="r">
+                        <c:forEach items="${preventivo}" var="r">
                             <article>
                                 <div class="row" style="margin-left: 100px; margin-right: -450px">
                                     <div class="col-sm-7">
