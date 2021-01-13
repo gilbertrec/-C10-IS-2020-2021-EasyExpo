@@ -48,7 +48,6 @@ public class SpecifichePreventiviServlet extends HttpServlet {
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
       ProdottoDAO prodottoDAO = new ProdottoDAO();
-      //LinkedHashMap<ProdottoRichiesta, Prodotto> pr = new LinkedHashMap<>();
 
       for(ProdottoRichiesta a : prichiesta){
        int idProdotto =  a.getIdProdotto();
@@ -74,13 +73,28 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
       RichiestaPreventivo richiesta = richiestaPreventivoDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
 
+      FornitoreDAO fornitoreDAO = new FornitoreDAO();
+      Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(preventivo.getPartitaIva());
 
-      //FornitoreDAO fornitoreDAO = new FornitoreDAO();
-      //Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(richiesta.getPartitaIva());
-      //request.getSession().setAttribute("clifor", fornitore);
+      ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();
+      List<ProdottoRichiesta> prichiesta = prodottoRichiestaDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
+
+
+      ArrayList<Prodotto> prodotto = new ArrayList<>();
+      ProdottoDAO prodottoDAO = new ProdottoDAO();
+
+      for(ProdottoRichiesta a : prichiesta){
+        int idProdotto =  a.getIdProdotto();
+        String partitaIva = a.getPartitaIva();
+        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
+        prodotto.add(p);
+      }
 
       request.getSession().setAttribute("preventivo", preventivo);
-      request.getSession().setAttribute("richiesta", preventivo);
+      request.getSession().setAttribute("richiesta", richiesta);
+      request.getSession().setAttribute("prichiesta", prichiesta);
+      request.getSession().setAttribute("prodotto", prodotto);
+      request.getSession().setAttribute("clifor", fornitore);
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
       requestDispatcher.forward(request, response);
     }

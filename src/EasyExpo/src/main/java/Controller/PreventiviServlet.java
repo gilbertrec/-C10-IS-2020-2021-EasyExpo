@@ -37,10 +37,15 @@ public class PreventiviServlet extends HttpServlet {
     if(partitaIva != null && codiceFiscale == null){
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva(partitaIva);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
+      ArrayList<Fornitore> fornitori = new ArrayList<>();
+      FornitoreDAO fornitoreDAO = new FornitoreDAO();
       for(Preventivo p : preventivi){
-          RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
-          richieste.add(r);
+        RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
+        Fornitore f = fornitoreDAO.doRetrieveByPIVA(p.getPartitaIva());
+        richieste.add(r);
+        fornitori.add(f);
       }
+      request.getSession().setAttribute("fornitori", fornitori);
       request.getSession().setAttribute("richieste", richieste);
       request.getSession().setAttribute("preventivi", preventivi);
     }else if(partitaIva == null && codiceFiscale != null) {

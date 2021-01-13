@@ -65,11 +65,11 @@
                                     <!-- Tittle -->
                                     <div class="post-tittle left"> <a href="#." class="tittle">PREVENTIVO <%=richieste.get(i).getTitolo()%></a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i).getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i).getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span></div>
                                     <!-- Post Content -->
                                     <div class="text-left">
                                         <p><%=richieste.get(i).getDescrizioneEvento()%></p>
-                                        <a href="SpecifichePrventiviServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
+                                        <a href="SpecificaServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
                                 </div>
                             </div>
                         </article>
