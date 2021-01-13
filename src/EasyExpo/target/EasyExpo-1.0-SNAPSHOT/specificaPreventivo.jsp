@@ -59,7 +59,7 @@
                             <!-- Title -->
                             <div class="post-tittle left"> <a href="#." class="tittle">${richiesta.titolo}</a>
                                 <!-- Post Info -->
-                                <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> ${preventivo.dataPreventivo}</span></div>
+                                <span><i class="primary-color icon-user"></i> by ${fornitore.nome} ${fornitore.cognome}</span> <span><i class="primary-color icon-calendar"></i> ${preventivo.dataPreventivo}</span></div>
                             <!-- Post Content  creare il metodo che ti restituisce anche l'altra tabella per i prodotti-->
                             <div class="text-left">
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
@@ -69,19 +69,17 @@
 
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
                                 <div class="admin-info">
-                                    <div class="media-left">
-                                        <div class="admin-pic"> <img src="images/admin-avatar.jpg" alt=""> </div>
-                                    </div>
                                     <div class="media-body">
-                                        <h6>${clifor.nome} ${clifor.cognome} <span>Fornitore</span></h6>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. NullamMorbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bociis natoque penatcing e scelerisque miscing elit. </p>
-                                        <div class="admin-social"> <a href="#."><i class="icon-social-facebook"></i></a> <a href="#."><i class="icon-social-twitter"></i></a> <a href="#."><i class="icon-social-dribbble"></i></a> <a href="#."><i class="icon-envelope"></i></a> </div>
+                                        <h6>${clifor.nome} ${clifor.cognome} <span>Fornitore</span>  <span>${clifor.ragioneSociale}</span>  <span>${clifor.luogoUbicazione}</span></h6>
+                                        <span>CONTATTI</span> <br>
+                                        <span>${clifor.email}</span> <br>
+                                        <span>${clifor.telefono}</span>
+                                        <div class="admin-social"> <a href="#."><i class="icon-social-facebook"></i></a> <a href="#."><i class="icon-social-twitter"></i></a></div>
                                     </div>
                                 </div>
                             </div>
                         </article>
                         <hr>
-
                     </div>
                     <!-- Sider Bar -->
                     <div class="col-md-3" style="padding-right: inherit">

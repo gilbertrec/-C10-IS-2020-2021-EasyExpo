@@ -28,7 +28,7 @@ public class ClienteDAO {
     public Cliente doRetrieveByCF(String codiceFiscale) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT *  FROM Cliente WHERE codiceFiscale=?");
+                    .prepareStatement("SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
             ps.setString(1, codiceFiscale);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

@@ -59,10 +59,12 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       ClienteDAO clienteDAO = new ClienteDAO();
       Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
 
+
       request.getSession().setAttribute("richiesta", richiesta);
       request.getSession().setAttribute("prichiesta", prichiesta);
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", cliente);
+      request.getSession().setAttribute("cliente", cliente);
 
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaRichiesta.jsp");
       requestDispatcher.forward(request, response);
@@ -95,6 +97,7 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("prichiesta", prichiesta);
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", fornitore);
+      request.getSession().setAttribute("fornitore", fornitore);
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
       requestDispatcher.forward(request, response);
     }
