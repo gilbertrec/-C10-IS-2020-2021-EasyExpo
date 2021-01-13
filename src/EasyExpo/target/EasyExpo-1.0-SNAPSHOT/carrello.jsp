@@ -61,6 +61,8 @@
                     /*per ogni prodotto posso stampare gli attributi*/
                 %>
 
+
+
                 <c:if test="${empty carrello}">
                     <h1> Nessun prodotto nel carrello. </h1>
                 </c:if>
@@ -69,30 +71,19 @@
                 <c:if test="${not empty carrello}">
 
                 <div class="shopping-cart text-center">
-                    <div class="cart-head">
-                        <ul class="row">
+                    <!-- un div fornitore per ogni fornitore nella lista -->
+                    <c:forEach items="${listaFornitori}" var="fornitori">
+
+                    <div class="fornitoreCarrello">
+                        <div class="cart-head">
+                            <ul class="row">
                             <!-- FORNITORE -->
                             <li class="col-sm-2 text-left">
-
-                                <!-- CARRELLO -->
-
-
-
-
-                                    <c:forEach items="${listaFornitori}" var="fornitori">
-                                        <c:forEach items="${carrello.get(fornitori.partitaIva)}" var="ListaProd">
-                                            <h7>Fornitore: <c:out value="${fornitori.nome}"/> <c:out value="${fornitori.cognome}"/> </h7>
-                                            <h6>Prodotto-titolo: <c:out value="${ListaProd.titolo}" /></h6>
-                                            <h6>Prodotto-prezzo: <c:out value="${ListaProd.prezzo}" /></h6>
-
-                                        </c:forEach>
-                                    </c:forEach>
-
-
-
-                            <!--  -->
+                                <h5>FORNITORE: </h5>
+                            </li>
+                            <!-- NOME FORNITORE -->
                             <li class="col-sm-4 text-left">
-                                <h6></h6>
+                                <h5> <c:out value="${fornitori.nome}"/> <c:out value="${fornitori.cognome}"/> </h5>
                             </li>
                             <!-- PRICE -->
                             <li class="col-sm-2">
@@ -111,39 +102,44 @@
                         </ul>
                     </div>
 
+                        <c:forEach items="${carrello.get(fornitori.partitaIva)}" var="ListaProd">
+
                     <!-- Cart Details -->
                     <ul class="row cart-details">
                         <li class="col-sm-6">
-                            <div class="media">
                                 <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-1.jpg" alt=""> </a> </div>
+                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="${ListaProd.prodotto.immagine}" width="170px" height="170px" alt=""> </a> </div>
+
 
                                 <!-- Item Name -->
                                 <div class="media-body">
                                     <div class="position-center-center">
-                                        <h5>wood chair</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
+
+                                                <h5> <c:out value="${ListaProd.prodotto.titolo}" /></h5>
                                     </div>
                                 </div>
-                            </div>
+
                         </li>
 
-                        <!-- PRICE -->
+                        <!-- PREZZO -->
                         <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
+                            <div class="position-center-center"> <span class="price"><small>€</small> <c:out value="${ListaProd.prodotto.prezzo}" /></span> </div>
                         </li>
 
-                        <!-- QTY -->
+                        <!-- QTA -->
                         <li class="col-sm-1">
                             <div class="position-center-center">
+                                <h4> <c:out value="${ListaProd.quantita}"/> </h4>
+                                <!-- QTY
                                 <div class="quinty">
-                                    <!-- QTY -->
+
                                     <select class="selectpicker">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                     </select>
                                 </div>
+                                -->
                             </div>
                         </li>
 
@@ -157,102 +153,13 @@
                             <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
                         </li>
                     </ul>
+                        </c:forEach>
 
-                    <!-- Cart Details -->
-                    <ul class="row cart-details">
-                        <li class="col-sm-6">
-                            <div class="media">
-                                <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-2.jpg" alt=""> </a> </div>
 
-                                <!-- Item Name -->
-                                <div class="media-body">
-                                    <div class="position-center-center">
-                                        <h5>STOOL</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- QTY -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center">
-                                <div class="quinty">
-                                    <!-- QTY -->
-                                    <select class="selectpicker">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- TOTAL PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- REMOVE -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
-                        </li>
-                    </ul>
-
-                    <!-- Cart Details -->
-                    <ul class="row cart-details">
-                        <li class="col-sm-6">
-                            <div class="media">
-                                <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-3.jpg" alt=""> </a> </div>
-
-                                <!-- Item Name -->
-                                <div class="media-body">
-                                    <div class="position-center-center">
-                                        <h5>wood SPOON</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- QTY -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center">
-                                <div class="quinty">
-                                    <!-- QTY -->
-                                    <select class="selectpicker">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- TOTAL PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- REMOVE -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
-                        </li>
-                    </ul>
                 </div>
 
+
+                    </c:forEach>
 
             </div>
         </section>

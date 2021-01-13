@@ -58,18 +58,19 @@
                         <!-- Short By -->
                         <div class="some-info">
                             <ul class="row margin-top-30">
-                                <!--QUANTITA-->
-                                <li class="col-md-6">
-                                    <label> QUANTITÀ
-                                        <input type="number" name="quantita" value="1" placeholder="" min="1" max="${prodotti.quantità}">
-                                    </label>
-                                </li>
 
                                 <!-- AGGIUNGI AL CARRELLO -->
                                 <form action="Carrello" method="post">
+                                <!--QUANTITA-->
+                                <li class="col-md-6">
+                                    <label> QUANTITÀ
+                                        <input type="number" name="addNum" value="1" placeholder="" min="1" max="${prodotti.quantità}">
+                                    </label>
+                                </li>
+
                                     <input type="hidden" name="prodId" value="${prodotti.idProdotto}">
                                     <input type="hidden" name="partitaIva" value="${prodotti.partitaIva}">
-                                    <input type="hidden" name="addNum" value="1"> <!-- modifica numero di prodotti aggiunti -->
+                                    <!--<input type="hidden" name="addNum" value="1"> modifica numero di prodotti aggiunti -->
                                     <li class="col-xs-6"> <input class="btn" type="submit" value="AGGIUNGI"></li>
                                 <!--<li class="col-xs-6"><a href="carrello.jsp" class="btn">AGGIUNGI</a></li>-->
                                 </form>

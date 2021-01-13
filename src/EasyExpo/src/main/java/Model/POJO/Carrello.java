@@ -6,26 +6,61 @@ import java.util.LinkedHashMap;
 
 public class Carrello {
 
+    public static class ProdottoQuantita {
+        private Prodotto prodotto;
+        private int quantita;
+
+        public ProdottoQuantita(Prodotto prodotto, int quantita) {
+            this.prodotto = prodotto;
+            this.quantita = quantita;
+        }
+
+        public int getQuantita() {
+            return quantita;
+        }
+
+        public void setQuantita(int quantita) {
+            this.quantita = quantita;
+        }
+
+        public Prodotto getProdotto() {
+            return prodotto;
+        }
+
+
+
+        /*public long getPrezzoTotCent() {
+            return quantita * prodotto.getPrezzoCent();
+        }
+
+        public String getPrezzoTotEuro() {
+            return String.format("%.2f", quantita * prodotto.getPrezzoCent() / 100.);
+        }*/
+    }
+
+
+
+
     private ArrayList<Prodotto> listaProdotti = new ArrayList<>();
 
-    private LinkedHashMap<String, ArrayList<Prodotto>> ProdottiFornitori = new LinkedHashMap<>();
+    private LinkedHashMap<String, ArrayList<ProdottoQuantita>> ProdottiFornitori = new LinkedHashMap<>();
 
-    public Collection<ArrayList<Model.POJO.Prodotto>> getProdottiFornitori() {return ProdottiFornitori.values(); }
+    public Collection<ArrayList<ProdottoQuantita>> getProdottiFornitori() {return ProdottiFornitori.values(); }
 
-    public ArrayList<Prodotto> get(String partitaIva) { return ProdottiFornitori.get(partitaIva); }
+    public ArrayList<ProdottoQuantita> get(String partitaIva) { return ProdottiFornitori.get(partitaIva); }
 
 
 
-    public void put(ArrayList<Prodotto> prodotti) {
-        String PI = prodotti.get(0).getPartitaIva();
+    public void put(ArrayList<ProdottoQuantita> prodotti) {
+        String PI = prodotti.get(0).getProdotto().getPartitaIva();
         ProdottiFornitori.put(PI, prodotti);
     }
 
-    public ArrayList<Prodotto> remove(String partitaIva) {
+    public ArrayList<ProdottoQuantita> remove(String partitaIva) {
         return ProdottiFornitori.remove(partitaIva);
     }
 
-    public LinkedHashMap<String, ArrayList<Prodotto>> getLista(){
+    public LinkedHashMap<String, ArrayList<ProdottoQuantita>> getLista(){
         return ProdottiFornitori;
     }
 
