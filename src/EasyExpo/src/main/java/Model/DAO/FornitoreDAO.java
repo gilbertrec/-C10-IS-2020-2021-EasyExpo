@@ -27,7 +27,7 @@ public class FornitoreDAO {
     public Fornitore doRetrieveByPIVA(String partitaIva) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale  FROM Fornitore WHERE partitaIva=?");
+                    .prepareStatement("SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale, abbonato  FROM Fornitore WHERE partitaIva=?");
             ps.setString(1, partitaIva);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -40,6 +40,7 @@ public class FornitoreDAO {
                 f.setEmail(rs.getString(6));
                 f.setPassword(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
+                f.setAbbonato(rs.getBoolean(9));
                 return f;
             }
             return null;
@@ -73,6 +74,7 @@ public class FornitoreDAO {
                 f.setTelefono(rs.getString(6));
                 f.setLuogoUbicazione(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
+                f.setAbbonato(rs.getBoolean(9));
                 fornitori.add(f);
             }
             return fornitori;
@@ -89,7 +91,7 @@ public class FornitoreDAO {
     public void createFornitore(Fornitore fornitore) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
+                    "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale,abbonato) VALUES(?,?,?,?,?,?,sha2(?, 512),?,?)");
 
             ps.setString(1, fornitore.getPartitaIva());
             ps.setString(2, fornitore.getNome());
@@ -99,6 +101,7 @@ public class FornitoreDAO {
             ps.setString(4, fornitore.getTelefono());
             ps.setString(5, fornitore.getLuogoUbicazione());
             ps.setString(8, fornitore.getRagioneSociale());
+            ps.setBoolean(9,fornitore.isAbbonato());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -129,6 +132,7 @@ public class FornitoreDAO {
                 f.setTelefono(rs.getString(6));
                 f.setLuogoUbicazione(rs.getString(7));
                 f.setRagioneSociale(rs.getString(8));
+                f.setAbbonato(rs.getBoolean(9));
                 return f;
             }
             return null;
@@ -161,6 +165,7 @@ public class FornitoreDAO {
                     f.setEmail(rs.getString(6));
                     f.setPassword(rs.getString(7));
                     f.setRagioneSociale(rs.getString(8));
+                    f.setAbbonato(rs.getBoolean(9));
                     return f;
                 }
                 return null;

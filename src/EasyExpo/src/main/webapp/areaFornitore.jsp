@@ -30,7 +30,8 @@
                     Telefono: ${fornitore.telefono}<br>
                     Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
-                    Ragione Sociale: ${fornitore.ragioneSociale}</p>
+                    Ragione Sociale: ${fornitore.ragioneSociale}<br>
+                    Abbonato: ${fornitore.abbonato}<br></p>
                 <li>
                     <form action="AbbonamentoServlet" method="post">
                         <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
