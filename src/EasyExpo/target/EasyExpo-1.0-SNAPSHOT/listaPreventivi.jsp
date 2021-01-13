@@ -1,6 +1,7 @@
 <%@ page import="Model.POJO.RichiestaPreventivo" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.POJO.Preventivo" %><%--
+<%@ page import="Model.POJO.Preventivo" %>
+<%@ page import="Model.POJO.Fornitore" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -53,6 +54,7 @@
                         <%
                             ArrayList<RichiestaPreventivo> richieste = (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
                             ArrayList<Preventivo> preventivi = (ArrayList<Preventivo>) session.getAttribute("preventivi");
+                            ArrayList<Fornitore> fornitori = (ArrayList<Fornitore>) session.getAttribute("fornitori");
 
                             for(int i = 0; i < preventivi.size(); i++){
                         %>
@@ -63,17 +65,14 @@
                                     <!-- Tittle -->
                                     <div class="post-tittle left"> <a href="#." class="tittle">PREVENTIVO <%=richieste.get(i).getTitolo()%></a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i).getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                                     <!-- Post Content -->
                                     <div class="text-left">
                                         <p><%=richieste.get(i).getDescrizioneEvento()%></p>
-                                        <a href="SpecificaServlet?idRichiesta=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
+                                        <a href="SpecifichePrventiviServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
                                 </div>
                             </div>
                         </article>
-
-
-                        </li>
                         <%}%>
 
                         <!-- Pagination -->

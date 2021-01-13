@@ -24,7 +24,7 @@
 
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Area Fornitore"/>
+            <jsp:param name="pageTitle" value="Specifica Preventivo"/>
         </jsp:include>
     </header>
 

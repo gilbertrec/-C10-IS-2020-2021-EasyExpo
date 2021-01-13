@@ -1,4 +1,6 @@
-<%--
+<%@ page import="Model.POJO.RichiestaPreventivo" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Model.POJO.Cliente" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -48,23 +50,29 @@
                 <div class="row" style="margin-left: 110px; margin-right: -110px">
                     <div class="col-md-9">
 
-                    <c:forEach items="${richieste}" var="r">
+                        <%
+                            ArrayList<RichiestaPreventivo> richieste = (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
+                            ArrayList<Cliente> clienti = (ArrayList<Cliente>) session.getAttribute("clienti");
+
+                            for(int i = 0; i < richieste.size(); i++){
+                        %>
                         <article>
                             <div class="row" style="margin-left: 100px; margin-right: -450px">
                                 <div class="col-sm-7">
                                     <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle"><c:out value="${r.titolo}"/></a>
+                                    <div class="post-tittle left"> <a href="#." class="tittle"><%=richieste.get(i).getTitolo()%></a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> <c:out value="${r.dataRichiesta}"/></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                        <span><i class="primary-color icon-user"></i> by <%=clienti.get(i).getNome()%> <%=clienti.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i> <%=richieste.get(i).getDataRichiesta()%></span></div>
                                     <!-- Post Content -->
                                     <div class="text-left">
-                                        <p><c:out value="${r.descrizioneEvento}"/></p>
-                                        <a href="SpecificaServlet?idRichiesta=<c:out value="${r.idRichiesta}"/>" class="red-more">READ MORE</a> </div>
-                                        <img src="#"><img src="#">
+                                        <p><%=richieste.get(i).getDescrizioneEvento()%></p>
+                                        <a href="SpecificaServlet?idRichiesta=<%=richieste.get(i).getIdRichiesta()%>" class="red-more">READ MORE</a> </div>
+                                    <img src="#"><img src="#">
                                 </div>
                             </div>
                         </article>
-                    </c:forEach>
+                        <%}%>
+
                         <!-- Pagination -->
                         <ul class="pagination in-center">
                             <li><a href="#"><i class="fa fa-angle-left"></i></a></li>

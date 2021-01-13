@@ -1,7 +1,9 @@
 package Controller;
 
+import Model.DAO.FornitoreDAO;
 import Model.DAO.PreventivoDAO;
 import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Fornitore;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
@@ -43,11 +45,16 @@ public class PreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("preventivi", preventivi);
     }else if(partitaIva == null && codiceFiscale != null) {
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
-      List<RichiestaPreventivo> richieste = null;
+      ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
+      ArrayList<Fornitore> fornitori = new ArrayList<>();
+      FornitoreDAO fornitoreDAO = new FornitoreDAO();
       for(Preventivo p : preventivi){
         RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
+        Fornitore f = fornitoreDAO.doRetrieveByPIVA(p.getPartitaIva());
         richieste.add(r);
+        fornitori.add(f);
       }
+      request.getSession().setAttribute("fornitori", fornitori);
       request.getSession().setAttribute("richieste", richieste);
       request.getSession().setAttribute("preventivi", preventivi);
     }
