@@ -2,6 +2,7 @@
 <%@ page import="Model.POJO.Prodotto" %>
 <%@ page import="Model.POJO.Carrello" %>
 <%@ page import="java.util.LinkedHashMap" %>
+<%@ page import="Model.POJO.Fornitore" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -52,7 +53,21 @@
         <section class="padding-top-100 padding-bottom-100 pages-in chart-page">
             <div class="container">
 
+                <% Carrello carrello = (Carrello) session.getAttribute("carrello");
+                    ArrayList<Fornitore> listaFornitori = (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
+                    /*ciclo su listaPI e per ogni stringa get dal carrello*/
+                    /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
+                    /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
+                    /*per ogni prodotto posso stampare gli attributi*/
+                %>
+
+                <c:if test="${empty carrello}">
+                    <h1> Nessun prodotto nel carrello. </h1>
+                </c:if>
+
                 <!-- Payments Steps -->
+                <c:if test="${not empty carrello}">
+
                 <div class="shopping-cart text-center">
                     <div class="cart-head">
                         <ul class="row">
@@ -62,18 +77,11 @@
                                 <!-- CARRELLO -->
 
 
-                                <% Carrello carrello = (Carrello) session.getAttribute("carrello");
-                                   ArrayList<String> listaPI = (ArrayList<String>) session.getAttribute("listaPI");
-                                    /*ciclo su listaPI e per ogni stringa get dal carrello*/
-                                    /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
-                                    /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
-                                    /*per ogni prodotto posso stampare gli attributi*/
 
-                                %>
 
-                                    <c:forEach items="${listaPI}" var="partitaIva">
-                                        <c:forEach items="${carrello.get(partitaIva)}" var="ListaProd">
-                                            <h7>PI Fornitore <c:out value="${partitaIva}"/> </h7>
+                                    <c:forEach items="${listaFornitori}" var="fornitori">
+                                        <c:forEach items="${carrello.get(fornitori.partitaIva)}" var="ListaProd">
+                                            <h7>Fornitore: <c:out value="${fornitori.nome}"/> <c:out value="${fornitori.cognome}"/> </h7>
                                             <h6>Prodotto-titolo: <c:out value="${ListaProd.titolo}" /></h6>
                                             <h6>Prodotto-prezzo: <c:out value="${ListaProd.prezzo}" /></h6>
 
@@ -88,11 +96,11 @@
                             </li>
                             <!-- PRICE -->
                             <li class="col-sm-2">
-
+                                <h6>PREZZO</h6>
                             </li>
                             <!-- QTY -->
                             <li class="col-sm-1">
-                                <h6>QTY</h6>
+                                <h6>QTA</h6>
                             </li>
 
                             <!-- TOTAL PRICE -->
@@ -244,6 +252,8 @@
                         </li>
                     </ul>
                 </div>
+
+
             </div>
         </section>
 
@@ -279,7 +289,7 @@
                 </div>
             </div>
         </section>
-
+        </c:if>
 
     </div>
 

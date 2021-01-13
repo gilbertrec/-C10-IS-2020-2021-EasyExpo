@@ -158,15 +158,23 @@
                             <c:choose>
                                 <c:when test="${cliente != null}">
                                     <!-- ICONA CARRELLO -->
-                                    <li class="dropdown user-basket"><a href="#" class="dropdown-toggle"
-                                                                        data-toggle="dropdown"
-                                                                        role="button" aria-haspopup="true"
-                                                                        aria-expanded="true"><i
-                                            class="icon-basket-loaded"></i> </a>
+
+                                    <li class="dropdown"><a href="carrello.jsp" class="search-open"><i
+                                            class="icon-basket-loaded"></i></a>
+                                    </li>
+
+                                    <!-- <a href="carrello.jsp" class="dropdown-toggle"
+                                       data-toggle="dropdown"
+                                       role="button" aria-haspopup="true"
+                                       aria-expanded="true"><i
+                                            class="icon-basket-loaded"></i> </a> -->
+
+
+                                    <!--<li class="dropdown user-basket">
                                         <ul class="dropdown-menu">
 
                                             <li>
-                                                <h5 class="text-center">TOTALE: ${prezzo}</h5>
+                                                <h5 class="text-center">TOTALE:</h5>
                                             </li>
                                             <li class="margin-0">
                                                 <div class="row">
@@ -175,7 +183,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> -->
 
                                     <!-- ICONA SEARCH -->
 

@@ -31,13 +31,13 @@ public class CarrelloServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         Carrello carrello = (Carrello) session.getAttribute("carrello");
-        ArrayList<String> listaPI = (ArrayList<String>) session.getAttribute("listaPI");
+        ArrayList<Fornitore> listaFornitori = (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
         if (carrello == null) /*se è vuoto il carrello anche listaPI è vuota*/
         {
             carrello = new Carrello();
             session.setAttribute("carrello", carrello);
-            listaPI = new ArrayList<>();
-            session.setAttribute("listaPI", listaPI);
+            listaFornitori = new ArrayList<>();
+            session.setAttribute("listaFornitori", listaFornitori);
         }
 
 
@@ -54,10 +54,10 @@ public class CarrelloServlet extends HttpServlet {
                     ArrayList<Prodotto> prodotti1 = carrello.get(partitaIva);
 
                     if(prodotti1==null){  /*se la lista di prodotti assegnata a quel fornitore è vuota*/
-                        /* aggiungo partita iva a listaPI */
-                        listaPI.add(partitaIva);
                         /*trovo il fornitore legato a quella partita iva*/
                         Fornitore forni = fornitoreDAO.doRetrieveByPIVA(partitaIva);
+                        /*e lo aggiungo alla lista dei fornitori*/
+                        listaFornitori.add(forni);
 
                         /* crea l'array list di prodotti da aggiungere */
                         ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -66,7 +66,7 @@ public class CarrelloServlet extends HttpServlet {
                         /*aggiungi al carrello la nuova lista legata al fornitore*/
                         carrello.put(prodotti);
                     }else {//se già c'è la lista di prodotti assegnata a quel fornitore devo fare ANCHE l'aggiornamento!!
-                        //in listaPI c'è già la sua partitaIva
+                        //in listaFornitori c'è già il fornitore e la sua partitaIva
                         //aggiungo il prodotto a prodotti1
                         prodotti1.add(prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId,partitaIva));
                         //devo fare l'aggiornamento dei prodotti legati a quella partita iva prima di reiserirli
