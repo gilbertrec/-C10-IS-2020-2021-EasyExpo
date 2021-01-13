@@ -5,6 +5,7 @@ import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +34,7 @@ public class PreventiviServlet extends HttpServlet {
 
     if(partitaIva != null && codiceFiscale == null){
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva(partitaIva);
-      List<RichiestaPreventivo> richieste = null;
+      ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
       for(Preventivo p : preventivi){
           RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
           richieste.add(r);
@@ -51,7 +52,7 @@ public class PreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("preventivi", preventivi);
     }
 
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
+      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaPreventivi.jsp");
       requestDispatcher.forward(request, response);
     }
   }
