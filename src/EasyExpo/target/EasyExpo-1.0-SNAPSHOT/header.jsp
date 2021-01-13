@@ -93,7 +93,7 @@
                                     </li>
                                     <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
                                     <li><a href="RichiesteServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">RICHIESTE</a></li>
-                                    <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
+                                    <li><a href=""PreventiviServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>"">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                                 <c:when test="${fornitore != null}">
@@ -103,7 +103,7 @@
                                     <li><a href="areaFornitore.jsp"> AREA FORNITORE</a></li>
                                     <li><a href="areaFornitore.jsp"> CATALOGO</a></li>
                                     <li><a href="RichiesteServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>">RICHIESTE</a></li>
-                                    <li><a href="listaPreventivi.jsp">PREVENTIVI</a></li>
+                                    <li><a href="PreventiviServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>">PREVENTIVI</a></li>
                                     <li><a href="LogoutServlet">LOGOUT</a></li>
                                 </c:when>
                                 <c:otherwise>

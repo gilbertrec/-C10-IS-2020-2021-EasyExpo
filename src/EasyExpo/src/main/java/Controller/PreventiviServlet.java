@@ -40,12 +40,18 @@ public class PreventiviServlet extends HttpServlet {
       }
       request.getSession().setAttribute("richieste", richieste);
       request.getSession().setAttribute("preventivi", preventivi);
-    }else if(partitaIva == null && codiceFiscale != null){
+    }else if(partitaIva == null && codiceFiscale != null) {
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
+      List<RichiestaPreventivo> richieste = null;
+      for(Preventivo p : preventivi){
+        RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
+        richieste.add(r);
+      }
+      request.getSession().setAttribute("richieste", richieste);
       request.getSession().setAttribute("preventivi", preventivi);
+    }
 
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
       requestDispatcher.forward(request, response);
     }
   }
-}
