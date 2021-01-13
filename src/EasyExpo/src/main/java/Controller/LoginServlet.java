@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
             ProdottoDAO prodottoDAO = new ProdottoDAO();
             List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(fornitore.getPartitaIva());
             request.getSession().setAttribute("prodotti", prodotti);
+            boolean flag = fornitore.isAbbonato();
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
             requestDispatcher.forward(request,response);
         }

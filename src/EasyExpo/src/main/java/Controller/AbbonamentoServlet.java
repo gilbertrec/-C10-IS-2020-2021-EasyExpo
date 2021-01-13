@@ -31,9 +31,11 @@ public class AbbonamentoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
         MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
+        FornitoreDAO fornitoreDAO = new FornitoreDAO();
         /*HttpSession session = request.getSession();
         Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
         String partitaIva = request.getParameter("partitaIva");
+        Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
         List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
 
         if (abbonamenti.size() == 0) {
@@ -47,13 +49,13 @@ public class AbbonamentoServlet extends HttpServlet {
             Calendar calendario = Calendar.getInstance();
             calendario.setTime(corrente);
             java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
-            boolean flag = false;
+            fornitore.setAbbonato(false);
             for (Abbonamento a : abbonamenti) {
                 if (a.getDataFine().after(sc)) {
-                    flag = true;
+                    fornitore.setAbbonato(true);
                 }
             }
-            if (flag == false) {
+            if (fornitore.isAbbonato() == false) {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
                 requestDispatcher.forward(request, response);
             } else {

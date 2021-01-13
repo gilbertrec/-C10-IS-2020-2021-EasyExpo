@@ -109,7 +109,7 @@
                     <!-- SLIDE 2 -->
                     <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
                         <!-- MAIN IMAGE -->
-                        <img src="images/casse72.jpg" alt="slider" data-bgposition="center center" data-bgfit="cover"
+                        <img src="images/calculator.jpg" alt="slider" data-bgposition="center center" data-bgfit="cover"
                              data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->

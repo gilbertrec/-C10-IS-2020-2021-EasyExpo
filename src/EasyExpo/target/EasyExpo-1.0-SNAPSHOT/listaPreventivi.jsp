@@ -1,4 +1,7 @@
-<%--
+<%@ page import="Model.POJO.RichiestaPreventivo" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Model.POJO.Preventivo" %>
+<%@ page import="Model.POJO.Fornitore" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -32,7 +35,7 @@
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>RICHIESTE DI PREVENTIVO</h4>
+                <h4>PREVENTIVI</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
             </div>
@@ -48,22 +51,30 @@
                 <div class="row" style="margin-left: 110px; margin-right: -110px">
                     <div class="col-md-9">
 
-                        <c:forEach items="${preventivo}" var="r">
-                            <article>
-                                <div class="row" style="margin-left: 100px; margin-right: -450px">
-                                    <div class="col-sm-7">
-                                        <!-- Tittle -->
-                                        <div class="post-tittle left"> <a href="#." class="tittle"><c:out value="${r.titolo}"/></a>
-                                            <!-- Post Info -->
-                                            <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> <c:out value="${r.dataRichiesta}"/></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
-                                        <!-- Post Content -->
-                                        <div class="text-left">
-                                            <p><c:out value="${r.descrizioneEvento}"/></p>
-                                            <a href="SpecificaServlet?idRichiesta=<c:out value="${r.idRichiesta}"/>" class="red-more">READ MORE</a> </div>
-                                    </div>
+                        <%
+                            ArrayList<RichiestaPreventivo> richieste = (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
+                            ArrayList<Preventivo> preventivi = (ArrayList<Preventivo>) session.getAttribute("preventivi");
+                            ArrayList<Fornitore> fornitori = (ArrayList<Fornitore>) session.getAttribute("fornitori");
+
+                            for(int i = 0; i < preventivi.size(); i++){
+                        %>
+
+                        <article>
+                            <div class="row" style="margin-left: 100px; margin-right: -450px">
+                                <div class="col-sm-7">
+                                    <!-- Tittle -->
+                                    <div class="post-tittle left"> <a href="#." class="tittle">PREVENTIVO <%=richieste.get(i).getTitolo()%></a>
+                                        <!-- Post Info -->
+                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i).getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
+                                    <!-- Post Content -->
+                                    <div class="text-left">
+                                        <p><%=richieste.get(i).getDescrizioneEvento()%></p>
+                                        <a href="SpecifichePrventiviServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
                                 </div>
-                            </article>
-                        </c:forEach>
+                            </div>
+                        </article>
+                        <%}%>
+
                         <!-- Pagination -->
                         <ul class="pagination in-center">
                             <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
