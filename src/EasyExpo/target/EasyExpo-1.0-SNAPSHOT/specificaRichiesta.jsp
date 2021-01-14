@@ -108,7 +108,9 @@
                         </div>
                         <c:choose>
                             <c:when test="${fornitore != null and fornitore.abbonato == true}">
+                            <form action="CompilaPreventivoServlet" method="post">
                                 <li class="col-xs-6"> <input class="btn" type="submit" value="COMPILA PREVENTIVO"></li>
+                            </form>
                             </c:when>
                         </c:choose>
                     </div>

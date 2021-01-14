@@ -122,10 +122,8 @@
                                                 <h6>Ciao ${cliente.nome} !</h6>
                                             </li>
                                             <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
-                                            <li><a href="RichiesteServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">RICHIESTE</a>
-                                            </li>
-                                            <li><a href="PreventiviServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">PREVENTIVI</a>
-                                            </li>
+                                            <li><a href="RichiesteServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">RICHIESTE</a></li>
+                                            <li><a href="PreventiviServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">PREVENTIVI</a></li>
                                             <li><a href="LogoutServlet">LOGOUT</a></li>
                                         </c:when>
                                         <c:when test="${fornitore != null and fornitore.abbonato == true}">

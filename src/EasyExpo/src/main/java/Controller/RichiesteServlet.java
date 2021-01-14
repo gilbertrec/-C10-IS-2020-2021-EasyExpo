@@ -40,6 +40,13 @@ public class RichiesteServlet extends HttpServlet {
       request.getSession().setAttribute("richieste", richieste);
     }else if(partitaIva == null && codiceFiscale != null){
       List<RichiestaPreventivo> richieste = richiestaPreventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
+      ArrayList<Cliente> clienti = new ArrayList<Cliente>();
+      ClienteDAO clienteDAO = new ClienteDAO();
+      for(RichiestaPreventivo rp : richieste){
+        Cliente c = clienteDAO.doRetrieveByCF(rp.getCodiceFiscale());
+        clienti.add(c);
+      }
+      request.getSession().setAttribute("clienti", clienti);
       request.getSession().setAttribute("richieste", richieste);
     }
 
