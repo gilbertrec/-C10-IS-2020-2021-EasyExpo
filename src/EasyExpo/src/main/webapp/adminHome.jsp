@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Area Admin</title>
 </head>
 <body>
 <!-- Wrap -->
@@ -19,6 +19,12 @@
             <jsp:param name="pageTitle" value="Gestione Admin"/>
         </jsp:include>
     </header>
+    <%
+        if(request.getSession().getAttribute("LeaderSupremo")==null){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
+            requestDispatcher.forward(request,response);
+        }
+    %>
 
     <div id="content">
 

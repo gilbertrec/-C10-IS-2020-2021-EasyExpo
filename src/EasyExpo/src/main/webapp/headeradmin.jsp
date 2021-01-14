@@ -64,12 +64,36 @@
 
             <!-- Nav Right -->
             <div class="nav-right">
-                <ul class="navbar-right"></ul>
+                <ul class="navbar-right">
+
+                    <!-- USER INFO -->
+                    <li class="dropdown user-acc"><a href="adminLoginSegreto.jsp" class="dropdown-toggle" data-toggle="dropdown"
+                                                     role="button"><i class="icon-user"></i> </a>
+                        <ul class="dropdown-menu">
+                            <c:choose>
+                                <c:when test="${admin != null}">
+                                    <li>
+                                        <h6>Ciao!</h6>
+                                    </li>
+                                    <li><a href="adminHome.jsp">AREA ADMIN</a></li>
+
+                                    <li><a href="LogoutServlet">LOGOUT</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                        <h6>Effettua login Admin !</h6>
+                                    </li>
+                                    <li><a href="adminLoginSegreto.jsp"> Login</a></li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
-
-</header></div>
+</header>
+</div>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/own-menu.js"></script>

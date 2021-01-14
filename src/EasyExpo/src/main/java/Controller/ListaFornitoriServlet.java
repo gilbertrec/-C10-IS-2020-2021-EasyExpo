@@ -21,7 +21,7 @@ public class ListaFornitoriServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         FornitoreDAO fornitoreDAO = new FornitoreDAO();
-        List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStatoAttivo(0,100);
+        List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStato(1);
         request.getSession().setAttribute("fornitori", fornitori);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneFornitori.jsp");
         requestDispatcher.forward(request,response);

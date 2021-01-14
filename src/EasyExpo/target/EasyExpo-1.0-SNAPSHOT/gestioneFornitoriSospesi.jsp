@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Gestione Fornitori Sospesi</title>
 </head>
 <body>
 <div id="wrap">
@@ -19,9 +19,12 @@
             <jsp:param name="pageTitle" value="Gestione Fornitori Sospesi"/>
         </jsp:include>
     </header>
-    <% /*if (request.getSession().getAttribute("fornitori") == null) {
-
-    }*/%>
+    <%
+        if(request.getSession().getAttribute("LeaderSupremo")==null){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
+            requestDispatcher.forward(request,response);
+        }
+    %>
     <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
     <div id="content">
         <table class="table">

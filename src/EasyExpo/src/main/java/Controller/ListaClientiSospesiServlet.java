@@ -22,7 +22,7 @@ public class ListaClientiSospesiServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         ClienteDAO clienteDAO = new ClienteDAO();
-        List<Cliente> clienti = clienteDAO.doRetrievebyStatoSospeso(0,100);
+        List<Cliente> clienti = clienteDAO.doRetrievebyStato(2);
         request.getSession().setAttribute("clienti", clienti);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneClientiSospesi.jsp");
         requestDispatcher.forward(request,response);

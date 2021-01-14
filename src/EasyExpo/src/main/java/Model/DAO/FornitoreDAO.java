@@ -235,38 +235,6 @@ public class FornitoreDAO {
         }
     }
 
-    /**
-     * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
-     * @param  offset  indice partenza, Intero
-     * @param limit  indice fine , Intero
-     * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
-     *
-     */
-    public List<Fornitore> doRetrievebyStatoAttivo(int offset, int limit) {
-        try (Connection con = DBConnection.getConnection()) {
-            PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Fornitore LIMIT ?, ? WHERE stato='ATTIVO'");
-            ps.setInt(1, offset);
-            ps.setInt(2, limit);
-            ArrayList<Fornitore> fornitori = new ArrayList<>();
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Fornitore f = new Fornitore();
-                f.setPartitaIva(rs.getString(1));
-                f.setNome(rs.getString(2));
-                f.setCognome(rs.getString(3));
-                f.setEmail(rs.getString(4));
-                f.setPassword(rs.getString(5));
-                f.setTelefono(rs.getString(6));
-                f.setLuogoUbicazione(rs.getString(7));
-                f.setRagioneSociale(rs.getString(8));
-                fornitori.add(f);
-            }
-            return fornitori;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     /**
      * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
@@ -275,12 +243,12 @@ public class FornitoreDAO {
      * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
      *
      */
-    public List<Fornitore> doRetrievebyStatoSospeso(int offset, int limit) {
+    public List<Fornitore> doRetrievebyStato(int val) {
         try (Connection con = DBConnection.getConnection()) {
             PreparedStatement ps = con
-                    .prepareStatement("SELECT * FROM Fornitore LIMIT ?, ? WHERE stato='SOSPESO'");
-            ps.setInt(1, offset);
-            ps.setInt(2, limit);
+                    .prepareStatement("SELECT * FROM Fornitore WHERE stato=?");
+
+            ps.setInt(1,val);
             ArrayList<Fornitore> fornitori = new ArrayList<>();
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

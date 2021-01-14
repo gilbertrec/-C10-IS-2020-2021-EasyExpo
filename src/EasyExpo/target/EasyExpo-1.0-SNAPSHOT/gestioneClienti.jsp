@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Gestione Clienti</title>
 </head>
 <body>
 <div id="wrap">
@@ -19,7 +19,12 @@
             <jsp:param name="pageTitle" value="Gestione Clienti"/>
         </jsp:include>
     </header>
-
+    <%
+        if(request.getSession().getAttribute("LeaderSupremo")==null){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
+            requestDispatcher.forward(request,response);
+        }
+    %>
     <% List<Cliente> cliente = (List<Cliente>) request.getSession().getAttribute("clienti");%>
     <div id="content">
         <table class="table">
@@ -60,7 +65,7 @@
                 %>
 
                 <td>
-                    <button type="submit"  formaction="/SospendiFornitore">Sospendi</button>
+                    <button type="submit"  formaction="/SospendiCliente">Sospendi</button>
                 </td>
             </tr>
             <% } %>

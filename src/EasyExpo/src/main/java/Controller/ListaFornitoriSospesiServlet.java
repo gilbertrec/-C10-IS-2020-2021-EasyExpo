@@ -21,8 +21,8 @@ public class ListaFornitoriSospesiServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         FornitoreDAO fornitoreDAO = new FornitoreDAO();
-        List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStatoSospeso(0,100);
-        request.setAttribute("fornitori", fornitori);
+        List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStato(2);
+        request.getSession().setAttribute("fornitori", fornitori);
 
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneFornitoriSospesi.jsp");
         requestDispatcher.forward(request,response);
