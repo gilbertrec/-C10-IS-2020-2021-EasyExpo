@@ -29,7 +29,8 @@ public class AbbonamentoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Abbonamento as a, Fornitore as f WHERE idAbbonamento=? AND a.partitaIva=f.partitaIva");
+              "SELECT *  FROM Abbonamento as a, Fornitore as f "
+                      + "WHERE idAbbonamento=? AND a.partitaIva=f.partitaIva");
       ps.setInt(1, idAbbonamento);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -51,7 +52,8 @@ public class AbbonamentoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Abbonamento as a, Fornitore as f WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva");
+              "SELECT * FROM Abbonamento as a, Fornitore as f "
+                      + "WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva");
       ps.setString(1, partitaIva);
       ArrayList<Abbonamento> abbonamenti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();

@@ -20,7 +20,8 @@ public class ClienteDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT codiceFiscale, nome, cognome, email, password, telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
+              "SELECT codiceFiscale, nome, cognome, email, password, "
+                      + "telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
       ps.setString(1, codiceFiscale);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -80,7 +81,8 @@ public class ClienteDAO {
   public void createCliente(Cliente cliente) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,sha2(?, 512))");
+          "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, "
+                  + "luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,sha2(?, 512))");
       ps.setString(1, cliente.getCodiceFiscale());
       ps.setString(2, cliente.getNome());
       ps.setString(3, cliente.getCognome());

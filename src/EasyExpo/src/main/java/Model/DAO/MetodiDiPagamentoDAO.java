@@ -28,7 +28,8 @@ public class MetodiDiPagamentoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM MetodoPagamento as mp, Fornitore as f WHERE mp.partitaIva=? AND mp.partitaIva=f.partitaIva");
+              "SELECT * FROM MetodoPagamento as mp, Fornitore as f "
+                      + "WHERE mp.partitaIva=? AND mp.partitaIva=f.partitaIva");
       ps.setString(1, partitaIva);
       ArrayList<MetodoPagamento> metodiPagamenti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -76,7 +77,8 @@ public class MetodiDiPagamentoDAO {
   public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, dataScadenza, cvv) VALUES(?,?,?,?,?)");
+          "INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, "
+                  + "dataScadenza, cvv) VALUES(?,?,?,?,?)");
       ps.setString(1, metodoPagamento.getNumeroCarta());
       ps.setString(2, metodoPagamento.getPartitaIva());
       ps.setString(3, metodoPagamento.getNomeIntestatario());

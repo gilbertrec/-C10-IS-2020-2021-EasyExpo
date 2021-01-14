@@ -92,7 +92,9 @@ public class FornitoreDAO {
   public void createFornitore(Fornitore fornitore) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale,abbonato) VALUES(?,?,?,?,?,?,sha2(?, 512),?,?)");
+          "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, "
+                  + "email, password, ragioneSociale,abbonato) "
+                  + "VALUES(?,?,?,?,?,?,sha2(?, 512),?,?)");
 
       ps.setString(1, fornitore.getPartitaIva());
       ps.setString(2, fornitore.getNome());
@@ -203,7 +205,8 @@ public class FornitoreDAO {
     try (Connection con = DBConnection.getConnection()) {
 
       PreparedStatement ps = con.prepareStatement(
-          "SELECT partitaIva, nome, cognome, luogoUbicazione FROM Fornitore WHERE nome LIKE ? OR cognome LIKE ? ");
+          "SELECT partitaIva, nome, cognome, luogoUbicazione FROM Fornitore "
+                  + "WHERE nome LIKE ? OR cognome LIKE ? ");
       ps.setString(1, "%" + ricercato + "%");
       ps.setString(2, "%" + ricercato + "%");
 
