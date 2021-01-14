@@ -4,9 +4,9 @@ import java.sql.Date;
 
 /**
  * Preventivo e' la classe che gestisce un
- * ordinario oggetto Preventivo
+ * ordinario oggetto Preventivo.
  *
- * @author
+ * @author LUCREZIA ROBUSTELLI
  * @version 1.0
  * @since 2020-12-29
  */
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Preventivo {
 
   /**
-   * Metodo costruttore della classe Preventivo
+   * Metodo costruttore della classe Preventivo.
    *
    * @param idPreventivo   Codice identificativo, Intero
    * @param idRichiesta    Codice identificativo, Intero
@@ -37,7 +37,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo costruttore di default della classe Preventivo
+   * Metodo costruttore di default della classe Preventivo.
    */
 
   public Preventivo() {
@@ -45,7 +45,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che restituisce l'idPreventivo
+   * Metodo che restituisce l'idPreventivo.
    *
    * @return int - idPreventivo
    */
@@ -55,7 +55,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta l'idPreventivo
+   * Metodo che setta l'idPreventivo.
    *
    * @param idPreventivo Codice identificativo, Intero
    */
@@ -65,7 +65,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che restituisce l'idRichiesta
+   * Metodo che restituisce l'idRichiesta.
    *
    * @return int - idRichiesta
    */
@@ -75,7 +75,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta l'idRichiesta
+   * Metodo che setta l'idRichiesta.
    *
    * @param idRichiesta Codice identificativo, Intero
    */
@@ -85,7 +85,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che restituisce la partitaIva
+   * Metodo che restituisce la partitaIva.
    *
    * @return String - partitaIva
    */
@@ -95,7 +95,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta la partitaIva
+   * Metodo che setta la partitaIva.
    *
    * @param partitaIva Codice alfanumerico identificativo fornitore, String
    */
@@ -105,7 +105,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che restituisce il codiceFiscale
+   * Metodo che restituisce il codiceFiscale.
    *
    * @return String - codiceFiscale
    */
@@ -115,7 +115,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta il codiceFiscale
+   * Metodo che setta il codiceFiscale.
    *
    * @param codiceFiscale Codice alfanumerico identificativo cliente, String
    */
@@ -125,7 +125,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che restituisce la dataPreventivo
+   * Metodo che restituisce la dataPreventivo.
    *
    * @return Date - dataPreventivo
    */
@@ -135,7 +135,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta la dataPreventivo
+   * Metodo che setta la dataPreventivo.
    *
    * @param dataPreventivo Data del preventivo, Date
    */
@@ -145,7 +145,7 @@ public class Preventivo {
   }
 
   /**
-   * Motodo che restitutisce il prezzoTotale
+   * Motodo che restitutisce il prezzoTotale.
    *
    * @return float - prezzoTotale
    */
@@ -155,7 +155,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta il prezzoTotale
+   * Metodo che setta il prezzoTotale.
    *
    * @param prezzoTotale Prezzo totale preventivato, float
    */
@@ -165,7 +165,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che ritorna la nota
+   * Metodo che ritorna la nota.
    *
    * @return String - nota
    */
@@ -175,7 +175,7 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che setta la nota
+   * Metodo che setta la nota.
    *
    * @param nota Nota aggiuntiva, String
    */
@@ -185,22 +185,22 @@ public class Preventivo {
   }
 
   /**
-   * Metodo che converte l'oggetto Preventivo in stringa
+   * Metodo che converte l'oggetto Preventivo in stringa.
    *
    * @return String
    */
 
   @Override
   public String toString() {
-    return "Preventivo{" +
-        "idPreventivo=" + idPreventivo +
-        ", idRichiesta=" + idRichiesta +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", codiceFiscale='" + codiceFiscale + '\'' +
-        ", dataPreventivo=" + dataPreventivo +
-        ", prezzoTotale=" + prezzoTotale +
-        ", nota='" + nota + '\'' +
-        '}';
+    return "Preventivo{"
+        + "idPreventivo=" + idPreventivo
+        + ", idRichiesta=" + idRichiesta
+        + ", partitaIva='" + partitaIva + '\''
+        + ", codiceFiscale='" + codiceFiscale + '\''
+        + ", dataPreventivo=" + dataPreventivo
+        + ", prezzoTotale=" + prezzoTotale
+        + ", nota='" + nota + '\''
+        + '}';
   }
 
   private int idPreventivo;

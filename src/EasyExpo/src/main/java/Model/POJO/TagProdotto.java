@@ -2,16 +2,16 @@ package Model.POJO;
 
 /**
  * TagProdotto e' la classe che gestisce un
- * ordinario oggetto TagProdotto
+ * ordinario oggetto TagProdotto.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2021-01-02
  */
 public class TagProdotto {
 
   /**
-   * Metodo costruttore della classe TagProdotto
+   * Metodo costruttore della classe TagProdotto.
    *
    * @param idTag      codice identificativo tag, Intero
    * @param idProdotto codice identificativo prodotto, Intero
@@ -24,14 +24,14 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo costruttore di default della classe Prodotto
+   * Metodo costruttore di default della classe Prodotto.
    */
   public TagProdotto() {
 
   }
 
   /**
-   * Metodo che restituisce l'IdTag
+   * Metodo che restituisce l'IdTag.
    *
    * @return int - idTag
    */
@@ -40,7 +40,7 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo che setta l'IdTag
+   * Metodo che setta l'IdTag.
    *
    * @param idTag codice identificativo tag, Intero
    */
@@ -49,7 +49,7 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo che restituisce l'IdProdotto
+   * Metodo che restituisce l'IdProdotto.
    *
    * @return int - idProdotto
    */
@@ -58,7 +58,7 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo che setta l'IdProdotto
+   * Metodo che setta l'IdProdotto.
    *
    * @param idProdotto codice identificativo prodotto, Intero
    */
@@ -67,7 +67,7 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo che restituisce la Partita Iva
+   * Metodo che restituisce la Partita Iva.
    *
    * @return String - PartitaIva
    */
@@ -76,7 +76,7 @@ public class TagProdotto {
   }
 
   /**
-   * Metodo che setta la Partita Iva
+   * Metodo che setta la Partita Iva.
    *
    * @param partitaIva codice alfanumerico identificativo fornitore, String
    */
@@ -86,11 +86,11 @@ public class TagProdotto {
 
   @Override
   public String toString() {
-    return "TagProdotto{" +
-        "idTag=" + idTag +
-        ", idProdotto=" + idProdotto +
-        ", partitaIva='" + partitaIva + '\'' +
-        '}';
+    return "TagProdotto{"
+        + "idTag=" + idTag
+        + ", idProdotto=" + idProdotto
+        + ", partitaIva='" + partitaIva + '\''
+        + '}';
   }
 
   private int idTag;

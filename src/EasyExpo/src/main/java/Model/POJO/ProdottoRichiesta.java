@@ -4,9 +4,9 @@ import java.sql.Date;
 
 /**
  * ProdottoRichiesta e' la classe che gestisce un
- * ordinario oggetto ProdottoRichiesta
+ * ordinario oggetto ProdottoRichiesta.
  *
- * @author
+ * @author gAETANO IULIANO
  * @version 1.0
  * @since 2021-01-02
  */
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class ProdottoRichiesta {
 
   /**
-   * Metodo costruttore della classe ProdottoRichiesta
+   * Metodo costruttore della classe ProdottoRichiesta.
    *
    * @param id                 Codice Identificativo , Intero
    * @param idRichiesta        Codice Identificativo richiesta, Intero
@@ -37,14 +37,14 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo costruttore di default della classe Prodotto
+   * Metodo costruttore di default della classe Prodotto.
    */
   public ProdottoRichiesta() {
 
   }
 
   /**
-   * Metodo che restituisce l'id
+   * Metodo che restituisce l'id.
    *
    * @return int - id
    */
@@ -53,7 +53,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta l'id
+   * Metodo che setta l'id.
    *
    * @param id Codice Identificativo , Intero
    */
@@ -62,7 +62,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce l'idRichiesta
+   * Metodo che restituisce l'idRichiesta.
    *
    * @return int - idRichiesta
    */
@@ -71,7 +71,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta l'idRichiesta
+   * Metodo che setta l'idRichiesta.
    *
    * @param idRichiesta Codice Identificativo richiesta, Intero
    */
@@ -80,7 +80,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce l'idProdotto
+   * Metodo che restituisce l'idProdotto.
    *
    * @return int - idProdotto
    */
@@ -89,7 +89,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta l'idProdotto
+   * Metodo che setta l'idProdotto.
    *
    * @param idProdotto Codice Identificativo prodotto, Intero
    */
@@ -98,7 +98,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce il numero colli
+   * Metodo che restituisce il numero colli.
    *
    * @return int - numColli
    */
@@ -107,7 +107,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta il numero colli
+   * Metodo che setta il numero colli.
    *
    * @param numColli Quantita' prodotti , Intero
    */
@@ -116,7 +116,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce il prezzo
+   * Metodo che restituisce il prezzo.
    *
    * @return int - prezzo
    */
@@ -125,7 +125,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta il prezzo
+   * Metodo che setta il prezzo.
    *
    * @param prezzo Prezzo unitario prodotto, Float
    */
@@ -134,7 +134,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce la data di inizio noleggio
+   * Metodo che restituisce la data di inizio noleggio.
    *
    * @return Date - dataInizioNoleggio
    */
@@ -143,7 +143,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che setta la data di inizio noleggio
+   * Metodo che setta la data di inizio noleggio.
    *
    * @param dataInizioNoleggio Data inizio del noleggio, Date
    */
@@ -152,7 +152,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che restituisce la data di fine noleggio
+   * Metodo che restituisce la data di fine noleggio.
    *
    * @return Date - dataFineNoleggio
    */
@@ -161,7 +161,7 @@ public class ProdottoRichiesta {
   }
 
   /**
-   * Metodo che Metodo che setta la data di inizio noleggio
+   * Metodo che Metodo che setta la data di inizio noleggio.
    *
    * @param dataFineNoleggio Data fine del noleggio, Date
    */
@@ -179,16 +179,16 @@ public class ProdottoRichiesta {
 
   @Override
   public String toString() {
-    return "ProdottoRichiesta{" +
-        "id=" + id +
-        ", idRichiesta=" + idRichiesta +
-        ", idProdotto=" + idProdotto +
-        ", numColli=" + numColli +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", prezzo=" + prezzo +
-        ", dataInizioNoleggio=" + dataInizioNoleggio +
-        ", dataFineNoleggio=" + dataFineNoleggio +
-        '}';
+    return "ProdottoRichiesta{"
+        + "id=" + id
+        + ", idRichiesta=" + idRichiesta
+        + ", idProdotto=" + idProdotto
+        + ", numColli=" + numColli
+        + ", partitaIva='" + partitaIva + '\''
+        + ", prezzo=" + prezzo
+        + ", dataInizioNoleggio=" + dataInizioNoleggio
+        + ", dataFineNoleggio=" + dataFineNoleggio
+        + '}';
   }
 
   private int id;

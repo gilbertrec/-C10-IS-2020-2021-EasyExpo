@@ -2,9 +2,9 @@ package Model.POJO;
 
 /**
  * Fornitore e' la classe che gestisce un
- * ordinario oggetto Fornitore
+ * ordinario oggetto Fornitore.
  *
- * @author
+ * @author LUCREZIA ROBUSTELLI
  * @version 1.0
  * @since 2020-12-29
  */
@@ -12,7 +12,7 @@ package Model.POJO;
 public class Fornitore {
 
   /**
-   * Metodo costruttore della classe Fornitore
+   * Metodo costruttore della classe Fornitore.
    *
    * @param email           Indirizzo mail, String
    * @param password        Caratteri alfanumerici per accesso al sistema, String
@@ -40,7 +40,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce la partitaIva
+   * Metodo che restituisce la partitaIva.
    *
    * @return String - partitaIva
    */
@@ -50,7 +50,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta la partitaIva
+   * Metodo che setta la partitaIva.
    *
    * @param partitaIva Codice alfanumerico identificativo fornitore, String
    */
@@ -60,7 +60,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce il nome
+   * Metodo che restituisce il nome.
    *
    * @return String - nome
    */
@@ -70,7 +70,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta il nome
+   * Metodo che setta il nome.
    *
    * @param nome Nome del fornitore, String
    */
@@ -80,7 +80,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce il cognome
+   * Metodo che restituisce il cognome.
    *
    * @return String - cognome
    */
@@ -90,7 +90,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta il cognome
+   * Metodo che setta il cognome.
    *
    * @param cognome Cognome del fornitore, String
    */
@@ -100,7 +100,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce il telefono
+   * Metodo che restituisce il telefono.
    *
    * @return String - telefono
    */
@@ -110,9 +110,9 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta il telefono
+   * Metodo che setta il telefono.
    *
-   * @param telefono Numero di telefono del fornitore, String
+   * @param telefono Indirizzo del fornitore, String
    */
 
   public void setTelefono(String telefono) {
@@ -120,7 +120,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce il luogoUbicazione
+   * Metodo che restituisce il luogoUbicazione.
    *
    * @return String - luogoUbicazione
    */
@@ -130,7 +130,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta il luogoUbicazione
+   * Metodo che setta il luogoUbicazione.
    *
    * @param luogoUbicazione Indirizzo del fornitore, String
    */
@@ -140,7 +140,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce l'email
+   * Metodo che restituisce l'email.
    *
    * @return String - email
    */
@@ -149,7 +149,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta l'email
+   * Metodo che setta l'email.
    *
    * @param email Indirizzo mail, String
    */
@@ -158,7 +158,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce la password
+   * Metodo che restituisce la password.
    *
    * @return String - password
    */
@@ -167,7 +167,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta la password
+   * Metodo che setta la password.
    *
    * @param password Caratteri alfanumerici per accesso al sistema, String
    */
@@ -176,7 +176,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che restituisce la ragioneSociale
+   * Metodo che restituisce la ragioneSociale.
    *
    * @return String - ragioneSociale
    */
@@ -185,7 +185,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che setta la ragioneSociale
+   * Metodo che setta la ragioneSociale.
    *
    * @param ragioneSociale Ragione sociale del fornitore, String
    */
@@ -204,7 +204,7 @@ public class Fornitore {
   }
 
   /**
-   * Metodo che converte l'oggetto Fornitore in stringa
+   * Metodo che converte l'oggetto Fornitore in stringa.
    *
    * @return String
    */
@@ -212,17 +212,17 @@ public class Fornitore {
 
   @Override
   public String toString() {
-    return "Fornitore{" +
-        "partitaIva='" + partitaIva + '\'' +
-        ", nome='" + nome + '\'' +
-        ", cognome='" + cognome + '\'' +
-        ", telefono='" + telefono + '\'' +
-        ", luogoUbicazione='" + luogoUbicazione + '\'' +
-        ", email='" + email + '\'' +
-        ", password='" + password + '\'' +
-        ", ragioneSociale='" + ragioneSociale + '\'' +
-        ", abbonato=" + abbonato +
-        '}';
+    return "Fornitore{"
+        + "partitaIva='" + partitaIva + '\''
+        + ", nome='" + nome + '\''
+        + ", cognome='" + cognome + '\''
+        + ", telefono='" + telefono + '\''
+        + ", luogoUbicazione='" + luogoUbicazione + '\''
+        + ", email='" + email + '\''
+        + ", password='" + password + '\''
+        + ", ragioneSociale='" + ragioneSociale + '\''
+        + ", abbonato=" + abbonato
+        + '}';
   }
 
   private String partitaIva;

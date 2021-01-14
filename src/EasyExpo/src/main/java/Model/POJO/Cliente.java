@@ -2,28 +2,28 @@ package Model.POJO;
 
 /**
  * Cliente e' la classe che gestisce un
- * ordinario oggetto Cliente
+ * ordinario oggetto Cliente.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2020-12-29
  */
 
 
-/**
- * Metedo costruttore della classe Cliente
- *
- * @param email           Indirizzo mail, String
- * @param password        Caratteri alfanumerici per accesso al sistema, String
- * @param codiceFiscale   Codice alfanumerico identificativo cliente, String
- * @param nome            Nome del Cliente, String
- * @param cognome         Cognome del Cliente, String
- * @param telefono        Numero di telefono del Cliente, String
- * @param luogoUbicazione Indirizzo del Cliente, String
- */
-
-
 public class Cliente {
+
+  /**
+   * Metedo costruttore della classe Cliente.
+   *
+   * @param email           Indirizzo mail, String
+   * @param password        Caratteri alfanumerici per accesso al sistema, String
+   * @param codiceFiscale   Codice alfanumerico identificativo cliente, String
+   * @param nome            Nome del Cliente, String
+   * @param cognome         Cognome del Cliente, String
+   * @param telefono        Numero di telefono del Cliente, String
+   * @param luogoUbicazione Indirizzo del Cliente, String
+   */
+
   public Cliente(String codiceFiscale, String nome, String cognome, String telefono,
                  String luogoUbicazione, String email, String password) {
     this.codiceFiscale = codiceFiscale;
@@ -34,7 +34,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo costruttore di default della classe Cliente
+   * Metodo costruttore di default della classe Cliente.
    */
 
   public Cliente() {
@@ -42,7 +42,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce l'email
+   * Metodo che restituisce l'email.
    *
    * @return String - email
    */
@@ -52,7 +52,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta l'email
+   * Metodo che setta l'email.
    *
    * @param email Indirizzo mail, String
    */
@@ -63,7 +63,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce la password
+   * Metodo che restituisce la password.
    *
    * @return String - password
    */
@@ -73,7 +73,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta la password
+   * Metodo che setta la password.
    *
    * @param password Caratteri alfanumerici per accesso al sistema, String
    */
@@ -83,7 +83,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce il codiceFiscale
+   * Metodo che restituisce il codiceFiscale.
    *
    * @return String - codiceFiscale
    */
@@ -93,7 +93,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta il codiceFiscale
+   * Metodo che setta il codiceFiscale.
    *
    * @param codiceFiscale Codice alfanumerico identificativo cliente, String
    */
@@ -103,7 +103,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce il nome
+   * Metodo che restituisce il nome.
    *
    * @return String - nome
    */
@@ -113,7 +113,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta il nome
+   * Metodo che setta il nome.
    *
    * @param nome Nome del Cliente, String
    */
@@ -123,7 +123,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce il cognome
+   * Metodo che restituisce il cognome.
    *
    * @return String - cognome
    */
@@ -133,7 +133,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta il cognome
+   * Metodo che setta il cognome.
    *
    * @param cognome Cognome del Cliente, String
    */
@@ -143,7 +143,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce il telefono
+   * Metodo che restituisce il telefono.
    *
    * @return String - telefono
    */
@@ -153,7 +153,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta il telefono
+   * Metodo che setta il telefono.
    *
    * @param telefono Numero di telefono del Cliente, String
    */
@@ -163,7 +163,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che restituisce luogoUbicazione
+   * Metodo che restituisce luogoUbicazione.
    *
    * @return String - luogoUbicazione
    */
@@ -173,7 +173,7 @@ public class Cliente {
   }
 
   /**
-   * Metodo che setta luogoUbicazione
+   * Metodo che setta luogoUbicazione.
    *
    * @param luogoUbicazione Indirizzo del Cliente, String
    */
@@ -183,22 +183,22 @@ public class Cliente {
   }
 
   /**
-   * Metodo che converte l'oggetto Cliente in stringa
+   * Metodo che converte l'oggetto Cliente in stringa.
    *
    * @return String
    */
 
   @Override
   public String toString() {
-    return "Cliente{" +
-        "codiceFiscale='" + codiceFiscale + '\'' +
-        ", nome='" + nome + '\'' +
-        ", cognome='" + cognome + '\'' +
-        ", telefono='" + telefono + '\'' +
-        ", luogoUbicazione='" + luogoUbicazione + '\'' +
-        ", email='" + email + '\'' +
-        ", password='" + password + '\'' +
-        '}';
+    return "Cliente{"
+        + "codiceFiscale='" + codiceFiscale + '\''
+        + ", nome='" + nome + '\''
+        + ", cognome='" + cognome + '\''
+        + ", telefono='" + telefono + '\''
+        + ", luogoUbicazione='" + luogoUbicazione + '\''
+        + ", email='" + email + '\''
+        + ", password='" + password + '\''
+        + '}';
   }
 
 

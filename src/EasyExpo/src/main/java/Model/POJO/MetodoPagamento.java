@@ -4,9 +4,9 @@ import java.sql.Date;
 
 /**
  * MetodoPagamento e' la classe che gestisce un
- * ordinario oggetto MetodoPagamento
+ * ordinario oggetto MetodoPagamento.
  *
- * @author
+ * @author DAVIDE PAPPALARDO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class MetodoPagamento {
 
   /**
-   * Metodo costruttore della classe MetodoPagamento
+   * Metodo costruttore della classe MetodoPagamento.
    *
    * @param numeroCarta      Codice numerico identificativo metodoPagamento, String
    * @param partitaIva       Codice alfanumerico identificativo fornitore, String
@@ -33,7 +33,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo costruttore di default della classe MetodoPagamento
+   * Metodo costruttore di default della classe MetodoPagamento.
    */
 
   public MetodoPagamento() {
@@ -41,7 +41,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che restituisce il numeroCarta
+   * Metodo che restituisce il numeroCarta.
    *
    * @return String - numeroCarta
    */
@@ -51,7 +51,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che setta il numeroCarta
+   * Metodo che setta il numeroCarta.
    *
    * @param numeroCarta Codice numerico identificativo metodoPagamento, String
    */
@@ -61,7 +61,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che restituisce la partitaIva
+   * Metodo che restituisce la partitaIva.
    *
    * @return String - partitaIva
    */
@@ -71,7 +71,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che setta la partitaIva
+   * Metodo che setta la partitaIva.
    *
    * @param partitaIva Codice alfanumerico identificativo fornitore, String
    */
@@ -81,7 +81,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che restituisce il nomeIntestatario
+   * Metodo che restituisce il nomeIntestatario.
    *
    * @return String - nomeIntestatario
    */
@@ -91,7 +91,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che setta il nomeIntestatario
+   * Metodo che setta il nomeIntestatario.
    *
    * @param nomeIntestatario Nome e cognome dell'intestatario della carta, String
    */
@@ -101,7 +101,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che restituisce la dataScadenza
+   * Metodo che restituisce la dataScadenza.
    *
    * @return Date - dataScadenza
    */
@@ -111,7 +111,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che setta la dataScadenza
+   * Metodo che setta la dataScadenza.
    *
    * @param dataScadenza Data scadenza della carta, Date
    */
@@ -121,7 +121,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che restituisce il cvv
+   * Metodo che restituisce il cvv.
    *
    * @return int - cvv
    */
@@ -131,7 +131,7 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che setta il cvv
+   * Metodo che setta il cvv.
    *
    * @param cvv Codice di sicurezza della carta, int
    */
@@ -141,20 +141,20 @@ public class MetodoPagamento {
   }
 
   /**
-   * Metodo che converte l'oggetto MetodoPagamento in stringa
+   * Metodo che converte l'oggetto MetodoPagamento in stringa.
    *
    * @return String
    */
 
   @Override
   public String toString() {
-    return "MetodoPagamento{" +
-        "numeroCarta=" + numeroCarta +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", nomeIntestatario='" + nomeIntestatario + '\'' +
-        ", dataScadenza=" + dataScadenza +
-        ", cvv=" + cvv +
-        '}';
+    return "MetodoPagamento{"
+        + "numeroCarta=" + numeroCarta
+        + ", partitaIva='" + partitaIva + '\''
+        + ", nomeIntestatario='" + nomeIntestatario + '\''
+        + ", dataScadenza=" + dataScadenza
+        + ", cvv=" + cvv
+        + '}';
   }
 
   private String numeroCarta;

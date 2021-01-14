@@ -2,9 +2,9 @@ package Model.POJO;
 
 /**
  * Prodotto e' la classe che gestisce un
- * ordinario oggetto Prodotto
+ * ordinario oggetto Prodotto.
  *
- * @author
+ * @author LUCREZIA ROBUSTELLI
  * @version 1.0
  * @since 2020-12-29
  */
@@ -12,7 +12,7 @@ package Model.POJO;
 public class Prodotto {
 
   /**
-   * Metodo costruttore della classe Prodotto
+   * Metodo costruttore della classe Prodotto.
    *
    * @param idProdotto  Codice identificativo prodotto, Intero
    * @param partitaIva  Codice alfanumerico identificativo fornitore, String
@@ -36,7 +36,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo costruttore di default della classe Prodotto
+   * Metodo costruttore di default della classe Prodotto.
    */
 
   public Prodotto() {
@@ -44,7 +44,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce l'idProdotto
+   * Metodo che restituisce l'idProdotto.
    *
    * @return int - idProdotto
    */
@@ -54,7 +54,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta l'idProdotto
+   * Metodo che setta l'idProdotto.
    *
    * @param idProdotto Codice identificativo prodotto, Intero
    */
@@ -64,7 +64,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce la partitaIva
+   * Metodo che restituisce la partitaIva.
    *
    * @return String - partitaIva
    */
@@ -74,7 +74,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta la partitaIva
+   * Metodo che setta la partitaIva.
    *
    * @param partitaIva Codice alfanumerico identificativo fornitore, String
    */
@@ -84,7 +84,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce il titolo
+   * Metodo che restituisce il titolo.
    *
    * @return String - titolo
    */
@@ -94,7 +94,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta il titolo
+   * Metodo che setta il titolo.
    *
    * @param titolo Titolo del prodotto, String
    */
@@ -104,7 +104,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce la descrizione
+   * Metodo che restituisce la descrizione.
    *
    * @return String - descrizione
    */
@@ -114,7 +114,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta la descrizione
+   * Metodo che setta la descrizione.
    *
    * @param descrizione Descrizione del prodotto, String
    */
@@ -124,7 +124,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce il tipo
+   * Metodo che restituisce il tipo.
    *
    * @return {@link Tipo} - tipo
    */
@@ -134,7 +134,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta il tipo
+   * Metodo che setta il tipo.
    *
    * @param tipo Tipo di allestimento, {@link Tipo}
    */
@@ -144,7 +144,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce la quantità'
+   * Metodo che restituisce la quantità'.
    *
    * @return int - quantità
    */
@@ -154,7 +154,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta la quantità'
+   * Metodo che setta la quantità'.
    *
    * @param quantità Quantità' del prodotto, Intero
    */
@@ -164,7 +164,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che restituisce il prezzo
+   * Metodo che restituisce il prezzo.
    *
    * @return float - prezzo
    */
@@ -174,7 +174,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che setta il prezzo
+   * Metodo che setta il prezzo.
    *
    * @param prezzo Prezzo unitario del prodotto, float
    */
@@ -199,16 +199,16 @@ public class Prodotto {
    */
   @Override
   public String toString() {
-    return "Prodotto{" +
-        "idProdotto=" + idProdotto +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", titolo='" + titolo + '\'' +
-        ", descrizione='" + descrizione + '\'' +
-        ", tipo=" + tipo +
-        ", quantità=" + quantità +
-        ", prezzo=" + prezzo +
-        ", immagine='" + immagine + '\'' +
-        '}';
+    return "Prodotto{"
+        + "idProdotto=" + idProdotto
+        + ", partitaIva='" + partitaIva + '\''
+        + ", titolo='" + titolo + '\''
+        + ", descrizione='" + descrizione + '\''
+        + ", tipo=" + tipo
+        + ", quantità=" + quantità
+        + ", prezzo=" + prezzo
+        + ", immagine='" + immagine + '\''
+        + '}';
   }
 
   private int idProdotto;
@@ -217,9 +217,10 @@ public class Prodotto {
   private String descrizione;
 
 
-  public enum Tipo {SERVIZIO, ATTREZZATURA}
+  public enum Tipo {
+    SERVIZIO, ATTREZZATURA
+  }
 
-  ;
   private Tipo tipo;
   private int quantità;
   private float prezzo;

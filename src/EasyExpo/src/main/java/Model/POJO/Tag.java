@@ -2,16 +2,16 @@ package Model.POJO;
 
 /**
  * Tag e' la classe che gestisce un
- * ordinario oggetto Tag
+ * ordinario oggetto Tag.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2021-01-02
  */
 public class Tag {
 
   /**
-   * Metodo costruttore della classe Tag
+   * Metodo costruttore della classe Tag.
    *
    * @param idTag codice identificativo tag, Intero
    * @param nome  nome prodotto associato al tag, String
@@ -22,14 +22,14 @@ public class Tag {
   }
 
   /**
-   * Metodo costruttore di default della classe Prodotto
+   * Metodo costruttore di default della classe Prodotto.
    */
   public Tag() {
 
   }
 
   /**
-   * Metodo che restituisce l'IdTag
+   * Metodo che restituisce l'IdTag.
    *
    * @return int - idTag
    */
@@ -38,7 +38,7 @@ public class Tag {
   }
 
   /**
-   * Metodo che setta l'IdTag
+   * Metodo che setta l'IdTag.
    *
    * @param idTag codice identificativo tag, Intero
    */
@@ -47,7 +47,7 @@ public class Tag {
   }
 
   /**
-   * Metodo che restituisce il nome
+   * Metodo che restituisce il nome.
    *
    * @return String - nome
    */
@@ -56,7 +56,7 @@ public class Tag {
   }
 
   /**
-   * Metodo che setta il nome
+   * Metodo che setta il nome.
    *
    * @param nome prodotto associato al tag, String
    */
@@ -66,10 +66,10 @@ public class Tag {
 
   @Override
   public String toString() {
-    return "Tag{" +
-        "idTag=" + idTag +
-        ", nome='" + nome + '\'' +
-        '}';
+    return "Tag{"
+        + "idTag=" + idTag
+        + ", nome='" + nome + '\''
+        + '}';
   }
 
   private int idTag;

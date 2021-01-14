@@ -2,9 +2,9 @@ package Model.POJO;
 
 /**
  * Admin e' la classe che gestisce un
- * ordinario oggetto Admin
+ * ordinario oggetto Admin.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -12,7 +12,7 @@ package Model.POJO;
 public class Admin {
 
   /**
-   * Metodo costruttore della classe Admin
+   * Metodo costruttore della classe Admin.
    *
    * @param email    Indirizzo mail, String
    * @param password Caratteri alfanumerici per accesso al sistema, String
@@ -24,7 +24,7 @@ public class Admin {
   }
 
   /**
-   * Metodo costruttore di default della classe Admin
+   * Metodo costruttore di default della classe Admin.
    */
 
   public Admin() {
@@ -32,7 +32,7 @@ public class Admin {
   }
 
   /**
-   * Metodo che restituisce l'email
+   * Metodo che restituisce l'email.
    *
    * @return String - email
    */
@@ -42,7 +42,7 @@ public class Admin {
   }
 
   /**
-   * Metodo che setta l'email
+   * Metodo che setta l'email.
    *
    * @param email Indirizzo mail, String
    */
@@ -52,7 +52,7 @@ public class Admin {
   }
 
   /**
-   * Metodo che restituisce la password
+   * Metodo che restituisce la password.
    *
    * @return String - password
    */
@@ -62,7 +62,7 @@ public class Admin {
   }
 
   /**
-   * Metodo che setta la password
+   * Metodo che setta la password.
    *
    * @param password Caratteri alfanumerici per accesso al sistema, String
    */
@@ -72,17 +72,17 @@ public class Admin {
   }
 
   /**
-   * Metodo che converte l'oggetto Admin in stringa
+   * Metodo che converte l'oggetto Admin in stringa.
    *
    * @return String
    */
 
   @Override
   public String toString() {
-    return "Admin{" +
-        "email='" + email + '\'' +
-        ", password='" + password + '\'' +
-        '}';
+    return "Admin{"
+        + "email='" + email + '\''
+        + ", password='" + password + '\''
+        + '}';
   }
 
   private String email;
