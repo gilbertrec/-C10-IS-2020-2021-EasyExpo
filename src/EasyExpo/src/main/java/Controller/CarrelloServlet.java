@@ -5,6 +5,8 @@ import Model.DAO.ProdottoDAO;
 import Model.POJO.Carrello;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
+import org.apache.taglibs.standard.tag.el.fmt.FormatNumberTag;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -129,6 +131,7 @@ public class CarrelloServlet extends HttpServlet {
           //devo fare l'aggiornamento dei prodotti legati a quella partita iva prima di reiserirli
           carrello.remove(partitaIva);
           carrello.put(prodotti1);
+
         }
 
       } else {
@@ -172,8 +175,19 @@ public class CarrelloServlet extends HttpServlet {
 
         }
 
-        //e mettere la lista aggiornata di nuovo nel carrello
-        carrello.put(prodottiQuantitaF);
+        if(!prodottiQuantitaF.isEmpty()) {
+          //e mettere la lista aggiornata di nuovo nel carrello
+          carrello.put(prodottiQuantitaF);
+        }else if(prodottiQuantitaF.isEmpty()){
+          carrello.remove(partitaIva);
+          for(int i=0; i<listaFornitori.size(); i++){
+            Fornitore f = listaFornitori.get(i);
+            if(f.getPartitaIva().equals(fornitoreDao.doRetrieveByPIVA(partitaIva).getPartitaIva())){
+              listaFornitori.remove(i);
+            }
+          }
+        }
+
       }
     }
 

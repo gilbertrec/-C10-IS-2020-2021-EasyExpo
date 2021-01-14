@@ -3,6 +3,7 @@
 <%@ page import="Model.POJO.Carrello" %>
 <%@ page import="java.util.LinkedHashMap" %>
 <%@ page import="Model.POJO.Fornitore" %>
+<%@ page import="java.util.Collection" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -60,21 +61,31 @@
                     /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
                     /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
                     /*per ogni prodotto posso stampare gli attributi*/
+
                 %>
 
+                            <% if(carrello==null) {%>
+                        <h1> Nessun prodotto nel carrello. </h1>
+                            <%}%>
 
-                <c:if test="${empty carrello}">
-                <h1> Nessun prodotto nel carrello. </h1>
-                </c:if>
+                            <% if(carrello!=null){
+                                    if(carrello.getProdottiFornitori().isEmpty()){%>
+                                        <h1> Nessun prodotto nel carrello. </h1>
+                            <% }%>
+
+
+
+
 
                 <!-- Payments Steps -->
-                <c:if test="${not empty carrello}">
+                            <% if(!carrello.getProdottiFornitori().isEmpty()) {%>
 
                 <div class="shopping-cart text-center">
                     <!-- un div fornitore per ogni fornitore nella lista -->
-                    <c:forEach items="${listaFornitori}" var="fornitori">
 
-                        <div class="fornitoreCarrello">
+                    <c:forEach items="${listaFornitori}" var="fornitori">
+                        <c:set var="TOT" value="0"/>
+                        <div class="fornitoreCarrello" style="border: #ffe115 solid 3px; padding: 40px 30px">
                             <div class="cart-head">
                                 <ul class="row">
                                     <!-- FORNITORE -->
@@ -83,8 +94,8 @@
                                     </li>
                                     <!-- NOME FORNITORE -->
                                     <li class="col-sm-4 text-left">
-                                        <h5><c:out value="${fornitori.nome}"/> <c:out
-                                                value="${fornitori.cognome}"/></h5>
+                                        <h5><a href="FornitoreServlet?partitaIva=<c:out value="${fornitori.partitaIva}"/>"> <c:out value="${fornitori.nome}"/> <c:out
+                                                value="${fornitori.cognome}"/> </a> </h5>
                                     </li>
                                     <!-- PRICE -->
                                     <li class="col-sm-2">
@@ -109,7 +120,7 @@
                                 <ul class="row cart-details">
                                     <li class="col-sm-6">
                                         <!-- Media Image -->
-                                        <div class="media-left media-middle"><a href="#." class="item-img"> <img
+                                        <div class="media-left media-middle"><a href="ProdottoServlet?id=<c:out value="${ListaProd.prodotto.idProdotto}"/>&partitaIva=<c:out value="${ListaProd.prodotto.partitaIva}"/>" class="item-img"> <img
                                                 class="media-object" src="${ListaProd.prodotto.immagine}" width="170px"
                                                 height="170px" alt=""> </a></div>
 
@@ -147,27 +158,48 @@
                                         </div>
                                     </li>
 
+
+
                                     <!-- TOTAL PRICE -->
                                     <li class="col-sm-2">
                                         <div class="position-center-center"><span
-                                                class="price"><small>€</small><c:out
-                                                value="${ListaProd.prodotto.prezzo * ListaProd.quantita}"/></span></div>
+                                                class="price"><small>€</small>
+                                            <c:set var="TOTparziale" value="${ListaProd.prodotto.prezzo * ListaProd.quantita}"/>
+                                            <c:out value="${TOTparziale}"/></span></div>
+
+                                            <c:set var="TOT" value="${TOT = TOT + TOTparziale}"/>
+
                                     </li>
 
                                     <!-- REMOVE -->
                                     <li class="col-sm-1">
-                                        <!--<div class="position-center-center"><a href="#."><i class="icon-close"></i></a>
-                                        </div>-->
-                                        <form action="Carrello" method="post">
-                                            <input type="hidden" name="prodId" value="<c:out value="${ListaProd.prodotto.idProdotto}"/>">
-                                            <input type="hidden" name="partitaIva" value="<c:out value="${ListaProd.prodotto.partitaIva}"/>">
-                                            <input type="submit" id="rimuovi" value="RIMUOVI">
-                                        </form>
-
+                                        <div class="position-center-center"><a href="Carrello?prodId=<c:out value="${ListaProd.prodotto.idProdotto}"/>&partitaIva=<c:out value="${ListaProd.prodotto.partitaIva}"/>"> <i class="icon-close"></i></a>
+                                        </div>
                                     </li>
                                 </ul>
                             </c:forEach>
 
+
+                            <div class="cart-ship-info margin-top-0">
+                                <div class="row">
+
+                                    <!-- PREVENTIVO -->
+                                    <div class="col-sm-7">
+                                        <input class="btn" style="font-size: 18px; padding: 0px 100px; margin-top: 19px" type="submit" value="INVIA UN PREVENTIVO A QUESTO FORNITORE">
+                                    </div>
+
+                                    <!-- SUB TOTAL -->
+                                    <div class="col-sm-5">
+                                        <div class="grand-total">
+                                            <div class="order-detail">
+                                                <!-- SUB TOTAL -->
+                                                <p class="all-total">COSTO TOTALE <span>€ <c:out value="${TOT}"/> </span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
 
                         </div>
 
@@ -176,40 +208,8 @@
 
                 </div>
         </section>
-
-        <!--======= PAGES INNER =========-->
-        <section class="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
-            <div class="container">
-
-                <!-- SHOPPING INFORMATION -->
-                <div class="cart-ship-info margin-top-0">
-                    <div class="row">
-
-                        <!-- PREVENTIVO -->
-                        <div class="col-sm-7">
-                            <h6>INVIA UN PREVENTIVO AD OGNI FORNITORE</h6>
-                            <!-- <div class="coupn-btn"> <a href="#." class="btn">continue shopping</a> <a href="#." class="btn">update cart</a> </div> -->
-                        </div>
-
-                        <!-- SUB TOTAL -->
-                        <div class="col-sm-5">
-                            <h6>grand total</h6>
-                            <div class="grand-total">
-                                <div class="order-detail">
-                                    <p>WOOD CHAIR <span>$598 </span></p>
-                                    <p>STOOL <span>$199 </span></p>
-                                    <p>WOOD SPOON <span> $139</span></p>
-
-                                    <!-- SUB TOTAL -->
-                                    <p class="all-total">TOTAL COST <span> $998</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        </c:if>
+        
+        <%}}%>
 
     </div>
 
