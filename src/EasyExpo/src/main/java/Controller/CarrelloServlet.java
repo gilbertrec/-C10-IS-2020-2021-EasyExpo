@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/Carrello")
 public class CarrelloServlet extends HttpServlet {
-  private final ProdottoDAO prodottoDAO = new ProdottoDAO();
-  private final FornitoreDAO fornitoreDAO = new FornitoreDAO();
+  private final ProdottoDAO prodottoDao = new ProdottoDAO();
+  private final FornitoreDAO fornitoreDao = new FornitoreDAO();
 
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -55,24 +55,25 @@ public class CarrelloServlet extends HttpServlet {
 
         if (prodotti1 == null) {  /*se la lista di prodotti assegnata a quel fornitore è vuota*/
           /*trovo il fornitore legato a quella partita iva*/
-          Fornitore forni = fornitoreDAO.doRetrieveByPIVA(partitaIva);
+          Fornitore forni = fornitoreDao.doRetrieveByPIVA(partitaIva);
           /*e lo aggiungo alla lista dei fornitori*/
           listaFornitori.add(forni);
 
           /* crea l'array list di prodottoQuantità da aggiungere */
           ArrayList<Carrello.ProdottoQuantita> prodottiQ = new ArrayList<>();
           /*cerco il prodotto*/
-          Prodotto prod = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
+          Prodotto prod = prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
           /*creo il prodottoQuantità*/
-          Carrello.ProdottoQuantita PQ = new Carrello.ProdottoQuantita(prod, addNum);
+          Carrello.ProdottoQuantita proQua = new Carrello.ProdottoQuantita(prod, addNum);
 
           /*aggiungi elemento alla lista*/
-          prodottiQ.add(PQ);
+          prodottiQ.add(proQua);
 
           /*aggiungi al carrello la nuova lista legata al fornitore*/
           carrello.put(prodottiQ);
 
-        } else {//se già c'è la lista di prodotti assegnata a quel fornitore
+        } else {
+          //se già c'è la lista di prodotti assegnata a quel fornitore
           //in listaFornitori c'è già il fornitore e la sua partitaIva
 
           //controllo se il prodotto che voglio aggiungere c'è già o meno,  COME?
@@ -80,7 +81,7 @@ public class CarrelloServlet extends HttpServlet {
           /* vedo prima quale prodotto sto cercando quindi me lo devo cercare nel DB e creare*/
 
           //in prodCercato c'è il prodotto che voglio vedere se ho già aggiunto in passato
-          Prodotto prodCercato = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
+          Prodotto prodCercato = prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
           // ora devo controllare se questo prodotto appena creato c'è in prodotti1
 
           ArrayList<Prodotto> prodottiCont = new ArrayList<>();
@@ -92,15 +93,16 @@ public class CarrelloServlet extends HttpServlet {
           //prodottiCont ora contiene tutti i prodotti di prodotti1
           //posso ora vedere se c'è quello da me cercato
           boolean trovato = false;
-          int j, indice = 0;
+          int j;
+          int indice = 0;
           for (j = 0; j < prodottiCont.size(); j++) {
             Prodotto preso = prodottiCont.get(j);
-            String PIPreso = preso.getPartitaIva();
-            Integer IDPreso = preso.getIdProdotto();
-            String PIcercato = prodCercato.getPartitaIva();
-            Integer IDcercato = prodCercato.getIdProdotto();
-            if (PIcercato.equals(PIPreso)) {
-              if (IDcercato == IDPreso) {
+            String presoP = preso.getPartitaIva();
+            Integer presoI = preso.getIdProdotto();
+            String cercatoP = prodCercato.getPartitaIva();
+            Integer cercatoI = prodCercato.getIdProdotto();
+            if (cercatoP.equals(presoP)) {
+              if (cercatoI == presoI) {
                 trovato = true;
                 //salvo l'indice dove si dovrebbe trovare il prodotto da sostituire
                 indice = j;
@@ -142,19 +144,21 @@ public class CarrelloServlet extends HttpServlet {
           prodottiF.add(prodSingolo);
         }
 
-        Prodotto prodottoDaEliminare = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
+        Prodotto prodottoDaEliminare =
+                prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
 
         //prodottiF ora contiene tutti i prodotti di prodottiQuanantitaF
         boolean trovato = false;
-        int j, indice = 0;
+        int j;
+        int indice = 0;
         for (j = 0; j < prodottiF.size(); j++) {
           Prodotto preso = prodottiF.get(j);
-          String PIPreso = preso.getPartitaIva();
-          Integer IDPreso = preso.getIdProdotto();
-          String PIcercato = prodottoDaEliminare.getPartitaIva();
-          Integer IDcercato = prodottoDaEliminare.getIdProdotto();
-          if (PIcercato.equals(PIPreso)) {
-            if (IDcercato == IDPreso) {
+          String presoPi = preso.getPartitaIva();
+          Integer presoId = preso.getIdProdotto();
+          String cercatoPi = prodottoDaEliminare.getPartitaIva();
+          Integer cercatoId = prodottoDaEliminare.getIdProdotto();
+          if (cercatoPi.equals(presoPi)) {
+            if (cercatoId == presoId) {
               trovato = true;
               //salvo l'indice dove si dovrebbe trovare il prodotto da eliminare
               indice = j;
