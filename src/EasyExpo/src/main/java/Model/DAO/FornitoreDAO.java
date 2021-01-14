@@ -10,16 +10,16 @@ import java.util.List;
 
 /**
  * <p> FornitoreDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto Fornitore </p>
+ * che gestisce i dati persistenti dell'oggetto Fornitore </p>.
  *
- * @author
+ * @author GIUSEPPE AVINO
  * @version 1.0
  * @since 2020-12-29
  */
 public class FornitoreDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Fornitore correlato ad una partitaIva data in input
+   * Metodo che ritorna l'oggetto di tipo Fornitore correlato ad una partitaIva data in input.
    *
    * @param partitaIva codice alfanumerico identificativo fornitore, String
    * @return Fornitore - Oggetto di tipo {@link Fornitore}
@@ -28,7 +28,8 @@ public class FornitoreDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email, password, ragioneSociale, abbonato  FROM Fornitore WHERE partitaIva=?");
+              "SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email,"
+                  + " password, ragioneSociale, abbonato  FROM Fornitore WHERE partitaIva=?");
       ps.setString(1, partitaIva);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -51,7 +52,7 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB.
    *
    * @param offset indice partenza, Intero
    * @param limit  indice fine , Intero
@@ -85,7 +86,7 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo Fornitore
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Fornitore.
    *
    * @param fornitore Oggetto di tipo {@link Fornitore}
    */
@@ -114,7 +115,7 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email data in input
+   * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email data in input.
    *
    * @param email Indirizzo email identificativo, String
    * @return Fornitore - Oggetto di tipo {@link Fornitore}
@@ -145,7 +146,7 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email e password dati in input
+   * Metodo che ritorna l'oggetto di tipo Fornitore correlato all'email e password dati in input.
    *
    * @param email    Indirizzo email identificativo, String
    * @param password Caratteri alfanumerici per accesso al sistema, String
@@ -177,7 +178,12 @@ public class FornitoreDAO {
     }
   }
 
-
+  /**
+   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB.
+   *
+   * @param ricercato , String
+   * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+   */
   public List<Fornitore> doRetrieveByNome(String ricercato) {
     try (Connection con = DBConnection.getConnection()) {
 
@@ -200,6 +206,13 @@ public class FornitoreDAO {
     }
 
   }
+
+  /**
+   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB.
+   *
+   * @param ricercato , String
+   * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+   */
 
   public List<Fornitore> doRetrieveByNomeECognome(String ricercato) {
     try (Connection con = DBConnection.getConnection()) {
@@ -229,7 +242,7 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza Fornitore correlata alla partitaIva data in input
+   * Metodo che elimina dal DB l'istanza Fornitore correlata alla partitaIva data in input.
    *
    * @param partitaIva codice alfanumerico identificativo fornitore, String
    */

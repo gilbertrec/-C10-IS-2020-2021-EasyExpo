@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,16 +12,16 @@ import java.util.List;
 
 /**
  * <p> AbbonamentoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto Abbonamento </p>
+ * che gestisce i dati persistenti dell'oggetto Abbonamento </p>.
  *
- * @author
+ * @author GIUSEPPE AVINO
  * @version 1.0
  * @since 2020-12-29
  */
 public class AbbonamentoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Abbonamento correlato ad un IdAbbonamento dato in input
+   * Metodo che ritorna l'oggetto di tipo Abbonamento correlato ad un IdAbbonamento dato in input.
    *
    * @param idAbbonamento Codice Identificativo Abbonamento, Intero
    * @return Abbonamento - Oggetto di tipo {@link Abbonamento}
@@ -47,6 +48,12 @@ public class AbbonamentoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo Abbonamento correlato ad una patitaIva data in input.
+   *
+   * @param partitaIva codice alfanumerico, String
+   * @return List &lt;Abbonamento&gt; - {@link List} di oggetti di tipo {@link Abbonamento}
+   */
 
   public List<Abbonamento> doRetrieveByPartitaIva(String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
@@ -72,7 +79,7 @@ public class AbbonamentoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo Abbonamento
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Abbonamento.
    *
    * @param abbonamento Oggetto di tipo {@link Abbonamento}
    */
@@ -97,7 +104,7 @@ public class AbbonamentoDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza Abbonamento correlata all'IdAbbonamento dato in input
+   * Metodo che elimina dal DB l'istanza Abbonamento correlata all'IdAbbonamento dato in input.
    *
    * @param idAbbonamento Codice Identificativo Abbonamento, intero
    */

@@ -12,16 +12,16 @@ import java.util.List;
 
 /**
  * <p> PreventivoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto Preventivo </p>
+ * che gestisce i dati persistenti dell'oggetto Preventivo </p>.
  *
- * @author
+ * @author GIUSEPPE AVINO
  * @version 1.0
  * @since 2020-12-29
  */
 public class PreventivoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input
+   * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input.
    *
    * @param idPreventivo codice identificativo, Intero
    * @return Preventivo - Oggetto di tipo {@link Preventivo}
@@ -30,8 +30,10 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                  "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, "
+                  + "RichiestaPreventivo as rp WHERE p.idPreventivo=? "
+                  + "AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND "
+                  + "p.codiceFiscale=c.codiceFiscale");
       ps.setInt(1, idPreventivo);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -51,7 +53,7 @@ public class PreventivoDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB
+   * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB.
    *
    * @param offset indice partenza, Intero
    * @param limit  indice fine , Intero
@@ -61,8 +63,10 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp" +
-                  "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
+              "SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c,"
+                  + " RichiestaPreventivo as rp WHERE p.idPreventivo=? AND "
+                  + "p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva "
+                  + "AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
       ps.setInt(1, offset);
       ps.setInt(2, limit);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
@@ -84,14 +88,15 @@ public class PreventivoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo Preventivo
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Preventivo.
    *
    * @param preventivo Oggetto di tipo {@link Preventivo}
    */
   public void createPreventivo(Preventivo preventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Preventivo (idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?)",
+          "INSERT INTO Preventivo (idRichiesta, partitaIva, codiceFiscale, dataPreventivo, "
+              + "prezzoTotale, nota) VALUES(?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
       ps.setInt(1, preventivo.getIdRichiesta());
       ps.setString(2, preventivo.getPartitaIva());
@@ -110,13 +115,21 @@ public class PreventivoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB.
+   *
+   * @param partitaIva codice alfanumerico, String
+   * @return List &lt;Preventivo&gt; - {@link List} di oggetti di tipo {@link Preventivo}
+   */
 
   public List<Preventivo> doRetrieveByPartitaIva(String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                  "WHERE p.partitaIva=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, "
+                  + "RichiestaPreventivo as rp WHERE p.partitaIva=? AND "
+                  + "p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND "
+                  + "p.codiceFiscale=c.codiceFiscale");
       ps.setString(1, partitaIva);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -136,12 +149,21 @@ public class PreventivoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB.
+   *
+   * @param codiceFiscale codice alfanumerico, String
+   * @return List &lt;Preventivo&gt; - {@link List} di oggetti di tipo {@link Preventivo}
+   */
+
   public List<Preventivo> doRetrieveByCodiceFiscale(String codiceFiscale) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
-                  "WHERE p.codiceFiscale=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c,"
+                  + " RichiestaPreventivo as rp WHERE p.codiceFiscale=? AND "
+                  + "p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND "
+                  + "p.codiceFiscale=c.codiceFiscale");
       ps.setString(1, codiceFiscale);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -160,11 +182,13 @@ public class PreventivoDAO {
       throw new RuntimeException(e);
     }
   }
+
   /**
-   * Metodo che elimina dal DB l'istanza Preventivo correlata all'idPreventivo dato in input
+   * Metodo che elimina dal DB l'istanza Preventivo correlata all'idPreventivo dato in input.
    *
    * @param idPreventivo codice identificativo Preventivo, Intero
    */
+
   public void deletePreventivo(int idPreventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement("DELETE FROM Preventivo WHERE idPreventivo=?");

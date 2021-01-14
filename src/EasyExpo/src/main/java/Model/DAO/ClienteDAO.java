@@ -8,10 +8,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p> ClienteDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Cliente </p>.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
 public class ClienteDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Cliente correlato al codiceFiscale dato in input
+   * Metodo che ritorna l'oggetto di tipo Cliente correlato al codiceFiscale dato in input.
    *
    * @param codiceFiscale codice alfanumerico identificativo cliente, String
    * @return Cliente - Oggetto di tipo {@link Cliente}
@@ -42,7 +51,7 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB.
    *
    * @param offset indice partenza, Intero
    * @param limit  indice fine , Intero
@@ -74,7 +83,7 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo Cliente
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Cliente.
    *
    * @param cliente Oggetto di tipo {@link Cliente}
    */
@@ -99,7 +108,7 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email data in input
+   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email data in input.
    *
    * @param email Indirizzo email identificativo, String
    * @return Cliente - Oggetto di tipo {@link Cliente}
@@ -128,7 +137,7 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email e password dati in input
+   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email e password dati in input.
    *
    * @param email    Indirizzo email identificativo, String
    * @param password Caratteri alfanumerici per accesso al sistema, String
@@ -159,7 +168,7 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza Cliente correlata al codiceFiscale dato in input
+   * Metodo che elimina dal DB l'istanza Cliente correlata al codiceFiscale dato in input.
    *
    * @param codiceFiscale codice alfanumerico identificativo cliente, String
    */

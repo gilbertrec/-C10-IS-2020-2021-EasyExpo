@@ -10,16 +10,16 @@ import java.util.List;
 
 /**
  * <p> MetodoDiPagamentoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto MetodoPagamento </p>
+ * che gestisce i dati persistenti dell'oggetto MetodoPagamento </p>.
  *
- * @author
+ * @author DAVIDE PAPPALARDO
  * @version 1.0
  * @since 2020-12-29
  */
 public class MetodiDiPagamentoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo MetodoPagamento correlato ad una partitaIva data in input
+   * Metodo che ritorna l'oggetto di tipo MetodoPagamento correlato ad una partitaIva data in input.
    *
    * @param partitaIva codice alfanumerico identificativo fornitore, String
    * @return MetodoPagamento - Oggetto di tipo {@link MetodoPagamento}
@@ -48,6 +48,13 @@ public class MetodiDiPagamentoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna l'oggetto di tipo MetodoPagamento correlato ad un numeroCarta dato in input.
+   *
+   * @param numCarta codice numerico, String
+   * @return MetodoPagamento - Oggetto di tipo {@link MetodoPagamento}
+   */
+
   public MetodoPagamento doRetrieveByNumCarta(String numCarta) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
@@ -70,7 +77,7 @@ public class MetodiDiPagamentoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo MetodoPagamento
+   * Metodo che crea un'istanza, all'interno del DB, di tipo MetodoPagamento.
    *
    * @param metodoPagamento Oggetto di tipo {@link MetodoPagamento}
    */
@@ -93,7 +100,7 @@ public class MetodiDiPagamentoDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza MetodoPagamento correlata al numeroCarta dato in input
+   * Metodo che elimina dal DB l'istanza MetodoPagamento correlata al numeroCarta dato in input.
    *
    * @param numeroCarta Codice numerico identificativo metodoPagamento, String
    */

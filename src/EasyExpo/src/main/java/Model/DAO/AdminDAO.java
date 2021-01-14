@@ -8,16 +8,16 @@ import java.sql.SQLException;
 
 /**
  * <p> AdminDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto Admin </p>
+ * che gestisce i dati persistenti dell'oggetto Admin </p>.
  *
- * @author
+ * @author DAVIDE PAPPALARDO
  * @version 1.0
  * @since 2020-12-29
  */
 public class AdminDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Admin correlato all'email data in input
+   * Metodo che ritorna l'oggetto di tipo Admin correlato all'email data in input.
    *
    * @param email Indirizzo email identificativo, String
    * @return Admin - Oggetto di tipo {@link Admin}
