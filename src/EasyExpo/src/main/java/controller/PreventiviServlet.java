@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.PreventivoDAO;

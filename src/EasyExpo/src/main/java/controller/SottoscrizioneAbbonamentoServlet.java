@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import Model.DAO.AbbonamentoDAO;
 import Model.DAO.MetodiDiPagamentoDAO;
