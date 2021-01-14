@@ -15,21 +15,22 @@ public class DeclineServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    doPost(request, response);
+    String idRichiesta = request.getParameter("idRichiesta");
+    RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
+    RichiestaPreventivo richiesta =
+        richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
+    richiestaPreventivoDAO.deleteRichiestePreventivo(Integer.parseInt(idRichiesta));
+    RichiestaPreventivo.Stato stato = RichiestaPreventivo.Stato.valueOf("RIFIUTATO");
+    richiesta.setStato(stato);
+    richiestaPreventivoDAO.createRichiestaPreventivo(richiesta);
+
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("RichiesteServlet");
+    requestDispatcher.forward(request, response);
   }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String idRichiesta = request.getParameter("idRichiesta");
-    RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-    RichiestaPreventivo richiesta =
-        richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
-    RichiestaPreventivo.Stato stato = RichiestaPreventivo.Stato.valueOf("RIFIUTATO");
-    richiesta.setStato(stato);
-
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("RichiesteServlet");
-    requestDispatcher.forward(request, response);
-
+    doGet(request, response);
   }
 }
