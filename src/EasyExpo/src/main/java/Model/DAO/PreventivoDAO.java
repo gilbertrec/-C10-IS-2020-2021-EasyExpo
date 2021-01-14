@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.POJO.Preventivo;
+import Model.POJO.Prodotto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -159,7 +160,6 @@ public class PreventivoDAO {
       throw new RuntimeException(e);
     }
   }
-
   /**
    * Metodo che elimina dal DB l'istanza Preventivo correlata all'idPreventivo dato in input
    *

@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.POJO.Prodotto" %>
-<%@ page import="Model.POJO.ProdottoRichiesta" %><%--
+<%@ page import="Model.POJO.ProdottoRichiesta" %>
+<%@ page import="Model.POJO.RichiestaPreventivo" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -124,6 +125,12 @@
                                 <%}%>
                             </ul>
                         </div>
+
+                        <%
+                            RichiestaPreventivo richiesta = (RichiestaPreventivo) session.getAttribute("richiesta");
+                            if(richiesta.getStato().toString().equals("IN_ATTESA")){
+                        %>
+
                         <c:choose>
                             <c:when test="${fornitore != null and fornitore.abbonato == true}">
                                 <form action="CompilaPreventivoServlet" method="post" >
@@ -133,6 +140,8 @@
                                 </form>
                             </c:when>
                         </c:choose>
+
+                        <%}%>
                     </div>
 
                 </div>

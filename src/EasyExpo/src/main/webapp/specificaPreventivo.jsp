@@ -67,7 +67,7 @@
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
                                 <p> ${richiesta.descrizioneEvento}</p>
                                 <h6 class="margin-top-80 margin-bottom-30">Nota del fornitore</h6>
-                                <blockquote>${preventivo.nota}</blockquote>
+                                <blockquote>${preventivo.nota}ciao</blockquote>
 
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
                                 <div class="admin-info">

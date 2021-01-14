@@ -48,10 +48,9 @@ public class InoltroPreventivoServlet extends HttpServlet {
     RichiestaPreventivoDAO richiestaPreventivoDao = new RichiestaPreventivoDAO();
     RichiestaPreventivo richiesta =
         richiestaPreventivoDao.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
-    richiestaPreventivoDao.deleteRichiestePreventivo(Integer.parseInt(idRichiesta));
     RichiestaPreventivo.Stato stato = RichiestaPreventivo.Stato.valueOf("CONFERMATO");
     richiesta.setStato(stato);
-    richiestaPreventivoDao.createRichiestaPreventivo(richiesta);
+    richiestaPreventivoDao.updateRichiestaPreventivo(richiesta);
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
     requestDispatcher.forward(request, response);

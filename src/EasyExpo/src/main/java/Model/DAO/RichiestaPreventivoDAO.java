@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -180,6 +181,36 @@ public class RichiestaPreventivoDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       richiestaPreventivo.setIdRichiesta(rs.getInt(1));
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
+   * Metodo che aggiorna nel DB l'istanza RichiestaPreventivo correlata
+   * alla RichiestaPreventivo dato in input.
+   *
+   * @param richiestaPreventivo Oggetto di tipo {@link RichiestaPreventivo}
+   */
+
+  public void updateRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+          "UPDATE RichiestaPreventivo SET codiceFiscale=?, partitaIva=?, titolo=?, luogoEvento=?, "
+              + "descrizioneEvento=?, nota=?, dataRichiesta=?, stato=? WHERE idRichiesta=?");
+      ps.setString(1, richiestaPreventivo.getCodiceFiscale());
+      ps.setString(2, richiestaPreventivo.getPartitaIva());
+      ps.setString(3, richiestaPreventivo.getTitolo());
+      ps.setString(4, richiestaPreventivo.getLuogoEvento());
+      ps.setString(5, richiestaPreventivo.getDescrizioneEvento());
+      ps.setString(6, richiestaPreventivo.getNota());
+      ps.setDate(7, richiestaPreventivo.getDataRichiesta());
+      ps.setString(8,
+          richiestaPreventivo.getStato().toString());
+      ps.setInt(9, richiestaPreventivo.getIdRichiesta());
+      if (ps.executeUpdate() != 1) {
+        throw new RuntimeException("UPDATE error.");
+      }
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
