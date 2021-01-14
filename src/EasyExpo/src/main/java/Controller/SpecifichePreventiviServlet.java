@@ -14,12 +14,7 @@ import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListIterator;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,21 +34,23 @@ public class SpecifichePreventiviServlet extends HttpServlet {
     String idRichiesta = request.getParameter("idRichiesta");
     String idPreventivo = request.getParameter("idPreventivo");
 
-    if(idRichiesta != null && idPreventivo == null){
+    if (idRichiesta != null && idPreventivo == null) {
       RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-      RichiestaPreventivo richiesta = richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
+      RichiestaPreventivo richiesta =
+          richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
 
       ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();
-      List<ProdottoRichiesta> prichiesta = prodottoRichiestaDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
+      List<ProdottoRichiesta> prichiesta =
+          prodottoRichiestaDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
       ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-      for(ProdottoRichiesta a : prichiesta){
-       int idProdotto =  a.getIdProdotto();
-       String partitaIva = a.getPartitaIva();
-       Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
-       prodotto.add(p);
+      for (ProdottoRichiesta a : prichiesta) {
+        int idProdotto = a.getIdProdotto();
+        String partitaIva = a.getPartitaIva();
+        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
+        prodotto.add(p);
       }
 
       ClienteDAO clienteDAO = new ClienteDAO();
@@ -64,29 +61,31 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("prichiesta", prichiesta);
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", cliente);
-      request.getSession().setAttribute("cliente", cliente);
+      request.getSession().setAttribute("cliente_specifica", cliente);
 
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaRichiesta.jsp");
       requestDispatcher.forward(request, response);
-    }else if(idRichiesta == null && idPreventivo != null){
+    } else if (idRichiesta == null && idPreventivo != null) {
       PreventivoDAO preventivoDAO = new PreventivoDAO();
       Preventivo preventivo = preventivoDAO.doRetriveByIdPreventivo(Integer.parseInt(idPreventivo));
 
       RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-      RichiestaPreventivo richiesta = richiestaPreventivoDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
+      RichiestaPreventivo richiesta =
+          richiestaPreventivoDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
 
       FornitoreDAO fornitoreDAO = new FornitoreDAO();
       Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(preventivo.getPartitaIva());
 
       ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();
-      List<ProdottoRichiesta> prichiesta = prodottoRichiestaDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
+      List<ProdottoRichiesta> prichiesta =
+          prodottoRichiestaDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());
 
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
       ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-      for(ProdottoRichiesta a : prichiesta){
-        int idProdotto =  a.getIdProdotto();
+      for (ProdottoRichiesta a : prichiesta) {
+        int idProdotto = a.getIdProdotto();
         String partitaIva = a.getPartitaIva();
         Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
         prodotto.add(p);
@@ -98,7 +97,8 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("prodotto", prodotto);
       request.getSession().setAttribute("clifor", fornitore);
       request.getSession().setAttribute("fornitore", fornitore);
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaPreventivo.jsp");
+      RequestDispatcher requestDispatcher =
+          request.getRequestDispatcher("/specificaPreventivo.jsp");
       requestDispatcher.forward(request, response);
     }
 

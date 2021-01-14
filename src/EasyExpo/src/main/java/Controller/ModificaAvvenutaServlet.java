@@ -59,7 +59,9 @@ public class ModificaAvvenutaServlet extends HttpServlet {
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
-    String path = "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" + "images";
+    String path =
+        "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" +
+            "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 

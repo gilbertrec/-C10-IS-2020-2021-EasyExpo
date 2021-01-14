@@ -8,10 +8,7 @@ import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +31,12 @@ public class PreventiviServlet extends HttpServlet {
     PreventivoDAO preventivoDAO = new PreventivoDAO();
     RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
 
-    if(partitaIva != null && codiceFiscale == null){
+    if (partitaIva != null && codiceFiscale == null) {
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva(partitaIva);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
       ArrayList<Fornitore> fornitori = new ArrayList<>();
       FornitoreDAO fornitoreDAO = new FornitoreDAO();
-      for(Preventivo p : preventivi){
+      for (Preventivo p : preventivi) {
         RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
         Fornitore f = fornitoreDAO.doRetrieveByPIVA(p.getPartitaIva());
         richieste.add(r);
@@ -48,12 +45,12 @@ public class PreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("fornitori", fornitori);
       request.getSession().setAttribute("richieste", richieste);
       request.getSession().setAttribute("preventivi", preventivi);
-    }else if(partitaIva == null && codiceFiscale != null) {
+    } else if (partitaIva == null && codiceFiscale != null) {
       List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
       ArrayList<Fornitore> fornitori = new ArrayList<>();
       FornitoreDAO fornitoreDAO = new FornitoreDAO();
-      for(Preventivo p : preventivi){
+      for (Preventivo p : preventivi) {
         RichiestaPreventivo r = richiestaPreventivoDAO.doRetrieveByIdRichiesta(p.getIdRichiesta());
         Fornitore f = fornitoreDAO.doRetrieveByPIVA(p.getPartitaIva());
         richieste.add(r);
@@ -64,7 +61,7 @@ public class PreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("preventivi", preventivi);
     }
 
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaPreventivi.jsp");
-      requestDispatcher.forward(request, response);
-    }
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaPreventivi.jsp");
+    requestDispatcher.forward(request, response);
   }
+}

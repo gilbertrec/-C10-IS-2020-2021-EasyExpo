@@ -28,21 +28,23 @@ public class RichiesteServlet extends HttpServlet {
 
     RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
 
-    if(partitaIva != null && codiceFiscale == null){
-      List<RichiestaPreventivo> richieste = richiestaPreventivoDAO.doRetrieveByPartitaIva(partitaIva);
+    if (partitaIva != null && codiceFiscale == null) {
+      List<RichiestaPreventivo> richieste =
+          richiestaPreventivoDAO.doRetrieveByPartitaIva(partitaIva);
       ArrayList<Cliente> clienti = new ArrayList<Cliente>();
       ClienteDAO clienteDAO = new ClienteDAO();
-      for(RichiestaPreventivo rp : richieste){
+      for (RichiestaPreventivo rp : richieste) {
         Cliente c = clienteDAO.doRetrieveByCF(rp.getCodiceFiscale());
         clienti.add(c);
       }
       request.getSession().setAttribute("clienti", clienti);
       request.getSession().setAttribute("richieste", richieste);
-    }else if(partitaIva == null && codiceFiscale != null){
-      List<RichiestaPreventivo> richieste = richiestaPreventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
+    } else if (partitaIva == null && codiceFiscale != null) {
+      List<RichiestaPreventivo> richieste =
+          richiestaPreventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);
       ArrayList<Cliente> clienti = new ArrayList<Cliente>();
       ClienteDAO clienteDAO = new ClienteDAO();
-      for(RichiestaPreventivo rp : richieste){
+      for (RichiestaPreventivo rp : richieste) {
         Cliente c = clienteDAO.doRetrieveByCF(rp.getCodiceFiscale());
         clienti.add(c);
       }

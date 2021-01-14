@@ -31,7 +31,6 @@
     </header>
 
 
-
     <!--======= SUB BANNER =========-->
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
@@ -57,9 +56,11 @@
                         <!-- Article -->
                         <article>
                             <!-- Title -->
-                            <div class="post-tittle left"> <a href="#." class="tittle">${richiesta.titolo}</a>
+                            <div class="post-tittle left"><a href="#." class="tittle">${richiesta.titolo}</a>
                                 <!-- Post Info -->
-                                <span><i class="primary-color icon-user"></i> by ${fornitore.nome} ${fornitore.cognome}</span> <span><i class="primary-color icon-calendar"></i> ${preventivo.dataPreventivo}</span></div>
+                                <span><i class="primary-color icon-user"></i> by ${fornitore.nome} ${fornitore.cognome}</span>
+                                <span><i class="primary-color icon-calendar"></i> ${preventivo.dataPreventivo}</span>
+                            </div>
                             <!-- Post Content  creare il metodo che ti restituisce anche l'altra tabella per i prodotti-->
                             <div class="text-left">
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
@@ -70,11 +71,14 @@
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
                                 <div class="admin-info">
                                     <div class="media-body">
-                                        <h6>${clifor.nome} ${clifor.cognome} <span>Fornitore</span>  <span>${clifor.ragioneSociale}</span>  <span>${clifor.luogoUbicazione}</span></h6>
+                                        <h6>${clifor.nome} ${clifor.cognome} <span>Fornitore</span>
+                                            <span>${clifor.ragioneSociale}</span> <span>${clifor.luogoUbicazione}</span>
+                                        </h6>
                                         <span>CONTATTI</span> <br>
                                         <span>${clifor.email}</span> <br>
                                         <span>${clifor.telefono}</span>
-                                        <div class="admin-social"> <a href="#."><i class="icon-social-facebook"></i></a> <a href="#."><i class="icon-social-twitter"></i></a></div>
+                                        <div class="admin-social"><a href="#."><i class="icon-social-facebook"></i></a>
+                                            <a href="#."><i class="icon-social-twitter"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -89,16 +93,26 @@
                             <h5 class="shop-tittle margin-top-60 margin-bottom-30">Prodotti richiesti</h5>
                             <ul class="papu-post margin-top-20">
                                 <%
-                                    ArrayList<Prodotto> prodotto = (ArrayList<Prodotto>) session.getAttribute("prodotto");
-                                    ArrayList<ProdottoRichiesta> prichiesta = (ArrayList<ProdottoRichiesta>) session.getAttribute("prichiesta");
+                                    ArrayList<Prodotto> prodotto =
+                                            (ArrayList<Prodotto>) session.getAttribute("prodotto");
+                                    ArrayList<ProdottoRichiesta> prichiesta =
+                                            (ArrayList<ProdottoRichiesta>) session.getAttribute("prichiesta");
 
-                                    for(int i = 0; i < prodotto.size(); i++){
+                                    for (int i = 0; i < prodotto.size(); i++) {
                                 %>
 
                                 <li class="media">
-                                    <div class="media-left"> <a href="#"> <img class="media-object" src="<%=prodotto.get(i).getImmagine()%>" alt=""></a> </div>
-                                    <div class="media-body"> <a class="media-heading" href="#."><small>€</small><%=prodotto.get(i).getPrezzo()%></a> <span><%=prodotto.get(i).getTitolo()%></span></div>
-                                    <div class="media-body"> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataInizioNoleggio()%></a>  <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%></a></div>
+                                    <div class="media-left"><a href="#"> <img class="media-object"
+                                                                              src="<%=prodotto.get(i).getImmagine()%>"
+                                                                              alt=""></a></div>
+                                    <div class="media-body"><a class="media-heading"
+                                                               href="#."><small>€</small><%=prodotto.get(i)
+                                            .getPrezzo()%>
+                                    </a> <span><%=prodotto.get(i).getTitolo()%></span></div>
+                                    <div class="media-body"><a class="media-heading" href="#."><%=prichiesta.get(i)
+                                            .getDataInizioNoleggio()%>
+                                    </a> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%>
+                                    </a></div>
 
 
                                 </li>

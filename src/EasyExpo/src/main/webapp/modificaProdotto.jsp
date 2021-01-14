@@ -70,7 +70,8 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="${prodotto.titolo}" placeholder="">
+                                                <input type="text" name="titolo" value="${prodotto.titolo}"
+                                                       placeholder="">
                                             </label>
                                         </li>
 
@@ -96,27 +97,31 @@
                                         <!-- PREZZO -->
                                         <li class="col-md-6">
                                             <label> PREZZO
-                                                <input type="text" name="prezzo" value="${prodotto.prezzo}" placeholder="">
+                                                <input type="text" name="prezzo" value="${prodotto.prezzo}"
+                                                       placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- QUANTITÀ -->
                                         <li class="col-md-6">
                                             <label> QUANTITÀ (1-999)
-                                                <input type="number" name="quantita" value="${prodotto.quantità}" placeholder="" min="1" max="999">
+                                                <input type="number" name="quantita" value="${prodotto.quantità}"
+                                                       placeholder="" min="1" max="999">
                                             </label>
                                         </li>
 
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
-                                                <textarea name="descrizione" rows="5" cols="80">${prodotto.descrizione}</textarea>
+                                                <textarea name="descrizione" rows="5"
+                                                          cols="80">${prodotto.descrizione}</textarea>
                                             </label>
                                         </li>
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="">
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
+                                                       placeholder="">
                                             </label>
                                         </li>
 

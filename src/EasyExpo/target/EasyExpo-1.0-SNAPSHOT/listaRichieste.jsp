@@ -51,23 +51,30 @@
                     <div class="col-md-9">
 
                         <%
-                            ArrayList<RichiestaPreventivo> richieste = (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
+                            ArrayList<RichiestaPreventivo> richieste =
+                                    (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
                             ArrayList<Cliente> clienti = (ArrayList<Cliente>) session.getAttribute("clienti");
 
-                            for(int i = 0; i < richieste.size(); i++){
+                            for (int i = 0; i < richieste.size(); i++) {
                         %>
                         <article>
                             <div class="row" style="margin-left: 100px; margin-right: -450px">
                                 <div class="col-sm-7">
                                     <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle"><%=richieste.get(i).getTitolo()%></a>
+                                    <div class="post-tittle left"><a href="#." class="tittle"><%=richieste.get(i)
+                                            .getTitolo()%>
+                                    </a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by <%=clienti.get(i).getNome()%> <%=clienti.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i> <%=richieste.get(i).getDataRichiesta()%></span></div>
+                                        <span><i class="primary-color icon-user"></i> by <%=clienti.get(i)
+                                                .getNome()%> <%=clienti.get(i).getCognome()%></span> <span><i
+                                                class="primary-color icon-calendar"></i> <%=richieste.get(i)
+                                                .getDataRichiesta()%></span></div>
                                     <!-- Post Content -->
                                     <div class="text-left">
-                                        <p><%=richieste.get(i).getDescrizioneEvento()%></p>
-                                        <a href="SpecificaServlet?idRichiesta=<%=richieste.get(i).getIdRichiesta()%>" class="red-more">READ MORE</a> </div>
-                                    <img src="#"><img src="#">
+                                        <p><%=richieste.get(i).getDescrizioneEvento()%>
+                                        </p>
+                                        <a href="SpecificaServlet?idRichiesta=<%=richieste.get(i).getIdRichiesta()%>"
+                                           class="red-more">READ MORE</a></div>
                                 </div>
                             </div>
                         </article>
@@ -110,9 +117,9 @@
     </div>
 
     <!--======= FOOTER =========-->
-<footer>
-    <jsp:include page="/footer.jsp"/>
-</footer>
+    <footer>
+        <jsp:include page="/footer.jsp"/>
+    </footer>
 
 </div>
 </body>

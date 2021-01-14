@@ -1,10 +1,13 @@
 package Controller;
 
-import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Prodotto;
-import Model.POJO.Fornitore;
-
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,12 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
 
 @WebServlet("/AggiungiProdottoServlet")
 @MultipartConfig
@@ -58,7 +55,9 @@ public class AggiungiProdottoServlet extends HttpServlet {
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
-    String path = "C:\\Users\\Utente\\Documents\\GitHub\\-C10-IS-2020-2021-EasyExpo\\src\\EasyExpo\\src\\main\\webapp\\" + "images";
+    String path =
+        "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src/EasyExpo/src/main/webapp/" +
+            "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 
@@ -76,7 +75,7 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
     int lastIndex =
-        file.getAbsoluteFile().toString().lastIndexOf("\\") + 1; //Inizio nome della foto finale
+        file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
     int totalLenght = file.getAbsoluteFile().toString().length();//Lunghezza path assoluto
     String finalFileName = file.getAbsolutePath().toString()
         .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto

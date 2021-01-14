@@ -101,7 +101,8 @@
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="">
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
+                                                       placeholder="">
                                             </label>
                                         </li>
 

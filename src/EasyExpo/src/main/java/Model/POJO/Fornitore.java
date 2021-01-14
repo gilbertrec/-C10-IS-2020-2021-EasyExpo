@@ -195,9 +195,6 @@ public class Fornitore {
   }
 
 
-
-
-
   public boolean isAbbonato() {
     return abbonato;
   }

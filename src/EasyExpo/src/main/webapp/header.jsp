@@ -70,7 +70,7 @@
                 </c:when>
                 <c:when test="${fornitore != null}">
                 <div class="logo"><a href="areaFornitore.jsp"><img class="img-responsive"
-                                                                       src="images/logomacchia2.png" alt=""></a>
+                                                                   src="images/logomacchia2.png" alt=""></a>
                 </div>
                 <nav class="navbar ownmenu">
                     <div class="navbar-header">
@@ -122,9 +122,11 @@
                                                 <h6>Ciao ${cliente.nome} !</h6>
                                             </li>
                                             <li><a href="areaCliente.jsp">AREA CLIENTE</a></li>
-                                            <li><a href="RichiesteServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">RICHIESTE</a>
+                                            <li>
+                                                <a href="RichiesteServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">RICHIESTE</a>
                                             </li>
-                                            <li><a href="PreventiviServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">PREVENTIVI</a>
+                                            <li>
+                                                <a href="PreventiviServlet?codiceFiscale=<c:out value="${cliente.codiceFiscale}"/>">PREVENTIVI</a>
                                             </li>
                                             <li><a href="LogoutServlet">LOGOUT</a></li>
                                         </c:when>
@@ -170,25 +172,25 @@
                                     </li>
 
                                     <!-- <a href="carrello.jsp" class="dropdown-toggle"
-                                       data-toggle="dropdown"
-                                       role="button" aria-haspopup="true"
-                                       aria-expanded="true"><i
-                                            class="icon-basket-loaded"></i> </a> -->
+                                    data-toggle="dropdown"
+                                    role="button" aria-haspopup="true"
+                                    aria-expanded="true"><i
+                                    class="icon-basket-loaded"></i> </a> -->
 
 
                                     <!--<li class="dropdown user-basket">
-                                        <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu">
 
-                                            <li>
-                                                <h5 class="text-center">TOTALE:</h5>
-                                            </li>
-                                            <li class="margin-0">
-                                                <div class="row">
-                                                    <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                    <h5 class="text-center">TOTALE:</h5>
+                                    </li>
+                                    <li class="margin-0">
+                                    <div class="row">
+                                    <div class="col-xs-6"><a href="shopping-cart.html" class="btn">CARRELLO</a>
+                                    </div>
+                                    </div>
+                                    </li>
+                                    </ul>
                                     </li> -->
 
                                     <!-- ICONA SEARCH -->

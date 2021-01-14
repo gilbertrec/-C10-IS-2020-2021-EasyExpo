@@ -52,24 +52,33 @@
                     <div class="col-md-9">
 
                         <%
-                            ArrayList<RichiestaPreventivo> richieste = (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
-                            ArrayList<Preventivo> preventivi = (ArrayList<Preventivo>) session.getAttribute("preventivi");
+                            ArrayList<RichiestaPreventivo> richieste =
+                                    (ArrayList<RichiestaPreventivo>) session.getAttribute("richieste");
+                            ArrayList<Preventivo> preventivi =
+                                    (ArrayList<Preventivo>) session.getAttribute("preventivi");
                             ArrayList<Fornitore> fornitori = (ArrayList<Fornitore>) session.getAttribute("fornitori");
 
-                            for(int i = 0; i < preventivi.size(); i++){
+                            for (int i = 0; i < preventivi.size(); i++) {
                         %>
 
                         <article>
                             <div class="row" style="margin-left: 100px; margin-right: -450px">
                                 <div class="col-sm-7">
                                     <!-- Tittle -->
-                                    <div class="post-tittle left"> <a href="#." class="tittle">PREVENTIVO <%=richieste.get(i).getTitolo()%></a>
+                                    <div class="post-tittle left"><a href="#." class="tittle">PREVENTIVO <%=richieste
+                                            .get(i).getTitolo()%>
+                                    </a>
                                         <!-- Post Info -->
-                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i).getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i class="primary-color icon-calendar"></i><%=preventivi.get(i).getDataPreventivo()%></span></div>
+                                        <span><i class="primary-color icon-user"></i> by <%=fornitori.get(i)
+                                                .getNome()%> <%=fornitori.get(i).getCognome()%></span> <span><i
+                                                class="primary-color icon-calendar"></i><%=preventivi.get(i)
+                                                .getDataPreventivo()%></span></div>
                                     <!-- Post Content -->
                                     <div class="text-left">
-                                        <p><%=richieste.get(i).getDescrizioneEvento()%></p>
-                                        <a href="SpecificaServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>" class="red-more">READ MORE</a> </div>
+                                        <p><%=richieste.get(i).getDescrizioneEvento()%>
+                                        </p>
+                                        <a href="SpecificaServlet?idPreventivo=<%=preventivi.get(i).getIdPreventivo()%>"
+                                           class="red-more">READ MORE</a></div>
                                 </div>
                             </div>
                         </article>
