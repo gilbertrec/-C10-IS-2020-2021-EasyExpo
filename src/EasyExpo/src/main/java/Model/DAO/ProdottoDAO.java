@@ -32,7 +32,8 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
+              "SELECT *  FROM Prodotto as p, Fornitore as f "
+                      + "WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
       ps.setInt(1, idProdotto);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -56,7 +57,7 @@ public class ProdottoDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB
+   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
    *
    * @param offset indice partenza, Intero
    * @param limit  indice fine , Intero
@@ -66,7 +67,8 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Prodotto as p, Fornitore as f WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
+              "SELECT *  FROM Prodotto as p, Fornitore as f "
+                      + "WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
       ps.setInt(1, idProdotto);
       ps.setString(2, partitaIva);
       ResultSet rs = ps.executeQuery();
@@ -123,7 +125,8 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Prodotto as p, Fornitore as f WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
+              "SELECT * FROM Prodotto as p, Fornitore as f "
+                      + "WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
       ps.setInt(1, offset);
       ps.setInt(2, limit);
       ArrayList<Prodotto> prodotti = new ArrayList<>();
@@ -157,7 +160,8 @@ public class ProdottoDAO {
   public void createProdotto(Prodotto prodotto) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Prodotto (partitaIva, titolo, descrizione, tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
+          "INSERT INTO Prodotto (partitaIva, titolo, descrizione, "
+                  + "tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
 
       ps.setString(1, prodotto.getPartitaIva());
@@ -203,7 +207,8 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
 
       PreparedStatement ps = con.prepareStatement(
-          "SELECT idProdotto, partitaIva, titolo, prezzo, immagine FROM Prodotto WHERE titolo LIKE ? ");
+          "SELECT idProdotto, partitaIva, titolo, prezzo, immagine "
+                  + "FROM Prodotto WHERE titolo LIKE ? ");
       ps.setString(1, "%" + ricercato + "%");
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
@@ -228,7 +233,8 @@ public class ProdottoDAO {
   public void updateProdotto(Prodotto prodotto) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
+          "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, "
+                  + "prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
       ps.setString(1, prodotto.getTitolo());
       ps.setString(2, prodotto.getDescrizione());
       ps.setString(3, prodotto.getTipo().toString());

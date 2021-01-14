@@ -30,8 +30,10 @@ public class TagProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT tp.idTag, tp.partitaIva, tp.idProdotto FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? " +
-                  "AND tp.idTag=t.idTag AND tp.partitaIva=p.partitaIva AND tp.idProdotto=p.idProdotto");
+              "SELECT tp.idTag, tp.partitaIva, tp.idProdotto "
+                      + "FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? "
+                  + "AND tp.idTag=t.idTag AND tp.partitaIva=p.partitaIva "
+                      + "AND tp.idProdotto=p.idProdotto");
       ps.setInt(1, idTag);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -76,7 +78,8 @@ public class TagProdottoDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza TagProdotto correlata all'idTag, all'idProdotto e alla partitaIva dati in input
+   * Metodo che elimina dal DB l'istanza TagProdotto correlata all'idTag,
+   * all'idProdotto e alla partitaIva dati in input
    *
    * @param idTag      codice identificativo tag, Intero
    * @param idProdotto codice identificativo prodotto, Intero
@@ -110,8 +113,10 @@ public class TagProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f WHERE idProdotto=? AND partitaIva=?" +
-                  "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag AND tp.partitaIva=f.partitaIva");
+              "SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f "
+                      + "WHERE idProdotto=? AND partitaIva=?"
+                  + "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag "
+                      + "AND tp.partitaIva=f.partitaIva");
       ps.setInt(1, idProdotto);
       ps.setString(1, partitaIva);
       ResultSet rs = ps.executeQuery();
