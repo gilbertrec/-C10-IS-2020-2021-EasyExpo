@@ -161,20 +161,18 @@ public class RichiestaPreventivoDAO {
   public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, "
+          "INSERT INTO RichiestaPreventivo (codiceFiscale, "
               + "partitaIva, titolo, luogoEvento,"
-              + " descrizioneEvento, nota, dataRichiesta, stato) VALUES(?,?,?,?,?,?,?,?,?)",
+              + " descrizioneEvento, nota, dataRichiesta, stato) VALUES(?,?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
-
-      ps.setInt(1, richiestaPreventivo.getIdRichiesta());
-      ps.setString(2, richiestaPreventivo.getCodiceFiscale());
-      ps.setString(3, richiestaPreventivo.getPartitaIva());
-      ps.setString(4, richiestaPreventivo.getTitolo());
-      ps.setString(5, richiestaPreventivo.getLuogoEvento());
-      ps.setString(6, richiestaPreventivo.getDescrizioneEvento());
-      ps.setString(7, richiestaPreventivo.getNota());
-      ps.setDate(8, richiestaPreventivo.getDataRichiesta());
-      ps.setString(9,
+      ps.setString(1, richiestaPreventivo.getCodiceFiscale());
+      ps.setString(2, richiestaPreventivo.getPartitaIva());
+      ps.setString(3, richiestaPreventivo.getTitolo());
+      ps.setString(4, richiestaPreventivo.getLuogoEvento());
+      ps.setString(5, richiestaPreventivo.getDescrizioneEvento());
+      ps.setString(6, richiestaPreventivo.getNota());
+      ps.setDate(7, richiestaPreventivo.getDataRichiesta());
+      ps.setString(8,
           richiestaPreventivo.getStato().toString()); //oppure .name() per caratteri uguali
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");

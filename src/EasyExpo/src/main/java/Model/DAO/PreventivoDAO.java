@@ -90,21 +90,20 @@ public class PreventivoDAO {
   public void createPreventivo(Preventivo preventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?,?)",
+          "INSERT INTO Preventivo (idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
-      ps.setInt(1, preventivo.getIdPreventivo());
-      ps.setInt(2, preventivo.getIdRichiesta());
-      ps.setString(3, preventivo.getPartitaIva());
-      ps.setString(4, preventivo.getCodiceFiscale());
-      ps.setDate(5, preventivo.getDataPreventivo());
-      ps.setFloat(6, preventivo.getPrezzoTotale());
-      ps.setString(7, preventivo.getNota());
+      ps.setInt(1, preventivo.getIdRichiesta());
+      ps.setString(2, preventivo.getPartitaIva());
+      ps.setString(3, preventivo.getCodiceFiscale());
+      ps.setDate(4, preventivo.getDataPreventivo());
+      ps.setFloat(5, preventivo.getPrezzoTotale());
+      ps.setString(6, preventivo.getNota());
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
-      preventivo.setCodiceFiscale(rs.getString(1));
+      preventivo.setIdPreventivo(rs.getInt(1));
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

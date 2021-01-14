@@ -1,6 +1,7 @@
 <%@ page import="Model.POJO.Prodotto" %>
 <%@ page import="Model.POJO.ProdottoRichiesta" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021

@@ -26,7 +26,7 @@
 
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Area Fornitore"/>
+            <jsp:param name="pageTitle" value="Specifica Richiesta"/>
         </jsp:include>
     </header>
 
@@ -126,7 +126,8 @@
                         </div>
                         <c:choose>
                             <c:when test="${fornitore != null and fornitore.abbonato == true}">
-                                <form action="CompilaPreventivoServlet" method="post">
+                                <form action="CompilaPreventivoServlet" method="post" >
+                                    <input type="hidden" name="idRichiesta" value="<c:out value="${richiesta.idRichiesta}"/>">
                                     <li class="col-xs-6"><input class="btn" type="submit" value="COMPILA PREVENTIVO">
                                     </li>
                                 </form>

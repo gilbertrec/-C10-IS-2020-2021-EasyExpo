@@ -68,7 +68,8 @@
                                         <span><i class="primary-color icon-user"></i> by <%=clienti.get(i)
                                                 .getNome()%> <%=clienti.get(i).getCognome()%></span> <span><i
                                                 class="primary-color icon-calendar"></i> <%=richieste.get(i)
-                                                .getDataRichiesta()%></span></div>
+                                                .getDataRichiesta()%> </span> <span><%=richieste.get(i)
+                                                .getStato().toString()%></span></div>
                                     <!-- Post Content -->
                                     <div class="text-left">
                                         <p><%=richieste.get(i).getDescrizioneEvento()%>
