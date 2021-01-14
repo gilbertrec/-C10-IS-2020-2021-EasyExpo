@@ -8,6 +8,7 @@ import Model.POJO.Abbonamento;
 import Model.POJO.Fornitore;
 import Model.POJO.MetodoPagamento;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +24,6 @@ public class AbbonamentoServlet extends HttpServlet {
     AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
     MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
     FornitoreDAO fornitoreDAO = new FornitoreDAO();
-        /*HttpSession session = request.getSession();
-        Fornitore fornitore = (Fornitore) session.getAttribute("fornitore");*/
     String partitaIva = request.getParameter("partitaIva");
     Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
     List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
