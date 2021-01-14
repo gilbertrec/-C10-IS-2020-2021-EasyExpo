@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Prodotto;
@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/ModificaServlet")
+@WebServlet("/AggiungiProdottoServlet")
 @MultipartConfig
-public class ModificaAvvenutaServlet extends HttpServlet {
+public class AggiungiProdottoServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
@@ -28,11 +28,7 @@ public class ModificaAvvenutaServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-
-    int id = Integer.parseInt(request.getParameter("idProdotto"));
     String partitaIva = request.getParameter("partitaIva");
-    ProdottoDAO prodottoDAO = new ProdottoDAO();
-    Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
 
     String titolo = request.getParameter("titolo");
     if (!(titolo != null && titolo.matches("[A-Z a-z 0-9]{1,30}"))) {
@@ -86,6 +82,7 @@ public class ModificaAvvenutaServlet extends HttpServlet {
     String fotoFinale = "images/" + finalFileName;
 
 
+    Prodotto prodotto = new Prodotto();
     prodotto.setPartitaIva(partitaIva);
     prodotto.setTitolo(titolo);
     prodotto.setDescrizione(descrizione);
@@ -94,7 +91,7 @@ public class ModificaAvvenutaServlet extends HttpServlet {
     prodotto.setPrezzo(Float.parseFloat(prezzo));
     prodotto.setImmagine(fotoFinale);
     ProdottoDAO prodottodao = new ProdottoDAO();
-    prodottodao.updateProdotto(prodotto);
+    prodottodao.createProdotto(prodotto);
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);
     request.getSession().setAttribute("prodotti", prodotti);
 

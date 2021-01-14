@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Prodotto;

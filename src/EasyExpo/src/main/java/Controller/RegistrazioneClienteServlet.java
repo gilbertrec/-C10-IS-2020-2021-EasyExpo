@@ -1,7 +1,7 @@
-package controller;
+package Controller;
 
-import Model.DAO.FornitoreDAO;
-import Model.POJO.Fornitore;
+import Model.DAO.ClienteDAO;
+import Model.POJO.Cliente;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/RegistrazioneFornitore")
-public class RegistrazioneFornitoreServlet extends HttpServlet {
+@WebServlet("/RegistrazioneCliente")
+public class RegistrazioneClienteServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
@@ -19,9 +19,9 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    FornitoreDAO fornitoreDAO = new FornitoreDAO();
-    if (request.getSession().getAttribute("fornitore") != null) {
-      throw new MyServletException("Fornitore loggato.");
+    ClienteDAO clienteDAO = new ClienteDAO();
+    if (request.getSession().getAttribute("cliente") != null) {
+      throw new MyServletException("Cliente loggato.");
     }
 
     String password = request.getParameter("password");
@@ -47,9 +47,9 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
       throw new MyServletException("Email non valida.");
     }
 
-    String partitaIVA = request.getParameter("partitaIVA");
-    if (!(partitaIVA != null && partitaIVA.matches("[0-9]{11}"))) {
-      throw new MyServletException("Partita Iva non valida.");
+    String codiceFiscale = request.getParameter("codiceFiscale");
+    if (!(codiceFiscale != null && codiceFiscale.matches("[A-Z 0-9]{16}"))) {
+      throw new MyServletException("CodiceFiscale non valido.");
     }
 
     String cognome = request.getParameter("cognome");
@@ -65,24 +65,18 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
     if (!(telefono != null && telefono.matches("[0-9]{10}"))) {
       throw new MyServletException("Numero di telefono non valido.");
     }
-    String ragioneSociale = request.getParameter("ragioneSociale");
-    if (!(ragioneSociale != null && ragioneSociale.matches("[A-Z a-z]{1,30}"))) {
-      throw new MyServletException("Ragione sociale non valida.");
-    }
 
+    Cliente cliente = new Cliente();
+    cliente.setEmail(email);
+    cliente.setPassword(password);
+    cliente.setCodiceFiscale(codiceFiscale);
+    cliente.setNome(nome);
+    cliente.setCognome(cognome);
+    cliente.setTelefono(telefono);
+    cliente.setLuogoUbicazione(luogoUbicazione);
 
-    Fornitore fornitore = new Fornitore();
-    fornitore.setEmail(email);
-    fornitore.setPassword(password);
-    fornitore.setPartitaIva(partitaIVA);
-    fornitore.setNome(nome);
-    fornitore.setCognome(cognome);
-    fornitore.setTelefono(telefono);
-    fornitore.setLuogoUbicazione(luogoUbicazione);
-    fornitore.setRagioneSociale(ragioneSociale);
-
-    fornitoreDAO.createFornitore(fornitore);
-    request.getSession().setAttribute("fornitore", fornitore);
+    clienteDAO.createCliente(cliente);
+    request.getSession().setAttribute("cliente", cliente);
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(request, response);

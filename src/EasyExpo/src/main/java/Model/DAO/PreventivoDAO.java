@@ -29,10 +29,8 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, "
-                      + "Cliente as c, RichiestaPreventivo as rp "
-                  + "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta "
-                      + "AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                  "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
       ps.setInt(1, idPreventivo);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -62,11 +60,8 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Preventivo as p, Fornitore as f, "
-                      + "Cliente as c, RichiestaPreventivo as rp"
-                  + "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND"
-                      + " p.partitaIva=f.partitaIva "
-                      + "AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
+              "SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp" +
+                  "WHERE p.idPreventivo=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
       ps.setInt(1, offset);
       ps.setInt(2, limit);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
@@ -95,8 +90,7 @@ public class PreventivoDAO {
   public void createPreventivo(Preventivo preventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale,"
-                  + " dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?,?)",
+          "INSERT INTO Preventivo (idPreventivo, idRichiesta, partitaIva, codiceFiscale, dataPreventivo, prezzoTotale, nota) VALUES(?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
       ps.setInt(1, preventivo.getIdPreventivo());
       ps.setInt(2, preventivo.getIdRichiesta());
@@ -121,10 +115,8 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, "
-                      + "Cliente as c, RichiestaPreventivo as rp "
-                  + "WHERE p.partitaIva=? AND p.idRichiesta=rp.idRichiesta AND "
-                      + "p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                  "WHERE p.partitaIva=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
       ps.setString(1, partitaIva);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -148,10 +140,8 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT *  FROM Preventivo as p, Fornitore as f, "
-                      + "Cliente as c, RichiestaPreventivo as rp "
-                  + "WHERE p.codiceFiscale=? AND p.idRichiesta=rp.idRichiesta "
-                      + "AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
+              "SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, RichiestaPreventivo as rp " +
+                  "WHERE p.codiceFiscale=? AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND p.codiceFiscale=c.codiceFiscale");
       ps.setString(1, codiceFiscale);
       ArrayList<Preventivo> preventivi = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
