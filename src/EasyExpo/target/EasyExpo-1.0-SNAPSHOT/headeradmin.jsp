@@ -42,7 +42,7 @@
 <body>
 <!-- header -->
 <div class="sticky">
-<header style="background-color: #2d3a4b">
+
 
 
     <div class="container" >
@@ -68,12 +68,12 @@
 
                     <!-- USER INFO -->
                     <li class="dropdown user-acc"><a href="adminLoginSegreto.jsp" class="dropdown-toggle" data-toggle="dropdown"
-                                                     role="button"><i class="icon-user"></i> </a>
+                                                     role="button"><i class="icon-user"></i><h6>MENU</h6></a>
                         <ul class="dropdown-menu">
                             <c:choose>
                                 <c:when test="${LeaderSupremo != null}">
                                     <li>
-                                        <h6>Ciao !</h6>
+                                        <h6>Ciao!</h6>
                                     </li>
                                     <li><a href="adminHome.jsp">AREA ADMIN</a></li>
 

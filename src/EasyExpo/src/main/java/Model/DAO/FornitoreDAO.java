@@ -238,8 +238,6 @@ public class FornitoreDAO {
 
     /**
      * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
-     * @param  offset  indice partenza, Intero
-     * @param limit  indice fine , Intero
      * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
      *
      */
@@ -264,6 +262,19 @@ public class FornitoreDAO {
                 fornitori.add(f);
             }
             return fornitori;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateStato(int val, String partitaIva) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("UPDATE Fornitore SET stato=? WHERE partitaIva=?");
+
+            ps.setInt(1,val);
+            ps.setString(2,partitaIva);
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

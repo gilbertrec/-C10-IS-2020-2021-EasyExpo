@@ -45,28 +45,30 @@
                     Azioni
                 </th>
             </tr>
-            <% for (int i=0;i<fornitori.size();i++) { %>
+            <% for (Fornitore fornitore:fornitori) { %>
             <tr>
                 <td></td>
                 <%
-                    out.append("<td>" + fornitori.get(i).getPartitaIva() + " </td> ");
+                    out.append("<td>" + fornitore.getPartitaIva() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + fornitori.get(i).getNome() + " </td> ");
+                    out.append("<td>" + fornitore.getNome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + fornitori.get(i).getCognome() + " </td> ");
+                    out.append("<td>" + fornitore.getCognome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + fornitori.get(i).getRagioneSociale() + " </td> ");
+                    out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
                 %>
 
                 <td>
-                    <button type="submit"  formaction="/RiabilitaFornitore">Riabilita</button>
-                    <button type="submit"  formaction="/VisualizzaProdotti">Prodotti</button>
+                    <a class="icon-bulb" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=fornitore.getPartitaIva()%>">
+                    </a>
+                    <a class="icon-user-female " href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>">
+                    </a>
                 </td>
             </tr>
             <% } %>

@@ -167,8 +167,6 @@ public class ClienteDAO {
 
     /**
      * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
-     * @param  offset  indice partenza, Intero
-     * @param limit  indice fine , Intero
      * @return  List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
      *
      */
@@ -192,6 +190,19 @@ public class ClienteDAO {
                 clienti.add(c);
             }
             return clienti;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateStato(int val, String codiceFiscale) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("UPDATE Cliente SET stato=? WHERE codiceFiscale=?");
+
+            ps.setInt(1,val);
+            ps.setString(2,codiceFiscale);
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

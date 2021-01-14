@@ -25,7 +25,7 @@
             requestDispatcher.forward(request,response);
         }
     %>
-    <% List<Cliente> cliente = (List<Cliente>) request.getSession().getAttribute("clienti");%>
+    <% List<Cliente> clienti = (List<Cliente>) request.getSession().getAttribute("clienti");%>
     <div id="content">
         <table class="table">
             <tr class="row">
@@ -45,27 +45,28 @@
                     Azioni
                 </th>
             </tr>
-            <% for (int i=0;i<cliente.size();i++) { %>
+            <% for (Cliente cliente:clienti) { %>
             <tr>
                 <td></td>
                 <%
-                    out.append("<td>" + cliente.get(i).getCodiceFiscale() + " </td> ");
+                    out.append("<td>" + cliente.getCodiceFiscale() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getNome() + " </td> ");
+                    out.append("<td>" + cliente.getNome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getCognome() + " </td> ");
+                    out.append("<td>" + cliente.getCognome() + " </td> ");
                 %>
 
                 <%
-                    out.append("<td>" + cliente.get(i).getTelefono() + " </td> ");
+                    out.append("<td>" + cliente.getTelefono() + " </td> ");
                 %>
 
                 <td>
-                    <button type="submit"  formaction="/RiabilitaCliente">Riabilita</button>
+                    <a class="icon-bulb" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=cliente.getCodiceFiscale()%>">
+                </a>
                 </td>
             </tr>
             <% } %>

@@ -49,9 +49,18 @@
                                         <li class="col-md-6">
                                             <button type="submit" class="btn" formaction="ListaFornitoriServlet">Lista Fornitori</button>
                                         </li>
+
                                         <!-- Gestione Clienti -->
                                         <li class="col-md-6">
                                             <button type="submit" class="btn" formaction="ListaClientiServlet">Lista Clienti</button>
+                                        </li>
+                                    </ul>
+                                    <ul class="row">
+                                        <li>
+                                            <br>
+                                        </li>
+                                        <li>
+                                            <br>
                                         </li>
                                     </ul>
                                     <ul class="row">
