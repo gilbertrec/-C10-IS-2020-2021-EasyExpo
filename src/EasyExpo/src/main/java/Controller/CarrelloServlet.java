@@ -131,6 +131,45 @@ public class CarrelloServlet extends HttpServlet {
 
       } else {
         //caso rimozione prodotto poichè non c'è addNum
+        //devo prima prendere la lista dei prodotti legati a quel fornitore
+        ArrayList<Carrello.ProdottoQuantita> prodottiQuantitaF = carrello.get(partitaIva);
+
+        //devo fare il ciclo di nuovo
+        ArrayList<Prodotto> prodottiF = new ArrayList<>();
+        for (int i = 0; i < prodottiQuantitaF.size(); i++) {
+          Carrello.ProdottoQuantita prodQuantita = prodottiQuantitaF.get(i);
+          Prodotto prodSingolo = prodQuantita.getProdotto();
+          prodottiF.add(prodSingolo);
+        }
+
+        Prodotto prodottoDaEliminare = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
+
+        //prodottiF ora contiene tutti i prodotti di prodottiQuanantitaF
+        boolean trovato = false;
+        int j, indice = 0;
+        for (j = 0; j < prodottiF.size(); j++) {
+          Prodotto preso = prodottiF.get(j);
+          String PIPreso = preso.getPartitaIva();
+          Integer IDPreso = preso.getIdProdotto();
+          String PIcercato = prodottoDaEliminare.getPartitaIva();
+          Integer IDcercato = prodottoDaEliminare.getIdProdotto();
+          if (PIcercato.equals(PIPreso)) {
+            if (IDcercato == IDPreso) {
+              trovato = true;
+              //salvo l'indice dove si dovrebbe trovare il prodotto da eliminare
+              indice = j;
+            }
+          }
+        }
+        if (trovato) {
+          //lo devo togliere da prodottiQuanantitaF
+          Carrello.ProdottoQuantita pq1 = prodottiQuantitaF.get(indice);
+          prodottiQuantitaF.remove(pq1);
+
+        }
+
+        //e mettere la lista aggiornata di nuovo nel carrello
+        carrello.put(prodottiQuantitaF);
       }
     }
 

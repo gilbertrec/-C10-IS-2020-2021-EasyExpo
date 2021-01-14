@@ -88,16 +88,16 @@
                                     </li>
                                     <!-- PRICE -->
                                     <li class="col-sm-2">
-                                        <h6>PREZZO</h6>
+                                        <h5 style="font-size: 15px">PREZZO</h5>
                                     </li>
                                     <!-- QTY -->
                                     <li class="col-sm-1">
-                                        <h6>QTA</h6>
+                                        <h5 style="font-size: 15px">QTA</h5>
                                     </li>
 
                                     <!-- TOTAL PRICE -->
                                     <li class="col-sm-2">
-                                        <h6>TOTAL</h6>
+                                        <h5 style="font-size: 15px">TOTAL</h5>
                                     </li>
                                     <li class="col-sm-1"></li>
                                 </ul>
@@ -133,7 +133,7 @@
                                     <!-- QTA -->
                                     <li class="col-sm-1">
                                         <div class="position-center-center">
-                                            <h4><c:out value="${ListaProd.quantita}"/></h4>
+                                            <h4 style="font-size: 18px"><c:out value="${ListaProd.quantita}"/></h4>
                                             <!-- QTY
                                             <div class="quinty">
 
@@ -150,13 +150,20 @@
                                     <!-- TOTAL PRICE -->
                                     <li class="col-sm-2">
                                         <div class="position-center-center"><span
-                                                class="price"><small>$</small>299</span></div>
+                                                class="price"><small>€</small><c:out
+                                                value="${ListaProd.prodotto.prezzo * ListaProd.quantita}"/></span></div>
                                     </li>
 
                                     <!-- REMOVE -->
                                     <li class="col-sm-1">
-                                        <div class="position-center-center"><a href="#."><i class="icon-close"></i></a>
-                                        </div>
+                                        <!--<div class="position-center-center"><a href="#."><i class="icon-close"></i></a>
+                                        </div>-->
+                                        <form action="Carrello" method="post">
+                                            <input type="hidden" name="prodId" value="<c:out value="${ListaProd.prodotto.idProdotto}"/>">
+                                            <input type="hidden" name="partitaIva" value="<c:out value="${ListaProd.prodotto.partitaIva}"/>">
+                                            <input type="submit" id="rimuovi" value="RIMUOVI">
+                                        </form>
+
                                     </li>
                                 </ul>
                             </c:forEach>
