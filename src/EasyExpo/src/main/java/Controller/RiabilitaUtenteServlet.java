@@ -10,22 +10,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/SospendiUtenteServlet")
-public class SospendiUtenteServlet extends HttpServlet {
+@WebServlet("/RiabilitaUtenteServlet")
+public class RiabilitaUtenteServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         if (request.getParameter("flag").equals("1")) {
             FornitoreDAO fornitoreDAO = new FornitoreDAO();
-            fornitoreDAO.updateStato(2, request.getParameter("id"));
+            fornitoreDAO.updateStato(1, request.getParameter("id"));
             request.getSession().setAttribute("fornitori",null);
-            response.sendRedirect("gestioneFornitori.jsp");
+            response.sendRedirect("gestioneFornitoriSospesi.jsp");
         }
         if (request.getParameter("flag").equals("2")) {
             ClienteDAO clienteDAO = new ClienteDAO();
-            clienteDAO.updateStato(2, request.getParameter("id"));
+            clienteDAO.updateStato(1, request.getParameter("id"));
             request.getSession().setAttribute("clienti",null);
-            response.sendRedirect("gestioneClienti.jsp");
+            response.sendRedirect("gestioneClientiSospesi.jsp");
         }
     }
 

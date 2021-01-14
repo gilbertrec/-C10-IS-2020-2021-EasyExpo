@@ -24,57 +24,59 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }
+        if(request.getSession().getAttribute("fornitori") == null) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaFornitoriSospesiServlet");
+            requestDispatcher.forward(request,response);
+        }
     %>
     <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
     <div id="content">
-        <table class="table">
-            <tr class="row">
-                <th class="col-6">
-                    Partita IVA
-                </th>
-                <th class="col-6">
-                    Nome
-                </th>
-                <th class="col-6">
-                    Cognome
-                </th>
-                <th class="col-6">
-                    Ragione Sociale
-                </th>
-                <th class="col-6">
-                    Azioni
-                </th>
-            </tr>
-            <% for (Fornitore fornitore:fornitori) { %>
-            <tr>
-                <td></td>
-                <%
-                    out.append("<td>" + fornitore.getPartitaIva() + " </td> ");
-                %>
-
-                <%
-                    out.append("<td>" + fornitore.getNome() + " </td> ");
-                %>
-
-                <%
-                    out.append("<td>" + fornitore.getCognome() + " </td> ");
-                %>
-
-                <%
-                    out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
-                %>
-
-                <td>
-                    <a class="icon-bulb" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=fornitore.getPartitaIva()%>">
-                    </a>
-                    <a class="icon-user-female " href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>">
-                    </a>
-                </td>
-            </tr>
-            <% } %>
-        </table>
+        <section class="chart-page padding-top-100 padding-bottom-100">
+            <div class="container">
+                <!-- Payments Steps -->
+                <div class="shopping-cart">
+                    <!-- SHOPPING INFORMATION -->
+                    <div class="cart-ship-info register">
+                        <h6>GESTIONE FORNITORI SOSPESI</h6>
+                        <table class="table">
+                            <tr class="row">
+                                <th class="col-6">
+                                    Partita IVA
+                                </th>
+                                <th class="col-6">
+                                    Nome
+                                </th>
+                                <th class="col-6">
+                                    Cognome
+                                </th>
+                                <th class="col-6">
+                                    Ragione Sociale
+                                </th>
+                                <th class="col-6">
+                                    Azioni
+                                </th>
+                            </tr>
+                            <% for (Fornitore fornitore:fornitori) { %>
+                            <tr>
+                                <td></td>
+                                <%
+                                    out.append("<td>" + fornitore.getPartitaIva() + " </td> ");
+                                    out.append("<td>" + fornitore.getNome() + " </td> ");
+                                    out.append("<td>" + fornitore.getCognome() + " </td> ");
+                                    out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
+                                %>
+                                <td>
+                                    <a class="icon-bulb" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=fornitore.getPartitaIva()%>&flag=1"></a>
+                                    <a class="icon-user-female " href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</div>
 <!--======= FOOTER =========-->
 <footer>
     <jsp:include page="/footeradmin.jsp"/>
