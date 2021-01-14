@@ -31,6 +31,7 @@ public class RichiesteServlet extends HttpServlet {
     if (partitaIva != null && codiceFiscale == null) {
       List<RichiestaPreventivo> richieste =
           richiestaPreventivoDAO.doRetrieveByPartitaIva(partitaIva);
+      
       ArrayList<Cliente> clienti = new ArrayList<Cliente>();
       ClienteDAO clienteDAO = new ClienteDAO();
       for (RichiestaPreventivo rp : richieste) {

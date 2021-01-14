@@ -107,8 +107,11 @@
                                                                               alt=""></a></div>
                                     <div class="media-body"><a class="media-heading"
                                                                href="#."><small>€</small><%=prodotto.get(i)
-                                            .getPrezzo()%>
-                                    </a> <span><%=prodotto.get(i).getTitolo()%></span></div>
+                                            .getPrezzo()%> x <%=prichiesta.get(i)
+                                            .getNumColli()%>
+                                        <span><% float totale = prodotto.get(i).getPrezzo() * prichiesta.get(i).getNumColli();%>
+                                            <%=totale%></span>
+                                    </a><span><%=prodotto.get(i).getTitolo()%></span></div>
                                     <div class="media-body"><a class="media-heading" href="#."><%=prichiesta.get(i)
                                             .getDataInizioNoleggio()%>
                                     </a> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%>

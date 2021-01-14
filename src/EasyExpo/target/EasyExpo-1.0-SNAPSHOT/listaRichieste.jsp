@@ -74,7 +74,14 @@
                                         <p><%=richieste.get(i).getDescrizioneEvento()%>
                                         </p>
                                         <a href="SpecificaServlet?idRichiesta=<%=richieste.get(i).getIdRichiesta()%>"
-                                           class="red-more">READ MORE</a></div>
+                                           class="red-more">READ MORE</a>
+                                        <c:choose>
+                                            <c:when test="${fornitore != null and fornitore.abbonato == true}">
+                                                <a href="#"
+                                                   class="red-more" style="margin-left: 320px">DECLINE</a>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
                                 </div>
                             </div>
                         </article>

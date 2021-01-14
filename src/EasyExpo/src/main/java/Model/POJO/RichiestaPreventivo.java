@@ -4,16 +4,16 @@ import java.sql.Date;
 
 /**
  * RichiestaPreventivo e' la classe che gestisce un
- * ordinario oggetto RichiestaPreventivo
+ * ordinario oggetto RichiestaPreventivo.
  *
- * @author
+ * @author LUCREZIA ROBUSTELLI
  * @version 1.0
  * @since 2021-01-02
  */
 public class RichiestaPreventivo {
 
   /**
-   * Metodo costruttore della classe ProdottoRichiesta
+   * Metodo costruttore della classe ProdottoRichiesta.
    *
    * @param idRichiesta       codice identificativo richiesta, Intero
    * @param codiceFiscale     codice alfanumerico identificativo fornitore, String
@@ -40,14 +40,14 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo costruttore di default della classe Prodotto
+   * Metodo costruttore di default della classe Prodotto.
    */
   public RichiestaPreventivo() {
 
   }
 
   /**
-   * Metodo che restituisce la data della richiesta
+   * Metodo che restituisce la data della richiesta.
    *
    * @return Date - getDataRichiesta
    */
@@ -56,7 +56,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta la data della richiesta
+   * Metodo che setta la data della richiesta.
    *
    * @param dataRichiesta data della richiesta effettuata, Date
    */
@@ -65,7 +65,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce l'id della richiesta
+   * Metodo che restituisce l'id della richiesta.
    *
    * @return Int - idRichiesta
    */
@@ -74,7 +74,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta l'id della richiesta
+   * Metodo che setta l'id della richiesta.
    *
    * @param idRichiesta codice identificativo richiesta, Intero
    */
@@ -83,7 +83,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce il Codice Fiscale
+   * Metodo che restituisce il Codice Fiscale.
    *
    * @return String - codiceFiscale
    */
@@ -92,7 +92,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta il Codice Fiscale
+   * Metodo che setta il Codice Fiscale.
    *
    * @param codiceFiscale codice alfanumerico identificativo fornitore, String
    */
@@ -101,7 +101,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce la Partita Iva
+   * Metodo che restituisce la Partita Iva.
    *
    * @return String - PartitaIva
    */
@@ -110,7 +110,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta la Partita Iva
+   * Metodo che setta la Partita Iva.
    *
    * @param partitaIva codice alfanumerico identificativo fornitore, String
    */
@@ -119,7 +119,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce il Titolo
+   * Metodo che restituisce il Titolo.
    *
    * @return String - Titolo
    */
@@ -128,7 +128,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta il Titolo
+   * Metodo che setta il Titolo.
    *
    * @param titolo titolo della richiesta, String
    */
@@ -137,7 +137,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce il Luogo Evento
+   * Metodo che restituisce il Luogo Evento.
    *
    * @return String - luogoEvento
    */
@@ -146,7 +146,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta il Luogo Evento
+   * Metodo che setta il Luogo Evento.
    *
    * @param luogoEvento ubicazione dell'evento, String
    */
@@ -155,7 +155,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce la Descrizione dell'evento
+   * Metodo che restituisce la Descrizione dell'evento.
    *
    * @return String - descrizioneEvento
    */
@@ -164,7 +164,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta la Descrizione dell'evento
+   * Metodo che setta la Descrizione dell'evento.
    *
    * @param descrizioneEvento descrizione dell'evento, String
    */
@@ -173,7 +173,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce la Nota
+   * Metodo che restituisce la Nota.
    *
    * @return String - nota
    */
@@ -182,7 +182,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta la Nota
+   * Metodo che setta la Nota.
    *
    * @param nota breve testo per informazioni aggiuntive, String
    */
@@ -191,7 +191,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che restituisce lo Stato
+   * Metodo che restituisce lo Stato.
    *
    * @return Stato - stato
    */
@@ -200,7 +200,7 @@ public class RichiestaPreventivo {
   }
 
   /**
-   * Metodo che setta lo Stato
+   * Metodo che setta lo Stato.
    *
    * @param stato stato della richiesta, Stato
    */
@@ -210,17 +210,17 @@ public class RichiestaPreventivo {
 
   @Override
   public String toString() {
-    return "RichiestaPreventivo{" +
-        "idRichiesta=" + idRichiesta +
-        ", codiceFiscale='" + codiceFiscale + '\'' +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", titolo='" + titolo + '\'' +
-        ", luogoEvento='" + luogoEvento + '\'' +
-        ", descrizioneEvento='" + descrizioneEvento + '\'' +
-        ", nota='" + nota + '\'' +
-        ", dataRichiesta=" + dataRichiesta +
-        ", stato=" + stato +
-        '}';
+    return "RichiestaPreventivo{"
+        + "idRichiesta=" + idRichiesta
+        + ", codiceFiscale='" + codiceFiscale + '\''
+        + ", partitaIva='" + partitaIva + '\''
+        + ", titolo='" + titolo + '\''
+        + ", luogoEvento='" + luogoEvento + '\''
+        + ", descrizioneEvento='" + descrizioneEvento + '\''
+        + ", nota='" + nota + '\''
+        + ", dataRichiesta=" + dataRichiesta
+        + ", stato=" + stato
+        + '}';
   }
 
   private int idRichiesta;
@@ -232,8 +232,9 @@ public class RichiestaPreventivo {
   private String nota;
   private Date dataRichiesta;
 
-  public enum Stato {IN_ATTESA, CONFERMATO, RIFIUTATO}
+  public enum Stato {
+    IN_ATTESA, CONFERMATO, RIFIUTATO
+  }
 
-  ;
   private Stato stato;
 }

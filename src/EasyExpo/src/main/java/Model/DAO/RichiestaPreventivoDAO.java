@@ -13,7 +13,7 @@ import java.util.List;
  * <p> RichiestaPreventivoDAO e' una classe di tipo DAO (Data Access Object)
  * che gestisce i dati persistenti dell'oggetto RichiestaPreventivo </p>
  *
- * @author
+ * @author GIUSEPPE AVINO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -21,7 +21,8 @@ import java.util.List;
 public class RichiestaPreventivoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo RichiestaPreventivo correlato ad un idRichiesta dato in input
+   * Metodo che ritorna l'oggetto di tipo RichiestaPreventivo correlato ad
+   * un idRichiesta dato in input.
    *
    * @param idRichiesta codice identificativo, Intero
    * @return RichiestaPreventivo - Oggetto di tipo {@link RichiestaPreventivo}
@@ -31,7 +32,9 @@ public class RichiestaPreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.idRichiesta=? AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
+              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f "
+                  + "WHERE rp.idRichiesta=? AND rp.codiceFiscale=c.codiceFiscale AND"
+                  + " rp.partitaIva=f.partitaIva");
       ps.setInt(1, idRichiesta);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -58,8 +61,9 @@ public class RichiestaPreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.partitaIva=?" +
-                  "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
+              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as "
+                  + "f WHERE rp.partitaIva=? AND rp.codiceFiscale=c.codiceFiscale AND "
+                  + "rp.partitaIva=f.partitaIva");
       ps.setString(1, partitaIva);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -86,8 +90,9 @@ public class RichiestaPreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE rp.codiceFiscale=?" +
-                  "AND rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva");
+              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as "
+                  + "f WHERE rp.codiceFiscale=? AND rp.codiceFiscale=c.codiceFiscale"
+                  + " AND rp.partitaIva=f.partitaIva");
       ps.setString(1, codiceFiscale);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -111,18 +116,19 @@ public class RichiestaPreventivoDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB
+   * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB.
    *
    * @param offset indice partenza, Intero
    * @param limit  indice fine , Intero
-   * @return List &lt;RichiestaPreventivo&gt; - {@link List} di oggetti di tipo {@link RichiestaPreventivo}
+   * @return List &lt;RichiestaPreventivo&gt; - {@link List} di oggetti di tipo
+   * {@link RichiestaPreventivo}
    */
   public List<RichiestaPreventivo> doRetrieveAll(int offset, int limit) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE" +
-                  "rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva LIMIT ?, ?");
+              "SELECT * FROM RichiestaPreventivo as rp, Cliente as c, Fornitore as f WHERE"
+                  + "rp.codiceFiscale=c.codiceFiscale AND rp.partitaIva=f.partitaIva LIMIT ?, ?");
       ps.setInt(1, offset);
       ps.setInt(2, limit);
       ArrayList<RichiestaPreventivo> richieste = new ArrayList<>();
@@ -147,7 +153,7 @@ public class RichiestaPreventivoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo RichiestaPreventivo
+   * Metodo che crea un'istanza, all'interno del DB, di tipo RichiestaPreventivo.
    *
    * @param richiestaPreventivo Oggetto di tipo {@link RichiestaPreventivo}
    */
@@ -155,7 +161,9 @@ public class RichiestaPreventivoDAO {
   public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, partitaIva, titolo, luogoEvento, descrizioneEvento, nota, dataRichiesta, stato) VALUES(?,?,?,?,?,?,?,?,?)",
+          "INSERT INTO RichiestaPreventivo (idRichiesta, codiceFiscale, "
+              + "partitaIva, titolo, luogoEvento,"
+              + " descrizioneEvento, nota, dataRichiesta, stato) VALUES(?,?,?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
 
       ps.setInt(1, richiestaPreventivo.getIdRichiesta());
@@ -167,7 +175,7 @@ public class RichiestaPreventivoDAO {
       ps.setString(7, richiestaPreventivo.getNota());
       ps.setDate(8, richiestaPreventivo.getDataRichiesta());
       ps.setString(9,
-          richiestaPreventivo.getStato().toString());//oppure .name() per caratteri uguali
+          richiestaPreventivo.getStato().toString()); //oppure .name() per caratteri uguali
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
@@ -180,7 +188,8 @@ public class RichiestaPreventivoDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza RichiestaPreventivo correlata all'idRichiesta dato in input
+   * Metodo che elimina dal DB l'istanza RichiestaPreventivo correlata
+   * all'idRichiesta dato in input.
    *
    * @param idRichiesta codice identificativo, Intero
    */
@@ -188,7 +197,8 @@ public class RichiestaPreventivoDAO {
   public void deleteRichiestePreventivo(int idRichiesta) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps =
-          con.prepareStatement("DELETE FROM RichiestaPreventivo WHERE idRichiesta=?");
+          con.prepareStatement("DELETE FROM RichiestaPreventivo "
+              + "WHERE idRichiesta=?");
       ps.setInt(1, idRichiesta);
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("DELETE error.");
