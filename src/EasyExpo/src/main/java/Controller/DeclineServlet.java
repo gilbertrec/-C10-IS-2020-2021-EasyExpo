@@ -3,6 +3,7 @@ package Controller;
 import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +25,11 @@ public class DeclineServlet extends HttpServlet {
     RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
     RichiestaPreventivo richiesta =
         richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
-      //r.setStato(RichiestaPreventivo.Stato.valueOf(rs.getString(9)));
     RichiestaPreventivo.Stato stato = RichiestaPreventivo.Stato.valueOf("RIFIUTATO");
     richiesta.setStato(stato);
 
-
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("RichiesteServlet");
+    requestDispatcher.forward(request, response);
 
   }
 }

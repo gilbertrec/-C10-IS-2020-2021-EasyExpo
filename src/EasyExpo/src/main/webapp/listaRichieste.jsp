@@ -77,7 +77,7 @@
                                            class="red-more">READ MORE</a>
                                         <c:choose>
                                             <c:when test="${fornitore != null and fornitore.abbonato == true}">
-                                                <a href="#"
+                                                <a href="DeclineServlet?idRichiesta=<%=richieste.get(i).getIdRichiesta()%>"
                                                    class="red-more" style="margin-left: 320px">DECLINE</a>
                                             </c:when>
                                         </c:choose>

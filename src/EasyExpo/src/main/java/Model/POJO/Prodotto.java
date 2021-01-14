@@ -193,7 +193,7 @@ public class Prodotto {
   }
 
   /**
-   * Metodo che converte l'oggetto Prodotto in stringa
+   * Metodo che converte l'oggetto Prodotto in stringa.
    *
    * @return String
    */

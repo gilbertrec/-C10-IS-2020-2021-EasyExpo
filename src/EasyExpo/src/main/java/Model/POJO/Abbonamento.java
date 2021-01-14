@@ -4,9 +4,9 @@ import java.sql.Date;
 
 /**
  * Abbonamento e' la classe che gestisce un
- * ordinario oggetto Abbonamento
+ * ordinario oggetto Abbonamento.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Abbonamento {
 
   /**
-   * Metodo costruttore della classe Abbonamento
+   * Metodo costruttore della classe Abbonamento.
    *
    * @param idAbbonamento Codice identificativo abbonamento, Intero
    * @param partitaIva    Codice alfanumerico identificativo fornitore, String
@@ -30,7 +30,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo costruttore di default della classe Abbonamento
+   * Metodo costruttore di default della classe Abbonamento.
    */
 
   public Abbonamento() {
@@ -38,7 +38,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che restituisce l'idAbbonamento
+   * Metodo che restituisce l'idAbbonamento.
    *
    * @return int - idAbbonamento
    */
@@ -48,7 +48,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che setta l'idAbbonamento
+   * Metodo che setta l'idAbbonamento.
    *
    * @param idAbbonamento Codice identificativo abbonamento, Intero
    */
@@ -58,7 +58,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che restituisce la partitaIva
+   * Metodo che restituisce la partitaIva.
    *
    * @return String - partitaIva
    */
@@ -68,7 +68,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che setta la partitaIva
+   * Metodo che setta la partitaIva.
    *
    * @param partitaIva Codice alfanumerico identificativo fornitore, String
    */
@@ -78,7 +78,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che restituisce dataInizio
+   * Metodo che restituisce dataInizio.
    *
    * @return Date - dataInizio
    */
@@ -88,7 +88,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che setta dataInizio
+   * Metodo che setta dataInizio.
    *
    * @param dataInizio Data inizio Abbonamento, Date
    */
@@ -98,7 +98,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che restituisce dataFine
+   * Metodo che restituisce dataFine.
    *
    * @return Date - dataFine
    */
@@ -108,7 +108,7 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che setta dataFine
+   * Metodo che setta dataFine.
    *
    * @param dataFine - Data fine Abbonamento, Date
    */
@@ -118,19 +118,19 @@ public class Abbonamento {
   }
 
   /**
-   * Metodo che converte l'oggetto Abbonamento in stringa
+   * Metodo che converte l'oggetto Abbonamento in stringa.
    *
    * @return String
    */
 
   @Override
   public String toString() {
-    return "Abbonamento{" +
-        "idAbbonamento=" + idAbbonamento +
-        ", partitaIva='" + partitaIva + '\'' +
-        ", dataInizio=" + dataInizio +
-        ", dataFine=" + dataFine +
-        '}';
+    return "Abbonamento{"
+        + "idAbbonamento=" + idAbbonamento
+        + ", partitaIva='" + partitaIva + '\''
+        + ", dataInizio=" + dataInizio
+        + ", dataFine=" + dataFine
+        + '}';
   }
 
   private int idAbbonamento;
