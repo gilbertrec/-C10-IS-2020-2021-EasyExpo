@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p> RichiestaPreventivoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto RichiestaPreventivo </p>
+ * che gestisce i dati persistenti dell'oggetto RichiestaPreventivo </p>.
  *
  * @author GIUSEPPE AVINO
  * @version 1.0
@@ -57,6 +57,13 @@ public class RichiestaPreventivoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB.
+   *
+   * @param partitaIva codice alfanumeirco, String
+   * @return List &lt;RichiestaPreventivo&gt; - {@link List} di oggetti di tipo
+   * {@link RichiestaPreventivo}
+   */
 
   public List<RichiestaPreventivo> doRetrieveByPartitaIva(String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
@@ -86,6 +93,14 @@ public class RichiestaPreventivoDAO {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * Metodo che ritorna le istanze di tipo RichiestaPreventivo contenute nel DB.
+   *
+   * @param codiceFiscale codice alfanumerico, String
+   * @return List &lt;RichiestaPreventivo&gt; - {@link List} di oggetti di tipo
+   * {@link RichiestaPreventivo}
+   */
 
   public List<RichiestaPreventivo> doRetrieveByCodiceFiscale(String codiceFiscale) {
     try (Connection con = DBConnection.getConnection()) {

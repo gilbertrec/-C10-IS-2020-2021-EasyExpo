@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,6 +55,16 @@ public class ProdottoRichiestaDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna l'oggetto di tipo ProdottoRichiesta correlato ad un
+   * idProdotto, idRichiesta e partitaIva dati in input.
+   *
+   * @param idProdotto codice numerico, Intero
+   * @param idRichiesta codice nuemerico, Intero
+   * @param partitaIva codice alfanumerico, String
+   * @return List &lt;ProdottoRichiesta&gt; - {@link List} di oggetti di tipo
+   * {@link ProdottoRichiesta}
+   */
 
   public ProdottoRichiesta doRetrieveByIdProdottoPartitaIvaIdRichiesta(int idProdotto,
                                                                        String partitaIva,
@@ -87,6 +98,15 @@ public class ProdottoRichiestaDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo ProdottoRicheista contenute nel DB.
+   *
+   * @param idRichiesta codice nuemerico, Intero
+   * @return List &lt;ProdottoRichiesta&gt; - {@link List} di oggetti di tipo
+   * {@link ProdottoRichiesta}
+   */
+
+
   public List<ProdottoRichiesta> doRetrieveByIdRichiesta(int idRichiesta) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
@@ -116,6 +136,16 @@ public class ProdottoRichiestaDAO {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * Metodo che ritorna le istanze di tipo ProdottoRicheista contenute nel DB.
+   *
+   * @param idProdotto codice numerico, Intero
+   * @param partitaIva codice alfanumerico, String
+   * @return List &lt;ProdottoRichiesta&gt; - {@link List} di oggetti di tipo
+   * {@link ProdottoRichiesta}
+   */
+
 
   public List<ProdottoRichiesta> doRetrieveByIdProdottoePartitaIva(int idProdotto,
                                                                    String partitaIva) {

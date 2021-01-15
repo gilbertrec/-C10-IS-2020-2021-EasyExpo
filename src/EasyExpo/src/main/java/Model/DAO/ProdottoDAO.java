@@ -12,9 +12,9 @@ import java.util.List;
 
 /**
  * <p> ProdottoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto Prodotto </p>
+ * che gestisce i dati persistenti dell'oggetto Prodotto </p>.
  *
- * @author
+ * @author GIUSEPPE AVINO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -22,7 +22,7 @@ import java.util.List;
 public class ProdottoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad un idProdotto dato in input
+   * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad un idProdotto dato in input.
    *
    * @param idProdotto codice identificativo prodotto, Intero
    * @return Prodotto - Oggetto di tipo {@link Prodotto}
@@ -56,12 +56,14 @@ public class ProdottoDAO {
     }
   }
 
+
   /**
-   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
+   * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad
+   * un idProdotto e ad una partitaIva date in input.
    *
-   * @param offset indice partenza, Intero
-   * @param limit  indice fine , Intero
-   * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   * @param idProdotto codice identificativo prodotto, Intero
+   * @param partitaIva codice alfanumeirco, String
+   * @return Prodotto - Oggetto di tipo {@link Prodotto}
    */
   public Prodotto doRetrieveByIdProdottoEPartitaIva(int idProdotto, String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
@@ -92,6 +94,13 @@ public class ProdottoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
+   *
+   * @param partitaIva codice alfanumerico, String
+   * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   */
+
   public List<Prodotto> doRetrieveByPartitaIva(String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
@@ -120,6 +129,15 @@ public class ProdottoDAO {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
+   *
+   * @param offset indice partenza, Intero
+   * @param limit  indice fine , Intero
+   * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   */
+
 
   public List<Prodotto> doRetrieveAll(int offset, int limit) {
     try (Connection con = DBConnection.getConnection()) {
@@ -152,7 +170,7 @@ public class ProdottoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo Prodotto
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Prodotto.
    *
    * @param prodotto Oggetto di tipo {@link Preventivo}
    */
@@ -183,7 +201,7 @@ public class ProdottoDAO {
   }
 
   /**
-   * Metodo che elimina dal DB l'istanza Prodotto correlata all'idProdotto dato in input
+   * Metodo che elimina dal DB l'istanza Prodotto correlata all'idProdotto dato in input.
    *
    * @param idProdotto codice identificativo Preventivo, Intero
    */
@@ -202,6 +220,13 @@ public class ProdottoDAO {
       throw new RuntimeException(e);
     }
   }
+
+  /**
+   * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
+   *
+   * @param ricercato , String
+   * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   */
 
   public List<Prodotto> doRetrieveByTitolo(String ricercato) {
     try (Connection con = DBConnection.getConnection()) {
@@ -229,6 +254,12 @@ public class ProdottoDAO {
     }
 
   }
+
+  /**
+   * Metodo che aggiorna un'istanza, all'interno del DB, di tipo Prodotto.
+   *
+   * @param prodotto Oggetto di tipo {@link Preventivo}
+   */
 
   public void updateProdotto(Prodotto prodotto) {
     try (Connection con = DBConnection.getConnection()) {

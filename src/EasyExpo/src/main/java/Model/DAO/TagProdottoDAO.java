@@ -10,9 +10,9 @@ import java.sql.Statement;
 
 /**
  * <p> TagProdottoDAO e' una classe di tipo DAO (Data Access Object)
- * che gestisce i dati persistenti dell'oggetto TagProdotto </p>
+ * che gestisce i dati persistenti dell'oggetto TagProdotto </p>.
  *
- * @author
+ * @author DAVIDE PAPPALARDO
  * @version 1.0
  * @since 2020-12-29
  */
@@ -20,7 +20,7 @@ import java.sql.Statement;
 public class TagProdottoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad un idTag dato in input
+   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad un idTag dato in input.
    *
    * @param idTag codice identificativo, Intero
    * @return TagProdotto - Oggetto di tipo {@link TagProdotto}
@@ -51,7 +51,7 @@ public class TagProdottoDAO {
   }
 
   /**
-   * Metodo che crea un'istanza, all'interno del DB, di tipo TagProdotto
+   * Metodo che crea un'istanza, all'interno del DB, di tipo TagProdotto.
    *
    * @param tagProdotto Oggetto di tipo {@link Tag}
    */
@@ -79,7 +79,7 @@ public class TagProdottoDAO {
 
   /**
    * Metodo che elimina dal DB l'istanza TagProdotto correlata all'idTag,
-   * all'idProdotto e alla partitaIva dati in input
+   * all'idProdotto e alla partitaIva dati in input.
    *
    * @param idTag      codice identificativo tag, Intero
    * @param idProdotto codice identificativo prodotto, Intero
@@ -102,7 +102,7 @@ public class TagProdottoDAO {
   }
 
   /**
-   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad una partitaIva data in input
+   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad una partitaIva data in input.
    *
    * @param idProdotto codice identificativo prodotto, Intero
    * @param partitaIva codice alfanumerico identificativo fornitore, String
