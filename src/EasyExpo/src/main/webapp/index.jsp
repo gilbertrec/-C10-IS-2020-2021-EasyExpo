@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +47,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">
-                            Prodotto da EASYEXPO
+
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfl font-extra-bold tp-resizeme"
@@ -61,7 +62,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:80px; color:#2d3a4b; text-transform:uppercase; white-space: nowrap;">
-                            <small class="font-regular">€</small>${prezzo} </div>
+                            <small class="font-regular"></small>${prezzo} </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme"
                              data-x="left" data-hoffset="0"
@@ -75,7 +76,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            casse
+                            Trova tutto
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme"
@@ -90,7 +91,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            da palco
+                            ciò che cerchi!
                         </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption lfb tp-resizeme"
@@ -103,7 +104,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn">AGGIUNGI AL CARRELLO</a></div>
+                             style="z-index: 8;"></div>
                     </li>
 
                     <!-- SLIDE 2 -->
@@ -204,7 +205,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 7; font-size:18px; color:#fff; max-width: auto; max-height: auto; white-space: nowrap;">
-                            Prodotto da EASYEXPO1
+
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfl font-extra-bold tp-resizeme"
@@ -219,7 +220,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:80px; color:#2d3a4b; text-transform:uppercase; white-space: nowrap;">
-                            <small class="font-regular">€</small>${prezzo} </div>
+                            <small class="font-regular"></small>${prezzo} </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme"
                              data-x="left" data-hoffset="0"
@@ -233,7 +234,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            casse
+                            Organizza
                         </div>
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption sfr font-extra-bold tp-resizeme"
@@ -248,7 +249,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:100px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            da palco
+                            il tuo evento
                         </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption lfb tp-resizeme"
@@ -261,7 +262,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn">AGGIUNGI AL CARRELLO</a></div>
+                             style="z-index: 8;"><a href="#." class="btn"></a></div>
                     </li>
                 </ul>
             </div>
@@ -283,101 +284,50 @@
                 <!-- Popular Item Slide -->
                 <div class="papular-block block-slide">
 
-                    <!-- Item -->
-                    <div class="item">
-                        <!-- Item img -->
-                        <div class="item-img"><img class="img-1" src="images/product-1.jpg" alt=""> <img class="img-2"
-                                                                                                         src="images/product-2.jpg"
-                                                                                                         alt="">
-                            <!-- Overlay -->
-                            <div class="overlay">
-                                <div class="position-center-center">
-                                    <div class="inn"><a href="images/product-1.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top"
-                                                                               title="Aggiungi al Carrello"><i
-                                            class="icon-basket"></i></a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item Name -->
-                        <div class="item-name"><a href="SpecificheProdottoServlet">stone cup</a>
-                            <p>Lorem ipsum dolor sit amet</p>
-                        </div>
-                        <!-- Price -->
-                        <span class="price"><small>€</small>${prezzo}</span></div>
+                    <!-- Item 0 -->
 
-                    <!-- Item -->
-                    <div class="item">
+                    <div class="itema">
                         <!-- Item img -->
-                        <div class="item-img"><img class="img-1" src="images/product-2.jpg" alt=""> <img class="img-2"
-                                                                                                         src="images/product-2.jpg"
-                                                                                                         alt="">
-                            <!-- Overlay -->
-                            <div class="overlay">
-                                <div class="position-center-center">
-                                    <div class="inn"><a href="images/product-2.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top"
-                                                                               title="Aggiungi al Carrello"><i
-                                            class="icon-basket"></i></a></div>
-                                </div>
-                            </div>
+                        <div class="item-img"><img class="img-1" src="${prodottiNuovi.get(0).immagine}" alt="" width="270px" height="352px">
                         </div>
                         <!-- Item Name -->
-                        <div class="item-name"><a href="#.">gray bag</a>
-                            <p>Lorem ipsum dolor sit amet</p>
+                        <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${prodottiNuovi.get(0).idProdotto}"/>&partitaIva=<c:out value="${prodottiNuovi.get(0).partitaIva}"/>"> <c:out value="${prodottiNuovi.get(0).getTitolo()}" /></a>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>€</small>${prezzo}</span></div>
+                        <span class="price"><small>€</small>${prodottiNuovi.get(0).prezzo}</span></div>
 
-                    <!-- Item -->
-                    <div class="item">
+                    <!-- Item 1-->
+                    <div class="itema">
                         <!-- Item img -->
-                        <div class="item-img"><img class="img-1" src="images/product-3.jpg" alt=""> <img class="img-2"
-                                                                                                         src="images/product-2.jpg"
-                                                                                                         alt="">
-                            <!-- Overlay -->
-                            <div class="overlay">
-                                <div class="position-center-center">
-                                    <div class="inn"><a href="images/product-3.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top"
-                                                                               title="Aggiungi al Carrello"><i
-                                            class="icon-basket"></i></a></div>
-                                </div>
-                            </div>
+                        <div class="item-img"><img class="img-1" src="${prodottiNuovi.get(1).immagine}" alt="" width="270px" height="352px">
                         </div>
                         <!-- Item Name -->
-                        <div class="item-name"><a href="#.">chiar</a>
-                            <p>Lorem ipsum dolor sit amet</p>
+                        <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${prodottiNuovi.get(1).idProdotto}"/>&partitaIva=<c:out value="${prodottiNuovi.get(1).partitaIva}"/>"><c:out value="${prodottiNuovi.get(1).getTitolo()}" /></a>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>€</small>${prezzo}</span></div>
+                        <span class="price"><small>€</small>${prodottiNuovi.get(1).prezzo}</span></div>
 
-                    <!-- Item -->
-                    <div class="item">
+                    <!-- Item 2-->
+                    <div class="itema">
                         <!-- Item img -->
-                        <div class="item-img"><img class="img-1" src="images/product-4.jpg" alt=""> <img class="img-2"
-                                                                                                         src="images/product-2.jpg"
-                                                                                                         alt="">
-                            <!-- Overlay -->
-                            <div class="overlay">
-                                <div class="position-center-center">
-                                    <div class="inn"><a href="images/product-4.jpg" data-lighter><i
-                                            class="icon-magnifier"></i></a> <a href="#." data-toggle="tooltip"
-                                                                               data-placement="top"
-                                                                               title="Aggiungi al Carrello"><i
-                                            class="icon-basket"></i></a></div>
-                                </div>
-                            </div>
+                        <div class="item-img"><img class="img-1" src="${prodottiNuovi.get(2).immagine}" alt="" width="270px" height="352px">
                         </div>
                         <!-- Item Name -->
-                        <div class="item-name"><a href="#.">STool</a>
-                            <p>Lorem ipsum dolor sit amet</p>
+                        <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${prodottiNuovi.get(2).idProdotto}"/>&partitaIva=<c:out value="${prodottiNuovi.get(2).partitaIva}"/>"><c:out value="${prodottiNuovi.get(2).getTitolo()}" /></a>
                         </div>
                         <!-- Price -->
-                        <span class="price"><small>€</small>${prezzo}</span></div>
+                        <span class="price"><small>€</small>${prodottiNuovi.get(2).prezzo}</span></div>
+
+                    <!-- Item 3-->
+                    <div class="itema">
+                        <!-- Item img -->
+                        <div class="item-img"><img class="img-1" src="${prodottiNuovi.get(3).immagine}" alt="" width="270px" height="352px">
+                        </div>
+                        <!-- Item Name -->
+                        <div class="item-name"><a href="ProdottoServlet?id=<c:out value="${prodottiNuovi.get(3).idProdotto}"/>&partitaIva=<c:out value="${prodottiNuovi.get(3).partitaIva}"/>"><c:out value="${prodottiNuovi.get(3).getTitolo()}" /></a>
+                        </div>
+                        <!-- Price -->
+                        <span class="price"><small>€</small>${prodottiNuovi.get(3).prezzo}</span></div>
                 </div>
             </div>
         </section>
@@ -398,9 +348,6 @@
                 <ul class="social_icons">
                     <li><a href="#."><i class="icon-social-facebook"></i></a></li>
                     <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                    <!--<li><a href="#."><i class="icon-social-tumblr"></i></a></li>
-                   <li><a href="#."><i class="icon-social-youtube"></i></a></li>
-                   <li><a href="#."><i class="icon-social-dribbble"></i></a></li>-->
                 </ul>
             </div>
         </section>

@@ -50,7 +50,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-12">
                                 <h6>RICHIEDI UN PREVENTIVO</h6>
-                                <form action="CompilaRichiesta">
+                                <form action="InoltroRichiesta">
                                     <ul class="row">
 
                                         <!-- TITOLO -->
@@ -87,22 +87,30 @@
                                     <ul class="papu-post margin-top-20">
                                         <%
                                             ArrayList<Carrello.ProdottoQuantita> listaProdotti = (ArrayList<Carrello.ProdottoQuantita>) session.getAttribute("listaProdotti");
-
+                                            float totaleComplessivo=0;
                                             for (int i = 0; i < listaProdotti.size(); i++) {
                                         %>
 
                                         <li class="col-md-6">
-                                            <div class="media-left media-middle"><a href="#"> <img class="media-object"
+                                            <div class="media-left media-middle"><a style="width: 170px"> <img class="media-object"
                                                                                       src="<%=listaProdotti.get(i).getProdotto().getImmagine()%>"
-                                                                                      alt="" width="170px" height="170px"></a></div>
-                                            <div class="media-body"><a class="media-heading"
-                                                                       href="#."><small>€</small><%=listaProdotti.get(i)
+                                                                                      alt="" height="170px"></a></div>
+                                            <div class="media-body">
+
+                                                <span><h4> <%=listaProdotti.get(i).getProdotto().getTitolo()%> </h4></span>
+
+                                                <a class="media-heading">
+                                                <small>€</small><%=listaProdotti.get(i)
                                                     .getProdotto().getPrezzo()%> x <%=listaProdotti.get(i)
                                                     .getQuantita()%>
-                                                <span><% float totale = listaProdotti.get(i).getProdotto().getPrezzo() * listaProdotti.get(i).getQuantita();%>
-                                            <%=totale%></span>
                                             </a>
-                                                <span><%=listaProdotti.get(i).getProdotto().getTitolo()%></span></div>
+
+                                                <span><% float totale = listaProdotti.get(i).getProdotto().getPrezzo() * listaProdotti.get(i).getQuantita();%>
+                                            <h6>Totale: <%=totale%> </h6></span>
+
+                                                <%totaleComplessivo = totaleComplessivo + totale; %>
+
+                                            </div>
                                         </li>
                                         <!-- DATA INIZIO NOLEGGIO -->
                                         <li class="col-md-6">
@@ -114,11 +122,16 @@
                                                 <input type="date" name="dataFine" value="" placeholder="">
                                             </label>
                                         </li>
+
+
                                         <%}%>
+
+                                        <label><h5>COSTO TOTALE: <span><h4>€ <%=totaleComplessivo%> </h4></span> </h5></label>
                                     </ul>
                                     <!-- INOLTRA -->
                                     <li class="col-md-6">
-                                        <button type="submit" class="btn">INOLTRA</button>
+                                                <input type="hidden" name="listaProdotti" value="${listaProdotti}"> <!--in sessione dovrebbe già esserci comunque-->
+                                                <input class="btn" style="font-size: 18px; padding: 0px 230px; margin-top: 19px" type="submit" value="INOLTRA">
                                     </li>
                                 </form>
                             </div>

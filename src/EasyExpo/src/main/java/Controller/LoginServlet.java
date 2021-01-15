@@ -8,6 +8,7 @@ import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+  private final ProdottoDAO prodottoDAO = new ProdottoDAO();
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     ClienteDAO clienteDAO = new ClienteDAO();
@@ -33,6 +36,15 @@ public class LoginServlet extends HttpServlet {
       throw new MyServletException("Email e/o password non validi.");
     } else if (cliente != null && fornitore == null) {
       request.getSession().setAttribute("cliente", cliente);
+
+
+      List<Prodotto> tuttiP = prodottoDAO.doRetrieveAll();
+      int inizio= tuttiP.size()-4;
+      List<Prodotto> prodottiNuovi = prodottoDAO.doRetrieveRandom(inizio,4);
+
+      request.setAttribute("prodottiNuovi", prodottiNuovi);
+
+
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
       requestDispatcher.forward(request, response);
     } else if (cliente == null && fornitore != null) {

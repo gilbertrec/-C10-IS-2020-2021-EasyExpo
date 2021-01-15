@@ -139,14 +139,13 @@ public class ProdottoDAO {
    */
 
 
-  public List<Prodotto> doRetrieveAll(int offset, int limit) {
+  public List<Prodotto> doRetrieveAll() {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT * FROM Prodotto as p, Fornitore as f "
-                      + "WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
-      ps.setInt(1, offset);
-      ps.setInt(2, limit);
+                      + "WHERE p.partitaIva=f.partitaIva");
+
       ArrayList<Prodotto> prodotti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
@@ -280,6 +279,37 @@ public class ProdottoDAO {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public List<Prodotto> doRetrieveRandom(int offset, int limit) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con
+              .prepareStatement(
+                      "SELECT * FROM Prodotto as p, Fornitore as f "
+                              + "WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
+      ps.setInt(1, offset);
+      ps.setInt(2,limit);
+      ArrayList<Prodotto> prodotti = new ArrayList<>();
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        Prodotto p = new Prodotto();
+        p.setIdProdotto(rs.getInt(1));
+        p.setPartitaIva(rs.getString(2));
+        p.setTitolo(rs.getString(3));
+        p.setDescrizione(rs.getString(4));
+        String a = rs.getString(5);
+        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
+        p.setTipo(t);
+        p.setQuantità(rs.getInt(6));
+        p.setPrezzo(rs.getFloat(7));
+        p.setImmagine(rs.getString(8));
+        prodotti.add(p);
+      }
+      return prodotti;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
   }
 
 }
