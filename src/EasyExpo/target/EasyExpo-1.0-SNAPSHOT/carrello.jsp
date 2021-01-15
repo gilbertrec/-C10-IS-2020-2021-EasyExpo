@@ -184,9 +184,13 @@
                                 <div class="row">
 
                                     <!-- PREVENTIVO -->
+                                    <form action="CompilaRichiesta" method="post">
                                     <div class="col-sm-7">
+                                        <input type="hidden" name="carrello" value="${carrello}">
+                                        <input type="hidden" name="fornitore" value="${fornitori.partitaIva}">
                                         <input class="btn" style="font-size: 18px; padding: 0px 100px; margin-top: 19px" type="submit" value="INVIA UN PREVENTIVO A QUESTO FORNITORE">
                                     </div>
+                                    </form>
 
                                     <!-- SUB TOTAL -->
                                     <div class="col-sm-5">
