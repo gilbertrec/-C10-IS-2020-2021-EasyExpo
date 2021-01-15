@@ -22,7 +22,7 @@ public class AdminDAO {
    * @param email Indirizzo email identificativo, String
    * @return Admin - Oggetto di tipo {@link Admin}
    */
-  public Admin doRetrieveByEmail(String email) {
+  public Admin doRetrieveByEmail(String email)  {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "SELECT email, password FROM Admin WHERE email=?");
