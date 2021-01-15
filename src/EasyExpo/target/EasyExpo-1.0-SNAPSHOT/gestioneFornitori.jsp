@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="js/NotificaSospensione.js"></script>
     <title>Gestione Fornitori</title>
 </head>
 <body>
@@ -28,6 +29,7 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaFornitoriServlet");
             requestDispatcher.forward(request,response);
         }
+        String url;
     %>
     <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
     <div id="content">
@@ -66,7 +68,8 @@
                                     out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-ban" title="Sospendi" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=fornitore.getPartitaIva()%>&flag=1"></a>
+                                    <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
+                                    <a class="icon-ban" onclick="NotificaSospension('<%=url%>')"></a>
                                     <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>
