@@ -66,7 +66,7 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-bulb" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
+                                    <a class="icon-check" title="Riabilita" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
                                 </td>
                             </tr>
                             <% } %>

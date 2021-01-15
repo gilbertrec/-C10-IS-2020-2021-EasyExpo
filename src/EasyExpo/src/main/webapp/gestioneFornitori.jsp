@@ -66,8 +66,8 @@
                                     out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-ban" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=fornitore.getPartitaIva()%>&flag=1"></a>
-                                    <a class="icon-user-female " href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
+                                    <a class="icon-ban" title="Sospendi" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=fornitore.getPartitaIva()%>&flag=1"></a>
+                                    <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>
                             <% } %>

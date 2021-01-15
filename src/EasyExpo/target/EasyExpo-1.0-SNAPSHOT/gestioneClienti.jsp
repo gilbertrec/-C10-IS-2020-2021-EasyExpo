@@ -59,7 +59,6 @@
                             <%
                             for(Cliente cliente:clienti) { %>
                             <tr class="row">
-                                <td></td>
                                 <%
                                     out.append("<td>" + cliente.getCodiceFiscale() + " </td> ");
                                     out.append("<td>" + cliente.getNome() + " </td> ");
@@ -67,7 +66,7 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-ban" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
+                                    <a class="icon-ban" title="Sospendi" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
                                 </td>
                             </tr>
                             <% } %>
