@@ -4,7 +4,7 @@ package Model.POJO;
  * TagProdotto e' la classe che gestisce un
  * ordinario oggetto TagProdotto.
  *
- * @author GAETANO IULIANO
+ * @author LUCREZIA ROBUSTELLI
  * @version 1.0
  * @since 2021-01-02
  */

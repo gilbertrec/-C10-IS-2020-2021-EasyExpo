@@ -6,7 +6,7 @@ import java.sql.Date;
  * ProdottoRichiesta e' la classe che gestisce un
  * ordinario oggetto ProdottoRichiesta.
  *
- * @author gAETANO IULIANO
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2021-01-02
  */

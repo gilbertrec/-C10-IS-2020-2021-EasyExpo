@@ -6,7 +6,7 @@ import java.sql.Date;
  * MetodoPagamento e' la classe che gestisce un
  * ordinario oggetto MetodoPagamento.
  *
- * @author DAVIDE PAPPALARDO
+ * @author GAETANO IULIANO
  * @version 1.0
  * @since 2020-12-29
  */
