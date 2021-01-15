@@ -71,7 +71,7 @@
                                         <li class="col-md-6">
                                             <label> TITOLO
                                                 <input type="text" name="titolo" value="${prodotto.titolo}"
-                                                       placeholder="">
+                                                       placeholder="" required pattern="[A-Z a-z 0-9]{1,30}" title="Deve essere stringa alfanumerica con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -98,7 +98,7 @@
                                         <li class="col-md-6">
                                             <label> PREZZO
                                                 <input type="text" name="prezzo" value="${prodotto.prezzo}"
-                                                       placeholder="">
+                                                       placeholder="" required pattern="[0-9]{1,5}.[0-9]{2}" title="Deve contenere un numero decimale con due cifre dopo il punto e massimo 5 cifre prima">
                                             </label>
                                         </li>
 
@@ -106,7 +106,7 @@
                                         <li class="col-md-6">
                                             <label> QUANTITÀ (1-999)
                                                 <input type="number" name="quantita" value="${prodotto.quantità}"
-                                                       placeholder="" min="1" max="999">
+                                                       placeholder="" min="1" max="999" required>
                                             </label>
                                         </li>
 
@@ -114,14 +114,14 @@
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
                                                 <textarea name="descrizione" rows="5"
-                                                          cols="80">${prodotto.descrizione}</textarea>
+                                                          cols="80" required>${prodotto.descrizione}</textarea>
                                             </label>
                                         </li>
 
                                         <li class="col-md-6">
                                             <label> FOTO
                                                 <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
-                                                       placeholder="">
+                                                       placeholder="" required title="Immagine non inserita">
                                             </label>
                                         </li>
 
