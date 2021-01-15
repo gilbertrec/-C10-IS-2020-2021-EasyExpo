@@ -11,6 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="js/Notifiche.js"></script>
     <title>Gestione Prodotti</title>
 </head>
 <body>
@@ -29,6 +30,7 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaProdottiServlet");
             requestDispatcher.forward(request,response);
         }
+        String url;
     %>
         <% List<Prodotto> prodotti = (List<Prodotto>) request.getSession().getAttribute("prodotti");%>
     <div id="content">
@@ -71,7 +73,9 @@
                                     out.append("<td>" + prodotto.getPrezzo() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-trash" title="Elimina" href="/EasyExpo_war_exploded/EliminaProdottoServlet?id=<%=prodotto.getIdProdotto()%>&partitaIva=<%=prodotto.getPartitaIva()%>"></a>
+                                    <% String x = String.valueOf(prodotto.getIdProdotto())%>
+                                    <%url = "/EasyExpo_war_exploded/EliminaProdottoServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
+                                    <a class="icon-trash" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>

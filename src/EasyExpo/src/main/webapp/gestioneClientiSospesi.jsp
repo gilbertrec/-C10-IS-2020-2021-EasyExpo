@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="js/Notifiche.js"></script>
     <title>Gestione Clienti Sospesi</title>
 </head>
 <body>
@@ -28,6 +29,7 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaClientiSospesiServlet");
             requestDispatcher.forward(request,response);
         }
+        String url;
     %>
     <% List<Cliente> clienti = (List<Cliente>) request.getSession().getAttribute("clienti");%>
     <div id="content">
@@ -58,7 +60,6 @@
                             </tr>
                             <%for(Cliente cliente:clienti) { %>
                             <tr class="row">
-                                <td></td>
                                 <%
                                     out.append("<td>" + cliente.getCodiceFiscale() + " </td> ");
                                     out.append("<td>" + cliente.getNome() + " </td> ");
@@ -66,7 +67,8 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-check" title="Riabilita" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
+                                    <% url = "/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
+                                    <a class="icon-check" onclick="notificaRiabilitazione('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>

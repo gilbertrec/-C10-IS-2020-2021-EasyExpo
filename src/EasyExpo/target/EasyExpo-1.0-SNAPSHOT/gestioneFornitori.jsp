@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="js/NotificaSospensione.js"></script>
+    <script src="js/Notifiche.js"></script>
     <title>Gestione Fornitori</title>
 </head>
 <body>
@@ -69,7 +69,7 @@
                                 %>
                                 <td>
                                     <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
-                                    <a class="icon-ban" onclick="NotificaSospension('<%=url%>')"></a>
+                                    <a class="icon-ban" onclick="notificaSospensione('<%=url%>')"></a>
                                     <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>

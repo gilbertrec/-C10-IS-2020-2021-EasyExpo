@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="js/Notifiche.js"></script>
     <title>Gestione Fornitori Sospesi</title>
 </head>
 <body>
@@ -28,6 +29,7 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaFornitoriSospesiServlet");
             requestDispatcher.forward(request,response);
         }
+        String url;
     %>
     <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
     <div id="content">
@@ -66,7 +68,8 @@
                                     out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-check" title="Riabilita" href="/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=<%=fornitore.getPartitaIva()%>&flag=1"></a>
+                                    <%url = "/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
+                                    <a class="icon-check" onclick="notificaRiabilitazione('<%=url%>')"></a>
                                     <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>

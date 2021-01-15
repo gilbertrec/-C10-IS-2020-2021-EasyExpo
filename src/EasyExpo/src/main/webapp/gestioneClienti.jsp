@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <script src="js/Notifiche.js"></script>
     <title>Gestione Clienti</title>
 </head>
 <body>
@@ -28,6 +29,7 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaClientiServlet");
             requestDispatcher.forward(request,response);
         }
+        String url;
     %>
     <% List<Cliente> clienti = (List<Cliente>) request.getSession().getAttribute("clienti");%>
     <div id="content">
@@ -66,7 +68,8 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <a class="icon-ban" title="Sospendi" href="/EasyExpo_war_exploded/SospendiUtenteServlet?id=<%=cliente.getCodiceFiscale()%>&flag=2"></a>
+                                    <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
+                                    <a class="icon-ban" onclick="notificaSospensione('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>
