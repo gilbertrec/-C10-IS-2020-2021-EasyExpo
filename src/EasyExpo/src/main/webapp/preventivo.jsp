@@ -133,7 +133,7 @@
                                         <!-- PREZZO -->
                                         <li class="col-md-6">
                                             <label> PREZZO TOTALE
-                                                <input type="text" name="prezzo" value="" placeholder="">
+                                                <input type="text" name="prezzo" value="" placeholder="" required>
                                             </label>
                                         </li>
 

@@ -56,14 +56,14 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="" placeholder="">
+                                                <input type="text" name="titolo" value="" placeholder="" required pattern="[A-Z a-z 0-9]{1,50}" title="Stringa alfanumerica con massimo 50 caratteri">
                                             </label>
                                         </li>
 
                                         <!-- LUOGO EVENTO -->
                                         <li class="col-md-6">
                                             <label> LUOGO EVENTO
-                                                <input type="text" name="luogo" value="" placeholder="">
+                                                <input type="text" name="luogo" value="" placeholder="" required pattern="[a-z A-Z]{1,31}" title="Stringa di massimo 30 caratteri">
                                             </label>
                                         </li>
 
@@ -78,7 +78,7 @@
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE EVENTO
                                                 <textarea name="descrizione" rows="5"
-                                                          cols="80"></textarea>
+                                                          cols="80" required></textarea>
                                             </label>
                                         </li>
 
@@ -115,11 +115,11 @@
                                         <!-- DATA INIZIO NOLEGGIO -->
                                         <li class="col-md-6">
                                             <label> DATA INIZIO NOLEGGIO
-                                                <input type="date" name="dataInizio" value="" placeholder="">
+                                                <input type="date" name="dataInizio" value="" placeholder="" required>
                                             </label>
                                         <!-- DATA FINE NOLEGGIO -->
                                             <label> DATA FINE NOLEGGIO
-                                                <input type="date" name="dataFine" value="" placeholder="">
+                                                <input type="date" name="dataFine" value="" placeholder="" required>
                                             </label>
                                         </li>
 

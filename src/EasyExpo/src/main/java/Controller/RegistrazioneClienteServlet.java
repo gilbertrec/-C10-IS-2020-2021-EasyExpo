@@ -77,6 +77,7 @@ public class RegistrazioneClienteServlet extends HttpServlet {
 
     clienteDAO.createCliente(cliente);
     request.getSession().setAttribute("cliente", cliente);
+    request.getSession().setAttribute("passwordConferma", passwordConferma);
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(request, response);

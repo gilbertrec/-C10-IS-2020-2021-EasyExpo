@@ -54,13 +54,13 @@
                                         <!-- NOME -->
                                         <li class="col-md-6">
                                             <label> NOME
-                                                <input type="text" name="nome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Lunghezza minore di 30">
+                                                <input type="text" name="nome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
                                         <!-- COGNOME -->
                                         <li class="col-md-6">
                                             <label> COGNOME
-                                                <input type="text" name="cognome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Lunghezza minore di 30">
+                                                <input type="text" name="cognome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -81,7 +81,7 @@
                                         <!-- PASSWORD -->
                                         <li class="col-md-6">
                                             <label> CONFERMA PASSWORD
-                                                <input type="password" name="passwordConferma" value="" placeholder="" required>
+                                                <input type="password" name="passwordConferma" value="" placeholder="" required pattern="" title="Le password non combaciano">
                                             </label>
                                         </li>
 
@@ -95,7 +95,7 @@
                                         <!-- LUOGO DI UBICAZIONE -->
                                         <li class="col-md-6">
                                             <label> LUOGO DI UBICAZIONE
-                                                <input type="text" name="luogoUbicazione" value="" placeholder="" required pattern="[a-z A-Z]{1,30}" title="Lunghezza minore di 30">
+                                                <input type="text" name="luogoUbicazione" value="" placeholder="" required pattern="[a-z A-Z]{1,30}" title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
 
