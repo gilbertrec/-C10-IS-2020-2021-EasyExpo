@@ -21,7 +21,9 @@ public class LoginAdminServlet extends HttpServlet{
             admin = adminDAO.doRetrieveByEmailandPassword(email, password);
         }
         if (admin == null) {
-            throw new MyServletException("Email e/o password non validi.");
+            request.getSession().setAttribute("Errore",1);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
+            requestDispatcher.forward(request,response);
         }else {
             request.getSession().setAttribute("LeaderSupremo", admin);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminHome.jsp");

@@ -60,7 +60,6 @@
                             </tr>
                             <%for(Cliente cliente:clienti) { %>
                             <tr class="row">
-                                <td></td>
                                 <%
                                     out.append("<td>" + cliente.getCodiceFiscale() + " </td> ");
                                     out.append("<td>" + cliente.getNome() + " </td> ");

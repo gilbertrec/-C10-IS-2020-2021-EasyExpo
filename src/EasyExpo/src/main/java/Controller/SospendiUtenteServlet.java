@@ -15,6 +15,10 @@ public class SospendiUtenteServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
+        if(request.getParameter("flag")==null || request.getParameter("id")==null){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminHome.jsp");
+            requestDispatcher.forward(request,response);
+        }
         if (request.getParameter("flag").equals("1")) {
             FornitoreDAO fornitoreDAO = new FornitoreDAO();
             fornitoreDAO.updateStato(2, request.getParameter("id"));

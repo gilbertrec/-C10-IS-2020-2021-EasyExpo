@@ -48,7 +48,7 @@
     <div class="container" >
 
         <!-- Logo -->
-        <div class="logo"><a href="index.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
+        <div class="logo"><a href="adminHome.jsp"><img class="img-responsive" src="images/logomacchia2.png" alt=""></a>
         </div>
         <nav class="navbar ownmenu">
             <div class="navbar-header">

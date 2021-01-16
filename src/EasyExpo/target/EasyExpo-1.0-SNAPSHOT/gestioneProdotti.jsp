@@ -73,7 +73,7 @@
                                     out.append("<td>" + prodotto.getPrezzo() + " </td> ");
                                 %>
                                 <td>
-                                    <% String x = String.valueOf(prodotto.getIdProdotto())%>
+                                    <% String x = String.valueOf(prodotto.getIdProdotto());%>
                                     <%url = "/EasyExpo_war_exploded/EliminaProdottoServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
                                     <a class="icon-trash" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
                                 </td>

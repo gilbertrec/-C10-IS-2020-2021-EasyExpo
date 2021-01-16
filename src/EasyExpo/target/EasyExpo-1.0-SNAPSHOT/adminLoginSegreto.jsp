@@ -14,6 +14,14 @@
 </head>
 <body>
 
+<!--Controllo Sessione Admin -->
+<%
+    if(request.getSession().getAttribute("LeaderSupremo")!=null){
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminHome.jsp");
+        requestDispatcher.forward(request,response);
+    }
+%>
+
 <!-- LOADER -->
 <div id="loader">
     <div class="position-center-center">
@@ -62,6 +70,14 @@
                                                 <input type="password" name="password" placeholder="">
                                             </label>
                                         </li>
+
+                                        <!--Controllo Errore login -->
+                                        <%
+                                            if(request.getSession().getAttribute("Errore") != null){
+                                                out.append("<p style=\"color:red;\">    Email e/o Password errati , si prega di riprovare</p> ");
+                                                request.getSession().removeAttribute("Errore");
+                                            }
+                                        %>
 
                                         <!-- LOGIN -->
                                         <li class="col-md-4">
