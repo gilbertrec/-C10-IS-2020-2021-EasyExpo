@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.RichiestaPreventivo;
 import Model.POJO.Tag;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

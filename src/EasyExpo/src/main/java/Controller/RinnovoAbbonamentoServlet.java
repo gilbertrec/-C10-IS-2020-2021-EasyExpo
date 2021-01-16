@@ -34,7 +34,7 @@ public class RinnovoAbbonamentoServlet extends HttpServlet {
     Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
     fornitore.setAbbonato(true);
     fornitoreDAO.updateBooleanFornitore(fornitore);
-    request.setAttribute("fornitore",fornitore);
+    request.setAttribute("fornitore", fornitore);
 
     abbonamentoDAO.createAbbonamento(abbonamento);
     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");

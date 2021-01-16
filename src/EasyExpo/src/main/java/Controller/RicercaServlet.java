@@ -2,11 +2,11 @@ package Controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
-import Model.DAO.TagDAO;
 import Model.DAO.TagProdottoDAO;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import Model.POJO.Tag;
+import Model.DAO.TagDAO;
 import Model.POJO.TagProdotto;
 import java.io.IOException;
 import java.util.List;
@@ -49,27 +49,28 @@ public class RicercaServlet extends HttpServlet {
       if (!first) {
         json += ",";
       }
-      json += "{" +
-          "\"id\":\"" + prodotti.get(i).getIdProdotto() + "\"," +
-          "\"partitaIVA\":\"" + prodotti.get(i).getPartitaIva() + "\"," +
-          "\"titolo\":\"" + prodotti.get(i).getTitolo() + "\"," +
-          "\"prezzo\":\"" + prodotti.get(i).getPrezzo() + "\"" +
-          "}";
+      json += "{"
+          + "\"id\":\"" + prodotti.get(i).getIdProdotto() + "\","
+          + "\"partitaIVA\":\"" + prodotti.get(i).getPartitaIva() + "\","
+          + "\"titolo\":\"" + prodotti.get(i).getTitolo() + "\","
+          + "\"prezzo\":\"" + prodotti.get(i).getPrezzo() + "\""
+          + "}";
       first = false;
     }
 
     for (int i = 0; i < fornitori.size(); i++) {
-      if (!first) /* se è passato da prodotti mette la virgola poichè first è stato settato già a false*/
+      if (!first) /* se è passato da prodotti mette la virgola
+      poichè first è stato settato già a false*/
         /* se non è passato da prodotti non mette la virgola perchè è settato a true */ {
         json += ",";
       }
 
-      json += "{" +
-          "\"partitaIVAfornitore\":\"" + fornitori.get(i).getPartitaIva() + "\"," +
-          "\"luogoUbicazione\":\"" + fornitori.get(i).getLuogoUbicazione() + "\"," +
-          "\"nome\":\"" + fornitori.get(i).getNome() + "\"," +
-          "\"cognome\":\"" + fornitori.get(i).getCognome() + "\"" +
-          "}";
+      json += "{"
+          + "\"partitaIVAfornitore\":\"" + fornitori.get(i).getPartitaIva() + "\","
+          + "\"luogoUbicazione\":\"" + fornitori.get(i).getLuogoUbicazione() + "\","
+          + "\"nome\":\"" + fornitori.get(i).getNome() + "\","
+          + "\"cognome\":\"" + fornitori.get(i).getCognome() + "\""
+          + "}";
       first = false;
     }
 
@@ -86,12 +87,12 @@ public class RicercaServlet extends HttpServlet {
       if (!first) {
         json += ",";
       }
-      json += "{" +
-          "\"id\":\"" + prod.getIdProdotto() + "\"," +
-          "\"partitaIVA\":\"" + prod.getPartitaIva() + "\"," +
-          "\"titolo\":\"" + prod.getTitolo() + "\"," +
-          "\"prezzo\":\"" + prod.getPrezzo() + "\"" +
-          "}";
+      json += "{"
+          + "\"id\":\"" + prod.getIdProdotto() + "\","
+          + "\"partitaIVA\":\"" + prod.getPartitaIva() + "\","
+          + "\"titolo\":\"" + prod.getTitolo() + "\","
+          + "\"prezzo\":\"" + prod.getPrezzo() + "\""
+          + "}";
     }
 
 

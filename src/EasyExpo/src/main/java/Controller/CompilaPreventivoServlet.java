@@ -31,33 +31,33 @@ public class CompilaPreventivoServlet extends HttpServlet {
       throws ServletException, IOException {
     String idRichiesta = request.getParameter("idRichiesta");
 
-      RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-      RichiestaPreventivo richiesta =
-          richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
+    RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
+    RichiestaPreventivo richiesta =
+        richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
 
-      ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();
-      List<ProdottoRichiesta> prichiesta =
-          prodottoRichiestaDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
+    ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();
+    List<ProdottoRichiesta> prichiesta =
+        prodottoRichiestaDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));
 
-      ArrayList<Prodotto> prodotto = new ArrayList<>();
-      ProdottoDAO prodottoDAO = new ProdottoDAO();
+    ArrayList<Prodotto> prodotto = new ArrayList<>();
+    ProdottoDAO prodottoDAO = new ProdottoDAO();
 
-      for (ProdottoRichiesta a : prichiesta) {
-        int idProdotto = a.getIdProdotto();
-        String partitaIva = a.getPartitaIva();
-        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
-        prodotto.add(p);
-      }
+    for (ProdottoRichiesta a : prichiesta) {
+      int idProdotto = a.getIdProdotto();
+      String partitaIva = a.getPartitaIva();
+      Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);
+      prodotto.add(p);
+    }
 
-      ClienteDAO clienteDAO = new ClienteDAO();
-      Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
+    ClienteDAO clienteDAO = new ClienteDAO();
+    Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());
 
 
-      request.getSession().setAttribute("richiesta", richiesta);
-      request.getSession().setAttribute("prichiesta", prichiesta);
-      request.getSession().setAttribute("prodotto", prodotto);
-      request.getSession().setAttribute("clifor", cliente);
-      request.getSession().setAttribute("cliente_specifica", cliente);
+    request.getSession().setAttribute("richiesta", richiesta);
+    request.getSession().setAttribute("prichiesta", prichiesta);
+    request.getSession().setAttribute("prodotto", prodotto);
+    request.getSession().setAttribute("clifor", cliente);
+    request.getSession().setAttribute("cliente_specifica", cliente);
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher("/preventivo.jsp");
     requestDispatcher.forward(request, response);

@@ -5,8 +5,6 @@ import Model.DAO.ProdottoDAO;
 import Model.POJO.Carrello;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
-import org.apache.taglibs.standard.tag.el.fmt.FormatNumberTag;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -148,7 +146,7 @@ public class CarrelloServlet extends HttpServlet {
         }
 
         Prodotto prodottoDaEliminare =
-                prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
+            prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);
 
         //prodottiF ora contiene tutti i prodotti di prodottiQuanantitaF
         boolean trovato = false;
@@ -175,14 +173,15 @@ public class CarrelloServlet extends HttpServlet {
 
         }
 
-        if(!prodottiQuantitaF.isEmpty()) {
+        if (!prodottiQuantitaF.isEmpty()) {
           //e mettere la lista aggiornata di nuovo nel carrello
           carrello.put(prodottiQuantitaF);
-        }else if(prodottiQuantitaF.isEmpty()){
+        } else if (prodottiQuantitaF.isEmpty()) {
           carrello.remove(partitaIva);
-          for(int i=0; i<listaFornitori.size(); i++){
+          for (int i = 0; i < listaFornitori.size(); i++) {
             Fornitore f = listaFornitori.get(i);
-            if(f.getPartitaIva().equals(fornitoreDao.doRetrieveByPIVA(partitaIva).getPartitaIva())){
+            if (f.getPartitaIva()
+                .equals(fornitoreDao.doRetrieveByPIVA(partitaIva).getPartitaIva())) {
               listaFornitori.remove(i);
             }
           }

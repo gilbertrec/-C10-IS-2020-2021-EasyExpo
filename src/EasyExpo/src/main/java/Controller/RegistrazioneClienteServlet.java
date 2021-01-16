@@ -19,15 +19,17 @@ public class RegistrazioneClienteServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     ClienteDAO clienteDAO = new ClienteDAO();
+
     if (request.getSession().getAttribute("cliente") != null) {
       throw new MyServletException("Cliente loggato.");
     }
 
     String password = request.getParameter("password");
     if (!(password != null && password.length() >= 8 && !password.toUpperCase().equals(password)
-        && !password.toLowerCase().equals(password) &&
-        password.matches("[0-9 a-z A-Z.!#$%&'+\\=?^_`{|}~-]{8,512}"))) {
+        && !password.toLowerCase().equals(password)
+        && password.matches("[0-9 a-z A-Z.!#$%&'+\\=?^_`{|}~-]{8,512}"))) {
       throw new MyServletException("Password non valida.");
     }
 
@@ -42,8 +44,9 @@ public class RegistrazioneClienteServlet extends HttpServlet {
     }
 
     String email = request.getParameter("email");
-    if (!(email != null &&
-        email.matches("[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]{4,50}.([a-z A-Z]{2,5})"))) {
+    if (!(email != null
+        && email.matches("[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]"
+        + "{4,50}.([a-z A-Z]{2,5})"))) {
       throw new MyServletException("Email non valida.");
     }
 
@@ -57,8 +60,8 @@ public class RegistrazioneClienteServlet extends HttpServlet {
       throw new MyServletException("Cognome non valido.");
     }
     String luogoUbicazione = request.getParameter("luogoUbicazione");
-    if (!(luogoUbicazione != null && luogoUbicazione.trim().length() > 0 &&
-        luogoUbicazione.matches("[a-z A-Z]{1,30}"))) {
+    if (!(luogoUbicazione != null && luogoUbicazione.trim().length() > 0
+        && luogoUbicazione.matches("[a-z A-Z]{1,30}"))) {
       throw new MyServletException("Luogo di ubicazione non valido.");
     }
     String telefono = request.getParameter("telefono");

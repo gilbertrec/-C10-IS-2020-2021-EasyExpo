@@ -8,7 +8,6 @@ import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,8 +38,8 @@ public class LoginServlet extends HttpServlet {
 
 
       List<Prodotto> tuttiP = prodottoDAO.doRetrieveAll();
-      int inizio= tuttiP.size()-4;
-      List<Prodotto> prodottiNuovi = prodottoDAO.doRetrieveRandom(inizio,4);
+      int inizio = tuttiP.size() - 4;
+      List<Prodotto> prodottiNuovi = prodottoDAO.doRetrieveRandom(inizio, 4);
 
       request.setAttribute("prodottiNuovi", prodottiNuovi);
 
