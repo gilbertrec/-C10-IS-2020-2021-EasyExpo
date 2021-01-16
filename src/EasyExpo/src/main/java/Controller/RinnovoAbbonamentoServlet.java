@@ -1,9 +1,12 @@
 package Controller;
 
 import Model.DAO.AbbonamentoDAO;
+import Model.DAO.FornitoreDAO;
 import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
 import java.io.IOException;
 import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +30,15 @@ public class RinnovoAbbonamentoServlet extends HttpServlet {
     java.sql.Date scadenza = new java.sql.Date(calendario.getTime().getTime());
     abbonamento.setDataFine(scadenza);
 
+    FornitoreDAO fornitoreDAO = new FornitoreDAO();
+    Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
+    fornitore.setAbbonato(true);
+    fornitoreDAO.updateBooleanFornitore(fornitore);
+    request.setAttribute("fornitore",fornitore);
+
     abbonamentoDAO.createAbbonamento(abbonamento);
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
+    requestDispatcher.forward(request, response);
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

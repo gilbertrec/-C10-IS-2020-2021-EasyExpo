@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.POJO.Fornitore;
+import Model.POJO.RichiestaPreventivo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -252,6 +253,20 @@ public class FornitoreDAO {
       ps.setString(1, partitaIva);
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("DELETE error.");
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void updateBooleanFornitore(Fornitore fornitore) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+          "UPDATE Fornitore SET abbonato=? WHERE partitaIva=?");
+      ps.setBoolean(1, fornitore.isAbbonato());
+      ps.setString(2, fornitore.getPartitaIva());
+      if (ps.executeUpdate() != 1) {
+        throw new RuntimeException("UPDATE error.");
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
