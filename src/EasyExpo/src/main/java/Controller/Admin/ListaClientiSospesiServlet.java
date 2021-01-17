@@ -1,6 +1,8 @@
-package Controller;
-
+package Controller.Admin;
+import Controller.HttpServlet;
+import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
+import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 
 import javax.servlet.RequestDispatcher;
@@ -11,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/ListaFornitoriServlet")
-public class ListaFornitoriServlet extends HttpServlet {
+@WebServlet("/ListaClientiSospesiServlet")
+public class ListaClientiSospesiServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request,response);
@@ -20,10 +22,10 @@ public class ListaFornitoriServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        FornitoreDAO fornitoreDAO = new FornitoreDAO();
-        List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStato(1);
-        request.getSession().setAttribute("fornitori", fornitori);
-        RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneFornitori.jsp");
+        ClienteDAO clienteDAO = new ClienteDAO();
+        List<Cliente> clienti = clienteDAO.doRetrievebyStato(2);
+        request.getSession().setAttribute("clienti", clienti);
+        RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneClientiSospesi.jsp");
         requestDispatcher.forward(request,response);
 
     }

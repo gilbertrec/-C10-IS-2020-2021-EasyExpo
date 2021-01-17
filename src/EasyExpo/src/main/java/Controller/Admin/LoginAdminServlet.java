@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Admin;
 
+import Controller.HttpServlet;
 import Model.DAO.AdminDAO;
 import Model.POJO.Admin;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/LoginAdminServlet")
-public class LoginAdminServlet extends HttpServlet{
+public class LoginAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AdminDAO adminDAO = new AdminDAO();
         String email = request.getParameter("email");
