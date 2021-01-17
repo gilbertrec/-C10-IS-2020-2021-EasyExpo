@@ -1,6 +1,6 @@
 language: java
 sudo: false
-script: mvn claen verify
+script: mvn clean verify
 branches:
   only:
   - develop
