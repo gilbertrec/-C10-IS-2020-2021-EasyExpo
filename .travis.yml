@@ -3,7 +3,6 @@ sudo: false
 script: mvn clean verify
 branches:
   only:
-  - main
   - develop
   - admin
   - HomePageClienteV2
