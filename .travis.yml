@@ -1,3 +1,8 @@
 language: java
 sudo: false
 script: mvn claen verify
+branches:
+  only:
+  - develop
+  - admin/src
+ 
