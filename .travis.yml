@@ -4,5 +4,5 @@ script: mvn claen verify
 branches:
   only:
   - develop
-  - admin/src
+  - admin
  
