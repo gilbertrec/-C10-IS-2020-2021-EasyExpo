@@ -73,6 +73,11 @@
                             </tr>
                             <% } %>
                         </table>
+                        <%
+                            if(clienti.size()==0){
+                                out.append("<p><b> NON E' PRESENTE ALCUN CLIENTE </b></p> ");
+                            }
+                        %>
                     </div>
                 </div>
             </div>

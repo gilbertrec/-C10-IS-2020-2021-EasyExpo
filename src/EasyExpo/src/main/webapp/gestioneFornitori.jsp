@@ -75,6 +75,12 @@
                             </tr>
                             <% } %>
                         </table>
+                        <%
+
+                            if(fornitori.size()==0){
+                                out.append("<p><b> NON E' PRESENTE ALCUN FORNITORE </b></p> ");
+                            }
+                        %>
                     </div>
                 </div>
             </div>

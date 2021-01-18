@@ -74,12 +74,17 @@
                                 %>
                                 <td>
                                     <% String x = String.valueOf(prodotto.getIdProdotto());%>
-                                    <%url = "/EasyExpo_war_exploded/EliminaProdottoServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
+                                    <%url = "/EasyExpo_war_exploded/EliminaProdottoAdminServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
                                     <a class="icon-trash" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>
                         </table>
+                        <%
+                            if(prodotti.size()==0){
+                                out.append("<p><b> NON E' PRESENTE ALCUN PRODOTTO </b></p> ");
+                            }
+                        %>
                     </div>
                 </div>
             </div>

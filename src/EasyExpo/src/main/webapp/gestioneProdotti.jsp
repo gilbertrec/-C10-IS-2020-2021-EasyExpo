@@ -80,6 +80,11 @@
                             </tr>
                             <% } %>
                         </table>
+                        <%
+                            if(prodotti.size()==0){
+                                out.append("<p><b> NON E' PRESENTE ALCUN PRODOTTO </b></p> ");
+                            }
+                        %>
                     </div>
                 </div>
             </div>
