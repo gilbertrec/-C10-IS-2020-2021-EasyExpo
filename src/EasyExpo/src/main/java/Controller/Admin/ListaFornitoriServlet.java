@@ -23,7 +23,7 @@ public class ListaFornitoriServlet extends HttpServlet {
 
         FornitoreDAO fornitoreDAO = new FornitoreDAO();
         List<Fornitore> fornitori = fornitoreDAO.doRetrievebyStato(1);
-        request.getSession().setAttribute("fornitori", fornitori);
+        request.setAttribute("fornitori", fornitori);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneFornitori.jsp");
         requestDispatcher.forward(request,response);
 

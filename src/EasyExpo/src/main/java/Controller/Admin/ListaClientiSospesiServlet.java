@@ -24,7 +24,7 @@ public class ListaClientiSospesiServlet extends HttpServlet {
 
         ClienteDAO clienteDAO = new ClienteDAO();
         List<Cliente> clienti = clienteDAO.doRetrievebyStato(2);
-        request.getSession().setAttribute("clienti", clienti);
+        request.setAttribute("clienti", clienti);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneClientiSospesi.jsp");
         requestDispatcher.forward(request,response);
 

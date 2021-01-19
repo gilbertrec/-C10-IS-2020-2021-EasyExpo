@@ -26,13 +26,13 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }
-        if(request.getSession().getAttribute("prodotti") == null) {
+        if(request.getAttribute("prodotti") == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaProdottiServlet");
             requestDispatcher.forward(request,response);
         }
         String url;
     %>
-        <% List<Prodotto> prodotti = (List<Prodotto>) request.getSession().getAttribute("prodotti");%>
+        <% List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");%>
     <div id="content">
         <section class="chart-page padding-top-100 padding-bottom-100">
             <div class="container">
@@ -75,7 +75,7 @@
                                 <td>
                                     <% String x = String.valueOf(prodotto.getIdProdotto());%>
                                     <%url = "/EasyExpo_war_exploded/EliminaProdottoAdminServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
-                                    <a class="icon-trash" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
+                                    <a class="icon-trash" title="Elimina" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>

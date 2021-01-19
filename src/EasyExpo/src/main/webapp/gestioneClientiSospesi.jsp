@@ -25,13 +25,13 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }
-        if(request.getSession().getAttribute("clienti") == null) {
+        if(request.getAttribute("clienti") == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaClientiSospesiServlet");
             requestDispatcher.forward(request,response);
         }
         String url;
     %>
-    <% List<Cliente> clienti = (List<Cliente>) request.getSession().getAttribute("clienti");%>
+    <% List<Cliente> clienti = (List<Cliente>) request.getAttribute("clienti");%>
     <div id="content">
         <section class="chart-page padding-top-100 padding-bottom-100">
             <div class="container">
@@ -68,7 +68,7 @@
                                 %>
                                 <td>
                                     <% url = "/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
-                                    <a class="icon-check" onclick="notificaRiabilitazione('<%=url%>')"></a>
+                                    <a class="icon-check" title="Riabilita" onclick="notificaRiabilitazione('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>

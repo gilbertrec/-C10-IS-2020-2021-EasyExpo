@@ -25,13 +25,13 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }
-        if(request.getSession().getAttribute("clienti") == null) {
+        if(request.getAttribute("clienti") == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaClientiServlet");
             requestDispatcher.forward(request,response);
         }
         String url;
     %>
-    <% List<Cliente> clienti = (List<Cliente>) request.getSession().getAttribute("clienti");%>
+    <% List<Cliente> clienti = (List<Cliente>) request.getAttribute("clienti");%>
     <div id="content">
         <section class="chart-page padding-top-100 padding-bottom-100">
             <div class="container">
@@ -69,7 +69,7 @@
                                 %>
                                 <td>
                                     <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
-                                    <a class="icon-ban" onclick="notificaSospensione('<%=url%>')"></a>
+                                    <a class="icon-ban" title="Sospendi" onclick="notificaSospensione('<%=url%>')"></a>
                                 </td>
                             </tr>
                             <% } %>

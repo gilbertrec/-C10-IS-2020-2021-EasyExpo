@@ -21,16 +21,13 @@ public class ListaProdottiServlet extends HttpServlet {
         String partitaIva = request.getParameter("id");
         ProdottoDAO prodottoDAO = new ProdottoDAO();
         List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(partitaIva);
-
-        request.getSession().setAttribute("prodotti", prodotti);
+        request.setAttribute("prodotti", prodotti);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneProdotti.jsp");
         requestDispatcher.forward(request,response);
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doGet(request,response);
-
     }
 }
 

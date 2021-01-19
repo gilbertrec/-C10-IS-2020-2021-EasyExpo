@@ -25,7 +25,8 @@ public class ListaClientiServlet extends HttpServlet {
 
         ClienteDAO clienteDAO = new ClienteDAO();
         List<Cliente> clienti = clienteDAO.doRetrievebyStato(1);
-        request.getSession().setAttribute("clienti", clienti);
+        //request.getSession().setAttribute("clienti", clienti);
+        request.setAttribute("clienti",clienti);
         RequestDispatcher requestDispatcher= request.getRequestDispatcher("gestioneClienti.jsp");
         requestDispatcher.forward(request,response);
 

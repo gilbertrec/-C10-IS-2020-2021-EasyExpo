@@ -25,13 +25,13 @@
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }
-        if(request.getSession().getAttribute("fornitori") == null) {
+        if(request.getAttribute("fornitori") == null) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ListaFornitoriSospesiServlet");
             requestDispatcher.forward(request,response);
         }
         String url;
     %>
-    <% List<Fornitore> fornitori = (List<Fornitore>) request.getSession().getAttribute("fornitori");%>
+    <% List<Fornitore> fornitori = (List<Fornitore>) request.getAttribute("fornitori");%>
     <div id="content">
         <section class="chart-page padding-top-100 padding-bottom-100">
             <div class="container">
@@ -69,7 +69,7 @@
                                 %>
                                 <td>
                                     <%url = "/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
-                                    <a class="icon-check" onclick="notificaRiabilitazione('<%=url%>')"></a>
+                                    <a class="icon-check" title="Riabilita" onclick="notificaRiabilitazione('<%=url%>')"></a>
                                     <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>

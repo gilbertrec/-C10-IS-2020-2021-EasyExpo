@@ -24,13 +24,13 @@ public class RiabilitaUtenteServlet extends HttpServlet {
         if (request.getParameter("flag").equals("1")) {
             FornitoreDAO fornitoreDAO = new FornitoreDAO();
             fornitoreDAO.updateStato(1, request.getParameter("id"));
-            request.getSession().setAttribute("fornitori",null);
+            request.setAttribute("fornitori",null);
             response.sendRedirect("gestioneFornitoriSospesi.jsp");
         }
         if (request.getParameter("flag").equals("2")) {
             ClienteDAO clienteDAO = new ClienteDAO();
             clienteDAO.updateStato(1, request.getParameter("id"));
-            request.getSession().setAttribute("clienti",null);
+            request.setAttribute("clienti",null);
             response.sendRedirect("gestioneClientiSospesi.jsp");
         }
     }

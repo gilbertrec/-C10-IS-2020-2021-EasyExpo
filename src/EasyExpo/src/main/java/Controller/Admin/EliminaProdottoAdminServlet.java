@@ -22,7 +22,7 @@ public class EliminaProdottoAdminServlet extends HttpServlet {
          ProdottoDAO prodottoDAO = new ProdottoDAO();
          prodottoDAO.deleteProdotto(Integer.parseInt(request.getParameter("id")), request.getParameter("partitaIva"));
          List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(request.getParameter("partitaIva"));
-         request.getSession().setAttribute("prodotti", prodotti);
+         request.setAttribute("prodotti", prodotti);
          RequestDispatcher requestDispatcher = request.getRequestDispatcher("/gestioneProdotti.jsp");
          requestDispatcher.forward(request, response);
     }
