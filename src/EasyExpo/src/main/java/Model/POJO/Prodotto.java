@@ -22,7 +22,7 @@ public class Prodotto {
      * @param prezzo Prezzo unitario del prodotto, float
      */
 
-    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantità, float prezzo, String immagine) {
+    public Prodotto(int idProdotto, String partitaIva, String titolo, String descrizione, Tipo tipo, int quantita, float prezzo, String immagine) {
         this.idProdotto = idProdotto;
         this.partitaIva = partitaIva;
         this.titolo = titolo;
@@ -187,7 +187,7 @@ public class Prodotto {
             ", titolo='" + titolo + '\'' +
             ", descrizione='" + descrizione + '\'' +
             ", tipo=" + tipo +
-            ", quantità=" + quantità +
+            ", quantità=" + quantita +
             ", prezzo=" + prezzo +
             ", immagine='" + immagine + '\'' +
             '}';

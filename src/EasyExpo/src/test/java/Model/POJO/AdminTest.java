@@ -15,7 +15,7 @@ class AdminTest {
 
     @AfterEach
     void tearDown() {
-        admin = new Admin("sabatino@gmail.com","");
+        admin = new Admin("sabatino@gmail.com","sabatino123");
     }
 
     @Test
@@ -25,15 +25,19 @@ class AdminTest {
 
     @Test
     void setEmail() {
-        
+        admin.setEmail("prova@gmail.com");
+        assertEquals("prova@gmail.com",admin.getEmail());
     }
 
     @Test
     void getPassword() {
+        assertEquals("sabatino123",admin.getPassword());
     }
 
     @Test
     void setPassword() {
+        admin.setPassword("davide123");
+        assertEquals("davide123",admin.getPassword());
     }
 
     private Admin admin;
