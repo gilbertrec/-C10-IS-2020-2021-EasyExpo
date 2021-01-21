@@ -2,6 +2,7 @@ package Controller;
 
 
 import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoRichiestaDAO;
 import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.Carrello;
 import Model.POJO.Cliente;
@@ -10,6 +11,8 @@ import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
@@ -35,6 +38,9 @@ public class InoltroRichiestaServlet extends HttpServlet {
 
     ArrayList<Carrello.ProdottoQuantita> listaProdotti =
         (ArrayList<Carrello.ProdottoQuantita>) session.getAttribute("listaProdotti");
+    ArrayList<Fornitore> listaFornitori =
+            (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
+
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     String partitaIvaF = listaProdotti.get(0).getProdotto().getPartitaIva();
     Fornitore fornitore = fornitoreDao.doRetrieveByPIVA(partitaIvaF);
@@ -43,11 +49,8 @@ public class InoltroRichiestaServlet extends HttpServlet {
     String luogo = req.getParameter("luogo");
     String nota = req.getParameter("nota");
     String descrizione = req.getParameter("descrizione");
-    //prendere tutte le date con AJAX?
-    Date dataInizio = Date.valueOf(req.getParameter("dataInizio"));
-    Date dataFine = Date.valueOf(req.getParameter("dataFine"));
-
     //data corrente
+
     java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
     String cf = cliente.getCodiceFiscale();
@@ -63,24 +66,73 @@ public class InoltroRichiestaServlet extends HttpServlet {
     rp.setDataRichiesta(corrente);
     rp.setStato(RichiestaPreventivo.Stato.IN_ATTESA);
 
-    RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-    richiestaPreventivoDAO.createRichiestaPreventivo(rp);
+    RichiestaPreventivoDAO richiestaPreventivoDao = new RichiestaPreventivoDAO();
+    richiestaPreventivoDao.createRichiestaPreventivo(rp);
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 
 
     for (int i = 0; i < listaProdotti.size(); i++) {
       ProdottoRichiesta pr = new ProdottoRichiesta();
-      //L'ID NON BISOGNA AGGIUNGERLO PERCHE' E' AUTOGENERATO, GIUSTO?
       pr.setIdRichiesta(rp.getIdRichiesta());
       pr.setIdProdotto(listaProdotti.get(i).getProdotto().getIdProdotto());
       pr.setPartitaIva(partitaIvaF);
       pr.setNumColli(listaProdotti.get(i).getQuantita());
       pr.setPrezzo(listaProdotti.get(i).getProdotto().getPrezzo());
 
+      //data inizio
+      Date dataI = Date.valueOf(req.getParameter("dataInizio"+i));
+      java.util.Date utilDate = dataI;
+      Date dataF = Date.valueOf(req.getParameter("dataFine"+i));
+      java.util.Date utilDate2 = (java.util.Date) dataF;
 
-      pr.setDataInizioNoleggio(dataInizio);
-      pr.setDataFineNoleggio(dataFine);
 
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(corrente);
+        java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
+        if (utilDate.after(sc)) { //se dataInizio è dopo dataAttuale(sc) è true
+          java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+          pr.setDataInizioNoleggio(sqlDate);
+        } else {
+          /*req.setAttribute("erroreDataInizio", "Data errata");
+          RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
+          requestDispatcher.forward(req, resp);*/
+          throw new MyServletException("Data inizio errata");
+        }
+
+
+      //data fine
+        Calendar calendario2 = Calendar.getInstance();
+        calendario.setTime(corrente);
+        if (utilDate2.after(sc) && utilDate2.after(utilDate)) { //se dataFine è dopo dataAttuale(sc) e dataFine è dopo dataInizio è true
+          java.sql.Date sqlDate = new java.sql.Date(utilDate2.getTime());
+          pr.setDataFineNoleggio(sqlDate);
+        } else {
+          /*req.setAttribute("erroreDataFine", "Data errata");
+          RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
+          requestDispatcher.forward(req, resp);*/
+          throw new MyServletException("Data fine errata");
+        }
+
+
+      ProdottoRichiestaDAO prodottoRichiestaDao = new ProdottoRichiestaDAO();
+      prodottoRichiestaDao.createProdottoRichiesta(pr);
     }
+
+    //elimina dal carrello i prodotti per cui ha inviato la richiesta
+    //deve eliminare anche il fornitore (vedi carrelloServlet)
+    Carrello carrello = (Carrello) session.getAttribute("carrello");
+    carrello.remove(partitaIvaF);
+    for (int i = 0; i < listaFornitori.size(); i++) {
+      Fornitore f = listaFornitori.get(i);
+      if (f.getPartitaIva()
+              .equals(partitaIvaF)) {
+        listaFornitori.remove(i);
+      }
+    }
+
+
+    session.setAttribute("carrello", carrello);
 
 
     RequestDispatcher requestDispatcher = req.getRequestDispatcher("carrello.jsp");

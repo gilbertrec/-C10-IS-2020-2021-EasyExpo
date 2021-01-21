@@ -186,24 +186,24 @@ public class ProdottoRichiestaDAO {
   public void createProdottoRichiesta(ProdottoRichiesta prodottoRichiesta) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO ProdottoRichiesta (id, idRichiesta, idProdotto, partitaIva, numColli,"
-              + " prezzo, dataInizioNoleggio, dataFineNoleggio) VALUES(?,?,?,?,?,?,?,?)",
+          "INSERT INTO ProdottoRichiesta (idRichiesta, idProdotto, partitaIva, numColli,"
+              + " prezzo, dataInizioNoleggio, dataFineNoleggio) VALUES(?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
 
-      ps.setInt(1, prodottoRichiesta.getId());
-      ps.setInt(2, prodottoRichiesta.getIdRichiesta());
-      ps.setInt(3, prodottoRichiesta.getIdProdotto());
-      ps.setString(4, prodottoRichiesta.getPartitaIva());
-      ps.setInt(5, prodottoRichiesta.getNumColli());
-      ps.setFloat(6, prodottoRichiesta.getPrezzo());
-      ps.setDate(7, prodottoRichiesta.getDataInizioNoleggio());
-      ps.setDate(8, prodottoRichiesta.getDataFineNoleggio());
+
+      ps.setInt(1, prodottoRichiesta.getIdRichiesta());
+      ps.setInt(2, prodottoRichiesta.getIdProdotto());
+      ps.setString(3, prodottoRichiesta.getPartitaIva());
+      ps.setInt(4, prodottoRichiesta.getNumColli());
+      ps.setFloat(5, prodottoRichiesta.getPrezzo());
+      ps.setDate(6, prodottoRichiesta.getDataInizioNoleggio());
+      ps.setDate(7, prodottoRichiesta.getDataFineNoleggio());
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
-      prodottoRichiesta.setIdProdotto(rs.getInt(1));
+      prodottoRichiesta.setId(rs.getInt(1));
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

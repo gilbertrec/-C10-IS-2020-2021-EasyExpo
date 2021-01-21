@@ -4,6 +4,7 @@
 <%@ page import="Model.POJO.RichiestaPreventivo" %>
 <%@ page import="Model.POJO.Carrello" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -85,6 +86,8 @@
                                     </ul>
                                     <h5 class="shop-title margin-top-60 margin-bottom-30">PRODOTTI</h5>
                                     <ul class="papu-post margin-top-20">
+
+
                                         <%
                                             ArrayList<Carrello.ProdottoQuantita> listaProdotti = (ArrayList<Carrello.ProdottoQuantita>) session.getAttribute("listaProdotti");
                                             float totaleComplessivo=0;
@@ -115,16 +118,28 @@
                                         <!-- DATA INIZIO NOLEGGIO -->
                                         <li class="col-md-6">
                                             <label> DATA INIZIO NOLEGGIO
-                                                <input type="date" name="dataInizio" value="" placeholder="" required>
+
+                                                <input id="dataInizio" type="date" name="dataInizio<%=i%>" value="" placeholder="" required>
+
+
+
                                             </label>
                                         <!-- DATA FINE NOLEGGIO -->
                                             <label> DATA FINE NOLEGGIO
-                                                <input type="date" name="dataFine" value="" placeholder="" required>
+                                                <input type="date" name="dataFine<%=i%>" value="" placeholder="" required>
+
+
+
                                             </label>
                                         </li>
 
 
+
+
                                         <%}%>
+                                        <input type="hidden" name="dateInizio" value=dateInizio>
+
+                                        <input type="hidden" name="dateFine" value="dateFine">
 
                                         <label><h5>COSTO TOTALE: <span><h4>€ <%=totaleComplessivo%> </h4></span> </h5></label>
                                     </ul>

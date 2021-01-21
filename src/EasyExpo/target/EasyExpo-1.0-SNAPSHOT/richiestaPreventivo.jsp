@@ -4,6 +4,7 @@
 <%@ page import="Model.POJO.RichiestaPreventivo" %>
 <%@ page import="Model.POJO.Carrello" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -56,14 +57,14 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="" placeholder="">
+                                                <input type="text" name="titolo" value="" placeholder="" required pattern="[A-Z a-z 0-9]{1,50}" title="Stringa alfanumerica con massimo 50 caratteri">
                                             </label>
                                         </li>
 
                                         <!-- LUOGO EVENTO -->
                                         <li class="col-md-6">
                                             <label> LUOGO EVENTO
-                                                <input type="text" name="luogo" value="" placeholder="">
+                                                <input type="text" name="luogo" value="" placeholder="" required pattern="[a-z A-Z]{1,31}" title="Stringa di massimo 30 caratteri">
                                             </label>
                                         </li>
 
@@ -78,13 +79,15 @@
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE EVENTO
                                                 <textarea name="descrizione" rows="5"
-                                                          cols="80"></textarea>
+                                                          cols="80" required></textarea>
                                             </label>
                                         </li>
 
                                     </ul>
                                     <h5 class="shop-title margin-top-60 margin-bottom-30">PRODOTTI</h5>
                                     <ul class="papu-post margin-top-20">
+
+
                                         <%
                                             ArrayList<Carrello.ProdottoQuantita> listaProdotti = (ArrayList<Carrello.ProdottoQuantita>) session.getAttribute("listaProdotti");
                                             float totaleComplessivo=0;
@@ -115,16 +118,28 @@
                                         <!-- DATA INIZIO NOLEGGIO -->
                                         <li class="col-md-6">
                                             <label> DATA INIZIO NOLEGGIO
-                                                <input type="date" name="dataInizio" value="" placeholder="">
+
+                                                <input id="dataInizio" type="date" name="dataInizio<%=i%>" value="" placeholder="" required>
+
+
+
                                             </label>
                                         <!-- DATA FINE NOLEGGIO -->
                                             <label> DATA FINE NOLEGGIO
-                                                <input type="date" name="dataFine" value="" placeholder="">
+                                                <input type="date" name="dataFine<%=i%>" value="" placeholder="" required>
+
+
+
                                             </label>
                                         </li>
 
 
+
+
                                         <%}%>
+                                        <input type="hidden" name="dateInizio" value=dateInizio>
+
+                                        <input type="hidden" name="dateFine" value="dateFine">
 
                                         <label><h5>COSTO TOTALE: <span><h4>€ <%=totaleComplessivo%> </h4></span> </h5></label>
                                     </ul>
