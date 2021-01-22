@@ -8,33 +8,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AdminTest {
 
-    @BeforeEach
-    void setUp() {
-        admin = new Admin("sabatino@gmail.com","12345678");
-    }
+  @BeforeEach
+  void setUp() {
+    admin = new Admin("sabatino@gmail.com", "Sabatino20_");
+  }
 
-    @AfterEach
-    void tearDown() {
-        admin = new Admin("sabatino@gmail.com","");
-    }
-
-    @Test
-    void getEmail() {
-        assertEquals("sabatino@gmail.com",admin.getEmail());
-    }
+  @AfterEach
+  void tearDown() {
+    admin = new Admin("sabatino@gmail.com", "Sabatino20_");
+  }
 
     @Test
-    void setEmail() {
-        
+    void testAdminCostructorEmpty() {
+        admin = new Admin();
+        assertNotNull(admin);
     }
+  @Test
+  void getEmail() {
+    assertEquals("sabatino@gmail.com", admin.getEmail());
+  }
 
-    @Test
-    void getPassword() {
-    }
+  @Test
+  void setEmail() {
+    admin.setEmail("prova@gmail.com");
+    assertEquals("prova@gmail.com", admin.getEmail());
+  }
 
-    @Test
-    void setPassword() {
-    }
+  @Test
+  void getPassword() {
+    assertEquals("Sabatino20_", admin.getPassword());
+  }
 
-    private Admin admin;
+  @Test
+  void setPassword() {
+    admin.setPassword("davide123");
+    assertEquals("davide123", admin.getPassword());
+  }
+
+  private Admin admin;
 }

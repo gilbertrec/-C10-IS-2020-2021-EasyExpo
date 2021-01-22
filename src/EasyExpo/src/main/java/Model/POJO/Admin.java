@@ -2,83 +2,89 @@ package Model.POJO;
 
 /**
  * Admin e' la classe che gestisce un
- * ordinario oggetto Admin
+ * ordinario oggetto Admin.
  *
- * @author
+ * @author GAETANO IULIANO
  * @version 1.0
- * @since   2020-12-29
+ * @since 2020-12-29
  */
 
 public class Admin {
 
-    /**
-     * Metodo costruttore della classe Admin
-     * @param email Indirizzo mail, String
-     * @param password Caratteri alfanumerici per accesso al sistema, String
-     */
+  /**
+   * Metodo costruttore della classe Admin.
+   *
+   * @param email    Indirizzo mail, String
+   * @param password Caratteri alfanumerici per accesso al sistema, String
+   */
 
-    public Admin(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
+  public Admin(String email, String password) {
+    this.email = email;
+    this.password = password;
+  }
 
-    /**
-     * Metodo costruttore di default della classe Admin
-     */
+  /**
+   * Metodo costruttore di default della classe Admin.
+   */
 
-    public Admin() {
+  public Admin() {
 
-    }
+  }
 
-    /**
-     * Metodo che restituisce l'email
-     * @return String - email
-     */
+  /**
+   * Metodo che restituisce l'email.
+   *
+   * @return String - email
+   */
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    /**
-     * Metodo che setta l'email
-     * @param email Indirizzo mail, String
-     */
+  /**
+   * Metodo che setta l'email.
+   *
+   * @param email Indirizzo mail, String
+   */
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    /**
-     * Metodo che restituisce la password
-     * @return String - password
-     */
+  /**
+   * Metodo che restituisce la password.
+   *
+   * @return String - password
+   */
 
-    public String getPassword() {
-        return password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    /**
-     * Metodo che setta la password
-     * @param password Caratteri alfanumerici per accesso al sistema, String
-     */
+  /**
+   * Metodo che setta la password.
+   *
+   * @param password Caratteri alfanumerici per accesso al sistema, String
+   */
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    /**
-     * Metodo che converte l'oggetto Admin in stringa
-     * @return String
-     */
+  /**
+   * Metodo che converte l'oggetto Admin in stringa.
+   *
+   * @return String
+   */
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Admin{"
+        + "email='" + email + '\''
+        + ", password='" + password + '\''
+        + '}';
+  }
 
-    private String email;
-    private String password;
+  private String email;
+  private String password;
 }

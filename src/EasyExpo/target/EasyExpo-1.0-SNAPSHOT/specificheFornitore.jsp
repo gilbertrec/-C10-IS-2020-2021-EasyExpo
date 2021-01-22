@@ -64,7 +64,8 @@
                             <div class="col-md-3">
                                 <div class="item">
                                     <!-- Item img -->
-                                    <div class="item-img"><img class="imma" src="${contenuto.immagine}" width="260px" height="280px" alt="">
+                                    <div class="item-img"><img class="imma" src="${contenuto.immagine}" width="260px"
+                                                               height="280px" alt="">
                                     </div>
                                     <!-- Item Name -->
                                     <div class="item-name"><a

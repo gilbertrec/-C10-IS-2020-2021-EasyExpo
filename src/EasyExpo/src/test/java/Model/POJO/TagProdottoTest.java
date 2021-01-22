@@ -1,47 +1,59 @@
 package Model.POJO;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 class TagProdottoTest {
+private TagProdotto tp;
+  @BeforeEach
+  void setUp() {
+    tp = new TagProdotto(1,2,"71272150567");
+  }
 
-    @BeforeEach
-    void setUp() {
-        TagProdotto tagprodotto = new TagProdotto(0, 0, "01234567890");
-    }
+  @AfterEach
+  void tearDown() {
+    tp = new TagProdotto(1,2,"71272150567");
+  }
 
-    @AfterEach
-    void tearDown() {
-        tagprodotto = new TagProdotto(0, 0, "01234567890");
-    }
+  @Test
+  void testTagProdottoCostructorEmpty() {
+    tp = new TagProdotto();
+    assertNotNull(tp);
+  }
 
-    @Test
-    void getIdTag() {
+  @Test
+  void getIdTag() {
+    assertEquals(1, tp.getIdTag());
+  }
 
-        assertEquals(0,tagprodotto.getIdTag());
-    }
+  @Test
+  void setIdTag() {
+    tp.setIdTag(3);
+    assertEquals(3, tp.getIdTag());
+  }
 
-    @Test
-    void setIdTag() {
-    }
+  @Test
+  void getIdProdotto() {
+    assertEquals(2, tp.getIdProdotto());
+  }
 
-    @Test
-    void getIdProdotto() {
-    }
+  @Test
+  void setIdProdotto() {
+    tp.setIdProdotto(4);
+    assertEquals(4, tp.getIdProdotto());
+  }
 
-    @Test
-    void setIdProdotto() {
-    }
+  @Test
+  void getPartitaIva() {
+    assertEquals("71272150567",tp.getPartitaIva());
+  }
 
-    @Test
-    void getPartitaIva() {
-    }
-
-    @Test
-    void setPartitaIva() {
-    }
-
-    private TagProdotto tagprodotto;
+  @Test
+  void setPartitaIva() {
+    tp.setPartitaIva("71272150123");
+    assertEquals("71272150123", tp.getPartitaIva());
+  }
 }
