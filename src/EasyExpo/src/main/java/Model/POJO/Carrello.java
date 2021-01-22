@@ -45,7 +45,7 @@ public class Carrello {
       new LinkedHashMap<>();
 
   public Collection<ArrayList<ProdottoQuantita>> getProdottiFornitori() {
-    return ProdottiFornitori.values();
+    return this.ProdottiFornitori.values();
   }
 
   public ArrayList<ProdottoQuantita> get(String partitaIva) {
@@ -62,9 +62,6 @@ public class Carrello {
     return ProdottiFornitori.remove(partitaIva);
   }
 
-  public LinkedHashMap<String, ArrayList<ProdottoQuantita>> getLista() {
-    return ProdottiFornitori;
-  }
 
     /*public float  getPrezzoTot() { return (float) prodotti.values().stream().mapToDouble(p -> (double) p.getPrezzo_v()).sum();
     }
@@ -77,6 +74,4 @@ public class Carrello {
         ", ProdottiFornitori=" + ProdottiFornitori +
         '}';
   }
-
-
 }

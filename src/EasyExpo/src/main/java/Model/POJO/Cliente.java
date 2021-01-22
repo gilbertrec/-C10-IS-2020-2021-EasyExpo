@@ -31,6 +31,8 @@ public class Cliente {
     this.cognome = cognome;
     this.telefono = telefono;
     this.luogoUbicazione = luogoUbicazione;
+    this.email = email;
+    this.password = password;
   }
 
   /**
