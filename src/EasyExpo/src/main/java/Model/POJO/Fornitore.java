@@ -33,6 +33,7 @@ public class Fornitore {
         this.email = email;
         this.password = password;
         this.ragioneSociale = ragioneSociale;
+        this.stato = stato.ATTIVO;
     }
 
     public Fornitore() {
@@ -192,6 +193,8 @@ public class Fornitore {
                 '}';
     }
 
+
+
     private String partitaIva;
     private String nome;
     private String cognome;
@@ -200,4 +203,6 @@ public class Fornitore {
     private String email;
     private String password;
     private String ragioneSociale;
+    public enum Stato {ATTIVO, SOSPESO};
+    private Stato stato;
 }

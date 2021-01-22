@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/ELiminaProdottoServlet")
+@WebServlet("/EliminaProdottoServlet")
 public class EliminaProdottoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -28,7 +28,15 @@ public class EliminaProdottoServlet extends HttpServlet {
          List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(partitaIva);
          request.getSession().setAttribute("prodotti", prodotti);
 
+
+         if(request.getSession().getAttribute("LeaderSupremo") != null){
+             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/gestioneProdotti.jsp");
+             requestDispatcher.forward(request, response);
+         }
+
          RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
          requestDispatcher.forward(request, response);
+
+
     }
 }
