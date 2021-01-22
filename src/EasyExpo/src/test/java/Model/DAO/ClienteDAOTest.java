@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import static Model.DAO.DBConnection.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +27,7 @@ class ClienteDAOTest {
         cliente1.setNome("Lucrezia");
         cliente1.setCognome("Robustelli");
         cliente1.setTelefono("3387485126");
-        cliente1.setEmail("k.robustelli@gmail.com");
+        cliente1.setEmail("l.robustelli@gmail.com");
         cliente1.setPassword("password");
         cliente1.setLuogoUbicazione("Napoli");
         cl.createCliente(cliente1);
@@ -54,23 +55,21 @@ class ClienteDAOTest {
 
         assertEquals(cliente.getCodiceFiscale(), cliente2.getCodiceFiscale());
 
+        cl.deleteCliente("MNCKTA99C55E923F");
 
-
-
-        /*cl.createCliente(cliente1);
-        Cliente c = cl.doRetrieveByCF("KBLKTA99C55E923W");
-
-        assertEquals(cliente1.getCodiceFiscale(), c.getCodiceFiscale());*/
     }
-
 
 
     @Test
     void doRetrieveByCF() {
+        Cliente c = cl.doRetrieveByCF("RBLKTA99C55E923W");
+        assertEquals("RBLKTA99C55E923W", c.getCodiceFiscale());
+
     }
 
     @Test
     void doRetrieveAll() {
+
     }
 
 
@@ -81,6 +80,8 @@ class ClienteDAOTest {
 
     @Test
     void doRetrieveByEmailandPassword() {
+        Cliente c1 = cl.doRetrieveByEmailandPassword("l.robustelli@gmail.com", "password" );
+        assertEquals("RBLKTA99C55E923W", c1.getCodiceFiscale());
     }
 
     @Test
