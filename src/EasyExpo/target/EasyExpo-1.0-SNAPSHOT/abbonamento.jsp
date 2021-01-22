@@ -68,21 +68,21 @@
                                         <!-- NUMERO CARTA -->
                                         <li class="col-md-6">
                                             <label> NUMERO CARTA
-                                                <input type="text" name="numeroCarta" value="" placeholder="" required>
+                                                <input type="text" name="numeroCarta" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- NOME INTESTATARIO -->
                                         <li class="col-md-6">
                                             <label> NOME INTESTATARIO
-                                                <input type="text" name="nomeIntestatario" value="" placeholder="" required pattern="[A-Z a-z]{1,80}" title="Stringa di massimo 80 caratteri">
+                                                <input type="text" name="nomeIntestatario" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- DATA SCADENZA -->
                                         <li class="col-md-6">
                                             <label> DATA SCADENZA
-                                                <input type="date" name="dataScadenza" value="" placeholder="" required>
+                                                <input type="date" name="dataScadenza" value="" placeholder="">
                                             </label>
                                         </li>
 
@@ -90,7 +90,7 @@
                                         <li class="col-md-6">
                                             <label> CVV
                                                 <input type="number" name="cvv" value="" placeholder="" min="100"
-                                                       max="999" required>
+                                                       max="999">
                                             </label>
                                         </li>
 

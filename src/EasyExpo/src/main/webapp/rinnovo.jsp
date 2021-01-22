@@ -15,18 +15,16 @@
 <div id="wrap">
 
     <!-- header -->
-    <header>
-        <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Rinnovo Abbonamento"/>
-        </jsp:include>
-    </header>
+    <jsp:include page="/header.jsp">
+        <jsp:param name="pageTitle" value="Rinnovo Abbonamento"/>
+    </jsp:include>
 
 
     <!--======= SUB BANNER =========-->
     <section class="sub-bnr" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
             <div class="container">
-                <h4>RINNOVO ABBONAMENTO</h4>
+                <h4>ABBONAMENTO</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
                     Sed feugiat, tellus vel tristique posuere, diam</p>
                 <ol class="breadcrumb">

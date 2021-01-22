@@ -54,55 +54,55 @@
                                         <!-- NOME -->
                                         <li class="col-md-6">
                                             <label> NOME
-                                                <input type="text" name="nome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
+                                                <input type="text" name="nome" value="" placeholder="">
                                             </label>
                                         </li>
                                         <!-- COGNOME -->
                                         <li class="col-md-6">
                                             <label> COGNOME
-                                                <input type="text" name="cognome" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
+                                                <input type="text" name="cognome" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- EMAIL -->
                                         <li class="col-md-6">
                                             <label> EMAIL
-                                                <input type="email" name="email" value="" placeholder="" required pattern="[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]{4,50}.([a-z A-Z]{2,5})" title="Deve contenere la @ e il dominio (es. .com)">
+                                                <input type="text" name="email" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- PASSWORD -->
                                         <li class="col-md-6">
                                             <label> PASSWORD
-                                                <input type="password" name="password" value="" placeholder="" required pattern="[0-9 a-z A-Z.!#$%&'+\\=?^_`{|}~-]{8,512}" title="Deve contenere almeno 8 caratteri, una maiuscola, una minuscola e un carattere speciale (es. .!#$%&'+\\=?^_`{|}~-])">
+                                                <input type="password" name="password" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- PASSWORD -->
                                         <li class="col-md-6">
                                             <label> CONFERMA PASSWORD
-                                                <input type="password" name="passwordConferma" value="" placeholder="" required pattern="" title="Le password non combaciano">
+                                                <input type="password" name="passwordConferma" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- PHONE -->
                                         <li class="col-md-6">
                                             <label> NUMERO DI TELEFONO
-                                                <input type="tel" name="telefono" value="" placeholder="" required pattern="[0-9]{10}" title="Deve essere di 10 caratteri, tutti numerici">
+                                                <input type="text" name="telefono" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <!-- LUOGO DI UBICAZIONE -->
                                         <li class="col-md-6">
                                             <label> LUOGO DI UBICAZIONE
-                                                <input type="text" name="luogoUbicazione" value="" placeholder="" required pattern="[a-z A-Z]{1,30}" title="Stringa con lunghezza minore di 30">
+                                                <input type="text" name="luogoUbicazione" value="" placeholder="">
                                             </label>
                                         </li>
 
                                         <li class="col-md-6">
                                             <!-- CODICE FISCALE -->
                                             <label> CODICE FISCALE
-                                                <input type="text" name="codiceFiscale" value="" placeholder="" required pattern="[A-Z 0-9]{16}" title="Deve essere di 16 caratteri alfanumerici, tutti maiuscoli">
+                                                <input type="text" name="codiceFiscale" value="" placeholder="">
                                             </label>
                                         </li>
                                     </ul>
@@ -144,7 +144,6 @@
         </footer>
 
     </div>
-</div>
 </body>
 </html>
 

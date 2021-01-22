@@ -23,11 +23,6 @@ class AbbonamentoTest {
         Date dataf = new Date(2020,2,8);
         abbonamento = new Abbonamento(0,"01234567890",datai,dataf);
     }
-    @Test
-    void testAbbonamentoCostructorEmpty() {
-        abbonamento = new Abbonamento();
-        assertNotNull(abbonamento);
-    }
 
     @Test
     void getIdAbbonamento() {
