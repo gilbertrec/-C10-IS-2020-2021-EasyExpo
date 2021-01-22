@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import Model.POJO.Abbonamento;
 import Model.POJO.Fornitore;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,28 +34,25 @@ class AbbonamentoDAOTest {
 
   @AfterEach
   void tearDown() {
-    abbonamentoDAO.deleteAbbonamento(abbonamento.getIdAbbonamento());
-    fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());
-  }
-
-  @Test
-  void doRetrieveByIdAbbonamento() {
-    abbonamento.setIdAbbonamento(5);
-    Abbonamento abbonamento2= abbonamentoDAO.doRetrieveByIdAbbonamento(5);
-
-    assertEquals(abbonamento2.getIdAbbonamento(), abbonamento.getIdAbbonamento());
+    String par = fornitore.getPartitaIva();
+    fornitoreDAO.deleteFornitore(par);
   }
 
   @Test
   void doRetrieveByPartitaIva() {
+    List<Abbonamento> a = abbonamentoDAO.doRetrieveByPartitaIva("01234567890");
+    assertEquals("01234567890", a.get(0).getPartitaIva());
   }
-
 
   @Test
   void createAbbonamento() {
-    Abbonamento abbonamento1 =
-        abbonamentoDAO.doRetrieveByIdAbbonamento(abbonamento.getIdAbbonamento());
-    assertEquals(abbonamento.getIdAbbonamento(), abbonamento1.getIdAbbonamento());
+    Abbonamento a = new Abbonamento();
+    a.setIdAbbonamento(2);
+    a.setPartitaIva("01234567890");
+    a.setDataInizio(new Date(2020, 10, 01));
+    a.setDataFine(new Date(2020, 10, 11));
+    abbonamentoDAO.createAbbonamento(a);
+    assertEquals(2, abbonamentoDAO.doRetrieveByPartitaIva("01234567890").size());
   }
 
 }

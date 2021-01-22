@@ -21,34 +21,6 @@ import java.util.List;
 public class AbbonamentoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Abbonamento correlato ad un IdAbbonamento dato in input.
-   *
-   * @param idAbbonamento Codice Identificativo Abbonamento, Intero
-   * @return Abbonamento - Oggetto di tipo {@link Abbonamento}
-   */
-  public Abbonamento doRetrieveByIdAbbonamento(int idAbbonamento) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con
-          .prepareStatement(
-              "SELECT *  FROM Abbonamento as a, Fornitore as f "
-                      + "WHERE idAbbonamento=? AND a.partitaIva=f.partitaIva");
-      ps.setInt(1, idAbbonamento);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        Abbonamento a = new Abbonamento();
-        a.setIdAbbonamento(rs.getInt(1));
-        a.setPartitaIva(rs.getString(2));
-        a.setDataInizio(rs.getDate(3));
-        a.setDataFine(rs.getDate(4));
-        return a;
-      }
-      return null;
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
    * Metodo che ritorna le istanze di tipo Abbonamento correlato ad una patitaIva data in input.
    *
    * @param partitaIva codice alfanumerico, String
@@ -104,23 +76,6 @@ public class AbbonamentoDAO {
       throw new RuntimeException(e);
     }
     return  flag;
-  }
-
-  /**
-   * Metodo che elimina dal DB l'istanza Abbonamento correlata all'IdAbbonamento dato in input.
-   *
-   * @param idAbbonamento Codice Identificativo Abbonamento, intero
-   */
-  public void deleteAbbonamento(int idAbbonamento) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con.prepareStatement("DELETE FROM Abbonamento WHERE idAbbonamento=?");
-      ps.setInt(1, idAbbonamento);
-      if (ps.executeUpdate() != 1) {
-        throw new RuntimeException("DELETE error.");
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
   }
 
 }
