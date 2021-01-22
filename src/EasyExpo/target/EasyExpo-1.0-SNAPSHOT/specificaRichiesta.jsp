@@ -1,7 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.POJO.Prodotto" %>
-<%@ page import="Model.POJO.ProdottoRichiesta" %>
-<%@ page import="Model.POJO.RichiestaPreventivo" %><%--
+<%@ page import="Model.POJO.ProdottoRichiesta" %><%--
   Created by IntelliJ IDEA.
   User: lucreziarobustelli
   Date: 05/01/2021
@@ -27,9 +26,10 @@
 
     <header>
         <jsp:include page="/header.jsp">
-            <jsp:param name="pageTitle" value="Specifica Richiesta"/>
+            <jsp:param name="pageTitle" value="Area Fornitore"/>
         </jsp:include>
     </header>
+
 
 
     <!--======= SUB BANNER =========-->
@@ -57,34 +57,31 @@
                         <!-- Article -->
                         <article>
                             <!-- Title -->
-                            <div class="post-tittle left"><a href="#." class="tittle">${richiesta.titolo}</a>
+                            <div class="post-tittle left"> <a href="#." class="tittle">${richiesta.titolo}</a>
                                 <!-- Post Info -->
-                                <span><i
-                                        class="primary-color icon-user"></i> by ${cliente_specifica.nome} ${cliente_specifica.cognome}</span>
-                                <span><i class="primary-color icon-calendar"></i> ${richiesta.dataRichiesta}</span>
-                            </div>
+                                <span><i class="primary-color icon-user"></i> by admin</span> <span><i class="primary-color icon-calendar"></i> ${richiesta.dataRichiesta}</span> <span><i class="primary-color icon-tag"></i> Furniture</span> </div>
                             <!-- Post Content  creare il metodo che ti restituisce anche l'altra tabella per i prodotti-->
                             <div class="text-left">
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
-                                <blockquote> ${richiesta.descrizioneEvento}</blockquote>
+                                <p> ${richiesta.descrizioneEvento}</p>
                                 <h6 class="margin-top-80 margin-bottom-30">Nota per il fornitore</h6>
-                                <p>${richiesta.nota}</p>
+                                <blockquote>${richiesta.nota}</blockquote>
 
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
                                 <div class="admin-info">
+                                    <div class="media-left">
+                                        <div class="admin-pic"> <img src="images/admin-avatar.jpg" alt=""> </div>
+                                    </div>
                                     <div class="media-body">
-                                        <h6>${clifor.nome} ${clifor.cognome} <span>Cliente </span>
-                                            <span>${clifor.luogoUbicazione}</span></h6>
-                                        <span>CONTATTI</span> <br>
-                                        <span>${clifor.email}</span><br>
-                                        <span>${clifor.telefono}</span>
-                                        <div class="admin-social"><a href="#."><i class="icon-social-facebook"></i></a>
-                                            <a href="#."><i class="icon-social-twitter"></i></a></div>
+                                        <h6>${clifor.nome} ${clifor.cognome} <span>Cliente</span></h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. NullamMorbi ac scelerisque mauris. Etiam sodales a nulla ornare viverra. Nunc at blandit neque, bociis natoque penatcing e scelerisque miscing elit. </p>
+                                        <div class="admin-social"> <a href="#."><i class="icon-social-facebook"></i></a> <a href="#."><i class="icon-social-twitter"></i></a> <a href="#."><i class="icon-social-dribbble"></i></a> <a href="#."><i class="icon-envelope"></i></a> </div>
                                     </div>
                                 </div>
                             </div>
                         </article>
                         <hr>
+
                     </div>
 
                     <!-- Sider Bar -->
@@ -95,56 +92,23 @@
                             <h5 class="shop-tittle margin-top-60 margin-bottom-30">Prodotti richiesti</h5>
                             <ul class="papu-post margin-top-20">
                                 <%
-                                    ArrayList<Prodotto> prodotto =
-                                            (ArrayList<Prodotto>) session.getAttribute("prodotto");
-                                    ArrayList<ProdottoRichiesta> prichiesta =
-                                            (ArrayList<ProdottoRichiesta>) session.getAttribute("prichiesta");
+                                    ArrayList<Prodotto> prodotto = (ArrayList<Prodotto>) session.getAttribute("prodotto");
+                                    ArrayList<ProdottoRichiesta> prichiesta = (ArrayList<ProdottoRichiesta>) session.getAttribute("prichiesta");
 
-                                    for (int i = 0; i < prodotto.size(); i++) {
+                                    for(int i = 0; i < prodotto.size(); i++){
                                 %>
 
                                 <li class="media">
-                                    <div class="media-left"><a href="#"> <img class="media-object"
-                                                                              src="<%=prodotto.get(i).getImmagine()%>"
-                                                                              alt=""></a></div>
-                                    <div class="media-body"><a class="media-heading"
-                                                               href="#."><small>€</small><%=prodotto.get(i)
-                                            .getPrezzo()%> x <%=prichiesta.get(i)
-                                            .getNumColli()%>
-                                        <span><% float totale = prodotto.get(i).getPrezzo() * prichiesta.get(i).getNumColli();%>
-                                            <%=totale%></span>
-                                    </a>
-                                        <span><%=prodotto.get(i).getTitolo()%></span></div>
-                                    <div class="media-body"><a class="media-heading" href="#."><%=prichiesta.get(i)
-                                            .getDataInizioNoleggio()%>
-                                    </a> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%>
-                                    </a></div>
+                                    <div class="media-left"> <a href="#"> <img class="media-object" src="<%=prodotto.get(i).getImmagine()%>" alt=""></a> </div>
+                                    <div class="media-body"> <a class="media-heading" href="#."><small>€</small><%=prodotto.get(i).getPrezzo()%></a> <span><%=prodotto.get(i).getTitolo()%></span></div>
+                                    <div class="media-body"> <a class="media-heading" href="#."><%=prichiesta.get(i).getDataInizioNoleggio()%></a>  <a class="media-heading" href="#."><%=prichiesta.get(i).getDataFineNoleggio()%></a></div>
 
 
                                 </li>
-                                <%}%>
+                                      <%}%>
                             </ul>
                         </div>
-
-                        <%
-                            RichiestaPreventivo richiesta = (RichiestaPreventivo) session.getAttribute("richiesta");
-                            if(richiesta.getStato().toString().equals("IN_ATTESA")){
-                        %>
-
-                        <c:choose>
-                            <c:when test="${fornitore != null and fornitore.abbonato == true}">
-                                <form action="CompilaPreventivoServlet" method="post" >
-                                    <input type="hidden" name="idRichiesta" value="<c:out value="${richiesta.idRichiesta}"/>">
-                                    <li class="col-xs-6"><input class="btn" type="submit" value="COMPILA PREVENTIVO">
-                                    </li>
-                                </form>
-                            </c:when>
-                        </c:choose>
-
-                        <%}%>
                     </div>
-
-                </div>
             </div>
         </section>
     </div>

@@ -53,7 +53,7 @@
                             <!-- ESTIMATE SHIPPING & TAX -->
                             <div class="col-sm-7">
                                 <h6>ACCEDI AL TUO ACCOUNT</h6>
-                                <form action="LoginServlet" method="post">
+                                <form action = "LoginServlet" method="post">
                                     <ul class="row">
 
                                         <!-- Name -->
@@ -89,8 +89,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="registrazioneFornitore.jsp"
-                                           style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
+                                        <a href="registrazioneFornitore.jsp" style="margin-top: 15px; background: #2d3a4b; color: white">FORNITORE</a>
 
                                     </li>
                                 </ul>

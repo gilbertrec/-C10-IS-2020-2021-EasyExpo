@@ -40,13 +40,12 @@
                     <div class="col-md-7">
 
                         <!-- Images Slider -->
-                        <ul class="slides">
-                            <div class="row">
-                                <div class="col-sm-6 margin-bottom-30"><img class="imma" src="${prodotti.immagine}"
-                                                                            width="500px" height="600px" alt=""></div>
-                            </div>
-                        </ul>
-                    </div>
+                            <ul class="slides">
+                                <div class="row">
+                                    <div class="col-sm-6 margin-bottom-30"> <img class="imma" src="${prodotti.immagine}" width="500px" height="600px" alt=""> </div>
+                                </div>
+                            </ul>
+                        </div>
 
                     <!-- Content -->
                     <div class="col-md-5">
@@ -59,57 +58,53 @@
                         <!-- Short By -->
                         <div class="some-info">
                             <ul class="row margin-top-30">
+                                <!--QUANTITA-->
+                                <li class="col-md-6">
+                                    <label> QUANTITÀ
+                                        <input type="number" name="quantita" value="1" placeholder="" min="1" max="${prodotti.quantità}">
+                                    </label>
+                                </li>
 
                                 <!-- AGGIUNGI AL CARRELLO -->
                                 <form action="Carrello" method="post">
-                                    <!--QUANTITA-->
-                                    <li class="col-md-6">
-                                        <label> QUANTITÀ
-                                            <input type="number" name="addNum" value="1" placeholder="" min="1"
-                                                   max="${prodotti.quantità}">
-                                        </label>
-                                    </li>
-
                                     <input type="hidden" name="prodId" value="${prodotti.idProdotto}">
                                     <input type="hidden" name="partitaIva" value="${prodotti.partitaIva}">
-                                    <!--<input type="hidden" name="addNum" value="1"> modifica numero di prodotti aggiunti -->
-                                    <li class="col-xs-6"><input class="btn" type="submit" value="AGGIUNGI"></li>
-                                    <!--<li class="col-xs-6"><a href="carrello.jsp" class="btn">AGGIUNGI</a></li>-->
+                                    <input type="hidden" name="addNum" value="1"> <!-- modifica numero di prodotti aggiunti -->
+                                    <li class="col-xs-6"> <input class="btn" type="submit" value="AGGIUNGI"></li>
+                                <!--<li class="col-xs-6"><a href="carrello.jsp" class="btn">AGGIUNGI</a></li>-->
                                 </form>
 
-                            </ul>
+                                        </ul>
 
-                            <!-- INFOMATION -->
-                            <div class="inner-info">
-                                <h6>INFORMAZIONI FORNITORE</h6>
-                                <h5>
-                                    <a href="FornitoreServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>"> ${fornitore.nome} ${fornitore.cognome}</a>
-                                </h5>
-                                <h7>Questo fornitore si trova a: ${fornitore.luogoUbicazione}</h7>
+                                        <!-- INFOMATION -->
+                                        <div class="inner-info">
+                                            <h6>INFORMAZIONI FORNITORE</h6>
+                                            <h5><a href="FornitoreServlet?partitaIva=<c:out value="${fornitore.partitaIva}"/>"> ${fornitore.nome} ${fornitore.cognome}</a></h5>
+                                            <h7>Questo fornitore si trova a: ${fornitore.luogoUbicazione}</h7>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!--======= PRODUCT DESCRIPTION =========-->
+                    <div class="item-decribe">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
+                            <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIZIONE</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
+                            <!-- DESCRIPTION -->
+                            <div role="tabpanel" class="tab-pane fade in active" id="descr">
+                                <p style="font-size: 20px"> ${prodotti.descrizione} </p>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!--======= PRODUCT DESCRIPTION =========-->
-            <div class="item-decribe">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs animate fadeInUp" data-wow-delay="0.4s" role="tablist">
-                    <li role="presentation" class="active"><a href="#descr" role="tab" data-toggle="tab">DESCRIZIONE</a>
-                    </li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content animate fadeInUp" data-wow-delay="0.4s">
-                    <!-- DESCRIPTION -->
-                    <div role="tabpanel" class="tab-pane fade in active" id="descr">
-                        <p style="font-size: 20px"> ${prodotti.descrizione} </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </section>
 
 
@@ -130,6 +125,7 @@
     </section>
 
 </div>
+
 
 
 <!--======= FOOTER =========-->

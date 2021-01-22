@@ -2,236 +2,207 @@ package Model.POJO;
 
 /**
  * Fornitore e' la classe che gestisce un
- * ordinario oggetto Fornitore.
+ * ordinario oggetto Fornitore
  *
- * @author LUCREZIA ROBUSTELLI
+ * @author
  * @version 1.0
  * @since 2020-12-29
  */
 
 public class Fornitore {
 
-  /**
-   * Metodo costruttore della classe Fornitore.
-   *
-   * @param email           Indirizzo mail, String
-   * @param password        Caratteri alfanumerici per accesso al sistema, String
-   * @param partitaIva      Codice alfanumerico identificativo fornitore, String
-   * @param nome            Nome del fornitore, String
-   * @param cognome         Cognome del fornitore, String
-   * @param telefono        Numero di telefono del fornitore, String
-   * @param luogoUbicazione Indirizzo del fornitore, String
-   * @param ragioneSociale  Ragione sociale del fornitore, String
-   */
+    /**
+     * Metodo costruttore della classe Fornitore
+     *
+     * @param email Indirizzo mail, String
+     * @param password Caratteri alfanumerici per accesso al sistema, String
+     * @param partitaIva Codice alfanumerico identificativo fornitore, String
+     * @param nome Nome del fornitore, String
+     * @param cognome Cognome del fornitore, String
+     * @param telefono Numero di telefono del fornitore, String
+     * @param luogoUbicazione Indirizzo del fornitore, String
+     * @param ragioneSociale Ragione sociale del fornitore, String
+     */
 
-  public Fornitore(String partitaIva, String nome, String cognome, String telefono,
-                   String luogoUbicazione, String email, String password, String ragioneSociale) {
-    this.partitaIva = partitaIva;
-    this.nome = nome;
-    this.cognome = cognome;
-    this.telefono = telefono;
-    this.luogoUbicazione = luogoUbicazione;
-    this.email = email;
-    this.password = password;
-    this.ragioneSociale = ragioneSociale;
-  }
+    public Fornitore(String partitaIva, String nome, String cognome, String telefono, String luogoUbicazione, String email, String password, String ragioneSociale) {
+        this.partitaIva = partitaIva;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.telefono = telefono;
+        this.luogoUbicazione = luogoUbicazione;
+        this.email = email;
+        this.password = password;
+        this.ragioneSociale = ragioneSociale;
+        this.stato = stato.ATTIVO;
+    }
 
-  public Fornitore() {
-  }
+    public Fornitore() {
+    }
 
-  /**
-   * Metodo che restituisce la partitaIva.
-   *
-   * @return String - partitaIva
-   */
+    /**
+     * Metodo che restituisce la partitaIva
+     * @return String - partitaIva
+     */
 
-  public String getPartitaIva() {
-    return partitaIva;
-  }
+    public String getPartitaIva() {
+        return partitaIva;
+    }
 
-  /**
-   * Metodo che setta la partitaIva.
-   *
-   * @param partitaIva Codice alfanumerico identificativo fornitore, String
-   */
+    /**
+     * Metodo che setta la partitaIva
+     * @param partitaIva Codice alfanumerico identificativo fornitore, String
+     */
 
-  public void setPartitaIva(String partitaIva) {
-    this.partitaIva = partitaIva;
-  }
+    public void setPartitaIva(String partitaIva) {
+        this.partitaIva = partitaIva;
+    }
 
-  /**
-   * Metodo che restituisce il nome.
-   *
-   * @return String - nome
-   */
+    /**
+     * Metodo che restituisce il nome
+     * @return String - nome
+     */
 
-  public String getNome() {
-    return nome;
-  }
+    public String getNome() {
+        return nome;
+    }
 
-  /**
-   * Metodo che setta il nome.
-   *
-   * @param nome Nome del fornitore, String
-   */
+    /**
+     * Metodo che setta il nome
+     * @param nome Nome del fornitore, String
+     */
 
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-  /**
-   * Metodo che restituisce il cognome.
-   *
-   * @return String - cognome
-   */
+    /**
+     * Metodo che restituisce il cognome
+     * @return String - cognome
+     */
 
-  public String getCognome() {
-    return cognome;
-  }
+    public String getCognome() {
+        return cognome;
+    }
 
-  /**
-   * Metodo che setta il cognome.
-   *
-   * @param cognome Cognome del fornitore, String
-   */
+    /**
+     * Metodo che setta il cognome
+     * @param cognome Cognome del fornitore, String
+     */
 
-  public void setCognome(String cognome) {
-    this.cognome = cognome;
-  }
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
-  /**
-   * Metodo che restituisce il telefono.
-   *
-   * @return String - telefono
-   */
+    /**
+     * Metodo che restituisce il telefono
+     * @return String - telefono
+     */
 
-  public String getTelefono() {
-    return telefono;
-  }
+    public String getTelefono() {
+        return telefono;
+    }
 
-  /**
-   * Metodo che setta il telefono.
-   *
-   * @param telefono Indirizzo del fornitore, String
-   */
+    /**
+     * Metodo che setta il telefono
+     * @param telefono Numero di telefono del fornitore, String
+     */
 
-  public void setTelefono(String telefono) {
-    this.telefono = telefono;
-  }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-  /**
-   * Metodo che restituisce il luogoUbicazione.
-   *
-   * @return String - luogoUbicazione
-   */
+    /**
+     * Metodo che restituisce il luogoUbicazione
+     * @return String - luogoUbicazione
+     */
 
-  public String getLuogoUbicazione() {
-    return luogoUbicazione;
-  }
+    public String getLuogoUbicazione() {
+        return luogoUbicazione;
+    }
 
-  /**
-   * Metodo che setta il luogoUbicazione.
-   *
-   * @param luogoUbicazione Indirizzo del fornitore, String
-   */
+    /**
+     * Metodo che setta il luogoUbicazione
+     * @param luogoUbicazione Indirizzo del fornitore, String
+     */
 
-  public void setLuogoUbicazione(String luogoUbicazione) {
-    this.luogoUbicazione = luogoUbicazione;
-  }
+    public void setLuogoUbicazione(String luogoUbicazione) {
+        this.luogoUbicazione = luogoUbicazione;
+    }
+    /**
+     * Metodo che restituisce l'email
+     * @return String - email
+     */
+    public String getEmail() {
+        return email;
+    }
+    /**
+     * Metodo che setta l'email
+     * @param email Indirizzo mail, String
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    /**
+     * Metodo che restituisce la password
+     * @return String - password
+     */
+    public String getPassword() {
+        return password;
+    }
+    /**
+     * Metodo che setta la password
+     * @param password Caratteri alfanumerici per accesso al sistema, String
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  /**
-   * Metodo che restituisce l'email.
-   *
-   * @return String - email
-   */
-  public String getEmail() {
-    return email;
-  }
+    /**
+     * Metodo che restituisce la ragioneSociale
+     * @return String - ragioneSociale
+     */
+    public String getRagioneSociale() {
+        return ragioneSociale;
+    }
 
-  /**
-   * Metodo che setta l'email.
-   *
-   * @param email Indirizzo mail, String
-   */
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    /**
+     * Metodo che setta la ragioneSociale
+     * @param ragioneSociale Ragione sociale del fornitore, String
+     */
 
-  /**
-   * Metodo che restituisce la password.
-   *
-   * @return String - password
-   */
-  public String getPassword() {
-    return password;
-  }
+    public void setRagioneSociale(String ragioneSociale) {
+        this.ragioneSociale = ragioneSociale;
+    }
 
-  /**
-   * Metodo che setta la password.
-   *
-   * @param password Caratteri alfanumerici per accesso al sistema, String
-   */
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    /**
+     * Metodo che converte l'oggetto Fornitore in stringa
+     * @return String
+     */
 
-  /**
-   * Metodo che restituisce la ragioneSociale.
-   *
-   * @return String - ragioneSociale
-   */
-  public String getRagioneSociale() {
-    return ragioneSociale;
-  }
-
-  /**
-   * Metodo che setta la ragioneSociale.
-   *
-   * @param ragioneSociale Ragione sociale del fornitore, String
-   */
-
-  public void setRagioneSociale(String ragioneSociale) {
-    this.ragioneSociale = ragioneSociale;
-  }
-
-
-  public boolean isAbbonato() {
-    return abbonato;
-  }
-
-  public void setAbbonato(boolean abbonato) {
-    this.abbonato = abbonato;
-  }
-
-  /**
-   * Metodo che converte l'oggetto Fornitore in stringa.
-   *
-   * @return String
-   */
+    @Override
+    public String toString() {
+        return "Fornitore{" +
+                "partitaIva='" + partitaIva + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", luogoUbicazione='" + luogoUbicazione + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", ragioneSociale='" + ragioneSociale + '\'' +
+                '}';
+    }
 
 
-  @Override
-  public String toString() {
-    return "Fornitore{"
-        + "partitaIva='" + partitaIva + '\''
-        + ", nome='" + nome + '\''
-        + ", cognome='" + cognome + '\''
-        + ", telefono='" + telefono + '\''
-        + ", luogoUbicazione='" + luogoUbicazione + '\''
-        + ", email='" + email + '\''
-        + ", password='" + password + '\''
-        + ", ragioneSociale='" + ragioneSociale + '\''
-        + ", abbonato=" + abbonato
-        + '}';
-  }
 
-  private String partitaIva;
-  private String nome;
-  private String cognome;
-  private String telefono;
-  private String luogoUbicazione;
-  private String email;
-  private String password;
-  private String ragioneSociale;
-  private boolean abbonato;
+    private String partitaIva;
+    private String nome;
+    private String cognome;
+    private String telefono;
+    private String luogoUbicazione;
+    private String email;
+    private String password;
+    private String ragioneSociale;
+    public enum Stato {ATTIVO, SOSPESO};
+    private Stato stato;
 }
