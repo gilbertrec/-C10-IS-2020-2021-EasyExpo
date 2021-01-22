@@ -84,7 +84,8 @@ public class AbbonamentoDAO {
    * @param abbonamento Oggetto di tipo {@link Abbonamento}
    */
 
-  public void createAbbonamento(Abbonamento abbonamento) {
+  public boolean createAbbonamento(Abbonamento abbonamento) {
+    boolean flag = false;
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Abbonamento ( partitaIva, dataInizio, dataFine) VALUES(?,?,?)",
@@ -98,9 +99,11 @@ public class AbbonamentoDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       abbonamento.setIdAbbonamento(rs.getInt(1));
+      flag = true;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
+    return  flag;
   }
 
   /**
