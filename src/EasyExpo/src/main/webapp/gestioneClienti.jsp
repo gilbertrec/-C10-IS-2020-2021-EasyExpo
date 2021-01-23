@@ -68,7 +68,7 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
+                                    <% url ="SospendiUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
                                     <a class="icon-ban" title="Sospendi" onclick="notificaSospensione('<%=url%>')"></a>
                                 </td>
                             </tr>

@@ -68,9 +68,9 @@
                                     out.append("<td>" + fornitore.getRagioneSociale() + " </td> ");
                                 %>
                                 <td>
-                                    <% url ="/EasyExpo_war_exploded/SospendiUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
+                                    <% url ="SospendiUtenteServlet?id=".concat(fornitore.getPartitaIva().concat("&flag=1"));%>
                                     <a class="icon-ban" title="Sospendi" onclick="notificaSospensione('<%=url%>')"></a>
-                                    <a class="icon-handbag" title="Lista Prodotti" href="/EasyExpo_war_exploded/ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
+                                    <a class="icon-handbag" title="Lista Prodotti" href="ListaProdottiServlet?id=<%=fornitore.getPartitaIva()%>"></a>
                                 </td>
                             </tr>
                             <% } %>

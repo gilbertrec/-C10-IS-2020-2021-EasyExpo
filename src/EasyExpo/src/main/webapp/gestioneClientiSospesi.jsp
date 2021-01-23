@@ -67,7 +67,7 @@
                                     out.append("<td>" + cliente.getTelefono() + " </td> ");
                                 %>
                                 <td>
-                                    <% url = "/EasyExpo_war_exploded/RiabilitaUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
+                                    <% url = "RiabilitaUtenteServlet?id=".concat(cliente.getCodiceFiscale().concat("&flag=2"));%>
                                     <a class="icon-check" title="Riabilita" onclick="notificaRiabilitazione('<%=url%>')"></a>
                                 </td>
                             </tr>

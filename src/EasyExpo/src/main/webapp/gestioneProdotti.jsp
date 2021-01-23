@@ -74,7 +74,7 @@
                                 %>
                                 <td>
                                     <% String x = String.valueOf(prodotto.getIdProdotto());%>
-                                    <%url = "/EasyExpo_war_exploded/EliminaProdottoAdminServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
+                                    <%url = "EliminaProdottoAdminServlet?id=".concat(x.concat("&partitaIva=".concat(prodotto.getPartitaIva())));%>
                                     <a class="icon-trash" title="Elimina" onclick="notificaEliminazioneProdotto('<%=url%>')"></a>
                                 </td>
                             </tr>
