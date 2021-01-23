@@ -92,7 +92,7 @@ public class PreventivoDAO {
    *
    * @param preventivo Oggetto di tipo {@link Preventivo}
    */
-  public void createPreventivo(Preventivo preventivo) {
+  public int createPreventivo(Preventivo preventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Preventivo (idRichiesta, partitaIva, codiceFiscale, dataPreventivo, "
@@ -110,6 +110,7 @@ public class PreventivoDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       preventivo.setIdPreventivo(rs.getInt(1));
+      return rs.getInt(1);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
@@ -193,9 +194,9 @@ public class PreventivoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement("DELETE FROM Preventivo WHERE idPreventivo=?");
       ps.setInt(1, idPreventivo);
-      if (ps.executeUpdate() != 1) {
+      /*if (ps.executeUpdate() != 1) {
         throw new RuntimeException("DELETE error.");
-      }
+      }*/
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

@@ -174,7 +174,7 @@ public class ProdottoDAO {
    * @param prodotto Oggetto di tipo {@link Preventivo}
    */
 
-  public void createProdotto(Prodotto prodotto) {
+  public int createProdotto(Prodotto prodotto) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Prodotto (partitaIva, titolo, descrizione, "
@@ -194,6 +194,7 @@ public class ProdottoDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       prodotto.setIdProdotto(rs.getInt(1));
+      return rs.getInt(1);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

@@ -174,7 +174,7 @@ public class RichiestaPreventivoDAO {
    * @param richiestaPreventivo Oggetto di tipo {@link RichiestaPreventivo}
    */
 
-  public void createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
+  public int createRichiestaPreventivo(RichiestaPreventivo richiestaPreventivo) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO RichiestaPreventivo (codiceFiscale, "
@@ -196,6 +196,7 @@ public class RichiestaPreventivoDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       richiestaPreventivo.setIdRichiesta(rs.getInt(1));
+      return rs.getInt(1);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
