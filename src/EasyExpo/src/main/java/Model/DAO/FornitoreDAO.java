@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.RichiestaPreventivo;
 import java.sql.Connection;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.SQLException;
+import java.sql.Connection;
 
 /**
  * <p> FornitoreDAO e' una classe di tipo DAO (Data Access Object)
@@ -273,4 +276,48 @@ public class FornitoreDAO {
     }
   }
 
+
+    /**
+     * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+     * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
+     *
+     */
+    public List<Fornitore> doRetrievebyStato(int val) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM Fornitore WHERE stato=?");
+
+            ps.setInt(1,val);
+            ArrayList<Fornitore> fornitori = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Fornitore f = new Fornitore();
+                f.setPartitaIva(rs.getString(1));
+                f.setNome(rs.getString(2));
+                f.setCognome(rs.getString(3));
+                f.setEmail(rs.getString(4));
+                f.setPassword(rs.getString(5));
+                f.setTelefono(rs.getString(6));
+                f.setLuogoUbicazione(rs.getString(7));
+                f.setRagioneSociale(rs.getString(8));
+                fornitori.add(f);
+            }
+            return fornitori;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateStato(int val, String partitaIva) {
+        try (Connection con = DBConnection.getConnection()) {
+            PreparedStatement ps = con
+                    .prepareStatement("UPDATE Fornitore SET stato=? WHERE partitaIva=?");
+
+            ps.setInt(1,val);
+            ps.setString(2,partitaIva);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

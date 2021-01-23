@@ -17,6 +17,14 @@ import java.sql.Statement;
  * @since 2020-12-29
  */
 
+/**
+ * <p> TagProdottoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto TagProdotto </p>
+ * @author
+ * @version 1.0
+ * @since   2020-12-29
+ */
+
 public class TagProdottoDAO {
 
   /**

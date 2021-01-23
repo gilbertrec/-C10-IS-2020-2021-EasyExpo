@@ -30,4 +30,4 @@ src/EasyExpo/src/main/java/Controller/AggiungiProdottoServlet.java
 src/EasyExpo/.idea/libraries/jsp_api.xml
 
 
-src/EasyExpo/.idea/checkstyleidea-libs/readme.txt
+src/EasyExpo/target/classes/Model/DAO/DBConnection.class

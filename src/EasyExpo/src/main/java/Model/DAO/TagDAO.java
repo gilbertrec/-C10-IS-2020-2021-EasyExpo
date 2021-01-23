@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
 import Model.POJO.Tag;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

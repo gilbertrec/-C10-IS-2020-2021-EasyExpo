@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import Model.POJO.Fornitore;
+import Model.POJO.MetodoPagamento;
 import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 import java.sql.Connection;

@@ -1417,5 +1417,3 @@ you can use the generic selector below, but it's slower:
 .lnr-pointer-left:before {
 	content: "\e8a9";
 }
-
-

@@ -1,5 +1,7 @@
 package Model.DAO;
 
+import Model.POJO.Abbonamento;
+import Model.POJO.Admin;
 import Model.POJO.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
