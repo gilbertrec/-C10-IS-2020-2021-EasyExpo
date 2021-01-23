@@ -20,25 +20,10 @@ public class AdminDAO {
    * Metodo che ritorna l'oggetto di tipo Admin correlato all'email data in input.
    *
    * @param email Indirizzo email identificativo, String
+   * @param password codice identificativo, String
    * @return Admin - Oggetto di tipo {@link Admin}
    */
-  public Admin doRetrieveByEmail(String email)  {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con.prepareStatement(
-          "SELECT email, password FROM Admin WHERE email=?");
-      ps.setString(1, email);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        Admin a = new Admin();
-        a.setEmail(rs.getString(1));
-        a.setPassword(rs.getString(2));
-        return a;
-      }
-      return null;
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
+
   public Admin doRetrieveByEmailandPassword(String email, String password) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
