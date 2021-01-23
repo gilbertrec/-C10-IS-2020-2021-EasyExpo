@@ -101,7 +101,7 @@
                                         <li class="col-md-6">
                                             <label> FOTO
                                                 <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
-                                                       placeholder="" required title="Immagine non inserita">
+                                                       placeholder="">
                                             </label>
                                         </li>
 

@@ -1,5 +1,7 @@
 package Model.POJO;
 
+import proxy.ProxyImage;
+
 /**
  * Prodotto e' la classe che gestisce un
  * ordinario oggetto Prodotto.
@@ -32,7 +34,7 @@ public class Prodotto {
     this.tipo = tipo;
     this.quantità = quantità;
     this.prezzo = prezzo;
-    this.immagine = immagine;
+    this.immagine = new ProxyImage(immagine);
   }
 
   /**
@@ -183,13 +185,12 @@ public class Prodotto {
     this.prezzo = prezzo;
   }
 
-
   public String getImmagine() {
-    return immagine;
+    return immagine.display();
   }
 
   public void setImmagine(String immagine) {
-    this.immagine = immagine;
+    this.immagine = new ProxyImage(immagine);
   }
 
   /**
@@ -224,5 +225,5 @@ public class Prodotto {
   private Tipo tipo;
   private int quantità;
   private float prezzo;
-  private String immagine;
+  private ProxyImage immagine;
 }
