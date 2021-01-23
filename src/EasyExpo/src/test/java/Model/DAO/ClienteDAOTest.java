@@ -64,18 +64,6 @@ class ClienteDAOTest {
     void doRetrieveByCF() {
         Cliente c = cl.doRetrieveByCF("RBLKTA99C55E923W");
         assertEquals("RBLKTA99C55E923W", c.getCodiceFiscale());
-
-    }
-
-    @Test
-    void doRetrieveAll() {
-
-    }
-
-
-
-    @Test
-    void doRetrieveByEmail() {
     }
 
     @Test
@@ -86,5 +74,19 @@ class ClienteDAOTest {
 
     @Test
     void deleteCliente() {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente3 = new Cliente();
+        cliente3.setCodiceFiscale("RBLKTA98875E923W");
+        cliente3.setNome("Sara");
+        cliente3.setCognome("Robustelli");
+        cliente3.setTelefono("3387485126");
+        cliente3.setEmail("s.robustelli@gmail.com");
+        cliente3.setPassword("password");
+        cliente3.setLuogoUbicazione("Napoli");
+        clienteDAO.createCliente(cliente3);
+
+        clienteDAO.deleteCliente(cliente3.getCodiceFiscale());
+
+        assertNull(clienteDAO.doRetrieveByCF("RBLKTA98875E923W"));
     }
 }

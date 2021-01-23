@@ -51,38 +51,6 @@ public class ClienteDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB.
-   *
-   * @param offset indice partenza, Intero
-   * @param limit  indice fine , Intero
-   * @return List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
-   */
-  public List<Cliente> doRetrieveAll(int offset, int limit) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con
-          .prepareStatement("SELECT * FROM Cliente LIMIT ?, ?");
-      ps.setInt(1, offset);
-      ps.setInt(2, limit);
-      ArrayList<Cliente> clienti = new ArrayList<>();
-      ResultSet rs = ps.executeQuery();
-      while (rs.next()) {
-        Cliente c = new Cliente();
-        c.setCodiceFiscale(rs.getString(1));
-        c.setNome(rs.getString(2));
-        c.setCognome(rs.getString(3));
-        c.setEmail(rs.getString(4));
-        c.setPassword(rs.getString(5));
-        c.setTelefono(rs.getString(6));
-        c.setLuogoUbicazione(rs.getString(7));
-        clienti.add(c);
-      }
-      return clienti;
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
    * Metodo che crea un'istanza, all'interno del DB, di tipo Cliente.
    *
    * @param cliente Oggetto di tipo {@link Cliente}
@@ -102,35 +70,6 @@ public class ClienteDAO {
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
-   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email data in input.
-   *
-   * @param email Indirizzo email identificativo, String
-   * @return Cliente - Oggetto di tipo {@link Cliente}
-   */
-  public Cliente doRetrieveByEmail(String email) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con.prepareStatement(
-          "SELECT * FROM Cliente WHERE email=?");
-      ps.setString(1, email);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        Cliente c = new Cliente();
-        c.setCodiceFiscale(rs.getString(1));
-        c.setNome(rs.getString(2));
-        c.setCognome(rs.getString(3));
-        c.setEmail(rs.getString(6));
-        c.setPassword(rs.getString(7));
-        c.setTelefono(rs.getString(4));
-        c.setLuogoUbicazione(rs.getString(5));
-        return c;
-      }
-      return null;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
