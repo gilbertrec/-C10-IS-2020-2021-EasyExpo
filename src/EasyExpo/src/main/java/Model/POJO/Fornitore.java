@@ -34,6 +34,7 @@ public class Fornitore {
     this.email = email;
     this.password = password;
     this.ragioneSociale = ragioneSociale;
+    this.stato = stato.ATTIVO;
   }
 
   public Fornitore() {
@@ -234,4 +235,6 @@ public class Fornitore {
   private String password;
   private String ragioneSociale;
   private boolean abbonato;
+  public enum Stato {ATTIVO, SOSPESO};
+  private Stato stato;
 }
