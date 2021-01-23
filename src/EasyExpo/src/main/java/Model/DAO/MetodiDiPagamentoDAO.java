@@ -58,7 +58,7 @@ public class MetodiDiPagamentoDAO {
   public MetodoPagamento doRetrieveByNumCarta(String numCarta) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "SELECT * FROM MetodiPagamento WHERE numCarta=?");
+          "SELECT * FROM MetodoPagamento WHERE numeroCarta=?");
       ps.setString(1, numCarta);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -93,24 +93,6 @@ public class MetodiDiPagamentoDAO {
       ps.setInt(5, metodoPagamento.getCvv());
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /**
-   * Metodo che elimina dal DB l'istanza MetodoPagamento correlata al numeroCarta dato in input.
-   *
-   * @param numeroCarta Codice numerico identificativo metodoPagamento, String
-   */
-  public void deleteMetodoPagamento(String numeroCarta) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps =
-          con.prepareStatement("DELETE FROM MetodoPagamento WHERE numeroCarta=?");
-      ps.setString(1, numeroCarta);
-      if (ps.executeUpdate() != 1) {
-        throw new RuntimeException("DELETE error.");
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
