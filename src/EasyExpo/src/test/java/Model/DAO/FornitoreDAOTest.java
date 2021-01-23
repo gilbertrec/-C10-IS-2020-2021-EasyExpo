@@ -43,10 +43,6 @@ class FornitoreDAOTest {
   }
 
   @Test
-  void doRetrieveAll() {
-  }
-
-  @Test
   void createFornitore() {
     fornitore = new Fornitore();
     fornitore.setPartitaIva("12345678901");
@@ -69,19 +65,9 @@ class FornitoreDAOTest {
   }
 
   @Test
-  void doRetrieveByEmail() {
-    //da eliminare dal Dao perchè non usato
-  }
-
-  @Test
   void doRetrieveByEmailandPassword() {
     Fornitore f1 = fr.doRetrieveByEmailandPassword("g.iuliano@gmail.com", "password" );
     assertEquals("01234567890", f1.getPartitaIva());
-  }
-
-  @Test
-  void doRetrieveByNome() {
-    //da togliere nella classe dao perché inutilizzato
   }
 
   @Test
@@ -117,5 +103,16 @@ class FornitoreDAOTest {
     fornitore.setAbbonato(true);
     fr.updateBooleanFornitore(fornitore);
     assertEquals(true, fornitore.isAbbonato());
+  }
+
+  @Test
+  void doRetrievebyStato(){
+   /* fornitore.setStato(Fornitore.Stato.ATTIVO);
+    fr.doRetrievebyStato()*/
+  }
+
+  @Test
+  void updateStato(){
+   // fr.updateStato(1, fornitore.getPartitaIva());
   }
 }

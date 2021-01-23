@@ -5,6 +5,7 @@ import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -96,13 +97,36 @@ class PreventivoDAOTest {
 
   @Test
   void doRetrieveByPartitaIva() {
+    List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva("65655655555");
+    for(Preventivo p : preventivi){
+      assertEquals("65655655555", p.getPartitaIva());
+    }
   }
 
   @Test
   void doRetrieveByCodiceFiscale() {
+    List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale("HGJSLKS34ERT4RGF");
+    for(Preventivo p : preventivi){
+      assertEquals("HGJSLKS34ERT4RGF", p.getCodiceFiscale());
+    }
   }
-/*
+
+
   @Test
   void deletePreventivo() {
-  }*/
+    Preventivo preventivo2 = new Preventivo();
+    preventivo2.setIdPreventivo(4);
+    preventivo2.setIdRichiesta(rp.getIdRichiesta());
+    preventivo2.setPartitaIva(f.getPartitaIva());
+    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
+    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
+    preventivo2.setPrezzoTotale(400);
+    preventivo2.setNota("nota di prova di preventivo2");
+
+    int idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
+
+    preventivoDAO.deletePreventivo(idPreventivo2);
+
+    assertNull(preventivoDAO.doRetriveByIdPreventivo(idPreventivo2)); //non funziona
+  }
 }

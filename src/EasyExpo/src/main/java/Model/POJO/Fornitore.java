@@ -195,13 +195,44 @@ public class Fornitore {
     this.ragioneSociale = ragioneSociale;
   }
 
+  /**
+   * Metodo che restituisce se è abbonato.
+   *
+   * @return boolean - abbonato
+   */
 
   public boolean isAbbonato() {
     return abbonato;
   }
 
+  /**
+   * Metodo che setta l'abbonamento.
+   *
+   * @param abbonato  Abbonamento del fornitore, boolean
+   */
+
   public void setAbbonato(boolean abbonato) {
     this.abbonato = abbonato;
+  }
+
+  /**
+   * Metodo che restituisce lo stato.
+   *
+   * @return stato - Stato
+   */
+
+  public Stato getStato() {
+    return stato;
+  }
+
+  /**
+   * Metodo che setta l'abbonamento.
+   *
+   * @param stato  Stato del fornitore, Stato
+   */
+
+  public void setStato(Stato stato) {
+    this.stato = stato;
   }
 
   /**
@@ -235,6 +266,9 @@ public class Fornitore {
   private String password;
   private String ragioneSociale;
   private boolean abbonato;
-  public enum Stato {ATTIVO, SOSPESO};
+  public enum Stato {
+    ATTIVO, SOSPESO
+  }
+  ;
   private Stato stato;
 }

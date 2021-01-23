@@ -22,42 +22,6 @@ import java.util.List;
 public class ProdottoDAO {
 
   /**
-   * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad un idProdotto dato in input.
-   *
-   * @param idProdotto codice identificativo prodotto, Intero
-   * @return Prodotto - Oggetto di tipo {@link Prodotto}
-   */
-
-  public Prodotto doRetrieveByIdProdotto(int idProdotto) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con
-          .prepareStatement(
-              "SELECT *  FROM Prodotto as p, Fornitore as f "
-                      + "WHERE idProdotto=? AND p.partitaIva=f.partitaIva");
-      ps.setInt(1, idProdotto);
-      ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        Prodotto p = new Prodotto();
-        p.setIdProdotto(rs.getInt(1));
-        p.setPartitaIva(rs.getString(2));
-        p.setTitolo(rs.getString(3));
-        p.setDescrizione(rs.getString(4));
-        String a = rs.getString(5);
-        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);
-        p.setTipo(t);
-        p.setQuantità(rs.getInt(6));
-        p.setPrezzo(rs.getFloat(7));
-        p.setImmagine(rs.getString(8));
-        return p;
-      }
-      return null;
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-
-  /**
    * Metodo che ritorna l'oggetto di tipo Prodotto correlato ad
    * un idProdotto e ad una partitaIva date in input.
    *

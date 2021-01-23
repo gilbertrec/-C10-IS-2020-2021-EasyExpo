@@ -43,13 +43,6 @@ class ProdottoDAOTest {
   }
 
   @Test
-  void doRetrieveByIdProdotto() {
-    Prodotto prodotto2 = pr.doRetrieveByIdProdotto(idProdotto);
-    assertEquals(prodotto.getIdProdotto(), prodotto2.getIdProdotto());
-    assertEquals(prodotto.getPartitaIva(), prodotto2.getPartitaIva());
-  }
-
-  @Test
   void doRetrieveByIdProdottoEPartitaIva() {
     Prodotto prodotto3 = pr.doRetrieveByIdProdottoEPartitaIva(idProdotto, prodotto.getPartitaIva());
     assertEquals(prodotto.getIdProdotto(), prodotto3.getIdProdotto());

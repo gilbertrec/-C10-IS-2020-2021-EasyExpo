@@ -92,11 +92,6 @@ class ProdottoRichiestaDAOTest {
   }
 
   @Test
-  void doRetrieveByIdProdottoPartitaIvaIdRichiesta() {
-    //non vengono usate
-  }
-
-  @Test
   void doRetrieveByIdRichiesta() {
     List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdRichiesta(idProdottoRichiesta);
     for(ProdottoRichiesta p : richieste){
@@ -130,10 +125,5 @@ class ProdottoRichiestaDAOTest {
 
     assertEquals(idProdottoRichiesta, prodRich2.getId());
 
-  }
-
-
-  @Test
-  void deleteProdottoRichiesta() {
   }
 }

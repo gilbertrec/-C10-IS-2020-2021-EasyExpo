@@ -16,4 +16,16 @@ class AdminDAOTest {
     Admin ad = adDAO.doRetrieveByEmailandPassword("lucrezia.robustelli@gmail.com", "lucry00*");
     assertEquals("lucrezia.robustelli@gmail.com", ad.getEmail());
   }
+
+  @Test
+  void EmailFailure(){
+    Admin ad2 = adDAO.doRetrieveByEmailandPassword("fra00", "password");
+    assertNull(ad2);
+  }
+
+  @Test
+  void PasswodFailure(){
+    Admin ad3 = adDAO.doRetrieveByEmailandPassword("lucrezia.robustelli@gmail.com", "password");
+    assertNull(ad3);
+  }
 }
