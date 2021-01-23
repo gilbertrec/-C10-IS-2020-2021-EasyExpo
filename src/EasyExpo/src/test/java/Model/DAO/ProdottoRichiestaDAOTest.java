@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
+import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 import java.sql.Date;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,13 +33,13 @@ class ProdottoRichiestaDAOTest {
   @BeforeEach
   void setUp() {
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("01234567890", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+    fornitore = new Fornitore("99999999999", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
         "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
 
     clienteDAO = new ClienteDAO();
     cliente = new Cliente();
-    cliente.setCodiceFiscale("RBLKTA99C55E923W");
+    cliente.setCodiceFiscale("baoJtA98d55E923o");
     cliente.setNome("Lucrezia");
     cliente.setCognome("Robustelli");
     cliente.setTelefono("3387485126");
@@ -82,9 +84,6 @@ class ProdottoRichiestaDAOTest {
   void tearDown() {
     clienteDAO.deleteCliente(cliente.getCodiceFiscale());
     fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());
-    richiestaPreventivoDAO.deleteRichiestePreventivo(idRichiesta);
-    prodottoDAO.deleteProdotto(idProdotto, prodotto.getPartitaIva());
-    prodottoRichiestaDAO.deleteProdottoRichiesta(idProdottoRichiesta);
   }
 
   @Test
@@ -99,15 +98,40 @@ class ProdottoRichiestaDAOTest {
 
   @Test
   void doRetrieveByIdRichiesta() {
+    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdRichiesta(idProdottoRichiesta);
+    for(ProdottoRichiesta p : richieste){
+      assertEquals(idProdottoRichiesta, p.getIdRichiesta());
+    }
   }
 
   @Test
   void doRetrieveByIdProdottoePartitaIva() {
+    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdProdottoePartitaIva(idProdotto,fornitore.getPartitaIva());
+    for(ProdottoRichiesta p : richieste){
+      assertEquals(idProdotto, p.getIdProdotto());
+      assertEquals(fornitore.getPartitaIva(), p.getPartitaIva());
+    }
   }
 
   @Test
   void createProdottoRichiesta() {
+    ProdottoRichiesta prodRich = new ProdottoRichiesta();
+    prodRich.setId(5);
+    prodRich.setIdRichiesta(idRichiesta);
+    prodRich.setIdProdotto(idProdotto);
+    prodRich.setPartitaIva(fornitore.getPartitaIva());
+    prodRich.setNumColli(10);
+    prodRich.setPrezzo(20);
+    prodRich.setDataInizioNoleggio(new Date(2019,12,30));
+    prodRich.setDataFineNoleggio(new Date(2020,2,3));
+
+    idProdottoRichiesta = prodottoRichiestaDAO.createProdottoRichiesta(prodRich);
+    ProdottoRichiesta prodRich2 = prodottoRichiestaDAO.doRetrieveById(idProdottoRichiesta);
+
+    assertEquals(idProdottoRichiesta, prodRich2.getId());
+
   }
+
 
   @Test
   void deleteProdottoRichiesta() {
