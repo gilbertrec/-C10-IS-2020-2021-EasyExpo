@@ -21,7 +21,8 @@ CREATE TABLE Fornitore(
     luogoUbicazione varchar(30),
     email varchar(50) not null,
 	password varchar(512) not null,
-    ragioneSociale varchar(30) not null
+    ragioneSociale varchar(30) not null,
+    abbonato boolean
 );
 
 CREATE TABLE Admin(
@@ -149,9 +150,9 @@ INSERT INTO Cliente VALUES
 ("IULGAE99C23R123R", "Gaetano", "Iuliano", 3998765987, "Terzigno", "gaetano99@gmail.com", sha2('gae99*', 512));
 
 INSERT INTO Fornitore VALUES
-("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato"),
-("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato"),
-("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc");
+("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato",false),
+("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato",true),
+("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc",false);
 
 INSERT INTO Admin VALUES
 ("lucrezia.robustelli@gmail.com", sha2('lucry00*', 512)),
@@ -168,7 +169,7 @@ INSERT INTO Prodotto VALUES
 (1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00, "images/download-6.jpg");
 
 INSERT INTO Abbonamento VALUES
-(1,"01391350129", 20191101, 20191201),
+(1,"01391350129", 20201113, 20200113),
 (2,"01391350129", 20190605, 20190705),
 (3,"03271170361", 20200713, 20200813);
 
@@ -186,13 +187,19 @@ INSERT INTO TagProdotto VALUES
 (124, 2, "01602620930");
 
 INSERT INTO RichiestaPreventivo VALUES
-(1000, "IULGAE99C23R123R", "01391350129", "Allestimento fiera dello sport", "Polignano a mare", "Un nuovo appuntamento dedicato al mondo del calcio, Calcio Expo, organizzato nella Fortezza da Basso a Firenze e rivolto ad addetti ai lavori, aziende, pubblico di appassionati. Obiettivo dell’evento Calcio Expo è quello di riunire e far incontrare le persone che per professione o per passione sono legate a questo sport. A Calcio Expo parteciperanno squadre, scuole, associazioni, enti e federazioni sportive, dirigenti , allenatori, calciatori di diverse squadre e ancora gestori di centri sportivi, arbitri, sponsor. Ognuna di queste figure avrà l’occasione di confrontarsi su temi quali la competizione, l’agonismo, il divertimento e il fair play, anime di uno sport che in Italia rappresenta lo sport per eccellenza.", "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pro", 20201230, "IN_ATTESA"),
-(1001, "IULGAE99C23R123R", "01602620930", "Allestimento Matrimonio con Ylenia", "Sant'antonio Abate", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?", null, 20201222, "IN_ATTESA"),
-(1003, "BRZRTN02H50C293D", "01602620930", "Fiera dell'est", "Lagonegro", "Gregorio Samsa, svegliandosi una mattina da sogni agitati, si trovò trasformato, nel suo letto, in un enorme insetto immondo. Riposava sulla schiena, dura come una corazza, e sollevando un poco il capo vedeva il suo ventre arcuato, bruno e diviso in tanti segmenti ricurvi, in cima a cui la coperta da letto, vicina a scivolar giù tutta, si manteneva a fatica. Le gambe, numerose e sottili da far pietà, rispetto alla sua corporatura normale, tremolavano senza tregua in un confuso luccichio dinanzi ai suoi occhi. Cosa m’è avvenuto? pensò. Non era un sogno. La sua camera, una stanzetta di giuste proporzioni, soltanto un po’ piccola, se ne stava tranquilla fra le quattro ben note pareti.", null, 20201124, "IN_ATTESA"),
+(1000, "IULGAE99C23R123R", "01391350129", "Allestimento fiera dello sport", "Polignano a mare", "Un nuovo appuntamento dedicato al mondo del calcio, Calcio Expo, organizzato nella Fortezza da Basso a Firenze e rivolto ad addetti ai lavori, aziende, pubblico di appassionati. Obiettivo dell’evento Calcio Expo è quello di riunire e far incontrare le persone che per professione o per passione sono legate a questo sport. A Calcio Expo parteciperanno squadre, scuole, associazioni, enti e federazioni sportive, dirigenti , allenatori, calciatori di diverse squadre e ancora gestori di centri sportivi, arbitri, sponsor. Ognuna di queste figure avrà l’occasione di confrontarsi su temi quali la competizione, l’agonismo, il divertimento e il fair play, anime di uno sport che in Italia rappresenta lo sport per eccellenza.", "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pro", 20201230, "RIFIUTATO"),
+(1001, "IULGAE99C23R123R", "01602620930", "Allestimento Matrimonio con Ylenia", "Sant'antonio Abate", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?", null, 20201222, "CONFERMATO"),
+(1003, "BRZRTN02H50C293D", "01602620930", "Fiera dell'est", "Lagonegro", "Gregorio Samsa, svegliandosi una mattina da sogni agitati, si trovò trasformato, nel suo letto, in un enorme insetto immondo. Riposava sulla schiena, dura come una corazza, e sollevando un poco il capo vedeva il suo ventre arcuato, bruno e diviso in tanti segmenti ricurvi, in cima a cui la coperta da letto, vicina a scivolar giù tutta, si manteneva a fatica. Le gambe, numerose e sottili da far pietà, rispetto alla sua corporatura normale, tremolavano senza tregua in un confuso luccichio dinanzi ai suoi occhi. Cosa m’è avvenuto? pensò. Non era un sogno. La sua camera, una stanzetta di giuste proporzioni, soltanto un po’ piccola, se ne stava tranquilla fra le quattro ben note pareti.", null, 20201124, "CONFERMATO"),
 (1004, "BRZRTN02H50C293D", "01391350129", "Concerto", "Sarno", "In una terra lontana, dietro le montagne Parole, lontani dalle terre di Vocalia e Consonantia, vivono i testi casuali. Vivono isolati nella cittadina di Lettere, sulle coste del Semantico, un immenso oceano linguistico. Un piccolo ruscello chiamato Devoto Oli attraversa quei luoghi, rifornendoli di tutte le regolalie di cui hanno bisogno. È una terra paradismatica, un paese della cuccagna in cui golose porzioni di proposizioni arrostite volano in bocca a chi le desideri. Non una volta i testi casuali sono stati dominati dall’onnipotente Interpunzione, una vita davvero non ortografica. Un giorno però accadde che la piccola riga di un testo casuale, di nome Lorem ipsum, decise di andare a espl", "Ma la volpe col suo balzo ha raggiunto il quieto Fido. Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja! Aquel vituperable xenófobo apasionado prueba su güisqui y exclama: ¡A", 20210113, "IN_ATTESA");
 
 INSERT INTO ProdottoRichiesta VALUES
-(4000, 1000, 2, "01602620930", 4, 150.00,  20201230, 20210103),
-(4001, 1000, 1, "01602620930", 1, 50.00, 20201230, 20210103),
-(4002, 1004, 1, "03271170361", 23, 180.00, 20210113, 20210513),
-(4003, 1003, 1, "01391350129", 12, 99.00, 20201124, 20201212);
+(4000, 1000, 1, "01391350129", 4, 99.00,  20200130, 20220103),
+(4002, 1001, 1, "01602620930", 23, 50.00, 20210303, 20210513),
+(4003, 1003, 2, "01602620930", 12, 150.00, 20201202, 20201212),
+(4004, 1004, 2, "01391350129", 12, 99.00, 20201124, 20201212);
+
+INSERT INTO Preventivo VALUES
+(7000, 1000, "01391350129", "IULGAE99C23R123R", 20200112, 90.00, null),
+(7001, 1001, "01602620930", "IULGAE99C23R123R",  20201230, 100.00, "sovraccarico prezzo di servizi aggiuntivi"),
+(7002, 1003, "01602620930", "BRZRTN02H50C293D", 20201124, 150.00, null),
+(7003, 1004, "01391350129", "BRZRTN02H50C293D", 20210116, 99.00, null);

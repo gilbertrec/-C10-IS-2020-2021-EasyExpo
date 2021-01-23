@@ -2,6 +2,8 @@
 <%@ page import="Model.POJO.Prodotto" %>
 <%@ page import="Model.POJO.Carrello" %>
 <%@ page import="java.util.LinkedHashMap" %>
+<%@ page import="Model.POJO.Fornitore" %>
+<%@ page import="java.util.Collection" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -32,8 +34,9 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>CARRELLO</h4>
-                <p style="color: black">Visualizza qui tutti i prodotti e servizi nel tuo carrello e procedi ad inoltrare un preventivo
-                ad ognuno dei fornitori da te selezionati.</p>
+                <p style="color: black">Visualizza qui tutti i prodotti e servizi nel tuo carrello e procedi ad
+                    inoltrare un preventivo
+                    ad ognuno dei fornitori da te selezionati.</p>
 
                 <!--<ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
@@ -52,234 +55,165 @@
         <section class="padding-top-100 padding-bottom-100 pages-in chart-page">
             <div class="container">
 
+                    <% Carrello carrello = (Carrello) session.getAttribute("carrello");
+                    ArrayList<Fornitore> listaFornitori = (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
+                    /*ciclo su listaPI e per ogni stringa get dal carrello*/
+                    /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
+                    /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
+                    /*per ogni prodotto posso stampare gli attributi*/
+
+                %>
+
+                            <% if(carrello==null) {%>
+                        <h1> Nessun prodotto nel carrello. </h1>
+                            <%}%>
+
+                            <% if(carrello!=null){
+                                    if(carrello.getProdottiFornitori().isEmpty()){%>
+                                        <h1> Nessun prodotto nel carrello. </h1>
+                            <% }%>
+
+
+
+
+
                 <!-- Payments Steps -->
+                            <% if(!carrello.getProdottiFornitori().isEmpty()) {%>
+
                 <div class="shopping-cart text-center">
-                    <div class="cart-head">
-                        <ul class="row">
-                            <!-- FORNITORE -->
-                            <li class="col-sm-2 text-left">
+                    <!-- un div fornitore per ogni fornitore nella lista -->
 
-                                <!-- CARRELLO -->
-
-
-                                <% Carrello carrello = (Carrello) session.getAttribute("carrello");
-                                   ArrayList<String> listaPI = (ArrayList<String>) session.getAttribute("listaPI");
-                                    /*ciclo su listaPI e per ogni stringa get dal carrello*/
-                                    /*ListProd è l'arrayList di prodotti associata ad ogni fornitore*/
-                                    /*faccio un ciclo per ogni ListProd ed ottengo il prodotto singolo*/
-                                    /*per ogni prodotto posso stampare gli attributi*/
-
-                                %>
-
-                                    <c:forEach items="${listaPI}" var="partitaIva">
-                                        <c:forEach items="${carrello.get(partitaIva)}" var="ListaProd">
-                                            <h7>PI Fornitore <c:out value="${partitaIva}"/> </h7>
-                                            <h6>Prodotto-titolo: <c:out value="${ListaProd.titolo}" /></h6>
-                                            <h6>Prodotto-prezzo: <c:out value="${ListaProd.prezzo}" /></h6>
-
-                                        </c:forEach>
-                                    </c:forEach>
-
-
-
-                            <!--  -->
-                            <li class="col-sm-4 text-left">
-                                <h6></h6>
-                            </li>
-                            <!-- PRICE -->
-                            <li class="col-sm-2">
-
-                            </li>
-                            <!-- QTY -->
-                            <li class="col-sm-1">
-                                <h6>QTY</h6>
-                            </li>
-
-                            <!-- TOTAL PRICE -->
-                            <li class="col-sm-2">
-                                <h6>TOTAL</h6>
-                            </li>
-                            <li class="col-sm-1"> </li>
-                        </ul>
-                    </div>
-
-                    <!-- Cart Details -->
-                    <ul class="row cart-details">
-                        <li class="col-sm-6">
-                            <div class="media">
-                                <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-1.jpg" alt=""> </a> </div>
-
-                                <!-- Item Name -->
-                                <div class="media-body">
-                                    <div class="position-center-center">
-                                        <h5>wood chair</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- QTY -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center">
-                                <div class="quinty">
+                    <c:forEach items="${listaFornitori}" var="fornitori">
+                        <c:set var="TOT" value="0"/>
+                        <div class="fornitoreCarrello" style="border: #ffe115 solid 3px; padding: 40px 30px">
+                            <div class="cart-head">
+                                <ul class="row">
+                                    <!-- FORNITORE -->
+                                    <li class="col-sm-2 text-left">
+                                        <h5>FORNITORE: </h5>
+                                    </li>
+                                    <!-- NOME FORNITORE -->
+                                    <li class="col-sm-4 text-left">
+                                        <h5><a href="FornitoreServlet?partitaIva=<c:out value="${fornitori.partitaIva}"/>"> <c:out value="${fornitori.nome}"/> <c:out
+                                                value="${fornitori.cognome}"/> </a> </h5>
+                                    </li>
+                                    <!-- PRICE -->
+                                    <li class="col-sm-2">
+                                        <h5 style="font-size: 15px">PREZZO</h5>
+                                    </li>
                                     <!-- QTY -->
-                                    <select class="selectpicker">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
+                                    <li class="col-sm-1">
+                                        <h5 style="font-size: 15px">QTA</h5>
+                                    </li>
+
+                                    <!-- TOTAL PRICE -->
+                                    <li class="col-sm-2">
+                                        <h5 style="font-size: 15px">TOTAL</h5>
+                                    </li>
+                                    <li class="col-sm-1"></li>
+                                </ul>
                             </div>
-                        </li>
 
-                        <!-- TOTAL PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
+                            <c:forEach items="${carrello.get(fornitori.partitaIva)}" var="ListaProd">
 
-                        <!-- REMOVE -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
-                        </li>
-                    </ul>
+                                <!-- Cart Details -->
+                                <ul class="row cart-details">
+                                    <li class="col-sm-6">
+                                        <!-- Media Image -->
+                                        <div class="media-left media-middle"><a href="ProdottoServlet?id=<c:out value="${ListaProd.prodotto.idProdotto}"/>&partitaIva=<c:out value="${ListaProd.prodotto.partitaIva}"/>" class="item-img"> <img
+                                                class="media-object" src="${ListaProd.prodotto.immagine}" width="170px"
+                                                height="170px" alt=""> </a></div>
 
-                    <!-- Cart Details -->
-                    <ul class="row cart-details">
-                        <li class="col-sm-6">
-                            <div class="media">
-                                <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-2.jpg" alt=""> </a> </div>
 
-                                <!-- Item Name -->
-                                <div class="media-body">
-                                    <div class="position-center-center">
-                                        <h5>STOOL</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
+                                        <!-- Item Name -->
+                                        <div class="media-body">
+                                            <div class="position-center-center">
+
+                                                <h5><c:out value="${ListaProd.prodotto.titolo}"/></h5>
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                    <!-- PREZZO -->
+                                    <li class="col-sm-2">
+                                        <div class="position-center-center"><span class="price"><small>€</small> <c:out
+                                                value="${ListaProd.prodotto.prezzo}"/></span></div>
+                                    </li>
+
+                                    <!-- QTA -->
+                                    <li class="col-sm-1">
+                                        <div class="position-center-center">
+                                            <h4 style="font-size: 18px"><c:out value="${ListaProd.quantita}"/></h4>
+                                            <!-- QTY
+                                            <div class="quinty">
+
+                                                <select class="selectpicker">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                            -->
+                                        </div>
+                                    </li>
+
+
+
+                                    <!-- TOTAL PRICE -->
+                                    <li class="col-sm-2">
+                                        <div class="position-center-center"><span
+                                                class="price"><small>€</small>
+                                            <c:set var="TOTparziale" value="${ListaProd.prodotto.prezzo * ListaProd.quantita}"/>
+                                            <c:out value="${TOTparziale}"/></span></div>
+
+                                            <c:set var="TOT" value="${TOT = TOT + TOTparziale}"/>
+
+                                    </li>
+
+                                    <!-- REMOVE -->
+                                    <li class="col-sm-1">
+                                        <div class="position-center-center"><a href="Carrello?prodId=<c:out value="${ListaProd.prodotto.idProdotto}"/>&partitaIva=<c:out value="${ListaProd.prodotto.partitaIva}"/>"> <i class="icon-close"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </c:forEach>
+
+
+                            <div class="cart-ship-info margin-top-0">
+                                <div class="row">
+
+                                    <!-- PREVENTIVO -->
+                                    <form action="CompilaRichiesta" method="post">
+                                    <div class="col-sm-7">
+                                        <input type="hidden" name="carrello" value="${carrello}">
+                                        <input type="hidden" name="fornitore" value="${fornitori.partitaIva}">
+                                        <input class="btn" style="font-size: 18px; padding: 0px 100px; margin-top: 19px" type="submit" value="INVIA UN PREVENTIVO A QUESTO FORNITORE">
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- QTY -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center">
-                                <div class="quinty">
-                                    <!-- QTY -->
-                                    <select class="selectpicker">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- TOTAL PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- REMOVE -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
-                        </li>
-                    </ul>
-
-                    <!-- Cart Details -->
-                    <ul class="row cart-details">
-                        <li class="col-sm-6">
-                            <div class="media">
-                                <!-- Media Image -->
-                                <div class="media-left media-middle"> <a href="#." class="item-img"> <img class="media-object" src="images/cart-img-3.jpg" alt=""> </a> </div>
-
-                                <!-- Item Name -->
-                                <div class="media-body">
-                                    <div class="position-center-center">
-                                        <h5>wood SPOON</h5>
-                                        <p>Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- QTY -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center">
-                                <div class="quinty">
-                                    <!-- QTY -->
-                                    <select class="selectpicker">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- TOTAL PRICE -->
-                        <li class="col-sm-2">
-                            <div class="position-center-center"> <span class="price"><small>$</small>299</span> </div>
-                        </li>
-
-                        <!-- REMOVE -->
-                        <li class="col-sm-1">
-                            <div class="position-center-center"> <a href="#."><i class="icon-close"></i></a> </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!--======= PAGES INNER =========-->
-        <section class="padding-top-100 padding-bottom-100 light-gray-bg shopping-cart small-cart">
-            <div class="container">
-
-                <!-- SHOPPING INFORMATION -->
-                <div class="cart-ship-info margin-top-0">
-                    <div class="row">
-
-                        <!-- PREVENTIVO -->
-                        <div class="col-sm-7">
-                            <h6>INVIA UN PREVENTIVO AD OGNI FORNITORE</h6>
-                            <!-- <div class="coupn-btn"> <a href="#." class="btn">continue shopping</a> <a href="#." class="btn">update cart</a> </div> -->
-                        </div>
-
-                        <!-- SUB TOTAL -->
-                        <div class="col-sm-5">
-                            <h6>grand total</h6>
-                            <div class="grand-total">
-                                <div class="order-detail">
-                                    <p>WOOD CHAIR <span>$598 </span></p>
-                                    <p>STOOL <span>$199 </span></p>
-                                    <p>WOOD SPOON <span> $139</span></p>
+                                    </form>
 
                                     <!-- SUB TOTAL -->
-                                    <p class="all-total">TOTAL COST <span> $998</span></p>
+                                    <div class="col-sm-5">
+                                        <div class="grand-total">
+                                            <div class="order-detail">
+                                                <!-- SUB TOTAL -->
+                                                <p class="all-total">COSTO TOTALE <span>€ <c:out value="${TOT}"/> </span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
+                        </div>
+
+
+                    </c:forEach>
+
+                </div>
+        </section>
+        
+        <%}}%>
 
     </div>
 

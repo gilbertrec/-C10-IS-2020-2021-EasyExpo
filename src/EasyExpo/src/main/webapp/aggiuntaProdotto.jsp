@@ -60,7 +60,7 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="" placeholder="">
+                                                <input type="text" name="titolo" value="" placeholder="" required pattern="[A-Z a-z 0-9]{1,30}" title="Deve essere stringa alfanumerica con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -73,14 +73,13 @@
                                                         <option>SERVIZIO</option>
                                                     </select>
                                                 </div>
-                                                <!--<input type="text" name="tipo" value="" placeholder="">-->
                                             </label>
                                         </li>
 
                                         <!-- PREZZO -->
                                         <li class="col-md-6">
                                             <label> PREZZO
-                                                <input type="text" name="prezzo" value="" placeholder="">
+                                                <input type="text" name="prezzo" value="" placeholder="" required pattern="[0-9]{1,5}.[0-9]{2}" title="Deve contenere un numero decimale con due cifre dopo il punto e massimo 5 cifre prima">
                                             </label>
                                         </li>
 
@@ -88,20 +87,21 @@
                                         <li class="col-md-6">
                                             <label> QUANTITÀ (1-999)
                                                 <input type="number" name="quantita" value="" placeholder="" min="1"
-                                                       max="999">
+                                                       max="999" required>
                                             </label>
                                         </li>
 
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE
-                                                <textarea name="descrizione" rows="5" cols="80"></textarea>
+                                                <textarea name="descrizione" rows="5" cols="80" required></textarea>
                                             </label>
                                         </li>
 
                                         <li class="col-md-6">
                                             <label> FOTO
-                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif" placeholder="">
+                                                <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
+                                                       placeholder="" required title="Immagine non inserita">
                                             </label>
                                         </li>
 

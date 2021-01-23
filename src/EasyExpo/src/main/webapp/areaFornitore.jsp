@@ -30,7 +30,8 @@
                     Telefono: ${fornitore.telefono}<br>
                     Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
                     Email: ${fornitore.email}<br>
-                    Ragione Sociale: ${fornitore.ragioneSociale}</p>
+                    Ragione Sociale: ${fornitore.ragioneSociale}<br>
+                    Abbonato: ${fornitore.abbonato}<br></p>
                 <li>
                     <form action="AbbonamentoServlet" method="post">
                         <input type="hidden" name="partitaIva" value="${fornitore.partitaIva}">
@@ -56,15 +57,19 @@
                                 class="product-num">Mostrando 1 - 10 di 30 prodotti ${num_prodotti}</span></div>
 
                         <!-- Products Select -->
+
                         <div class="col-xs-6">
                             <div class="pull-right">
+                                <c:if test="${fornitore.abbonato == true}">
+                                    <ol class="breadcrumb">
 
-                                <ol class="breadcrumb">
-                                    <li><a href="aggiuntaProdotto.jsp">Aggiungi Prodotto</a></li>
-                                </ol>
+                                        <li><a href="aggiuntaProdotto.jsp">Aggiungi Prodotto</a></li>
+                                    </ol>
+                                </c:if>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Popular Item Slide -->
                     <div class="papular-block row">
@@ -73,17 +78,20 @@
                             <div class="col-md-3">
                                 <div class="item">
                                     <!-- Item img -->
-                                    <div class="item-img"><img class="imma" src="${contenuto.immagine}" width="260px" height="280px" alt="">
+                                    <div class="item-img"><img class="imma" src="${contenuto.immagine}" width="260px"
+                                                               height="280px" alt="">
                                         <!-- Overlay -->
                                         <div class="overlay">
                                             <div class="position-center-center">
                                                 <div class="inn">
                                                     <a href="${contenuto.immagine}" data-lighter><i
                                                             class="icon-magnifier"></i></a>
-                                                    <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
-                                                            class="icon-pencil"></i></a>
-                                                    <a href="ELiminaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
-                                                            class="icon-trash"></i></a>
+                                                    <c:if test="${fornitore.abbonato == true}">
+                                                        <a href="ModificaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
+                                                                class="icon-pencil"></i></a>
+                                                        <a href="ELiminaProdottoServlet?id=<c:out value="${contenuto.idProdotto}"/>&partitaIva=<c:out value="${contenuto.partitaIva}"/>"><i
+                                                                class="icon-trash"></i></a>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                         </div>
