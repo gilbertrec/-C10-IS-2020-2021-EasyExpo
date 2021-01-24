@@ -108,11 +108,11 @@ public class TagProdottoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f "
-                      + "WHERE idProdotto=? AND partitaIva=?"
+                      + "WHERE p.idProdotto=? AND p.partitaIva=?"
                   + "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag "
-                      + "AND tp.partitaIva=f.partitaIva");
+                      + "AND tp.partitaIva=p.partitaIva");
       ps.setInt(1, idProdotto);
-      ps.setString(1, partitaIva);
+      ps.setString(2, partitaIva);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
         TagProdotto tp = new TagProdotto();

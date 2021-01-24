@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClienteDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ClienteDAO.java</span></div><h1>ClienteDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import Model.POJO.Cliente;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * &lt;p&gt; ClienteDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Cliente &lt;/p&gt;.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+<span class="fc" id="L20">public class ClienteDAO {</span>
+
+  /**
+   * Metodo che ritorna l'oggetto di tipo Cliente correlato al codiceFiscale dato in input.
+   *
+   * @param codiceFiscale codice alfanumerico identificativo cliente, String
+   * @return Cliente - Oggetto di tipo {@link Cliente}
+   */
+  public Cliente doRetrieveByCF(String codiceFiscale) {
+<span class="fc" id="L29">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L30">      PreparedStatement ps = con</span>
+<span class="fc" id="L31">          .prepareStatement(</span>
+              &quot;SELECT codiceFiscale, nome, cognome, email, password, &quot;
+                      + &quot;telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?&quot;);
+<span class="fc" id="L34">      ps.setString(1, codiceFiscale);</span>
+<span class="fc" id="L35">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">      if (rs.next()) {</span>
+<span class="fc" id="L37">        Cliente c = new Cliente();</span>
+<span class="fc" id="L38">        c.setCodiceFiscale(rs.getString(1));</span>
+<span class="fc" id="L39">        c.setNome(rs.getString(2));</span>
+<span class="fc" id="L40">        c.setCognome(rs.getString(3));</span>
+<span class="fc" id="L41">        c.setEmail(rs.getString(4));</span>
+<span class="fc" id="L42">        c.setPassword(rs.getString(5));</span>
+<span class="fc" id="L43">        c.setTelefono(rs.getString(6));</span>
+<span class="fc" id="L44">        c.setLuogoUbicazione(rs.getString(7));</span>
+<span class="fc" id="L45">        return c;</span>
+      }
+<span class="fc" id="L47">      return null;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L49">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Cliente.
+   *
+   * @param cliente Oggetto di tipo {@link Cliente}
+   */
+  public void createCliente(Cliente cliente) {
+<span class="fc" id="L59">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L60">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, &quot;
+                  + &quot;luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,sha2(?, 512))&quot;);
+<span class="fc" id="L63">      ps.setString(1, cliente.getCodiceFiscale());</span>
+<span class="fc" id="L64">      ps.setString(2, cliente.getNome());</span>
+<span class="fc" id="L65">      ps.setString(3, cliente.getCognome());</span>
+<span class="fc" id="L66">      ps.setString(6, cliente.getEmail());</span>
+<span class="fc" id="L67">      ps.setString(7, cliente.getPassword());</span>
+<span class="fc" id="L68">      ps.setString(4, cliente.getTelefono());</span>
+<span class="fc" id="L69">      ps.setString(5, cliente.getLuogoUbicazione());</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L71">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+      }
+<span class="fc" id="L73">    } catch (SQLException e) {</span>
+<span class="fc" id="L74">      throw new RuntimeException(e);</span>
+<span class="fc" id="L75">    }</span>
+<span class="fc" id="L76">  }</span>
+
+  /**
+   * Metodo che ritorna l'oggetto di tipo Cliente correlato all'email e password dati in input.
+   *
+   * @param email    Indirizzo email identificativo, String
+   * @param password Caratteri alfanumerici per accesso al sistema, String
+   * @return Cliente - Oggetto di tipo {@link Cliente}
+   */
+  public Cliente doRetrieveByEmailandPassword(String email, String password) {
+<span class="fc" id="L86">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L87">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;SELECT * FROM Cliente WHERE email=? AND password=sha2(?, 512)&quot;);
+<span class="fc" id="L89">      ps.setString(1, email);</span>
+<span class="fc" id="L90">      ps.setString(2, password);</span>
+<span class="fc" id="L91">      ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">      if (rs.next()) {</span>
+<span class="fc" id="L93">        Cliente c = new Cliente();</span>
+<span class="fc" id="L94">        c.setCodiceFiscale(rs.getString(1));</span>
+<span class="fc" id="L95">        c.setNome(rs.getString(2));</span>
+<span class="fc" id="L96">        c.setCognome(rs.getString(3));</span>
+<span class="fc" id="L97">        c.setTelefono(rs.getString(4));</span>
+<span class="fc" id="L98">        c.setLuogoUbicazione(rs.getString(5));</span>
+<span class="fc" id="L99">        c.setEmail(rs.getString(6));</span>
+<span class="fc" id="L100">        c.setPassword(rs.getString(7));</span>
+<span class="fc" id="L101">        return c;</span>
+      }
+<span class="nc" id="L103">      return null;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L105">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che elimina dal DB l'istanza Cliente correlata al codiceFiscale dato in input.
+   *
+   * @param codiceFiscale codice alfanumerico identificativo cliente, String
+   */
+  public void deleteCliente(String codiceFiscale) {
+<span class="fc" id="L115">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L116">      PreparedStatement ps = con.prepareStatement(&quot;DELETE FROM Cliente WHERE codiceFiscale=?&quot;);</span>
+<span class="fc" id="L117">      ps.setString(1, codiceFiscale);</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L119">        throw new RuntimeException(&quot;DELETE error.&quot;);</span>
+      }
+<span class="nc" id="L121">    } catch (SQLException e) {</span>
+<span class="nc" id="L122">      throw new RuntimeException(e);</span>
+<span class="fc" id="L123">    }</span>
+<span class="fc" id="L124">  }</span>
+
+
+  /**
+   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+   * @return  List &amp;lt;Cliente&amp;gt; - {@link List} di oggetti di tipo {@link Cliente}
+   *
+   */
+  public List&lt;Cliente&gt; doRetrievebyStato(int val) {
+<span class="nc" id="L133">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="nc" id="L134">      PreparedStatement ps = con</span>
+<span class="nc" id="L135">              .prepareStatement(&quot;SELECT * FROM Cliente WHERE stato=?&quot;);</span>
+<span class="nc" id="L136">      ps.setInt(1, val);</span>
+
+<span class="nc" id="L138">      ArrayList&lt;Cliente&gt; clienti = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L139">      ResultSet rs = ps.executeQuery();</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">      while (rs.next()) {</span>
+<span class="nc" id="L141">        Cliente c = new Cliente();</span>
+<span class="nc" id="L142">        c.setCodiceFiscale(rs.getString(1));</span>
+<span class="nc" id="L143">        c.setNome(rs.getString(2));</span>
+<span class="nc" id="L144">        c.setCognome(rs.getString(3));</span>
+<span class="nc" id="L145">        c.setEmail(rs.getString(4));</span>
+<span class="nc" id="L146">        c.setPassword(rs.getString(5));</span>
+<span class="nc" id="L147">        c.setTelefono(rs.getString(6));</span>
+<span class="nc" id="L148">        c.setLuogoUbicazione(rs.getString(7));</span>
+<span class="nc" id="L149">        clienti.add(c);</span>
+<span class="nc" id="L150">      }</span>
+<span class="nc" id="L151">      return clienti;</span>
+<span class="nc" id="L152">    } catch (SQLException e) {</span>
+<span class="nc" id="L153">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  public void updateStato(int val, String codiceFiscale) {
+<span class="nc" id="L158">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="nc" id="L159">      PreparedStatement ps = con</span>
+<span class="nc" id="L160">              .prepareStatement(&quot;UPDATE Cliente SET stato=? WHERE codiceFiscale=?&quot;);</span>
+
+<span class="nc" id="L162">      ps.setInt(1,val);</span>
+<span class="nc" id="L163">      ps.setString(2,codiceFiscale);</span>
+<span class="nc" id="L164">      ps.executeUpdate();</span>
+<span class="nc" id="L165">    } catch (SQLException e) {</span>
+<span class="nc" id="L166">      throw new RuntimeException(e);</span>
+<span class="nc" id="L167">    }</span>
+<span class="nc" id="L168">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

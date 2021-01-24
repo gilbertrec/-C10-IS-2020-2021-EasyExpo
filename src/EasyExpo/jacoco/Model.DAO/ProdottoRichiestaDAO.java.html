@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdottoRichiestaDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ProdottoRichiestaDAO.java</span></div><h1>ProdottoRichiestaDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import Model.POJO.Prodotto;
+import Model.POJO.ProdottoRichiesta;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * ProdottoRichiestaDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto ProdottoRichiesta.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+<span class="fc" id="L22">public class ProdottoRichiestaDAO {</span>
+
+  /**
+   * Metodo che ritorna l'oggetto di tipo ProdottoRichiesta correlato ad un id dato in input.
+   *
+   * @param id codice identificativo, Intero
+   * @return ProdottoRichiesta - Oggetto di tipo {@link ProdottoRichiesta}
+   */
+
+  public ProdottoRichiesta doRetrieveById(int id) {
+<span class="fc" id="L32">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L33">      PreparedStatement ps = con</span>
+<span class="fc" id="L34">          .prepareStatement(</span>
+              &quot;SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo &quot;
+                      + &quot;as rp, Prodotto as p WHERE pr.id=? AND pr.idRichiesta=rp.idRichiesta &quot;
+                      + &quot;AND pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva&quot;);
+<span class="fc" id="L38">      ps.setInt(1, id);</span>
+<span class="fc" id="L39">      ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">      if (rs.next()) {</span>
+<span class="fc" id="L41">        ProdottoRichiesta pr = new ProdottoRichiesta();</span>
+<span class="fc" id="L42">        pr.setId(rs.getInt(1));</span>
+<span class="fc" id="L43">        pr.setIdRichiesta(rs.getInt(2));</span>
+<span class="fc" id="L44">        pr.setIdProdotto(rs.getInt(3));</span>
+<span class="fc" id="L45">        pr.setPartitaIva(rs.getString(4));</span>
+<span class="fc" id="L46">        pr.setNumColli(rs.getInt(5));</span>
+<span class="fc" id="L47">        pr.setPrezzo(rs.getFloat(6));</span>
+<span class="fc" id="L48">        pr.setDataInizioNoleggio(rs.getDate(7));</span>
+<span class="fc" id="L49">        pr.setDataFineNoleggio(rs.getDate(8));</span>
+<span class="fc" id="L50">        return pr;</span>
+      }
+<span class="nc" id="L52">      return null;</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L54">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che ritorna le istanze di tipo ProdottoRicheista contenute nel DB.
+   *
+   * @param idRichiesta codice nuemerico, Intero
+   * @return List &amp;lt;ProdottoRichiesta&amp;gt; - {@link List} di oggetti di tipo
+   * {@link ProdottoRichiesta}
+   */
+
+
+  public List&lt;ProdottoRichiesta&gt; doRetrieveByIdRichiesta(int idRichiesta) {
+<span class="fc" id="L68">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L69">      PreparedStatement ps = con</span>
+<span class="fc" id="L70">          .prepareStatement(</span>
+              &quot;SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo &quot;
+                      + &quot;as rp, Prodotto as p WHERE pr.idRichiesta=? &quot;
+                      + &quot;AND pr.idRichiesta=rp.idRichiesta &quot;
+                      + &quot;AND pr.idProdotto=p.idProdotto &quot;
+                      + &quot;AND pr.partitaIva=p.partitaIva&quot;);
+<span class="fc" id="L76">      ps.setInt(1, idRichiesta);</span>
+<span class="fc" id="L77">      ArrayList&lt;ProdottoRichiesta&gt; prichieste = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L78">      ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">      while (rs.next()) {</span>
+<span class="nc" id="L80">        ProdottoRichiesta pr = new ProdottoRichiesta();</span>
+<span class="nc" id="L81">        pr.setId(rs.getInt(1));</span>
+<span class="nc" id="L82">        pr.setIdRichiesta(rs.getInt(2));</span>
+<span class="nc" id="L83">        pr.setIdProdotto(rs.getInt(3));</span>
+<span class="nc" id="L84">        pr.setPartitaIva(rs.getString(4));</span>
+<span class="nc" id="L85">        pr.setNumColli(rs.getInt(5));</span>
+<span class="nc" id="L86">        pr.setPrezzo(rs.getFloat(6));</span>
+<span class="nc" id="L87">        pr.setDataInizioNoleggio(rs.getDate(7));</span>
+<span class="nc" id="L88">        pr.setDataFineNoleggio(rs.getDate(8));</span>
+<span class="nc" id="L89">        prichieste.add(pr);</span>
+<span class="nc" id="L90">      }</span>
+<span class="fc" id="L91">      return prichieste;</span>
+<span class="nc" id="L92">    } catch (SQLException e) {</span>
+<span class="nc" id="L93">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che ritorna le istanze di tipo ProdottoRicheista contenute nel DB.
+   *
+   * @param idProdotto codice numerico, Intero
+   * @param partitaIva codice alfanumerico, String
+   * @return List &amp;lt;ProdottoRichiesta&amp;gt; - {@link List} di oggetti di tipo
+   * {@link ProdottoRichiesta}
+   */
+
+
+  public List&lt;ProdottoRichiesta&gt; doRetrieveByIdProdottoePartitaIva(int idProdotto,
+                                                                   String partitaIva) {
+<span class="fc" id="L109">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L110">      PreparedStatement ps = con</span>
+<span class="fc" id="L111">          .prepareStatement(</span>
+              &quot;SELECT * FROM ProdottoRichiesta as pr, RichiestaPreventivo as rp, Prodotto as p &quot;
+                      + &quot;WHERE pr.idProdotto=? AND pr.partitaIva=? &quot;
+                      + &quot;AND pr.idRichiesta=rp.idRichiesta AND &quot;
+                      + &quot;pr.idProdotto=p.idProdotto AND pr.partitaIva=p.partitaIva&quot;);
+<span class="fc" id="L116">      ps.setInt(1, idProdotto);</span>
+<span class="fc" id="L117">      ps.setString(2, partitaIva);</span>
+<span class="fc" id="L118">      ArrayList&lt;ProdottoRichiesta&gt; prichieste = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L119">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L121">        ProdottoRichiesta pr = new ProdottoRichiesta();</span>
+<span class="fc" id="L122">        pr.setId(rs.getInt(1));</span>
+<span class="fc" id="L123">        pr.setIdRichiesta(rs.getInt(2));</span>
+<span class="fc" id="L124">        pr.setIdProdotto(rs.getInt(3));</span>
+<span class="fc" id="L125">        pr.setPartitaIva(rs.getString(4));</span>
+<span class="fc" id="L126">        pr.setNumColli(rs.getInt(5));</span>
+<span class="fc" id="L127">        pr.setPrezzo(rs.getFloat(6));</span>
+<span class="fc" id="L128">        pr.setDataInizioNoleggio(rs.getDate(7));</span>
+<span class="fc" id="L129">        pr.setDataFineNoleggio(rs.getDate(8));</span>
+<span class="fc" id="L130">        prichieste.add(pr);</span>
+<span class="fc" id="L131">      }</span>
+<span class="fc" id="L132">      return prichieste;</span>
+<span class="nc" id="L133">    } catch (SQLException e) {</span>
+<span class="nc" id="L134">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che crea un'istanza, all'interno del DB, di tipo ProdottoRichiesta.
+   *
+   * @param prodottoRichiesta Oggetto di tipo {@link ProdottoRichiesta}
+   */
+  public int createProdottoRichiesta(ProdottoRichiesta prodottoRichiesta) {
+<span class="fc" id="L144">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L145">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;INSERT INTO ProdottoRichiesta (idRichiesta, idProdotto, partitaIva, numColli,&quot;
+              + &quot; prezzo, dataInizioNoleggio, dataFineNoleggio) VALUES(?,?,?,?,?,?,?)&quot;,
+          Statement.RETURN_GENERATED_KEYS);
+
+
+<span class="fc" id="L151">      ps.setInt(1, prodottoRichiesta.getIdRichiesta());</span>
+<span class="fc" id="L152">      ps.setInt(2, prodottoRichiesta.getIdProdotto());</span>
+<span class="fc" id="L153">      ps.setString(3, prodottoRichiesta.getPartitaIva());</span>
+<span class="fc" id="L154">      ps.setInt(4, prodottoRichiesta.getNumColli());</span>
+<span class="fc" id="L155">      ps.setFloat(5, prodottoRichiesta.getPrezzo());</span>
+<span class="fc" id="L156">      ps.setDate(6, prodottoRichiesta.getDataInizioNoleggio());</span>
+<span class="fc" id="L157">      ps.setDate(7, prodottoRichiesta.getDataFineNoleggio());</span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L159">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+      }
+<span class="fc" id="L161">      ResultSet rs = ps.getGeneratedKeys();</span>
+<span class="fc" id="L162">      rs.next();</span>
+<span class="fc" id="L163">      prodottoRichiesta.setId(rs.getInt(1));</span>
+<span class="fc" id="L164">      return rs.getInt(1);</span>
+<span class="nc" id="L165">    } catch (SQLException e) {</span>
+<span class="nc" id="L166">      throw new RuntimeException(e);</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

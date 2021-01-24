@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TagProdottoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">TagProdottoDAO.java</span></div><h1>TagProdottoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ * &lt;p&gt; TagProdottoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto TagProdotto &lt;/p&gt;.
+ *
+ * @author DAVIDE PAPPALARDO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+<span class="fc" id="L20">public class TagProdottoDAO {</span>
+
+  /**
+   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad un idTag dato in input.
+   *
+   * @param idTag codice identificativo, Intero
+   * @return TagProdotto - Oggetto di tipo {@link TagProdotto}
+   */
+
+  public TagProdotto doRetrieveByIdTag(int idTag) {
+<span class="fc" id="L30">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L31">      PreparedStatement ps = con</span>
+<span class="fc" id="L32">          .prepareStatement(</span>
+              &quot;SELECT tp.idTag, tp.partitaIva, tp.idProdotto &quot;
+                      + &quot;FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? &quot;
+                  + &quot;AND tp.idTag=t.idTag AND tp.partitaIva=p.partitaIva &quot;
+                      + &quot;AND tp.idProdotto=p.idProdotto&quot;);
+<span class="fc" id="L37">      ps.setInt(1, idTag);</span>
+<span class="fc" id="L38">      ResultSet rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">      if (rs.next()) {</span>
+<span class="fc" id="L40">        TagProdotto tp = new TagProdotto();</span>
+<span class="fc" id="L41">        tp.setIdTag(rs.getInt(1));</span>
+<span class="fc" id="L42">        tp.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L43">        tp.setIdProdotto(rs.getInt(3));</span>
+
+<span class="fc" id="L45">        return tp;</span>
+      }
+<span class="nc" id="L47">      return null;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L49">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che crea un'istanza, all'interno del DB, di tipo TagProdotto.
+   *
+   * @param tagProdotto Oggetto di tipo {@link Tag}
+   */
+
+  public void createTagProdotto(TagProdotto tagProdotto) {
+<span class="fc" id="L60">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L61">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;INSERT INTO TagProdotto (idTag, idProdotto, partitaIva) VALUES(?,?,?)&quot;);
+<span class="fc" id="L63">      ps.setInt(1, tagProdotto.getIdTag());</span>
+<span class="fc" id="L64">      ps.setInt(2, tagProdotto.getIdProdotto());</span>
+<span class="fc" id="L65">      ps.setString(3, tagProdotto.getPartitaIva());</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L67">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+      }
+<span class="nc" id="L69">    } catch (SQLException e) {</span>
+<span class="nc" id="L70">      throw new RuntimeException(e);</span>
+<span class="fc" id="L71">    }</span>
+<span class="fc" id="L72">  }</span>
+
+  /**
+   * Metodo che elimina dal DB l'istanza TagProdotto correlata all'idTag,
+   * all'idProdotto e alla partitaIva dati in input.
+   *
+   * @param idTag      codice identificativo tag, Intero
+   * @param idProdotto codice identificativo prodotto, Intero
+   * @param partitaIva codice alfanumerico identificativo fornitore, String
+   */
+
+  public void deleteTagProdotto(int idTag, int idProdotto, String partitaIva) {
+<span class="nc" id="L84">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="nc" id="L85">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;DELETE FROM TagProdotto WHERE idTag=? AND idProdotto=? AND partitaIva=?&quot;);
+<span class="nc" id="L87">      ps.setInt(1, idTag);</span>
+<span class="nc" id="L88">      ps.setInt(2, idProdotto);</span>
+<span class="nc" id="L89">      ps.setString(3, partitaIva);</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L91">        throw new RuntimeException(&quot;DELETE error.&quot;);</span>
+      }
+<span class="nc" id="L93">    } catch (SQLException e) {</span>
+<span class="nc" id="L94">      throw new RuntimeException(e);</span>
+<span class="nc" id="L95">    }</span>
+<span class="nc" id="L96">  }</span>
+
+  /**
+   * Metodo che ritorna l'oggetto di tipo TagProdotto correlato ad una partitaIva data in input.
+   *
+   * @param idProdotto codice identificativo prodotto, Intero
+   * @param partitaIva codice alfanumerico identificativo fornitore, String
+   * @return TagProdotto - Oggetto di tipo {@link TagProdotto}
+   */
+
+  public TagProdotto doRetrieveByIdProdottoandPartitaIva(int idProdotto, String partitaIva) {
+<span class="nc" id="L107">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="nc" id="L108">      PreparedStatement ps = con</span>
+<span class="nc" id="L109">          .prepareStatement(</span>
+              &quot;SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f &quot;
+                      + &quot;WHERE p.idProdotto=? AND p.partitaIva=?&quot;
+                  + &quot;AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag &quot;
+                      + &quot;AND tp.partitaIva=p.partitaIva&quot;);
+<span class="nc" id="L114">      ps.setInt(1, idProdotto);</span>
+<span class="nc" id="L115">      ps.setString(2, partitaIva);</span>
+<span class="nc" id="L116">      ResultSet rs = ps.executeQuery();</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">      if (rs.next()) {</span>
+<span class="nc" id="L118">        TagProdotto tp = new TagProdotto();</span>
+<span class="nc" id="L119">        tp.setIdTag(rs.getInt(1));</span>
+<span class="nc" id="L120">        tp.setIdProdotto(rs.getInt(2));</span>
+<span class="nc" id="L121">        tp.setPartitaIva(rs.getString(3));</span>
+<span class="nc" id="L122">        return tp;</span>
+      }
+<span class="nc" id="L124">      return null;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L126">      throw new RuntimeException(e);</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

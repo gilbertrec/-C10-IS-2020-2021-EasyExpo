@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RichiestaPreventivoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">RichiestaPreventivoDAOTest.java</span></div><h1>RichiestaPreventivoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.Preventivo;
+import Model.POJO.RichiestaPreventivo;
+import java.sql.Date;
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L15">class RichiestaPreventivoDAOTest {</span>
+
+  private RichiestaPreventivoDAO rpDAO;
+  private RichiestaPreventivo rp;
+  private ClienteDAO clDAO;
+  private Cliente cl;
+  private FornitoreDAO frDAO;
+  private Fornitore fr;
+  private int idRichiesta;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L27">    frDAO = new FornitoreDAO();</span>
+<span class="fc" id="L28">    fr = new Fornitore(&quot;01234567880&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,</span>
+        &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L30">    frDAO.createFornitore(fr);</span>
+
+<span class="fc" id="L32">    clDAO = new ClienteDAO();</span>
+<span class="fc" id="L33">    cl = new Cliente();</span>
+<span class="fc" id="L34">    cl.setCodiceFiscale(&quot;RBLKTA99C57E923W&quot;);</span>
+<span class="fc" id="L35">    cl.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L36">    cl.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L37">    cl.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L38">    cl.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L39">    cl.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L40">    cl.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L41">    clDAO.createCliente(cl);</span>
+
+<span class="fc" id="L43">    rpDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L44">    rp = new RichiestaPreventivo();</span>
+<span class="fc" id="L45">    rp.setCodiceFiscale(cl.getCodiceFiscale());</span>
+<span class="fc" id="L46">    rp.setPartitaIva(fr.getPartitaIva());</span>
+<span class="fc" id="L47">    rp.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L48">    rp.setDescrizioneEvento(&quot;descrizione di prova&quot;);</span>
+<span class="fc" id="L49">    rp.setNota(&quot;nota di prova&quot;);</span>
+<span class="fc" id="L50">    rp.setTitolo(&quot;Prova&quot;);</span>
+<span class="fc" id="L51">    rp.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L52">    rp.setStato(RichiestaPreventivo.Stato.IN_ATTESA);</span>
+<span class="fc" id="L53">    idRichiesta = rpDAO.createRichiestaPreventivo(rp);</span>
+
+<span class="fc" id="L55">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L59">    clDAO.deleteCliente(cl.getCodiceFiscale());</span>
+<span class="fc" id="L60">    frDAO.deleteFornitore(fr.getPartitaIva());</span>
+<span class="fc" id="L61">  }</span>
+
+  @Test
+  void createRichiestaPreventivoException(){
+<span class="fc" id="L65">    RichiestaPreventivo rp2 = new RichiestaPreventivo();</span>
+<span class="fc" id="L66">    rp2.setCodiceFiscale(&quot;1211476723678467236&quot;);</span>
+<span class="fc" id="L67">    rp2.setPartitaIva(&quot;QBCIJCIBDIUHCUIDHDH&quot;);</span>
+<span class="fc" id="L68">    rp2.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L69">    rp2.setDescrizioneEvento(&quot;descrizione di prova&quot;);</span>
+<span class="fc" id="L70">    rp2.setNota(&quot;nota di prova&quot;);</span>
+<span class="fc" id="L71">    rp2.setTitolo(&quot;Prova&quot;);</span>
+<span class="fc" id="L72">    rp2.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L73">    rp2.setStato(RichiestaPreventivo.Stato.IN_ATTESA);</span>
+<span class="pc" id="L74">    assertThrows(RuntimeException.class,() -&gt;{rpDAO.createRichiestaPreventivo(rp2);});</span>
+<span class="fc" id="L75">  }</span>
+
+  @Test
+  void doRetrieveByIdRichiesta() {
+<span class="fc" id="L79">    RichiestaPreventivo rp3 = rpDAO.doRetrieveByIdRichiesta(idRichiesta);</span>
+<span class="fc" id="L80">      assertEquals(idRichiesta, rp3.getIdRichiesta());</span>
+<span class="fc" id="L81">  }</span>
+
+  @Test
+  void doRetrieveByIdRichiestaException() {
+    //assertThrows(RuntimeException.class,() -&gt;{rpDAO.doRetrieveByIdRichiesta(34);}); // non funziona
+<span class="fc" id="L86">  }</span>
+
+  @Test
+  void doRetrieveByPartitaIva() {
+<span class="fc" id="L90">    List&lt;RichiestaPreventivo&gt; rp4 = rpDAO.doRetrieveByPartitaIva(rp.getPartitaIva());</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">    for(RichiestaPreventivo p : rp4) {</span>
+<span class="fc" id="L92">      assertEquals(rp.getPartitaIva(), p.getPartitaIva());</span>
+<span class="fc" id="L93">    }</span>
+<span class="fc" id="L94">  }</span>
+
+  @Test
+  void doRetrieveByCodiceFiscale() {
+<span class="fc" id="L98">    List&lt;RichiestaPreventivo&gt; rp4 = rpDAO.doRetrieveByCodiceFiscale(rp.getCodiceFiscale());</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    for(RichiestaPreventivo p : rp4) {</span>
+<span class="fc" id="L100">      assertEquals(rp.getCodiceFiscale(), p.getCodiceFiscale());</span>
+<span class="fc" id="L101">    }</span>
+<span class="fc" id="L102">  }</span>
+
+  @Test
+  void createRichiestaPreventivo() {
+<span class="fc" id="L106">    RichiestaPreventivo rp5 = new RichiestaPreventivo();</span>
+<span class="fc" id="L107">    rp5.setCodiceFiscale(cl.getCodiceFiscale());</span>
+<span class="fc" id="L108">    rp5.setPartitaIva(fr.getPartitaIva());</span>
+<span class="fc" id="L109">    rp5.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L110">    rp5.setDescrizioneEvento(&quot;descrizione di prova seconda&quot;);</span>
+<span class="fc" id="L111">    rp5.setNota(&quot;nota di prova&quot;);</span>
+<span class="fc" id="L112">    rp5.setTitolo(&quot;Prova seconda&quot;);</span>
+<span class="fc" id="L113">    rp5.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L114">    rp5.setStato(RichiestaPreventivo.Stato.IN_ATTESA);</span>
+<span class="fc" id="L115">    int idRichiesta2 = rpDAO.createRichiestaPreventivo(rp5);</span>
+
+<span class="fc" id="L117">    RichiestaPreventivo rp6 = rpDAO.doRetrieveByIdRichiesta(idRichiesta2);</span>
+
+<span class="fc" id="L119">    assertEquals(rp5.getIdRichiesta(), rp6.getIdRichiesta());</span>
+
+<span class="fc" id="L121">    rpDAO.deleteRichiestePreventivo(rp5.getIdRichiesta());</span>
+<span class="fc" id="L122">  }</span>
+
+  @Test
+  void updateRichiestaPreventivo() {
+<span class="fc" id="L126">    rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);</span>
+<span class="fc" id="L127">    rpDAO.updateRichiestaPreventivo(rp);</span>
+<span class="fc" id="L128">    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, rp.getStato());</span>
+<span class="fc" id="L129">  }</span>
+
+  @Test
+  void deleteRichiestePreventivo() {
+<span class="fc" id="L133">    RichiestaPreventivo rp6 = new RichiestaPreventivo();</span>
+<span class="fc" id="L134">    rp6.setCodiceFiscale(cl.getCodiceFiscale());</span>
+<span class="fc" id="L135">    rp6.setPartitaIva(fr.getPartitaIva());</span>
+<span class="fc" id="L136">    rp6.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L137">    rp6.setDescrizioneEvento(&quot;descrizione di prova terza&quot;);</span>
+<span class="fc" id="L138">    rp6.setNota(&quot;nota di prova&quot;);</span>
+<span class="fc" id="L139">    rp6.setTitolo(&quot;Prova terza&quot;);</span>
+<span class="fc" id="L140">    rp6.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L141">    rp6.setStato(RichiestaPreventivo.Stato.RIFIUTATO);</span>
+<span class="fc" id="L142">    int idRichiesta3 = rpDAO.createRichiestaPreventivo(rp6);</span>
+
+<span class="fc" id="L144">    rpDAO.deleteRichiestePreventivo(idRichiesta3);</span>
+
+<span class="fc" id="L146">    assertNull(rpDAO.doRetrieveByIdRichiesta(idRichiesta3));</span>
+<span class="fc" id="L147">  }</span>
+
+  @Test
+  void updateRichiestaPreventivoException() {
+<span class="fc" id="L151">    rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);</span>
+<span class="fc" id="L152">    rp.setPartitaIva(&quot;hibceywgiyergrfierg&quot;);</span>
+<span class="pc" id="L153">    assertThrows(RuntimeException.class,() -&gt;{rpDAO.updateRichiestaPreventivo(rp);});</span>
+<span class="fc" id="L154">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

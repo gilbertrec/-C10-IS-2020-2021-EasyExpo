@@ -95,9 +95,9 @@ class RichiestaPreventivoDAOTest {
 
   @Test
   void doRetrieveByCodiceFiscale() {
-    List<RichiestaPreventivo> rp4 = rpDAO.doRetrieveByPartitaIva(rp.getCodiceFiscale());
+    List<RichiestaPreventivo> rp4 = rpDAO.doRetrieveByCodiceFiscale(rp.getCodiceFiscale());
     for(RichiestaPreventivo p : rp4) {
-      assertEquals(rp.getCodiceFiscale(), p.getPartitaIva());
+      assertEquals(rp.getCodiceFiscale(), p.getCodiceFiscale());
     }
   }
 
@@ -144,5 +144,12 @@ class RichiestaPreventivoDAOTest {
     rpDAO.deleteRichiestePreventivo(idRichiesta3);
 
     assertNull(rpDAO.doRetrieveByIdRichiesta(idRichiesta3));
+  }
+
+  @Test
+  void updateRichiestaPreventivoException() {
+    rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);
+    rp.setPartitaIva("hibceywgiyergrfierg");
+    assertThrows(RuntimeException.class,() ->{rpDAO.updateRichiestaPreventivo(rp);});
   }
 }

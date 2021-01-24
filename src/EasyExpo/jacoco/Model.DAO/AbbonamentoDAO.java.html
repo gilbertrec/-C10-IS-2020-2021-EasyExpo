@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbbonamentoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">AbbonamentoDAO.java</span></div><h1>AbbonamentoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * &lt;p&gt; AbbonamentoDAO e' una classe di tipo DAO (Data Access Object)
+ * che gestisce i dati persistenti dell'oggetto Abbonamento &lt;/p&gt;.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+<span class="fc" id="L21">public class AbbonamentoDAO {</span>
+
+  /**
+   * Metodo che ritorna le istanze di tipo Abbonamento correlato ad una patitaIva data in input.
+   *
+   * @param partitaIva codice alfanumerico, String
+   * @return List &amp;lt;Abbonamento&amp;gt; - {@link List} di oggetti di tipo {@link Abbonamento}
+   */
+
+  public List&lt;Abbonamento&gt; doRetrieveByPartitaIva(String partitaIva) {
+<span class="fc" id="L31">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L32">      PreparedStatement ps = con</span>
+<span class="fc" id="L33">          .prepareStatement(</span>
+              &quot;SELECT * FROM Abbonamento as a, Fornitore as f &quot;
+                      + &quot;WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva&quot;);
+<span class="fc" id="L36">      ps.setString(1, partitaIva);</span>
+<span class="fc" id="L37">      ArrayList&lt;Abbonamento&gt; abbonamenti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L38">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L40">        Abbonamento a = new Abbonamento();</span>
+<span class="fc" id="L41">        a.setIdAbbonamento(rs.getInt(1));</span>
+<span class="fc" id="L42">        a.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L43">        a.setDataInizio(rs.getDate(3));</span>
+<span class="fc" id="L44">        a.setDataFine(rs.getDate(4));</span>
+<span class="fc" id="L45">        abbonamenti.add(a);</span>
+<span class="fc" id="L46">      }</span>
+<span class="fc" id="L47">      return abbonamenti;</span>
+<span class="nc" id="L48">    } catch (SQLException e) {</span>
+<span class="nc" id="L49">      throw new RuntimeException(e);</span>
+    }
+  }
+
+  /**
+   * Metodo che crea un'istanza, all'interno del DB, di tipo Abbonamento.
+   *
+   * @param abbonamento Oggetto di tipo {@link Abbonamento}
+   */
+
+  public boolean createAbbonamento(Abbonamento abbonamento) {
+<span class="fc" id="L60">    boolean flag = false;</span>
+<span class="fc" id="L61">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L62">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;INSERT INTO Abbonamento ( partitaIva, dataInizio, dataFine) VALUES(?,?,?)&quot;,
+          Statement.RETURN_GENERATED_KEYS);
+<span class="fc" id="L65">      ps.setString(1, abbonamento.getPartitaIva());</span>
+<span class="fc" id="L66">      ps.setDate(2, abbonamento.getDataInizio());</span>
+<span class="fc" id="L67">      ps.setDate(3, abbonamento.getDataFine());</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L69">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+      }
+<span class="fc" id="L71">      ResultSet rs = ps.getGeneratedKeys();</span>
+<span class="fc" id="L72">      rs.next();</span>
+<span class="fc" id="L73">      abbonamento.setIdAbbonamento(rs.getInt(1));</span>
+<span class="fc" id="L74">      flag = true;</span>
+<span class="fc" id="L75">    } catch (SQLException e) {</span>
+<span class="fc" id="L76">      throw new RuntimeException(e);</span>
+<span class="fc" id="L77">    }</span>
+<span class="fc" id="L78">    return  flag;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

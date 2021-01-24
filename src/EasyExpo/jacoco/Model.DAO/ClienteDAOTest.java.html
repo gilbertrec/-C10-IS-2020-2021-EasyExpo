@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClienteDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ClienteDAOTest.java</span></div><h1>ClienteDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import Model.POJO.Cliente;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import static Model.DAO.DBConnection.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+<span class="fc" id="L17">class ClienteDAOTest {</span>
+    ClienteDAO cl;
+    Cliente cliente1;
+
+
+    @BeforeEach
+    void setUpEach(){
+<span class="fc" id="L24">        cl = new ClienteDAO();</span>
+<span class="fc" id="L25">        cliente1 = new Cliente();</span>
+<span class="fc" id="L26">        cliente1.setCodiceFiscale(&quot;RBLKTA99C55E923W&quot;);</span>
+<span class="fc" id="L27">        cliente1.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L28">        cliente1.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L29">        cliente1.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L30">        cliente1.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L31">        cliente1.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L32">        cliente1.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L33">        cl.createCliente(cliente1);</span>
+<span class="fc" id="L34">    }</span>
+
+    @AfterEach
+    void tearDown(){
+<span class="fc" id="L38">        cl.deleteCliente(&quot;RBLKTA99C55E923W&quot;);</span>
+<span class="fc" id="L39">    }</span>
+
+    @Test
+    void createCliente() {
+<span class="fc" id="L43">        Cliente cliente = new Cliente();</span>
+<span class="fc" id="L44">        cliente.setCodiceFiscale(&quot;MNCKTA99C55E923F&quot;);</span>
+<span class="fc" id="L45">        cliente.setNome(&quot;Katia&quot;);</span>
+<span class="fc" id="L46">        cliente.setCognome(&quot;Monaco&quot;);</span>
+<span class="fc" id="L47">        cliente.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L48">        cliente.setEmail(&quot;k.monaco@gmail.com&quot;);</span>
+<span class="fc" id="L49">        cliente.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L50">        cliente.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+
+<span class="fc" id="L52">        cl.createCliente(cliente);</span>
+
+<span class="fc" id="L54">        Cliente cliente2 = cl.doRetrieveByCF(&quot;MNCKTA99C55E923F&quot;);</span>
+
+<span class="fc" id="L56">        assertEquals(cliente.getCodiceFiscale(), cliente2.getCodiceFiscale());</span>
+
+<span class="fc" id="L58">        cl.deleteCliente(&quot;MNCKTA99C55E923F&quot;);</span>
+
+<span class="fc" id="L60">    }</span>
+
+    @Test
+    void createClienteException() {
+<span class="fc" id="L64">        Cliente cliente = new Cliente();</span>
+<span class="fc" id="L65">        cliente.setCodiceFiscale(&quot;MNCKTA99C55E923FASD&quot;);</span>
+<span class="fc" id="L66">        cliente.setNome(&quot;Katia&quot;);</span>
+<span class="fc" id="L67">        cliente.setCognome(&quot;Monaco&quot;);</span>
+<span class="fc" id="L68">        cliente.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L69">        cliente.setEmail(&quot;k.monaco@gmail.com&quot;);</span>
+<span class="fc" id="L70">        cliente.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L71">        cliente.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+
+
+<span class="pc" id="L74">        assertThrows(RuntimeException.class, () -&gt;{cl.createCliente(cliente);});</span>
+
+<span class="fc" id="L76">    }</span>
+
+
+    @Test
+    void doRetrieveByCF() {
+<span class="fc" id="L81">        Cliente c = cl.doRetrieveByCF(&quot;RBLKTA99C55E923W&quot;);</span>
+<span class="fc" id="L82">        assertEquals(&quot;RBLKTA99C55E923W&quot;, c.getCodiceFiscale());</span>
+<span class="fc" id="L83">    }</span>
+
+    @Test
+    void doRetrieveByCFNull() {
+        Cliente c;
+        //= cl.doRetrieveByCF(&quot;RBLKTA99C55E924Q&quot;);
+<span class="fc" id="L89">        assertNull(cl.doRetrieveByCF(&quot;RBLKTA99C55E924Q&quot;));</span>
+<span class="fc" id="L90">    }</span>
+
+    @Test
+    void doRetrieveByCFExcpetion() {
+        Cliente c;
+        //= cl.doRetrieveByCF(&quot;RBLKTA99C55E924Q&quot;);
+<span class="fc" id="L96">        assertNull(cl.doRetrieveByCF(&quot;RBLKTA99C55E924QADFV&quot;));</span>
+<span class="fc" id="L97">    }</span>
+
+
+
+
+    @Test
+    void doRetrieveByEmailandPassword() {
+<span class="fc" id="L104">        Cliente c1 = cl.doRetrieveByEmailandPassword(&quot;l.robustelli@gmail.com&quot;, &quot;password&quot; );</span>
+<span class="fc" id="L105">        assertEquals(&quot;RBLKTA99C55E923W&quot;, c1.getCodiceFiscale());</span>
+<span class="fc" id="L106">    }</span>
+
+    @Test
+    void deleteCliente() {
+<span class="fc" id="L110">        ClienteDAO clienteDAO = new ClienteDAO();</span>
+<span class="fc" id="L111">        Cliente cliente3 = new Cliente();</span>
+<span class="fc" id="L112">        cliente3.setCodiceFiscale(&quot;RBLKTA98875E923W&quot;);</span>
+<span class="fc" id="L113">        cliente3.setNome(&quot;Sara&quot;);</span>
+<span class="fc" id="L114">        cliente3.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L115">        cliente3.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L116">        cliente3.setEmail(&quot;s.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L117">        cliente3.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L118">        cliente3.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L119">        clienteDAO.createCliente(cliente3);</span>
+
+<span class="fc" id="L121">        clienteDAO.deleteCliente(cliente3.getCodiceFiscale());</span>
+
+<span class="fc" id="L123">        assertNull(clienteDAO.doRetrieveByCF(&quot;RBLKTA98875E923W&quot;));</span>
+<span class="fc" id="L124">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

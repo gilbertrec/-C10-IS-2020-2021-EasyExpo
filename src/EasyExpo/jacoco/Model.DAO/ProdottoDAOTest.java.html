@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdottoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ProdottoDAOTest.java</span></div><h1>ProdottoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L13">class ProdottoDAOTest {</span>
+
+  private ProdottoDAO pr;
+  private Prodotto prodotto;
+  private Fornitore fornitore;
+  FornitoreDAO fornitoreDAO;
+  private int idProdotto;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L23">    pr = new ProdottoDAO();</span>
+<span class="fc" id="L24">    prodotto = new Prodotto();</span>
+<span class="fc" id="L25">    fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L26">    fornitore = new Fornitore(&quot;01234567880&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,</span>
+        &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L28">    fornitoreDAO.createFornitore(fornitore);</span>
+<span class="fc" id="L29">    prodotto.setIdProdotto(2);</span>
+<span class="fc" id="L30">    prodotto.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L31">    prodotto.setTitolo(&quot;Panca&quot;);</span>
+<span class="fc" id="L32">    prodotto.setPrezzo(30);</span>
+<span class="fc" id="L33">    prodotto.setQuantità(3);</span>
+<span class="fc" id="L34">    prodotto.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L35">    prodotto.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L36">    prodotto.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L37">    idProdotto = pr.createProdotto(prodotto);</span>
+<span class="fc" id="L38">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L42">    fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());</span>
+<span class="fc" id="L43">  }</span>
+
+  @Test
+  void doRetrieveByIdProdottoEPartitaIva() {
+<span class="fc" id="L47">    Prodotto prodotto3 = pr.doRetrieveByIdProdottoEPartitaIva(idProdotto, prodotto.getPartitaIva());</span>
+<span class="fc" id="L48">    assertEquals(prodotto.getIdProdotto(), prodotto3.getIdProdotto());</span>
+<span class="fc" id="L49">    assertEquals(prodotto.getPartitaIva(), prodotto3.getPartitaIva());</span>
+<span class="fc" id="L50">  }</span>
+
+  @Test
+  void doRetrieveByPartitaIva() {
+<span class="fc" id="L54">    List&lt;Prodotto&gt; prodotti = pr.doRetrieveByPartitaIva(prodotto.getPartitaIva());</span>
+<span class="fc" id="L55">    assertEquals(1, prodotti.size());</span>
+<span class="fc" id="L56">  }</span>
+
+  @Test
+  void doRetrieveAll() {
+<span class="fc" id="L60">    List&lt;Prodotto&gt; prodotti2 = pr.doRetrieveAll();</span>
+<span class="fc" id="L61">    assertEquals(5, prodotti2.size());</span>
+<span class="fc" id="L62">  }</span>
+
+  @Test
+  void createProdotto() {
+<span class="fc" id="L66">    pr = new ProdottoDAO();</span>
+<span class="fc" id="L67">    Prodotto prodotto5 = new Prodotto();</span>
+<span class="fc" id="L68">    prodotto5.setIdProdotto(5);</span>
+<span class="fc" id="L69">    prodotto5.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L70">    prodotto5.setTitolo(&quot;Casse&quot;);</span>
+<span class="fc" id="L71">    prodotto5.setPrezzo(30);</span>
+<span class="fc" id="L72">    prodotto5.setQuantità(3);</span>
+<span class="fc" id="L73">    prodotto5.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L74">    prodotto5.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L75">    prodotto5.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L76">    int idProdotto2 = pr.createProdotto(prodotto5);</span>
+
+<span class="fc" id="L78">    Prodotto prodotto6 = pr.doRetrieveByIdProdottoEPartitaIva(idProdotto2, prodotto5.getPartitaIva());</span>
+
+<span class="fc" id="L80">    assertEquals(idProdotto2, prodotto6.getIdProdotto());</span>
+<span class="fc" id="L81">    assertEquals(prodotto5.getPartitaIva(), prodotto6.getPartitaIva());</span>
+
+<span class="fc" id="L83">    pr.deleteProdotto(idProdotto2, prodotto5.getPartitaIva());</span>
+<span class="fc" id="L84">  }</span>
+
+  @Test
+  void createProdottoException() {
+<span class="fc" id="L88">    pr = new ProdottoDAO();</span>
+<span class="fc" id="L89">    Prodotto prodotto5 = new Prodotto();</span>
+<span class="fc" id="L90">    prodotto5.setIdProdotto(5);</span>
+<span class="fc" id="L91">    prodotto5.setPartitaIva(&quot;12345790864389&quot;);</span>
+<span class="fc" id="L92">    prodotto5.setTitolo(&quot;Casse&quot;);</span>
+<span class="fc" id="L93">    prodotto5.setPrezzo(30);</span>
+<span class="fc" id="L94">    prodotto5.setQuantità(3);</span>
+<span class="fc" id="L95">    prodotto5.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L96">    prodotto5.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L97">    prodotto5.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+
+<span class="pc" id="L99">    assertThrows(RuntimeException.class,() -&gt;{pr.createProdotto(prodotto5);});</span>
+<span class="fc" id="L100">  }</span>
+
+  @Test
+  void deleteProdotto() {
+<span class="fc" id="L104">    Prodotto prodotto7 = new Prodotto();</span>
+<span class="fc" id="L105">    prodotto7.setIdProdotto(6);</span>
+<span class="fc" id="L106">    prodotto7.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L107">    prodotto7.setTitolo(&quot;Casse&quot;);</span>
+<span class="fc" id="L108">    prodotto7.setPrezzo(30);</span>
+<span class="fc" id="L109">    prodotto7.setQuantità(3);</span>
+<span class="fc" id="L110">    prodotto7.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L111">    prodotto7.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L112">    prodotto7.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L113">    int idProdotto3 = pr.createProdotto(prodotto7);</span>
+
+<span class="fc" id="L115">    pr.deleteProdotto(idProdotto3, prodotto7.getPartitaIva());</span>
+
+<span class="fc" id="L117">    assertNull(pr.doRetrieveByIdProdottoEPartitaIva(idProdotto3, prodotto7.getPartitaIva()));</span>
+<span class="fc" id="L118">  }</span>
+
+  @Test
+  void doRetrieveByTitolo() {
+<span class="fc" id="L122">    List&lt;Prodotto&gt; prodotti9 = pr.doRetrieveByTitolo(&quot;Panca&quot;);</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">    for(Prodotto p : prodotti9){</span>
+<span class="fc" id="L124">      assertEquals(&quot;Panca&quot;, p.getTitolo());</span>
+<span class="fc" id="L125">    }</span>
+<span class="fc" id="L126">  }</span>
+
+  @Test
+  void updateProdotto() {
+<span class="fc" id="L130">    prodotto.setQuantità(8);</span>
+<span class="fc" id="L131">    pr.updateProdotto(prodotto);</span>
+<span class="fc" id="L132">    assertEquals(8, prodotto.getQuantità());</span>
+<span class="fc" id="L133">  }</span>
+
+  @Test
+  void updateProdottoException() {
+<span class="fc" id="L137">    prodotto.setQuantità(8);</span>
+<span class="fc" id="L138">    prodotto.setPartitaIva(&quot;kckevck3vec8977897&quot;);</span>
+<span class="pc" id="L139">    assertThrows(RuntimeException.class,() -&gt;{pr.updateProdotto(prodotto);});</span>
+<span class="fc" id="L140">  }</span>
+
+  @Test
+  void doRetrieveRandom() {
+<span class="fc" id="L144">    List&lt;Prodotto&gt; prodotti4 = pr.doRetrieveRandom(1, 3);</span>
+<span class="fc" id="L145">    assertEquals(3, prodotti4.size());</span>
+<span class="fc" id="L146">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

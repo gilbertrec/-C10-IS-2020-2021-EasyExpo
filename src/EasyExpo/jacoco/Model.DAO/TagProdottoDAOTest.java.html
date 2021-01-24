@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TagProdottoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">TagProdottoDAOTest.java</span></div><h1>TagProdottoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L13">class TagProdottoDAOTest {</span>
+  private FornitoreDAO fornitoreDAO;
+  private Fornitore fornitore;
+  private ProdottoDAO prodottoDAO;
+  private Prodotto prodotto;
+  private TagDAO tagDAO;
+  private Tag tag;
+  private int idProdotto;
+  private TagProdotto tp;
+  private TagProdottoDAO tpd;
+  private int idTag;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L27">    fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L28">    fornitore = new Fornitore(&quot;01234567890&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,</span>
+        &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L30">    fornitoreDAO.createFornitore(fornitore);</span>
+
+<span class="fc" id="L32">    prodottoDAO = new ProdottoDAO();</span>
+<span class="fc" id="L33">    prodotto = new Prodotto();</span>
+<span class="fc" id="L34">    prodotto.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L35">    prodotto.setTitolo(&quot;TitoloTest&quot;);</span>
+<span class="fc" id="L36">    prodotto.setPrezzo(10);</span>
+<span class="fc" id="L37">    prodotto.setQuantità(2);</span>
+<span class="fc" id="L38">    prodotto.setDescrizione(&quot;DescrizioneTest&quot;);</span>
+<span class="fc" id="L39">    prodotto.setImmagine(&quot;Test&quot;);</span>
+<span class="fc" id="L40">    prodotto.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L41">    idProdotto = prodottoDAO.createProdotto(prodotto);</span>
+
+<span class="fc" id="L43">    tagDAO = new TagDAO();</span>
+<span class="fc" id="L44">    tag = new Tag();</span>
+<span class="fc" id="L45">    tag.setNome(&quot;NomeTest&quot;);</span>
+<span class="fc" id="L46">    idTag = tagDAO.createTag(tag);</span>
+
+<span class="fc" id="L48">    tpd = new TagProdottoDAO();</span>
+<span class="fc" id="L49">    tp = new TagProdotto();</span>
+<span class="fc" id="L50">    tp.setIdProdotto(idProdotto);</span>
+<span class="fc" id="L51">    tp.setIdTag(idTag);</span>
+<span class="fc" id="L52">    tp.setPartitaIva(prodotto.getPartitaIva());</span>
+<span class="fc" id="L53">    tpd.createTagProdotto(tp);</span>
+
+<span class="fc" id="L55">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L59">    fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());</span>
+<span class="fc" id="L60">    tagDAO.deleteTag(idTag);</span>
+<span class="fc" id="L61">  }</span>
+
+  @Test
+  void doRetrieveByIdTag() {
+<span class="fc" id="L65">    TagProdotto tp1 = tpd.doRetrieveByIdTag(idTag);</span>
+<span class="fc" id="L66">    assertEquals(tp.getIdTag(),tp1.getIdTag());</span>
+<span class="fc" id="L67">  }</span>
+
+  @Test
+  void createTagProdotto() {
+<span class="fc" id="L71">    tagDAO = new TagDAO();</span>
+<span class="fc" id="L72">    Tag tag2 = new Tag();</span>
+<span class="fc" id="L73">    tag2.setNome(&quot;NomeTest secondo&quot;);</span>
+<span class="fc" id="L74">    int idTag2 = tagDAO.createTag(tag2);</span>
+<span class="fc" id="L75">    System.out.println(idTag2);</span>
+
+<span class="fc" id="L77">    TagProdotto tp2 = new TagProdotto(idTag2, idProdotto,prodotto.getPartitaIva());</span>
+<span class="fc" id="L78">    tpd.createTagProdotto(tp2);</span>
+
+<span class="fc" id="L80">    TagProdotto tp3 = tpd.doRetrieveByIdTag(idTag2);</span>
+<span class="fc" id="L81">    assertEquals(tp2.getIdProdotto(), tp3.getIdProdotto());</span>
+<span class="fc" id="L82">    assertEquals(tp2.getPartitaIva(), tp3.getPartitaIva());</span>
+<span class="fc" id="L83">    assertEquals(tp2.getIdTag(), tp3.getIdTag());</span>
+
+
+<span class="fc" id="L86">  }</span>
+
+  @Test
+  void deleteTagProdotto() {
+
+<span class="fc" id="L91">  }</span>
+
+  @Test
+  void doRetrieveByIdProdottoandPartitaIva() {
+    /*TagProdotto tag5 = tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
+    assertEquals(tp.getIdProdotto(), tag5.getIdProdotto());
+    assertEquals(tp.getPartitaIva(), tag5.getPartitaIva());*/
+<span class="fc" id="L98">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
