@@ -107,8 +107,8 @@ public class TagProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT * FROM Tag as t, TagProdotto as tp, Prodotto as p, Fornitore as f "
-                      + "WHERE p.idProdotto=? AND p.partitaIva=?"
+              "SELECT tp.idTag, tp.idProdotto, tp.partitaIva FROM Tag as t, TagProdotto as tp, Prodotto as p "
+                  + "WHERE tp.idProdotto=? AND tp.partitaIva=? "
                   + "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag "
                       + "AND tp.partitaIva=p.partitaIva");
       ps.setInt(1, idProdotto);

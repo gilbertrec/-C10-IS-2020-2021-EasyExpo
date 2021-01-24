@@ -72,7 +72,6 @@ class TagProdottoDAOTest {
     Tag tag2 = new Tag();
     tag2.setNome("NomeTest secondo");
     int idTag2 = tagDAO.createTag(tag2);
-    System.out.println(idTag2);
 
     TagProdotto tp2 = new TagProdotto(idTag2, idProdotto,prodotto.getPartitaIva());
     tpd.createTagProdotto(tp2);
@@ -87,13 +86,12 @@ class TagProdottoDAOTest {
 
   @Test
   void deleteTagProdotto() {
-
   }
 
   @Test
   void doRetrieveByIdProdottoandPartitaIva() {
-    /*TagProdotto tag5 = tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
+    TagProdotto tag5 = tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
     assertEquals(tp.getIdProdotto(), tag5.getIdProdotto());
-    assertEquals(tp.getPartitaIva(), tag5.getPartitaIva());*/
+    assertEquals(tp.getPartitaIva(), tag5.getPartitaIva());
   }
 }

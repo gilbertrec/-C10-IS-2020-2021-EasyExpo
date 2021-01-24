@@ -3,6 +3,7 @@ package Model.DAO;
 import static org.junit.jupiter.api.Assertions.*;
 
 import Model.POJO.Fornitore;
+import Model.POJO.RichiestaPreventivo;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,6 +28,7 @@ class FornitoreDAOTest {
     fornitore.setLuogoUbicazione("Napoli");
     fornitore.setRagioneSociale("privato");
     fornitore.setAbbonato(false);
+    fornitore.setStato(Fornitore.Stato.ATTIVO);
     fr.createFornitore(fornitore);
   }
 
@@ -130,12 +132,13 @@ class FornitoreDAOTest {
 
   @Test
   void doRetrievebyStato(){
-   /* fornitore.setStato(Fornitore.Stato.ATTIVO);
+   /*fornitore.setStato(Fornitore.Stato.ATTIVO);
     fr.doRetrievebyStato()*/
   }
 
   @Test
   void updateStato(){
-   // fr.updateStato(1, fornitore.getPartitaIva());
+   fr.updateStato(Fornitore.Stato.SOSPESO.ordinal(), fornitore.getPartitaIva());
+   assertEquals(Fornitore.Stato.SOSPESO, fornitore.getStato());
   }
 }

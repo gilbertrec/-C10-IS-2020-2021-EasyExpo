@@ -94,9 +94,9 @@ class ProdottoRichiestaDAOTest {
 
   @Test
   void doRetrieveByIdRichiesta() {
-    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdRichiesta(idProdottoRichiesta);
+    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdRichiesta(idRichiesta);
     for(ProdottoRichiesta p : richieste){
-      assertEquals(idProdottoRichiesta, p.getIdRichiesta());
+      assertEquals(idRichiesta, p.getIdRichiesta());
     }
   }
 
