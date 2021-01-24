@@ -24,6 +24,7 @@ class PreventivoDAOTest {
   ClienteDAO cDAO;
   Cliente c;
   int idPreventivo;
+  int idPreventivo2;
 
   @BeforeEach
   void setUp() {
@@ -59,6 +60,8 @@ class PreventivoDAOTest {
     preventivo.setDataPreventivo(new Date(2021, 3, 1));
     preventivo.setPrezzoTotale(300);
     preventivo.setNota("nota di prova di preventivo");
+
+    
 
    idPreventivo = preventivoDAO.createPreventivo(preventivo);
 
@@ -115,10 +118,29 @@ class PreventivoDAOTest {
   }
 
 
-  @Test
+  /*@Test
   void deletePreventivo() {
-    /*Preventivo preventivo2 = new Preventivo();
-    preventivo2.setIdPreventivo(4);
+    Preventivo preventivo2 = new Preventivo();
+    //preventivo2.setIdPreventivo(4);
+    preventivo2.setIdRichiesta(rp.getIdRichiesta());
+    preventivo2.setPartitaIva(f.getPartitaIva());
+    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
+    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
+    preventivo2.setPrezzoTotale(400);
+    preventivo2.setNota("nota di prova di preventivo2");
+
+    idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
+    System.out.println(idPreventivo2);
+
+    preventivoDAO.deletePreventivo(preventivoDAO.createPreventivo(preventivo2));
+
+    assertNull(preventivoDAO.doRetriveByIdPreventivo(idPreventivo2));
+  }*/
+
+  /*@Test
+  void deletePreventivoException() {
+    Preventivo preventivo2 = new Preventivo();
+    //preventivo2.setIdPreventivo(4);
     preventivo2.setIdRichiesta(rp.getIdRichiesta());
     preventivo2.setPartitaIva(f.getPartitaIva());
     preventivo2.setCodiceFiscale(c.getCodiceFiscale());
@@ -127,9 +149,11 @@ class PreventivoDAOTest {
     preventivo2.setNota("nota di prova di preventivo2");
 
     int idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
-
+    System.out.println(idPreventivo2);
+    fDAO.deleteFornitore(f.getPartitaIva());
+    cDAO.deleteCliente(c.getCodiceFiscale());
     preventivoDAO.deletePreventivo(idPreventivo2);
 
-    assertNull(preventivoDAO.doRetriveByIdPreventivo(idPreventivo2));*/ //non funziona
-  }
+    assertThrows(RuntimeException.class, ()-> {preventivoDAO.doRetriveByIdPreventivo(idPreventivo2);});
+  }*/
 }
