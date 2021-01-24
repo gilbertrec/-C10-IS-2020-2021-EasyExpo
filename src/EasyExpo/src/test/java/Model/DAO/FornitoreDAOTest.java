@@ -65,6 +65,22 @@ class FornitoreDAOTest {
   }
 
   @Test
+  void createFornitoreException() {
+    fornitore = new Fornitore();
+    fornitore.setPartitaIva("12345677898901");
+    fornitore.setNome("Giuseppe");
+    fornitore.setCognome("Avino");
+    fornitore.setTelefono("3387485126");
+    fornitore.setEmail("g.avino@gmail.com");
+    fornitore.setPassword("password");
+    fornitore.setLuogoUbicazione("Napoli");
+    fornitore.setRagioneSociale("privato");
+    fornitore.setAbbonato(false);
+
+    assertThrows(RuntimeException.class,() ->{fr.createFornitore(fornitore);});
+  }
+
+  @Test
   void doRetrieveByEmailandPassword() {
     Fornitore f1 = fr.doRetrieveByEmailandPassword("g.iuliano@gmail.com", "password" );
     assertEquals("01234567890", f1.getPartitaIva());
@@ -103,6 +119,13 @@ class FornitoreDAOTest {
     fornitore.setAbbonato(true);
     fr.updateBooleanFornitore(fornitore);
     assertEquals(true, fornitore.isAbbonato());
+  }
+
+  @Test
+  void updateBooleanFornitoreException() {
+    fornitore.setPartitaIva("ydkykdd6565786guf");
+    fornitore.setAbbonato(true);
+    assertThrows(RuntimeException.class,() ->{fr.updateBooleanFornitore(fornitore);});
   }
 
   @Test
