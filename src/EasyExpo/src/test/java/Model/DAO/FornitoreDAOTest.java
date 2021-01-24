@@ -117,6 +117,11 @@ class FornitoreDAOTest {
   }
 
   @Test
+  void deleteFornitoreException() {
+    assertThrows(RuntimeException.class,() ->{fr.deleteFornitore("12345668909");});
+  }
+
+  @Test
   void updateBooleanFornitore() {
     fornitore.setAbbonato(true);
     fr.updateBooleanFornitore(fornitore);

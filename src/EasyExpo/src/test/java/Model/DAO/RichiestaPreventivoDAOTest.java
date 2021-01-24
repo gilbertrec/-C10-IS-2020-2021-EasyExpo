@@ -147,6 +147,41 @@ class RichiestaPreventivoDAOTest {
   }
 
   @Test
+  void deleteRichiestePreventivoException() {
+    frDAO = new FornitoreDAO();
+    Fornitore fr2 = new Fornitore("01234788790", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+        "Rossi123", "Rossi");
+    frDAO.createFornitore(fr2);
+
+    clDAO = new ClienteDAO();
+    Cliente cl2 = new Cliente();
+    cl2.setCodiceFiscale("RBLKTAPTC57E423W");
+    cl2.setNome("Lucrezia");
+    cl2.setCognome("Robustelli");
+    cl2.setTelefono("3387485126");
+    cl2.setEmail("l.robustelli@gmail.com");
+    cl2.setPassword("password");
+    cl2.setLuogoUbicazione("Napoli");
+    clDAO.createCliente(cl2);
+    RichiestaPreventivo rp7 = new RichiestaPreventivo();
+    rp7.setCodiceFiscale(cl.getCodiceFiscale());
+    rp7.setPartitaIva(fr.getPartitaIva());
+    rp7.setDataRichiesta(new Date(2020, 01, 26));
+    rp7.setDescrizioneEvento("descrizione di prova terza");
+    rp7.setNota("nota di prova");
+    rp7.setTitolo("Prova terza");
+    rp7.setLuogoEvento("Napoli");
+    rp7.setStato(RichiestaPreventivo.Stato.RIFIUTATO);
+    int idRichiesta4 = rpDAO.createRichiestaPreventivo(rp7);
+
+    rpDAO.deleteRichiestePreventivo(idRichiesta4);
+    frDAO.deleteFornitore(fr2.getPartitaIva());
+    clDAO.deleteCliente(cl2.getCodiceFiscale());
+
+    assertThrows(RuntimeException.class,() ->{rpDAO.deleteRichiestePreventivo(idRichiesta4);});
+  }
+
+  @Test
   void updateRichiestaPreventivoException() {
     rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);
     rp.setPartitaIva("hibceywgiyergrfierg");

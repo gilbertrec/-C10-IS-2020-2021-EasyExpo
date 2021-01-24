@@ -24,7 +24,7 @@ class ClienteDAOTest {
     void setUpEach(){
         cl = new ClienteDAO();
         cliente1 = new Cliente();
-        cliente1.setCodiceFiscale("RBLKTA99C55E923W");
+        cliente1.setCodiceFiscale("RBLKTA97C55E923W");
         cliente1.setNome("Lucrezia");
         cliente1.setCognome("Robustelli");
         cliente1.setTelefono("3387485126");
@@ -36,7 +36,7 @@ class ClienteDAOTest {
 
     @AfterEach
     void tearDown(){
-        cl.deleteCliente("RBLKTA99C55E923W");
+        cl.deleteCliente("RBLKTA97C55E923W");
     }
 
     @Test
@@ -79,8 +79,8 @@ class ClienteDAOTest {
 
     @Test
     void doRetrieveByCF() {
-        Cliente c = cl.doRetrieveByCF("RBLKTA99C55E923W");
-        assertEquals("RBLKTA99C55E923W", c.getCodiceFiscale());
+        Cliente c = cl.doRetrieveByCF("RBLKTA97C55E923W");
+        assertEquals("RBLKTA97C55E923W", c.getCodiceFiscale());
     }
 
     @Test
@@ -101,7 +101,7 @@ class ClienteDAOTest {
     @Test
     void doRetrieveByEmailandPassword() {
         Cliente c1 = cl.doRetrieveByEmailandPassword("l.robustelli@gmail.com", "password" );
-        assertEquals("RBLKTA99C55E923W", c1.getCodiceFiscale());
+        assertEquals("RBLKTA97C55E923W", c1.getCodiceFiscale());
     }
 
     @Test

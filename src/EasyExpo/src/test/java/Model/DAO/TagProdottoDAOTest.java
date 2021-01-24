@@ -101,6 +101,22 @@ class TagProdottoDAOTest {
   }
 
   @Test
+  void deleteTagProdottoException() {
+    tagDAO = new TagDAO();
+    Tag tag3 = new Tag();
+    tag3.setNome("NomeTest terzo");
+    int idTag3 = tagDAO.createTag(tag3);
+
+    TagProdotto tp3 = new TagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
+    tpd.createTagProdotto(tp3);
+
+    TagProdotto tp4 = tpd.doRetrieveByIdTag(idTag3);
+
+    tpd.deleteTagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
+    assertThrows(RuntimeException.class,() ->{tpd.deleteTagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());});
+  }
+
+  @Test
   void doRetrieveByIdProdottoandPartitaIva() {
     TagProdotto tag5 = tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
     assertEquals(tp.getIdProdotto(), tag5.getIdProdotto());
