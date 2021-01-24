@@ -29,7 +29,7 @@ public class AbbonamentoServlet extends HttpServlet {
     List<Abbonamento> abbonamenti = abbonamentoDAO.doRetrieveByPartitaIva(partitaIva);
 
     if (abbonamenti.size() == 0) {
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/abbonamento.jsp");
+      RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/abbonamento.jsp");
       requestDispatcher.forward(request, response);
     } else {
       List<MetodoPagamento> metodi = metodoDAO.doRetrieveAllByPartitaIva(partitaIva);
@@ -46,7 +46,7 @@ public class AbbonamentoServlet extends HttpServlet {
         }
       }
       if (fornitore.isAbbonato() == false) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/rinnovo.jsp");
+        RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/rinnovo.jsp");
         requestDispatcher.forward(request, response);
       } else {
         throw new MyServletException("Sei gia abbonato!");
