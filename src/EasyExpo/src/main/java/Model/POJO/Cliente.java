@@ -33,6 +33,7 @@ public class Cliente {
     this.luogoUbicazione = luogoUbicazione;
     this.email = email;
     this.password = password;
+    this.stato = stato.ATTIVO;
   }
 
   /**
@@ -185,6 +186,26 @@ public class Cliente {
   }
 
   /**
+   * Metodo che restituisce lo stato.
+   *
+   * @return stato - Stato
+   */
+
+  public Stato getStato() {
+    return stato;
+  }
+
+  /**
+   * Metodo che setta l'abbonamento.
+   *
+   * @param stato  Stato del fornitore, Stato
+   */
+
+  public void setStato(Stato stato) {
+    this.stato = stato;
+  }
+
+  /**
    * Metodo che converte l'oggetto Cliente in stringa.
    *
    * @return String
@@ -211,5 +232,9 @@ public class Cliente {
   private String luogoUbicazione;
   private String email;
   private String password;
-
+  public enum Stato {
+    ATTIVO, SOSPESO
+  }
+  ;
+  private Stato stato;
 }

@@ -112,5 +112,16 @@ class FornitoreTest {
     assertEquals("Rossi&co.",fornitore.getRagioneSociale());
   }
 
+  @Test
+  void setStato(){
+    fornitore.setStato(Fornitore.Stato.SOSPESO);
+    assertEquals(Fornitore.Stato.SOSPESO, fornitore.getStato());
+  }
+
+  @Test
+  void getStato(){
+    assertEquals(Fornitore.Stato.ATTIVO, fornitore.getStato());
+  }
+
   private Fornitore fornitore;
 }

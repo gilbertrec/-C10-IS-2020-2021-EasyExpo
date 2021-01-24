@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -97,8 +98,6 @@ class ClienteDAOTest {
     }
 
 
-
-
     @Test
     void doRetrieveByEmailandPassword() {
         Cliente c1 = cl.doRetrieveByEmailandPassword("l.robustelli@gmail.com", "password" );
@@ -121,5 +120,20 @@ class ClienteDAOTest {
         clienteDAO.deleteCliente(cliente3.getCodiceFiscale());
 
         assertNull(clienteDAO.doRetrieveByCF("RBLKTA98875E923W"));
+    }
+
+    @Test
+    void doRetrievebyStato(){
+        List<Cliente> cliente5 =  cl.doRetrievebyStato(1);
+        for(Cliente c : cliente5) {
+            assertEquals(Cliente.Stato.ATTIVO, c.getStato());
+        }
+    }
+
+    @Test
+    void updateStato(){
+        cl.updateStato(2, cliente1.getCodiceFiscale());
+        Cliente cliente7 = cl.doRetrieveByCF(cliente1.getCodiceFiscale());
+        assertEquals(Cliente.Stato.SOSPESO, cliente7.getStato());
     }
 }

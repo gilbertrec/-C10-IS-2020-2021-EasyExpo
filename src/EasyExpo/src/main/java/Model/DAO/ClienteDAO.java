@@ -30,7 +30,7 @@ public class ClienteDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT codiceFiscale, nome, cognome, email, password, "
-                      + "telefono, luogoUbicazione  FROM Cliente WHERE codiceFiscale=?");
+                      + "telefono, luogoUbicazione, stato  FROM Cliente WHERE codiceFiscale=?");
       ps.setString(1, codiceFiscale);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -42,6 +42,7 @@ public class ClienteDAO {
         c.setPassword(rs.getString(5));
         c.setTelefono(rs.getString(6));
         c.setLuogoUbicazione(rs.getString(7));
+        c.setStato(Cliente.Stato.valueOf(rs.getString(8)));
         return c;
       }
       return null;
@@ -59,7 +60,7 @@ public class ClienteDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, "
-                  + "luogoUbicazione, email, password) VALUES(?,?,?,?,?,?,sha2(?, 512))");
+                  + "luogoUbicazione, email, password, stato) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
       ps.setString(1, cliente.getCodiceFiscale());
       ps.setString(2, cliente.getNome());
       ps.setString(3, cliente.getCognome());
@@ -67,6 +68,7 @@ public class ClienteDAO {
       ps.setString(7, cliente.getPassword());
       ps.setString(4, cliente.getTelefono());
       ps.setString(5, cliente.getLuogoUbicazione());
+      ps.setString(8,"ATTIVO");
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
@@ -146,6 +148,7 @@ public class ClienteDAO {
         c.setPassword(rs.getString(5));
         c.setTelefono(rs.getString(6));
         c.setLuogoUbicazione(rs.getString(7));
+        c.setStato(Cliente.Stato.valueOf(rs.getString(8)));
         clienti.add(c);
       }
       return clienti;

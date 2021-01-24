@@ -52,7 +52,22 @@ Tag t;
   }
 
   @Test
-  void deleteTag() {
+  void createTagException() {
+    Tag tag1 = new Tag();
+    tag1.setIdTag(2);
+    tag1.setNome("TestTestvceeygciwuixowndibcbiebcowbdjebcueubcuhdie");
+    assertThrows(RuntimeException.class, ()->{tag.createTag(tag1);});
+  }
 
+  @Test
+  void deleteTag() {
+    Tag tag2 = new Tag();
+    tag2.setNome("TestTest");
+
+    int idTag = tag.createTag(tag2);
+    Tag tag3 = tag.doRetrieveByIdTag(idTag);
+
+    tag.deleteTag(idTag);
+    assertNull(tag.doRetrieveByIdTag(idTag));
   }
 }

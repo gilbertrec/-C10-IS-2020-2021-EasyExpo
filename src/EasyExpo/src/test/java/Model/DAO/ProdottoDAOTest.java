@@ -118,6 +118,27 @@ class ProdottoDAOTest {
   }
 
   @Test
+  void deleteProdottoException() {
+    fornitoreDAO = new FornitoreDAO();
+    Fornitore fornitore2 = new Fornitore("01234567580", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+        "Rossi123", "Rossi");
+    fornitoreDAO.createFornitore(fornitore2);
+    Prodotto prodotto7 = new Prodotto();
+    prodotto7.setIdProdotto(6);
+    prodotto7.setPartitaIva(fornitore2.getPartitaIva());
+    prodotto7.setTitolo("Casse");
+    prodotto7.setPrezzo(30);
+    prodotto7.setQuantità(3);
+    prodotto7.setDescrizione("bellissima cassa per la musica");
+    prodotto7.setImmagine("images/foto.jsp");
+    prodotto7.setTipo(Prodotto.Tipo.ATTREZZATURA);
+    int idProdotto3 = pr.createProdotto(prodotto7);
+    fornitoreDAO.deleteFornitore(fornitore2.getPartitaIva());
+
+    assertThrows(RuntimeException.class,() ->{pr.deleteProdotto(idProdotto3, prodotto7.getPartitaIva());});
+  }
+
+  @Test
   void doRetrieveByTitolo() {
     List<Prodotto> prodotti9 = pr.doRetrieveByTitolo("Panca");
     for(Prodotto p : prodotti9){

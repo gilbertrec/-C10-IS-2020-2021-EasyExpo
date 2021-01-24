@@ -18,8 +18,8 @@ class FornitoreDAOTest {
   @BeforeEach
   void setUpEach(){
     fr = new FornitoreDAO();
-    fornitore = new Fornitore();
-    fornitore.setPartitaIva("01234567890");
+    fornitore = new Fornitore("01234567890", "Gaetano","Iuliano","3387485126", "Napoli", "g.iuliano@gmail.com", "password", "privato");
+    /*fornitore.setPartitaIva("01234567890");
     fornitore.setNome("Gaetano");
     fornitore.setCognome("Iuliano");
     fornitore.setTelefono("3387485126");
@@ -27,8 +27,7 @@ class FornitoreDAOTest {
     fornitore.setPassword("password");
     fornitore.setLuogoUbicazione("Napoli");
     fornitore.setRagioneSociale("privato");
-    fornitore.setAbbonato(false);
-    fornitore.setStato(Fornitore.Stato.ATTIVO);
+    fornitore.setAbbonato(false);*/
     fr.createFornitore(fornitore);
   }
 
@@ -46,22 +45,23 @@ class FornitoreDAOTest {
 
   @Test
   void createFornitore() {
-    fornitore = new Fornitore();
-    fornitore.setPartitaIva("12345678901");
-    fornitore.setNome("Giuseppe");
-    fornitore.setCognome("Avino");
-    fornitore.setTelefono("3387485126");
-    fornitore.setEmail("g.avino@gmail.com");
-    fornitore.setPassword("password");
-    fornitore.setLuogoUbicazione("Napoli");
-    fornitore.setRagioneSociale("privato");
-    fornitore.setAbbonato(false);
+    Fornitore fornitore2 = new Fornitore();
+    fornitore2.setPartitaIva("12345678901");
+    fornitore2.setNome("Giuseppe");
+    fornitore2.setCognome("Avino");
+    fornitore2.setTelefono("3387485126");
+    fornitore2.setEmail("g.avino@gmail.com");
+    fornitore2.setPassword("password");
+    fornitore2.setLuogoUbicazione("Napoli");
+    fornitore2.setRagioneSociale("privato");
+    fornitore2.setAbbonato(false);
+    fornitore2.setStato(Fornitore.Stato.ATTIVO);
 
-    fr.createFornitore(fornitore);
+    fr.createFornitore(fornitore2);
 
-    Fornitore fornitore2 = fr.doRetrieveByPIVA("12345678901");
+    Fornitore fornitore3 = fr.doRetrieveByPIVA("12345678901");
 
-    assertEquals(fornitore.getPartitaIva(), fornitore2.getPartitaIva());
+    assertEquals(fornitore2.getPartitaIva(), fornitore3.getPartitaIva());
 
     fr.deleteFornitore("12345678901");
   }
@@ -132,13 +132,16 @@ class FornitoreDAOTest {
 
   @Test
   void doRetrievebyStato(){
-   /*fornitore.setStato(Fornitore.Stato.ATTIVO);
-    fr.doRetrievebyStato()*/
+    List<Fornitore> fornitore5 =  fr.doRetrievebyStato(1);
+    for(Fornitore f : fornitore5) {
+      assertEquals(Fornitore.Stato.ATTIVO, f.getStato());
+    }
   }
 
   @Test
   void updateStato(){
-   fr.updateStato(Fornitore.Stato.SOSPESO.ordinal(), fornitore.getPartitaIva());
-   assertEquals(Fornitore.Stato.SOSPESO, fornitore.getStato());
+   fr.updateStato(2, fornitore.getPartitaIva());
+   Fornitore fornitore7 = fr.doRetrieveByPIVA(fornitore.getPartitaIva());
+   assertEquals(Fornitore.Stato.SOSPESO, fornitore7.getStato());
   }
 }

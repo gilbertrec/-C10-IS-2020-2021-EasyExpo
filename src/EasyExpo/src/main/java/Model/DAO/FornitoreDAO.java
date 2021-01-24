@@ -30,7 +30,7 @@ public class FornitoreDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email,"
-                  + " password, ragioneSociale, abbonato  FROM Fornitore WHERE partitaIva=?");
+                  + " password, ragioneSociale, abbonato, stato  FROM Fornitore WHERE partitaIva=?");
       ps.setString(1, partitaIva);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -44,6 +44,7 @@ public class FornitoreDAO {
         f.setPassword(rs.getString(7));
         f.setRagioneSociale(rs.getString(8));
         f.setAbbonato(rs.getBoolean(9));
+        f.setStato(Fornitore.Stato.valueOf(rs.getString(10)));
         return f;
       }
       return null;
@@ -203,6 +204,7 @@ public class FornitoreDAO {
         f.setTelefono(rs.getString(6));
         f.setLuogoUbicazione(rs.getString(7));
         f.setRagioneSociale(rs.getString(8));
+        f.setStato(Fornitore.Stato.valueOf(rs.getString(10)));
         fornitori.add(f);
       }
       return fornitori;

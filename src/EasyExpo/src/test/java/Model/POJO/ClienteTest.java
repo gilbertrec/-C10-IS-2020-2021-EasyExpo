@@ -101,4 +101,14 @@ class ClienteTest {
     assertEquals("Napoli", cl.getLuogoUbicazione());
   }
 
+  @Test
+  void setStato(){
+    cl.setStato(Cliente.Stato.SOSPESO);
+    assertEquals(Cliente.Stato.SOSPESO, cl.getStato());
+  }
+
+ @Test
+  void getStato(){
+    assertEquals(Cliente.Stato.ATTIVO, cl.getStato());
+  }
 }
