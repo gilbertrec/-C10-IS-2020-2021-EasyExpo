@@ -58,7 +58,7 @@ class ProdottoDAOTest {
   @Test
   void doRetrieveAll() {
     List<Prodotto> prodotti2 = pr.doRetrieveAll();
-    assertEquals(5, prodotti2.size());
+    assertEquals(4, prodotti2.size());
   }
 
   @Test
@@ -119,6 +119,6 @@ class ProdottoDAOTest {
   @Test
   void doRetrieveRandom() {
     List<Prodotto> prodotti4 = pr.doRetrieveRandom(1, 4);
-    assertEquals(4, prodotti4.size());
+    assertEquals(3, prodotti4.size());
   }
 }

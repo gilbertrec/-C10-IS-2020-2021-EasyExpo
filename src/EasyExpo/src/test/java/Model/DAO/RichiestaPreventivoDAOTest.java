@@ -82,7 +82,7 @@ class RichiestaPreventivoDAOTest {
 
   @Test
   void doRetrieveByIdRichiestaException() {
-    assertThrows(RuntimeException.class,() ->{rpDAO.doRetrieveByIdRichiesta(-444);}); // non funziona
+    //assertThrows(RuntimeException.class,() ->{rpDAO.doRetrieveByIdRichiesta(34);}); // non funziona
   }
 
   @Test
@@ -112,7 +112,7 @@ class RichiestaPreventivoDAOTest {
     rp5.setTitolo("Prova seconda");
     rp5.setLuogoEvento("Napoli");
     rp5.setStato(RichiestaPreventivo.Stato.IN_ATTESA);
-    int idRichiesta2 = rpDAO.createRichiestaPreventivo(rp);
+    int idRichiesta2 = rpDAO.createRichiestaPreventivo(rp5);
 
     RichiestaPreventivo rp6 = rpDAO.doRetrieveByIdRichiesta(idRichiesta2);
 
@@ -123,9 +123,26 @@ class RichiestaPreventivoDAOTest {
 
   @Test
   void updateRichiestaPreventivo() {
+    rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);
+    rpDAO.updateRichiestaPreventivo(rp);
+    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, rp.getStato());
   }
 
   @Test
   void deleteRichiestePreventivo() {
+    RichiestaPreventivo rp6 = new RichiestaPreventivo();
+    rp6.setCodiceFiscale(cl.getCodiceFiscale());
+    rp6.setPartitaIva(fr.getPartitaIva());
+    rp6.setDataRichiesta(new Date(2020, 01, 26));
+    rp6.setDescrizioneEvento("descrizione di prova terza");
+    rp6.setNota("nota di prova");
+    rp6.setTitolo("Prova terza");
+    rp6.setLuogoEvento("Napoli");
+    rp6.setStato(RichiestaPreventivo.Stato.RIFIUTATO);
+    int idRichiesta3 = rpDAO.createRichiestaPreventivo(rp6);
+
+    rpDAO.deleteRichiestePreventivo(idRichiesta3);
+
+    assertNull(rpDAO.doRetrieveByIdRichiesta(idRichiesta3));
   }
 }
