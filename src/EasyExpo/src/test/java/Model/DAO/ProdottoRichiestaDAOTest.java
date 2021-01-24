@@ -88,7 +88,8 @@ class ProdottoRichiestaDAOTest {
 
   @Test
   void doRetrieveById() {
-    //non viene usato
+    ProdottoRichiesta prodottoRichiesta2 = prodottoRichiestaDAO.doRetrieveById(idProdottoRichiesta);
+    assertEquals(idProdottoRichiesta, prodottoRichiesta2.getId());
   }
 
   @Test

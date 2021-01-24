@@ -58,7 +58,7 @@ class ProdottoDAOTest {
   @Test
   void doRetrieveAll() {
     List<Prodotto> prodotti2 = pr.doRetrieveAll();
-    assertEquals(4, prodotti2.size());
+    assertEquals(5, prodotti2.size());
   }
 
   @Test
@@ -81,6 +81,22 @@ class ProdottoDAOTest {
     assertEquals(prodotto5.getPartitaIva(), prodotto6.getPartitaIva());
 
     pr.deleteProdotto(idProdotto2, prodotto5.getPartitaIva());
+  }
+
+  @Test
+  void createProdottoException() {
+    pr = new ProdottoDAO();
+    Prodotto prodotto5 = new Prodotto();
+    prodotto5.setIdProdotto(5);
+    prodotto5.setPartitaIva("12345790864389");
+    prodotto5.setTitolo("Casse");
+    prodotto5.setPrezzo(30);
+    prodotto5.setQuantità(3);
+    prodotto5.setDescrizione("bellissima cassa per la musica");
+    prodotto5.setImmagine("images/foto.jsp");
+    prodotto5.setTipo(Prodotto.Tipo.ATTREZZATURA);
+
+    assertThrows(RuntimeException.class,() ->{pr.createProdotto(prodotto5);});
   }
 
   @Test
@@ -117,8 +133,15 @@ class ProdottoDAOTest {
   }
 
   @Test
+  void updateProdottoException() {
+    prodotto.setQuantità(8);
+    prodotto.setPartitaIva("kckevck3vec8977897");
+    assertThrows(RuntimeException.class,() ->{pr.updateProdotto(prodotto);});
+  }
+
+  @Test
   void doRetrieveRandom() {
-    List<Prodotto> prodotti4 = pr.doRetrieveRandom(1, 4);
+    List<Prodotto> prodotti4 = pr.doRetrieveRandom(1, 3);
     assertEquals(3, prodotti4.size());
   }
 }
