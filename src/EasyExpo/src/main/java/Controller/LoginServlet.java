@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 
       request.setAttribute("prodottiNuovi", prodottiNuovi);
 
-
+      response.setContentType("Benvenuto!");
       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
       requestDispatcher.forward(request, response);
     } else if (cliente == null && fornitore != null) {

@@ -2,16 +2,12 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
-import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +16,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class LoginServletTest extends Mockito {
+class RegistrazioneClienteServletTest {
 
   private LoginServlet loginServlet;
   private HttpServletRequest mockedRequest;
@@ -29,15 +25,12 @@ class LoginServletTest extends Mockito {
   private RequestDispatcher mockedDispatcher;
   private HttpSession mockedSession;
   private Cliente cl;
-  private Fornitore fr;
   private ClienteDAO clienteDAO;
-  private FornitoreDAO fornitoreDAO;
 
   MyServletException exception = null;
 
   @BeforeEach
-  void setUp() throws ServletException {
-
+  void setUp() {
     loginServlet = new LoginServlet();
     mockedRequest = Mockito.mock(HttpServletRequest.class);
     mockedResponse = Mockito.mock(HttpServletResponse.class);
@@ -45,32 +38,16 @@ class LoginServletTest extends Mockito {
     mockedDispatcher = Mockito.mock(RequestDispatcher.class);
     mockedSession = Mockito.mock(HttpSession.class);
 
-    fornitoreDAO = new FornitoreDAO();
-    clienteDAO = new ClienteDAO();
-
     cl = new Cliente();
-    fr = new Fornitore("01235597890", "Gaetano","Iuliano","3387485126", "Napoli", "g.iuliano@gmail.com", "password", "privato");
-    fornitoreDAO.createFornitore(fr);
-
-    cl.setCodiceFiscale("RBLKTN10C55E923W");
-    cl.setNome("Lucrezia");
-    cl.setCognome("Robustelli");
-    cl.setTelefono("3387485126");
-    cl.setEmail("l.robustelli@gmail.com");
-    cl.setPassword("password");
-    cl.setLuogoUbicazione("Napoli");
-    clienteDAO.createCliente(cl);
-
+    clienteDAO = new ClienteDAO();
   }
 
   @AfterEach
   void tearDown() {
-    clienteDAO.deleteCliente(cl.getCodiceFiscale());
-    fornitoreDAO.deleteFornitore(fr.getPartitaIva());
   }
 
   @Test
-  void TestEmailNull(){
+  void TestEmailError(){
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("");
     Mockito.when(mockedRequest.getParameter("password")).thenReturn("password");
 
@@ -82,21 +59,6 @@ class LoginServletTest extends Mockito {
 
     assertEquals(message, exception.getMessage());
   }
-
-  @Test
-  void TestFonitoreNull() throws ServletException, IOException {
-   /* Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
-    Mockito.when(mockedRequest.getParameter("password")).thenReturn("gae99*");
-
-    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/index.jsp");
-
-    loginServlet.doPost(mockedRequest, mockedResponse);
-
-    Mockito.verify(mockedResponse).setContentType("Benvenuto!");*/
-  }
-
 
   @Test
   void doPost() {
