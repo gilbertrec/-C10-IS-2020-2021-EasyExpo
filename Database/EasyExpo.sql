@@ -10,7 +10,8 @@ CREATE TABLE Cliente(
     telefono varchar(10),
     luogoUbicazione varchar(30),
     email varchar(50) not null,
-    password varchar(512) not null
+    password varchar(512) not null,
+    stato ENUM('ATTIVO','SOSPESO') not null
 );
 
 CREATE TABLE Fornitore(
@@ -22,7 +23,8 @@ CREATE TABLE Fornitore(
     email varchar(50) not null,
 	password varchar(512) not null,
     ragioneSociale varchar(30) not null,
-    abbonato boolean
+    abbonato boolean,
+    stato ENUM('ATTIVO','SOSPESO') not null
 );
 
 CREATE TABLE Admin(
@@ -145,14 +147,14 @@ CREATE TABLE MetodoPagamento(
 );
 
 INSERT INTO Cliente VALUES
-("QTTMCR53R61E406B", "Mariacristina", "Quattroquarti", 3890720375, "Lagnasco", "quattroquarti@gmail.com", sha2('Cristina99', 512)),
-("BRZRTN02H50C293D","Viola","Criscuoli", 3498364820, "Ponza", "violetta@gmail.com", sha2('iolaCri00', 512)),
-("IULGAE99C23R123R", "Gaetano", "Iuliano", 3998765987, "Terzigno", "gaetano99@gmail.com", sha2('gae99*', 512));
+("QTTMCR53R61E406B", "Mariacristina", "Quattroquarti", 3890720375, "Lagnasco", "quattroquarti@gmail.com", sha2('Cristina99', 512),"ATTIVO"),
+("BRZRTN02H50C293D","Viola","Criscuoli", 3498364820, "Ponza", "violetta@gmail.com", sha2('iolaCri00', 512),"ATTIVO"),
+("IULGAE99C23R123R", "Gaetano", "Iuliano", 3998765987, "Terzigno", "gaetano99@gmail.com", sha2('gae99*', 512),"SOSPESO");
 
 INSERT INTO Fornitore VALUES
-("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato",false),
-("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato",true),
-("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc",false);
+("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato",false, "ATTIVO"),
+("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato",true, "ATTIVO"),
+("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc",false, "SOSPESO");
 
 INSERT INTO Admin VALUES
 ("lucrezia.robustelli@gmail.com", sha2('lucry00*', 512)),
@@ -169,9 +171,10 @@ INSERT INTO Prodotto VALUES
 (1, "03271170361", "Servizio di Dj", "Un servizio perfetto: mi occupo della musica per le sfilate e delle promozioni per le feste. Affidatevi a me perche' so interpretare le svariate situazioni dei vostri eventi con bella musica e animazioni", "SERVIZIO", 40, 180.00, "images/download-6.jpg");
 
 INSERT INTO Abbonamento VALUES
-(1,"01391350129", 20201113, 20200113),
+(1,"01391350129", 20201113, 20200213),
 (2,"01391350129", 20190605, 20190705),
-(3,"03271170361", 20200713, 20200813);
+(3,"03271170361", 20200713, 20200813),
+(4,"01391350129", 20210114, 20210214);
 
 INSERT INTO MetodoPagamento VALUES
 ("1452896574587589", "03271170361", "Susanna Zaidane", 20221210, 523),
