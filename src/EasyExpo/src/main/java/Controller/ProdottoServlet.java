@@ -45,7 +45,8 @@ public class ProdottoServlet extends HttpServlet {
       throw new MyServletException("Prodotto non trovato.");
     }
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("specificheProdotto.jsp");
+
+    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/specificheProdotto.jsp");
     requestDispatcher.forward(request, response);
   }
 

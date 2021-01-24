@@ -61,7 +61,7 @@ class PreventivoDAOTest {
     preventivo.setPrezzoTotale(300);
     preventivo.setNota("nota di prova di preventivo");
 
-    
+
 
    idPreventivo = preventivoDAO.createPreventivo(preventivo);
 
