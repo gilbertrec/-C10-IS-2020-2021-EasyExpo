@@ -2,11 +2,12 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,9 +19,7 @@ class FornitoreServletTest extends Mockito{
   private HttpServletResponse mockedResponse;
   private ServletContext mockedServletContext;
   private RequestDispatcher mockedDispatcher;
-  private HttpSession mockedSession;
   MyServletException exception = null;
-
   @BeforeEach
   void setUp() {
 
@@ -29,8 +28,6 @@ class FornitoreServletTest extends Mockito{
     mockedResponse = Mockito.mock(HttpServletResponse.class);
     mockedServletContext = Mockito.mock(ServletContext.class);
     mockedDispatcher = Mockito.mock(RequestDispatcher.class);
-    mockedSession = Mockito.mock(HttpSession.class);
-
   }
 
   @AfterEach
@@ -48,6 +45,18 @@ class FornitoreServletTest extends Mockito{
 
     assertEquals(message, exception.getMessage());
   }
+
+
+  @Test
+  void TestFornitoreSuccess() throws ServletException, IOException {
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("03271170361");
+
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/specificheFornitore.jsp");
+
+    fornitoreServlet.doGet(mockedRequest,mockedResponse);
+  }
+
 
   @Test
   void doPost() {
