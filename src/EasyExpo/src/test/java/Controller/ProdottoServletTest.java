@@ -62,11 +62,9 @@ class ProdottoServletTest {
         Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
 
         Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-        Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("specificheProdotto.jsp");
+        Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/specificheProdotto.jsp");
 
         prodottoServlet.doGet(mockedRequest,mockedResponse);
-
-
     }
 
     @Test
