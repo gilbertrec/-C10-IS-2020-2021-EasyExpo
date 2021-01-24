@@ -80,7 +80,10 @@ class PreventivoDAOTest {
   }
 
   @Test
-  void doRetrieveAll() {
+  void doRetrieveByIdPreventivoNull() {
+    assertEquals(null, preventivoDAO.doRetriveByIdPreventivo(655));
+
+
   }
 
   @Test

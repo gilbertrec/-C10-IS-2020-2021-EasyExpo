@@ -52,40 +52,6 @@ public class PreventivoDAO {
     }
   }
 
-  /**
-   * Metodo che ritorna le istanze di tipo Preventivo contenute nel DB.
-   *
-   * @param offset indice partenza, Intero
-   * @param limit  indice fine , Intero
-   * @return List &lt;Preventivo&gt; - {@link List} di oggetti di tipo {@link Preventivo}
-   */
-  public List<Preventivo> doRetrieveAll(int offset, int limit) {
-    try (Connection con = DBConnection.getConnection()) {
-      PreparedStatement ps = con
-          .prepareStatement(
-              "SELECT * FROM Preventivo as p, Fornitore as f, Cliente as c,"
-                  + " RichiestaPreventivo as rp WHERE p.idPreventivo=? AND "
-                  + "p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva "
-                  + "AND p.codiceFiscale=c.codiceFiscale LIMIT ?, ?");
-      ps.setInt(1, offset);
-      ps.setInt(2, limit);
-      ArrayList<Preventivo> preventivi = new ArrayList<>();
-      ResultSet rs = ps.executeQuery();
-      while (rs.next()) {
-        Preventivo p = new Preventivo();
-        p.setIdPreventivo(rs.getInt(1));
-        p.setIdRichiesta(rs.getInt(2));
-        p.setPartitaIva(rs.getString(3));
-        p.setCodiceFiscale(rs.getString(4));
-        p.setDataPreventivo(rs.getDate(5));
-        p.setPrezzoTotale(rs.getFloat(6));
-        preventivi.add(p);
-      }
-      return preventivi;
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-  }
 
   /**
    * Metodo che crea un'istanza, all'interno del DB, di tipo Preventivo.
