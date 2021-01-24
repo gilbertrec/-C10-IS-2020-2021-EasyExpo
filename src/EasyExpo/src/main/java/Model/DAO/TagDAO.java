@@ -80,7 +80,7 @@ public class TagDAO {
    *
    * @param tag Oggetto di tipo {@link Tag}
    */
-  public void createTag(Tag tag) {
+  public int createTag(Tag tag) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Tag (idTag, nome) VALUES(?,?)",
@@ -93,6 +93,7 @@ public class TagDAO {
       ResultSet rs = ps.getGeneratedKeys();
       rs.next();
       tag.setIdTag(rs.getInt(1));
+      return rs.getInt(1);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

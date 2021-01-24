@@ -59,12 +59,45 @@ class ClienteDAOTest {
 
     }
 
+    @Test
+    void createClienteException() {
+        Cliente cliente = new Cliente();
+        cliente.setCodiceFiscale("MNCKTA99C55E923FASD");
+        cliente.setNome("Katia");
+        cliente.setCognome("Monaco");
+        cliente.setTelefono("3387485126");
+        cliente.setEmail("k.monaco@gmail.com");
+        cliente.setPassword("password");
+        cliente.setLuogoUbicazione("Napoli");
+
+
+        assertThrows(RuntimeException.class, () ->{cl.createCliente(cliente);});
+
+    }
+
 
     @Test
     void doRetrieveByCF() {
         Cliente c = cl.doRetrieveByCF("RBLKTA99C55E923W");
         assertEquals("RBLKTA99C55E923W", c.getCodiceFiscale());
     }
+
+    @Test
+    void doRetrieveByCFNull() {
+        Cliente c;
+        //= cl.doRetrieveByCF("RBLKTA99C55E924Q");
+        assertNull(cl.doRetrieveByCF("RBLKTA99C55E924Q"));
+    }
+
+    @Test
+    void doRetrieveByCFExcpetion() {
+        Cliente c;
+        //= cl.doRetrieveByCF("RBLKTA99C55E924Q");
+        assertNull(cl.doRetrieveByCF("RBLKTA99C55E924QADFV"));
+    }
+
+
+
 
     @Test
     void doRetrieveByEmailandPassword() {

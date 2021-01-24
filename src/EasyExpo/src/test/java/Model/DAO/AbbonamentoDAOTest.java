@@ -45,6 +45,14 @@ class AbbonamentoDAOTest {
   }
 
   @Test
+  void doRetrieveByPartitaIvaFailure() {
+    List<Abbonamento> a;
+    //= abbonamentoDAO.doRetrieveByPartitaIva("01234567890");
+    assertEquals(0, abbonamentoDAO.doRetrieveByPartitaIva("01239238090").size());
+  }
+
+
+  @Test
   void createAbbonamento() {
     Abbonamento a = new Abbonamento();
     a.setIdAbbonamento(2);
@@ -54,5 +62,17 @@ class AbbonamentoDAOTest {
     abbonamentoDAO.createAbbonamento(a);
     assertEquals(2, abbonamentoDAO.doRetrieveByPartitaIva("01234567890").size());
   }
+
+  @Test
+  void createAbbonamentoException() {
+    Abbonamento a = new Abbonamento();
+    a.setIdAbbonamento(2);
+    a.setPartitaIva("0123456789034rfdf");
+    a.setDataInizio(new Date(2020, 10, 01));
+    a.setDataFine(new Date(2020, 10, 11));
+    assertThrows(RuntimeException.class, () -> {abbonamentoDAO.createAbbonamento(a);});
+  }
+
+
 
 }

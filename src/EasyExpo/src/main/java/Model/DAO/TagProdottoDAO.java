@@ -59,19 +59,13 @@ public class TagProdottoDAO {
   public void createTagProdotto(TagProdotto tagProdotto) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-          "INSERT INTO TagPrdotto (idTag, idProdotto, partitaIva) VALUES(?,?,?)",
-          Statement.RETURN_GENERATED_KEYS);
+          "INSERT INTO TagProdotto (idTag, idProdotto, partitaIva) VALUES(?,?,?)");
       ps.setInt(1, tagProdotto.getIdTag());
       ps.setInt(2, tagProdotto.getIdProdotto());
       ps.setString(3, tagProdotto.getPartitaIva());
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
-      ResultSet rs = ps.getGeneratedKeys();
-      rs.next();
-      tagProdotto.setIdTag(rs.getInt(1));
-      tagProdotto.setIdProdotto(rs.getInt(2));
-      tagProdotto.setPartitaIva(rs.getString(3));
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
