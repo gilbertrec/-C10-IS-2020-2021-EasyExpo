@@ -57,7 +57,7 @@ public class RichiesteServlet extends HttpServlet {
       request.getSession().setAttribute("richieste", richieste);
     }
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listaRichieste.jsp");
+    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/listaRichieste.jsp");
     requestDispatcher.forward(request, response);
   }
 }
