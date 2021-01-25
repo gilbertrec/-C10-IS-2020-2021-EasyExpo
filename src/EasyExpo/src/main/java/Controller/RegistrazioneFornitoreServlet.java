@@ -33,7 +33,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
 
     String passwordConferma = request.getParameter("passwordConferma");
     if (!password.equals(passwordConferma)) {
-      throw new MyServletException("Le password non combaciano");
+      throw new MyServletException("Le password non combaciano.");
     }
 
     String nome = request.getParameter("nome");
@@ -85,7 +85,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
     fornitoreDAO.createFornitore(fornitore);
     request.getSession().setAttribute("fornitore", fornitore);
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(request, response);
   }
 }
