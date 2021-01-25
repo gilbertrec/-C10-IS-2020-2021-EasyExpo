@@ -52,7 +52,7 @@ public class InoltroPreventivoServlet extends HttpServlet {
     richiesta.setStato(stato);
     richiestaPreventivoDao.updateRichiestaPreventivo(richiesta);
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
+    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
     requestDispatcher.forward(request, response);
   }
 
