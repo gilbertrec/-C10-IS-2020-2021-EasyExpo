@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,7 @@ class SpecifichePreventiviServletTest extends Mockito {
   private ServletContext mockedServletContext;
   private RequestDispatcher mockedDispatcher;
   private SpecifichePreventiviServlet specifichePreventiviServlet;
+  private HttpSession mockedSession;
 
   @BeforeEach
   void setUp() {
@@ -27,6 +29,7 @@ class SpecifichePreventiviServletTest extends Mockito {
     mockedServletContext = Mockito.mock(ServletContext.class);
     mockedDispatcher = Mockito.mock(RequestDispatcher.class);
     specifichePreventiviServlet = new SpecifichePreventiviServlet();
+    mockedSession = Mockito.mock(HttpSession.class);
   }
 
   @AfterEach
@@ -35,9 +38,9 @@ class SpecifichePreventiviServletTest extends Mockito {
 
   @Test
   void TestIdRichiestaNull() throws ServletException, IOException {
-    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("333");//non esiste
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
-
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
         .getRequestDispatcher("/specificaPreventivo.jsp");
@@ -47,9 +50,9 @@ class SpecifichePreventiviServletTest extends Mockito {
 
   @Test
   void TestIdPreventivoNull() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
-    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("33333333");//non esiste
-
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
         .getRequestDispatcher("/specificaRichiesta.jsp");

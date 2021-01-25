@@ -63,7 +63,7 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("clifor", cliente);
       request.getSession().setAttribute("cliente_specifica", cliente);
 
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/specificaRichiesta.jsp");
+      RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/specificaRichiesta.jsp");
       requestDispatcher.forward(request, response);
     } else if (idRichiesta == null && idPreventivo != null) {
       PreventivoDAO preventivoDAO = new PreventivoDAO();
@@ -98,7 +98,7 @@ public class SpecifichePreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("clifor", fornitore);
       request.getSession().setAttribute("fornitore", fornitore);
       RequestDispatcher requestDispatcher =
-          request.getRequestDispatcher("/specificaPreventivo.jsp");
+          request.getServletContext().getRequestDispatcher("/specificaPreventivo.jsp");
       requestDispatcher.forward(request, response);
     }
 
