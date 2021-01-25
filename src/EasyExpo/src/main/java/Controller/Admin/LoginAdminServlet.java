@@ -23,7 +23,7 @@ public class LoginAdminServlet extends HttpServlet {
         }
         if (admin == null) {
             request.getSession().setAttribute("Errore",1);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminLoginSegreto.jsp");
+            RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/adminLoginSegreto.jsp");
             requestDispatcher.forward(request,response);
         }else {
             request.getSession().setAttribute("LeaderSupremo", admin);
