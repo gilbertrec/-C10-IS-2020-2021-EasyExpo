@@ -43,8 +43,7 @@ public class LoginServlet extends HttpServlet {
 
       request.setAttribute("prodottiNuovi", prodottiNuovi);
 
-      response.setContentType("Benvenuto!");
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+      RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/index.jsp");
       requestDispatcher.forward(request, response);
     } else if (cliente == null && fornitore != null) {
       request.getSession().setAttribute("fornitore", fornitore);
@@ -52,7 +51,7 @@ public class LoginServlet extends HttpServlet {
       List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(fornitore.getPartitaIva());
       request.getSession().setAttribute("prodotti", prodotti);
       boolean flag = fornitore.isAbbonato();
-      RequestDispatcher requestDispatcher = request.getRequestDispatcher("/areaFornitore.jsp");
+      RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
       requestDispatcher.forward(request, response);
     }
 

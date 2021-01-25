@@ -37,11 +37,25 @@ class InoltroPreventivoServletTest extends Mockito{
   }
 
   @Test
-  void TestPrezzoNull(){
+  void TestPrezzoMatchFailed(){
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("");
+    Mockito.when(mockedRequest.getParameter("nota")).thenReturn("nota");
+
+    String message = "Prezzo non valido.";
+
+    exception = assertThrows(MyServletException.class, () -> {inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);});
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestPrezzoNull(){
+    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
     Mockito.when(mockedRequest.getParameter("nota")).thenReturn("nota");
 
     String message = "Prezzo non valido.";
