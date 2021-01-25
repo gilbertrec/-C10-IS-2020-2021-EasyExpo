@@ -1,13 +1,11 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.DAO.AbbonamentoDAO;
-import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.MetodiDiPagamentoDAO;
-import Model.POJO.Cliente;
-import Model.POJO.Fornitore;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -30,7 +28,7 @@ class AbbonamentoServletTest {
   private HttpSession mockedSession;
   private AbbonamentoDAO abbonamentoDAO;
   private MetodiDiPagamentoDAO metodoDAO;
-  private  FornitoreDAO fornitoreDAO;
+  private FornitoreDAO fornitoreDAO;
 
 
   MyServletException exception = null;
@@ -58,9 +56,10 @@ class AbbonamentoServletTest {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01602620930");
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/abbonamento.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/abbonamento.jsp");
 
-    abbonamentoServlet.doPost(mockedRequest,mockedResponse);
+    abbonamentoServlet.doPost(mockedRequest, mockedResponse);
   }
 
   @Test
@@ -69,7 +68,9 @@ class AbbonamentoServletTest {
 
     String message = "Sei gia abbonato!";
 
-    exception = assertThrows(MyServletException.class, () -> {abbonamentoServlet.doPost(mockedRequest,mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      abbonamentoServlet.doPost(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
@@ -79,9 +80,10 @@ class AbbonamentoServletTest {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("03271170361");
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/rinnovo.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/rinnovo.jsp");
 
-    abbonamentoServlet.doPost(mockedRequest,mockedResponse);
+    abbonamentoServlet.doPost(mockedRequest, mockedResponse);
   }
 
   @Test

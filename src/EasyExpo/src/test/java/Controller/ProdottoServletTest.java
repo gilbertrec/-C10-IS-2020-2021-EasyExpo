@@ -1,77 +1,77 @@
 package Controller;
 
-import Model.POJO.Fornitore;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class ProdottoServletTest {
-    private ProdottoServlet prodottoServlet;
-    private HttpServletRequest mockedRequest;
-    private HttpServletResponse mockedResponse;
-    private ServletContext mockedServletContext;
-    private RequestDispatcher mockedDispatcher;
-    private HttpSession mockedSession;
+  private ProdottoServlet prodottoServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
 
-    MyServletException exception = null;
-
-
-    @BeforeEach
-    void setUp() {
-        prodottoServlet = new ProdottoServlet();
-        mockedRequest = Mockito.mock(HttpServletRequest.class);
-        mockedResponse = Mockito.mock(HttpServletResponse.class);
-        mockedServletContext = Mockito.mock(ServletContext.class);
-        mockedDispatcher = Mockito.mock(RequestDispatcher.class);
-        mockedSession = Mockito.mock(HttpSession.class);
-    }
+  MyServletException exception = null;
 
 
+  @BeforeEach
+  void setUp() {
+    prodottoServlet = new ProdottoServlet();
+    mockedRequest = Mockito.mock(HttpServletRequest.class);
+    mockedResponse = Mockito.mock(HttpServletResponse.class);
+    mockedServletContext = Mockito.mock(ServletContext.class);
+    mockedDispatcher = Mockito.mock(RequestDispatcher.class);
+    mockedSession = Mockito.mock(HttpSession.class);
+  }
 
-    @AfterEach
-    void tearDown() {
-    }
 
-    @Test
-    void TestProdottoNull(){
-        Mockito.when(mockedRequest.getParameter("id")).thenReturn("18");
-        Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
+  @AfterEach
+  void tearDown() {
+  }
 
-        String message = "Prodotto non trovato.";
+  @Test
+  void TestProdottoNull() {
+    Mockito.when(mockedRequest.getParameter("id")).thenReturn("18");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
 
-        exception = assertThrows(MyServletException.class, () -> {prodottoServlet.doGet(mockedRequest,mockedResponse);});
+    String message = "Prodotto non trovato.";
 
-        assertEquals(message, exception.getMessage());
-    }
+    exception = assertThrows(MyServletException.class, () -> {
+      prodottoServlet.doGet(mockedRequest, mockedResponse);
+    });
 
-    @Test
-    void TestProdottoSuccess() throws ServletException, IOException {
-        Mockito.when(mockedRequest.getParameter("id")).thenReturn("1");
-        Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
+    assertEquals(message, exception.getMessage());
+  }
 
-        Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-        Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/specificheProdotto.jsp");
+  @Test
+  void TestProdottoSuccess() throws ServletException, IOException {
+    Mockito.when(mockedRequest.getParameter("id")).thenReturn("1");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
 
-        prodottoServlet.doGet(mockedRequest,mockedResponse);
-    }
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/specificheProdotto.jsp");
 
-    @Test
-    void doPost() {
-    }
+    prodottoServlet.doGet(mockedRequest, mockedResponse);
+  }
 
-    @Test
-    void doGet() {
-    }
+  @Test
+  void doPost() {
+  }
+
+  @Test
+  void doGet() {
+  }
 }

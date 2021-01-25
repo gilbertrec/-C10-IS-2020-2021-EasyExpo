@@ -12,21 +12,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class SpecifichePreventiviServletTest extends Mockito {
+class SospendiUtenteServletTest extends Mockito {
+  private SospendiUtenteServlet sospendiUtenteServlet;
   private HttpServletRequest mockedRequest;
   private HttpServletResponse mockedResponse;
   private ServletContext mockedServletContext;
   private RequestDispatcher mockedDispatcher;
-  private SpecifichePreventiviServlet specifichePreventiviServlet;
   private HttpSession mockedSession;
 
   @BeforeEach
   void setUp() {
+    sospendiUtenteServlet = new SospendiUtenteServlet();
     mockedRequest = Mockito.mock(HttpServletRequest.class);
     mockedResponse = Mockito.mock(HttpServletResponse.class);
     mockedServletContext = Mockito.mock(ServletContext.class);
     mockedDispatcher = Mockito.mock(RequestDispatcher.class);
-    specifichePreventiviServlet = new SpecifichePreventiviServlet();
     mockedSession = Mockito.mock(HttpSession.class);
   }
 
@@ -35,35 +35,36 @@ class SpecifichePreventiviServletTest extends Mockito {
   }
 
   @Test
-  void TestIdRichiestaNull() throws ServletException, IOException {
-    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
+  void TestFlagFornitore() throws IOException, ServletException {
+    Mockito.when(mockedRequest.getParameter("flag")).thenReturn("1");
+    Mockito.when(mockedRequest.getParameter("id")).thenReturn("03271170361");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-        .getRequestDispatcher("/specificaPreventivo.jsp");
+        .getRequestDispatcher("gestioneFornitori.jsp");
 
-    specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
+    sospendiUtenteServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test
-  void TestIdPreventivoNull() throws ServletException, IOException {
-    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
+  void TestFlagCliente() throws IOException, ServletException {
+    Mockito.when(mockedRequest.getParameter("flag")).thenReturn("2");
+    Mockito.when(mockedRequest.getParameter("id")).thenReturn("IULGAE99C23R123R");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-        .getRequestDispatcher("/specificaRichiesta.jsp");
+        .getRequestDispatcher("gestioneClienti.jsp");
 
-    specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
-  }
-
-
-  @Test
-  void doPost() {
+    sospendiUtenteServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test
   void doGet() {
+  }
+
+  @Test
+  void doPost() {
   }
 }

@@ -1,14 +1,13 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
