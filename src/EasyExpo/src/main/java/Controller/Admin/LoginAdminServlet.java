@@ -27,7 +27,7 @@ public class LoginAdminServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
         }else {
             request.getSession().setAttribute("LeaderSupremo", admin);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/adminHome.jsp");
+            RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/adminHome.jsp");
             requestDispatcher.forward(request,response);
         }
     }
