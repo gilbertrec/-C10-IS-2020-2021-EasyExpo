@@ -1,6 +1,7 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.DAO.ClienteDAO;
 import Model.POJO.Cliente;
@@ -510,17 +511,20 @@ class RegistrazioneClienteServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe9999_");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn(cliente2.getNome());
     Mockito.when(mockedRequest.getParameter("email")).thenReturn(cliente2.getEmail());
-    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn(cliente2.getCodiceFiscale());
+    Mockito.when(mockedRequest.getParameter("codiceFiscale"))
+        .thenReturn(cliente2.getCodiceFiscale());
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn(cliente2.getCognome());
-    Mockito.when(mockedRequest.getParameter("luogoUbicazione")).thenReturn(cliente2.getLuogoUbicazione());
+    Mockito.when(mockedRequest.getParameter("luogoUbicazione"))
+        .thenReturn(cliente2.getLuogoUbicazione());
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn(cliente2.getTelefono());
 
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/login.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/login.jsp");
 
-    registrazioneClienteServlet.doPost(mockedRequest,mockedResponse);
+    registrazioneClienteServlet.doPost(mockedRequest, mockedResponse);
     cl.deleteCliente(cliente2.getCodiceFiscale());
 
   }

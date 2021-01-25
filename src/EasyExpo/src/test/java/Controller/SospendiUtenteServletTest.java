@@ -1,7 +1,5 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -43,9 +41,10 @@ class SospendiUtenteServletTest extends Mockito {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("gestioneFornitori.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("gestioneFornitori.jsp");
 
-    sospendiUtenteServlet.doGet(mockedRequest,mockedResponse);
+    sospendiUtenteServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test
@@ -55,9 +54,10 @@ class SospendiUtenteServletTest extends Mockito {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("gestioneClienti.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("gestioneClienti.jsp");
 
-    sospendiUtenteServlet.doGet(mockedRequest,mockedResponse);
+    sospendiUtenteServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test

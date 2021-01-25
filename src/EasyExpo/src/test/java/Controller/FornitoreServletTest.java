@@ -1,6 +1,7 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -13,13 +14,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class FornitoreServletTest extends Mockito{
+class FornitoreServletTest extends Mockito {
   private FornitoreServlet fornitoreServlet;
   private HttpServletRequest mockedRequest;
   private HttpServletResponse mockedResponse;
   private ServletContext mockedServletContext;
   private RequestDispatcher mockedDispatcher;
   MyServletException exception = null;
+
   @BeforeEach
   void setUp() {
 
@@ -41,7 +43,9 @@ class FornitoreServletTest extends Mockito{
 
     String message = "Fornitore non trovato.";
 
-    exception = assertThrows(MyServletException.class, ()->{fornitoreServlet.doGet(mockedRequest, mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      fornitoreServlet.doGet(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
@@ -52,9 +56,10 @@ class FornitoreServletTest extends Mockito{
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("03271170361");
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/specificheFornitore.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/specificheFornitore.jsp");
 
-    fornitoreServlet.doGet(mockedRequest,mockedResponse);
+    fornitoreServlet.doGet(mockedRequest, mockedResponse);
   }
 
 
