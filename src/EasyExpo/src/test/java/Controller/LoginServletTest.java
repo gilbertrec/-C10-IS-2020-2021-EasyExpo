@@ -36,7 +36,7 @@ class LoginServletTest extends Mockito {
   MyServletException exception = null;
 
   @BeforeEach
-  void setUp() throws ServletException {
+  void setUp() {
 
     loginServlet = new LoginServlet();
     mockedRequest = Mockito.mock(HttpServletRequest.class);
@@ -49,7 +49,8 @@ class LoginServletTest extends Mockito {
     clienteDAO = new ClienteDAO();
 
     cl = new Cliente();
-    fr = new Fornitore("01235597890", "Gaetano","Iuliano","3387485126", "Napoli", "g.iuliano@gmail.com", "password", "privato");
+    fr = new Fornitore("01235597890", "Gaetano", "Iuliano", "3387485126", "Napoli",
+        "g.iuliano@gmail.com", "password", "privato");
     fornitoreDAO.createFornitore(fr);
 
     cl.setCodiceFiscale("RBLKTN10C55E923W");
@@ -70,33 +71,81 @@ class LoginServletTest extends Mockito {
   }
 
   @Test
-  void TestEmailNull(){
-    Mockito.when(mockedRequest.getParameter("email")).thenReturn("");
+  void TestPasswordNull() {
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+
+    String message = "Email e/o password non validi.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      loginServlet.doPost(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestEmailFailed() {
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("lucrezia.ro2000");
     Mockito.when(mockedRequest.getParameter("password")).thenReturn("password");
 
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
 
     String message = "Email e/o password non validi.";
 
-    exception = assertThrows(MyServletException.class, ()->{loginServlet.doPost(mockedRequest, mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      loginServlet.doPost(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestEmailNull() {
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("password");
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+
+    String message = "Email e/o password non validi.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      loginServlet.doPost(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
 
   @Test
   void TestFonitoreNull() throws ServletException, IOException {
-   /* Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
     Mockito.when(mockedRequest.getParameter("password")).thenReturn("gae99*");
 
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/index.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/index.jsp");
 
     loginServlet.doPost(mockedRequest, mockedResponse);
-
-    Mockito.verify(mockedResponse).setContentType("Benvenuto!");*/
+    Mockito.verify(mockedServletContext).getRequestDispatcher("/index.jsp");
   }
 
+
+  @Test
+  void TestClienteNull() throws ServletException, IOException {
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("filly@gmail.com");
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("FilBlevi78");
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/areaFornitore.jsp");
+
+    loginServlet.doPost(mockedRequest, mockedResponse);
+    Mockito.verify(mockedServletContext).getRequestDispatcher("/areaFornitore.jsp");
+  }
 
   @Test
   void doPost() {
