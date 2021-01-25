@@ -33,11 +33,13 @@ class RichiesteServletTest {
     private HttpSession mockedSession;
     RichiestaPreventivoDAO richiestaPreventivoDAO;
     private RichiestaPreventivo richiestaPreventivo;
+    private RichiestaPreventivo richiestaPreventivo1;
     private FornitoreDAO frDAO;
     private Fornitore fr;
     private ClienteDAO clDAO;
     private Cliente cl;
     private int idRichiesta;
+    private int idRichiesta1;
 
 
     MyServletException exception = null;
@@ -71,6 +73,17 @@ class RichiesteServletTest {
         richiestaPreventivo.setLuogoEvento("Napoli");
         richiestaPreventivo.setStato(RichiestaPreventivo.Stato.RIFIUTATO);
         idRichiesta = richiestaPreventivoDAO.createRichiestaPreventivo(richiestaPreventivo);
+
+        richiestaPreventivo1 = new RichiestaPreventivo();
+        richiestaPreventivo1.setCodiceFiscale(cl.getCodiceFiscale());
+        richiestaPreventivo1.setPartitaIva(fr.getPartitaIva());
+        richiestaPreventivo1.setDataRichiesta(new Date(2020, 01, 26));
+        richiestaPreventivo1.setDescrizioneEvento("descrizione di prova 2");
+        richiestaPreventivo1.setNota("nota di prova 2");
+        richiestaPreventivo1.setTitolo("Prova 2");
+        richiestaPreventivo1.setLuogoEvento("Napoli");
+        richiestaPreventivo1.setStato(RichiestaPreventivo.Stato.CONFERMATO);
+        idRichiesta1 = richiestaPreventivoDAO.createRichiestaPreventivo(richiestaPreventivo1);
 
         richiesteServlet = new RichiesteServlet();
         mockedRequest = Mockito.mock(HttpServletRequest.class);
@@ -143,7 +156,7 @@ class RichiesteServletTest {
         Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
         Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01234567880");
 
-        assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo.getStato());
+        assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());
 
         Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
         Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
