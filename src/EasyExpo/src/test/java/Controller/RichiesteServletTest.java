@@ -44,7 +44,7 @@ class RichiesteServletTest {
   @BeforeEach
   void setUp() {
     frDAO = new FornitoreDAO();
-    fr = new Fornitore("01234567880", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+    fr = new Fornitore("01234567880", "Mario", "Rossi", "1334567890", "Roma", "rossi@gmail.com",
         "Rossi123", "Rossi");
     frDAO.createFornitore(fr);
 
