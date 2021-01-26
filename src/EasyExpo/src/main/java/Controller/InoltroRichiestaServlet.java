@@ -89,7 +89,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
       Calendar calendario = Calendar.getInstance();
       calendario.setTime(corrente);
       java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
-      if (utilDate.after(sc)) { //se dataInizio è dopo dataAttuale(sc) è true
+      if (utilDate.after(sc)) { //se dataInizio è dopo dataAttuale(sc) e Datainizio prima di dataFine?? è true
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         pr.setDataInizioNoleggio(sqlDate);
       } else {
@@ -135,7 +135,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
     session.setAttribute("carrello", carrello);
 
 
-    RequestDispatcher requestDispatcher = req.getRequestDispatcher("carrello.jsp");
+    RequestDispatcher requestDispatcher = req.getServletContext().getRequestDispatcher("/carrello.jsp");
     requestDispatcher.forward(req, resp);
   }
 

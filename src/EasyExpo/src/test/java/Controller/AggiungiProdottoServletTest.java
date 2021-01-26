@@ -8,13 +8,18 @@ import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import java.io.IOException;
 
 class AggiungiProdottoServletTest {
 
@@ -30,6 +35,7 @@ class AggiungiProdottoServletTest {
   private Fornitore fornitore;
   private ProdottoDAO pr;
   private int idProdotto;
+
 
   @BeforeEach
   void setUp() {
@@ -56,6 +62,7 @@ class AggiungiProdottoServletTest {
     prodotto.setImmagine("images/foto.jsp");
     prodotto.setTipo(Prodotto.Tipo.ATTREZZATURA);
     idProdotto = pr.createProdotto(prodotto);
+
   }
 
   @AfterEach
@@ -232,6 +239,7 @@ class AggiungiProdottoServletTest {
 
     assertEquals(message, exception.getMessage());
   }
+
 
   @Test
   void doPost() {

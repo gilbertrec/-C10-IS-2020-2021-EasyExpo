@@ -13,11 +13,14 @@ import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
+
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +56,8 @@ class InoltroRichiestaServletTest extends Mockito {
   private int idProdottoRichiesta;
   private int idRichiesta;
   private java.util.Date data;
+
+  private java.sql.Date corrente;
 
   @BeforeEach
   void setUp() {
@@ -100,6 +105,21 @@ class InoltroRichiestaServletTest extends Mockito {
     listaPCarrello.add(prodottoQuantita);
     carrello.put(listaPCarrello);
     data = new Date(2018, 11, 12);
+
+    corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+    richiestaPreventivoDAO = new RichiestaPreventivoDAO();
+    richiestaPreventivo = new RichiestaPreventivo(1000, "baoJtA98d55E923o", "99999999999",
+             "titolo", "Napoli", "descrizioneEvento",
+            "nota", corrente, RichiestaPreventivo.Stato.IN_ATTESA);
+
+    prodottoRichiesta = new ProdottoRichiesta(4000, 1000, idProdotto, "99999999999", 3,
+            30, new Date(2021, 11, 12), new Date(2022, 11, 12));
+    prodottoRichiestaDAO = new ProdottoRichiestaDAO();
+    prodottoRichiestaDAO.createProdottoRichiesta(prodottoRichiesta);
+
+
+
   }
 
   @AfterEach
@@ -108,44 +128,40 @@ class InoltroRichiestaServletTest extends Mockito {
     fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());
   }
 
-  /*@Test
-  void TestDataInizioErrata() {
+  @Test
+  void TestSuccess() throws ServletException, IOException {
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
     Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
-            .thenReturn(String.valueOf(new Date(2025, 01, 20)));
+            .thenReturn(String.valueOf(new Date(2012, 01, 20)));
     Mockito.when(mockedRequest.getParameter("dataFine0"))
-            .thenReturn(String.valueOf(new Date(2025, 01, 18)));
-    /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
-        .thenReturn(String.valueOf(new Date(2025, 01, 27)));
-    Mockito.when(mockedRequest.getParameter("dataFine1"))
-        .thenReturn(String.valueOf(new Date(2025, 01, 30)));*/
-    /*Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
+            .thenReturn(String.valueOf(new Date(2013, 01, 18)));
+    Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
     Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
     Mockito.when(mockedSession.getAttribute("cliente")).thenReturn(cliente);
 
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
-    String message = "Data inizio errata.";
 
-    exception = assertThrows(MyServletException.class, () -> {
-      inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
-    });
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/carrello.jsp");
 
-    assertEquals(message, exception.getMessage());
-  }*/
+    inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
+  }
+
 
   @Test
   void TestDataFineErrata() {
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
     Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
-    Mockito.when(mockedRequest.getParameter("dataInizio0"))
-        .thenReturn(String.valueOf(new Date(2025, 11, 12)));
     Mockito.when(mockedRequest.getParameter("dataFine0"))
         .thenReturn(String.valueOf(new Date(2025, 01, 29)));
+    Mockito.when(mockedRequest.getParameter("dataInizio0"))
+            .thenReturn(String.valueOf(new Date(2025, 11, 12)));
     /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
         .thenReturn(String.valueOf(new Date(2025, 01, 27)));
     Mockito.when(mockedRequest.getParameter("dataFine1"))

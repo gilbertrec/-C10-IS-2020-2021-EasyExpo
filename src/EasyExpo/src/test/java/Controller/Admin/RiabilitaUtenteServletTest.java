@@ -42,16 +42,17 @@ class RiabilitaUtenteServletTest {
     void tearDown() {
     }
 
-    /*@Test
-    void TestFlagNull() throws IOException, ServletException {
-        Mockito.when(mockedRequest.getParameter("flag"));
-        Mockito.when(mockedRequest.getParameter("id")).thenReturn("03271170361");
 
+    @Test
+    void TestNoId() throws IOException, ServletException {
+        Mockito.when(mockedRequest.getParameter("flag")).thenReturn("");
         Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
         Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/adminHome.jsp");
 
         riabilitaUtenteServletTest.doGet(mockedRequest,mockedResponse);
-    }*/
+
+    }
+
 
     @Test
     void TestFlagFornitore() throws IOException, ServletException {
