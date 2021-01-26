@@ -238,29 +238,6 @@ class ModificaAvvenutaServletTest {
     assertEquals(message, exception.getMessage());
   }
 
-  /*
-  @Test
-  void TestSuccess() throws ServletException, IOException {
-    Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn(String.valueOf(idProdotto));
-    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01234567880");
-    Mockito.when(mockedRequest.getParameter("titolo")).thenReturn(prodotto.getTitolo());
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(prodotto.getTipo()));
-    Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn(String.valueOf(30.00));
-    Mockito.when(mockedRequest.getParameter("quantita")).thenReturn(String.valueOf(prodotto.getQuantità()));
-
-
-    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
-
-    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
-
-    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-        .getRequestDispatcher("/areaFornitore.jsp");
-
-    modificaAvvenutaServlet.doPost(mockedRequest, mockedResponse);
-
-  }
-*/
   @Test
   void doPost() {
   }
