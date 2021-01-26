@@ -1349,6 +1349,8 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 }(jQuery);
 
 
+
+
 /*! Stellar.js v0.6.2 | Copyright 2014, Mark Dalgleish | http://markdalgleish.com/projects/stellar.js | http://markdalgleish.mit-license.org */
 !function (a, b, c, d) {
     function e(b, c) {

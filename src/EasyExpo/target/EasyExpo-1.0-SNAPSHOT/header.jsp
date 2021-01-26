@@ -218,6 +218,5 @@
 <script type="text/javascript" src="rs-plugin/js/jquery.tp.t.min.js"></script>
 <script type="text/javascript" src="rs-plugin/js/jquery.tp.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/main.js"></script>
 </body>
 </html>

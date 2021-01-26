@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * <p> TagProdottoDAO e' una classe di tipo DAO (Data Access Object)
@@ -31,9 +34,9 @@ public class TagProdottoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT tp.idTag, tp.partitaIva, tp.idProdotto "
-                      + "FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? "
+                  + "FROM TagProdotto as tp, Tag as t, Prodotto as p WHERE tp.idTag=? "
                   + "AND tp.idTag=t.idTag AND tp.partitaIva=p.partitaIva "
-                      + "AND tp.idProdotto=p.idProdotto");
+                  + "AND tp.idProdotto=p.idProdotto");
       ps.setInt(1, idTag);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -45,6 +48,33 @@ public class TagProdottoDAO {
         return tp;
       }
       return null;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public ArrayList<TagProdotto> doRetrieveByIdProdottoPartitaIva(int idProdotto,
+                                                                 String partitaIva) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con
+          .prepareStatement(
+              "SELECT idTag, partitaIva, idProdotto "
+                  + "FROM TagProdotto p WHERE idProdotto=? "
+                  + "AND partitaIva=?");
+      ps.setInt(1, idProdotto);
+      ps.setString(2, partitaIva);
+      ResultSet rs = ps.executeQuery();
+      ArrayList<TagProdotto> tags = new ArrayList<>();
+      while (rs.next()) {
+        TagProdotto tp = new TagProdotto();
+        tp.setIdTag(rs.getInt(1));
+        tp.setIdProdotto(rs.getInt(2));
+        tp.setPartitaIva(rs.getString(3));
+
+        tags.add(tp);
+
+      }
+      return tags;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
@@ -110,7 +140,7 @@ public class TagProdottoDAO {
               "SELECT tp.idTag, tp.idProdotto, tp.partitaIva FROM Tag as t, TagProdotto as tp, Prodotto as p "
                   + "WHERE tp.idProdotto=? AND tp.partitaIva=? "
                   + "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag "
-                      + "AND tp.partitaIva=p.partitaIva");
+                  + "AND tp.partitaIva=p.partitaIva");
       ps.setInt(1, idProdotto);
       ps.setString(2, partitaIva);
       ResultSet rs = ps.executeQuery();

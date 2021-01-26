@@ -1,7 +1,11 @@
 package Controller;
 
 import Model.DAO.ProdottoDAO;
+import Model.DAO.TagDAO;
+import Model.DAO.TagProdottoDAO;
 import Model.POJO.Prodotto;
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,6 +55,8 @@ public class AggiungiProdottoServlet extends HttpServlet {
       throw new MyServletException("Descrizione non valida.");
     }
 
+
+
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
@@ -95,7 +101,22 @@ public class AggiungiProdottoServlet extends HttpServlet {
     prodotto.setPrezzo(Float.parseFloat(prezzo));
     prodotto.setImmagine(fotoFinale);
     ProdottoDAO prodottodao = new ProdottoDAO();
-    prodottodao.createProdotto(prodotto);
+    int idProdotto = prodottodao.createProdotto(prodotto);
+    //tag
+
+    TagDAO tagDAO = new TagDAO();
+    TagProdottoDAO tagProdottoDAO = new TagProdottoDAO();
+    String valueInput = request.getParameter("tag");
+    String[] tags = valueInput.split(",");
+    for(String s : tags){
+      Tag tag = new Tag();
+      tag.setNome(s);
+      int idTag = tagDAO.createTag(tag);
+
+      TagProdotto tagProdotto = new TagProdotto(idTag,idProdotto,partitaIva);
+      tagProdottoDAO.createTagProdotto(tagProdotto);
+
+    }
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);
     request.getSession().setAttribute("prodotti", prodotti);
 

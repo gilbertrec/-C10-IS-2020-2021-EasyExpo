@@ -101,12 +101,18 @@
                                         <li class="col-md-6">
                                             <label> FOTO
                                                 <input type="file" name="foto" accept=".jpg, .png, .jpeg, .gif"
-                                                       placeholder="" required title="Immagine non inserita">
+                                                       placeholder="">
+                                            </label>
+                                        </li>
+                                        <!-- TAG -->
+                                        <li class="col-md-6">
+                                            <label> INSERISCI TAG
+                                                <input type="text" name="tag" value="" placeholder="Tag1, Tag2, Tag3, Tag4, Tag5" pattern="[A-Z a-z]," title="Inserisci una virgola per separare i tag e alla fine di ogni tag">
                                             </label>
                                         </li>
 
                                     </ul>
-                                    <!-- PHONE -->
+                                    <!-- BUTTON -->
                                     <li class="col-md-6">
                                         <button type="submit" class="btn">AGGIUNGI PRODOTTO</button>
                                     </li>

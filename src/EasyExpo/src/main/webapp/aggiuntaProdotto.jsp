@@ -60,7 +60,9 @@
                                         <!-- TITOLO -->
                                         <li class="col-md-6">
                                             <label> TITOLO
-                                                <input type="text" name="titolo" value="" placeholder="" required pattern="[A-Z a-z 0-9]{1,30}" title="Deve essere stringa alfanumerica con lunghezza minore di 30">
+                                                <input type="text" name="titolo" value="" placeholder="" required
+                                                       pattern="[A-Z a-z 0-9]{1,30}"
+                                                       title="Deve essere stringa alfanumerica con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -79,7 +81,9 @@
                                         <!-- PREZZO -->
                                         <li class="col-md-6">
                                             <label> PREZZO
-                                                <input type="text" name="prezzo" value="" placeholder="" required pattern="[0-9]{1,5}.[0-9]{2}" title="Deve contenere un numero decimale con due cifre dopo il punto e massimo 5 cifre prima">
+                                                <input type="text" name="prezzo" value="" placeholder="" required
+                                                       pattern="[0-9]{1,5}.[0-9]{2}"
+                                                       title="Deve contenere un numero decimale con due cifre dopo il punto e massimo 5 cifre prima">
                                             </label>
                                         </li>
 
@@ -104,9 +108,17 @@
                                                        placeholder="">
                                             </label>
                                         </li>
+                                        <!-- TAG -->
+                                        <li class="col-md-6">
+                                            <label> INSERISCI TAG
+                                                <input type="text" name="tag" value=""
+                                                       placeholder="Tag1, Tag2, Tag3, Tag4, Tag5," pattern="[A-Z a-z],"
+                                                       title="Inserisci una virgola per separare i tag e alla fine di ogni tag">
+                                            </label>
+                                        </li>
 
                                     </ul>
-                                    <!-- PHONE -->
+                                    <!-- BUTTON -->
                                     <li class="col-md-6">
                                         <button type="submit" class="btn">AGGIUNGI PRODOTTO</button>
                                     </li>

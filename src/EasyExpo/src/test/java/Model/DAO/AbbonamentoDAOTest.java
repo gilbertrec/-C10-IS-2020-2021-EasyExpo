@@ -1,10 +1,15 @@
 package Model.DAO;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 import Model.POJO.Abbonamento;
 import Model.POJO.Fornitore;
+import com.mysql.cj.jdbc.JdbcConnection;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -70,9 +75,10 @@ class AbbonamentoDAOTest {
     a.setPartitaIva("0123456789034rfdf");
     a.setDataInizio(new Date(2020, 10, 01));
     a.setDataFine(new Date(2020, 10, 11));
-    assertThrows(RuntimeException.class, () -> {abbonamentoDAO.createAbbonamento(a);});
+    assertThrows(RuntimeException.class, () -> {
+      abbonamentoDAO.createAbbonamento(a);
+    });
   }
-
 
 
 }

@@ -1,3 +1,9 @@
+<%@ page import="Model.POJO.Tag" %>
+<%@ page import="Model.DAO.TagDAO" %>
+<%@ page import="Model.POJO.TagProdotto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -87,6 +93,16 @@
                                 </h5>
                                 <h7>Questo fornitore si trova a: ${fornitore.luogoUbicazione}</h7>
                             </div>
+                            <!-- tag -->
+                            <div class="inner-info">
+                                <h6>TAG</h6>
+                                <%
+                                    ArrayList<Tag> tags = (ArrayList<Tag>) request.getAttribute("tags");
+                                    for(int i = 0; i < tags.size(); i++){%>
+                                    <p><%= tags.get(i).getNome()%></p>
+                                <%}%>
+                            </div>
+
                         </div>
                     </div>
                 </div>

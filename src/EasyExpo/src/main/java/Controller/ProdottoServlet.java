@@ -2,9 +2,15 @@ package Controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
+import Model.DAO.TagDAO;
+import Model.DAO.TagProdottoDAO;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,6 +51,17 @@ public class ProdottoServlet extends HttpServlet {
       throw new MyServletException("Prodotto non trovato.");
     }
 
+    TagProdottoDAO tagProdottoDAO= new TagProdottoDAO();
+    TagDAO tagDAO = new TagDAO();
+    ArrayList<TagProdotto> tagProdotti =  tagProdottoDAO.doRetrieveByIdProdottoPartitaIva(prodotto.getIdProdotto(), fornitore.getPartitaIva());
+    ArrayList<Tag> tags = new ArrayList<>();
+    for(TagProdotto t : tagProdotti){
+      Tag tag = tagDAO.doRetrieveByIdTag(t.getIdTag());
+      tags.add(tag);
+    }
+
+
+    request.setAttribute("tags", tags);
 
     RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/specificheProdotto.jsp");
     requestDispatcher.forward(request, response);
