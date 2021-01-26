@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,6 +36,7 @@ class RicercaServletTest {
     private TagDAO tagDAO;
     private TagProdottoDAO tagProdottoDAO;
     private List<Prodotto> prodotti;
+    private PrintWriter print;
 
 
     MyServletException exception = null;
@@ -55,6 +57,7 @@ class RicercaServletTest {
         tagDAO = new TagDAO();
 
 
+
     }
 
     @AfterEach
@@ -67,7 +70,7 @@ class RicercaServletTest {
         List<Prodotto> prodotti = prodottoDAO.doRetrieveByTitolo("Casse");
 
         assertEquals(1,prodotti.size());
-        Mockito.when(mockedResponse.getWriter().append("[]"));
+        Mockito.when(mockedResponse.getWriter()).thenReturn(print);
         ricercaServlet.doPost(mockedRequest,mockedResponse);
     }*/
 

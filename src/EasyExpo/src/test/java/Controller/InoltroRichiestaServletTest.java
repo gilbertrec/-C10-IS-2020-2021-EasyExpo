@@ -15,6 +15,7 @@ import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -107,20 +108,20 @@ class InoltroRichiestaServletTest extends Mockito {
     fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());
   }
 
-  @Test
-  void TestDataInizioNull() {
+  /*@Test
+  void TestDataInizioErrata() {
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
     Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
-        .thenReturn(String.valueOf(data));
+            .thenReturn(String.valueOf(new Date(2025, 01, 20)));
     Mockito.when(mockedRequest.getParameter("dataFine0"))
-        .thenReturn(String.valueOf(new Date(2025, 01, 29)));
-    Mockito.when(mockedRequest.getParameter("dataInizio1"))
-        .thenReturn("");
+            .thenReturn(String.valueOf(new Date(2025, 01, 18)));
+    /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
+        .thenReturn(String.valueOf(new Date(2025, 01, 27)));
     Mockito.when(mockedRequest.getParameter("dataFine1"))
-        .thenReturn("");
-    Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
+        .thenReturn(String.valueOf(new Date(2025, 01, 30)));*/
+    /*Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
     Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
     Mockito.when(mockedSession.getAttribute("cliente")).thenReturn(cliente);
@@ -128,6 +129,35 @@ class InoltroRichiestaServletTest extends Mockito {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
     String message = "Data inizio errata.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }*/
+
+  @Test
+  void TestDataFineErrata() {
+    Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
+    Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
+    Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
+    Mockito.when(mockedRequest.getParameter("dataInizio0"))
+        .thenReturn(String.valueOf(new Date(2025, 11, 12)));
+    Mockito.when(mockedRequest.getParameter("dataFine0"))
+        .thenReturn(String.valueOf(new Date(2025, 01, 29)));
+    /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
+        .thenReturn(String.valueOf(new Date(2025, 01, 27)));
+    Mockito.when(mockedRequest.getParameter("dataFine1"))
+        .thenReturn(String.valueOf(new Date(2025, 01, 30)));*/
+    Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("cliente")).thenReturn(cliente);
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Data fine errata.";
 
     exception = assertThrows(MyServletException.class, () -> {
       inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
