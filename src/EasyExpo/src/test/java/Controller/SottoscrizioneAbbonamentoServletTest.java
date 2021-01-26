@@ -3,15 +3,11 @@ package Controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import Model.DAO.AbbonamentoDAO;
-import Model.DAO.MetodiDiPagamentoDAO;
-import Model.POJO.Abbonamento;
+
 import Model.POJO.MetodoPagamento;
-import java.io.IOException;
 import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,12 +24,7 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
   private RequestDispatcher mockedDispatcher;
   private HttpSession mockedSession;
   private MetodoPagamento metodo;
-  private MetodoPagamento metodo2;
-  private MetodiDiPagamentoDAO metodoDAO;
-  private Abbonamento abbonamento;
-  private AbbonamentoDAO abbonamentoDAO;
   MyServletException exception = null;
-  private Date data;
 
 
   @BeforeEach
@@ -44,21 +35,12 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
     mockedDispatcher = Mockito.mock(RequestDispatcher.class);
     mockedSession = Mockito.mock(HttpSession.class);
     sottoscrizioneAbbonamentoServlet = new SottoscrizioneAbbonamentoServlet();
-    metodoDAO = new MetodiDiPagamentoDAO();
-
-    data = new Date(2024, 01, 01);
 
     metodo = new MetodoPagamento();
     metodo.setCvv(278);
     metodo.setDataScadenza(new Date(2020, 01, 01));
     metodo.setPartitaIva("01391350129");
     metodo.setNumeroCarta("4522656596232265");
-
-    metodo2 = new MetodoPagamento();
-    metodo2.setCvv(288);
-    metodo2.setDataScadenza(new Date(2025, 01, 01));
-    metodo2.setPartitaIva("01391350129");
-    metodo2.setNumeroCarta("4522656596238265");
   }
 
   @Test
@@ -177,6 +159,25 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
     Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("1234567890987654");
     Mockito.when(mockedRequest.getParameter("cvv")).thenReturn("321");
+
+
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Data scadenza non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestDataScadenzaMatchFailed() {
+    Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
+    Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("1234567890987654");
+    Mockito.when(mockedRequest.getParameter("cvv")).thenReturn("321");
     Mockito.when(mockedRequest.getParameter("dataScadenza")).thenReturn("");
 
 
@@ -209,22 +210,6 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
 
     assertEquals(message, exception.getMessage());
   }
-
-  /*@Test
-  void TestCartaSuccess() throws ServletException, IOException {
-    Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano Avino");
-    Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("1234123412341234");
-    Mockito.when(mockedRequest.getParameter("cvv")).thenReturn(String.valueOf(metodo2.getCvv()));
-    Mockito.when(mockedRequest.getParameter("dataScadenza")).thenReturn(
-        String.valueOf(metodo2.getDataScadenza()));
-
-    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
-
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-        .getRequestDispatcher("/areaFornitore.jsp");
-
-    sottoscrizioneAbbonamentoServlet.doPost(mockedRequest, mockedResponse);
-  }*/
 
   @AfterEach
   void tearDown() {

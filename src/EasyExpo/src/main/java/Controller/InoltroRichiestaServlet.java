@@ -96,7 +96,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
           /*req.setAttribute("erroreDataInizio", "Data errata");
           RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
           requestDispatcher.forward(req, resp);*/
-        throw new MyServletException("Data inizio errata");
+        throw new MyServletException("Data inizio errata.");
       }
 
 
@@ -111,7 +111,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
           /*req.setAttribute("erroreDataFine", "Data errata");
           RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
           requestDispatcher.forward(req, resp);*/
-        throw new MyServletException("Data fine errata");
+        throw new MyServletException("Data fine errata.");
       }
 
 
