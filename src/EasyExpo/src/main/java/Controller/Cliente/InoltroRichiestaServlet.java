@@ -1,6 +1,8 @@
-package Controller;
+package Controller.Cliente;
 
 
+import Controller.HttpServlet;
+import Controller.MyServletException;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoRichiestaDAO;
 import Model.DAO.RichiestaPreventivoDAO;

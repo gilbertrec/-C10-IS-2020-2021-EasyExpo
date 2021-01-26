@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Fornitore;
 
 import Model.DAO.AbbonamentoDAO;
 import Model.DAO.FornitoreDAO;
