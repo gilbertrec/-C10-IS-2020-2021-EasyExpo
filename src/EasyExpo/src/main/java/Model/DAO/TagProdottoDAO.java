@@ -6,9 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -58,9 +56,10 @@ public class TagProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT idTag, partitaIva, idProdotto "
-                  + "FROM TagProdotto p WHERE idProdotto=? "
-                  + "AND partitaIva=?");
+              "SELECT tp.idTag, tp.partitaIva, tp.idProdotto "
+                  + "FROM TagProdotto tp, Tag t, Prodotto p WHERE tp.idProdotto=? "
+                  +
+                  "AND tp.partitaIva=? AND tp.idTag = t.idTag AND tp.partitaIva = p.partitaIva AND tp.idProdotto = p.idProdotto");
       ps.setInt(1, idProdotto);
       ps.setString(2, partitaIva);
       ResultSet rs = ps.executeQuery();
