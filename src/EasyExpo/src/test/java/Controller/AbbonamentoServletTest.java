@@ -2,12 +2,11 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Controller.Fornitore.AbbonamentoServlet;
 import Model.DAO.AbbonamentoDAO;
-import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.MetodiDiPagamentoDAO;
-import Model.POJO.Cliente;
-import Model.POJO.Fornitore;
+
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

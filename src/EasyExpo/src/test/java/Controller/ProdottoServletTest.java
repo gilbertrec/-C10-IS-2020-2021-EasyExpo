@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.POJO.Fornitore;
+import Controller.Fornitore.ProdottoServlet;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
