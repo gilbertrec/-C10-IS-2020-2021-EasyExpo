@@ -51,6 +51,7 @@ class InoltroRichiestaServletTest extends Mockito {
   private int idProdotto;
   private int idProdottoRichiesta;
   private int idRichiesta;
+  private java.util.Date data;
 
   @BeforeEach
   void setUp() {
@@ -78,13 +79,6 @@ class InoltroRichiestaServletTest extends Mockito {
     cliente.setLuogoUbicazione("Napoli");
     clienteDAO.createCliente(cliente);
 
-    richiestaPreventivoDAO = new RichiestaPreventivoDAO();
-    richiestaPreventivo = new RichiestaPreventivo(2, cliente.getCodiceFiscale(),
-        fornitore.getPartitaIva(), "matrimonio", "Napoli",
-        "descizione evento prova", "nota di prova",(
-        (Date)new java.util.Date(2020, 12, 22)), RichiestaPreventivo.Stato.IN_ATTESA);
-    idRichiesta = richiestaPreventivoDAO.createRichiestaPreventivo(richiestaPreventivo);
-
     prodottoDAO = new ProdottoDAO();
     prodotto = new Prodotto();
     prodotto.setIdProdotto(3);
@@ -99,23 +93,12 @@ class InoltroRichiestaServletTest extends Mockito {
     listaProdotti = new ArrayList<>();
     listaProdotti.add(prodotto);
 
-    prodottoRichiestaDAO = new ProdottoRichiestaDAO();
-    prodottoRichiesta = new ProdottoRichiesta();
-    prodottoRichiesta.setId(5);
-    prodottoRichiesta.setIdRichiesta(richiestaPreventivo.getIdRichiesta());
-    prodottoRichiesta.setIdProdotto(prodotto.getIdProdotto());
-    prodottoRichiesta.setPartitaIva(prodotto.getPartitaIva());
-    prodottoRichiesta.setNumColli(6);
-    prodottoRichiesta.setPrezzo(45);
-    prodottoRichiesta.setDataInizioNoleggio((Date) new java.util.Date(2020,12,15));
-    prodottoRichiesta.setDataFineNoleggio((Date)new java.util.Date(2021, 01, 13));
-    idProdottoRichiesta = prodottoRichiestaDAO.createProdottoRichiesta(prodottoRichiesta);
-
     listaPCarrello = new ArrayList<>();
     carrello = new Carrello();
     prodottoQuantita = new Carrello.ProdottoQuantita(prodotto, 2);
     listaPCarrello.add(prodottoQuantita);
     carrello.put(listaPCarrello);
+    data = new Date(2018, 11, 12);
   }
 
   @AfterEach
@@ -126,15 +109,17 @@ class InoltroRichiestaServletTest extends Mockito {
 
   @Test
   void TestDataInizioNull() {
-    Mockito.when(mockedRequest.getParameter("titolo")).thenReturn(prodotto.getTitolo());
-    Mockito.when(mockedRequest.getParameter("luogo")).thenReturn(richiestaPreventivo.getLuogoEvento());
-    Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn(richiestaPreventivo.getDescrizioneEvento());
-    Mockito.when(mockedRequest.getParameter("dataInizio"))
-        .thenReturn(String.valueOf(prodottoRichiesta.getDataInizioNoleggio()));
-    Mockito.when(mockedRequest.getParameter("dataFine"))
-        .thenReturn(String.valueOf(prodottoRichiesta.getDataFineNoleggio()));
-    Mockito.when(mockedRequest.getParameter("corrente"))
-        .thenReturn(String.valueOf(richiestaPreventivo.getDataRichiesta()));
+    Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
+    Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
+    Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
+    Mockito.when(mockedRequest.getParameter("dataInizio0"))
+        .thenReturn(String.valueOf(data));
+    Mockito.when(mockedRequest.getParameter("dataFine0"))
+        .thenReturn(String.valueOf(new Date(2025, 01, 29)));
+    Mockito.when(mockedRequest.getParameter("dataInizio1"))
+        .thenReturn("");
+    Mockito.when(mockedRequest.getParameter("dataFine1"))
+        .thenReturn("");
     Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
     Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
