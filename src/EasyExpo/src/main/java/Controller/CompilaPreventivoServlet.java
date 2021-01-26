@@ -59,7 +59,8 @@ public class CompilaPreventivoServlet extends HttpServlet {
     request.getSession().setAttribute("clifor", cliente);
     request.getSession().setAttribute("cliente_specifica", cliente);
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/preventivo.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/preventivo.jsp");
     requestDispatcher.forward(request, response);
   }
 }

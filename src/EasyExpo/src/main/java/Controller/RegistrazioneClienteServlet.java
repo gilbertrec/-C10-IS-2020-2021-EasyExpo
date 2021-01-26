@@ -82,7 +82,8 @@ public class RegistrazioneClienteServlet extends HttpServlet {
     request.getSession().setAttribute("cliente", cliente);
     request.getSession().setAttribute("passwordConferma", passwordConferma);
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(request, response);
   }
 }

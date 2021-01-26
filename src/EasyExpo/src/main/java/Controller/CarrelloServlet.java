@@ -190,7 +190,8 @@ public class CarrelloServlet extends HttpServlet {
       }
     }
 
-    RequestDispatcher requestDispatcher = req.getServletContext().getRequestDispatcher("/carrello.jsp");
+    RequestDispatcher requestDispatcher =
+        req.getServletContext().getRequestDispatcher("/carrello.jsp");
     requestDispatcher.forward(req, resp);
   }
 

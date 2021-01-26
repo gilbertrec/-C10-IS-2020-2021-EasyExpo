@@ -1,7 +1,6 @@
 package Model.DAO;
 
 import Model.POJO.Fornitore;
-import Model.POJO.RichiestaPreventivo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +29,8 @@ public class FornitoreDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT partitaIva, nome, cognome, telefono, luogoUbicazione, email,"
-                  + " password, ragioneSociale, abbonato, stato  FROM Fornitore WHERE partitaIva=?");
+                  +
+                  " password, ragioneSociale, abbonato, stato  FROM Fornitore WHERE partitaIva=?");
       ps.setString(1, partitaIva);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -62,8 +62,8 @@ public class FornitoreDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Fornitore (partitaIva, nome, cognome, telefono, luogoUbicazione, "
-                  + "email, password, ragioneSociale,abbonato,stato) "
-                  + "VALUES(?,?,?,?,?,?,sha2(?, 512),?,?,?)");
+              + "email, password, ragioneSociale,abbonato,stato) "
+              + "VALUES(?,?,?,?,?,?,sha2(?, 512),?,?,?)");
 
       ps.setString(1, fornitore.getPartitaIva());
       ps.setString(2, fornitore.getNome());
@@ -74,7 +74,7 @@ public class FornitoreDAO {
       ps.setString(5, fornitore.getLuogoUbicazione());
       ps.setString(8, fornitore.getRagioneSociale());
       ps.setBoolean(9, fornitore.isAbbonato());
-      ps.setString(10,"ATTIVO");
+      ps.setString(10, "ATTIVO");
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
@@ -128,7 +128,7 @@ public class FornitoreDAO {
 
       PreparedStatement ps = con.prepareStatement(
           "SELECT partitaIva, nome, cognome, luogoUbicazione FROM Fornitore "
-                  + "WHERE nome LIKE ? OR cognome LIKE ? ");
+              + "WHERE nome LIKE ? OR cognome LIKE ? ");
       ps.setString(1, "%" + ricercato + "%");
       ps.setString(2, "%" + ricercato + "%");
 
@@ -167,6 +167,12 @@ public class FornitoreDAO {
     }
   }
 
+  /**
+   * Metodo che aggiorna dal DB l'istanza Fornitore correlata al Fornitore dato in input.
+   *
+   * @param fornitore, Fornitore
+   */
+
   public void updateBooleanFornitore(Fornitore fornitore) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
@@ -183,15 +189,15 @@ public class FornitoreDAO {
 
   /**
    * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
-   * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
    *
+   * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
    */
   public List<Fornitore> doRetrievebyStato(int val) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
-              .prepareStatement("SELECT * FROM Fornitore WHERE stato=?");
+          .prepareStatement("SELECT * FROM Fornitore WHERE stato=?");
 
-      ps.setInt(1,val);
+      ps.setInt(1, val);
       ArrayList<Fornitore> fornitori = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
@@ -213,13 +219,20 @@ public class FornitoreDAO {
     }
   }
 
+  /**
+   * Metodo che aggiorna dal DB l'istanza Fornitore correlata alla partitaIva data in input con un valore enum.
+   *
+   * @param val        valore numerico enum, int
+   * @param partitaIva codice alfanumerico identificativo fornitore, String
+   */
+
   public void updateStato(int val, String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
-              .prepareStatement("UPDATE Fornitore SET stato=? WHERE partitaIva=?");
+          .prepareStatement("UPDATE Fornitore SET stato=? WHERE partitaIva=?");
 
-      ps.setInt(1,val);
-      ps.setString(2,partitaIva);
+      ps.setInt(1, val);
+      ps.setString(2, partitaIva);
       ps.executeUpdate();
     } catch (SQLException e) {
       throw new RuntimeException(e);

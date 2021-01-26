@@ -22,7 +22,6 @@ public class EliminaProdottoServlet extends HttpServlet {
       throws ServletException, IOException {
     String partitaIva = request.getParameter("partitaIva");
     int id = Integer.parseInt(request.getParameter("id"));
-    System.out.println(id + partitaIva);
 
     ProdottoDAO prodottoDAO = new ProdottoDAO();
     prodottoDAO.deleteProdotto(id, partitaIva);

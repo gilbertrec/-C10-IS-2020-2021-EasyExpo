@@ -51,6 +51,12 @@ public class TagProdottoDAO {
     }
   }
 
+  /**
+   * Metodo che ritorna le istanze di tipo tagProdotto contenute nel DB
+   *
+   * @return ArrayList &lt;TagProdotto&gt; - {@link ArrayList} di oggetti di tipo {@link TagProdotto}
+   */
+
   public ArrayList<TagProdotto> doRetrieveByIdProdottoPartitaIva(int idProdotto,
                                                                  String partitaIva) {
     try (Connection con = DBConnection.getConnection()) {

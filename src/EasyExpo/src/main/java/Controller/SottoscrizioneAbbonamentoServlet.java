@@ -84,7 +84,8 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     metodoDAO.createMetodoPagamento(metodo);
     abbonamentoDAO.createAbbonamento(abbonato);
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
     requestDispatcher.forward(request, response);
   }
 

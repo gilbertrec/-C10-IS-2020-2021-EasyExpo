@@ -56,7 +56,6 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
 
-
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
@@ -90,8 +89,6 @@ public class AggiungiProdottoServlet extends HttpServlet {
     }
 
 
-
-
     Prodotto prodotto = new Prodotto();
     prodotto.setPartitaIva(partitaIva);
     prodotto.setTitolo(titolo);
@@ -108,12 +105,12 @@ public class AggiungiProdottoServlet extends HttpServlet {
     TagProdottoDAO tagProdottoDAO = new TagProdottoDAO();
     String valueInput = request.getParameter("tag");
     String[] tags = valueInput.split(",");
-    for(String s : tags){
+    for (String s : tags) {
       Tag tag = new Tag();
       tag.setNome(s);
       int idTag = tagDAO.createTag(tag);
 
-      TagProdotto tagProdotto = new TagProdotto(idTag,idProdotto,partitaIva);
+      TagProdotto tagProdotto = new TagProdotto(idTag, idProdotto, partitaIva);
       tagProdottoDAO.createTagProdotto(tagProdotto);
 
     }

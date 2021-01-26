@@ -11,7 +11,6 @@ import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,7 +38,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
     ArrayList<Carrello.ProdottoQuantita> listaProdotti =
         (ArrayList<Carrello.ProdottoQuantita>) session.getAttribute("listaProdotti");
     ArrayList<Fornitore> listaFornitori =
-            (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
+        (ArrayList<Fornitore>) session.getAttribute("listaFornitori");
 
     Cliente cliente = (Cliente) session.getAttribute("cliente");
     String partitaIvaF = listaProdotti.get(0).getProdotto().getPartitaIva();
@@ -81,38 +80,39 @@ public class InoltroRichiestaServlet extends HttpServlet {
       pr.setPrezzo(listaProdotti.get(i).getProdotto().getPrezzo());
 
       //data inizio
-      Date dataI = Date.valueOf(req.getParameter("dataInizio"+i));
+      Date dataI = Date.valueOf(req.getParameter("dataInizio" + i));
       java.util.Date utilDate = dataI;
-      Date dataF = Date.valueOf(req.getParameter("dataFine"+i));
-      java.util.Date utilDate2 = (java.util.Date) dataF;
+      Date dataF = Date.valueOf(req.getParameter("dataFine" + i));
+      java.util.Date utilDate2 = dataF;
 
 
-        Calendar calendario = Calendar.getInstance();
-        calendario.setTime(corrente);
-        java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
-        if (utilDate.after(sc)) { //se dataInizio è dopo dataAttuale(sc) è true
-          java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-          pr.setDataInizioNoleggio(sqlDate);
-        } else {
+      Calendar calendario = Calendar.getInstance();
+      calendario.setTime(corrente);
+      java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
+      if (utilDate.after(sc)) { //se dataInizio è dopo dataAttuale(sc) è true
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        pr.setDataInizioNoleggio(sqlDate);
+      } else {
           /*req.setAttribute("erroreDataInizio", "Data errata");
           RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
           requestDispatcher.forward(req, resp);*/
-          throw new MyServletException("Data inizio errata");
-        }
+        throw new MyServletException("Data inizio errata");
+      }
 
 
       //data fine
-        Calendar calendario2 = Calendar.getInstance();
-        calendario.setTime(corrente);
-        if (utilDate2.after(sc) && utilDate2.after(utilDate)) { //se dataFine è dopo dataAttuale(sc) e dataFine è dopo dataInizio è true
-          java.sql.Date sqlDate = new java.sql.Date(utilDate2.getTime());
-          pr.setDataFineNoleggio(sqlDate);
-        } else {
+      Calendar calendario2 = Calendar.getInstance();
+      calendario.setTime(corrente);
+      if (utilDate2.after(sc) && utilDate2.after(
+          utilDate)) { //se dataFine è dopo dataAttuale(sc) e dataFine è dopo dataInizio è true
+        java.sql.Date sqlDate = new java.sql.Date(utilDate2.getTime());
+        pr.setDataFineNoleggio(sqlDate);
+      } else {
           /*req.setAttribute("erroreDataFine", "Data errata");
           RequestDispatcher requestDispatcher = req.getRequestDispatcher("richiestaPreventivo.jsp");
           requestDispatcher.forward(req, resp);*/
-          throw new MyServletException("Data fine errata");
-        }
+        throw new MyServletException("Data fine errata");
+      }
 
 
       ProdottoRichiestaDAO prodottoRichiestaDao = new ProdottoRichiestaDAO();
@@ -126,7 +126,7 @@ public class InoltroRichiestaServlet extends HttpServlet {
     for (int i = 0; i < listaFornitori.size(); i++) {
       Fornitore f = listaFornitori.get(i);
       if (f.getPartitaIva()
-              .equals(partitaIvaF)) {
+          .equals(partitaIvaF)) {
         listaFornitori.remove(i);
       }
     }

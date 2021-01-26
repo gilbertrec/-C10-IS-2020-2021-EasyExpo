@@ -2,11 +2,11 @@ package Controller;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
+import Model.DAO.TagDAO;
 import Model.DAO.TagProdottoDAO;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import Model.POJO.Tag;
-import Model.DAO.TagDAO;
 import Model.POJO.TagProdotto;
 import java.io.IOException;
 import java.util.List;

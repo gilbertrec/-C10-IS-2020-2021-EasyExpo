@@ -61,7 +61,8 @@ public class PreventiviServlet extends HttpServlet {
       request.getSession().setAttribute("preventivi", preventivi);
     }
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/listaPreventivi.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/listaPreventivi.jsp");
     requestDispatcher.forward(request, response);
   }
 }

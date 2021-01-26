@@ -45,7 +45,8 @@ public class FornitoreServlet extends HttpServlet {
     request.setAttribute("prodotti", prodotti);
 
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/specificheFornitore.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/specificheFornitore.jsp");
     requestDispatcher.forward(request, response);
   }
 
