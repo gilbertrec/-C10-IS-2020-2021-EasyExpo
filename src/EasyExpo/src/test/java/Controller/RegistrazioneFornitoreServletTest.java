@@ -2,6 +2,7 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Controller.Account.RegistrazioneFornitoreServlet;
 import Model.DAO.FornitoreDAO;
 import Model.POJO.Fornitore;
 import java.io.IOException;
