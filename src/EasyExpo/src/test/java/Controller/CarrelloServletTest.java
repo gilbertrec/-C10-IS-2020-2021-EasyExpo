@@ -118,6 +118,83 @@ class CarrelloServletTest {
   }
 
   @Test
+  void testAggiuntaProdotto() throws ServletException, IOException {
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedRequest.getParameter("prodId")).thenReturn(String.valueOf(idProdotto));
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
+    Mockito.when(mockedRequest.getParameter("addNum")).thenReturn("2");
+
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/carrello.jsp");
+
+    carrelloServlet.doPost(mockedRequest, mockedResponse);
+  }
+
+  @Test
+  void testNuovoProdottoFornitore() throws ServletException, IOException {
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedRequest.getParameter("prodId")).thenReturn("1");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
+    Mockito.when(mockedRequest.getParameter("addNum")).thenReturn("1");
+
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/carrello.jsp");
+
+    carrelloServlet.doPost(mockedRequest, mockedResponse);
+  }
+
+  @Test
+  void testModificaQuantitaProdotto() throws ServletException, IOException {
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedRequest.getParameter("prodId")).thenReturn(String.valueOf(idProdotto));
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
+
+
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/carrello.jsp");
+
+    carrelloServlet.doPost(mockedRequest, mockedResponse);
+  }
+
+  @Test
+  void testRimozioneProdotto() throws ServletException, IOException {
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedRequest.getParameter("prodId")).thenReturn(String.valueOf(idProdotto));
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
+
+
+
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/carrello.jsp");
+
+    carrelloServlet.doPost(mockedRequest, mockedResponse);
+  }
+
+
+  @Test
   void doGet() {
   }
 
