@@ -60,13 +60,13 @@
 
                                         <li class="col-md-12">
                                             <label> EMAIL
-                                                <input type="text" name="email" placeholder="">
+                                                <input type="text" name="email" placeholder="" required>
                                             </label>
                                         </li>
                                         <!-- LAST NAME -->
                                         <li class="col-md-12">
                                             <label> PASSWORD
-                                                <input type="password" name="password" placeholder="">
+                                                <input type="password" name="password" placeholder="" required>
                                             </label>
                                         </li>
 
