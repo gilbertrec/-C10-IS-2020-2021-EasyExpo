@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Fornitore;
 
 import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.RichiestaPreventivo;

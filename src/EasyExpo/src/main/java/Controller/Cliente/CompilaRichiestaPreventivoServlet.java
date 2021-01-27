@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Cliente;
 
 import Model.POJO.Carrello;
 import java.io.IOException;

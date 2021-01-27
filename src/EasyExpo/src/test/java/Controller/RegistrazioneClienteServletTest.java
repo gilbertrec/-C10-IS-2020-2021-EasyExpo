@@ -3,6 +3,7 @@ package Controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import Controller.Account.RegistrazioneClienteServlet;
 import Model.DAO.ClienteDAO;
 import Model.POJO.Cliente;
 import java.io.IOException;

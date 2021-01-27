@@ -2,6 +2,7 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import Controller.Cliente.RichiesteServlet;
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.RichiestaPreventivoDAO;

@@ -2,6 +2,7 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Controller.Cliente.InoltroRichiestaServlet;
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;

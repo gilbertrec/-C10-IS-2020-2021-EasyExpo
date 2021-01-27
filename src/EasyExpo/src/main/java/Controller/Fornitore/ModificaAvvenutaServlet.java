@@ -1,11 +1,8 @@
-package Controller;
+package Controller.Fornitore;
 
+import Controller.MyServletException;
 import Model.DAO.ProdottoDAO;
-import Model.DAO.TagDAO;
-import Model.DAO.TagProdottoDAO;
 import Model.POJO.Prodotto;
-import Model.POJO.Tag;
-import Model.POJO.TagProdotto;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,9 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/AggiungiProdottoServlet")
+@WebServlet("/ModificaServlet")
 @MultipartConfig
-public class AggiungiProdottoServlet extends HttpServlet {
+public class ModificaAvvenutaServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
@@ -32,7 +29,12 @@ public class AggiungiProdottoServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
+
+    int id = Integer.parseInt(request.getParameter("idProdotto"));
     String partitaIva = request.getParameter("partitaIva");
+    ProdottoDAO prodottoDAO = new ProdottoDAO();
+    Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
+
     String titolo = request.getParameter("titolo");
     if (!(titolo != null && titolo.matches("[A-Z a-z 0-9]{1,30}"))) {
       throw new MyServletException("Titolo non valido.");
@@ -55,41 +57,37 @@ public class AggiungiProdottoServlet extends HttpServlet {
       throw new MyServletException("Descrizione non valida.");
     }
 
-
     //foto
     Part filePart = request.getPart("foto");
     String fileName = filePart.getSubmittedFileName();
     String path =
-        "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo"
-            + "/src/EasyExpo/src/main/webapp/"
+        "/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo/src"
+            + "/EasyExpo/src/main/webapp/"
             + "images";
     File uploads = new File(path);
     int lenght = fileName.length(); //Lunghezza del Nome della foto inserita
 
-    String fotoFinale;
-
     if (lenght == 0) {
-      fotoFinale = "";
-    } else {
-      File file = File.createTempFile(fileName.substring(0, lenght - 4),
-          fileName.substring(lenght - 4, lenght), uploads);
-
-      try (InputStream input = filePart.getInputStream()) {
-        Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-
-      int lastIndex =
-          file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
-      int totalLenght = file.getAbsoluteFile().toString().length(); //Lunghezza path assoluto
-      String finalFileName = file.getAbsolutePath().toString()
-          .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
-      fotoFinale = "images/" + finalFileName;
+      throw new MyServletException("Immagine non inserita!");
     }
 
+    File file = File.createTempFile(fileName.substring(0, lenght - 4),
+        fileName.substring(lenght - 4, lenght), uploads);
 
-    Prodotto prodotto = new Prodotto();
+    try (InputStream input = filePart.getInputStream()) {
+      Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    int lastIndex =
+        file.getAbsoluteFile().toString().lastIndexOf("/") + 1; //Inizio nome della foto finale
+    int totalLenght = file.getAbsoluteFile().toString().length(); //Lunghezza path assoluto
+    String finalFileName = file.getAbsolutePath()
+        .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto
+    String fotoFinale = "images/" + finalFileName;
+
+
     prodotto.setPartitaIva(partitaIva);
     prodotto.setTitolo(titolo);
     prodotto.setDescrizione(descrizione);
@@ -98,26 +96,12 @@ public class AggiungiProdottoServlet extends HttpServlet {
     prodotto.setPrezzo(Float.parseFloat(prezzo));
     prodotto.setImmagine(fotoFinale);
     ProdottoDAO prodottodao = new ProdottoDAO();
-    int idProdotto = prodottodao.createProdotto(prodotto);
-    //tag
-
-    TagDAO tagDAO = new TagDAO();
-    TagProdottoDAO tagProdottoDAO = new TagProdottoDAO();
-    String valueInput = request.getParameter("tag");
-    String[] tags = valueInput.split(",");
-    for (String s : tags) {
-      Tag tag = new Tag();
-      tag.setNome(s);
-      int idTag = tagDAO.createTag(tag);
-
-      TagProdotto tagProdotto = new TagProdotto(idTag, idProdotto, partitaIva);
-      tagProdottoDAO.createTagProdotto(tagProdotto);
-
-    }
+    prodottodao.updateProdotto(prodotto);
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);
     request.getSession().setAttribute("prodotti", prodotti);
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
     requestDispatcher.forward(request, response);
   }
 }

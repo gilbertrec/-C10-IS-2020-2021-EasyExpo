@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Preventivo.CompilaPreventivoServlet;
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.RichiestaPreventivoDAO;
@@ -20,8 +21,6 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CompilaPreventivoServletTest {
   private CompilaPreventivoServlet compilaPreventivoServlet;

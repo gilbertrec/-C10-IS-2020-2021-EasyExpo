@@ -1,7 +1,5 @@
-package Controller;
+package Controller.Account;
 
-import Model.DAO.ProdottoDAO;
-import Model.POJO.Prodotto;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ModificaProdottoServlet")
-public class ModificaProdottoServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
@@ -19,14 +17,11 @@ public class ModificaProdottoServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
-    int id = Integer.parseInt(request.getParameter("id"));
-    String partitaIva = request.getParameter("partitaIva");
-    ProdottoDAO prodottoDAO = new ProdottoDAO();
-    Prodotto prodotto = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(id, partitaIva);
-    request.setAttribute("prodotto", prodotto);
-
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/modificaProdotto.jsp");
+    request.getSession().removeAttribute("cliente");
+    request.getSession().removeAttribute("fornitore");
+    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(request, response);
+
   }
+
 }

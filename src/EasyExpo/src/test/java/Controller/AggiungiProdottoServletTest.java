@@ -2,24 +2,21 @@ package Controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import Controller.Fornitore.AggiungiProdottoServlet;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 
 class AggiungiProdottoServletTest {
 

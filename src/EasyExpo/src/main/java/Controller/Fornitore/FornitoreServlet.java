@@ -1,5 +1,7 @@
-package Controller;
+package Controller.Fornitore;
 
+import Controller.HttpServlet;
+import Controller.MyServletException;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Fornitore;

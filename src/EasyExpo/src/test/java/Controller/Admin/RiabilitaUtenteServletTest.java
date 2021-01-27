@@ -1,7 +1,6 @@
 package Controller.Admin;
 
 import Controller.MyServletException;
-import Controller.ProdottoServlet;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RiabilitaUtenteServletTest {
     private RiabilitaUtenteServlet riabilitaUtenteServletTest;

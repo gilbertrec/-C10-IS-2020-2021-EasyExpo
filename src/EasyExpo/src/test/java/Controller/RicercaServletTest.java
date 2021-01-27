@@ -1,5 +1,6 @@
 package Controller;
 
+import Controller.Cliente.RicercaServlet;
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.DAO.TagDAO;
@@ -8,7 +9,6 @@ import Model.POJO.Prodotto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.servlet.RequestDispatcher;
@@ -17,11 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RicercaServletTest {
     private RicercaServlet ricercaServlet;

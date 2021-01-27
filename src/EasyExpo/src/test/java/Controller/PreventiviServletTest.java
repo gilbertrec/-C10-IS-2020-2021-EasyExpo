@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+
+import Controller.Preventivo.PreventiviServlet;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +14,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PreventiviServletTest {
   private PreventiviServlet preventiviServlet;
