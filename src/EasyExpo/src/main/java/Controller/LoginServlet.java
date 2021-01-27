@@ -41,7 +41,8 @@ public class LoginServlet extends HttpServlet {
       int inizio = tuttiP.size() - 4;
       List<Prodotto> prodottiNuovi = prodottoDAO.doRetrieveRandom(inizio, 4);
 
-      request.setAttribute("prodottiNuovi", prodottiNuovi);
+      //request.setAttribute("prodottiNuovi", prodottiNuovi);
+      request.getSession().setAttribute("prodottiNuovi", prodottiNuovi);
 
       RequestDispatcher requestDispatcher =
           request.getServletContext().getRequestDispatcher("/index.jsp");

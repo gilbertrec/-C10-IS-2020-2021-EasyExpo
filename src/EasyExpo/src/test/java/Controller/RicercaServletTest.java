@@ -5,6 +5,7 @@ import Model.DAO.ProdottoDAO;
 import Model.DAO.TagDAO;
 import Model.DAO.TagProdottoDAO;
 import Model.POJO.Prodotto;
+import Model.POJO.TagProdotto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,7 @@ class RicercaServletTest {
     private RequestDispatcher mockedDispatcher;
     private HttpSession mockedSession;
 
+    private TagProdotto tagProdotto;
     private ProdottoDAO prodottoDAO;
     private FornitoreDAO fornitoreDAO;
     private TagDAO tagDAO;
@@ -51,7 +53,7 @@ class RicercaServletTest {
         mockedDispatcher = Mockito.mock(RequestDispatcher.class);
         mockedSession = Mockito.mock(HttpSession.class);
 
-
+        tagProdotto = new TagProdotto();
         fornitoreDAO = new FornitoreDAO();
         prodottoDAO = new ProdottoDAO();
         tagProdottoDAO = new TagProdottoDAO();
@@ -107,8 +109,19 @@ class RicercaServletTest {
     }
 
     @Test
-    void TestRicercaNull() throws IOException {
-        Mockito.when(mockedRequest.getParameter("search")).thenReturn("");
+    void TestRicercaProdottieFornitori() throws IOException {
+        Mockito.when(mockedRequest.getParameter("search")).thenReturn("f");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
+        ricercaServlet.doPost(mockedRequest,mockedResponse);
+    }
+
+    @Test
+    void TestRicercaVuoto() throws IOException {
+        //Mockito.when(mockedRequest.getParameter("search")).thenReturn("");
 
         StringWriter stringWriter = new StringWriter();
         PrintWriter writer = new PrintWriter(stringWriter);
