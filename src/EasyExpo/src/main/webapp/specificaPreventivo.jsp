@@ -78,8 +78,7 @@
                                         <span>CONTATTI</span> <br>
                                         <span>${clifor.email}</span> <br>
                                         <span>${clifor.telefono}</span>
-                                        <div class="admin-social"><a href="#."><i class="icon-social-facebook"></i></a>
-                                            <a href="#."><i class="icon-social-twitter"></i></a></div>
+
                                     </div>
                                 </div>
                             </div>

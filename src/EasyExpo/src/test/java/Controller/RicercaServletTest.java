@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,24 +56,67 @@ class RicercaServletTest {
         prodottoDAO = new ProdottoDAO();
         tagProdottoDAO = new TagProdottoDAO();
         tagDAO = new TagDAO();
-
-
-
     }
 
     @AfterEach
     void tearDown() {
     }
 
-    /*@Test
-    void TestRicerca() throws IOException {
+    @Test
+    void TestRicercaProdotti() throws IOException {
         Mockito.when(mockedRequest.getParameter("search")).thenReturn("Casse");
-        List<Prodotto> prodotti = prodottoDAO.doRetrieveByTitolo("Casse");
 
-        assertEquals(1,prodotti.size());
-        Mockito.when(mockedResponse.getWriter()).thenReturn(print);
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
         ricercaServlet.doPost(mockedRequest,mockedResponse);
-    }*/
+    }
+
+    @Test
+    void TestRicercaFornitori() throws IOException {
+        Mockito.when(mockedRequest.getParameter("search")).thenReturn("Nicola");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
+        ricercaServlet.doPost(mockedRequest,mockedResponse);
+    }
+
+    @Test
+    void TestRicercaTag() throws IOException {
+        Mockito.when(mockedRequest.getParameter("search")).thenReturn("musica");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
+        ricercaServlet.doPost(mockedRequest,mockedResponse);
+    }
+
+    @Test
+    void TestRicercaFornitoriProdotti() throws IOException {
+        Mockito.when(mockedRequest.getParameter("search")).thenReturn("ca");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
+        ricercaServlet.doPost(mockedRequest,mockedResponse);
+    }
+
+    @Test
+    void TestRicercaNull() throws IOException {
+        Mockito.when(mockedRequest.getParameter("search")).thenReturn("");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(mockedResponse.getWriter()).thenReturn(writer);
+
+        ricercaServlet.doPost(mockedRequest,mockedResponse);
+    }
+
 
     @Test
     void doGet() {
