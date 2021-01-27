@@ -26,8 +26,6 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>AGGIUNTA PRODOTTO</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
                 <ol class="breadcrumb">
                     <li><a href="areaFornitore.jsp">Area Personale</a></li>
                     <li class="active">Aggiunta Prodotto</li>

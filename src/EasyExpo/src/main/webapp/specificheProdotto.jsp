@@ -21,7 +21,7 @@
 <section class="sub-bnr" data-stellar-background-ratio="0.5">
     <div class="position-center-center">
         <div class="container">
-            <h1 style="color: #ffe115; font-weight: 900;">${prodotti.titolo}</h1>
+            <h4 style="color: #ffe115; font-weight: 900;">${prodotti.titolo}</h4>
 
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>

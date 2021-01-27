@@ -35,8 +35,6 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>RICHIESTE DI PREVENTIVO</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula.
-                    Sed feugiat, tellus vel tristique posuere, diam</p>
             </div>
         </div>
     </section>

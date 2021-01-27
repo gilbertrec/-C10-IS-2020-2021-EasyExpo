@@ -65,48 +65,42 @@
                                         <!-- Nome -->
                                         <li class="col-md-6">
                                             <label> NOME
-                                                <input type="text" name="first-name" value="" placeholder="">
+                                                <h4>${cliente.nome}</h4>
                                             </label>
                                         </li>
                                         <!-- Cognome -->
                                         <li class="col-md-6">
                                             <label> COGNOME
-                                                <input type="text" name="last-name" value="" placeholder="">
+                                                <h4>${cliente.cognome}</h4>
                                             </label>
                                         </li>
 
                                         <!-- Email -->
                                         <li class="col-md-6">
                                             <label> EMAIL
-                                                <input type="text" name="contry-state" value="" placeholder="">
+                                                <h4>${cliente.email}</h4>
                                             </label>
                                         </li>
 
-                                        <!-- Password -->
-                                        <li class="col-md-6">
-                                            <label> PASSWORD
-                                                <input type="password" name="last-name" value="" placeholder="">
-                                            </label>
-                                        </li>
 
                                         <!-- CODICE FISCALE -->
                                         <li class="col-md-6">
                                             <label> CODICE FISCALE
-                                                <input type="text" name="address" value="" placeholder="">
+                                                <h4>${cliente.codiceFiscale}</h4>
                                             </label>
                                         </li>
 
                                         <!-- Telefono -->
                                         <li class="col-md-6">
                                             <label> TELEFONO
-                                                <input type="text" name="postal-code" value="" placeholder="">
+                                                <h4>${cliente.telefono}</h4>
                                             </label>
                                         </li>
                                         <li class="col-md-6">
 
                                             <!-- Luogo di Ubicazione -->
                                             <label> LUOGO DI UBICAZIONE
-                                                <input type="text" name="address" value="" placeholder="">
+                                                <h4>${cliente.luogoUbicazione}</h4>
                                             </label>
                                         </li>
                                         <li class="col-md-6">
