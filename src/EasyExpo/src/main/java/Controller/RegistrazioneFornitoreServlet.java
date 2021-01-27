@@ -48,8 +48,8 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
       throw new MyServletException("Email non valida.");
     }
 
-    String partitaIVA = request.getParameter("partitaIVA");
-    if (!(partitaIVA != null && partitaIVA.matches("[0-9]{11}"))) {
+    String partitaIva = request.getParameter("partitaIva");
+    if (!(partitaIva != null && partitaIva.matches("[0-9]{11}"))) {
       throw new MyServletException("Partita Iva non valida.");
     }
 
@@ -75,7 +75,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
     Fornitore fornitore = new Fornitore();
     fornitore.setEmail(email);
     fornitore.setPassword(password);
-    fornitore.setPartitaIva(partitaIVA);
+    fornitore.setPartitaIva(partitaIva);
     fornitore.setNome(nome);
     fornitore.setCognome(cognome);
     fornitore.setTelefono(telefono);
