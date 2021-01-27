@@ -12,6 +12,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <script>
+
+        function conferma(){
+            document.getElementById('info').innerHTML = ' <h6> ${clifor.nome} ${clifor.cognome} </h6> <br> ${clifor.ragioneSociale} - ${clifor.luogoUbicazione} <br> CONTATTI: <br> ${clifor.email} <br>${clifor.telefono}';
+
+            }
+
+
+    </script>
+
+</head>
 
 <body>
 
@@ -67,19 +79,35 @@
                                 <h6 class="margin-top-80 margin-bottom-30">Descrizione Evento</h6>
                                 <p> ${richiesta.descrizioneEvento}</p>
                                 <h6 class="margin-top-80 margin-bottom-30">Nota del fornitore</h6>
-                                <blockquote>${preventivo.nota}ciao</blockquote>
+                                <h7>${preventivo.nota}</h7>
 
                                 <!-- Fornitore/cliente info da fare il choose a seconda di chi lo apre -->
-                                <div class="admin-info">
-                                    <div class="media-body">
+                                <div class="admin-info" id="info">
+
+                                    <c:choose>
+                                        <c:when test="${cliente != null}">
+                                            <input class="btn" style="margin-left: 320px;" type="submit" value="CONFERMA" onclick="conferma()">
+                                        </c:when>
+                                    </c:choose>
+
+
+
+
+                                    <!--<div class="media-body">
                                         <h6>${clifor.nome} ${clifor.cognome} <span>Fornitore</span>
                                             <span>${clifor.ragioneSociale}</span> <span>${clifor.luogoUbicazione}</span>
                                         </h6>
                                         <span>CONTATTI</span> <br>
                                         <span>${clifor.email}</span> <br>
                                         <span>${clifor.telefono}</span>
+<<<<<<< HEAD
 
+                                    </div>-->
+=======
+                                        <div class="admin-social"><a href="#."><i class="icon-social-facebook"></i></a>
+                                            <a href="#."><i class="icon-social-twitter"></i></a></div>
                                     </div>
+>>>>>>> d3502dc4fea0d1af8c5c427f40c7419f8aa37770
                                 </div>
                             </div>
                         </article>
