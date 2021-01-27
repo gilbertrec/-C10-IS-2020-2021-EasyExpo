@@ -92,15 +92,6 @@
         </section>
 
 
-
-        <!-- Client Img  -->
-        <section class="fun-facts padding-top-150 padding-bottom-80">
-            <div class="container">
-                <div class="row">
-            </div>
-        </section>
-    </div>
-
     <!--======= FOOTER =========-->
     <footer>
         <jsp:include page="/footer.jsp"/>
