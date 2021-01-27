@@ -1,7 +1,6 @@
 package Model.DAO;
 
 import Model.POJO.Abbonamento;
-import Model.POJO.Fornitore;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +31,7 @@ public class AbbonamentoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT * FROM Abbonamento as a, Fornitore as f "
-                      + "WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva");
+                  + "WHERE a.partitaIva=? AND a.partitaIva=f.partitaIva");
       ps.setString(1, partitaIva);
       ArrayList<Abbonamento> abbonamenti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -75,7 +74,7 @@ public class AbbonamentoDAO {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    return  flag;
+    return flag;
   }
 
 }

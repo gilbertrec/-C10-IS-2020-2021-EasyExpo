@@ -1,8 +1,9 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import java.util.List;
@@ -23,8 +24,9 @@ class ProdottoDAOTest {
     pr = new ProdottoDAO();
     prodotto = new Prodotto();
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("01234567880", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    fornitore =
+        new Fornitore("01234567880", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
     prodotto.setIdProdotto(2);
     prodotto.setPartitaIva(fornitore.getPartitaIva());
@@ -75,7 +77,8 @@ class ProdottoDAOTest {
     prodotto5.setTipo(Prodotto.Tipo.ATTREZZATURA);
     int idProdotto2 = pr.createProdotto(prodotto5);
 
-    Prodotto prodotto6 = pr.doRetrieveByIdProdottoEPartitaIva(idProdotto2, prodotto5.getPartitaIva());
+    Prodotto prodotto6 =
+        pr.doRetrieveByIdProdottoEPartitaIva(idProdotto2, prodotto5.getPartitaIva());
 
     assertEquals(idProdotto2, prodotto6.getIdProdotto());
     assertEquals(prodotto5.getPartitaIva(), prodotto6.getPartitaIva());
@@ -96,7 +99,9 @@ class ProdottoDAOTest {
     prodotto5.setImmagine("images/foto.jsp");
     prodotto5.setTipo(Prodotto.Tipo.ATTREZZATURA);
 
-    assertThrows(RuntimeException.class,() ->{pr.createProdotto(prodotto5);});
+    assertThrows(RuntimeException.class, () -> {
+      pr.createProdotto(prodotto5);
+    });
   }
 
   @Test
@@ -120,8 +125,9 @@ class ProdottoDAOTest {
   @Test
   void deleteProdottoException() {
     fornitoreDAO = new FornitoreDAO();
-    Fornitore fornitore2 = new Fornitore("01234567580", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    Fornitore fornitore2 =
+        new Fornitore("01234567580", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore2);
     Prodotto prodotto7 = new Prodotto();
     prodotto7.setIdProdotto(6);
@@ -135,13 +141,15 @@ class ProdottoDAOTest {
     int idProdotto3 = pr.createProdotto(prodotto7);
     fornitoreDAO.deleteFornitore(fornitore2.getPartitaIva());
 
-    assertThrows(RuntimeException.class,() ->{pr.deleteProdotto(idProdotto3, prodotto7.getPartitaIva());});
+    assertThrows(RuntimeException.class, () -> {
+      pr.deleteProdotto(idProdotto3, prodotto7.getPartitaIva());
+    });
   }
 
   @Test
   void doRetrieveByTitolo() {
     List<Prodotto> prodotti9 = pr.doRetrieveByTitolo("Panca");
-    for(Prodotto p : prodotti9){
+    for (Prodotto p : prodotti9) {
       assertEquals("Panca", p.getTitolo());
     }
   }
@@ -157,7 +165,9 @@ class ProdottoDAOTest {
   void updateProdottoException() {
     prodotto.setQuantità(8);
     prodotto.setPartitaIva("kckevck3vec8977897");
-    assertThrows(RuntimeException.class,() ->{pr.updateProdotto(prodotto);});
+    assertThrows(RuntimeException.class, () -> {
+      pr.updateProdotto(prodotto);
+    });
   }
 
   @Test

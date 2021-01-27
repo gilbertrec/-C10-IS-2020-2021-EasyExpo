@@ -1,10 +1,11 @@
 package Model.POJO;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AdminTest {
 
@@ -18,11 +19,12 @@ class AdminTest {
     admin = new Admin("sabatino@gmail.com", "Sabatino20_");
   }
 
-    @Test
-    void testAdminCostructorEmpty() {
-        admin = new Admin();
-        assertNotNull(admin);
-    }
+  @Test
+  void testAdminCostructorEmpty() {
+    admin = new Admin();
+    assertNotNull(admin);
+  }
+
   @Test
   void getEmail() {
     assertEquals("sabatino@gmail.com", admin.getEmail());

@@ -34,7 +34,7 @@ public class ProdottoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT *  FROM Prodotto as p, Fornitore as f "
-                      + "WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
+                  + "WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva");
       ps.setInt(1, idProdotto);
       ps.setString(2, partitaIva);
       ResultSet rs = ps.executeQuery();
@@ -108,7 +108,7 @@ public class ProdottoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT * FROM Prodotto as p, Fornitore as f "
-                      + "WHERE p.partitaIva=f.partitaIva");
+                  + "WHERE p.partitaIva=f.partitaIva");
 
       ArrayList<Prodotto> prodotti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
@@ -142,7 +142,7 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Prodotto (partitaIva, titolo, descrizione, "
-                  + "tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
+              + "tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)",
           Statement.RETURN_GENERATED_KEYS);
 
       ps.setString(1, prodotto.getPartitaIva());
@@ -197,7 +197,7 @@ public class ProdottoDAO {
 
       PreparedStatement ps = con.prepareStatement(
           "SELECT idProdotto, partitaIva, titolo, prezzo, immagine "
-                  + "FROM Prodotto WHERE titolo LIKE ? ");
+              + "FROM Prodotto WHERE titolo LIKE ? ");
       ps.setString(1, "%" + ricercato + "%");
 
       ArrayList<Prodotto> prodotto = new ArrayList<>();
@@ -229,7 +229,7 @@ public class ProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, "
-                  + "prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
+              + "prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?");
       ps.setString(1, prodotto.getTitolo());
       ps.setString(2, prodotto.getDescrizione());
       ps.setString(3, prodotto.getTipo().toString());
@@ -249,11 +249,11 @@ public class ProdottoDAO {
   public List<Prodotto> doRetrieveRandom(int offset, int limit) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
-              .prepareStatement(
-                      "SELECT * FROM Prodotto as p, Fornitore as f "
-                              + "WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
+          .prepareStatement(
+              "SELECT * FROM Prodotto as p, Fornitore as f "
+                  + "WHERE p.partitaIva=f.partitaIva LIMIT ?, ?");
       ps.setInt(1, offset);
-      ps.setInt(2,limit);
+      ps.setInt(2, limit);
       ArrayList<Prodotto> prodotti = new ArrayList<>();
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {

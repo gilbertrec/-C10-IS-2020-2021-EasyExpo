@@ -6,22 +6,18 @@ import Model.DAO.RichiestaPreventivoDAO;
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.RichiestaPreventivo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
+import java.io.IOException;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import java.io.IOException;
-import java.sql.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class CompilaPreventivoServletTest {
   private CompilaPreventivoServlet compilaPreventivoServlet;
@@ -44,7 +40,7 @@ class CompilaPreventivoServletTest {
   void setUp() {
     frDAO = new FornitoreDAO();
     fr = new Fornitore("01234567580", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-            "Rossi123", "Rossi");
+        "Rossi123", "Rossi");
     frDAO.createFornitore(fr);
 
     clDAO = new ClienteDAO();
@@ -91,9 +87,10 @@ class CompilaPreventivoServletTest {
 
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/preventivo.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/preventivo.jsp");
 
-    compilaPreventivoServlet.doGet(mockedRequest,mockedResponse);
+    compilaPreventivoServlet.doGet(mockedRequest, mockedResponse);
 
   }
 

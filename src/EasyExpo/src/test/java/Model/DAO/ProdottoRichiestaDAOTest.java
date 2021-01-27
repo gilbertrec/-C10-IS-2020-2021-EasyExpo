@@ -1,10 +1,9 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
-import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
@@ -33,8 +32,9 @@ class ProdottoRichiestaDAOTest {
   @BeforeEach
   void setUp() {
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("99999999999", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    fornitore =
+        new Fornitore("99999999999", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
 
     clienteDAO = new ClienteDAO();
@@ -95,15 +95,16 @@ class ProdottoRichiestaDAOTest {
   @Test
   void doRetrieveByIdRichiesta() {
     List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdRichiesta(idRichiesta);
-    for(ProdottoRichiesta p : richieste){
+    for (ProdottoRichiesta p : richieste) {
       assertEquals(idRichiesta, p.getIdRichiesta());
     }
   }
 
   @Test
   void doRetrieveByIdProdottoePartitaIva() {
-    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO.doRetrieveByIdProdottoePartitaIva(idProdotto,fornitore.getPartitaIva());
-    for(ProdottoRichiesta p : richieste){
+    List<ProdottoRichiesta> richieste = prodottoRichiestaDAO
+        .doRetrieveByIdProdottoePartitaIva(idProdotto, fornitore.getPartitaIva());
+    for (ProdottoRichiesta p : richieste) {
       assertEquals(idProdotto, p.getIdProdotto());
       assertEquals(fornitore.getPartitaIva(), p.getPartitaIva());
     }
@@ -118,8 +119,8 @@ class ProdottoRichiestaDAOTest {
     prodRich.setPartitaIva(fornitore.getPartitaIva());
     prodRich.setNumColli(10);
     prodRich.setPrezzo(20);
-    prodRich.setDataInizioNoleggio(new Date(2019,12,30));
-    prodRich.setDataFineNoleggio(new Date(2020,2,3));
+    prodRich.setDataInizioNoleggio(new Date(2019, 12, 30));
+    prodRich.setDataFineNoleggio(new Date(2020, 2, 3));
 
     idProdottoRichiesta = prodottoRichiestaDAO.createProdottoRichiesta(prodRich);
     ProdottoRichiesta prodRich2 = prodottoRichiestaDAO.doRetrieveById(idProdottoRichiesta);

@@ -14,7 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-class InoltroPreventivoServletTest extends Mockito{
+class InoltroPreventivoServletTest extends Mockito {
 
   private InoltroPreventivoServlet inoltroPreventivoServlet;
   private HttpServletRequest mockedRequest;
@@ -38,7 +38,7 @@ class InoltroPreventivoServletTest extends Mockito{
   }
 
   @Test
-  void TestPrezzoMatchFailed(){
+  void TestPrezzoMatchFailed() {
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
@@ -47,13 +47,15 @@ class InoltroPreventivoServletTest extends Mockito{
 
     String message = "Prezzo non valido.";
 
-    exception = assertThrows(MyServletException.class, () -> {inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      inoltroPreventivoServlet.doGet(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
 
   @Test
-  void TestPrezzoNull(){
+  void TestPrezzoNull() {
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
@@ -61,13 +63,15 @@ class InoltroPreventivoServletTest extends Mockito{
 
     String message = "Prezzo non valido.";
 
-    exception = assertThrows(MyServletException.class, () -> {inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      inoltroPreventivoServlet.doGet(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
 
   @Test
-  void TestNotaNull(){
+  void TestNotaNull() {
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
@@ -76,7 +80,9 @@ class InoltroPreventivoServletTest extends Mockito{
 
     String message = "Nota non valida.";
 
-    exception = assertThrows(MyServletException.class, () -> {inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);});
+    exception = assertThrows(MyServletException.class, () -> {
+      inoltroPreventivoServlet.doGet(mockedRequest, mockedResponse);
+    });
 
     assertEquals(message, exception.getMessage());
   }
@@ -90,9 +96,10 @@ class InoltroPreventivoServletTest extends Mockito{
     Mockito.when(mockedRequest.getParameter("nota")).thenReturn("nota");
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/areaFornitore.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/areaFornitore.jsp");
 
-    inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);
+    inoltroPreventivoServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test
@@ -104,9 +111,10 @@ class InoltroPreventivoServletTest extends Mockito{
     Mockito.when(mockedRequest.getParameter("nota")).thenReturn("nota");
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/areaFornitore.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/areaFornitore.jsp");
 
-    inoltroPreventivoServlet.doGet(mockedRequest,mockedResponse);
+    inoltroPreventivoServlet.doGet(mockedRequest, mockedResponse);
   }
 
   @Test

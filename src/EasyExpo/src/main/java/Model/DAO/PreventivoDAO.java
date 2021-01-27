@@ -1,7 +1,6 @@
 package Model.DAO;
 
 import Model.POJO.Preventivo;
-import Model.POJO.Prodotto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

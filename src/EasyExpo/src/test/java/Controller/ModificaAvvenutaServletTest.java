@@ -1,15 +1,14 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.DAO.FornitoreDAO;
 import Model.DAO.ProdottoDAO;
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
-import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -46,8 +45,9 @@ class ModificaAvvenutaServletTest {
     pr = new ProdottoDAO();
     prodotto = new Prodotto();
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("01234567880", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    fornitore =
+        new Fornitore("01234567880", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
     prodotto.setIdProdotto(2);
     prodotto.setPartitaIva(fornitore.getPartitaIva());
@@ -70,7 +70,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse*");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
@@ -91,7 +92,8 @@ class ModificaAvvenutaServletTest {
   void TestTitoloNull() {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
@@ -113,7 +115,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("uveiur");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
@@ -135,7 +138,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
 
@@ -157,7 +161,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("3tyu");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
@@ -179,7 +184,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle");
 
@@ -200,7 +206,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto belle23");
@@ -222,7 +229,8 @@ class ModificaAvvenutaServletTest {
     Mockito.when(mockedRequest.getParameter("idProdotto")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("Casse");
-    Mockito.when(mockedRequest.getParameter("tipo")).thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
+    Mockito.when(mockedRequest.getParameter("tipo"))
+        .thenReturn(String.valueOf(Prodotto.Tipo.ATTREZZATURA));
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("30.00");
     Mockito.when(mockedRequest.getParameter("quantita")).thenReturn("34");
 

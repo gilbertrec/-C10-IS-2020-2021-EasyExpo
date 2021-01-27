@@ -1,6 +1,7 @@
 package Controller;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.DAO.ClienteDAO;
 import Model.DAO.FornitoreDAO;
@@ -13,7 +14,6 @@ import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
 import Model.POJO.ProdottoRichiesta;
 import Model.POJO.RichiestaPreventivo;
-
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -69,8 +69,9 @@ class InoltroRichiestaServletTest extends Mockito {
     inoltroRichiestaServlet = new InoltroRichiestaServlet();
     listaFornitori = new ArrayList<>();
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("99999999999", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    fornitore =
+        new Fornitore("99999999999", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
     listaFornitori.add(fornitore);
 
@@ -110,14 +111,13 @@ class InoltroRichiestaServletTest extends Mockito {
 
     richiestaPreventivoDAO = new RichiestaPreventivoDAO();
     richiestaPreventivo = new RichiestaPreventivo(1000, "baoJtA98d55E923o", "99999999999",
-             "titolo", "Napoli", "descrizioneEvento",
-            "nota", corrente, RichiestaPreventivo.Stato.IN_ATTESA);
+        "titolo", "Napoli", "descrizioneEvento",
+        "nota", corrente, RichiestaPreventivo.Stato.IN_ATTESA);
 
     prodottoRichiesta = new ProdottoRichiesta(4000, 1000, idProdotto, "99999999999", 3,
-            30, new Date(2021, 11, 12), new Date(2022, 11, 12));
+        30, new Date(2021, 11, 12), new Date(2022, 11, 12));
     prodottoRichiestaDAO = new ProdottoRichiestaDAO();
     prodottoRichiestaDAO.createProdottoRichiesta(prodottoRichiesta);
-
 
 
   }
@@ -134,9 +134,9 @@ class InoltroRichiestaServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("molto bello");
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
-            .thenReturn(String.valueOf(new Date(2012, 01, 20)));
+        .thenReturn(String.valueOf(new Date(2012, 01, 20)));
     Mockito.when(mockedRequest.getParameter("dataFine0"))
-            .thenReturn(String.valueOf(new Date(2013, 01, 18)));
+        .thenReturn(String.valueOf(new Date(2013, 01, 18)));
     Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
     Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
@@ -147,7 +147,7 @@ class InoltroRichiestaServletTest extends Mockito {
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/carrello.jsp");
+        .getRequestDispatcher("/carrello.jsp");
 
     inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
   }
@@ -161,7 +161,7 @@ class InoltroRichiestaServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("dataFine0"))
         .thenReturn(String.valueOf(new Date(2025, 01, 29)));
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
-            .thenReturn(String.valueOf(new Date(2025, 11, 12)));
+        .thenReturn(String.valueOf(new Date(2025, 11, 12)));
     /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
         .thenReturn(String.valueOf(new Date(2025, 01, 27)));
     Mockito.when(mockedRequest.getParameter("dataFine1"))
@@ -181,7 +181,6 @@ class InoltroRichiestaServletTest extends Mockito {
 
     assertEquals(message, exception.getMessage());
   }
-
 
 
   @Test

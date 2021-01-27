@@ -1,9 +1,10 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.POJO.Fornitore;
-import Model.POJO.RichiestaPreventivo;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,18 +17,10 @@ class FornitoreDAOTest {
 
 
   @BeforeEach
-  void setUpEach(){
+  void setUpEach() {
     fr = new FornitoreDAO();
-    fornitore = new Fornitore("01234567890", "Gaetano","Iuliano","3387485126", "Napoli", "g.iuliano@gmail.com", "password", "privato");
-    /*fornitore.setPartitaIva("01234567890");
-    fornitore.setNome("Gaetano");
-    fornitore.setCognome("Iuliano");
-    fornitore.setTelefono("3387485126");
-    fornitore.setEmail("g.iuliano@gmail.com");
-    fornitore.setPassword("password");
-    fornitore.setLuogoUbicazione("Napoli");
-    fornitore.setRagioneSociale("privato");
-    fornitore.setAbbonato(false);*/
+    fornitore = new Fornitore("01234567890", "Gaetano", "Iuliano", "3387485126", "Napoli",
+        "g.iuliano@gmail.com", "password", "privato");
     fr.createFornitore(fornitore);
   }
 
@@ -79,19 +72,21 @@ class FornitoreDAOTest {
     fornitore.setRagioneSociale("privato");
     fornitore.setAbbonato(false);
 
-    assertThrows(RuntimeException.class,() ->{fr.createFornitore(fornitore);});
+    assertThrows(RuntimeException.class, () -> {
+      fr.createFornitore(fornitore);
+    });
   }
 
   @Test
   void doRetrieveByEmailandPassword() {
-    Fornitore f1 = fr.doRetrieveByEmailandPassword("g.iuliano@gmail.com", "password" );
+    Fornitore f1 = fr.doRetrieveByEmailandPassword("g.iuliano@gmail.com", "password");
     assertEquals("01234567890", f1.getPartitaIva());
   }
 
   @Test
   void doRetrieveByNomeECognome() {
     List<Fornitore> f2 = fr.doRetrieveByNomeECognome("Gaetano");
-    for(Fornitore f : f2){
+    for (Fornitore f : f2) {
       assertEquals("Gaetano", f.getNome());
     }
   }
@@ -118,7 +113,9 @@ class FornitoreDAOTest {
 
   @Test
   void deleteFornitoreException() {
-    assertThrows(RuntimeException.class,() ->{fr.deleteFornitore("12345668909");});
+    assertThrows(RuntimeException.class, () -> {
+      fr.deleteFornitore("12345668909");
+    });
   }
 
   @Test
@@ -132,21 +129,23 @@ class FornitoreDAOTest {
   void updateBooleanFornitoreException() {
     fornitore.setPartitaIva("ydkykdd6565786guf");
     fornitore.setAbbonato(true);
-    assertThrows(RuntimeException.class,() ->{fr.updateBooleanFornitore(fornitore);});
+    assertThrows(RuntimeException.class, () -> {
+      fr.updateBooleanFornitore(fornitore);
+    });
   }
 
   @Test
-  void doRetrievebyStato(){
-    List<Fornitore> fornitore5 =  fr.doRetrievebyStato(1);
-    for(Fornitore f : fornitore5) {
+  void doRetrievebyStato() {
+    List<Fornitore> fornitore5 = fr.doRetrievebyStato(1);
+    for (Fornitore f : fornitore5) {
       assertEquals(Fornitore.Stato.ATTIVO, f.getStato());
     }
   }
 
   @Test
-  void updateStato(){
-   fr.updateStato(2, fornitore.getPartitaIva());
-   Fornitore fornitore7 = fr.doRetrieveByPIVA(fornitore.getPartitaIva());
-   assertEquals(Fornitore.Stato.SOSPESO, fornitore7.getStato());
+  void updateStato() {
+    fr.updateStato(2, fornitore.getPartitaIva());
+    Fornitore fornitore7 = fr.doRetrieveByPIVA(fornitore.getPartitaIva());
+    assertEquals(Fornitore.Stato.SOSPESO, fornitore7.getStato());
   }
 }

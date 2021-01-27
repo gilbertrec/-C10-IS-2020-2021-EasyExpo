@@ -30,7 +30,7 @@ public class ClienteDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT codiceFiscale, nome, cognome, email, password, "
-                      + "telefono, luogoUbicazione, stato  FROM Cliente WHERE codiceFiscale=?");
+                  + "telefono, luogoUbicazione, stato  FROM Cliente WHERE codiceFiscale=?");
       ps.setString(1, codiceFiscale);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -60,7 +60,7 @@ public class ClienteDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
           "INSERT INTO Cliente (codiceFiscale, nome, cognome, telefono, "
-                  + "luogoUbicazione, email, password, stato) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
+              + "luogoUbicazione, email, password, stato) VALUES(?,?,?,?,?,?,sha2(?, 512),?)");
       ps.setString(1, cliente.getCodiceFiscale());
       ps.setString(2, cliente.getNome());
       ps.setString(3, cliente.getCognome());
@@ -68,7 +68,7 @@ public class ClienteDAO {
       ps.setString(7, cliente.getPassword());
       ps.setString(4, cliente.getTelefono());
       ps.setString(5, cliente.getLuogoUbicazione());
-      ps.setString(8,"ATTIVO");
+      ps.setString(8, "ATTIVO");
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
@@ -128,13 +128,13 @@ public class ClienteDAO {
 
   /**
    * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
-   * @return  List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
    *
+   * @return List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
    */
   public List<Cliente> doRetrievebyStato(int val) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
-              .prepareStatement("SELECT * FROM Cliente WHERE stato=?");
+          .prepareStatement("SELECT * FROM Cliente WHERE stato=?");
       ps.setInt(1, val);
 
       ArrayList<Cliente> clienti = new ArrayList<>();
@@ -160,10 +160,10 @@ public class ClienteDAO {
   public void updateStato(int val, String codiceFiscale) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
-              .prepareStatement("UPDATE Cliente SET stato=? WHERE codiceFiscale=?");
+          .prepareStatement("UPDATE Cliente SET stato=? WHERE codiceFiscale=?");
 
-      ps.setInt(1,val);
-      ps.setString(2,codiceFiscale);
+      ps.setInt(1, val);
+      ps.setString(2, codiceFiscale);
       ps.executeUpdate();
     } catch (SQLException e) {
       throw new RuntimeException(e);

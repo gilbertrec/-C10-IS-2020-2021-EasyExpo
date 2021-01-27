@@ -34,7 +34,7 @@ public class Fornitore {
     this.email = email;
     this.password = password;
     this.ragioneSociale = ragioneSociale;
-    this.stato = stato.ATTIVO;
+    this.stato = Stato.ATTIVO;
   }
 
   public Fornitore() {
@@ -208,7 +208,7 @@ public class Fornitore {
   /**
    * Metodo che setta l'abbonamento.
    *
-   * @param abbonato  Abbonamento del fornitore, boolean
+   * @param abbonato Abbonamento del fornitore, boolean
    */
 
   public void setAbbonato(boolean abbonato) {
@@ -228,7 +228,7 @@ public class Fornitore {
   /**
    * Metodo che setta l'abbonamento.
    *
-   * @param stato  Stato del fornitore, Stato
+   * @param stato Stato del fornitore, Stato
    */
 
   public void setStato(Stato stato) {
@@ -266,9 +266,10 @@ public class Fornitore {
   private String password;
   private String ragioneSociale;
   private boolean abbonato;
+
   public enum Stato {
     ATTIVO, SOSPESO
   }
-  ;
+
   private Stato stato;
 }

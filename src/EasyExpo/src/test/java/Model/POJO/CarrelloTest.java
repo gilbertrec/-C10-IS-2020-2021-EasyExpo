@@ -1,6 +1,8 @@
 package Model.POJO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
@@ -8,15 +10,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarrelloTest {
- private Prodotto.Tipo tipo;
- private Carrello car;
- private Prodotto p;
- private Carrello.ProdottoQuantita pq;
- private ArrayList<Carrello.ProdottoQuantita> lista;
+  private Prodotto.Tipo tipo;
+  private Carrello car;
+  private Prodotto p;
+  private Carrello.ProdottoQuantita pq;
+  private ArrayList<Carrello.ProdottoQuantita> lista;
+
   @BeforeEach
   void setUp() {
-    p = new Prodotto(1,"01234567890","Cassa","Cassa audio",tipo.ATTREZZATURA,5,50,"foto");
-    pq = new Carrello.ProdottoQuantita(p,2);
+    p = new Prodotto(1, "01234567890", "Cassa", "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50, "foto");
+    pq = new Carrello.ProdottoQuantita(p, 2);
     car = new Carrello();
     lista = new ArrayList<>();
     lista.add(pq);
@@ -25,8 +28,9 @@ class CarrelloTest {
 
   @AfterEach
   void tearDown() {
-    p = new Prodotto(1,"01234567890","Cassa","Cassa audio",tipo.ATTREZZATURA,5,50,"foto");
-    pq = new Carrello.ProdottoQuantita(p,2);
+    p = new Prodotto(1, "01234567890", "Cassa", "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50,
+        "foto");
+    pq = new Carrello.ProdottoQuantita(p, 2);
     car = new Carrello();
     lista = new ArrayList<>();
     lista.add(pq);
@@ -40,18 +44,20 @@ class CarrelloTest {
 
   @Test
   void get() {
-    ArrayList<Carrello.ProdottoQuantita>lista3 = car.get("01234567890");
-    assertEquals(1,lista3.size());
+    ArrayList<Carrello.ProdottoQuantita> lista3 = car.get("01234567890");
+    assertEquals(1, lista3.size());
   }
 
   @Test
   void put() {
-    Prodotto prodotto = new Prodotto(2,"01234567000","Cassa","Cassa audio",tipo.ATTREZZATURA,5,50,"foto");
-    Carrello.ProdottoQuantita cpq = new Carrello.ProdottoQuantita(prodotto,2);
-    ArrayList<Carrello.ProdottoQuantita>lista2 = new ArrayList<>();
+    Prodotto prodotto =
+        new Prodotto(2, "01234567000", "Cassa", "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            "foto");
+    Carrello.ProdottoQuantita cpq = new Carrello.ProdottoQuantita(prodotto, 2);
+    ArrayList<Carrello.ProdottoQuantita> lista2 = new ArrayList<>();
     lista2.add(cpq);
     car.put(lista2);
-    assertEquals(2,car.getProdottiFornitori().size());
+    assertEquals(2, car.getProdottiFornitori().size());
   }
 
   @Test

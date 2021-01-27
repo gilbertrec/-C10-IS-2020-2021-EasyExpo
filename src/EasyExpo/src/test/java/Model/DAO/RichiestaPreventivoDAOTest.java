@@ -1,10 +1,11 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
-import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
 import java.sql.Date;
 import java.util.List;
@@ -61,7 +62,7 @@ class RichiestaPreventivoDAOTest {
   }
 
   @Test
-  void createRichiestaPreventivoException(){
+  void createRichiestaPreventivoException() {
     RichiestaPreventivo rp2 = new RichiestaPreventivo();
     rp2.setCodiceFiscale("1211476723678467236");
     rp2.setPartitaIva("QBCIJCIBDIUHCUIDHDH");
@@ -71,13 +72,15 @@ class RichiestaPreventivoDAOTest {
     rp2.setTitolo("Prova");
     rp2.setLuogoEvento("Napoli");
     rp2.setStato(RichiestaPreventivo.Stato.IN_ATTESA);
-    assertThrows(RuntimeException.class,() ->{rpDAO.createRichiestaPreventivo(rp2);});
+    assertThrows(RuntimeException.class, () -> {
+      rpDAO.createRichiestaPreventivo(rp2);
+    });
   }
 
   @Test
   void doRetrieveByIdRichiesta() {
     RichiestaPreventivo rp3 = rpDAO.doRetrieveByIdRichiesta(idRichiesta);
-      assertEquals(idRichiesta, rp3.getIdRichiesta());
+    assertEquals(idRichiesta, rp3.getIdRichiesta());
   }
 
   @Test
@@ -88,7 +91,7 @@ class RichiestaPreventivoDAOTest {
   @Test
   void doRetrieveByPartitaIva() {
     List<RichiestaPreventivo> rp4 = rpDAO.doRetrieveByPartitaIva(rp.getPartitaIva());
-    for(RichiestaPreventivo p : rp4) {
+    for (RichiestaPreventivo p : rp4) {
       assertEquals(rp.getPartitaIva(), p.getPartitaIva());
     }
   }
@@ -96,7 +99,7 @@ class RichiestaPreventivoDAOTest {
   @Test
   void doRetrieveByCodiceFiscale() {
     List<RichiestaPreventivo> rp4 = rpDAO.doRetrieveByCodiceFiscale(rp.getCodiceFiscale());
-    for(RichiestaPreventivo p : rp4) {
+    for (RichiestaPreventivo p : rp4) {
       assertEquals(rp.getCodiceFiscale(), p.getCodiceFiscale());
     }
   }
@@ -149,8 +152,9 @@ class RichiestaPreventivoDAOTest {
   @Test
   void deleteRichiestePreventivoException() {
     frDAO = new FornitoreDAO();
-    Fornitore fr2 = new Fornitore("01234788790", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    Fornitore fr2 =
+        new Fornitore("01234788790", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     frDAO.createFornitore(fr2);
 
     clDAO = new ClienteDAO();
@@ -178,13 +182,17 @@ class RichiestaPreventivoDAOTest {
     frDAO.deleteFornitore(fr2.getPartitaIva());
     clDAO.deleteCliente(cl2.getCodiceFiscale());
 
-    assertThrows(RuntimeException.class,() ->{rpDAO.deleteRichiestePreventivo(idRichiesta4);});
+    assertThrows(RuntimeException.class, () -> {
+      rpDAO.deleteRichiestePreventivo(idRichiesta4);
+    });
   }
 
   @Test
   void updateRichiestaPreventivoException() {
     rp.setStato(RichiestaPreventivo.Stato.CONFERMATO);
     rp.setPartitaIva("hibceywgiyergrfierg");
-    assertThrows(RuntimeException.class,() ->{rpDAO.updateRichiestaPreventivo(rp);});
+    assertThrows(RuntimeException.class, () -> {
+      rpDAO.updateRichiestaPreventivo(rp);
+    });
   }
 }

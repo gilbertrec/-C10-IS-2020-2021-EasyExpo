@@ -1,11 +1,12 @@
 package Model.POJO;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.sql.Date;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RichiestaPreventivoTest {
   private RichiestaPreventivo rp;
@@ -17,20 +18,22 @@ class RichiestaPreventivoTest {
   void setUp() {
     data = new Date(2021, 1, 18);
     rp = new RichiestaPreventivo(1, "DLCMLE03A31G273Y", "01234567890", "RichiestaTest", "LuogoTest",
-        "DescrizioneTest", "NotaTest", data, stato.CONFERMATO);
+        "DescrizioneTest", "NotaTest", data, RichiestaPreventivo.Stato.CONFERMATO);
   }
 
   @AfterEach
   void tearDown() {
     data = new Date(2021, 1, 18);
     rp = new RichiestaPreventivo(1, "DLCMLE03A31G273Y", "01234567890", "RichiestaTest", "LuogoTest",
-        "DescrizioneTest", "NotaTest", data, stato.CONFERMATO);
+        "DescrizioneTest", "NotaTest", data, RichiestaPreventivo.Stato.CONFERMATO);
   }
+
   @Test
   void testRichiestaPreventivoCostructorEmpty() {
     rp = new RichiestaPreventivo();
     assertNotNull(rp);
   }
+
   @Test
   void getDataRichiesta() {
     assertEquals(data, rp.getDataRichiesta());
@@ -40,7 +43,7 @@ class RichiestaPreventivoTest {
   void setDataRichiesta() {
     d = new Date(2021, 1, 15);
     rp.setDataRichiesta(d);
-    assertEquals(d,rp.getDataRichiesta());
+    assertEquals(d, rp.getDataRichiesta());
   }
 
   @Test
@@ -51,7 +54,7 @@ class RichiestaPreventivoTest {
   @Test
   void setIdRichiesta() {
     rp.setIdRichiesta(2);
-    assertEquals(2,rp.getIdRichiesta());
+    assertEquals(2, rp.getIdRichiesta());
   }
 
   @Test
@@ -73,7 +76,7 @@ class RichiestaPreventivoTest {
   @Test
   void setPartitaIva() {
     rp.setPartitaIva("55555567890");
-    assertEquals("55555567890",rp.getPartitaIva());
+    assertEquals("55555567890", rp.getPartitaIva());
   }
 
   @Test
@@ -95,7 +98,7 @@ class RichiestaPreventivoTest {
   @Test
   void setLuogoEvento() {
     rp.setLuogoEvento("Test");
-    assertEquals("Test",rp.getLuogoEvento());
+    assertEquals("Test", rp.getLuogoEvento());
   }
 
   @Test
@@ -122,12 +125,12 @@ class RichiestaPreventivoTest {
 
   @Test
   void getStato() {
-    assertEquals(stato.CONFERMATO, rp.getStato());
+    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, rp.getStato());
   }
 
   @Test
   void setStato() {
-    rp.setStato(stato.RIFIUTATO);
-    assertEquals(stato.RIFIUTATO, rp.getStato());
+    rp.setStato(RichiestaPreventivo.Stato.RIFIUTATO);
+    assertEquals(RichiestaPreventivo.Stato.RIFIUTATO, rp.getStato());
   }
 }

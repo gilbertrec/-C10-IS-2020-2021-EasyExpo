@@ -33,7 +33,7 @@ public class Cliente {
     this.luogoUbicazione = luogoUbicazione;
     this.email = email;
     this.password = password;
-    this.stato = stato.ATTIVO;
+    this.stato = Stato.ATTIVO;
   }
 
   /**
@@ -198,7 +198,7 @@ public class Cliente {
   /**
    * Metodo che setta l'abbonamento.
    *
-   * @param stato  Stato del fornitore, Stato
+   * @param stato Stato del fornitore, Stato
    */
 
   public void setStato(Stato stato) {
@@ -232,9 +232,10 @@ public class Cliente {
   private String luogoUbicazione;
   private String email;
   private String password;
+
   public enum Stato {
     ATTIVO, SOSPESO
   }
-  ;
+
   private Stato stato;
 }

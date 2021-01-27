@@ -1,18 +1,16 @@
 package Model.DAO;
 
-import Model.POJO.Abbonamento;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
+import java.sql.Date;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.sql.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PreventivoDAOTest {
   PreventivoDAO preventivoDAO;
@@ -62,8 +60,7 @@ class PreventivoDAOTest {
     preventivo.setNota("nota di prova di preventivo");
 
 
-
-   idPreventivo = preventivoDAO.createPreventivo(preventivo);
+    idPreventivo = preventivoDAO.createPreventivo(preventivo);
 
 
   }
@@ -95,7 +92,7 @@ class PreventivoDAOTest {
     p.setIdPreventivo(5);
     p.setCodiceFiscale(c.getCodiceFiscale());
     p.setPartitaIva(f.getPartitaIva());
-    p.setDataPreventivo(new Date(2020,5,2));
+    p.setDataPreventivo(new Date(2020, 5, 2));
     p.setIdRichiesta(rp.getIdRichiesta());
     preventivoDAO.createPreventivo(p);
     assertEquals(2, preventivoDAO.doRetrieveByPartitaIva(p.getPartitaIva()).size());
@@ -104,7 +101,7 @@ class PreventivoDAOTest {
   @Test
   void doRetrieveByPartitaIva() {
     List<Preventivo> preventivi = preventivoDAO.doRetrieveByPartitaIva("65655655555");
-    for(Preventivo p : preventivi){
+    for (Preventivo p : preventivi) {
       assertEquals("65655655555", p.getPartitaIva());
     }
   }
@@ -112,7 +109,7 @@ class PreventivoDAOTest {
   @Test
   void doRetrieveByCodiceFiscale() {
     List<Preventivo> preventivi = preventivoDAO.doRetrieveByCodiceFiscale("HGJSLKS34ERT4RGF");
-    for(Preventivo p : preventivi){
+    for (Preventivo p : preventivi) {
       assertEquals("HGJSLKS34ERT4RGF", p.getCodiceFiscale());
     }
   }

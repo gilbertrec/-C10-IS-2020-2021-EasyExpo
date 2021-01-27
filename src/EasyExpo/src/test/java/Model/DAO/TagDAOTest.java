@@ -1,6 +1,8 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.POJO.Tag;
 import java.util.List;
@@ -9,8 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TagDAOTest {
-TagDAO tag;
-Tag t;
+  TagDAO tag;
+  Tag t;
+
   @BeforeEach
   void setUp() {
     tag = new TagDAO();
@@ -34,7 +37,7 @@ Tag t;
   @Test
   void doRetrieveByNome() {
     List<Tag> t1 = tag.doRetrieveByNome("TagTest");
-    assertEquals("TagTest",t1.get(0).getNome());
+    assertEquals("TagTest", t1.get(0).getNome());
   }
 
   @Test
@@ -56,7 +59,9 @@ Tag t;
     Tag tag1 = new Tag();
     tag1.setIdTag(2);
     tag1.setNome("TestTestvceeygciwuixowndibcbiebcowbdjebcueubcuhdie");
-    assertThrows(RuntimeException.class, ()->{tag.createTag(tag1);});
+    assertThrows(RuntimeException.class, () -> {
+      tag.createTag(tag1);
+    });
   }
 
   @Test

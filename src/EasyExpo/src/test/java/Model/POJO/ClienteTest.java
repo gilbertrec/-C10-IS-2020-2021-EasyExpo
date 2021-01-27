@@ -1,6 +1,7 @@
 package Model.POJO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,14 +9,17 @@ import org.junit.jupiter.api.Test;
 
 class ClienteTest {
   private Cliente cl;
+
   @BeforeEach
   void setUp() {
-   cl = new Cliente("DLCMLE03A31G273Y", "Emilio", "Dolce", "1122334455", "Palermo", "emilio.ciao@aaa.com","Emilio20_");
+    cl = new Cliente("DLCMLE03A31G273Y", "Emilio", "Dolce", "1122334455", "Palermo",
+        "emilio.ciao@aaa.com", "Emilio20_");
   }
 
   @AfterEach
   void tearDown() {
-    cl = new Cliente("DLCMLE03A31G273Y", "Emilio", "Dolce", "1122334455", "Palermo", "emilio.ciao@aaa.com","Emilio20_");
+    cl = new Cliente("DLCMLE03A31G273Y", "Emilio", "Dolce", "1122334455", "Palermo",
+        "emilio.ciao@aaa.com", "Emilio20_");
   }
 
   @Test
@@ -26,7 +30,7 @@ class ClienteTest {
 
   @Test
   void getEmail() {
-    assertEquals("emilio.ciao@aaa.com",cl.getEmail());
+    assertEquals("emilio.ciao@aaa.com", cl.getEmail());
   }
 
   @Test
@@ -102,13 +106,13 @@ class ClienteTest {
   }
 
   @Test
-  void setStato(){
+  void setStato() {
     cl.setStato(Cliente.Stato.SOSPESO);
     assertEquals(Cliente.Stato.SOSPESO, cl.getStato());
   }
 
- @Test
-  void getStato(){
+  @Test
+  void getStato() {
     assertEquals(Cliente.Stato.ATTIVO, cl.getStato());
   }
 }

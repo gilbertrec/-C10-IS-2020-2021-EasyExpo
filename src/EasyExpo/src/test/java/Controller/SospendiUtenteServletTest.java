@@ -38,9 +38,10 @@ class SospendiUtenteServletTest extends Mockito {
   void TestNoId() throws IOException, ServletException {
     Mockito.when(mockedRequest.getParameter("flag")).thenReturn("");
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/adminHome.jsp");
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+        .getRequestDispatcher("/adminHome.jsp");
 
-    sospendiUtenteServlet.doGet(mockedRequest,mockedResponse);
+    sospendiUtenteServlet.doGet(mockedRequest, mockedResponse);
 
   }
 

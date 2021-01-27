@@ -1,16 +1,13 @@
 package proxy;
 
-import java.io.InputStream;
-import java.nio.file.Path;
-
 public class ProxyImage implements Image {
 
   private RealImage realImage;
-  private String iconPath;
+  private final String iconPath;
 
   public ProxyImage(String iconPatch) {
 
-    if(iconPatch != null && !iconPatch.equals("")) {
+    if (iconPatch != null && !iconPatch.equals("")) {
       this.realImage = new RealImage(iconPatch);
       this.iconPath = iconPatch;
     } else {
@@ -26,6 +23,6 @@ public class ProxyImage implements Image {
     }
     return realImage.display();
   }
-  
+
 }
 

@@ -117,7 +117,8 @@ public class AggiungiProdottoServlet extends HttpServlet {
     List<Prodotto> prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);
     request.getSession().setAttribute("prodotti", prodotti);
 
-    RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
+    RequestDispatcher requestDispatcher =
+        request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
     requestDispatcher.forward(request, response);
   }
 }

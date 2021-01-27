@@ -1,6 +1,8 @@
 package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.POJO.Fornitore;
 import Model.POJO.Prodotto;
@@ -25,8 +27,9 @@ class TagProdottoDAOTest {
   @BeforeEach
   void setUp() {
     fornitoreDAO = new FornitoreDAO();
-    fornitore = new Fornitore("01234567890", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
-        "Rossi123", "Rossi");
+    fornitore =
+        new Fornitore("01234567890", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
     fornitoreDAO.createFornitore(fornitore);
 
     prodottoDAO = new ProdottoDAO();
@@ -63,7 +66,7 @@ class TagProdottoDAOTest {
   @Test
   void doRetrieveByIdTag() {
     TagProdotto tp1 = tpd.doRetrieveByIdTag(idTag);
-    assertEquals(tp.getIdTag(),tp1.getIdTag());
+    assertEquals(tp.getIdTag(), tp1.getIdTag());
   }
 
   @Test
@@ -73,7 +76,7 @@ class TagProdottoDAOTest {
     tag2.setNome("NomeTest secondo");
     int idTag2 = tagDAO.createTag(tag2);
 
-    TagProdotto tp2 = new TagProdotto(idTag2, idProdotto,prodotto.getPartitaIva());
+    TagProdotto tp2 = new TagProdotto(idTag2, idProdotto, prodotto.getPartitaIva());
     tpd.createTagProdotto(tp2);
 
     TagProdotto tp3 = tpd.doRetrieveByIdTag(idTag2);
@@ -91,12 +94,12 @@ class TagProdottoDAOTest {
     tag3.setNome("NomeTest terzo");
     int idTag3 = tagDAO.createTag(tag3);
 
-    TagProdotto tp3 = new TagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
+    TagProdotto tp3 = new TagProdotto(idTag3, idProdotto, prodotto.getPartitaIva());
     tpd.createTagProdotto(tp3);
 
     TagProdotto tp4 = tpd.doRetrieveByIdTag(idTag3);
 
-    tpd.deleteTagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
+    tpd.deleteTagProdotto(idTag3, idProdotto, prodotto.getPartitaIva());
     assertNull(tpd.doRetrieveByIdTag(idTag3));
   }
 
@@ -107,18 +110,21 @@ class TagProdottoDAOTest {
     tag3.setNome("NomeTest terzo");
     int idTag3 = tagDAO.createTag(tag3);
 
-    TagProdotto tp3 = new TagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
+    TagProdotto tp3 = new TagProdotto(idTag3, idProdotto, prodotto.getPartitaIva());
     tpd.createTagProdotto(tp3);
 
     TagProdotto tp4 = tpd.doRetrieveByIdTag(idTag3);
 
-    tpd.deleteTagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());
-    assertThrows(RuntimeException.class,() ->{tpd.deleteTagProdotto(idTag3, idProdotto,prodotto.getPartitaIva());});
+    tpd.deleteTagProdotto(idTag3, idProdotto, prodotto.getPartitaIva());
+    assertThrows(RuntimeException.class, () -> {
+      tpd.deleteTagProdotto(idTag3, idProdotto, prodotto.getPartitaIva());
+    });
   }
 
   @Test
   void doRetrieveByIdProdottoandPartitaIva() {
-    TagProdotto tag5 = tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
+    TagProdotto tag5 =
+        tpd.doRetrieveByIdProdottoandPartitaIva(tp.getIdProdotto(), prodotto.getPartitaIva());
     assertEquals(tp.getIdProdotto(), tag5.getIdProdotto());
     assertEquals(tp.getPartitaIva(), tag5.getPartitaIva());
   }

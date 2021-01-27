@@ -1,21 +1,26 @@
 package Model.POJO;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FornitoreTest {
 
   @BeforeEach
   void setUp() {
-    fornitore = new Fornitore("01234567890","Mario","Rossi","1234567890","Roma","rossi@gmail.com","Rossi123","Rossi");
+    fornitore =
+        new Fornitore("01234567890", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
   }
 
   @AfterEach
   void tearDown() {
-    fornitore = new Fornitore("01234567890","Mario","Rossi","1234567890","Roma","rossi@gmail.com","Rossi123","Rossi");
+    fornitore =
+        new Fornitore("01234567890", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+            "Rossi123", "Rossi");
   }
 
   @Test
@@ -26,100 +31,100 @@ class FornitoreTest {
 
   @Test
   void getPartitaIva() {
-    assertEquals("01234567890",fornitore.getPartitaIva());
+    assertEquals("01234567890", fornitore.getPartitaIva());
   }
 
   @Test
   void setPartitaIva() {
     fornitore.setPartitaIva("00000000000");
-    assertEquals("00000000000",fornitore.getPartitaIva());
+    assertEquals("00000000000", fornitore.getPartitaIva());
   }
 
   @Test
   void getNome() {
-    assertEquals("Mario",fornitore.getNome());
+    assertEquals("Mario", fornitore.getNome());
   }
 
   @Test
   void setNome() {
     fornitore.setNome("Giuseppe");
-    assertEquals("Giuseppe",fornitore.getNome());
+    assertEquals("Giuseppe", fornitore.getNome());
   }
 
   @Test
   void getCognome() {
-    assertEquals("Rossi",fornitore.getCognome());
+    assertEquals("Rossi", fornitore.getCognome());
   }
 
   @Test
   void setCognome() {
     fornitore.setCognome("Verdi");
-    assertEquals("Verdi",fornitore.getCognome());
+    assertEquals("Verdi", fornitore.getCognome());
   }
 
   @Test
   void getTelefono() {
-    assertEquals("1234567890",fornitore.getTelefono());
+    assertEquals("1234567890", fornitore.getTelefono());
   }
 
   @Test
   void setTelefono() {
     fornitore.setTelefono("3333333333");
-    assertEquals("3333333333",fornitore.getTelefono());
+    assertEquals("3333333333", fornitore.getTelefono());
   }
 
   @Test
   void getLuogoUbicazione() {
-    assertEquals("Roma",fornitore.getLuogoUbicazione());
+    assertEquals("Roma", fornitore.getLuogoUbicazione());
   }
 
   @Test
   void setLuogoUbicazione() {
     fornitore.setLuogoUbicazione("Milano");
-    assertEquals("Milano",fornitore.getLuogoUbicazione());
+    assertEquals("Milano", fornitore.getLuogoUbicazione());
   }
 
   @Test
   void getEmail() {
-    assertEquals("rossi@gmail.com",fornitore.getEmail());
+    assertEquals("rossi@gmail.com", fornitore.getEmail());
   }
 
   @Test
   void setEmail() {
     fornitore.setEmail("mario@gmail.com");
-    assertEquals("mario@gmail.com",fornitore.getEmail());
+    assertEquals("mario@gmail.com", fornitore.getEmail());
   }
 
   @Test
   void getPassword() {
-    assertEquals("Rossi123",fornitore.getPassword());
+    assertEquals("Rossi123", fornitore.getPassword());
   }
 
   @Test
   void setPassword() {
     fornitore.setPassword("Anonimo123");
-    assertEquals("Anonimo123",fornitore.getPassword());
+    assertEquals("Anonimo123", fornitore.getPassword());
   }
 
   @Test
   void getRagioneSociale() {
-    assertEquals("Rossi",fornitore.getRagioneSociale());
+    assertEquals("Rossi", fornitore.getRagioneSociale());
   }
 
   @Test
   void setRagioneSociale() {
     fornitore.setRagioneSociale("Rossi&co.");
-    assertEquals("Rossi&co.",fornitore.getRagioneSociale());
+    assertEquals("Rossi&co.", fornitore.getRagioneSociale());
   }
 
   @Test
-  void setStato(){
+  void setStato() {
     fornitore.setStato(Fornitore.Stato.SOSPESO);
     assertEquals(Fornitore.Stato.SOSPESO, fornitore.getStato());
   }
 
   @Test
-  void getStato(){
+  void getStato() {
     assertEquals(Fornitore.Stato.ATTIVO, fornitore.getStato());
   }
 

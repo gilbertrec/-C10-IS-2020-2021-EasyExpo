@@ -1,6 +1,7 @@
 package Model.POJO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,16 +9,16 @@ import org.junit.jupiter.api.Test;
 
 class TagTest {
 
-private Tag t;
+  private Tag t;
 
   @BeforeEach
   void setUp() {
-  t = new Tag(2,"musica");
+    t = new Tag(2, "musica");
   }
 
   @AfterEach
   void tearDown() {
-    t = new Tag(2,"musica");
+    t = new Tag(2, "musica");
   }
 
   @Test
@@ -25,6 +26,7 @@ private Tag t;
     t = new Tag();
     assertNotNull(t);
   }
+
   @Test
   void getIdTag() {
     assertEquals(2, t.getIdTag());

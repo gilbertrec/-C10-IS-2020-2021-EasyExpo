@@ -3,7 +3,6 @@ package Controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 import Model.POJO.MetodoPagamento;
 import java.sql.Date;
 import javax.servlet.RequestDispatcher;
@@ -159,7 +158,6 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
     Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("1234567890987654");
     Mockito.when(mockedRequest.getParameter("cvv")).thenReturn("321");
-
 
 
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);

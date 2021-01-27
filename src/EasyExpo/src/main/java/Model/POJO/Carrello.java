@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 public class Carrello {
 
   public static class ProdottoQuantita {
-    private Prodotto prodotto;
+    private final Prodotto prodotto;
     private int quantita;
 
     public ProdottoQuantita(Prodotto prodotto, int quantita) {
@@ -39,9 +39,9 @@ public class Carrello {
   }
 
 
-  private ArrayList<Prodotto> listaProdotti = new ArrayList<>();
+  private final ArrayList<Prodotto> listaProdotti = new ArrayList<>();
 
-  private LinkedHashMap<String, ArrayList<ProdottoQuantita>> ProdottiFornitori =
+  private final LinkedHashMap<String, ArrayList<ProdottoQuantita>> ProdottiFornitori =
       new LinkedHashMap<>();
 
   public Collection<ArrayList<ProdottoQuantita>> getProdottiFornitori() {
