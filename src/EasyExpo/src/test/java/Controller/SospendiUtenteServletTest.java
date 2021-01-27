@@ -35,17 +35,6 @@ class SospendiUtenteServletTest extends Mockito {
   }
 
   @Test
-  void TestNoId() throws IOException, ServletException {
-    Mockito.when(mockedRequest.getParameter("flag")).thenReturn("");
-    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
-    Mockito.doReturn(mockedDispatcher).when(mockedServletContext).getRequestDispatcher("/adminHome.jsp");
-
-    sospendiUtenteServlet.doGet(mockedRequest,mockedResponse);
-
-  }
-
-
-  @Test
   void TestFlagFornitore() throws IOException, ServletException {
     Mockito.when(mockedRequest.getParameter("flag")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("id")).thenReturn("03271170361");

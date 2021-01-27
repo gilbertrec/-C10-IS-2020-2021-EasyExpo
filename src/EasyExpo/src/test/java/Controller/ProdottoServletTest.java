@@ -56,20 +56,6 @@ class ProdottoServletTest {
   }
 
   @Test
-  void TestIdNull() {
-    Mockito.when(mockedRequest.getParameter("id")).thenReturn("cs");
-    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129sdchghbdc");
-
-    String message = "Id prodotto non valido.";
-
-    exception = assertThrows(MyServletException.class, () -> {
-      prodottoServlet.doGet(mockedRequest, mockedResponse);
-    });
-
-    assertEquals(message, exception.getMessage());
-  }
-
-  @Test
   void TestProdottoSuccess() throws ServletException, IOException {
     Mockito.when(mockedRequest.getParameter("id")).thenReturn("1");
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
