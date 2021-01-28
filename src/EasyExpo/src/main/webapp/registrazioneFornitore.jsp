@@ -56,7 +56,7 @@
                                             <label> NOME
                                                 <input type="text" name="nome" value="" placeholder="" required
                                                        pattern="[A-Z a-z]{1,30}"
-                                                       title="Stringa con lunghezza minore di 30">
+                                                       title="Stringa (solo caratteri) con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -65,7 +65,7 @@
                                             <label> COGNOME
                                                 <input type="text" name="cognome" value="" placeholder="" required
                                                        pattern="[A-Z a-z]{1,30}"
-                                                       title="Stringa con lunghezza minore di 30">
+                                                       title="Stringa (solo caratteri) con lunghezza minore di 30">
                                             </label>
                                         </li>
 
@@ -90,7 +90,7 @@
                                             <label> EMAIL
                                                 <input type="email" name="email" value="" placeholder="" required
                                                        pattern="[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]{4,50}.([a-z A-Z]{2,5})"
-                                                       title="Deve contenere la @ e il dominio (es. .com)">
+                                                       title="Lunghezza min. 8 max.50, Deve contenere la @ e il dominio (es. .com)">
                                             </label>
                                         </li>
 
@@ -99,7 +99,7 @@
                                             <label> NUMERO DI TELEFONO
                                                 <input type="text" name="telefono" value="" placeholder="" required
                                                        pattern="[0-9]{10}"
-                                                       title="Deve essere di 10 caratteri, tutti numerici">
+                                                       title="Deve essere di 10 caratteri numerici">
                                             </label>
                                         </li>
 
@@ -108,7 +108,7 @@
                                             <label> RAGIONE SOCIALE
                                                 <input type="text" name="ragioneSociale" value="" placeholder=""
                                                        required pattern="[A-Z a-z .&]{1,30}"
-                                                       title="Stringa con lunghezza minore di 30">
+                                                       title="Stringa (solo caratteri, no caratteri speciali) con lunghezza minore di 30 / Ragione sociale già presente nel database">
                                             </label>
                                         </li>
 
@@ -125,7 +125,7 @@
                                             <label> LUOGO DI UBICAZIONE
                                                 <input type="text" name="luogoUbicazione" value="" placeholder=""
                                                        required pattern="[a-z A-Z]{1,30}"
-                                                       title="Stringa con lunghezza minore di 30">
+                                                       title="Stringa (solo caratteri) con lunghezza minore di 30">
                                             </label>
                                         </li>
 
