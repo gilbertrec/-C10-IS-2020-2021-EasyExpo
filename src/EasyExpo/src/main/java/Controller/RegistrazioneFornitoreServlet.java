@@ -67,7 +67,7 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
       throw new MyServletException("Numero di telefono non valido.");
     }
     String ragioneSociale = request.getParameter("ragioneSociale");
-    if (!(ragioneSociale != null && ragioneSociale.matches("[A-Z a-z]{1,30}"))) {
+    if (!(ragioneSociale != null && ragioneSociale.matches("[A-Z a-z &]{1,30}"))) {
       throw new MyServletException("Ragione sociale non valida.");
     }
 

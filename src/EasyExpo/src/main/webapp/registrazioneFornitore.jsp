@@ -107,7 +107,7 @@
                                         <li class="col-md-6">
                                             <label> RAGIONE SOCIALE
                                                 <input type="text" name="ragioneSociale" value="" placeholder=""
-                                                       required pattern="[A-Z a-z]{1,30}"
+                                                       required pattern="[A-Z a-z .&]{1,30}"
                                                        title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
