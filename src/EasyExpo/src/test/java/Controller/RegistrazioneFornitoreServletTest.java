@@ -68,7 +68,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
   @Test
   void TestFornitoreLoggato() {
     Mockito.when(mockedSession.getAttribute("fornitore")).thenReturn("fornitore");
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -91,7 +91,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestPasswordSizeFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -114,7 +114,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestPasswordMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -137,7 +137,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestPasswordNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -159,7 +159,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestPasswordConfermaFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -182,7 +182,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestNomeFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("23");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -205,7 +205,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestNomeNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe.avino12@gmail.com");
@@ -227,7 +227,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestEmailMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -250,7 +250,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestEmailNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -271,8 +271,8 @@ class RegistrazioneFornitoreServletTest extends Mockito {
   }
 
   @Test
-  void TestPartitaIvaMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("po_uchuenicec");
+  void TestpartitaIvaMatchFailed() {
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("po_uchuenicec");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -294,7 +294,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
   }
 
   @Test
-  void TestPartitaIvaNull() {
+  void TestpartitaIvaNull() {
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -318,7 +318,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestCognomeSizeFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -341,7 +341,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestCognomeMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("55");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -364,7 +364,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestCognomeNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe.avino12@gmail.com");
@@ -386,7 +386,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestLuoboUbicazioneSizeFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -409,7 +409,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestLuoboUbicazioneMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -432,7 +432,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestLuoboUbicazioneNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -454,7 +454,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestTelefonoMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("yu&/()=)(/&78");
@@ -477,7 +477,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestTelefonoNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe.avino12@gmail.com");
@@ -499,7 +499,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestRagioneSocialeMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -522,7 +522,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestRagioneSocialeNull() {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
@@ -544,7 +544,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
   @Test
   void TestFornitoreSuccess() throws ServletException, IOException {
-    Mockito.when(mockedRequest.getParameter("partitaIVA")).thenReturn(fornitore1.getPartitaIva());
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn(fornitore1.getNome());
     Mockito.when(mockedRequest.getParameter("cognome")).thenReturn(fornitore1.getCognome());
     Mockito.when(mockedRequest.getParameter("telefono")).thenReturn(fornitore1.getTelefono());
@@ -560,7 +560,7 @@ class RegistrazioneFornitoreServletTest extends Mockito {
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-        .getRequestDispatcher("/login.jsp");
+        .getRequestDispatcher("/areaFornitore.jsp");
 
     registrazioneFornitoreServlet.doGet(mockedRequest, mockedResponse);
     fornitoreDAO.deleteFornitore(fornitore1.getPartitaIva());

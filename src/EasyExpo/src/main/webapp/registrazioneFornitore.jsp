@@ -54,67 +54,83 @@
                                         <!-- NOME -->
                                         <li class="col-md-6">
                                             <label> NOME
-                                                <input type="text" name="nome" value="" placeholder=""  required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
-                                            </label>
-                                        </li>
-                                        <!-- COGNOME -->
-                                        <li class="col-md-6">
-                                            <label> COGNOME
-                                                <input type="text" name="cognome" value="" placeholder=""  required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
+                                                <input type="text" name="nome" value="" placeholder="" required
+                                                       pattern="[A-Z a-z]{1,30}"
+                                                       title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
 
-                                        <!-- EMAIL -->
+                                        <!-- COGNOME -->
                                         <li class="col-md-6">
-                                            <label> EMAIL
-                                                <input type="email" name="email" value="" placeholder="" required pattern="[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]{4,50}.([a-z A-Z]{2,5})" title="Deve contenere la @ e il dominio (es. .com)">
+                                            <label> COGNOME
+                                                <input type="text" name="cognome" value="" placeholder="" required
+                                                       pattern="[A-Z a-z]{1,30}"
+                                                       title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
 
                                         <!-- PASSWORD -->
                                         <li class="col-md-6">
                                             <label> PASSWORD
-                                                <input type="password" name="password" value="" placeholder="" required pattern="[0-9 a-z A-Z.!#$%&'+\\=?^_`{|}~-]{8,512}" title="Deve contenere almeno 8 caratteri, una maiuscola, una minuscola e un carattere speciale (es. .!#$%&'+\\=?^_`{|}~-])">
+                                                <input type="password" name="password" value="" placeholder="" required
+                                                       pattern="[0-9 a-z A-Z.!#$%&'+\\=?^_`{|}~-]{8,512}"
+                                                       title="Deve contenere almeno 8 caratteri, una maiuscola, una minuscola e un carattere speciale (es. .!#$%&'+\\=?^_`{|}~-])">
                                             </label>
                                         </li>
 
-                                        <!-- PASSWORD -->
+                                        <!--VERIFICA PASSWORD -->
                                         <li class="col-md-6">
                                             <label> CONFERMA PASSWORD
                                                 <input type="password" name="passwordConferma" value="" placeholder="">
                                             </label>
                                         </li>
 
+                                        <!-- EMAIL -->
+                                        <li class="col-md-6">
+                                            <label> EMAIL
+                                                <input type="email" name="email" value="" placeholder="" required
+                                                       pattern="[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]{4,50}.([a-z A-Z]{2,5})"
+                                                       title="Deve contenere la @ e il dominio (es. .com)">
+                                            </label>
+                                        </li>
+
                                         <!-- PHONE -->
                                         <li class="col-md-6">
                                             <label> NUMERO DI TELEFONO
-                                                <input type="text" name="telefono" value="" placeholder="" required pattern="[0-9]{10}" title="Deve essere di 10 caratteri, tutti numerici">
+                                                <input type="text" name="telefono" value="" placeholder="" required
+                                                       pattern="[0-9]{10}"
+                                                       title="Deve essere di 10 caratteri, tutti numerici">
+                                            </label>
+                                        </li>
+
+                                        <!-- RAGIONE SOCIALE -->
+                                        <li class="col-md-6">
+                                            <label> RAGIONE SOCIALE
+                                                <input type="text" name="ragioneSociale" value="" placeholder=""
+                                                       required pattern="[A-Z a-z]{1,30}"
+                                                       title="Stringa con lunghezza minore di 30">
+                                            </label>
+                                        </li>
+
+                                        <!-- PARTITA IVA -->
+                                        <li class="col-md-6">
+                                            <label> PARTITA IVA
+                                                <input type="text" name="partitaIva" value="" placeholder="" required
+                                                       pattern="[0-9]{11}" title="Deve essere di 11 caratteri numerici">
                                             </label>
                                         </li>
 
                                         <!-- LUOGO DI UBICAZIONE -->
                                         <li class="col-md-6">
                                             <label> LUOGO DI UBICAZIONE
-                                                <input type="text" name="luogoUbicazione" value="" placeholder="" required pattern="[a-z A-Z]{1,30}" title="Stringa con lunghezza minore di 30">
-                                            </label>
-                                        </li>
-
-                                        <li class="col-md-6">
-                                            <!-- PARTITA IVA -->
-                                            <label> PARTITA IVA
-                                                <input type="text" name="partitaIva" value="" placeholder="" required pattern="[0-9]{11}" title="Deve essere di 11 caratteri numerici">
-                                            </label>
-                                        </li>
-
-                                        <li class="col-md-6">
-                                            <!-- RAGIONE SOCIALE -->
-                                            <label> RAGIONE SOCIALE
-                                                <input type="text" name="ragioneSociale" value="" placeholder="" required pattern="[A-Z a-z]{1,30}" title="Stringa con lunghezza minore di 30">
+                                                <input type="text" name="luogoUbicazione" value="" placeholder=""
+                                                       required pattern="[a-z A-Z]{1,30}"
+                                                       title="Stringa con lunghezza minore di 30">
                                             </label>
                                         </li>
 
                                     </ul>
-                                    <!-- PHONE -->
+                                    <!-- BUTTON -->
                                     <li class="col-md-6">
                                         <button type="submit" class="btn">REGISTRAMI</button>
                                     </li>
