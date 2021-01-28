@@ -118,7 +118,7 @@ class LoginServletTest extends Mockito {
   @Test
   void TestFonitoreNull() throws ServletException, IOException {
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
-    Mockito.when(mockedRequest.getParameter("password")).thenReturn("gae99*");
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("Gaetano99*");
 
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
