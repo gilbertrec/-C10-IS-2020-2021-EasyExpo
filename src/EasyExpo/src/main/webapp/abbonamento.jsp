@@ -73,7 +73,7 @@
                                         <!-- NOME INTESTATARIO -->
                                         <li class="col-md-6">
                                             <label> NOME INTESTATARIO
-                                                <input type="text" name="nomeIntestatario" value="" placeholder="" required pattern="[A-Z a-z]{1,80}" title="Stringa di massimo 80 caratteri">
+                                                <input type="text" name="nomeIntestatario" value="" placeholder="" required pattern="[A-Z a-z]{1,80}" title="Stringa di massimo 50 caratteri">
                                             </label>
                                         </li>
 

@@ -57,7 +57,7 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
       Calendar calendario = Calendar.getInstance();
       calendario.setTime(corrente);
       java.util.Date sc = new java.util.Date(calendario.getTime().getTime());
-      if (utilDate.before(sc)) {
+      if (utilDate.after(sc)) {
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         metodo.setDataScadenza(sqlDate);
       } else {
