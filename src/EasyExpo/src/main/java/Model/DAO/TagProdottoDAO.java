@@ -63,21 +63,20 @@ public class TagProdottoDAO {
       PreparedStatement ps = con
           .prepareStatement(
               "SELECT tp.idTag, tp.partitaIva, tp.idProdotto "
-                  + "FROM TagProdotto tp, Tag t, Prodotto p WHERE tp.idProdotto=? "
+                  + "FROM TagProdotto tp, Tag t, Prodotto p WHERE tp.partitaIva=? "
                   +
-                  "AND tp.partitaIva=? AND tp.idTag = t.idTag AND tp.partitaIva = p.partitaIva AND tp.idProdotto = p.idProdotto");
-      ps.setInt(1, idProdotto);
-      ps.setString(2, partitaIva);
+                  "AND tp.idProdotto=? AND tp.idTag = t.idTag AND tp.partitaIva = p.partitaIva AND tp.idProdotto = p.idProdotto");
+
+      ps.setString(1, partitaIva);
+      ps.setInt(2, idProdotto);
       ResultSet rs = ps.executeQuery();
       ArrayList<TagProdotto> tags = new ArrayList<>();
       while (rs.next()) {
         TagProdotto tp = new TagProdotto();
         tp.setIdTag(rs.getInt(1));
-        tp.setIdProdotto(rs.getInt(2));
-        tp.setPartitaIva(rs.getString(3));
-
+        tp.setPartitaIva(rs.getString(2));
+        tp.setIdProdotto(rs.getInt(3));
         tags.add(tp);
-
       }
       return tags;
     } catch (SQLException e) {

@@ -127,11 +127,7 @@
                 preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
         </div>
 
-        <!-- Social Icons -->
-        <ul class="social_icons">
-            <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-            <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-        </ul>
+        
     </div>
 </section>
 
