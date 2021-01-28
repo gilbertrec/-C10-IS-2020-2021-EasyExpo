@@ -166,6 +166,36 @@ class RichiesteServletTest {
     richiesteServlet.doGet(mockedRequest, mockedResponse);
   }
 
+  @Test
+  void TestRichiestaNull() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+
+    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/listaRichieste.jsp");
+
+    richiesteServlet.doGet(mockedRequest, mockedResponse);
+  }
+
+  @Test
+  void TestRichiestaNotNull() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01234567880");
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("RBLKTA99C57E923W");
+
+    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/listaRichieste.jsp");
+
+    richiesteServlet.doGet(mockedRequest, mockedResponse);
+  }
+
 
   @Test
   void doPost() {

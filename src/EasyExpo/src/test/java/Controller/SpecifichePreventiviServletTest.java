@@ -47,6 +47,19 @@ class SpecifichePreventiviServletTest extends Mockito {
   }
 
   @Test
+  void TestIdRichiestaNull2() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
+    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/specificaRichiesta.jsp");
+
+    specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
+  }
+
+  @Test
   void TestIdPreventivoNull() throws ServletException, IOException {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
@@ -58,6 +71,29 @@ class SpecifichePreventiviServletTest extends Mockito {
     specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
   }
 
+  @Test
+  void TestIdPreventivoNull2() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
+    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/specificaPreventivo.jsp");
+
+    specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
+  }
+
+  @Test
+  void TestNull() throws ServletException, IOException {
+    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/specificaPreventivo.jsp");
+
+    specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
+  }
 
   @Test
   void doPost() {

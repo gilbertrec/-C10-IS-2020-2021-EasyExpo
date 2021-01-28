@@ -81,6 +81,20 @@ class PreventiviServletTest {
 
   }
 
+  @Test
+  void TestNotNull() throws ServletException, IOException {
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
+
+
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/listaPreventivi.jsp");
+
+    preventiviServlet.doGet(mockedRequest, mockedResponse);
+
+  }
+
 
   @Test
   void doPost() {
