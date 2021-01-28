@@ -81,7 +81,7 @@
                                         <!-- PASSWORD -->
                                         <li class="col-md-6">
                                             <label> CONFERMA PASSWORD
-                                                <input type="password" name="passwordConferma" value="" placeholder="" required pattern="" title="Le password non combaciano">
+                                                <input type="password" name="passwordConferma" value="" placeholder="" required>
                                             </label>
                                         </li>
 

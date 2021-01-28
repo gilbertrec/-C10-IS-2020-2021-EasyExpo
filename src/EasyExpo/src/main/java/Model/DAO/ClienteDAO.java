@@ -109,6 +109,28 @@ public class ClienteDAO {
   }
 
   /**
+   * Metodo che ritorna un booleano se l'email del cliente è già presente.
+   *
+   * @param email    Indirizzo email identificativo, String
+   * @return boolean - Oggetto di tipo booleano
+   */
+
+  public boolean doRetrieveByEmail(String email) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+              "SELECT * FROM Cliente WHERE email=?");
+      ps.setString(1, email);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        return true;
+      }
+      return false;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
    * Metodo che elimina dal DB l'istanza Cliente correlata al codiceFiscale dato in input.
    *
    * @param codiceFiscale codice alfanumerico identificativo cliente, String

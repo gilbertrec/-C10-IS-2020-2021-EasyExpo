@@ -122,7 +122,7 @@
                     <div class="cart-ship-info register">
                         <div class="row">
 
-                            <!-- ESTIMATE SHIPPING & TAX -->
+                            <!-- SHIPPING-->
                             <div class="col-sm-12">
                                 <h6>COMPILA</h6>
                                 <form action="InoltroPreventivoServlet" method="post">
@@ -137,14 +137,14 @@
                                             </label>
                                         </li>
 
-                                        <!-- DESCRIZIONE -->
+                                        <!-- NOTA -->
                                         <li class="col-md-6">
                                             <label> NOTA PER IL CLIENTE
                                                 <textarea name="nota" rows="5" cols="80" pattern="[A-Z a-z 0-9 .,/()%]{0,200}" title="La nota non rispetta il formato"></textarea>
                                             </label>
                                         </li>
                                     </ul>
-                                    <!-- PHONE -->
+                                    <!-- Inoltra -->
                                     <li class="col-md-6">
                                         <button type="submit" class="btn"> INOLTRA </button>
                                     </li>

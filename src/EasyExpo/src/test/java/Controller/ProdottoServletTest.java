@@ -82,6 +82,18 @@ class ProdottoServletTest {
   }
 
   @Test
+  void TestProdottoSuccessTag() throws ServletException, IOException {
+    Mockito.when(mockedRequest.getParameter("id")).thenReturn("1");
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("03271170361");
+
+    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
+    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
+            .getRequestDispatcher("/specificheProdotto.jsp");
+
+    prodottoServlet.doGet(mockedRequest, mockedResponse);
+  }
+
+  @Test
   void doPost() {
   }
 

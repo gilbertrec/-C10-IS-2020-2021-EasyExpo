@@ -117,6 +117,28 @@ class RegistrazioneClienteServletTest extends Mockito {
   }
 
   @Test
+  void TestEmailEsistente() {
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("Peppe9999_");
+    Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe9999_");
+    Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("gaetano99@gmail.com");
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("BRZRTN02H50C294F");
+    Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
+    Mockito.when(mockedRequest.getParameter("luogoUbicazione")).thenReturn("Terzigno");
+    Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3319636797");
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Email non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
   void TestEmailNull() {
     Mockito.when(mockedRequest.getParameter("password")).thenReturn("Peppe9999_");
     Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe9999_");
@@ -161,7 +183,52 @@ class RegistrazioneClienteServletTest extends Mockito {
 
   @Test
   void TestPasswordMatchFailed() {
-    Mockito.when(mockedRequest.getParameter("password")).thenReturn("peppihcruvveubiuch");
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("peasdap#*");
+    Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("peasdap#*");
+    Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe0113@gmail.com");
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("BRZRTN02H50C294F");
+    Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
+    Mockito.when(mockedRequest.getParameter("luogoUbicazione")).thenReturn("Terzigno");
+    Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3319636797");
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Password non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+
+  @Test
+  void TestPasswordMatchFailedMinuscola() {
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("PJHDSBJKA");
+    Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe9999*");
+    Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe0113@gmail.com");
+    Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("BRZRTN02H50C294F");
+    Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
+    Mockito.when(mockedRequest.getParameter("luogoUbicazione")).thenReturn("Terzigno");
+    Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3319636797");
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Password non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestPasswordMatchFailedMaiuscola() {
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("pdnksn");
     Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe9999*");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
     Mockito.when(mockedRequest.getParameter("email")).thenReturn("peppe0113@gmail.com");

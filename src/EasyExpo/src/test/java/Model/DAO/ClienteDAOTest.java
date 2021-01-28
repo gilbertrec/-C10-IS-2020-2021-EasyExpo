@@ -94,6 +94,12 @@ class ClienteDAOTest {
     assertNull(cl.doRetrieveByCF("RBLKTA99C55E924QADFV"));
   }
 
+  @Test
+  void doRetrieveByEmail() {
+    boolean flag = cl.doRetrieveByEmail("gaetano99@gmail.com");
+    assertEquals(true, flag);
+  }
+
 
   @Test
   void doRetrieveByEmailandPassword() {
