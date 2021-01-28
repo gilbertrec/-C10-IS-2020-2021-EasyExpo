@@ -140,7 +140,7 @@
                                         <!-- DESCRIZIONE -->
                                         <li class="col-md-6">
                                             <label> NOTA PER IL CLIENTE
-                                                <textarea name="nota" rows="5" cols="80"></textarea>
+                                                <textarea name="nota" rows="5" cols="80" pattern="[A-Z a-z 0-9 .,/()%]{0,200}" title="La nota non rispetta il formato"></textarea>
                                             </label>
                                         </li>
                                     </ul>

@@ -110,7 +110,7 @@
                                         <li class="col-md-6">
                                             <label> INSERISCI TAG
                                                 <input type="text" name="tag" value=""
-                                                       placeholder="Tag1, Tag2, Tag3, Tag4, Tag5,">
+                                                       placeholder="Tag1, Tag2, Tag3, Tag4, Tag5, ..." pattern="([A-Z a-z]{0,30},)*" title="Inserire tag separati da una virgola e virgola finale.">
                                             </label>
                                         </li>
 

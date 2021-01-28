@@ -29,7 +29,7 @@ public class InoltroPreventivoServlet extends HttpServlet {
     }
 
     String nota = request.getParameter("nota");
-    if (!nota.matches("[A-Z a-z .,/()%”]{1,1024}")) {
+    if (!nota.matches("[A-Z a-z 0-9 .,/()%”]{1,200}")) {
       throw new MyServletException("Nota non valida.");
     }
 
