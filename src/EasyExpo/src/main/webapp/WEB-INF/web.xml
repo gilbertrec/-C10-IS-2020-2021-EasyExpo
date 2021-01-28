@@ -5,6 +5,16 @@
          version="4.0">
 
     <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error.jsp</location>
+    </error-page>
+
+    <error-page>
         <exception-type>Controller.MyServletException</exception-type>
         <location>/WEB-INF/myexception.jsp</location>
     </error-page>

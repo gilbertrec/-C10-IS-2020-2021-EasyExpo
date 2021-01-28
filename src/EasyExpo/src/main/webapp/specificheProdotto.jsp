@@ -74,7 +74,7 @@
                                             <li class="col-md-6">
                                                 <label> QUANTITÀ
                                                     <input type="number" name="addNum" value="1" placeholder="" min="1"
-                                                           max="${prodotti.quantità}">
+                                                           max="${prodotti.quantità}" required>
                                                 </label>
                                             </li>
 
