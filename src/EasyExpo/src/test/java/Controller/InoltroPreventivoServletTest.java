@@ -76,7 +76,7 @@ class InoltroPreventivoServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("01391350129");
     Mockito.when(mockedRequest.getParameter("codiceFiscale")).thenReturn("IULGAE99C23R123R");
     Mockito.when(mockedRequest.getParameter("prezzo")).thenReturn("15.00");
-    Mockito.when(mockedRequest.getParameter("nota")).thenReturn("");
+    Mockito.when(mockedRequest.getParameter("nota")).thenReturn("99*");
 
     String message = "Nota non valida.";
 
