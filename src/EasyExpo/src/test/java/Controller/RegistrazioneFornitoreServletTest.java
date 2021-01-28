@@ -271,6 +271,29 @@ class RegistrazioneFornitoreServletTest extends Mockito {
   }
 
   @Test
+  void TestEmailTrue() {
+    Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("12345678909");
+    Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");
+    Mockito.when(mockedRequest.getParameter("cognome")).thenReturn("Avino");
+    Mockito.when(mockedRequest.getParameter("telefono")).thenReturn("3249878111");
+    Mockito.when(mockedRequest.getParameter("email")).thenReturn("filly@gmail.com");
+    Mockito.when(mockedRequest.getParameter("password")).thenReturn("Peppe888_");
+    Mockito.when(mockedRequest.getParameter("passwordConferma")).thenReturn("Peppe888_");
+    Mockito.when(mockedRequest.getParameter("luogoUbicazione")).thenReturn("Roma");
+    Mockito.when(mockedRequest.getParameter("ragioneSociale")).thenReturn("privato");
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Email non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      registrazioneFornitoreServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
   void TestpartitaIvaMatchFailed() {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn("po_uchuenicec");
     Mockito.when(mockedRequest.getParameter("nome")).thenReturn("Giuseppe");

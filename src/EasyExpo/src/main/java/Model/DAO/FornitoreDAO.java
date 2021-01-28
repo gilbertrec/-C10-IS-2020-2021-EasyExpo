@@ -188,6 +188,28 @@ public class FornitoreDAO {
   }
 
   /**
+   * Metodo che ritorna un booleano se l'email del fornitore è già presente.
+   *
+   * @param email    Indirizzo email identificativo, String
+   * @return boolean - Oggetto di tipo booleano
+   */
+
+  public boolean doRetrieveByEmail(String email) {
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+          "SELECT * FROM Fornitore WHERE email=?");
+      ps.setString(1, email);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        return true;
+      }
+      return false;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
    * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
    *
    * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}

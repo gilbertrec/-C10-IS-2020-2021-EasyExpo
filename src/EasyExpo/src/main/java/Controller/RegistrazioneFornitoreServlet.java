@@ -42,9 +42,11 @@ public class RegistrazioneFornitoreServlet extends HttpServlet {
     }
 
     String email = request.getParameter("email");
+    boolean esiste = false;
+    esiste = fornitoreDAO.doRetrieveByEmail(email);
     if (!(email != null
         && email.matches("[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]"
-        + "{4,50}.([a-z A-Z]{2,5})"))) {
+        + "{4,50}.([a-z A-Z]{2,5})") && esiste == false)) {
       throw new MyServletException("Email non valida.");
     }
 

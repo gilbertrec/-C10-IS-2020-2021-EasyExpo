@@ -84,6 +84,12 @@ class FornitoreDAOTest {
   }
 
   @Test
+  void doRetrieveByEmail() {
+    boolean flag = fr.doRetrieveByEmail("filly@gmail.com");
+    assertEquals(true, flag);
+  }
+
+  @Test
   void doRetrieveByNomeECognome() {
     List<Fornitore> f2 = fr.doRetrieveByNomeECognome("Gaetano");
     for (Fornitore f : f2) {
