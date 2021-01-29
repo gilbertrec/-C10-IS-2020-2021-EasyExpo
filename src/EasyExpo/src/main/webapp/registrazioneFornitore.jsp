@@ -108,7 +108,7 @@
                                             <label> RAGIONE SOCIALE
                                                 <input type="text" name="ragioneSociale" value="" placeholder=""
                                                        required pattern="[A-Z a-z .&]{1,30}"
-                                                       title="Stringa (solo caratteri, no caratteri speciali) con lunghezza minore di 30 / Ragione sociale già presente nel database">
+                                                       title="Stringa (solo caratteri, no caratteri speciali) con lunghezza minore di 30">
                                             </label>
                                         </li>
 
