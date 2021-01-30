@@ -1,10 +1,8 @@
 package Controller;
 
 import Model.DAO.AbbonamentoDAO;
-import Model.DAO.FornitoreDAO;
 import Model.DAO.MetodiDiPagamentoDAO;
 import Model.POJO.Abbonamento;
-import Model.POJO.Fornitore;
 import Model.POJO.MetodoPagamento;
 import java.io.IOException;
 import java.text.ParseException;
@@ -25,8 +23,6 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     MetodiDiPagamentoDAO metodoDAO = new MetodiDiPagamentoDAO();
 
     String partitaIva = request.getParameter("partitaIva");
-    FornitoreDAO fornitoreDAO = new FornitoreDAO();
-    Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);
 
     String nomeIntestatario = request.getParameter("nomeIntestatario");
     if (!(nomeIntestatario != null && nomeIntestatario.matches("[A-Z a-z]{1,50}"))) {
@@ -87,10 +83,6 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
 
     metodoDAO.createMetodoPagamento(metodo);
     abbonamentoDAO.createAbbonamento(abbonato);
-
-    fornitore.setStato(Fornitore.Stato.ATTIVO);
-
-    request.getSession().setAttribute("fornitore", fornitore);
 
     RequestDispatcher requestDispatcher =
         request.getServletContext().getRequestDispatcher("/areaFornitore.jsp");
