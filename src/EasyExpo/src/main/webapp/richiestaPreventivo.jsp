@@ -79,7 +79,7 @@
                                         <li class="col-md-6">
                                             <label> DESCRIZIONE EVENTO
                                                 <textarea name="descrizione" rows="5"
-                                                          cols="80" required></textarea>
+                                                          cols="80" required pattern="[A-Z a-z .,/()%”]{1,1024}" title="La descrizione non rispetta il formato. Lunghezza massima 1024 caratteri"></textarea>
                                             </label>
                                         </li>
 

@@ -48,6 +48,9 @@ public class InoltroRichiestaServlet extends HttpServlet {
     String luogo = req.getParameter("luogo");
     String nota = req.getParameter("nota");
     String descrizione = req.getParameter("descrizione");
+    if (!descrizione.matches("[A-Z a-z .,/()%”]{1,1024}")) {
+      throw new MyServletException("Descrizione non valida.");
+    }
     //data corrente
 
     java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());

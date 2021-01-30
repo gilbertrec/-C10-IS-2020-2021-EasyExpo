@@ -162,10 +162,6 @@ class InoltroRichiestaServletTest extends Mockito {
         .thenReturn(String.valueOf(new Date(2025, 01, 29)));
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
         .thenReturn(String.valueOf(new Date(2025, 11, 12)));
-    /*Mockito.when(mockedRequest.getParameter("dataInizio1"))
-        .thenReturn(String.valueOf(new Date(2025, 01, 27)));
-    Mockito.when(mockedRequest.getParameter("dataFine1"))
-        .thenReturn(String.valueOf(new Date(2025, 01, 30)));*/
     Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
     Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
@@ -177,6 +173,31 @@ class InoltroRichiestaServletTest extends Mockito {
 
     exception = assertThrows(MyServletException.class, () -> {
       inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestDescrizioneFailed() {
+    Mockito.when(mockedRequest.getParameter("titolo")).thenReturn("concerto");
+    Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
+    Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("**");
+    Mockito.when(mockedRequest.getParameter("dataInizio0"))
+            .thenReturn(String.valueOf(new Date(2012, 01, 20)));
+    Mockito.when(mockedRequest.getParameter("dataFine0"))
+            .thenReturn(String.valueOf(new Date(2013, 01, 18)));
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+    Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
+    Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);
+    Mockito.when(mockedSession.getAttribute("carrello")).thenReturn(carrello);
+    Mockito.when(mockedSession.getAttribute("cliente")).thenReturn(cliente);
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Descrizione non valida.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      inoltroRichiestaServlet.doGet(mockedRequest, mockedResponse);
     });
 
     assertEquals(message, exception.getMessage());
