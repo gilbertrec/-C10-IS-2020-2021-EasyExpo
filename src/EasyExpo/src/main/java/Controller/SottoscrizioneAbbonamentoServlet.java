@@ -28,8 +28,11 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     if (!(nomeIntestatario != null && nomeIntestatario.matches("[A-Z a-z]{1,50}"))) {
       throw new MyServletException("Nome intestatario non valido.");
     }
+
     String numeroCarta = request.getParameter("numeroCarta");
-    if (!(numeroCarta != null && numeroCarta.matches("[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}"))) {
+    boolean esiste = false;
+    esiste = metodoDAO.doRetrieveByNumCartaBoolean(numeroCarta);
+    if (!(numeroCarta != null && numeroCarta.matches("[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}") && esiste==false)) {
       throw new MyServletException("Numero carta non valido.");
     }
 

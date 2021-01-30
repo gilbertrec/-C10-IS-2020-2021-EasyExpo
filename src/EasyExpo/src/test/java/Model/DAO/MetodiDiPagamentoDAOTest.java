@@ -55,6 +55,12 @@ class MetodiDiPagamentoDAOTest {
   }
 
   @Test
+  void doRetrieveByNumCartaBoolean() {
+    boolean flag = metodiDiPagamentoDAO.doRetrieveByNumCartaBoolean("1452896574587589");
+    assertEquals(true, flag);
+  }
+
+  @Test
   void doRetrieveByNumCartaNull() {
     //MetodoPagamento mp = metodiDiPagamentoDAO.doRetrieveByNumCarta("1234567891023421");
     assertEquals(null, metodiDiPagamentoDAO.doRetrieveByNumCarta("1234567891023421"));

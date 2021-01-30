@@ -39,7 +39,7 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
     metodo.setCvv(278);
     metodo.setDataScadenza(new Date(2020, 01, 01));
     metodo.setPartitaIva("01391350129");
-    metodo.setNumeroCarta("4522656596232265");
+    metodo.setNumeroCarta("1234432112344321");
   }
 
   @Test
@@ -83,6 +83,25 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
   void TestNumeroCartaMatchFailed() {
     Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
     Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("");
+    Mockito.when(mockedRequest.getParameter("cvv")).thenReturn("321");
+    Mockito.when(mockedRequest.getParameter("dataScadenza")).thenReturn("20210113");
+
+
+    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
+
+    String message = "Numero carta non valido.";
+
+    exception = assertThrows(MyServletException.class, () -> {
+      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);
+    });
+
+    assertEquals(message, exception.getMessage());
+  }
+
+  @Test
+  void TestNumeroCartaEsistente() {
+    Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
+    Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn("1452896574587589");
     Mockito.when(mockedRequest.getParameter("cvv")).thenReturn("321");
     Mockito.when(mockedRequest.getParameter("dataScadenza")).thenReturn("20210113");
 
@@ -182,25 +201,6 @@ class SottoscrizioneAbbonamentoServletTest extends Mockito {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
 
     String message = "Data scadenza non valida.";
-
-    exception = assertThrows(MyServletException.class, () -> {
-      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);
-    });
-
-    assertEquals(message, exception.getMessage());
-  }
-
-  @Test
-  void TestCartaScaduta() {
-    Mockito.when(mockedRequest.getParameter("nomeIntestatario")).thenReturn("Gaetano");
-    Mockito.when(mockedRequest.getParameter("numeroCarta")).thenReturn(metodo.getNumeroCarta());
-    Mockito.when(mockedRequest.getParameter("cvv")).thenReturn(String.valueOf(metodo.getCvv()));
-    Mockito.when(mockedRequest.getParameter("dataScadenza"))
-        .thenReturn(String.valueOf(metodo.getDataScadenza()));
-
-    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
-
-    String message = "Carta scaduta.";
 
     exception = assertThrows(MyServletException.class, () -> {
       sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);

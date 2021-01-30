@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +95,28 @@ public class MetodiDiPagamentoDAO {
       if (ps.executeUpdate() != 1) {
         throw new RuntimeException("INSERT error.");
       }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
+   * Metodo che restituisce un booleano se la carta è già presente.
+   *
+   * @param numCarta Oggetto di tipo String
+   */
+
+  public boolean doRetrieveByNumCartaBoolean(String numCarta) {
+    boolean flag = false;
+    try (Connection con = DBConnection.getConnection()) {
+      PreparedStatement ps = con.prepareStatement(
+          "SELECT * FROM MetodoPagamento WHERE numeroCarta=?");
+      ps.setString(1, numCarta);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        return true;
+      }
+      return false;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
