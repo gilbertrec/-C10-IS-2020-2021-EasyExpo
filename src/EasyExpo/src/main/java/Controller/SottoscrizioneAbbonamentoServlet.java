@@ -15,8 +15,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> SottoscrizioneAbbonamentoServlet e' una Servlet che permette al
+ * Forntiore di sottoscrivere un abbonamento</p>.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/SottoscrizioneAbbonamentoServlet")
 public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
@@ -93,6 +107,12 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     requestDispatcher.forward(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doPost(request, response);

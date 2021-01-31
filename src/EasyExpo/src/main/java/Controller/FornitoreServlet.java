@@ -12,15 +12,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> FornitoreServlet e' una Servlet che permette al
+ * cliente di visionare le specifiche di un fornitore</p>.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/FornitoreServlet")
 public class FornitoreServlet extends HttpServlet {
   private final FornitoreDAO fornitoreDAO = new FornitoreDAO();
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, NumberFormatException {
 

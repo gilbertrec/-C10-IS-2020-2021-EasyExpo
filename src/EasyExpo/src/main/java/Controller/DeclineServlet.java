@@ -10,8 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> DeclineServlet e' una Servlet che permette di
+ * declinare la richiesta di preventivo di un cliente </p>.
+ *
+ * @author GAETANO IULIANO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/DeclineServlet")
 public class DeclineServlet extends HttpServlet {
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -28,6 +42,12 @@ public class DeclineServlet extends HttpServlet {
     requestDispatcher.forward(request, response);
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {

@@ -15,10 +15,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> LoginServlet e' una Servlet che permette al Cliente e
+ * al Fornitore di accedere al sito</p>.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
   private final ProdottoDAO prodottoDAO = new ProdottoDAO();
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     ClienteDAO clienteDAO = new ClienteDAO();
@@ -60,6 +74,12 @@ public class LoginServlet extends HttpServlet {
 
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doPost(request, response);

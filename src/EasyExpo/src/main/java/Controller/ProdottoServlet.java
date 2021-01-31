@@ -16,16 +16,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> ProdottoServlet e' una Servlet che permette di visionare
+ * la specifica di un Prodotto</p>.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/ProdottoServlet")
 public class ProdottoServlet extends HttpServlet {
   private final ProdottoDAO prodottoDAO = new ProdottoDAO();
   private final FornitoreDAO fornitoreDAO = new FornitoreDAO();
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException, NumberFormatException {
 

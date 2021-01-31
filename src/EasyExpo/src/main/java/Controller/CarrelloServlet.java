@@ -15,7 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * <p> CarrelloServlet e' una Servlet che permette di
+ * aggiungere al carrello i prodotti di cui si deridera
+ * richiedere un preventivo </p>.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/Carrello")
 public class CarrelloServlet extends HttpServlet {
   private final ProdottoDAO prodottoDao = new ProdottoDAO();

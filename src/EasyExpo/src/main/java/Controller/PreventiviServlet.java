@@ -16,13 +16,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> PreventiviServlet e' una Servlet che permette di visionare
+ * tutti i preventivi di un Cliente o di un Fornitore</p>.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/PreventiviServlet")
 public class PreventiviServlet extends HttpServlet {
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String partitaIva = request.getParameter("partitaIva");

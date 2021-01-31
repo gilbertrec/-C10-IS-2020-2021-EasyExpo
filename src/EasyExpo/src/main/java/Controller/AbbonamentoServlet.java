@@ -17,8 +17,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> AbbonamentoServlet e' una Servlet che permette di
+ * svolgere l'abbonamento al sito da parte dei fornitori </p>.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
 @WebServlet("/AbbonamentoServlet")
 public class AbbonamentoServlet extends HttpServlet {
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
@@ -58,6 +73,13 @@ public class AbbonamentoServlet extends HttpServlet {
     }
 
   }
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {

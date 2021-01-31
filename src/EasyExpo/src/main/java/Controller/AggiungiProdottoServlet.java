@@ -21,14 +21,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+/**
+ * <p> AggiungiProdottoServlet e' una Servlet che permette di
+ * svolgere l'aggiunta di un prodotto al catalogo
+ * personale  del fornitori </p>.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
 @WebServlet("/AggiungiProdottoServlet")
 @MultipartConfig
 public class AggiungiProdottoServlet extends HttpServlet {
+
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 

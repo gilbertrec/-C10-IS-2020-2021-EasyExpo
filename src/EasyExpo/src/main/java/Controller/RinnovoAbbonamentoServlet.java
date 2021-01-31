@@ -13,8 +13,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> RinnovoAbbonamentoServlet e' una Servlet che permette di rinnovare
+ * l'Abbonamento a un Fornitore che era già stato abbonato ma il suo utlimo abboanmento
+ * è scaduto</p>.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/RinnovoAbbonamentoServlet")
 public class RinnovoAbbonamentoServlet extends HttpServlet {
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
@@ -41,6 +56,12 @@ public class RinnovoAbbonamentoServlet extends HttpServlet {
     requestDispatcher.forward(request, response);
   }
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doPost(request, response);

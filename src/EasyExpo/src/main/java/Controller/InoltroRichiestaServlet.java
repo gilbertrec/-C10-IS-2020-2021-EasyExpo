@@ -21,16 +21,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * <p> InoltroRichiestaServlet e' una Servlet che permette al cliente di
+ * inoltrare la richiesta al fornitore per il noleggi dei prodotti</p>.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/InoltroRichiesta")
 public class InoltroRichiestaServlet extends HttpServlet {
   private final FornitoreDAO fornitoreDao = new FornitoreDAO();
 
-
+  /**
+   * doGet() method.
+   *
+   * @param req  is the servlet request.
+   * @param resp is the servlet response.
+   */
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     doPost(req, resp);
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param req  is the servlet request.
+   * @param resp is the servlet response.
+   */
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     HttpSession session = req.getSession();

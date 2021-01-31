@@ -13,8 +13,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> InoltroPreventivoServlet e' una Servlet che permette al fornitore di
+ * inoltrare il preventivo al cliente</p>.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/InoltroPreventivoServlet")
 public class InoltroPreventivoServlet extends HttpServlet {
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -57,6 +72,12 @@ public class InoltroPreventivoServlet extends HttpServlet {
     requestDispatcher.forward(request, response);
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
