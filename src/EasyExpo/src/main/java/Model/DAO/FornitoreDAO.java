@@ -170,7 +170,7 @@ public class FornitoreDAO {
   /**
    * Metodo che aggiorna dal DB l'istanza Fornitore correlata al Fornitore dato in input.
    *
-   * @param fornitore, Fornitore
+   * @param fornitore - Oggetto di tipo {@link Fornitore}
    */
 
   public void updateBooleanFornitore(Fornitore fornitore) {
@@ -190,7 +190,7 @@ public class FornitoreDAO {
   /**
    * Metodo che ritorna un booleano se l'email del fornitore è già presente.
    *
-   * @param email    Indirizzo email identificativo, String
+   * @param email Indirizzo email identificativo, String
    * @return boolean - Oggetto di tipo booleano
    */
 
@@ -200,17 +200,14 @@ public class FornitoreDAO {
           "SELECT * FROM Fornitore WHERE email=?");
       ps.setString(1, email);
       ResultSet rs = ps.executeQuery();
-      if (rs.next()) {
-        return true;
-      }
-      return false;
+      return rs.next();
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB
+   * Metodo che ritorna le istanze di tipo Fornitore contenute nel DB.
    *
    * @return List &lt;Fornitore&gt; - {@link List} di oggetti di tipo {@link Fornitore}
    */
@@ -242,7 +239,8 @@ public class FornitoreDAO {
   }
 
   /**
-   * Metodo che aggiorna dal DB l'istanza Fornitore correlata alla partitaIva data in input con un valore enum.
+   * Metodo che aggiorna dal DB l'istanza Fornitore correlata alla
+   * partitaIva data in input con un valore enum.
    *
    * @param val        valore numerico enum, int
    * @param partitaIva codice alfanumerico identificativo fornitore, String

@@ -18,32 +18,33 @@ class PreventivoDAOTest {
   RichiestaPreventivoDAO rpDAO;
   RichiestaPreventivo rp;
   FornitoreDAO fDAO;
-  Fornitore f;
+  Fornitore fornitore;
   ClienteDAO cDAO;
-  Cliente c;
+  Cliente cliente;
   int idPreventivo;
   int idPreventivo2;
 
   @BeforeEach
   void setUp() {
     fDAO = new FornitoreDAO();
-    f = new Fornitore("65655655555", "Mario", "Rossi", "1234567890", "Roma", "rossi@gmail.com",
+    fornitore = new Fornitore("65655655555", "Mario", "Rossi",
+        "1234567890", "Roma", "rossi@gmail.com",
         "Rossi123", "Rossi");
-    fDAO.createFornitore(f);
+    fDAO.createFornitore(fornitore);
 
     cDAO = new ClienteDAO();
-    c = new Cliente();
-    c.setCodiceFiscale("HGJSLKS34ERT4RGF");
-    c.setNome("Lucrezia");
-    c.setCognome("Robustelli");
-    c.setTelefono("3387485126");
-    c.setEmail("l.robustelli@gmail.com");
-    c.setPassword("password");
-    c.setLuogoUbicazione("Napoli");
-    cDAO.createCliente(c);
+    cliente = new Cliente();
+    cliente.setCodiceFiscale("HGJSLKS34ERT4RGF");
+    cliente.setNome("Lucrezia");
+    cliente.setCognome("Robustelli");
+    cliente.setTelefono("3387485126");
+    cliente.setEmail("l.robustelli@gmail.com");
+    cliente.setPassword("password");
+    cliente.setLuogoUbicazione("Napoli");
+    cDAO.createCliente(cliente);
 
     rpDAO = new RichiestaPreventivoDAO();
-    rp = new RichiestaPreventivo(1, c.getCodiceFiscale(), f.getPartitaIva(),
+    rp = new RichiestaPreventivo(1, cliente.getCodiceFiscale(), fornitore.getPartitaIva(),
         "Prova", "Milano", "Test di prova per Richiesta Preventivo",
         "nota di prova", new Date(2021, 2, 1), RichiestaPreventivo.Stato.IN_ATTESA);
     rpDAO.createRichiestaPreventivo(rp);
@@ -53,8 +54,8 @@ class PreventivoDAOTest {
     preventivo = new Preventivo();
     preventivo.setIdPreventivo(1);
     preventivo.setIdRichiesta(rp.getIdRichiesta());
-    preventivo.setPartitaIva(f.getPartitaIva());
-    preventivo.setCodiceFiscale(c.getCodiceFiscale());
+    preventivo.setPartitaIva(fornitore.getPartitaIva());
+    preventivo.setCodiceFiscale(cliente.getCodiceFiscale());
     preventivo.setDataPreventivo(new Date(2021, 3, 1));
     preventivo.setPrezzoTotale(300);
     preventivo.setNota("nota di prova di preventivo");
@@ -67,8 +68,8 @@ class PreventivoDAOTest {
 
   @AfterEach
   void tearDown() {
-    fDAO.deleteFornitore(f.getPartitaIva());
-    cDAO.deleteCliente(c.getCodiceFiscale());
+    fDAO.deleteFornitore(fornitore.getPartitaIva());
+    cDAO.deleteCliente(cliente.getCodiceFiscale());
     preventivoDAO.deletePreventivo(idPreventivo);
   }
 
@@ -90,8 +91,8 @@ class PreventivoDAOTest {
   void createPreventivo() {
     Preventivo p = new Preventivo();
     p.setIdPreventivo(5);
-    p.setCodiceFiscale(c.getCodiceFiscale());
-    p.setPartitaIva(f.getPartitaIva());
+    p.setCodiceFiscale(cliente.getCodiceFiscale());
+    p.setPartitaIva(fornitore.getPartitaIva());
     p.setDataPreventivo(new Date(2020, 5, 2));
     p.setIdRichiesta(rp.getIdRichiesta());
     preventivoDAO.createPreventivo(p);
@@ -113,44 +114,4 @@ class PreventivoDAOTest {
       assertEquals("HGJSLKS34ERT4RGF", p.getCodiceFiscale());
     }
   }
-
-
-  /*@Test
-  void deletePreventivo() {
-    Preventivo preventivo2 = new Preventivo();
-    //preventivo2.setIdPreventivo(4);
-    preventivo2.setIdRichiesta(rp.getIdRichiesta());
-    preventivo2.setPartitaIva(f.getPartitaIva());
-    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
-    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
-    preventivo2.setPrezzoTotale(400);
-    preventivo2.setNota("nota di prova di preventivo2");
-
-    idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
-    System.out.println(idPreventivo2);
-
-    preventivoDAO.deletePreventivo(preventivoDAO.createPreventivo(preventivo2));
-
-    assertNull(preventivoDAO.doRetriveByIdPreventivo(idPreventivo2));
-  }*/
-
-  /*@Test
-  void deletePreventivoException() {
-    Preventivo preventivo2 = new Preventivo();
-    //preventivo2.setIdPreventivo(4);
-    preventivo2.setIdRichiesta(rp.getIdRichiesta());
-    preventivo2.setPartitaIva(f.getPartitaIva());
-    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
-    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
-    preventivo2.setPrezzoTotale(400);
-    preventivo2.setNota("nota di prova di preventivo2");
-
-    int idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
-    System.out.println(idPreventivo2);
-    fDAO.deleteFornitore(f.getPartitaIva());
-    cDAO.deleteCliente(c.getCodiceFiscale());
-    preventivoDAO.deletePreventivo(idPreventivo2);
-
-    assertThrows(RuntimeException.class, ()-> {preventivoDAO.doRetriveByIdPreventivo(idPreventivo2);});
-  }*/
 }

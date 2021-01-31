@@ -175,7 +175,7 @@ class RichiesteServletTest {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/listaRichieste.jsp");
+        .getRequestDispatcher("/listaRichieste.jsp");
 
     richiesteServlet.doGet(mockedRequest, mockedResponse);
   }
@@ -191,7 +191,7 @@ class RichiesteServletTest {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/listaRichieste.jsp");
+        .getRequestDispatcher("/listaRichieste.jsp");
 
     richiesteServlet.doGet(mockedRequest, mockedResponse);
   }

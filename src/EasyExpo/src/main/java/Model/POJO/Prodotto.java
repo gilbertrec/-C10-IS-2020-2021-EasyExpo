@@ -158,7 +158,7 @@ public class Prodotto {
   /**
    * Metodo che setta la quantità'.
    *
-   * @param quantità Quantità' del prodotto, Intero
+   * @param quantità Quantità del prodotto, Intero
    */
 
   public void setQuantità(int quantità) {
@@ -217,7 +217,10 @@ public class Prodotto {
   private String titolo;
   private String descrizione;
 
-
+  /**
+   * Classe che definisce l'enum Tipo.
+   *
+   */
   public enum Tipo {
     SERVIZIO, ATTREZZATURA
   }

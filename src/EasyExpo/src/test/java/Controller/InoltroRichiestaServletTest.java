@@ -184,9 +184,9 @@ class InoltroRichiestaServletTest extends Mockito {
     Mockito.when(mockedRequest.getParameter("luogo")).thenReturn("nola");
     Mockito.when(mockedRequest.getParameter("descrizione")).thenReturn("**");
     Mockito.when(mockedRequest.getParameter("dataInizio0"))
-            .thenReturn(String.valueOf(new Date(2012, 01, 20)));
+        .thenReturn(String.valueOf(new Date(2012, 01, 20)));
     Mockito.when(mockedRequest.getParameter("dataFine0"))
-            .thenReturn(String.valueOf(new Date(2013, 01, 18)));
+        .thenReturn(String.valueOf(new Date(2013, 01, 18)));
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.when(mockedSession.getAttribute("listaProdotti")).thenReturn(listaPCarrello);
     Mockito.when(mockedSession.getAttribute("listaFornitori")).thenReturn(listaFornitori);

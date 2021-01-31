@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class RichiestaPreventivoTest {
   private RichiestaPreventivo rp;
   private Date data;
-  private Date d;
+  private Date date2;
   private RichiestaPreventivo.Stato stato;
 
   @BeforeEach
@@ -41,9 +41,9 @@ class RichiestaPreventivoTest {
 
   @Test
   void setDataRichiesta() {
-    d = new Date(2021, 1, 15);
-    rp.setDataRichiesta(d);
-    assertEquals(d, rp.getDataRichiesta());
+    date2 = new Date(2021, 1, 15);
+    rp.setDataRichiesta(date2);
+    assertEquals(date2, rp.getDataRichiesta());
   }
 
   @Test

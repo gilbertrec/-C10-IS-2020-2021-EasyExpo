@@ -32,7 +32,8 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     String numeroCarta = request.getParameter("numeroCarta");
     boolean esiste = false;
     esiste = metodoDAO.doRetrieveByNumCartaBoolean(numeroCarta);
-    if (!(numeroCarta != null && numeroCarta.matches("[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}") && esiste==false)) {
+    if (!(numeroCarta != null && numeroCarta.matches("[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}")
+        && esiste == false)) {
       throw new MyServletException("Numero carta non valido.");
     }
 

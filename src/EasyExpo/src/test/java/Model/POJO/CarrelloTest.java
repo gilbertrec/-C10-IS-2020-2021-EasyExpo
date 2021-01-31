@@ -12,14 +12,16 @@ import org.junit.jupiter.api.Test;
 class CarrelloTest {
   private Prodotto.Tipo tipo;
   private Carrello car;
-  private Prodotto p;
+  private Prodotto prodotto;
   private Carrello.ProdottoQuantita pq;
   private ArrayList<Carrello.ProdottoQuantita> lista;
 
   @BeforeEach
   void setUp() {
-    p = new Prodotto(1, "01234567890", "Cassa", "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50, "foto");
-    pq = new Carrello.ProdottoQuantita(p, 2);
+    prodotto = new Prodotto(1, "01234567890", "Cassa",
+        "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50,
+        "foto");
+    pq = new Carrello.ProdottoQuantita(prodotto, 2);
     car = new Carrello();
     lista = new ArrayList<>();
     lista.add(pq);
@@ -28,9 +30,11 @@ class CarrelloTest {
 
   @AfterEach
   void tearDown() {
-    p = new Prodotto(1, "01234567890", "Cassa", "Cassa audio", Prodotto.Tipo.ATTREZZATURA, 5, 50,
-        "foto");
-    pq = new Carrello.ProdottoQuantita(p, 2);
+    prodotto =
+        new Prodotto(1, "01234567890", "Cassa", "Cassa audio",
+            Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            "foto");
+    pq = new Carrello.ProdottoQuantita(prodotto, 2);
     car = new Carrello();
     lista = new ArrayList<>();
     lista.add(pq);

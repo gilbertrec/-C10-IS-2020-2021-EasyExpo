@@ -52,9 +52,10 @@ public class TagProdottoDAO {
   }
 
   /**
-   * Metodo che ritorna le istanze di tipo tagProdotto contenute nel DB
+   * Metodo che ritorna le istanze di tipo tagProdotto contenute nel DB.
    *
-   * @return ArrayList &lt;TagProdotto&gt; - {@link ArrayList} di oggetti di tipo {@link TagProdotto}
+   * @return ArrayList &lt;TagProdotto&gt; -
+   * {@link ArrayList} di oggetti di tipo {@link TagProdotto}
    */
 
   public ArrayList<TagProdotto> doRetrieveByIdProdottoPartitaIva(int idProdotto,
@@ -64,8 +65,8 @@ public class TagProdottoDAO {
           .prepareStatement(
               "SELECT tp.idTag, tp.partitaIva, tp.idProdotto "
                   + "FROM TagProdotto tp, Tag t, Prodotto p WHERE tp.partitaIva=? "
-                  +
-                  "AND tp.idProdotto=? AND tp.idTag = t.idTag AND tp.partitaIva = p.partitaIva AND tp.idProdotto = p.idProdotto");
+                  + "AND tp.idProdotto=? AND tp.idTag = t.idTag AND tp.partitaIva = p.partitaIva "
+                  + "AND tp.idProdotto = p.idProdotto");
 
       ps.setString(1, partitaIva);
       ps.setInt(2, idProdotto);
@@ -141,7 +142,8 @@ public class TagProdottoDAO {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
           .prepareStatement(
-              "SELECT tp.idTag, tp.idProdotto, tp.partitaIva FROM Tag as t, TagProdotto as tp, Prodotto as p "
+              "SELECT tp.idTag, tp.idProdotto, tp.partitaIva FROM Tag as t, "
+                  + "TagProdotto as tp, Prodotto as p "
                   + "WHERE tp.idProdotto=? AND tp.partitaIva=? "
                   + "AND tp.idProdotto=p.idProdotto AND tp.idTag=t.idTag "
                   + "AND tp.partitaIva=p.partitaIva");

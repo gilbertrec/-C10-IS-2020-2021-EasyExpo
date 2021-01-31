@@ -37,7 +37,7 @@ class SpecifichePreventiviServletTest extends Mockito {
   @Test
   void TestIdRichiestaNull() throws ServletException, IOException {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
+    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
@@ -49,12 +49,12 @@ class SpecifichePreventiviServletTest extends Mockito {
   @Test
   void TestIdRichiestaNull2() throws ServletException, IOException {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
+    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");
     Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/specificaRichiesta.jsp");
+        .getRequestDispatcher("/specificaRichiesta.jsp");
 
     specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
   }
@@ -62,7 +62,7 @@ class SpecifichePreventiviServletTest extends Mockito {
   @Test
   void TestIdPreventivoNull() throws ServletException, IOException {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
+    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
@@ -74,12 +74,12 @@ class SpecifichePreventiviServletTest extends Mockito {
   @Test
   void TestIdPreventivoNull2() throws ServletException, IOException {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
-    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");//esiste
-    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");//esiste
+    Mockito.when(mockedRequest.getParameter("idPreventivo")).thenReturn("7002");
+    Mockito.when(mockedRequest.getParameter("idRichiesta")).thenReturn("1000");
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/specificaPreventivo.jsp");
+        .getRequestDispatcher("/specificaPreventivo.jsp");
 
     specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
   }
@@ -90,7 +90,7 @@ class SpecifichePreventiviServletTest extends Mockito {
     Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/specificaPreventivo.jsp");
+        .getRequestDispatcher("/specificaPreventivo.jsp");
 
     specifichePreventiviServlet.doGet(mockedRequest, mockedResponse);
   }

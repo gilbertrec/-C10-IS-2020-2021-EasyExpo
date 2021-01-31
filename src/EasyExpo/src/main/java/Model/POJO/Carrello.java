@@ -27,15 +27,6 @@ public class Carrello {
       return prodotto;
     }
 
-
-
-        /*public long getPrezzoTotCent() {
-            return quantita * prodotto.getPrezzoCent();
-        }
-
-        public String getPrezzoTotEuro() {
-            return String.format("%.2f", quantita * prodotto.getPrezzoCent() / 100.);
-        }*/
   }
 
 
@@ -62,16 +53,11 @@ public class Carrello {
     return ProdottiFornitori.remove(partitaIva);
   }
 
-
-    /*public float  getPrezzoTot() { return (float) prodotti.values().stream().mapToDouble(p -> (double) p.getPrezzo_v()).sum();
-    }
-     */
-
   @Override
   public String toString() {
-    return "Carrello{" +
-        "listaProdotti=" + listaProdotti +
-        ", ProdottiFornitori=" + ProdottiFornitori +
-        '}';
+    return "Carrello{"
+        + "listaProdotti=" + listaProdotti
+        + ", ProdottiFornitori=" + ProdottiFornitori
+        + '}';
   }
 }

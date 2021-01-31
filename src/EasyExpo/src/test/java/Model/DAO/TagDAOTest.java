@@ -12,15 +12,15 @@ import org.junit.jupiter.api.Test;
 
 class TagDAOTest {
   TagDAO tag;
-  Tag t;
+  Tag tag2;
 
   @BeforeEach
   void setUp() {
     tag = new TagDAO();
-    t = new Tag();
-    t.setIdTag(1);
-    t.setNome("TagTest");
-    tag.createTag(t);
+    tag2 = new Tag();
+    tag2.setIdTag(1);
+    tag2.setNome("TagTest");
+    tag.createTag(tag2);
   }
 
   @AfterEach

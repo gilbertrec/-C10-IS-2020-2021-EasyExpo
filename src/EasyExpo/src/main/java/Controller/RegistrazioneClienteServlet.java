@@ -48,7 +48,7 @@ public class RegistrazioneClienteServlet extends HttpServlet {
     esiste = clienteDAO.doRetrieveByEmail(email);
     if (!(email != null
         && email.matches("[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]"
-        + "{4,50}.([a-z A-Z]{2,5})")&& esiste==false)) {
+        + "{4,50}.([a-z A-Z]{2,5})") && esiste == false)) {
       throw new MyServletException("Email non valida.");
     }
 

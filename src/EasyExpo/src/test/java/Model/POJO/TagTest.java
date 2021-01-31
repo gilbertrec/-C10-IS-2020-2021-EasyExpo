@@ -9,43 +9,43 @@ import org.junit.jupiter.api.Test;
 
 class TagTest {
 
-  private Tag t;
+  private Tag tag;
 
   @BeforeEach
   void setUp() {
-    t = new Tag(2, "musica");
+    tag = new Tag(2, "musica");
   }
 
   @AfterEach
   void tearDown() {
-    t = new Tag(2, "musica");
+    tag = new Tag(2, "musica");
   }
 
   @Test
   void testTagCostructorEmpty() {
-    t = new Tag();
-    assertNotNull(t);
+    tag = new Tag();
+    assertNotNull(tag);
   }
 
   @Test
   void getIdTag() {
-    assertEquals(2, t.getIdTag());
+    assertEquals(2, tag.getIdTag());
   }
 
   @Test
   void setIdTag() {
-    t.setIdTag(3);
-    assertEquals(3, t.getIdTag());
+    tag.setIdTag(3);
+    assertEquals(3, tag.getIdTag());
   }
 
   @Test
   void getNome() {
-    assertEquals("musica", t.getNome());
+    assertEquals("musica", tag.getNome());
   }
 
   @Test
   void setNome() {
-    t.setNome("catering");
-    assertEquals("catering", t.getNome());
+    tag.setNome("catering");
+    assertEquals("catering", tag.getNome());
   }
 }

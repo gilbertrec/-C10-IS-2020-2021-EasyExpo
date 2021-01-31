@@ -88,7 +88,7 @@ class ProdottoServletTest {
 
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/specificheProdotto.jsp");
+        .getRequestDispatcher("/specificheProdotto.jsp");
 
     prodottoServlet.doGet(mockedRequest, mockedResponse);
   }

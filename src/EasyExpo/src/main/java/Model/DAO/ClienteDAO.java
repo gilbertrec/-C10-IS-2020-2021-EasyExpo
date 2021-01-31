@@ -149,7 +149,7 @@ public class ClienteDAO {
 
 
   /**
-   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB
+   * Metodo che ritorna le istanze di tipo Cliente contenute nel DB.
    *
    * @return List &lt;Cliente&gt; - {@link List} di oggetti di tipo {@link Cliente}
    */

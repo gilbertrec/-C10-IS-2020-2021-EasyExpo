@@ -97,8 +97,6 @@ public class ProdottoDAO {
   /**
    * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
    *
-   * @param offset indice partenza, Intero
-   * @param limit  indice fine , Intero
    * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
    */
 
@@ -245,6 +243,16 @@ public class ProdottoDAO {
       throw new RuntimeException(e);
     }
   }
+
+
+  /**
+   * Metodo che sceglie in modo randomico un numero selezionato
+   * di oggetti, all'interno del DB, di tipo Prodotto.
+   *
+   * @param offset variabile di tipo int
+   * @param limit  variabile di tipo int
+   * @return List &lt;Prodotto&gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   */
 
   public List<Prodotto> doRetrieveRandom(int offset, int limit) {
     try (Connection con = DBConnection.getConnection()) {

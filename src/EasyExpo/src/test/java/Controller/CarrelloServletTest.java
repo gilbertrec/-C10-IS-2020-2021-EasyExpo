@@ -56,7 +56,8 @@ class CarrelloServletTest {
     metodoDAO = new MetodiDiPagamentoDAO();
     fornitoreDAO = new FornitoreDAO();
 
-    fornitore1 = new Fornitore("01234567890", "Gaetano","Iuliano","3387485126", "Napoli", "g.iuliano@gmail.com", "password", "privato");
+    fornitore1 = new Fornitore("01234567890", "Gaetano", "Iuliano", "3387485126", "Napoli",
+        "g.iuliano@gmail.com", "password", "privato");
     fornitoreDAO.createFornitore(fornitore1);
 
     prodotto = new Prodotto();
@@ -131,7 +132,7 @@ class CarrelloServletTest {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/carrello.jsp");
+        .getRequestDispatcher("/carrello.jsp");
 
     carrelloServlet.doPost(mockedRequest, mockedResponse);
   }
@@ -150,7 +151,7 @@ class CarrelloServletTest {
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/carrello.jsp");
+        .getRequestDispatcher("/carrello.jsp");
 
     carrelloServlet.doPost(mockedRequest, mockedResponse);
   }
@@ -165,11 +166,10 @@ class CarrelloServletTest {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
 
 
-
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/carrello.jsp");
+        .getRequestDispatcher("/carrello.jsp");
 
     carrelloServlet.doPost(mockedRequest, mockedResponse);
   }
@@ -184,11 +184,10 @@ class CarrelloServletTest {
     Mockito.when(mockedRequest.getParameter("partitaIva")).thenReturn(fornitore1.getPartitaIva());
 
 
-
     Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);
     Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();
     Mockito.doReturn(mockedDispatcher).when(mockedServletContext)
-            .getRequestDispatcher("/carrello.jsp");
+        .getRequestDispatcher("/carrello.jsp");
 
     carrelloServlet.doPost(mockedRequest, mockedResponse);
   }

@@ -84,11 +84,6 @@ class RichiestaPreventivoDAOTest {
   }
 
   @Test
-  void doRetrieveByIdRichiestaException() {
-    //assertThrows(RuntimeException.class,() ->{rpDAO.doRetrieveByIdRichiesta(34);}); // non funziona
-  }
-
-  @Test
   void doRetrieveByPartitaIva() {
     List<RichiestaPreventivo> rp4 = rpDAO.doRetrieveByPartitaIva(rp.getPartitaIva());
     for (RichiestaPreventivo p : rp4) {
