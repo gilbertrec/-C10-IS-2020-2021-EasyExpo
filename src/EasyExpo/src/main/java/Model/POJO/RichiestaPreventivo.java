@@ -232,6 +232,9 @@ public class RichiestaPreventivo {
   private String nota;
   private Date dataRichiesta;
 
+  /**
+   * Classe che definisce l'enum Stato.
+   */
   public enum Stato {
     IN_ATTESA, CONFERMATO, RIFIUTATO
   }

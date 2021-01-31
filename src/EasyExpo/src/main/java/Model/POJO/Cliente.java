@@ -233,6 +233,9 @@ public class Cliente {
   private String email;
   private String password;
 
+  /**
+   * Classe che definisce l'enum Stato.
+   */
   public enum Stato {
     ATTIVO, SOSPESO
   }

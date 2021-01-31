@@ -267,6 +267,9 @@ public class Fornitore {
   private String ragioneSociale;
   private boolean abbonato;
 
+  /**
+   * Classe che definisce l'enum Stato.
+   */
   public enum Stato {
     ATTIVO, SOSPESO
   }
