@@ -10,9 +10,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> RiabilitaUtenteServlet e' una Servlet che permette all'Admin di
+ * riabilitare un fornitore o un cliente iscritto al sito</p>.
+ *
+ * @author DAVIDE PAPPALARDO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/RiabilitaUtenteServlet")
 public class RiabilitaUtenteServlet extends HttpServlet {
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
 
@@ -35,6 +49,12 @@ public class RiabilitaUtenteServlet extends HttpServlet {
     }
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     doGet(request, response);

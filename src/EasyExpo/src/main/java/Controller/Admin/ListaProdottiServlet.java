@@ -11,9 +11,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> ListaProdottiServlet e' una Servlet che permette all'Admin di
+ * visionare la lista dei prodotti di un determinato fornitore</p>.
+ *
+ * @author SABATINO STRUMOLO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/ListaProdottiServlet")
 public class ListaProdottiServlet extends HttpServlet {
 
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String partitaIva = request.getParameter("id");
@@ -24,6 +38,12 @@ public class ListaProdottiServlet extends HttpServlet {
     requestDispatcher.forward(request, response);
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     doGet(request, response);

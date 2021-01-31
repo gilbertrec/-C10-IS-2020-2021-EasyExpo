@@ -9,9 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> SospendiUtenteServlet e' una Servlet che permette all'Admin di
+ * sospendere un fornitore o un cliente iscritto al sito</p>.
+ *
+ * @author SABATINO STRUMOLO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/SospendiUtenteServlet")
 public class SospendiUtenteServlet extends HttpServlet {
-
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     if (request.getParameter("flag") == null || request.getParameter("id") == null) {
@@ -33,6 +46,12 @@ public class SospendiUtenteServlet extends HttpServlet {
     }
   }
 
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     doGet(request, response);

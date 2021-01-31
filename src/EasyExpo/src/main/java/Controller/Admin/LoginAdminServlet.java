@@ -10,8 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * <p> LoginAdminServlet e' una Servlet che permette all'Admin di
+ * accedere al sito</p>.
+ *
+ * @author SABATINO STRUMOLO
+ * @version 1.0
+ * @since 2020-12-29
+ */
 @WebServlet("/LoginAdminServlet")
 public class LoginAdminServlet extends HttpServlet {
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     AdminDAO adminDAO = new AdminDAO();
@@ -34,7 +48,12 @@ public class LoginAdminServlet extends HttpServlet {
     }
   }
 
-
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doPost(request, response);
