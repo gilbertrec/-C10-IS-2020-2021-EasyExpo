@@ -111,14 +111,14 @@ public class ClienteDAO {
   /**
    * Metodo che ritorna un booleano se l'email del cliente è già presente.
    *
-   * @param email    Indirizzo email identificativo, String
+   * @param email Indirizzo email identificativo, String
    * @return boolean - Oggetto di tipo booleano
    */
 
   public boolean doRetrieveByEmail(String email) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con.prepareStatement(
-              "SELECT * FROM Cliente WHERE email=?");
+          "SELECT * FROM Cliente WHERE email=?");
       ps.setString(1, email);
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
@@ -179,6 +179,12 @@ public class ClienteDAO {
     }
   }
 
+  /**
+   * Metodo che aggiorna lo stato delle istanze di tipo Cliente contenute nel DB.
+   *
+   * @param val           - Intero
+   * @param codiceFiscale - codice identificativo del Cliente di tipo String
+   */
   public void updateStato(int val, String codiceFiscale) {
     try (Connection con = DBConnection.getConnection()) {
       PreparedStatement ps = con
