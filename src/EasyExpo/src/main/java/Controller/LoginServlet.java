@@ -48,12 +48,11 @@ public class LoginServlet extends HttpServlet {
     if (cliente == null && fornitore == null) {
       throw new MyServletException("Email e/o password non validi.");
     }
-    if (cliente.getStato() == Cliente.Stato.SOSPESO || fornitore.getStato() == Fornitore.Stato.SOSPESO){
-      throw new MyServletException("Utente sospeso!");
-    } else if (cliente != null && fornitore == null) {
+    else if (cliente != null && fornitore == null) {
+      if (cliente.getStato() == Cliente.Stato.SOSPESO){
+        throw new MyServletException("Utente sospeso!");
+      }
       request.getSession().setAttribute("cliente", cliente);
-
-
       List<Prodotto> tuttiP = prodottoDAO.doRetrieveAll();
       int inizio = tuttiP.size() - 4;
       List<Prodotto> prodottiNuovi = prodottoDAO.doRetrieveRandom(inizio, 4);
@@ -65,6 +64,9 @@ public class LoginServlet extends HttpServlet {
           request.getServletContext().getRequestDispatcher("/index.jsp");
       requestDispatcher.forward(request, response);
     } else if (cliente == null && fornitore != null) {
+      if (fornitore.getStato() == Fornitore.Stato.SOSPESO){
+        throw new MyServletException("Utente sospeso!");
+      }
       request.getSession().setAttribute("fornitore", fornitore);
       ProdottoDAO prodottoDAO = new ProdottoDAO();
       List<Prodotto> prodotti = prodottoDAO.doRetrieveByPartitaIva(fornitore.getPartitaIva());
