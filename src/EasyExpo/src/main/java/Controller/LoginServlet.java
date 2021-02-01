@@ -47,9 +47,8 @@ public class LoginServlet extends HttpServlet {
     }
     if (cliente == null && fornitore == null) {
       throw new MyServletException("Email e/o password non validi.");
-    }
-    else if (cliente != null && fornitore == null) {
-      if (cliente.getStato() == Cliente.Stato.SOSPESO){
+    } else if (cliente != null && fornitore == null) {
+      if (cliente.getStato() == Cliente.Stato.SOSPESO) {
         throw new MyServletException("Utente sospeso!");
       }
       request.getSession().setAttribute("cliente", cliente);
@@ -64,7 +63,7 @@ public class LoginServlet extends HttpServlet {
           request.getServletContext().getRequestDispatcher("/index.jsp");
       requestDispatcher.forward(request, response);
     } else if (cliente == null && fornitore != null) {
-      if (fornitore.getStato() == Fornitore.Stato.SOSPESO){
+      if (fornitore.getStato() == Fornitore.Stato.SOSPESO) {
         throw new MyServletException("Utente sospeso!");
       }
       request.getSession().setAttribute("fornitore", fornitore);
