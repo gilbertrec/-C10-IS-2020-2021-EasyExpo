@@ -47,6 +47,9 @@ public class LoginServlet extends HttpServlet {
     }
     if (cliente == null && fornitore == null) {
       throw new MyServletException("Email e/o password non validi.");
+    }
+    if (cliente.getStato() == Cliente.Stato.SOSPESO || fornitore.getStato() == Fornitore.Stato.SOSPESO){
+      throw new MyServletException("Utente sospeso!");
     } else if (cliente != null && fornitore == null) {
       request.getSession().setAttribute("cliente", cliente);
 

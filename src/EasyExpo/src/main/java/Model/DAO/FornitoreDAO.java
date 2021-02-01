@@ -108,6 +108,7 @@ public class FornitoreDAO {
         f.setPassword(rs.getString(7));
         f.setRagioneSociale(rs.getString(8));
         f.setAbbonato(rs.getBoolean(9));
+        f.setStato(Fornitore.Stato.valueOf(rs.getString(10)));
         return f;
       }
       return null;

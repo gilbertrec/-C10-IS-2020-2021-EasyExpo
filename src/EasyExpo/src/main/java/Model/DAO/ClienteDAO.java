@@ -100,6 +100,7 @@ public class ClienteDAO {
         c.setLuogoUbicazione(rs.getString(5));
         c.setEmail(rs.getString(6));
         c.setPassword(rs.getString(7));
+        c.setStato(Cliente.Stato.valueOf(rs.getString(8)));
         return c;
       }
       return null;
