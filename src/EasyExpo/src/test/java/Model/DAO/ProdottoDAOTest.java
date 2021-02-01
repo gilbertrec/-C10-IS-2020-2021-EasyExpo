@@ -60,7 +60,7 @@ class ProdottoDAOTest {
   @Test
   void doRetrieveAll() {
     List<Prodotto> prodotti2 = pr.doRetrieveAll();
-    assertEquals(5, prodotti2.size());
+    assertEquals(8, prodotti2.size());
   }
 
   @Test
