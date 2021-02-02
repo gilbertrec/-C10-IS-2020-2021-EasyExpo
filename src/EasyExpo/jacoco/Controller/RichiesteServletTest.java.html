@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RichiesteServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RichiesteServletTest.java</span></div><h1>RichiesteServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
+import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.RichiestaPreventivo;
+import java.io.IOException;
+import java.sql.Date;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L24">class RichiesteServletTest {</span>
+  private RichiesteServlet richiesteServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  RichiestaPreventivoDAO richiestaPreventivoDAO;
+  private RichiestaPreventivo richiestaPreventivo;
+  private RichiestaPreventivo richiestaPreventivo1;
+  private FornitoreDAO frDAO;
+  private Fornitore fr;
+  private ClienteDAO clDAO;
+  private Cliente cl;
+  private int idRichiesta;
+  private int idRichiesta1;
+
+
+<span class="fc" id="L42">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L46">    frDAO = new FornitoreDAO();</span>
+<span class="fc" id="L47">    fr = new Fornitore(&quot;01234567880&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1334567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,</span>
+        &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L49">    frDAO.createFornitore(fr);</span>
+
+<span class="fc" id="L51">    clDAO = new ClienteDAO();</span>
+<span class="fc" id="L52">    cl = new Cliente();</span>
+<span class="fc" id="L53">    cl.setCodiceFiscale(&quot;RBLKTA99C57E923W&quot;);</span>
+<span class="fc" id="L54">    cl.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L55">    cl.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L56">    cl.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L57">    cl.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L58">    cl.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L59">    cl.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L60">    clDAO.createCliente(cl);</span>
+
+<span class="fc" id="L62">    richiestaPreventivoDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L63">    richiestaPreventivo = new RichiestaPreventivo();</span>
+<span class="fc" id="L64">    richiestaPreventivo.setCodiceFiscale(cl.getCodiceFiscale());</span>
+<span class="fc" id="L65">    richiestaPreventivo.setPartitaIva(fr.getPartitaIva());</span>
+<span class="fc" id="L66">    richiestaPreventivo.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L67">    richiestaPreventivo.setDescrizioneEvento(&quot;descrizione di prova&quot;);</span>
+<span class="fc" id="L68">    richiestaPreventivo.setNota(&quot;nota di prova&quot;);</span>
+<span class="fc" id="L69">    richiestaPreventivo.setTitolo(&quot;Prova&quot;);</span>
+<span class="fc" id="L70">    richiestaPreventivo.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L71">    richiestaPreventivo.setStato(RichiestaPreventivo.Stato.RIFIUTATO);</span>
+<span class="fc" id="L72">    idRichiesta = richiestaPreventivoDAO.createRichiestaPreventivo(richiestaPreventivo);</span>
+
+<span class="fc" id="L74">    richiestaPreventivo1 = new RichiestaPreventivo();</span>
+<span class="fc" id="L75">    richiestaPreventivo1.setCodiceFiscale(cl.getCodiceFiscale());</span>
+<span class="fc" id="L76">    richiestaPreventivo1.setPartitaIva(fr.getPartitaIva());</span>
+<span class="fc" id="L77">    richiestaPreventivo1.setDataRichiesta(new Date(2020, 01, 26));</span>
+<span class="fc" id="L78">    richiestaPreventivo1.setDescrizioneEvento(&quot;descrizione di prova 2&quot;);</span>
+<span class="fc" id="L79">    richiestaPreventivo1.setNota(&quot;nota di prova 2&quot;);</span>
+<span class="fc" id="L80">    richiestaPreventivo1.setTitolo(&quot;Prova 2&quot;);</span>
+<span class="fc" id="L81">    richiestaPreventivo1.setLuogoEvento(&quot;Napoli&quot;);</span>
+<span class="fc" id="L82">    richiestaPreventivo1.setStato(RichiestaPreventivo.Stato.CONFERMATO);</span>
+<span class="fc" id="L83">    idRichiesta1 = richiestaPreventivoDAO.createRichiestaPreventivo(richiestaPreventivo1);</span>
+
+<span class="fc" id="L85">    richiesteServlet = new RichiesteServlet();</span>
+<span class="fc" id="L86">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L87">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L88">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L89">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L90">    mockedSession = Mockito.mock(HttpSession.class);</span>
+
+
+<span class="fc" id="L93">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L97">    clDAO.deleteCliente(cl.getCodiceFiscale());</span>
+<span class="fc" id="L98">    frDAO.deleteFornitore(fr.getPartitaIva());</span>
+<span class="fc" id="L99">  }</span>
+
+  @Test
+  void TestRichiestaPartitaIvaSuccess() throws ServletException, IOException {
+<span class="fc" id="L103">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L104">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01234567880&quot;);</span>
+
+<span class="fc" id="L106">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L107">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L108">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L109">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L111">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L112">  }</span>
+
+  @Test
+  void TestRichiestaPartitaIvaNull() throws ServletException, IOException {
+<span class="fc" id="L116">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+
+<span class="fc" id="L118">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L119">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L120">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L121">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L123">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L124">  }</span>
+
+  @Test
+  void TestRichiestaCodiceFiscaleSuccess() throws ServletException, IOException {
+<span class="fc" id="L128">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L129">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;RBLKTA99C57E923W&quot;);</span>
+
+<span class="fc" id="L131">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L132">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L133">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L134">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L136">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L137">  }</span>
+
+  @Test
+  void TestRichiestaRifiutato() throws ServletException, IOException {
+<span class="fc" id="L141">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L142">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01234567880&quot;);</span>
+
+<span class="fc" id="L144">    assertEquals(RichiestaPreventivo.Stato.RIFIUTATO, richiestaPreventivo.getStato());</span>
+
+<span class="fc" id="L146">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L147">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L148">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L149">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L151">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L152">  }</span>
+
+  @Test
+  void TestRichiestaNonRifiutato() throws ServletException, IOException {
+<span class="fc" id="L156">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L157">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01234567880&quot;);</span>
+
+<span class="fc" id="L159">    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());</span>
+
+<span class="fc" id="L161">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L162">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L163">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L164">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L166">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L167">  }</span>
+
+  @Test
+  void TestRichiestaNull() throws ServletException, IOException {
+<span class="fc" id="L171">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+
+<span class="fc" id="L173">    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());</span>
+
+<span class="fc" id="L175">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L176">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L177">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L178">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L180">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L181">  }</span>
+
+  @Test
+  void TestRichiestaNotNull() throws ServletException, IOException {
+<span class="fc" id="L185">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L186">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01234567880&quot;);</span>
+<span class="fc" id="L187">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;RBLKTA99C57E923W&quot;);</span>
+
+<span class="fc" id="L189">    assertEquals(RichiestaPreventivo.Stato.CONFERMATO, richiestaPreventivo1.getStato());</span>
+
+<span class="fc" id="L191">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L192">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L193">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L194">        .getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+
+<span class="fc" id="L196">    richiesteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L197">  }</span>
+
+
+  @Test
+  void doPost() {
+<span class="fc" id="L202">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L206">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

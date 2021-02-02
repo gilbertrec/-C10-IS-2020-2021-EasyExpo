@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InoltroRichiestaServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">InoltroRichiestaServlet.java</span></div><h1>InoltroRichiestaServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+
+import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoRichiestaDAO;
+import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Carrello;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.ProdottoRichiesta;
+import Model.POJO.RichiestaPreventivo;
+import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * &lt;p&gt; InoltroRichiestaServlet e' una Servlet che permette al cliente di
+ * inoltrare la richiesta al fornitore per il noleggi dei prodotti&lt;/p&gt;.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/InoltroRichiesta&quot;)
+<span class="fc" id="L33">public class InoltroRichiestaServlet extends HttpServlet {</span>
+<span class="fc" id="L34">  private final FornitoreDAO fornitoreDao = new FornitoreDAO();</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param req  is the servlet request.
+   * @param resp is the servlet response.
+   */
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+<span class="nc" id="L44">    doPost(req, resp);</span>
+<span class="nc" id="L45">  }</span>
+
+  /**
+   * doPost() method.
+   *
+   * @param req  is the servlet request.
+   * @param resp is the servlet response.
+   */
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+<span class="fc" id="L55">    HttpSession session = req.getSession();</span>
+
+<span class="fc" id="L57">    ArrayList&lt;Carrello.ProdottoQuantita&gt; listaProdotti =</span>
+<span class="fc" id="L58">        (ArrayList&lt;Carrello.ProdottoQuantita&gt;) session.getAttribute(&quot;listaProdotti&quot;);</span>
+<span class="fc" id="L59">    ArrayList&lt;Fornitore&gt; listaFornitori =</span>
+<span class="fc" id="L60">        (ArrayList&lt;Fornitore&gt;) session.getAttribute(&quot;listaFornitori&quot;);</span>
+
+<span class="fc" id="L62">    Cliente cliente = (Cliente) session.getAttribute(&quot;cliente&quot;);</span>
+<span class="fc" id="L63">    String partitaIvaF = listaProdotti.get(0).getProdotto().getPartitaIva();</span>
+<span class="fc" id="L64">    Fornitore fornitore = fornitoreDao.doRetrieveByPIVA(partitaIvaF);</span>
+
+<span class="fc" id="L66">    String titolo = req.getParameter(&quot;titolo&quot;);</span>
+<span class="fc" id="L67">    String luogo = req.getParameter(&quot;luogo&quot;);</span>
+<span class="fc" id="L68">    String nota = req.getParameter(&quot;nota&quot;);</span>
+<span class="fc" id="L69">    String descrizione = req.getParameter(&quot;descrizione&quot;);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">    if (!descrizione.matches(&quot;[A-Z a-z .,/()%”]{1,1024}&quot;)) {</span>
+<span class="fc" id="L71">      throw new MyServletException(&quot;Descrizione non valida.&quot;);</span>
+    }
+    //data corrente
+
+<span class="fc" id="L75">    java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());</span>
+
+<span class="fc" id="L77">    String cf = cliente.getCodiceFiscale();</span>
+
+
+<span class="fc" id="L80">    RichiestaPreventivo rp = new RichiestaPreventivo();</span>
+<span class="fc" id="L81">    rp.setCodiceFiscale(cf);</span>
+<span class="fc" id="L82">    rp.setPartitaIva(partitaIvaF);</span>
+<span class="fc" id="L83">    rp.setTitolo(titolo);</span>
+<span class="fc" id="L84">    rp.setLuogoEvento(luogo);</span>
+<span class="fc" id="L85">    rp.setDescrizioneEvento(descrizione);</span>
+<span class="fc" id="L86">    rp.setNota(nota);</span>
+<span class="fc" id="L87">    rp.setDataRichiesta(corrente);</span>
+<span class="fc" id="L88">    rp.setStato(RichiestaPreventivo.Stato.IN_ATTESA);</span>
+
+<span class="fc" id="L90">    RichiestaPreventivoDAO richiestaPreventivoDao = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L91">    richiestaPreventivoDao.createRichiestaPreventivo(rp);</span>
+
+<span class="fc" id="L93">    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMdd&quot;);</span>
+
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">    for (int i = 0; i &lt; listaProdotti.size(); i++) {</span>
+<span class="fc" id="L97">      ProdottoRichiesta pr = new ProdottoRichiesta();</span>
+<span class="fc" id="L98">      pr.setIdRichiesta(rp.getIdRichiesta());</span>
+<span class="fc" id="L99">      pr.setIdProdotto(listaProdotti.get(i).getProdotto().getIdProdotto());</span>
+<span class="fc" id="L100">      pr.setPartitaIva(partitaIvaF);</span>
+<span class="fc" id="L101">      pr.setNumColli(listaProdotti.get(i).getQuantita());</span>
+<span class="fc" id="L102">      pr.setPrezzo(listaProdotti.get(i).getProdotto().getPrezzo());</span>
+
+      //data inizio
+<span class="fc" id="L105">      Date dataI = Date.valueOf(req.getParameter(&quot;dataInizio&quot; + i));</span>
+<span class="fc" id="L106">      java.util.Date utilDate = dataI;</span>
+<span class="fc" id="L107">      Date dataF = Date.valueOf(req.getParameter(&quot;dataFine&quot; + i));</span>
+<span class="fc" id="L108">      java.util.Date utilDate2 = dataF;</span>
+
+
+<span class="fc" id="L111">      Calendar calendario = Calendar.getInstance();</span>
+<span class="fc" id="L112">      calendario.setTime(corrente);</span>
+<span class="fc" id="L113">      java.util.Date sc = new java.util.Date(calendario.getTime().getTime());</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">      if (utilDate.after(sc)) {</span>
+        //se dataInizio è dopo dataAttuale(sc) e Datainizio prima di dataFine?? è true
+<span class="fc" id="L116">        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());</span>
+<span class="fc" id="L117">        pr.setDataInizioNoleggio(sqlDate);</span>
+<span class="fc" id="L118">      } else {</span>
+<span class="nc" id="L119">        throw new MyServletException(&quot;Data inizio errata.&quot;);</span>
+      }
+
+
+      //data fine
+<span class="fc" id="L124">      Calendar calendario2 = Calendar.getInstance();</span>
+<span class="fc" id="L125">      calendario.setTime(corrente);</span>
+<span class="pc bpc" id="L126" title="1 of 4 branches missed.">      if (utilDate2.after(sc) &amp;&amp; utilDate2.after(</span>
+          utilDate)) { //se dataFine è dopo dataAttuale(sc) e dataFine è dopo dataInizio è true
+<span class="fc" id="L128">        java.sql.Date sqlDate = new java.sql.Date(utilDate2.getTime());</span>
+<span class="fc" id="L129">        pr.setDataFineNoleggio(sqlDate);</span>
+<span class="fc" id="L130">      } else {</span>
+<span class="fc" id="L131">        throw new MyServletException(&quot;Data fine errata.&quot;);</span>
+      }
+
+
+<span class="fc" id="L135">      ProdottoRichiestaDAO prodottoRichiestaDao = new ProdottoRichiestaDAO();</span>
+<span class="fc" id="L136">      prodottoRichiestaDao.createProdottoRichiesta(pr);</span>
+    }
+
+    //elimina dal carrello i prodotti per cui ha inviato la richiesta
+    //deve eliminare anche il fornitore (vedi carrelloServlet)
+<span class="fc" id="L141">    Carrello carrello = (Carrello) session.getAttribute(&quot;carrello&quot;);</span>
+<span class="fc" id="L142">    carrello.remove(partitaIvaF);</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">    for (int i = 0; i &lt; listaFornitori.size(); i++) {</span>
+<span class="fc" id="L144">      Fornitore f = listaFornitori.get(i);</span>
+<span class="fc" id="L145">      if (f.getPartitaIva()</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">          .equals(partitaIvaF)) {</span>
+<span class="fc" id="L147">        listaFornitori.remove(i);</span>
+      }
+    }
+
+
+<span class="fc" id="L152">    session.setAttribute(&quot;carrello&quot;, carrello);</span>
+
+
+<span class="fc" id="L155">    RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L156">        req.getServletContext().getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+<span class="fc" id="L157">    requestDispatcher.forward(req, resp);</span>
+<span class="fc" id="L158">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

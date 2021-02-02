@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrazioneClienteServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RegistrazioneClienteServlet.java</span></div><h1>RegistrazioneClienteServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.ClienteDAO;
+import Model.POJO.Cliente;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; RegistrazioneClienteServlet e' una Servlet che permette al Cliente
+ * di Registrarsi al sito&lt;/p&gt;.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/RegistrazioneCliente&quot;)
+<span class="fc" id="L22">public class RegistrazioneClienteServlet extends HttpServlet {</span>
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="fc" id="L31">    doGet(request, response);</span>
+<span class="fc" id="L32">  }</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+<span class="fc" id="L43">    ClienteDAO clienteDAO = new ClienteDAO();</span>
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">    if (request.getSession().getAttribute(&quot;cliente&quot;) != null) {</span>
+<span class="fc" id="L46">      throw new MyServletException(&quot;Cliente loggato.&quot;);</span>
+    }
+
+<span class="fc" id="L49">    String password = request.getParameter(&quot;password&quot;);</span>
+<span class="fc bfc" id="L50" title="All 6 branches covered.">    if (!(password != null &amp;&amp; password.length() &gt;= 8 &amp;&amp; !password.toUpperCase().equals(password)</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        &amp;&amp; !password.toLowerCase().equals(password)</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        &amp;&amp; password.matches(&quot;[0-9 a-z A-Z.!#$%&amp;'+\\=?^_`{|}~-]{8,512}&quot;))) {</span>
+<span class="fc" id="L53">      throw new MyServletException(&quot;Password non valida.&quot;);</span>
+    }
+
+<span class="fc" id="L56">    String passwordConferma = request.getParameter(&quot;passwordConferma&quot;);</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">    if (!password.equals(passwordConferma)) {</span>
+<span class="fc" id="L58">      throw new MyServletException(&quot;Le password non combaciano.&quot;);</span>
+    }
+
+<span class="fc" id="L61">    String nome = request.getParameter(&quot;nome&quot;);</span>
+<span class="fc bfc" id="L62" title="All 4 branches covered.">    if (!(nome != null &amp;&amp; nome.matches(&quot;[A-Z a-z]{1,30}&quot;))) {</span>
+<span class="fc" id="L63">      throw new MyServletException(&quot;Nome non valido.&quot;);</span>
+    }
+
+<span class="fc" id="L66">    String email = request.getParameter(&quot;email&quot;);</span>
+<span class="fc" id="L67">    boolean esiste = false;</span>
+<span class="fc" id="L68">    esiste = clienteDAO.doRetrieveByEmail(email);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">    if (!(email != null</span>
+<span class="fc bfc" id="L70" title="All 4 branches covered.">        &amp;&amp; email.matches(&quot;[a-z A-Z 0-9 ._]{8,50}@[a-z A-Z 0-9.]&quot;</span>
+        + &quot;{4,50}.([a-z A-Z]{2,5})&quot;) &amp;&amp; esiste == false)) {
+<span class="fc" id="L72">      throw new MyServletException(&quot;Email non valida.&quot;);</span>
+    }
+
+<span class="fc" id="L75">    String codiceFiscale = request.getParameter(&quot;codiceFiscale&quot;);</span>
+<span class="fc bfc" id="L76" title="All 4 branches covered.">    if (!(codiceFiscale != null &amp;&amp; codiceFiscale.matches(&quot;[A-Z 0-9]{16}&quot;))) {</span>
+<span class="fc" id="L77">      throw new MyServletException(&quot;CodiceFiscale non valido.&quot;);</span>
+    }
+
+<span class="fc" id="L80">    String cognome = request.getParameter(&quot;cognome&quot;);</span>
+<span class="fc bfc" id="L81" title="All 6 branches covered.">    if (!(cognome != null &amp;&amp; cognome.trim().length() &gt; 0 &amp;&amp; cognome.matches(&quot;[A-Z a-z]{1,30}&quot;))) {</span>
+<span class="fc" id="L82">      throw new MyServletException(&quot;Cognome non valido.&quot;);</span>
+    }
+<span class="fc" id="L84">    String luogoUbicazione = request.getParameter(&quot;luogoUbicazione&quot;);</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">    if (!(luogoUbicazione != null &amp;&amp; luogoUbicazione.trim().length() &gt; 0</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        &amp;&amp; luogoUbicazione.matches(&quot;[a-z A-Z]{1,30}&quot;))) {</span>
+<span class="fc" id="L87">      throw new MyServletException(&quot;Luogo di ubicazione non valido.&quot;);</span>
+    }
+<span class="fc" id="L89">    String telefono = request.getParameter(&quot;telefono&quot;);</span>
+<span class="fc bfc" id="L90" title="All 4 branches covered.">    if (!(telefono != null &amp;&amp; telefono.matches(&quot;[0-9]{10}&quot;))) {</span>
+<span class="fc" id="L91">      throw new MyServletException(&quot;Numero di telefono non valido.&quot;);</span>
+    }
+
+<span class="fc" id="L94">    Cliente cliente = new Cliente();</span>
+<span class="fc" id="L95">    cliente.setEmail(email);</span>
+<span class="fc" id="L96">    cliente.setPassword(password);</span>
+<span class="fc" id="L97">    cliente.setCodiceFiscale(codiceFiscale);</span>
+<span class="fc" id="L98">    cliente.setNome(nome);</span>
+<span class="fc" id="L99">    cliente.setCognome(cognome);</span>
+<span class="fc" id="L100">    cliente.setTelefono(telefono);</span>
+<span class="fc" id="L101">    cliente.setLuogoUbicazione(luogoUbicazione);</span>
+
+<span class="fc" id="L103">    clienteDAO.createCliente(cliente);</span>
+<span class="fc" id="L104">    request.getSession().setAttribute(&quot;cliente&quot;, cliente);</span>
+<span class="fc" id="L105">    request.getSession().setAttribute(&quot;passwordConferma&quot;, passwordConferma);</span>
+
+<span class="fc" id="L107">    RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L108">        request.getServletContext().getRequestDispatcher(&quot;/login.jsp&quot;);</span>
+<span class="fc" id="L109">    requestDispatcher.forward(request, response);</span>
+<span class="fc" id="L110">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

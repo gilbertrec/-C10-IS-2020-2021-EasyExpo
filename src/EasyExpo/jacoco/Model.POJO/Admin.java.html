@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Admin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">Admin.java</span></div><h1>Admin.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+/**
+ * Admin e' la classe che gestisce un
+ * ordinario oggetto Admin.
+ *
+ * @author GAETANO IULIANO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+public class Admin {
+
+  /**
+   * Metodo costruttore della classe Admin.
+   *
+   * @param email    Indirizzo mail, String
+   * @param password Caratteri alfanumerici per accesso al sistema, String
+   */
+
+<span class="fc" id="L21">  public Admin(String email, String password) {</span>
+<span class="fc" id="L22">    this.email = email;</span>
+<span class="fc" id="L23">    this.password = password;</span>
+<span class="fc" id="L24">  }</span>
+
+  /**
+   * Metodo costruttore di default della classe Admin.
+   */
+
+<span class="fc" id="L30">  public Admin() {</span>
+
+<span class="fc" id="L32">  }</span>
+
+  /**
+   * Metodo che restituisce l'email.
+   *
+   * @return String - email
+   */
+
+  public String getEmail() {
+<span class="fc" id="L41">    return email;</span>
+  }
+
+  /**
+   * Metodo che setta l'email.
+   *
+   * @param email Indirizzo mail, String
+   */
+
+  public void setEmail(String email) {
+<span class="fc" id="L51">    this.email = email;</span>
+<span class="fc" id="L52">  }</span>
+
+  /**
+   * Metodo che restituisce la password.
+   *
+   * @return String - password
+   */
+
+  public String getPassword() {
+<span class="fc" id="L61">    return password;</span>
+  }
+
+  /**
+   * Metodo che setta la password.
+   *
+   * @param password Caratteri alfanumerici per accesso al sistema, String
+   */
+
+  public void setPassword(String password) {
+<span class="fc" id="L71">    this.password = password;</span>
+<span class="fc" id="L72">  }</span>
+
+  /**
+   * Metodo che converte l'oggetto Admin in stringa.
+   *
+   * @return String
+   */
+
+  @Override
+  public String toString() {
+<span class="nc" id="L82">    return &quot;Admin{&quot;</span>
+        + &quot;email='&quot; + email + '\''
+        + &quot;, password='&quot; + password + '\''
+        + '}';
+  }
+
+  private String email;
+  private String password;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

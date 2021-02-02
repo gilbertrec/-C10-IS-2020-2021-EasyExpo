@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FornitoreServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">FornitoreServletTest.java</span></div><h1>FornitoreServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L17">class FornitoreServletTest extends Mockito {</span>
+  private FornitoreServlet fornitoreServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+<span class="fc" id="L23">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+
+<span class="fc" id="L28">    fornitoreServlet = new FornitoreServlet();</span>
+<span class="fc" id="L29">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L30">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L31">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L32">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L33">  }</span>
+
+  @AfterEach
+  void tearDown() {
+
+<span class="fc" id="L38">  }</span>
+
+  @Test
+  void TestFornitoreNull() {
+<span class="fc" id="L42">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01235597111&quot;);</span>
+
+<span class="fc" id="L44">    String message = &quot;Fornitore non trovato.&quot;;</span>
+
+<span class="fc" id="L46">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L47">      fornitoreServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L48">    });</span>
+
+<span class="fc" id="L50">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L51">  }</span>
+
+
+  @Test
+  void TestFornitoreSuccess() throws ServletException, IOException {
+<span class="fc" id="L56">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;03271170361&quot;);</span>
+
+<span class="fc" id="L58">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L59">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L60">        .getRequestDispatcher(&quot;/specificheFornitore.jsp&quot;);</span>
+
+<span class="fc" id="L62">    fornitoreServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L63">  }</span>
+
+
+  @Test
+  void doPost() {
+<span class="fc" id="L68">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L72">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

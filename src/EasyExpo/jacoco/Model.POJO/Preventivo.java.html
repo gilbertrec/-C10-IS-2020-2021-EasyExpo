@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Preventivo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">Preventivo.java</span></div><h1>Preventivo.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import java.sql.Date;
+
+/**
+ * Preventivo e' la classe che gestisce un
+ * ordinario oggetto Preventivo.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+public class Preventivo {
+
+  /**
+   * Metodo costruttore della classe Preventivo.
+   *
+   * @param idPreventivo   Codice identificativo, Intero
+   * @param idRichiesta    Codice identificativo, Intero
+   * @param partitaIva     Codice alfanumerico identificativo fornitore, String
+   * @param codiceFiscale  Codice alfanumerico identificativo cliente, String
+   * @param dataPreventivo Data del preventivo, Date
+   * @param prezzoTotale   Prezzo totale preventivato, float
+   * @param nota           Nota aggiuntiva, String
+   */
+
+  public Preventivo(int idPreventivo, int idRichiesta, String partitaIva, String codiceFiscale,
+<span class="fc" id="L29">                    Date dataPreventivo, float prezzoTotale, String nota) {</span>
+<span class="fc" id="L30">    this.idPreventivo = idPreventivo;</span>
+<span class="fc" id="L31">    this.idRichiesta = idRichiesta;</span>
+<span class="fc" id="L32">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L33">    this.codiceFiscale = codiceFiscale;</span>
+<span class="fc" id="L34">    this.dataPreventivo = dataPreventivo;</span>
+<span class="fc" id="L35">    this.prezzoTotale = prezzoTotale;</span>
+<span class="fc" id="L36">    this.nota = nota;</span>
+<span class="fc" id="L37">  }</span>
+
+  /**
+   * Metodo costruttore di default della classe Preventivo.
+   */
+
+<span class="fc" id="L43">  public Preventivo() {</span>
+
+<span class="fc" id="L45">  }</span>
+
+  /**
+   * Metodo che restituisce l'idPreventivo.
+   *
+   * @return int - idPreventivo
+   */
+
+  public int getIdPreventivo() {
+<span class="fc" id="L54">    return idPreventivo;</span>
+  }
+
+  /**
+   * Metodo che setta l'idPreventivo.
+   *
+   * @param idPreventivo Codice identificativo, Intero
+   */
+
+  public void setIdPreventivo(int idPreventivo) {
+<span class="fc" id="L64">    this.idPreventivo = idPreventivo;</span>
+<span class="fc" id="L65">  }</span>
+
+  /**
+   * Metodo che restituisce l'idRichiesta.
+   *
+   * @return int - idRichiesta
+   */
+
+  public int getIdRichiesta() {
+<span class="fc" id="L74">    return idRichiesta;</span>
+  }
+
+  /**
+   * Metodo che setta l'idRichiesta.
+   *
+   * @param idRichiesta Codice identificativo, Intero
+   */
+
+  public void setIdRichiesta(int idRichiesta) {
+<span class="fc" id="L84">    this.idRichiesta = idRichiesta;</span>
+<span class="fc" id="L85">  }</span>
+
+  /**
+   * Metodo che restituisce la partitaIva.
+   *
+   * @return String - partitaIva
+   */
+
+  public String getPartitaIva() {
+<span class="fc" id="L94">    return partitaIva;</span>
+  }
+
+  /**
+   * Metodo che setta la partitaIva.
+   *
+   * @param partitaIva Codice alfanumerico identificativo fornitore, String
+   */
+
+  public void setPartitaIva(String partitaIva) {
+<span class="fc" id="L104">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L105">  }</span>
+
+  /**
+   * Metodo che restituisce il codiceFiscale.
+   *
+   * @return String - codiceFiscale
+   */
+
+  public String getCodiceFiscale() {
+<span class="fc" id="L114">    return codiceFiscale;</span>
+  }
+
+  /**
+   * Metodo che setta il codiceFiscale.
+   *
+   * @param codiceFiscale Codice alfanumerico identificativo cliente, String
+   */
+
+  public void setCodiceFiscale(String codiceFiscale) {
+<span class="fc" id="L124">    this.codiceFiscale = codiceFiscale;</span>
+<span class="fc" id="L125">  }</span>
+
+  /**
+   * Metodo che restituisce la dataPreventivo.
+   *
+   * @return Date - dataPreventivo
+   */
+
+  public Date getDataPreventivo() {
+<span class="fc" id="L134">    return dataPreventivo;</span>
+  }
+
+  /**
+   * Metodo che setta la dataPreventivo.
+   *
+   * @param dataPreventivo Data del preventivo, Date
+   */
+
+  public void setDataPreventivo(Date dataPreventivo) {
+<span class="fc" id="L144">    this.dataPreventivo = dataPreventivo;</span>
+<span class="fc" id="L145">  }</span>
+
+  /**
+   * Motodo che restitutisce il prezzoTotale.
+   *
+   * @return float - prezzoTotale
+   */
+
+  public float getPrezzoTotale() {
+<span class="fc" id="L154">    return prezzoTotale;</span>
+  }
+
+  /**
+   * Metodo che setta il prezzoTotale.
+   *
+   * @param prezzoTotale Prezzo totale preventivato, float
+   */
+
+  public void setPrezzoTotale(float prezzoTotale) {
+<span class="fc" id="L164">    this.prezzoTotale = prezzoTotale;</span>
+<span class="fc" id="L165">  }</span>
+
+  /**
+   * Metodo che ritorna la nota.
+   *
+   * @return String - nota
+   */
+
+  public String getNota() {
+<span class="fc" id="L174">    return nota;</span>
+  }
+
+  /**
+   * Metodo che setta la nota.
+   *
+   * @param nota Nota aggiuntiva, String
+   */
+
+  public void setNota(String nota) {
+<span class="fc" id="L184">    this.nota = nota;</span>
+<span class="fc" id="L185">  }</span>
+
+  /**
+   * Metodo che converte l'oggetto Preventivo in stringa.
+   *
+   * @return String
+   */
+
+  @Override
+  public String toString() {
+<span class="nc" id="L195">    return &quot;Preventivo{&quot;</span>
+        + &quot;idPreventivo=&quot; + idPreventivo
+        + &quot;, idRichiesta=&quot; + idRichiesta
+        + &quot;, partitaIva='&quot; + partitaIva + '\''
+        + &quot;, codiceFiscale='&quot; + codiceFiscale + '\''
+        + &quot;, dataPreventivo=&quot; + dataPreventivo
+        + &quot;, prezzoTotale=&quot; + prezzoTotale
+        + &quot;, nota='&quot; + nota + '\''
+        + '}';
+  }
+
+  private int idPreventivo;
+  private int idRichiesta;
+  private String partitaIva;
+  private String codiceFiscale;
+  private Date dataPreventivo;
+  private float prezzoTotale;
+  private String nota;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SottoscrizioneAbbonamentoServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">SottoscrizioneAbbonamentoServletTest.java</span></div><h1>SottoscrizioneAbbonamentoServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import Model.POJO.MetodoPagamento;
+import java.sql.Date;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L18">class SottoscrizioneAbbonamentoServletTest extends Mockito {</span>
+  private SottoscrizioneAbbonamentoServlet sottoscrizioneAbbonamentoServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  private MetodoPagamento metodo;
+<span class="fc" id="L26">  MyServletException exception = null;</span>
+
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L31">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L32">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L33">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L34">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L35">    mockedSession = Mockito.mock(HttpSession.class);</span>
+<span class="fc" id="L36">    sottoscrizioneAbbonamentoServlet = new SottoscrizioneAbbonamentoServlet();</span>
+
+<span class="fc" id="L38">    metodo = new MetodoPagamento();</span>
+<span class="fc" id="L39">    metodo.setCvv(278);</span>
+<span class="fc" id="L40">    metodo.setDataScadenza(new Date(2020, 01, 01));</span>
+<span class="fc" id="L41">    metodo.setPartitaIva(&quot;01391350129&quot;);</span>
+<span class="fc" id="L42">    metodo.setNumeroCarta(&quot;1234432112344321&quot;);</span>
+<span class="fc" id="L43">  }</span>
+
+  @Test
+  void TestNomeIntestatarioMatchFailed() {
+<span class="fc" id="L47">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L48">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L49">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L50">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L53">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L55">    String message = &quot;Nome intestatario non valido.&quot;;</span>
+
+<span class="fc" id="L57">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L58">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L59">    });</span>
+
+<span class="fc" id="L61">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L62">  }</span>
+
+  @Test
+  void TestNomeIntestatarioNull() {
+<span class="fc" id="L66">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L67">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L68">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L71">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L73">    String message = &quot;Nome intestatario non valido.&quot;;</span>
+
+<span class="fc" id="L75">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L76">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L77">    });</span>
+
+<span class="fc" id="L79">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L80">  }</span>
+
+  @Test
+  void TestNumeroCartaMatchFailed() {
+<span class="fc" id="L84">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L85">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L86">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L87">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L90">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L92">    String message = &quot;Numero carta non valido.&quot;;</span>
+
+<span class="fc" id="L94">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L95">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L96">    });</span>
+
+<span class="fc" id="L98">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L99">  }</span>
+
+  @Test
+  void TestNumeroCartaEsistente() {
+<span class="fc" id="L103">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L104">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1452896574587589&quot;);</span>
+<span class="fc" id="L105">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L106">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L109">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L111">    String message = &quot;Numero carta non valido.&quot;;</span>
+
+<span class="fc" id="L113">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L114">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L115">    });</span>
+
+<span class="fc" id="L117">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L118">  }</span>
+
+  @Test
+  void TestNumeroCartaNull() {
+<span class="fc" id="L122">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L123">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L124">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L127">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L129">    String message = &quot;Numero carta non valido.&quot;;</span>
+
+<span class="fc" id="L131">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L132">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L133">    });</span>
+
+<span class="fc" id="L135">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L136">  }</span>
+
+  @Test
+  void TestCvvMatchFailed() {
+<span class="fc" id="L140">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L141">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L142">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L143">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L146">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L148">    String message = &quot;Cvv non valido.&quot;;</span>
+
+<span class="fc" id="L150">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L151">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L152">    });</span>
+
+<span class="fc" id="L154">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L155">  }</span>
+
+  @Test
+  void TestCvvNull() {
+<span class="fc" id="L159">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L160">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L161">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;20210113&quot;);</span>
+
+
+<span class="fc" id="L164">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L166">    String message = &quot;Cvv non valido.&quot;;</span>
+
+<span class="fc" id="L168">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L169">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L170">    });</span>
+
+<span class="fc" id="L172">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L173">  }</span>
+
+  @Test
+  void TestDataScadenzaNull() {
+<span class="fc" id="L177">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L178">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L179">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+
+
+<span class="fc" id="L182">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L184">    String message = &quot;Data scadenza non valida.&quot;;</span>
+
+<span class="fc" id="L186">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L187">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L188">    });</span>
+
+<span class="fc" id="L190">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L191">  }</span>
+
+  @Test
+  void TestDataScadenzaMatchFailed() {
+<span class="fc" id="L195">    Mockito.when(mockedRequest.getParameter(&quot;nomeIntestatario&quot;)).thenReturn(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L196">    Mockito.when(mockedRequest.getParameter(&quot;numeroCarta&quot;)).thenReturn(&quot;1234567890987654&quot;);</span>
+<span class="fc" id="L197">    Mockito.when(mockedRequest.getParameter(&quot;cvv&quot;)).thenReturn(&quot;321&quot;);</span>
+<span class="fc" id="L198">    Mockito.when(mockedRequest.getParameter(&quot;dataScadenza&quot;)).thenReturn(&quot;&quot;);</span>
+
+
+<span class="fc" id="L201">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L203">    String message = &quot;Data scadenza non valida.&quot;;</span>
+
+<span class="fc" id="L205">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L206">      sottoscrizioneAbbonamentoServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L207">    });</span>
+
+<span class="fc" id="L209">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L210">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L214">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L218">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L222">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

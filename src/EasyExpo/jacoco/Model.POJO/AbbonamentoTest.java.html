@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbbonamentoTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">AbbonamentoTest.java</span></div><h1>AbbonamentoTest.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.sql.Date;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L11">class AbbonamentoTest {</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L15">    datai = new Date(2020, 1, 8);</span>
+<span class="fc" id="L16">    dataf = new Date(2020, 2, 8);</span>
+<span class="fc" id="L17">    abbonamento = new Abbonamento(0, &quot;01234567890&quot;, datai, dataf);</span>
+<span class="fc" id="L18">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L22">    Date datai = new Date(2020, 1, 8);</span>
+<span class="fc" id="L23">    Date dataf = new Date(2020, 2, 8);</span>
+<span class="fc" id="L24">    abbonamento = new Abbonamento(0, &quot;01234567890&quot;, datai, dataf);</span>
+<span class="fc" id="L25">  }</span>
+
+  @Test
+  void testAbbonamentoCostructorEmpty() {
+<span class="fc" id="L29">    abbonamento = new Abbonamento();</span>
+<span class="fc" id="L30">    assertNotNull(abbonamento);</span>
+<span class="fc" id="L31">  }</span>
+
+  @Test
+  void getIdAbbonamento() {
+<span class="fc" id="L35">    assertEquals(0, abbonamento.getIdAbbonamento());</span>
+<span class="fc" id="L36">  }</span>
+
+  @Test
+  void setIdAbbonamento() {
+<span class="fc" id="L40">    abbonamento.setIdAbbonamento(1);</span>
+<span class="fc" id="L41">    assertEquals(1, abbonamento.getIdAbbonamento());</span>
+<span class="fc" id="L42">  }</span>
+
+  @Test
+  void getPartitaIva() {
+<span class="fc" id="L46">    assertEquals(&quot;01234567890&quot;, abbonamento.getPartitaIva());</span>
+<span class="fc" id="L47">  }</span>
+
+  @Test
+  void setPartitaIva() {
+<span class="fc" id="L51">    abbonamento.setPartitaIva(&quot;00000000000&quot;);</span>
+<span class="fc" id="L52">    assertEquals(&quot;00000000000&quot;, abbonamento.getPartitaIva());</span>
+<span class="fc" id="L53">  }</span>
+
+  @Test
+  void getDataInizio() {
+<span class="fc" id="L57">    assertEquals(datai, abbonamento.getDataInizio());</span>
+<span class="fc" id="L58">  }</span>
+
+  @Test
+  void setDataInizio() {
+<span class="fc" id="L62">    dataTemp = new Date(2020, 1, 6);</span>
+<span class="fc" id="L63">    abbonamento.setDataInizio(dataTemp);</span>
+<span class="fc" id="L64">    assertEquals(dataTemp, abbonamento.getDataInizio());</span>
+<span class="fc" id="L65">  }</span>
+
+  @Test
+  void getDataFine() {
+<span class="fc" id="L69">    assertEquals(datai, abbonamento.getDataInizio());</span>
+<span class="fc" id="L70">  }</span>
+
+  @Test
+  void setDataFine() {
+<span class="fc" id="L74">    dataTemp = new Date(2020, 2, 6);</span>
+<span class="fc" id="L75">    abbonamento.setDataFine(dataTemp);</span>
+<span class="fc" id="L76">    assertEquals(dataTemp, abbonamento.getDataFine());</span>
+<span class="fc" id="L77">  }</span>
+
+  private Abbonamento abbonamento;
+  private Date datai;
+  private Date dataf;
+  private Date dataTemp;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

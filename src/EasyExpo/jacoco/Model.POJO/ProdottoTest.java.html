@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdottoTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">ProdottoTest.java</span></div><h1>ProdottoTest.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L10">class ProdottoTest {</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L14">    prodotto =</span>
+        new Prodotto(1, &quot;012345690&quot;, &quot;Cassa&quot;, &quot;Cassa audio&quot;, Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            &quot;foto&quot;);
+<span class="fc" id="L17">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L21">    prodotto =</span>
+        new Prodotto(1, &quot;012345690&quot;, &quot;Cassa&quot;, &quot;Cassa audio&quot;, Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            &quot;foto&quot;);
+<span class="fc" id="L24">  }</span>
+
+  @Test
+  void testProdottoCostructorEmpty() {
+<span class="fc" id="L28">    prodotto = new Prodotto();</span>
+<span class="fc" id="L29">    assertNotNull(prodotto);</span>
+<span class="fc" id="L30">  }</span>
+
+  @Test
+  void getIdProdotto() {
+<span class="fc" id="L34">    assertEquals(1, prodotto.getIdProdotto());</span>
+<span class="fc" id="L35">  }</span>
+
+  @Test
+  void setIdProdotto() {
+<span class="fc" id="L39">    prodotto.setIdProdotto(2);</span>
+<span class="fc" id="L40">    assertEquals(2, prodotto.getIdProdotto());</span>
+<span class="fc" id="L41">  }</span>
+
+  @Test
+  void getPartitaIva() {
+<span class="fc" id="L45">    assertEquals(&quot;012345690&quot;, prodotto.getPartitaIva());</span>
+<span class="fc" id="L46">  }</span>
+
+  @Test
+  void setPartitaIva() {
+<span class="fc" id="L50">    prodotto.setPartitaIva(&quot;00000000000&quot;);</span>
+<span class="fc" id="L51">    assertEquals(&quot;00000000000&quot;, prodotto.getPartitaIva());</span>
+<span class="fc" id="L52">  }</span>
+
+  @Test
+  void getTitolo() {
+<span class="fc" id="L56">    assertEquals(&quot;Cassa&quot;, prodotto.getTitolo());</span>
+<span class="fc" id="L57">  }</span>
+
+  @Test
+  void setTitolo() {
+<span class="fc" id="L61">    prodotto.setTitolo(&quot;Cassa audio&quot;);</span>
+<span class="fc" id="L62">    assertEquals(&quot;Cassa audio&quot;, prodotto.getTitolo());</span>
+<span class="fc" id="L63">  }</span>
+
+  @Test
+  void getDescrizione() {
+<span class="fc" id="L67">    assertEquals(&quot;Cassa audio&quot;, prodotto.getDescrizione());</span>
+<span class="fc" id="L68">  }</span>
+
+  @Test
+  void setDescrizione() {
+<span class="fc" id="L72">    prodotto.setDescrizione(&quot;Cassa audio per esterno e interno&quot;);</span>
+<span class="fc" id="L73">    assertEquals(&quot;Cassa audio per esterno e interno&quot;, prodotto.getDescrizione());</span>
+<span class="fc" id="L74">  }</span>
+
+  @Test
+  void getTipo() {
+<span class="fc" id="L78">    assertEquals(Prodotto.Tipo.ATTREZZATURA, prodotto.getTipo());</span>
+<span class="fc" id="L79">  }</span>
+
+  @Test
+  void setTipo() {
+<span class="fc" id="L83">    prodotto.setTipo(Prodotto.Tipo.SERVIZIO);</span>
+<span class="fc" id="L84">    assertEquals(Prodotto.Tipo.SERVIZIO, prodotto.getTipo());</span>
+<span class="fc" id="L85">  }</span>
+
+  @Test
+  void getQuantità() {
+<span class="fc" id="L89">    assertEquals(5, prodotto.getQuantità());</span>
+<span class="fc" id="L90">  }</span>
+
+  @Test
+  void setQuantità() {
+<span class="fc" id="L94">    prodotto.setQuantità(3);</span>
+<span class="fc" id="L95">    assertEquals(3, prodotto.getQuantità());</span>
+<span class="fc" id="L96">  }</span>
+
+  @Test
+  void getPrezzo() {
+<span class="fc" id="L100">    assertEquals(50, prodotto.getPrezzo());</span>
+<span class="fc" id="L101">  }</span>
+
+  @Test
+  void setPrezzo() {
+<span class="fc" id="L105">    prodotto.setPrezzo(25);</span>
+<span class="fc" id="L106">    assertEquals(25, prodotto.getPrezzo());</span>
+<span class="fc" id="L107">  }</span>
+
+  @Test
+  void getImmagine() {
+<span class="fc" id="L111">    assertEquals(&quot;foto&quot;, prodotto.getImmagine());</span>
+<span class="fc" id="L112">  }</span>
+
+  @Test
+  void setImmagine() {
+<span class="fc" id="L116">    prodotto.setImmagine(&quot;immagine&quot;);</span>
+<span class="fc" id="L117">    assertEquals(&quot;immagine&quot;, prodotto.getImmagine());</span>
+<span class="fc" id="L118">  }</span>
+
+  private Prodotto prodotto;
+  private Prodotto.Tipo tipo;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

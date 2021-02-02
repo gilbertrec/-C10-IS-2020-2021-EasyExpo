@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RinnovoAbbonamentoServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RinnovoAbbonamentoServlet.java</span></div><h1>RinnovoAbbonamentoServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.AbbonamentoDAO;
+import Model.DAO.FornitoreDAO;
+import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
+import java.io.IOException;
+import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; RinnovoAbbonamentoServlet e' una Servlet che permette di rinnovare
+ * l'Abbonamento a un Fornitore che era già stato abbonato ma il suo utlimo abboanmento
+ * è scaduto&lt;/p&gt;.
+ *
+ * @author GIUSEPPE AVINO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/RinnovoAbbonamentoServlet&quot;)
+<span class="nc" id="L26">public class RinnovoAbbonamentoServlet extends HttpServlet {</span>
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="nc" id="L35">    AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();</span>
+<span class="nc" id="L36">    String partitaIva = request.getParameter(&quot;partitaIva&quot;);</span>
+<span class="nc" id="L37">    Abbonamento abbonamento = new Abbonamento();</span>
+<span class="nc" id="L38">    abbonamento.setPartitaIva(partitaIva);</span>
+<span class="nc" id="L39">    java.sql.Date oggi = new java.sql.Date(Calendar.getInstance().getTime().getTime());</span>
+<span class="nc" id="L40">    abbonamento.setDataInizio(oggi);</span>
+
+<span class="nc" id="L42">    Calendar calendario = Calendar.getInstance();</span>
+<span class="nc" id="L43">    calendario.setTime(oggi);</span>
+<span class="nc" id="L44">    calendario.add(Calendar.DATE, 30);</span>
+<span class="nc" id="L45">    java.sql.Date scadenza = new java.sql.Date(calendario.getTime().getTime());</span>
+<span class="nc" id="L46">    abbonamento.setDataFine(scadenza);</span>
+
+<span class="nc" id="L48">    FornitoreDAO fornitoreDAO = new FornitoreDAO();</span>
+<span class="nc" id="L49">    Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(partitaIva);</span>
+<span class="nc" id="L50">    fornitore.setAbbonato(true);</span>
+<span class="nc" id="L51">    fornitoreDAO.updateBooleanFornitore(fornitore);</span>
+<span class="nc" id="L52">    request.setAttribute(&quot;fornitore&quot;, fornitore);</span>
+
+<span class="nc" id="L54">    abbonamentoDAO.createAbbonamento(abbonamento);</span>
+<span class="nc" id="L55">    RequestDispatcher requestDispatcher = request.getRequestDispatcher(&quot;/areaFornitore.jsp&quot;);</span>
+<span class="nc" id="L56">    requestDispatcher.forward(request, response);</span>
+<span class="nc" id="L57">  }</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="nc" id="L67">    doPost(request, response);</span>
+<span class="nc" id="L68">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbbonamentoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">AbbonamentoDAOTest.java</span></div><h1>AbbonamentoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbbonamentoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">AbbonamentoDAOTest.java</span></div><h1>AbbonamentoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import Model.POJO.Abbonamento;
 import Model.POJO.Fornitore;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,9 +70,10 @@ import org.junit.jupiter.api.Test;
 <span class="fc" id="L70">    a.setPartitaIva(&quot;0123456789034rfdf&quot;);</span>
 <span class="fc" id="L71">    a.setDataInizio(new Date(2020, 10, 01));</span>
 <span class="fc" id="L72">    a.setDataFine(new Date(2020, 10, 11));</span>
-<span class="pc" id="L73">    assertThrows(RuntimeException.class, () -&gt; {abbonamentoDAO.createAbbonamento(a);});</span>
-<span class="fc" id="L74">  }</span>
-
+<span class="fc" id="L73">    assertThrows(RuntimeException.class, () -&gt; {</span>
+<span class="nc" id="L74">      abbonamentoDAO.createAbbonamento(a);</span>
+<span class="nc" id="L75">    });</span>
+<span class="fc" id="L76">  }</span>
 
 
 }

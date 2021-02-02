@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">LoginServletTest.java</span></div><h1>LoginServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L22">class LoginServletTest extends Mockito {</span>
+
+  private LoginServlet loginServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  private Cliente cl;
+  private Fornitore fr;
+  private ClienteDAO clienteDAO;
+  private FornitoreDAO fornitoreDAO;
+
+<span class="fc" id="L35">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+
+<span class="fc" id="L40">    loginServlet = new LoginServlet();</span>
+<span class="fc" id="L41">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L42">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L43">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L44">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L45">    mockedSession = Mockito.mock(HttpSession.class);</span>
+
+<span class="fc" id="L47">    fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L48">    clienteDAO = new ClienteDAO();</span>
+
+<span class="fc" id="L50">    cl = new Cliente();</span>
+<span class="fc" id="L51">    fr = new Fornitore(&quot;01235597890&quot;, &quot;Gaetano&quot;, &quot;Iuliano&quot;, &quot;3387485126&quot;, &quot;Napoli&quot;,</span>
+        &quot;g.iuliano@gmail.com&quot;, &quot;password&quot;, &quot;privato&quot;);
+<span class="fc" id="L53">    fornitoreDAO.createFornitore(fr);</span>
+
+<span class="fc" id="L55">    cl.setCodiceFiscale(&quot;RBLKTN10C55E923W&quot;);</span>
+<span class="fc" id="L56">    cl.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L57">    cl.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L58">    cl.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L59">    cl.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L60">    cl.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L61">    cl.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L62">    clienteDAO.createCliente(cl);</span>
+
+<span class="fc" id="L64">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L68">    clienteDAO.deleteCliente(cl.getCodiceFiscale());</span>
+<span class="fc" id="L69">    fornitoreDAO.deleteFornitore(fr.getPartitaIva());</span>
+<span class="fc" id="L70">  }</span>
+
+  @Test
+  void TestPasswordNull() {
+<span class="fc" id="L74">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;gaetano99@gmail.com&quot;);</span>
+
+<span class="fc" id="L76">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+
+<span class="fc" id="L78">    String message = &quot;Email e/o password non validi.&quot;;</span>
+
+<span class="fc" id="L80">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L81">      loginServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L82">    });</span>
+
+<span class="fc" id="L84">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L85">  }</span>
+
+  @Test
+  void TestEmailFailed() {
+<span class="fc" id="L89">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;lucrezia.ro2000&quot;);</span>
+<span class="fc" id="L90">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;password&quot;);</span>
+
+<span class="fc" id="L92">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+
+<span class="fc" id="L94">    String message = &quot;Email e/o password non validi.&quot;;</span>
+
+<span class="fc" id="L96">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L97">      loginServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L98">    });</span>
+
+<span class="fc" id="L100">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L101">  }</span>
+
+  @Test
+  void TestEmailNull() {
+<span class="fc" id="L105">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;password&quot;);</span>
+
+<span class="fc" id="L107">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+
+<span class="fc" id="L109">    String message = &quot;Email e/o password non validi.&quot;;</span>
+
+<span class="fc" id="L111">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L112">      loginServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L113">    });</span>
+
+<span class="fc" id="L115">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L116">  }</span>
+
+  @Test
+  void TestFonitoreNull() throws ServletException, IOException {
+<span class="fc" id="L120">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;gaetano99@gmail.com&quot;);</span>
+<span class="fc" id="L121">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Gaetano99*&quot;);</span>
+
+<span class="fc" id="L123">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L124">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L125">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L126">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L127">        .getRequestDispatcher(&quot;/index.jsp&quot;);</span>
+
+<span class="fc" id="L129">    loginServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L130">    Mockito.verify(mockedServletContext).getRequestDispatcher(&quot;/index.jsp&quot;);</span>
+<span class="fc" id="L131">  }</span>
+
+
+  @Test
+  void TestClienteNull() throws ServletException, IOException {
+<span class="fc" id="L136">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;filly@gmail.com&quot;);</span>
+<span class="fc" id="L137">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;FilBlevi78&quot;);</span>
+
+<span class="fc" id="L139">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L140">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L141">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L142">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L143">        .getRequestDispatcher(&quot;/areaFornitore.jsp&quot;);</span>
+
+<span class="fc" id="L145">    loginServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L146">    Mockito.verify(mockedServletContext).getRequestDispatcher(&quot;/areaFornitore.jsp&quot;);</span>
+<span class="fc" id="L147">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L151">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L155">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

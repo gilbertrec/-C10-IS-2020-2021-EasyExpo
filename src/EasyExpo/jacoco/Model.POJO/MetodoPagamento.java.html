@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MetodoPagamento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">MetodoPagamento.java</span></div><h1>MetodoPagamento.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import java.sql.Date;
+
+/**
+ * MetodoPagamento e' la classe che gestisce un
+ * ordinario oggetto MetodoPagamento.
+ *
+ * @author GAETANO IULIANO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+public class MetodoPagamento {
+
+  /**
+   * Metodo costruttore della classe MetodoPagamento.
+   *
+   * @param numeroCarta      Codice numerico identificativo metodoPagamento, String
+   * @param partitaIva       Codice alfanumerico identificativo fornitore, String
+   * @param nomeIntestatario Nome e cognome dell'intestatario della carta, String
+   * @param dataScadenza     Data scadenza della carta, Date
+   * @param cvv              Codice di sicurezza della carta, int
+   */
+
+  public MetodoPagamento(String numeroCarta, String partitaIva, String nomeIntestatario,
+<span class="fc" id="L27">                         Date dataScadenza, int cvv) {</span>
+<span class="fc" id="L28">    this.numeroCarta = numeroCarta;</span>
+<span class="fc" id="L29">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L30">    this.nomeIntestatario = nomeIntestatario;</span>
+<span class="fc" id="L31">    this.dataScadenza = dataScadenza;</span>
+<span class="fc" id="L32">    this.cvv = cvv;</span>
+<span class="fc" id="L33">  }</span>
+
+  /**
+   * Metodo costruttore di default della classe MetodoPagamento.
+   */
+
+<span class="fc" id="L39">  public MetodoPagamento() {</span>
+
+<span class="fc" id="L41">  }</span>
+
+  /**
+   * Metodo che restituisce il numeroCarta.
+   *
+   * @return String - numeroCarta
+   */
+
+  public String getNumeroCarta() {
+<span class="fc" id="L50">    return numeroCarta;</span>
+  }
+
+  /**
+   * Metodo che setta il numeroCarta.
+   *
+   * @param numeroCarta Codice numerico identificativo metodoPagamento, String
+   */
+
+  public void setNumeroCarta(String numeroCarta) {
+<span class="fc" id="L60">    this.numeroCarta = numeroCarta;</span>
+<span class="fc" id="L61">  }</span>
+
+  /**
+   * Metodo che restituisce la partitaIva.
+   *
+   * @return String - partitaIva
+   */
+
+  public String getPartitaIva() {
+<span class="fc" id="L70">    return partitaIva;</span>
+  }
+
+  /**
+   * Metodo che setta la partitaIva.
+   *
+   * @param partitaIva Codice alfanumerico identificativo fornitore, String
+   */
+
+  public void setPartitaIva(String partitaIva) {
+<span class="fc" id="L80">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L81">  }</span>
+
+  /**
+   * Metodo che restituisce il nomeIntestatario.
+   *
+   * @return String - nomeIntestatario
+   */
+
+  public String getNomeIntestatario() {
+<span class="fc" id="L90">    return nomeIntestatario;</span>
+  }
+
+  /**
+   * Metodo che setta il nomeIntestatario.
+   *
+   * @param nomeIntestatario Nome e cognome dell'intestatario della carta, String
+   */
+
+  public void setNomeIntestatario(String nomeIntestatario) {
+<span class="fc" id="L100">    this.nomeIntestatario = nomeIntestatario;</span>
+<span class="fc" id="L101">  }</span>
+
+  /**
+   * Metodo che restituisce la dataScadenza.
+   *
+   * @return Date - dataScadenza
+   */
+
+  public Date getDataScadenza() {
+<span class="fc" id="L110">    return dataScadenza;</span>
+  }
+
+  /**
+   * Metodo che setta la dataScadenza.
+   *
+   * @param dataScadenza Data scadenza della carta, Date
+   */
+
+  public void setDataScadenza(Date dataScadenza) {
+<span class="fc" id="L120">    this.dataScadenza = dataScadenza;</span>
+<span class="fc" id="L121">  }</span>
+
+  /**
+   * Metodo che restituisce il cvv.
+   *
+   * @return int - cvv
+   */
+
+  public int getCvv() {
+<span class="fc" id="L130">    return cvv;</span>
+  }
+
+  /**
+   * Metodo che setta il cvv.
+   *
+   * @param cvv Codice di sicurezza della carta, int
+   */
+
+  public void setCvv(int cvv) {
+<span class="fc" id="L140">    this.cvv = cvv;</span>
+<span class="fc" id="L141">  }</span>
+
+  /**
+   * Metodo che converte l'oggetto MetodoPagamento in stringa.
+   *
+   * @return String
+   */
+
+  @Override
+  public String toString() {
+<span class="nc" id="L151">    return &quot;MetodoPagamento{&quot;</span>
+        + &quot;numeroCarta=&quot; + numeroCarta
+        + &quot;, partitaIva='&quot; + partitaIva + '\''
+        + &quot;, nomeIntestatario='&quot; + nomeIntestatario + '\''
+        + &quot;, dataScadenza=&quot; + dataScadenza
+        + &quot;, cvv=&quot; + cvv
+        + '}';
+  }
+
+  private String numeroCarta;
+  private String partitaIva;
+  private String nomeIntestatario;
+  private Date dataScadenza;
+  private int cvv;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

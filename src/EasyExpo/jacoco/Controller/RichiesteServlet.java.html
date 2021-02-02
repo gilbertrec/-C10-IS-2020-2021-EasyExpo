@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RichiesteServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RichiesteServlet.java</span></div><h1>RichiesteServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Cliente;
+import Model.POJO.RichiestaPreventivo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; RichiesteServlet e' una Servlet che permette di visionare
+ * tutti le richieste di un Cliente o di un Fornitore&lt;/p&gt;.
+ *
+ * @author GAETANO IULIANO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/RichiesteServlet&quot;)
+<span class="fc" id="L26">public class RichiesteServlet extends HttpServlet {</span>
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="nc" id="L35">    doGet(request, response);</span>
+<span class="nc" id="L36">  }</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="fc" id="L46">    String partitaIva = request.getParameter(&quot;partitaIva&quot;);</span>
+<span class="fc" id="L47">    String codiceFiscale = request.getParameter(&quot;codiceFiscale&quot;);</span>
+
+<span class="fc" id="L49">    RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();</span>
+
+<span class="fc bfc" id="L51" title="All 4 branches covered.">    if (partitaIva != null &amp;&amp; codiceFiscale == null) {</span>
+<span class="fc" id="L52">      List&lt;RichiestaPreventivo&gt; richiesteComplessive =</span>
+<span class="fc" id="L53">          richiestaPreventivoDAO.doRetrieveByPartitaIva(partitaIva);</span>
+<span class="fc" id="L54">      ArrayList&lt;RichiestaPreventivo&gt; richieste = new ArrayList&lt;RichiestaPreventivo&gt;();</span>
+<span class="fc" id="L55">      ArrayList&lt;Cliente&gt; clienti = new ArrayList&lt;Cliente&gt;();</span>
+<span class="fc" id="L56">      ClienteDAO clienteDAO = new ClienteDAO();</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">      for (RichiestaPreventivo rp : richiesteComplessive) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        if (!rp.getStato().toString().equals(&quot;RIFIUTATO&quot;)) {</span>
+<span class="fc" id="L59">          richieste.add(rp);</span>
+<span class="fc" id="L60">          Cliente c = clienteDAO.doRetrieveByCF(rp.getCodiceFiscale());</span>
+<span class="fc" id="L61">          clienti.add(c);</span>
+        }
+
+<span class="fc" id="L64">      }</span>
+<span class="fc" id="L65">      request.getSession().setAttribute(&quot;clienti&quot;, clienti);</span>
+<span class="fc" id="L66">      request.getSession().setAttribute(&quot;richieste&quot;, richieste);</span>
+<span class="fc bfc" id="L67" title="All 4 branches covered.">    } else if (partitaIva == null &amp;&amp; codiceFiscale != null) {</span>
+<span class="fc" id="L68">      List&lt;RichiestaPreventivo&gt; richieste =</span>
+<span class="fc" id="L69">          richiestaPreventivoDAO.doRetrieveByCodiceFiscale(codiceFiscale);</span>
+<span class="fc" id="L70">      ArrayList&lt;Cliente&gt; clienti = new ArrayList&lt;Cliente&gt;();</span>
+<span class="fc" id="L71">      ClienteDAO clienteDAO = new ClienteDAO();</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">      for (RichiestaPreventivo rp : richieste) {</span>
+<span class="fc" id="L73">        Cliente c = clienteDAO.doRetrieveByCF(rp.getCodiceFiscale());</span>
+<span class="fc" id="L74">        clienti.add(c);</span>
+<span class="fc" id="L75">      }</span>
+<span class="fc" id="L76">      request.getSession().setAttribute(&quot;clienti&quot;, clienti);</span>
+<span class="fc" id="L77">      request.getSession().setAttribute(&quot;richieste&quot;, richieste);</span>
+    }
+
+<span class="fc" id="L80">    RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L81">        request.getServletContext().getRequestDispatcher(&quot;/listaRichieste.jsp&quot;);</span>
+<span class="fc" id="L82">    requestDispatcher.forward(request, response);</span>
+<span class="fc" id="L83">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

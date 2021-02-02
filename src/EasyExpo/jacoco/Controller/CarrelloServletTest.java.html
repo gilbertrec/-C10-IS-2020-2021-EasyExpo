@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarrelloServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">CarrelloServletTest.java</span></div><h1>CarrelloServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.AbbonamentoDAO;
+import Model.DAO.FornitoreDAO;
+import Model.DAO.MetodiDiPagamentoDAO;
+import Model.DAO.ProdottoDAO;
+import Model.POJO.Carrello;
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L23">class CarrelloServletTest {</span>
+
+  private CarrelloServlet carrelloServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  private AbbonamentoDAO abbonamentoDAO;
+  private MetodiDiPagamentoDAO metodoDAO;
+  private FornitoreDAO fornitoreDAO;
+  private Fornitore fornitore1;
+  private ArrayList&lt;Fornitore&gt; listaFornitori;
+  private Carrello carrello;
+  private Carrello.ProdottoQuantita prodottoQuantita;
+  private Prodotto prodotto;
+  private ProdottoDAO prodottoDAO;
+  private int idProdotto;
+  private ArrayList&lt;Carrello.ProdottoQuantita&gt; listaProdotto;
+
+
+<span class="fc" id="L44">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L48">    carrelloServlet = new CarrelloServlet();</span>
+<span class="fc" id="L49">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L50">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L51">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L52">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L53">    mockedSession = Mockito.mock(HttpSession.class);</span>
+
+<span class="fc" id="L55">    abbonamentoDAO = new AbbonamentoDAO();</span>
+<span class="fc" id="L56">    metodoDAO = new MetodiDiPagamentoDAO();</span>
+<span class="fc" id="L57">    fornitoreDAO = new FornitoreDAO();</span>
+
+<span class="fc" id="L59">    fornitore1 = new Fornitore(&quot;01234567890&quot;, &quot;Gaetano&quot;, &quot;Iuliano&quot;, &quot;3387485126&quot;, &quot;Napoli&quot;,</span>
+        &quot;g.iuliano@gmail.com&quot;, &quot;password&quot;, &quot;privato&quot;);
+<span class="fc" id="L61">    fornitoreDAO.createFornitore(fornitore1);</span>
+
+<span class="fc" id="L63">    prodotto = new Prodotto();</span>
+<span class="fc" id="L64">    prodottoDAO = new ProdottoDAO();</span>
+<span class="fc" id="L65">    prodotto.setIdProdotto(2);</span>
+<span class="fc" id="L66">    prodotto.setPartitaIva(fornitore1.getPartitaIva());</span>
+<span class="fc" id="L67">    prodotto.setTitolo(&quot;Panca&quot;);</span>
+<span class="fc" id="L68">    prodotto.setPrezzo(30);</span>
+<span class="fc" id="L69">    prodotto.setQuantità(3);</span>
+<span class="fc" id="L70">    prodotto.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L71">    prodotto.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L72">    prodotto.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L73">    idProdotto = prodottoDAO.createProdotto(prodotto);</span>
+
+<span class="fc" id="L75">    listaProdotto = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L76">    carrello = new Carrello();</span>
+<span class="fc" id="L77">    prodottoQuantita = new Carrello.ProdottoQuantita(prodotto, 2);</span>
+<span class="fc" id="L78">    listaProdotto.add(prodottoQuantita);</span>
+<span class="fc" id="L79">    carrello.put(listaProdotto);</span>
+
+<span class="fc" id="L81">    listaFornitori = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L82">    listaFornitori.add(fornitore1);</span>
+<span class="fc" id="L83">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L87">    fornitoreDAO.deleteFornitore(fornitore1.getPartitaIva());</span>
+<span class="fc" id="L88">  }</span>
+
+
+  @Test
+  void testCarrelloVuoto() throws ServletException, IOException {
+
+<span class="fc" id="L94">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L95">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(null);</span>
+<span class="fc" id="L96">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(null);</span>
+
+<span class="fc" id="L98">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L99">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L100">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L101">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L103">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L104">  }</span>
+
+  @Test
+  void testCarrelloPieno() throws ServletException, IOException {
+
+<span class="fc" id="L109">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L110">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L111">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+
+<span class="fc" id="L113">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L114">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L115">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L116">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L118">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L119">  }</span>
+
+  @Test
+  void testAggiuntaProdotto() throws ServletException, IOException {
+
+<span class="fc" id="L124">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L125">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L126">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L127">    Mockito.when(mockedRequest.getParameter(&quot;prodId&quot;)).thenReturn(String.valueOf(idProdotto));</span>
+<span class="fc" id="L128">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(fornitore1.getPartitaIva());</span>
+<span class="fc" id="L129">    Mockito.when(mockedRequest.getParameter(&quot;addNum&quot;)).thenReturn(&quot;2&quot;);</span>
+
+
+<span class="fc" id="L132">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L133">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L134">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L135">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L137">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L138">  }</span>
+
+  @Test
+  void testNuovoProdottoFornitore() throws ServletException, IOException {
+
+<span class="fc" id="L143">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L144">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L145">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L146">    Mockito.when(mockedRequest.getParameter(&quot;prodId&quot;)).thenReturn(&quot;1&quot;);</span>
+<span class="fc" id="L147">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(&quot;01391350129&quot;);</span>
+<span class="fc" id="L148">    Mockito.when(mockedRequest.getParameter(&quot;addNum&quot;)).thenReturn(&quot;1&quot;);</span>
+
+
+<span class="fc" id="L151">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L152">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L153">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L154">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L156">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L157">  }</span>
+
+  @Test
+  void testModificaQuantitaProdotto() throws ServletException, IOException {
+
+<span class="fc" id="L162">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L163">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L164">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L165">    Mockito.when(mockedRequest.getParameter(&quot;prodId&quot;)).thenReturn(String.valueOf(idProdotto));</span>
+<span class="fc" id="L166">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(fornitore1.getPartitaIva());</span>
+
+
+<span class="fc" id="L169">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L170">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L171">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L172">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L174">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L175">  }</span>
+
+  @Test
+  void testRimozioneProdotto() throws ServletException, IOException {
+
+<span class="fc" id="L180">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L181">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L182">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L183">    Mockito.when(mockedRequest.getParameter(&quot;prodId&quot;)).thenReturn(String.valueOf(idProdotto));</span>
+<span class="fc" id="L184">    Mockito.when(mockedRequest.getParameter(&quot;partitaIva&quot;)).thenReturn(fornitore1.getPartitaIva());</span>
+
+
+<span class="fc" id="L187">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L188">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L189">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L190">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L192">    carrelloServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L193">  }</span>
+
+
+  @Test
+  void doGet() {
+<span class="fc" id="L198">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L202">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

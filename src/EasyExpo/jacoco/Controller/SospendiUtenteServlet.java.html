@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SospendiUtenteServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">SospendiUtenteServlet.java</span></div><h1>SospendiUtenteServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; SospendiUtenteServlet e' una Servlet che permette all'Admin di
+ * sospendere un fornitore o un cliente iscritto al sito&lt;/p&gt;.
+ *
+ * @author SABATINO STRUMOLO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/SospendiUtenteServlet&quot;)
+<span class="fc" id="L21">public class SospendiUtenteServlet extends HttpServlet {</span>
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">    if (request.getParameter(&quot;flag&quot;) == null || request.getParameter(&quot;id&quot;) == null) {</span>
+<span class="fc" id="L31">      RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L32">          request.getServletContext().getRequestDispatcher(&quot;/adminHome.jsp&quot;);</span>
+<span class="fc" id="L33">      requestDispatcher.forward(request, response);</span>
+    }
+<span class="fc bfc" id="L35" title="All 2 branches covered.">    if (request.getParameter(&quot;flag&quot;).equals(&quot;1&quot;)) {</span>
+<span class="fc" id="L36">      FornitoreDAO fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L37">      fornitoreDAO.updateStato(2, request.getParameter(&quot;id&quot;));</span>
+<span class="fc" id="L38">      request.getSession().setAttribute(&quot;fornitori&quot;, null);</span>
+<span class="fc" id="L39">      response.sendRedirect(&quot;gestioneFornitori.jsp&quot;);</span>
+    }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    if (request.getParameter(&quot;flag&quot;).equals(&quot;2&quot;)) {</span>
+<span class="fc" id="L42">      ClienteDAO clienteDAO = new ClienteDAO();</span>
+<span class="fc" id="L43">      clienteDAO.updateStato(2, request.getParameter(&quot;id&quot;));</span>
+<span class="fc" id="L44">      request.getSession().setAttribute(&quot;clienti&quot;, null);</span>
+<span class="fc" id="L45">      response.sendRedirect(&quot;gestioneClienti.jsp&quot;);</span>
+    }
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, ServletException {
+<span class="nc" id="L57">    doGet(request, response);</span>
+<span class="nc" id="L58">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

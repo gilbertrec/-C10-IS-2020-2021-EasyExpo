@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarrelloTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">CarrelloTest.java</span></div><h1>CarrelloTest.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.ArrayList;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L12">class CarrelloTest {</span>
+  private Prodotto.Tipo tipo;
+  private Carrello car;
+  private Prodotto prodotto;
+  private Carrello.ProdottoQuantita pq;
+  private ArrayList&lt;Carrello.ProdottoQuantita&gt; lista;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L21">    prodotto = new Prodotto(1, &quot;01234567890&quot;, &quot;Cassa&quot;,</span>
+        &quot;Cassa audio&quot;, Prodotto.Tipo.ATTREZZATURA, 5, 50,
+        &quot;foto&quot;);
+<span class="fc" id="L24">    pq = new Carrello.ProdottoQuantita(prodotto, 2);</span>
+<span class="fc" id="L25">    car = new Carrello();</span>
+<span class="fc" id="L26">    lista = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L27">    lista.add(pq);</span>
+<span class="fc" id="L28">    car.put(lista);</span>
+<span class="fc" id="L29">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L33">    prodotto =</span>
+        new Prodotto(1, &quot;01234567890&quot;, &quot;Cassa&quot;, &quot;Cassa audio&quot;,
+            Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            &quot;foto&quot;);
+<span class="fc" id="L37">    pq = new Carrello.ProdottoQuantita(prodotto, 2);</span>
+<span class="fc" id="L38">    car = new Carrello();</span>
+<span class="fc" id="L39">    lista = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L40">    lista.add(pq);</span>
+<span class="fc" id="L41">    car.put(lista);</span>
+<span class="fc" id="L42">  }</span>
+
+  @Test
+  void getProdottiFornitori() {
+<span class="fc" id="L46">    assertNotNull(car.getProdottiFornitori());</span>
+<span class="fc" id="L47">  }</span>
+
+  @Test
+  void get() {
+<span class="fc" id="L51">    ArrayList&lt;Carrello.ProdottoQuantita&gt; lista3 = car.get(&quot;01234567890&quot;);</span>
+<span class="fc" id="L52">    assertEquals(1, lista3.size());</span>
+<span class="fc" id="L53">  }</span>
+
+  @Test
+  void put() {
+<span class="fc" id="L57">    Prodotto prodotto =</span>
+        new Prodotto(2, &quot;01234567000&quot;, &quot;Cassa&quot;, &quot;Cassa audio&quot;, Prodotto.Tipo.ATTREZZATURA, 5, 50,
+            &quot;foto&quot;);
+<span class="fc" id="L60">    Carrello.ProdottoQuantita cpq = new Carrello.ProdottoQuantita(prodotto, 2);</span>
+<span class="fc" id="L61">    ArrayList&lt;Carrello.ProdottoQuantita&gt; lista2 = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L62">    lista2.add(cpq);</span>
+<span class="fc" id="L63">    car.put(lista2);</span>
+<span class="fc" id="L64">    assertEquals(2, car.getProdottiFornitori().size());</span>
+<span class="fc" id="L65">  }</span>
+
+  @Test
+  void remove() {
+<span class="fc" id="L69">    car.remove(&quot;01234567890&quot;);</span>
+<span class="fc" id="L70">    assertNull(car.get(&quot;01234567890&quot;));</span>
+<span class="fc" id="L71">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

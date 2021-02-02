@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InoltroRichiestaServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">InoltroRichiestaServletTest.java</span></div><h1>InoltroRichiestaServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoDAO;
+import Model.DAO.ProdottoRichiestaDAO;
+import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Carrello;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import Model.POJO.ProdottoRichiesta;
+import Model.POJO.RichiestaPreventivo;
+import java.io.IOException;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L32">class InoltroRichiestaServletTest extends Mockito {</span>
+  private InoltroRichiestaServlet inoltroRichiestaServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+<span class="fc" id="L39">  MyServletException exception = null;</span>
+  private ProdottoRichiesta prodottoRichiesta;
+  private RichiestaPreventivo richiestaPreventivo;
+  private ArrayList&lt;Prodotto&gt; listaProdotti;
+  private ArrayList&lt;Fornitore&gt; listaFornitori;
+  private ArrayList&lt;Carrello.ProdottoQuantita&gt; listaPCarrello;
+  private Cliente cliente;
+  private ClienteDAO clienteDAO;
+  private Fornitore fornitore;
+  private FornitoreDAO fornitoreDAO;
+  private Prodotto prodotto;
+  private ProdottoDAO prodottoDAO;
+  private RichiestaPreventivoDAO richiestaPreventivoDAO;
+  private ProdottoRichiestaDAO prodottoRichiestaDAO;
+  private Carrello carrello;
+  private Carrello.ProdottoQuantita prodottoQuantita;
+  private int idProdotto;
+  private int idProdottoRichiesta;
+  private int idRichiesta;
+  private java.util.Date data;
+
+  private java.sql.Date corrente;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L64">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L65">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L66">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L67">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L68">    mockedSession = Mockito.mock(HttpSession.class);</span>
+<span class="fc" id="L69">    inoltroRichiestaServlet = new InoltroRichiestaServlet();</span>
+<span class="fc" id="L70">    listaFornitori = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L71">    fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L72">    fornitore =</span>
+        new Fornitore(&quot;99999999999&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,
+            &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L75">    fornitoreDAO.createFornitore(fornitore);</span>
+<span class="fc" id="L76">    listaFornitori.add(fornitore);</span>
+
+<span class="fc" id="L78">    clienteDAO = new ClienteDAO();</span>
+<span class="fc" id="L79">    cliente = new Cliente();</span>
+<span class="fc" id="L80">    cliente.setCodiceFiscale(&quot;baoJtA98d55E923o&quot;);</span>
+<span class="fc" id="L81">    cliente.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L82">    cliente.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L83">    cliente.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L84">    cliente.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L85">    cliente.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L86">    cliente.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L87">    clienteDAO.createCliente(cliente);</span>
+
+<span class="fc" id="L89">    prodottoDAO = new ProdottoDAO();</span>
+<span class="fc" id="L90">    prodotto = new Prodotto();</span>
+<span class="fc" id="L91">    prodotto.setIdProdotto(3);</span>
+<span class="fc" id="L92">    prodotto.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L93">    prodotto.setTitolo(&quot;Casse&quot;);</span>
+<span class="fc" id="L94">    prodotto.setPrezzo(30);</span>
+<span class="fc" id="L95">    prodotto.setQuantità(3);</span>
+<span class="fc" id="L96">    prodotto.setDescrizione(&quot;bellissima cassa per la musica&quot;);</span>
+<span class="fc" id="L97">    prodotto.setImmagine(&quot;images/foto.jsp&quot;);</span>
+<span class="fc" id="L98">    prodotto.setTipo(Prodotto.Tipo.ATTREZZATURA);</span>
+<span class="fc" id="L99">    idProdotto = prodottoDAO.createProdotto(prodotto);</span>
+<span class="fc" id="L100">    listaProdotti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L101">    listaProdotti.add(prodotto);</span>
+
+<span class="fc" id="L103">    listaPCarrello = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L104">    carrello = new Carrello();</span>
+<span class="fc" id="L105">    prodottoQuantita = new Carrello.ProdottoQuantita(prodotto, 2);</span>
+<span class="fc" id="L106">    listaPCarrello.add(prodottoQuantita);</span>
+<span class="fc" id="L107">    carrello.put(listaPCarrello);</span>
+<span class="fc" id="L108">    data = new Date(2018, 11, 12);</span>
+
+<span class="fc" id="L110">    corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());</span>
+
+<span class="fc" id="L112">    richiestaPreventivoDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L113">    richiestaPreventivo = new RichiestaPreventivo(1000, &quot;baoJtA98d55E923o&quot;, &quot;99999999999&quot;,</span>
+        &quot;titolo&quot;, &quot;Napoli&quot;, &quot;descrizioneEvento&quot;,
+        &quot;nota&quot;, corrente, RichiestaPreventivo.Stato.IN_ATTESA);
+
+<span class="fc" id="L117">    prodottoRichiesta = new ProdottoRichiesta(4000, 1000, idProdotto, &quot;99999999999&quot;, 3,</span>
+        30, new Date(2021, 11, 12), new Date(2022, 11, 12));
+<span class="fc" id="L119">    prodottoRichiestaDAO = new ProdottoRichiestaDAO();</span>
+<span class="fc" id="L120">    prodottoRichiestaDAO.createProdottoRichiesta(prodottoRichiesta);</span>
+
+
+<span class="fc" id="L123">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L127">    clienteDAO.deleteCliente(cliente.getCodiceFiscale());</span>
+<span class="fc" id="L128">    fornitoreDAO.deleteFornitore(fornitore.getPartitaIva());</span>
+<span class="fc" id="L129">  }</span>
+
+  @Test
+  void TestSuccess() throws ServletException, IOException {
+<span class="fc" id="L133">    Mockito.when(mockedRequest.getParameter(&quot;titolo&quot;)).thenReturn(&quot;concerto&quot;);</span>
+<span class="fc" id="L134">    Mockito.when(mockedRequest.getParameter(&quot;luogo&quot;)).thenReturn(&quot;nola&quot;);</span>
+<span class="fc" id="L135">    Mockito.when(mockedRequest.getParameter(&quot;descrizione&quot;)).thenReturn(&quot;molto bello&quot;);</span>
+<span class="fc" id="L136">    Mockito.when(mockedRequest.getParameter(&quot;dataInizio0&quot;))</span>
+<span class="fc" id="L137">        .thenReturn(String.valueOf(new Date(2012, 01, 20)));</span>
+<span class="fc" id="L138">    Mockito.when(mockedRequest.getParameter(&quot;dataFine0&quot;))</span>
+<span class="fc" id="L139">        .thenReturn(String.valueOf(new Date(2013, 01, 18)));</span>
+<span class="fc" id="L140">    Mockito.when(mockedSession.getAttribute(&quot;listaProdotti&quot;)).thenReturn(listaPCarrello);</span>
+<span class="fc" id="L141">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L142">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L143">    Mockito.when(mockedSession.getAttribute(&quot;cliente&quot;)).thenReturn(cliente);</span>
+
+<span class="fc" id="L145">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+
+<span class="fc" id="L148">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L149">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L150">        .getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+
+<span class="fc" id="L152">    inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L153">  }</span>
+
+
+  @Test
+  void TestDataFineErrata() {
+<span class="fc" id="L158">    Mockito.when(mockedRequest.getParameter(&quot;titolo&quot;)).thenReturn(&quot;concerto&quot;);</span>
+<span class="fc" id="L159">    Mockito.when(mockedRequest.getParameter(&quot;luogo&quot;)).thenReturn(&quot;nola&quot;);</span>
+<span class="fc" id="L160">    Mockito.when(mockedRequest.getParameter(&quot;descrizione&quot;)).thenReturn(&quot;molto bello&quot;);</span>
+<span class="fc" id="L161">    Mockito.when(mockedRequest.getParameter(&quot;dataFine0&quot;))</span>
+<span class="fc" id="L162">        .thenReturn(String.valueOf(new Date(2025, 01, 29)));</span>
+<span class="fc" id="L163">    Mockito.when(mockedRequest.getParameter(&quot;dataInizio0&quot;))</span>
+<span class="fc" id="L164">        .thenReturn(String.valueOf(new Date(2025, 11, 12)));</span>
+<span class="fc" id="L165">    Mockito.when(mockedSession.getAttribute(&quot;listaProdotti&quot;)).thenReturn(listaPCarrello);</span>
+<span class="fc" id="L166">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L167">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L168">    Mockito.when(mockedSession.getAttribute(&quot;cliente&quot;)).thenReturn(cliente);</span>
+
+<span class="fc" id="L170">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L172">    String message = &quot;Data fine errata.&quot;;</span>
+
+<span class="fc" id="L174">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L175">      inoltroRichiestaServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L176">    });</span>
+
+<span class="fc" id="L178">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L179">  }</span>
+
+  @Test
+  void TestDescrizioneFailed() {
+<span class="fc" id="L183">    Mockito.when(mockedRequest.getParameter(&quot;titolo&quot;)).thenReturn(&quot;concerto&quot;);</span>
+<span class="fc" id="L184">    Mockito.when(mockedRequest.getParameter(&quot;luogo&quot;)).thenReturn(&quot;nola&quot;);</span>
+<span class="fc" id="L185">    Mockito.when(mockedRequest.getParameter(&quot;descrizione&quot;)).thenReturn(&quot;**&quot;);</span>
+<span class="fc" id="L186">    Mockito.when(mockedRequest.getParameter(&quot;dataInizio0&quot;))</span>
+<span class="fc" id="L187">        .thenReturn(String.valueOf(new Date(2012, 01, 20)));</span>
+<span class="fc" id="L188">    Mockito.when(mockedRequest.getParameter(&quot;dataFine0&quot;))</span>
+<span class="fc" id="L189">        .thenReturn(String.valueOf(new Date(2013, 01, 18)));</span>
+<span class="fc" id="L190">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L191">    Mockito.when(mockedSession.getAttribute(&quot;listaProdotti&quot;)).thenReturn(listaPCarrello);</span>
+<span class="fc" id="L192">    Mockito.when(mockedSession.getAttribute(&quot;listaFornitori&quot;)).thenReturn(listaFornitori);</span>
+<span class="fc" id="L193">    Mockito.when(mockedSession.getAttribute(&quot;carrello&quot;)).thenReturn(carrello);</span>
+<span class="fc" id="L194">    Mockito.when(mockedSession.getAttribute(&quot;cliente&quot;)).thenReturn(cliente);</span>
+<span class="fc" id="L195">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L197">    String message = &quot;Descrizione non valida.&quot;;</span>
+
+<span class="fc" id="L199">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L200">      inoltroRichiestaServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L201">    });</span>
+
+<span class="fc" id="L203">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L204">  }</span>
+
+
+  @Test
+  void doGet() {
+<span class="fc" id="L209">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L213">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

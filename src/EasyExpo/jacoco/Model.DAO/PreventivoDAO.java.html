@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreventivoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">PreventivoDAO.java</span></div><h1>PreventivoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreventivoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">PreventivoDAO.java</span></div><h1>PreventivoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
 
 import Model.POJO.Preventivo;
-import Model.POJO.Prodotto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import java.util.List;
  * @version 1.0
  * @since 2020-12-29
  */
-<span class="fc" id="L21">public class PreventivoDAO {</span>
+<span class="fc" id="L20">public class PreventivoDAO {</span>
 
   /**
    * Metodo che ritorna l'oggetto di tipo Preventivo correlato ad un idPreventivo dato in input.
@@ -27,28 +26,28 @@ import java.util.List;
    * @return Preventivo - Oggetto di tipo {@link Preventivo}
    */
   public Preventivo doRetriveByIdPreventivo(int idPreventivo) {
-<span class="fc" id="L30">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L31">      PreparedStatement ps = con</span>
-<span class="fc" id="L32">          .prepareStatement(</span>
+<span class="fc" id="L29">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L30">      PreparedStatement ps = con</span>
+<span class="fc" id="L31">          .prepareStatement(</span>
               &quot;SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, &quot;
                   + &quot;RichiestaPreventivo as rp WHERE p.idPreventivo=? &quot;
                   + &quot;AND p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND &quot;
                   + &quot;p.codiceFiscale=c.codiceFiscale&quot;);
-<span class="fc" id="L37">      ps.setInt(1, idPreventivo);</span>
-<span class="fc" id="L38">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">      if (rs.next()) {</span>
-<span class="fc" id="L40">        Preventivo p = new Preventivo();</span>
-<span class="fc" id="L41">        p.setIdPreventivo(rs.getInt(1));</span>
-<span class="fc" id="L42">        p.setIdRichiesta(rs.getInt(2));</span>
-<span class="fc" id="L43">        p.setPartitaIva(rs.getString(3));</span>
-<span class="fc" id="L44">        p.setCodiceFiscale(rs.getString(4));</span>
-<span class="fc" id="L45">        p.setDataPreventivo(rs.getDate(5));</span>
-<span class="fc" id="L46">        p.setPrezzoTotale(rs.getFloat(6));</span>
-<span class="fc" id="L47">        return p;</span>
+<span class="fc" id="L36">      ps.setInt(1, idPreventivo);</span>
+<span class="fc" id="L37">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">      if (rs.next()) {</span>
+<span class="fc" id="L39">        Preventivo p = new Preventivo();</span>
+<span class="fc" id="L40">        p.setIdPreventivo(rs.getInt(1));</span>
+<span class="fc" id="L41">        p.setIdRichiesta(rs.getInt(2));</span>
+<span class="fc" id="L42">        p.setPartitaIva(rs.getString(3));</span>
+<span class="fc" id="L43">        p.setCodiceFiscale(rs.getString(4));</span>
+<span class="fc" id="L44">        p.setDataPreventivo(rs.getDate(5));</span>
+<span class="fc" id="L45">        p.setPrezzoTotale(rs.getFloat(6));</span>
+<span class="fc" id="L46">        return p;</span>
       }
-<span class="fc" id="L49">      return null;</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
-<span class="nc" id="L51">      throw new RuntimeException(e);</span>
+<span class="fc" id="L48">      return null;</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L50">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -59,26 +58,26 @@ import java.util.List;
    * @param preventivo Oggetto di tipo {@link Preventivo}
    */
   public int createPreventivo(Preventivo preventivo) {
-<span class="fc" id="L62">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L63">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L61">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L62">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;INSERT INTO Preventivo (idRichiesta, partitaIva, codiceFiscale, dataPreventivo, &quot;
               + &quot;prezzoTotale, nota) VALUES(?,?,?,?,?,?)&quot;,
           Statement.RETURN_GENERATED_KEYS);
-<span class="fc" id="L67">      ps.setInt(1, preventivo.getIdRichiesta());</span>
-<span class="fc" id="L68">      ps.setString(2, preventivo.getPartitaIva());</span>
-<span class="fc" id="L69">      ps.setString(3, preventivo.getCodiceFiscale());</span>
-<span class="fc" id="L70">      ps.setDate(4, preventivo.getDataPreventivo());</span>
-<span class="fc" id="L71">      ps.setFloat(5, preventivo.getPrezzoTotale());</span>
-<span class="fc" id="L72">      ps.setString(6, preventivo.getNota());</span>
-<span class="pc bpc" id="L73" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
-<span class="nc" id="L74">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+<span class="fc" id="L66">      ps.setInt(1, preventivo.getIdRichiesta());</span>
+<span class="fc" id="L67">      ps.setString(2, preventivo.getPartitaIva());</span>
+<span class="fc" id="L68">      ps.setString(3, preventivo.getCodiceFiscale());</span>
+<span class="fc" id="L69">      ps.setDate(4, preventivo.getDataPreventivo());</span>
+<span class="fc" id="L70">      ps.setFloat(5, preventivo.getPrezzoTotale());</span>
+<span class="fc" id="L71">      ps.setString(6, preventivo.getNota());</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L73">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
       }
-<span class="fc" id="L76">      ResultSet rs = ps.getGeneratedKeys();</span>
-<span class="fc" id="L77">      rs.next();</span>
-<span class="fc" id="L78">      preventivo.setIdPreventivo(rs.getInt(1));</span>
-<span class="fc" id="L79">      return rs.getInt(1);</span>
-<span class="nc" id="L80">    } catch (SQLException e) {</span>
-<span class="nc" id="L81">      throw new RuntimeException(e);</span>
+<span class="fc" id="L75">      ResultSet rs = ps.getGeneratedKeys();</span>
+<span class="fc" id="L76">      rs.next();</span>
+<span class="fc" id="L77">      preventivo.setIdPreventivo(rs.getInt(1));</span>
+<span class="fc" id="L78">      return rs.getInt(1);</span>
+<span class="nc" id="L79">    } catch (SQLException e) {</span>
+<span class="nc" id="L80">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -90,29 +89,29 @@ import java.util.List;
    */
 
   public List&lt;Preventivo&gt; doRetrieveByPartitaIva(String partitaIva) {
-<span class="fc" id="L93">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L94">      PreparedStatement ps = con</span>
-<span class="fc" id="L95">          .prepareStatement(</span>
+<span class="fc" id="L92">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L93">      PreparedStatement ps = con</span>
+<span class="fc" id="L94">          .prepareStatement(</span>
               &quot;SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c, &quot;
                   + &quot;RichiestaPreventivo as rp WHERE p.partitaIva=? AND &quot;
                   + &quot;p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND &quot;
                   + &quot;p.codiceFiscale=c.codiceFiscale&quot;);
-<span class="fc" id="L100">      ps.setString(1, partitaIva);</span>
-<span class="fc" id="L101">      ArrayList&lt;Preventivo&gt; preventivi = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L102">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L104">        Preventivo p = new Preventivo();</span>
-<span class="fc" id="L105">        p.setIdPreventivo(rs.getInt(1));</span>
-<span class="fc" id="L106">        p.setIdRichiesta(rs.getInt(2));</span>
-<span class="fc" id="L107">        p.setPartitaIva(rs.getString(3));</span>
-<span class="fc" id="L108">        p.setCodiceFiscale(rs.getString(4));</span>
-<span class="fc" id="L109">        p.setDataPreventivo(rs.getDate(5));</span>
-<span class="fc" id="L110">        p.setPrezzoTotale(rs.getFloat(6));</span>
-<span class="fc" id="L111">        preventivi.add(p);</span>
-<span class="fc" id="L112">      }</span>
-<span class="fc" id="L113">      return preventivi;</span>
-<span class="nc" id="L114">    } catch (SQLException e) {</span>
-<span class="nc" id="L115">      throw new RuntimeException(e);</span>
+<span class="fc" id="L99">      ps.setString(1, partitaIva);</span>
+<span class="fc" id="L100">      ArrayList&lt;Preventivo&gt; preventivi = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L101">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L103">        Preventivo p = new Preventivo();</span>
+<span class="fc" id="L104">        p.setIdPreventivo(rs.getInt(1));</span>
+<span class="fc" id="L105">        p.setIdRichiesta(rs.getInt(2));</span>
+<span class="fc" id="L106">        p.setPartitaIva(rs.getString(3));</span>
+<span class="fc" id="L107">        p.setCodiceFiscale(rs.getString(4));</span>
+<span class="fc" id="L108">        p.setDataPreventivo(rs.getDate(5));</span>
+<span class="fc" id="L109">        p.setPrezzoTotale(rs.getFloat(6));</span>
+<span class="fc" id="L110">        preventivi.add(p);</span>
+<span class="fc" id="L111">      }</span>
+<span class="fc" id="L112">      return preventivi;</span>
+<span class="nc" id="L113">    } catch (SQLException e) {</span>
+<span class="nc" id="L114">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -124,29 +123,29 @@ import java.util.List;
    */
 
   public List&lt;Preventivo&gt; doRetrieveByCodiceFiscale(String codiceFiscale) {
-<span class="fc" id="L127">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L128">      PreparedStatement ps = con</span>
-<span class="fc" id="L129">          .prepareStatement(</span>
+<span class="fc" id="L126">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L127">      PreparedStatement ps = con</span>
+<span class="fc" id="L128">          .prepareStatement(</span>
               &quot;SELECT *  FROM Preventivo as p, Fornitore as f, Cliente as c,&quot;
                   + &quot; RichiestaPreventivo as rp WHERE p.codiceFiscale=? AND &quot;
                   + &quot;p.idRichiesta=rp.idRichiesta AND p.partitaIva=f.partitaIva AND &quot;
                   + &quot;p.codiceFiscale=c.codiceFiscale&quot;);
-<span class="fc" id="L134">      ps.setString(1, codiceFiscale);</span>
-<span class="fc" id="L135">      ArrayList&lt;Preventivo&gt; preventivi = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L136">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L137" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L138">        Preventivo p = new Preventivo();</span>
-<span class="fc" id="L139">        p.setIdPreventivo(rs.getInt(1));</span>
-<span class="fc" id="L140">        p.setIdRichiesta(rs.getInt(2));</span>
-<span class="fc" id="L141">        p.setPartitaIva(rs.getString(3));</span>
-<span class="fc" id="L142">        p.setCodiceFiscale(rs.getString(4));</span>
-<span class="fc" id="L143">        p.setDataPreventivo(rs.getDate(5));</span>
-<span class="fc" id="L144">        p.setPrezzoTotale(rs.getFloat(6));</span>
-<span class="fc" id="L145">        preventivi.add(p);</span>
-<span class="fc" id="L146">      }</span>
-<span class="fc" id="L147">      return preventivi;</span>
-<span class="nc" id="L148">    } catch (SQLException e) {</span>
-<span class="nc" id="L149">      throw new RuntimeException(e);</span>
+<span class="fc" id="L133">      ps.setString(1, codiceFiscale);</span>
+<span class="fc" id="L134">      ArrayList&lt;Preventivo&gt; preventivi = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L135">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L137">        Preventivo p = new Preventivo();</span>
+<span class="fc" id="L138">        p.setIdPreventivo(rs.getInt(1));</span>
+<span class="fc" id="L139">        p.setIdRichiesta(rs.getInt(2));</span>
+<span class="fc" id="L140">        p.setPartitaIva(rs.getString(3));</span>
+<span class="fc" id="L141">        p.setCodiceFiscale(rs.getString(4));</span>
+<span class="fc" id="L142">        p.setDataPreventivo(rs.getDate(5));</span>
+<span class="fc" id="L143">        p.setPrezzoTotale(rs.getFloat(6));</span>
+<span class="fc" id="L144">        preventivi.add(p);</span>
+<span class="fc" id="L145">      }</span>
+<span class="fc" id="L146">      return preventivi;</span>
+<span class="nc" id="L147">    } catch (SQLException e) {</span>
+<span class="nc" id="L148">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -157,15 +156,15 @@ import java.util.List;
    */
 
   public void deletePreventivo(int idPreventivo) {
-<span class="fc" id="L160">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L161">      PreparedStatement ps = con.prepareStatement(&quot;DELETE FROM Preventivo WHERE idPreventivo=?&quot;);</span>
-<span class="fc" id="L162">      ps.setInt(1, idPreventivo);</span>
+<span class="fc" id="L159">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L160">      PreparedStatement ps = con.prepareStatement(&quot;DELETE FROM Preventivo WHERE idPreventivo=?&quot;);</span>
+<span class="fc" id="L161">      ps.setInt(1, idPreventivo);</span>
       /*if (ps.executeUpdate() != 1) {
         throw new RuntimeException(&quot;DELETE error.&quot;);
       }*/
-<span class="nc" id="L166">    } catch (SQLException e) {</span>
-<span class="nc" id="L167">      throw new RuntimeException(e);</span>
-<span class="fc" id="L168">    }</span>
-<span class="fc" id="L169">  }</span>
+<span class="nc" id="L165">    } catch (SQLException e) {</span>
+<span class="nc" id="L166">      throw new RuntimeException(e);</span>
+<span class="fc" id="L167">    }</span>
+<span class="fc" id="L168">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

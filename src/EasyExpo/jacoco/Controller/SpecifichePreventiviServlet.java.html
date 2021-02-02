@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpecifichePreventiviServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">SpecifichePreventiviServlet.java</span></div><h1>SpecifichePreventiviServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.ClienteDAO;
+import Model.DAO.FornitoreDAO;
+import Model.DAO.PreventivoDAO;
+import Model.DAO.ProdottoDAO;
+import Model.DAO.ProdottoRichiestaDAO;
+import Model.DAO.RichiestaPreventivoDAO;
+import Model.POJO.Cliente;
+import Model.POJO.Fornitore;
+import Model.POJO.Preventivo;
+import Model.POJO.Prodotto;
+import Model.POJO.ProdottoRichiesta;
+import Model.POJO.RichiestaPreventivo;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; SpecificaPrevetiviServlet e' una Servlet che permette al
+ * Forntiore e al Clinete di visionare le specifiche del Preventivo&lt;/p&gt;.
+ *
+ * @author GAETANO IULIANO
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/SpecificaServlet&quot;)
+<span class="fc" id="L34">public class SpecifichePreventiviServlet extends HttpServlet {</span>
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="nc" id="L43">    doGet(request, response);</span>
+<span class="nc" id="L44">  }</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="fc" id="L54">    String idRichiesta = request.getParameter(&quot;idRichiesta&quot;);</span>
+<span class="fc" id="L55">    String idPreventivo = request.getParameter(&quot;idPreventivo&quot;);</span>
+
+<span class="fc bfc" id="L57" title="All 4 branches covered.">    if (idRichiesta != null &amp;&amp; idPreventivo == null) {</span>
+<span class="fc" id="L58">      RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L59">      RichiestaPreventivo richiesta =</span>
+<span class="fc" id="L60">          richiestaPreventivoDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));</span>
+
+<span class="fc" id="L62">      ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();</span>
+<span class="fc" id="L63">      List&lt;ProdottoRichiesta&gt; prichiesta =</span>
+<span class="fc" id="L64">          prodottoRichiestaDAO.doRetrieveByIdRichiesta(Integer.parseInt(idRichiesta));</span>
+
+<span class="fc" id="L66">      ArrayList&lt;Prodotto&gt; prodotto = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L67">      ProdottoDAO prodottoDAO = new ProdottoDAO();</span>
+
+<span class="fc bfc" id="L69" title="All 2 branches covered.">      for (ProdottoRichiesta a : prichiesta) {</span>
+<span class="fc" id="L70">        int idProdotto = a.getIdProdotto();</span>
+<span class="fc" id="L71">        String partitaIva = a.getPartitaIva();</span>
+<span class="fc" id="L72">        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);</span>
+<span class="fc" id="L73">        prodotto.add(p);</span>
+<span class="fc" id="L74">      }</span>
+
+<span class="fc" id="L76">      ClienteDAO clienteDAO = new ClienteDAO();</span>
+<span class="fc" id="L77">      Cliente cliente = clienteDAO.doRetrieveByCF(richiesta.getCodiceFiscale());</span>
+
+
+<span class="fc" id="L80">      request.getSession().setAttribute(&quot;richiesta&quot;, richiesta);</span>
+<span class="fc" id="L81">      request.getSession().setAttribute(&quot;prichiesta&quot;, prichiesta);</span>
+<span class="fc" id="L82">      request.getSession().setAttribute(&quot;prodotto&quot;, prodotto);</span>
+<span class="fc" id="L83">      request.getSession().setAttribute(&quot;clifor&quot;, cliente);</span>
+<span class="fc" id="L84">      request.getSession().setAttribute(&quot;cliente_specifica&quot;, cliente);</span>
+
+<span class="fc" id="L86">      RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L87">          request.getServletContext().getRequestDispatcher(&quot;/specificaRichiesta.jsp&quot;);</span>
+<span class="fc" id="L88">      requestDispatcher.forward(request, response);</span>
+<span class="fc bfc" id="L89" title="All 4 branches covered.">    } else if (idRichiesta == null &amp;&amp; idPreventivo != null) {</span>
+<span class="fc" id="L90">      PreventivoDAO preventivoDAO = new PreventivoDAO();</span>
+<span class="fc" id="L91">      Preventivo preventivo = preventivoDAO.doRetriveByIdPreventivo(Integer.parseInt(idPreventivo));</span>
+
+<span class="fc" id="L93">      RichiestaPreventivoDAO richiestaPreventivoDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L94">      RichiestaPreventivo richiesta =</span>
+<span class="fc" id="L95">          richiestaPreventivoDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());</span>
+
+<span class="fc" id="L97">      FornitoreDAO fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L98">      Fornitore fornitore = fornitoreDAO.doRetrieveByPIVA(preventivo.getPartitaIva());</span>
+
+<span class="fc" id="L100">      ProdottoRichiestaDAO prodottoRichiestaDAO = new ProdottoRichiestaDAO();</span>
+<span class="fc" id="L101">      List&lt;ProdottoRichiesta&gt; prichiesta =</span>
+<span class="fc" id="L102">          prodottoRichiestaDAO.doRetrieveByIdRichiesta(preventivo.getIdRichiesta());</span>
+
+
+<span class="fc" id="L105">      ArrayList&lt;Prodotto&gt; prodotto = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L106">      ProdottoDAO prodottoDAO = new ProdottoDAO();</span>
+
+<span class="fc bfc" id="L108" title="All 2 branches covered.">      for (ProdottoRichiesta a : prichiesta) {</span>
+<span class="fc" id="L109">        int idProdotto = a.getIdProdotto();</span>
+<span class="fc" id="L110">        String partitaIva = a.getPartitaIva();</span>
+<span class="fc" id="L111">        Prodotto p = prodottoDAO.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);</span>
+<span class="fc" id="L112">        prodotto.add(p);</span>
+<span class="fc" id="L113">      }</span>
+
+<span class="fc" id="L115">      request.getSession().setAttribute(&quot;preventivo&quot;, preventivo);</span>
+<span class="fc" id="L116">      request.getSession().setAttribute(&quot;richiesta&quot;, richiesta);</span>
+<span class="fc" id="L117">      request.getSession().setAttribute(&quot;prichiesta&quot;, prichiesta);</span>
+<span class="fc" id="L118">      request.getSession().setAttribute(&quot;prodotto&quot;, prodotto);</span>
+<span class="fc" id="L119">      request.getSession().setAttribute(&quot;clifor&quot;, fornitore);</span>
+<span class="fc" id="L120">      request.getSession().setAttribute(&quot;fornitore&quot;, fornitore);</span>
+<span class="fc" id="L121">      RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L122">          request.getServletContext().getRequestDispatcher(&quot;/specificaPreventivo.jsp&quot;);</span>
+<span class="fc" id="L123">      requestDispatcher.forward(request, response);</span>
+    }
+
+
+<span class="fc" id="L127">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

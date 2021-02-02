@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarrelloServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">CarrelloServlet.java</span></div><h1>CarrelloServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoDAO;
+import Model.POJO.Carrello;
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * &lt;p&gt; CarrelloServlet e' una Servlet che permette di
+ * aggiungere al carrello i prodotti di cui si deridera
+ * richiedere un preventivo &lt;/p&gt;.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/Carrello&quot;)
+<span class="fc" id="L28">public class CarrelloServlet extends HttpServlet {</span>
+<span class="fc" id="L29">  private final ProdottoDAO prodottoDao = new ProdottoDAO();</span>
+<span class="fc" id="L30">  private final FornitoreDAO fornitoreDao = new FornitoreDAO();</span>
+
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+<span class="nc" id="L34">    doPost(req, resp);</span>
+<span class="nc" id="L35">  }</span>
+
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+<span class="fc" id="L39">    HttpSession session = req.getSession();</span>
+
+<span class="fc" id="L41">    Carrello carrello = (Carrello) session.getAttribute(&quot;carrello&quot;);</span>
+<span class="fc" id="L42">    ArrayList&lt;Fornitore&gt; listaFornitori =</span>
+<span class="fc" id="L43">        (ArrayList&lt;Fornitore&gt;) session.getAttribute(&quot;listaFornitori&quot;);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    if (carrello == null) /*se è vuoto il carrello anche listaPI è vuota*/ {</span>
+<span class="fc" id="L45">      carrello = new Carrello();</span>
+<span class="fc" id="L46">      session.setAttribute(&quot;carrello&quot;, carrello);</span>
+<span class="fc" id="L47">      listaFornitori = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L48">      session.setAttribute(&quot;listaFornitori&quot;, listaFornitori);</span>
+    }
+
+
+<span class="fc" id="L52">    String prodIdStr = req.getParameter(&quot;prodId&quot;);</span>
+<span class="fc" id="L53">    String partitaIva = req.getParameter(&quot;partitaIva&quot;);</span>
+
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    if (prodIdStr != null) /*caso aggiunta*/ {</span>
+<span class="fc" id="L56">      int prodId = Integer.parseInt(prodIdStr);</span>
+
+<span class="fc" id="L58">      String addNumStr = req.getParameter(&quot;addNum&quot;);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">      if (addNumStr != null) {</span>
+<span class="fc" id="L60">        int addNum = Integer.parseInt(addNumStr);</span>
+
+<span class="fc" id="L62">        ArrayList&lt;Carrello.ProdottoQuantita&gt; prodotti1 = carrello.get(partitaIva);</span>
+
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (prodotti1 == null) {  /*se la lista di prodotti assegnata a quel fornitore è vuota*/</span>
+          /*trovo il fornitore legato a quella partita iva*/
+<span class="fc" id="L66">          Fornitore forni = fornitoreDao.doRetrieveByPIVA(partitaIva);</span>
+          /*e lo aggiungo alla lista dei fornitori*/
+<span class="fc" id="L68">          listaFornitori.add(forni);</span>
+
+          /* crea l'array list di prodottoQuantità da aggiungere */
+<span class="fc" id="L71">          ArrayList&lt;Carrello.ProdottoQuantita&gt; prodottiQ = new ArrayList&lt;&gt;();</span>
+          /*cerco il prodotto*/
+<span class="fc" id="L73">          Prodotto prod = prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);</span>
+          /*creo il prodottoQuantità*/
+<span class="fc" id="L75">          Carrello.ProdottoQuantita proQua = new Carrello.ProdottoQuantita(prod, addNum);</span>
+
+          /*aggiungi elemento alla lista*/
+<span class="fc" id="L78">          prodottiQ.add(proQua);</span>
+
+          /*aggiungi al carrello la nuova lista legata al fornitore*/
+<span class="fc" id="L81">          carrello.put(prodottiQ);</span>
+
+<span class="fc" id="L83">        } else {</span>
+          //se già c'è la lista di prodotti assegnata a quel fornitore
+          //in listaFornitori c'è già il fornitore e la sua partitaIva
+
+          //controllo se il prodotto che voglio aggiungere c'è già o meno,  COME?
+
+          /* vedo prima quale prodotto sto cercando quindi me lo devo cercare nel DB e creare*/
+
+          //in prodCercato c'è il prodotto che voglio vedere se ho già aggiunto in passato
+<span class="fc" id="L92">          Prodotto prodCercato = prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);</span>
+          // ora devo controllare se questo prodotto appena creato c'è in prodotti1
+
+<span class="fc" id="L95">          ArrayList&lt;Prodotto&gt; prodottiCont = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">          for (int i = 0; i &lt; prodotti1.size(); i++) {</span>
+<span class="fc" id="L97">            Carrello.ProdottoQuantita prodQu = prodotti1.get(i);</span>
+<span class="fc" id="L98">            Prodotto por = prodQu.getProdotto();</span>
+<span class="fc" id="L99">            prodottiCont.add(por);</span>
+          }
+          //prodottiCont ora contiene tutti i prodotti di prodotti1
+          //posso ora vedere se c'è quello da me cercato
+<span class="fc" id="L103">          boolean trovato = false;</span>
+          int j;
+<span class="fc" id="L105">          int indice = 0;</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">          for (j = 0; j &lt; prodottiCont.size(); j++) {</span>
+<span class="fc" id="L107">            Prodotto preso = prodottiCont.get(j);</span>
+<span class="fc" id="L108">            String presoP = preso.getPartitaIva();</span>
+<span class="fc" id="L109">            Integer presoI = preso.getIdProdotto();</span>
+<span class="fc" id="L110">            String cercatoP = prodCercato.getPartitaIva();</span>
+<span class="fc" id="L111">            Integer cercatoI = prodCercato.getIdProdotto();</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">            if (cercatoP.equals(presoP)) {</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">              if (cercatoI == presoI) {</span>
+<span class="fc" id="L114">                trovato = true;</span>
+                //salvo l'indice dove si dovrebbe trovare il prodotto da sostituire
+<span class="fc" id="L116">                indice = j;</span>
+              }
+            }
+          }
+
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">          if (trovato) {</span>
+            //se c'è lo devo togliere sia da prodottiCont che da prodotti1
+<span class="fc" id="L123">            Carrello.ProdottoQuantita pq1 = prodotti1.get(indice);</span>
+<span class="fc" id="L124">            prodotti1.remove(pq1);</span>
+
+            //aggiorno la quantità facendo + addNum
+<span class="fc" id="L127">            pq1.setQuantita(pq1.getQuantita() + addNum);</span>
+            //lo rimetto con la quantità aggiornata
+<span class="fc" id="L129">            prodotti1.add(pq1);</span>
+<span class="fc" id="L130">          } else {</span>
+            //se non c'è lo creo con il prodotto e la quantita
+<span class="nc" id="L132">            Carrello.ProdottoQuantita pqNuovo = new Carrello.ProdottoQuantita(prodCercato, addNum);</span>
+            //e lo aggiungo a prodotti1
+<span class="nc" id="L134">            prodotti1.add(pqNuovo);</span>
+          }
+
+          //devo fare l'aggiornamento dei prodotti legati a quella partita iva prima di reiserirli
+<span class="fc" id="L138">          carrello.remove(partitaIva);</span>
+<span class="fc" id="L139">          carrello.put(prodotti1);</span>
+
+        }
+
+<span class="fc" id="L143">      } else {</span>
+        //caso rimozione prodotto poichè non c'è addNum
+        //devo prima prendere la lista dei prodotti legati a quel fornitore
+<span class="fc" id="L146">        ArrayList&lt;Carrello.ProdottoQuantita&gt; prodottiQuantitaF = carrello.get(partitaIva);</span>
+
+        //devo fare il ciclo di nuovo
+<span class="fc" id="L149">        ArrayList&lt;Prodotto&gt; prodottiF = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        for (int i = 0; i &lt; prodottiQuantitaF.size(); i++) {</span>
+<span class="fc" id="L151">          Carrello.ProdottoQuantita prodQuantita = prodottiQuantitaF.get(i);</span>
+<span class="fc" id="L152">          Prodotto prodSingolo = prodQuantita.getProdotto();</span>
+<span class="fc" id="L153">          prodottiF.add(prodSingolo);</span>
+        }
+
+<span class="fc" id="L156">        Prodotto prodottoDaEliminare =</span>
+<span class="fc" id="L157">            prodottoDao.doRetrieveByIdProdottoEPartitaIva(prodId, partitaIva);</span>
+
+        //prodottiF ora contiene tutti i prodotti di prodottiQuanantitaF
+<span class="fc" id="L160">        boolean trovato = false;</span>
+        int j;
+<span class="fc" id="L162">        int indice = 0;</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        for (j = 0; j &lt; prodottiF.size(); j++) {</span>
+<span class="fc" id="L164">          Prodotto preso = prodottiF.get(j);</span>
+<span class="fc" id="L165">          String presoPi = preso.getPartitaIva();</span>
+<span class="fc" id="L166">          Integer presoId = preso.getIdProdotto();</span>
+<span class="fc" id="L167">          String cercatoPi = prodottoDaEliminare.getPartitaIva();</span>
+<span class="fc" id="L168">          Integer cercatoId = prodottoDaEliminare.getIdProdotto();</span>
+<span class="pc bpc" id="L169" title="1 of 2 branches missed.">          if (cercatoPi.equals(presoPi)) {</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">            if (cercatoId == presoId) {</span>
+<span class="fc" id="L171">              trovato = true;</span>
+              //salvo l'indice dove si dovrebbe trovare il prodotto da eliminare
+<span class="fc" id="L173">              indice = j;</span>
+            }
+          }
+        }
+<span class="pc bpc" id="L177" title="1 of 2 branches missed.">        if (trovato) {</span>
+          //lo devo togliere da prodottiQuanantitaF
+<span class="fc" id="L179">          Carrello.ProdottoQuantita pq1 = prodottiQuantitaF.get(indice);</span>
+<span class="fc" id="L180">          prodottiQuantitaF.remove(pq1);</span>
+
+        }
+
+<span class="pc bpc" id="L184" title="1 of 2 branches missed.">        if (!prodottiQuantitaF.isEmpty()) {</span>
+          //e mettere la lista aggiornata di nuovo nel carrello
+<span class="nc" id="L186">          carrello.put(prodottiQuantitaF);</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">        } else if (prodottiQuantitaF.isEmpty()) {</span>
+<span class="fc" id="L188">          carrello.remove(partitaIva);</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">          for (int i = 0; i &lt; listaFornitori.size(); i++) {</span>
+<span class="fc" id="L190">            Fornitore f = listaFornitori.get(i);</span>
+<span class="fc" id="L191">            if (f.getPartitaIva()</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">                .equals(fornitoreDao.doRetrieveByPIVA(partitaIva).getPartitaIva())) {</span>
+<span class="fc" id="L193">              listaFornitori.remove(i);</span>
+            }
+          }
+        }
+
+      }
+    }
+
+<span class="fc" id="L201">    RequestDispatcher requestDispatcher =</span>
+<span class="fc" id="L202">        req.getServletContext().getRequestDispatcher(&quot;/carrello.jsp&quot;);</span>
+<span class="fc" id="L203">    requestDispatcher.forward(req, resp);</span>
+<span class="fc" id="L204">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

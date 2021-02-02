@@ -1,160 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreventivoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">PreventivoDAOTest.java</span></div><h1>PreventivoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PreventivoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">PreventivoDAOTest.java</span></div><h1>PreventivoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
 
-import Model.POJO.Abbonamento;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import Model.POJO.Cliente;
 import Model.POJO.Fornitore;
 import Model.POJO.Preventivo;
 import Model.POJO.RichiestaPreventivo;
+import java.sql.Date;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-<span class="fc" id="L17">class PreventivoDAOTest {</span>
+<span class="fc" id="L15">class PreventivoDAOTest {</span>
   PreventivoDAO preventivoDAO;
   Preventivo preventivo;
   RichiestaPreventivoDAO rpDAO;
   RichiestaPreventivo rp;
   FornitoreDAO fDAO;
-  Fornitore f;
+  Fornitore fornitore;
   ClienteDAO cDAO;
-  Cliente c;
+  Cliente cliente;
   int idPreventivo;
   int idPreventivo2;
 
   @BeforeEach
   void setUp() {
-<span class="fc" id="L31">    fDAO = new FornitoreDAO();</span>
-<span class="fc" id="L32">    f = new Fornitore(&quot;65655655555&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,</span>
+<span class="fc" id="L29">    fDAO = new FornitoreDAO();</span>
+<span class="fc" id="L30">    fornitore = new Fornitore(&quot;65655655555&quot;, &quot;Mario&quot;, &quot;Rossi&quot;,</span>
+        &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,
         &quot;Rossi123&quot;, &quot;Rossi&quot;);
-<span class="fc" id="L34">    fDAO.createFornitore(f);</span>
+<span class="fc" id="L33">    fDAO.createFornitore(fornitore);</span>
 
-<span class="fc" id="L36">    cDAO = new ClienteDAO();</span>
-<span class="fc" id="L37">    c = new Cliente();</span>
-<span class="fc" id="L38">    c.setCodiceFiscale(&quot;HGJSLKS34ERT4RGF&quot;);</span>
-<span class="fc" id="L39">    c.setNome(&quot;Lucrezia&quot;);</span>
-<span class="fc" id="L40">    c.setCognome(&quot;Robustelli&quot;);</span>
-<span class="fc" id="L41">    c.setTelefono(&quot;3387485126&quot;);</span>
-<span class="fc" id="L42">    c.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
-<span class="fc" id="L43">    c.setPassword(&quot;password&quot;);</span>
-<span class="fc" id="L44">    c.setLuogoUbicazione(&quot;Napoli&quot;);</span>
-<span class="fc" id="L45">    cDAO.createCliente(c);</span>
+<span class="fc" id="L35">    cDAO = new ClienteDAO();</span>
+<span class="fc" id="L36">    cliente = new Cliente();</span>
+<span class="fc" id="L37">    cliente.setCodiceFiscale(&quot;HGJSLKS34ERT4RGF&quot;);</span>
+<span class="fc" id="L38">    cliente.setNome(&quot;Lucrezia&quot;);</span>
+<span class="fc" id="L39">    cliente.setCognome(&quot;Robustelli&quot;);</span>
+<span class="fc" id="L40">    cliente.setTelefono(&quot;3387485126&quot;);</span>
+<span class="fc" id="L41">    cliente.setEmail(&quot;l.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L42">    cliente.setPassword(&quot;password&quot;);</span>
+<span class="fc" id="L43">    cliente.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L44">    cDAO.createCliente(cliente);</span>
 
-<span class="fc" id="L47">    rpDAO = new RichiestaPreventivoDAO();</span>
-<span class="fc" id="L48">    rp = new RichiestaPreventivo(1, c.getCodiceFiscale(), f.getPartitaIva(),</span>
+<span class="fc" id="L46">    rpDAO = new RichiestaPreventivoDAO();</span>
+<span class="fc" id="L47">    rp = new RichiestaPreventivo(1, cliente.getCodiceFiscale(), fornitore.getPartitaIva(),</span>
         &quot;Prova&quot;, &quot;Milano&quot;, &quot;Test di prova per Richiesta Preventivo&quot;,
         &quot;nota di prova&quot;, new Date(2021, 2, 1), RichiestaPreventivo.Stato.IN_ATTESA);
-<span class="fc" id="L51">    rpDAO.createRichiestaPreventivo(rp);</span>
+<span class="fc" id="L50">    rpDAO.createRichiestaPreventivo(rp);</span>
 
 
-<span class="fc" id="L54">    preventivoDAO = new PreventivoDAO();</span>
-<span class="fc" id="L55">    preventivo = new Preventivo();</span>
-<span class="fc" id="L56">    preventivo.setIdPreventivo(1);</span>
-<span class="fc" id="L57">    preventivo.setIdRichiesta(rp.getIdRichiesta());</span>
-<span class="fc" id="L58">    preventivo.setPartitaIva(f.getPartitaIva());</span>
-<span class="fc" id="L59">    preventivo.setCodiceFiscale(c.getCodiceFiscale());</span>
-<span class="fc" id="L60">    preventivo.setDataPreventivo(new Date(2021, 3, 1));</span>
-<span class="fc" id="L61">    preventivo.setPrezzoTotale(300);</span>
-<span class="fc" id="L62">    preventivo.setNota(&quot;nota di prova di preventivo&quot;);</span>
-
-    
-
-<span class="fc" id="L66">   idPreventivo = preventivoDAO.createPreventivo(preventivo);</span>
+<span class="fc" id="L53">    preventivoDAO = new PreventivoDAO();</span>
+<span class="fc" id="L54">    preventivo = new Preventivo();</span>
+<span class="fc" id="L55">    preventivo.setIdPreventivo(1);</span>
+<span class="fc" id="L56">    preventivo.setIdRichiesta(rp.getIdRichiesta());</span>
+<span class="fc" id="L57">    preventivo.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L58">    preventivo.setCodiceFiscale(cliente.getCodiceFiscale());</span>
+<span class="fc" id="L59">    preventivo.setDataPreventivo(new Date(2021, 3, 1));</span>
+<span class="fc" id="L60">    preventivo.setPrezzoTotale(300);</span>
+<span class="fc" id="L61">    preventivo.setNota(&quot;nota di prova di preventivo&quot;);</span>
 
 
-<span class="fc" id="L69">  }</span>
+<span class="fc" id="L64">    idPreventivo = preventivoDAO.createPreventivo(preventivo);</span>
+
+
+<span class="fc" id="L67">  }</span>
 
   @AfterEach
   void tearDown() {
-<span class="fc" id="L73">    fDAO.deleteFornitore(f.getPartitaIva());</span>
-<span class="fc" id="L74">    cDAO.deleteCliente(c.getCodiceFiscale());</span>
-<span class="fc" id="L75">    preventivoDAO.deletePreventivo(idPreventivo);</span>
-<span class="fc" id="L76">  }</span>
+<span class="fc" id="L71">    fDAO.deleteFornitore(fornitore.getPartitaIva());</span>
+<span class="fc" id="L72">    cDAO.deleteCliente(cliente.getCodiceFiscale());</span>
+<span class="fc" id="L73">    preventivoDAO.deletePreventivo(idPreventivo);</span>
+<span class="fc" id="L74">  }</span>
 
   @Test
   void doRetriveByIdPreventivo() {
-<span class="fc" id="L80">    Preventivo p = preventivoDAO.doRetriveByIdPreventivo(idPreventivo);</span>
-<span class="fc" id="L81">    assertEquals(idPreventivo, p.getIdPreventivo());</span>
+<span class="fc" id="L78">    Preventivo p = preventivoDAO.doRetriveByIdPreventivo(idPreventivo);</span>
+<span class="fc" id="L79">    assertEquals(idPreventivo, p.getIdPreventivo());</span>
 
-<span class="fc" id="L83">  }</span>
+<span class="fc" id="L81">  }</span>
 
   @Test
   void doRetrieveByIdPreventivoNull() {
-<span class="fc" id="L87">    assertEquals(null, preventivoDAO.doRetriveByIdPreventivo(655));</span>
+<span class="fc" id="L85">    assertEquals(null, preventivoDAO.doRetriveByIdPreventivo(655));</span>
 
 
-<span class="fc" id="L90">  }</span>
+<span class="fc" id="L88">  }</span>
 
   @Test
   void createPreventivo() {
-<span class="fc" id="L94">    Preventivo p = new Preventivo();</span>
-<span class="fc" id="L95">    p.setIdPreventivo(5);</span>
-<span class="fc" id="L96">    p.setCodiceFiscale(c.getCodiceFiscale());</span>
-<span class="fc" id="L97">    p.setPartitaIva(f.getPartitaIva());</span>
-<span class="fc" id="L98">    p.setDataPreventivo(new Date(2020,5,2));</span>
-<span class="fc" id="L99">    p.setIdRichiesta(rp.getIdRichiesta());</span>
-<span class="fc" id="L100">    preventivoDAO.createPreventivo(p);</span>
-<span class="fc" id="L101">    assertEquals(2, preventivoDAO.doRetrieveByPartitaIva(p.getPartitaIva()).size());</span>
-<span class="fc" id="L102">  }</span>
+<span class="fc" id="L92">    Preventivo p = new Preventivo();</span>
+<span class="fc" id="L93">    p.setIdPreventivo(5);</span>
+<span class="fc" id="L94">    p.setCodiceFiscale(cliente.getCodiceFiscale());</span>
+<span class="fc" id="L95">    p.setPartitaIva(fornitore.getPartitaIva());</span>
+<span class="fc" id="L96">    p.setDataPreventivo(new Date(2020, 5, 2));</span>
+<span class="fc" id="L97">    p.setIdRichiesta(rp.getIdRichiesta());</span>
+<span class="fc" id="L98">    preventivoDAO.createPreventivo(p);</span>
+<span class="fc" id="L99">    assertEquals(2, preventivoDAO.doRetrieveByPartitaIva(p.getPartitaIva()).size());</span>
+<span class="fc" id="L100">  }</span>
 
   @Test
   void doRetrieveByPartitaIva() {
-<span class="fc" id="L106">    List&lt;Preventivo&gt; preventivi = preventivoDAO.doRetrieveByPartitaIva(&quot;65655655555&quot;);</span>
-<span class="fc bfc" id="L107" title="All 2 branches covered.">    for(Preventivo p : preventivi){</span>
-<span class="fc" id="L108">      assertEquals(&quot;65655655555&quot;, p.getPartitaIva());</span>
-<span class="fc" id="L109">    }</span>
-<span class="fc" id="L110">  }</span>
+<span class="fc" id="L104">    List&lt;Preventivo&gt; preventivi = preventivoDAO.doRetrieveByPartitaIva(&quot;65655655555&quot;);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">    for (Preventivo p : preventivi) {</span>
+<span class="fc" id="L106">      assertEquals(&quot;65655655555&quot;, p.getPartitaIva());</span>
+<span class="fc" id="L107">    }</span>
+<span class="fc" id="L108">  }</span>
 
   @Test
   void doRetrieveByCodiceFiscale() {
-<span class="fc" id="L114">    List&lt;Preventivo&gt; preventivi = preventivoDAO.doRetrieveByCodiceFiscale(&quot;HGJSLKS34ERT4RGF&quot;);</span>
-<span class="fc bfc" id="L115" title="All 2 branches covered.">    for(Preventivo p : preventivi){</span>
-<span class="fc" id="L116">      assertEquals(&quot;HGJSLKS34ERT4RGF&quot;, p.getCodiceFiscale());</span>
-<span class="fc" id="L117">    }</span>
-<span class="fc" id="L118">  }</span>
-
-
-  /*@Test
-  void deletePreventivo() {
-    Preventivo preventivo2 = new Preventivo();
-    //preventivo2.setIdPreventivo(4);
-    preventivo2.setIdRichiesta(rp.getIdRichiesta());
-    preventivo2.setPartitaIva(f.getPartitaIva());
-    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
-    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
-    preventivo2.setPrezzoTotale(400);
-    preventivo2.setNota(&quot;nota di prova di preventivo2&quot;);
-
-    idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
-    System.out.println(idPreventivo2);
-
-    preventivoDAO.deletePreventivo(preventivoDAO.createPreventivo(preventivo2));
-
-    assertNull(preventivoDAO.doRetriveByIdPreventivo(idPreventivo2));
-  }*/
-
-  /*@Test
-  void deletePreventivoException() {
-    Preventivo preventivo2 = new Preventivo();
-    //preventivo2.setIdPreventivo(4);
-    preventivo2.setIdRichiesta(rp.getIdRichiesta());
-    preventivo2.setPartitaIva(f.getPartitaIva());
-    preventivo2.setCodiceFiscale(c.getCodiceFiscale());
-    preventivo2.setDataPreventivo(new Date(2022, 3, 1));
-    preventivo2.setPrezzoTotale(400);
-    preventivo2.setNota(&quot;nota di prova di preventivo2&quot;);
-
-    int idPreventivo2 = preventivoDAO.createPreventivo(preventivo2);
-    System.out.println(idPreventivo2);
-    fDAO.deleteFornitore(f.getPartitaIva());
-    cDAO.deleteCliente(c.getCodiceFiscale());
-    preventivoDAO.deletePreventivo(idPreventivo2);
-
-    assertThrows(RuntimeException.class, ()-&gt; {preventivoDAO.doRetriveByIdPreventivo(idPreventivo2);});
-  }*/
+<span class="fc" id="L112">    List&lt;Preventivo&gt; preventivi = preventivoDAO.doRetrieveByCodiceFiscale(&quot;HGJSLKS34ERT4RGF&quot;);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">    for (Preventivo p : preventivi) {</span>
+<span class="fc" id="L114">      assertEquals(&quot;HGJSLKS34ERT4RGF&quot;, p.getCodiceFiscale());</span>
+<span class="fc" id="L115">    }</span>
+<span class="fc" id="L116">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

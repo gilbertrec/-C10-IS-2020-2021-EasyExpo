@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RicercaServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RicercaServlet.java</span></div><h1>RicercaServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.FornitoreDAO;
+import Model.DAO.ProdottoDAO;
+import Model.DAO.TagDAO;
+import Model.DAO.TagProdottoDAO;
+import Model.POJO.Fornitore;
+import Model.POJO.Prodotto;
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
+import java.io.IOException;
+import java.util.List;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * &lt;p&gt; RiabilitaUtenteServlet e' una Servlet che permette al Cliente di
+ * ricercare un prodotto, un forntiore o un tag&lt;/p&gt;.
+ *
+ * @author KATIA MONACO DE SIMONE
+ * @version 1.0
+ * @since 2020-12-29
+ */
+@WebServlet(&quot;/RicercaServlet&quot;)
+<span class="fc" id="L26">public class RicercaServlet extends HttpServlet {</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+<span class="nc" id="L36">    doPost(request, response);</span>
+<span class="nc" id="L37">  }</span>
+
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  public void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws IOException, NumberFormatException {
+    String resp;
+<span class="fc" id="L48">    String json = &quot;[&quot;;</span>
+    Boolean first;
+<span class="fc" id="L50">    first = true;</span>
+
+<span class="fc" id="L52">    ProdottoDAO prodottoDao = new ProdottoDAO();</span>
+
+<span class="fc" id="L54">    FornitoreDAO fornitoreDAO = new FornitoreDAO();</span>
+
+<span class="fc" id="L56">    TagDAO tagDAO = new TagDAO();</span>
+
+<span class="fc" id="L58">    TagProdottoDAO tagProdottoDAO = new TagProdottoDAO();</span>
+
+<span class="fc" id="L60">    String search = request.getParameter(&quot;search&quot;);</span>
+
+
+<span class="fc" id="L63">    List&lt;Prodotto&gt; prodotti = prodottoDao.doRetrieveByTitolo(search);</span>
+<span class="fc" id="L64">    List&lt;Fornitore&gt; fornitori = fornitoreDAO.doRetrieveByNomeECognome(search);</span>
+<span class="fc" id="L65">    List&lt;Tag&gt; tag = tagDAO.doRetrieveByNome(search);</span>
+
+
+<span class="fc bfc" id="L68" title="All 2 branches covered.">    for (int i = 0; i &lt; prodotti.size(); i++) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">      if (!first) {</span>
+<span class="fc" id="L70">        json += &quot;,&quot;;</span>
+      }
+<span class="fc" id="L72">      json += &quot;{&quot;</span>
+<span class="fc" id="L73">          + &quot;\&quot;id\&quot;:\&quot;&quot; + prodotti.get(i).getIdProdotto() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L74">          + &quot;\&quot;partitaIVA\&quot;:\&quot;&quot; + prodotti.get(i).getPartitaIva() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L75">          + &quot;\&quot;titolo\&quot;:\&quot;&quot; + prodotti.get(i).getTitolo() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L76">          + &quot;\&quot;prezzo\&quot;:\&quot;&quot; + prodotti.get(i).getPrezzo() + &quot;\&quot;&quot;</span>
+          + &quot;}&quot;;
+<span class="fc" id="L78">      first = false;</span>
+    }
+
+<span class="fc bfc" id="L81" title="All 2 branches covered.">    for (int i = 0; i &lt; fornitori.size(); i++) {</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">      if (!first) /* se è passato da prodotti mette la virgola</span>
+      poichè first è stato settato già a false*/
+        /* se non è passato da prodotti non mette la virgola perchè è settato a true */ {
+<span class="fc" id="L85">        json += &quot;,&quot;;</span>
+      }
+
+<span class="fc" id="L88">      json += &quot;{&quot;</span>
+<span class="fc" id="L89">          + &quot;\&quot;partitaIVAfornitore\&quot;:\&quot;&quot; + fornitori.get(i).getPartitaIva() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L90">          + &quot;\&quot;luogoUbicazione\&quot;:\&quot;&quot; + fornitori.get(i).getLuogoUbicazione() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L91">          + &quot;\&quot;nome\&quot;:\&quot;&quot; + fornitori.get(i).getNome() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L92">          + &quot;\&quot;cognome\&quot;:\&quot;&quot; + fornitori.get(i).getCognome() + &quot;\&quot;&quot;</span>
+          + &quot;}&quot;;
+<span class="fc" id="L94">      first = false;</span>
+    }
+
+    //TAG
+<span class="fc bfc" id="L98" title="All 2 branches covered.">    for (int j = 0; j &lt; tag.size(); j++) {</span>
+<span class="fc" id="L99">      int idTag = tag.get(j).getIdTag();</span>
+<span class="fc" id="L100">      TagProdotto tagProdotto = tagProdottoDAO.doRetrieveByIdTag(idTag);</span>
+<span class="fc" id="L101">      int idProdotto = tagProdotto.getIdProdotto();</span>
+<span class="fc" id="L102">      String partitaIva = tagProdotto.getPartitaIva();</span>
+<span class="fc" id="L103">      Prodotto prod = prodottoDao.doRetrieveByIdProdottoEPartitaIva(idProdotto, partitaIva);</span>
+
+      /* deve mettere la virgola se fornitori o prodotti o entrambi non sono vuote*/
+      /* non la deve mettere se entrambe le liste sono vuote */
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">      if (!first) {</span>
+<span class="fc" id="L108">        json += &quot;,&quot;;</span>
+      }
+<span class="fc" id="L110">      json += &quot;{&quot;</span>
+<span class="fc" id="L111">          + &quot;\&quot;id\&quot;:\&quot;&quot; + prod.getIdProdotto() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L112">          + &quot;\&quot;partitaIVA\&quot;:\&quot;&quot; + prod.getPartitaIva() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L113">          + &quot;\&quot;titolo\&quot;:\&quot;&quot; + prod.getTitolo() + &quot;\&quot;,&quot;</span>
+<span class="fc" id="L114">          + &quot;\&quot;prezzo\&quot;:\&quot;&quot; + prod.getPrezzo() + &quot;\&quot;&quot;</span>
+          + &quot;}&quot;;
+    }
+
+
+<span class="fc" id="L119">    json += &quot;]&quot;;</span>
+
+<span class="fc" id="L121">    resp = &quot;[{\&quot;success\&quot;:true,\&quot;data\&quot;:&quot; + json + &quot;}]&quot;;</span>
+
+
+<span class="fc" id="L124">    response.getWriter().append(resp);</span>
+<span class="fc" id="L125">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

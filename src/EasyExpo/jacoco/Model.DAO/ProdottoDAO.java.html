@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdottoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ProdottoDAO.java</span></div><h1>ProdottoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProdottoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">ProdottoDAO.java</span></div><h1>ProdottoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
 
 import Model.POJO.Preventivo;
 import Model.POJO.Prodotto;
@@ -34,7 +34,7 @@ import java.util.List;
 <span class="fc" id="L34">      PreparedStatement ps = con</span>
 <span class="fc" id="L35">          .prepareStatement(</span>
               &quot;SELECT *  FROM Prodotto as p, Fornitore as f &quot;
-                      + &quot;WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva&quot;);
+                  + &quot;WHERE idProdotto=? AND p.partitaIva=? AND p.partitaIva=f.partitaIva&quot;);
 <span class="fc" id="L38">      ps.setInt(1, idProdotto);</span>
 <span class="fc" id="L39">      ps.setString(2, partitaIva);</span>
 <span class="fc" id="L40">      ResultSet rs = ps.executeQuery();</span>
@@ -97,38 +97,36 @@ import java.util.List;
   /**
    * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
    *
-   * @param offset indice partenza, Intero
-   * @param limit  indice fine , Intero
    * @return List &amp;lt;Prodotto&amp;gt; - {@link List} di oggetti di tipo {@link Prodotto}
    */
 
 
   public List&lt;Prodotto&gt; doRetrieveAll() {
-<span class="fc" id="L107">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L108">      PreparedStatement ps = con</span>
-<span class="fc" id="L109">          .prepareStatement(</span>
+<span class="fc" id="L105">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L106">      PreparedStatement ps = con</span>
+<span class="fc" id="L107">          .prepareStatement(</span>
               &quot;SELECT * FROM Prodotto as p, Fornitore as f &quot;
-                      + &quot;WHERE p.partitaIva=f.partitaIva&quot;);
+                  + &quot;WHERE p.partitaIva=f.partitaIva&quot;);
 
-<span class="fc" id="L113">      ArrayList&lt;Prodotto&gt; prodotti = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L114">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L115" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L116">        Prodotto p = new Prodotto();</span>
-<span class="fc" id="L117">        p.setIdProdotto(rs.getInt(1));</span>
-<span class="fc" id="L118">        p.setPartitaIva(rs.getString(2));</span>
-<span class="fc" id="L119">        p.setTitolo(rs.getString(3));</span>
-<span class="fc" id="L120">        p.setDescrizione(rs.getString(4));</span>
-<span class="fc" id="L121">        String a = rs.getString(5);</span>
-<span class="fc" id="L122">        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);</span>
-<span class="fc" id="L123">        p.setTipo(t);</span>
-<span class="fc" id="L124">        p.setQuantità(rs.getInt(6));</span>
-<span class="fc" id="L125">        p.setPrezzo(rs.getFloat(7));</span>
-<span class="fc" id="L126">        p.setImmagine(rs.getString(8));</span>
-<span class="fc" id="L127">        prodotti.add(p);</span>
-<span class="fc" id="L128">      }</span>
-<span class="fc" id="L129">      return prodotti;</span>
-<span class="nc" id="L130">    } catch (SQLException e) {</span>
-<span class="nc" id="L131">      throw new RuntimeException(e);</span>
+<span class="fc" id="L111">      ArrayList&lt;Prodotto&gt; prodotti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L112">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L114">        Prodotto p = new Prodotto();</span>
+<span class="fc" id="L115">        p.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L116">        p.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L117">        p.setTitolo(rs.getString(3));</span>
+<span class="fc" id="L118">        p.setDescrizione(rs.getString(4));</span>
+<span class="fc" id="L119">        String a = rs.getString(5);</span>
+<span class="fc" id="L120">        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);</span>
+<span class="fc" id="L121">        p.setTipo(t);</span>
+<span class="fc" id="L122">        p.setQuantità(rs.getInt(6));</span>
+<span class="fc" id="L123">        p.setPrezzo(rs.getFloat(7));</span>
+<span class="fc" id="L124">        p.setImmagine(rs.getString(8));</span>
+<span class="fc" id="L125">        prodotti.add(p);</span>
+<span class="fc" id="L126">      }</span>
+<span class="fc" id="L127">      return prodotti;</span>
+<span class="nc" id="L128">    } catch (SQLException e) {</span>
+<span class="nc" id="L129">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -139,28 +137,28 @@ import java.util.List;
    */
 
   public int createProdotto(Prodotto prodotto) {
-<span class="fc" id="L142">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L143">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L140">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L141">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;INSERT INTO Prodotto (partitaIva, titolo, descrizione, &quot;
-                  + &quot;tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)&quot;,
+              + &quot;tipo, quantita, prezzo, immagine) VALUES(?,?,?,?,?,?,?)&quot;,
           Statement.RETURN_GENERATED_KEYS);
 
-<span class="fc" id="L148">      ps.setString(1, prodotto.getPartitaIva());</span>
-<span class="fc" id="L149">      ps.setString(2, prodotto.getTitolo());</span>
-<span class="fc" id="L150">      ps.setString(3, prodotto.getDescrizione());</span>
-<span class="fc" id="L151">      ps.setString(4, prodotto.getTipo().toString());</span>
-<span class="fc" id="L152">      ps.setInt(5, prodotto.getQuantità());</span>
-<span class="fc" id="L153">      ps.setFloat(6, prodotto.getPrezzo());</span>
-<span class="fc" id="L154">      ps.setString(7, prodotto.getImmagine());</span>
-<span class="pc bpc" id="L155" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
-<span class="nc" id="L156">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+<span class="fc" id="L146">      ps.setString(1, prodotto.getPartitaIva());</span>
+<span class="fc" id="L147">      ps.setString(2, prodotto.getTitolo());</span>
+<span class="fc" id="L148">      ps.setString(3, prodotto.getDescrizione());</span>
+<span class="fc" id="L149">      ps.setString(4, prodotto.getTipo().toString());</span>
+<span class="fc" id="L150">      ps.setInt(5, prodotto.getQuantità());</span>
+<span class="fc" id="L151">      ps.setFloat(6, prodotto.getPrezzo());</span>
+<span class="fc" id="L152">      ps.setString(7, prodotto.getImmagine());</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L154">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
       }
-<span class="fc" id="L158">      ResultSet rs = ps.getGeneratedKeys();</span>
-<span class="fc" id="L159">      rs.next();</span>
-<span class="fc" id="L160">      prodotto.setIdProdotto(rs.getInt(1));</span>
-<span class="fc" id="L161">      return rs.getInt(1);</span>
-<span class="fc" id="L162">    } catch (SQLException e) {</span>
-<span class="fc" id="L163">      throw new RuntimeException(e);</span>
+<span class="fc" id="L156">      ResultSet rs = ps.getGeneratedKeys();</span>
+<span class="fc" id="L157">      rs.next();</span>
+<span class="fc" id="L158">      prodotto.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L159">      return rs.getInt(1);</span>
+<span class="fc" id="L160">    } catch (SQLException e) {</span>
+<span class="fc" id="L161">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -172,18 +170,18 @@ import java.util.List;
 
 
   public void deleteProdotto(int idProdotto, String partitaIva) {
-<span class="fc" id="L175">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L176">      PreparedStatement ps =</span>
-<span class="fc" id="L177">          con.prepareStatement(&quot;DELETE FROM Prodotto WHERE idProdotto=? AND partitaIva=?&quot;);</span>
-<span class="fc" id="L178">      ps.setInt(1, idProdotto);</span>
-<span class="fc" id="L179">      ps.setString(2, partitaIva);</span>
-<span class="pc bpc" id="L180" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
-<span class="nc" id="L181">        throw new RuntimeException(&quot;DELETE error.&quot;);</span>
+<span class="fc" id="L173">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L174">      PreparedStatement ps =</span>
+<span class="fc" id="L175">          con.prepareStatement(&quot;DELETE FROM Prodotto WHERE idProdotto=? AND partitaIva=?&quot;);</span>
+<span class="fc" id="L176">      ps.setInt(1, idProdotto);</span>
+<span class="fc" id="L177">      ps.setString(2, partitaIva);</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">      if (ps.executeUpdate() != 1) {</span>
+<span class="fc" id="L179">        throw new RuntimeException(&quot;DELETE error.&quot;);</span>
       }
-<span class="nc" id="L183">    } catch (SQLException e) {</span>
-<span class="nc" id="L184">      throw new RuntimeException(e);</span>
-<span class="fc" id="L185">    }</span>
-<span class="fc" id="L186">  }</span>
+<span class="nc" id="L181">    } catch (SQLException e) {</span>
+<span class="nc" id="L182">      throw new RuntimeException(e);</span>
+<span class="fc" id="L183">    }</span>
+<span class="fc" id="L184">  }</span>
 
   /**
    * Metodo che ritorna le istanze di tipo Prodotto contenute nel DB.
@@ -193,28 +191,28 @@ import java.util.List;
    */
 
   public List&lt;Prodotto&gt; doRetrieveByTitolo(String ricercato) {
-<span class="fc" id="L196">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L194">    try (Connection con = DBConnection.getConnection()) {</span>
 
-<span class="fc" id="L198">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L196">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;SELECT idProdotto, partitaIva, titolo, prezzo, immagine &quot;
-                  + &quot;FROM Prodotto WHERE titolo LIKE ? &quot;);
-<span class="fc" id="L201">      ps.setString(1, &quot;%&quot; + ricercato + &quot;%&quot;);</span>
+              + &quot;FROM Prodotto WHERE titolo LIKE ? &quot;);
+<span class="fc" id="L199">      ps.setString(1, &quot;%&quot; + ricercato + &quot;%&quot;);</span>
 
-<span class="fc" id="L203">      ArrayList&lt;Prodotto&gt; prodotto = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L204">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L205" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L206">        Prodotto p = new Prodotto();</span>
-<span class="fc" id="L207">        p.setIdProdotto(rs.getInt(1));</span>
-<span class="fc" id="L208">        p.setPartitaIva(rs.getString(2));</span>
-<span class="fc" id="L209">        p.setTitolo(rs.getString(3));</span>
-<span class="fc" id="L210">        p.setPrezzo(rs.getFloat(4));</span>
-<span class="fc" id="L211">        p.setImmagine(rs.getString(5));</span>
-<span class="fc" id="L212">        prodotto.add(p);</span>
-<span class="fc" id="L213">      }</span>
-<span class="fc" id="L214">      return prodotto;</span>
+<span class="fc" id="L201">      ArrayList&lt;Prodotto&gt; prodotto = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L202">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L204">        Prodotto p = new Prodotto();</span>
+<span class="fc" id="L205">        p.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L206">        p.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L207">        p.setTitolo(rs.getString(3));</span>
+<span class="fc" id="L208">        p.setPrezzo(rs.getFloat(4));</span>
+<span class="fc" id="L209">        p.setImmagine(rs.getString(5));</span>
+<span class="fc" id="L210">        prodotto.add(p);</span>
+<span class="fc" id="L211">      }</span>
+<span class="fc" id="L212">      return prodotto;</span>
 
-<span class="nc" id="L216">    } catch (SQLException e) {</span>
-<span class="nc" id="L217">      throw new RuntimeException(e);</span>
+<span class="nc" id="L214">    } catch (SQLException e) {</span>
+<span class="nc" id="L215">      throw new RuntimeException(e);</span>
     }
 
   }
@@ -226,53 +224,63 @@ import java.util.List;
    */
 
   public void updateProdotto(Prodotto prodotto) {
-<span class="fc" id="L229">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L230">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L227">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L228">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;UPDATE Prodotto SET titolo=?, descrizione=?, tipo=?, quantita=?, &quot;
-                  + &quot;prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?&quot;);
-<span class="fc" id="L233">      ps.setString(1, prodotto.getTitolo());</span>
-<span class="fc" id="L234">      ps.setString(2, prodotto.getDescrizione());</span>
-<span class="fc" id="L235">      ps.setString(3, prodotto.getTipo().toString());</span>
-<span class="fc" id="L236">      ps.setInt(4, prodotto.getQuantità());</span>
-<span class="fc" id="L237">      ps.setFloat(5, prodotto.getPrezzo());</span>
-<span class="fc" id="L238">      ps.setString(6, prodotto.getImmagine());</span>
-<span class="fc" id="L239">      ps.setInt(7, prodotto.getIdProdotto());</span>
-<span class="fc" id="L240">      ps.setString(8, prodotto.getPartitaIva());</span>
-<span class="fc bfc" id="L241" title="All 2 branches covered.">      if (ps.executeUpdate() != 1) {</span>
-<span class="fc" id="L242">        throw new RuntimeException(&quot;UPDATE error.&quot;);</span>
+              + &quot;prezzo=?, immagine=? WHERE idProdotto=? AND partitaIva=?&quot;);
+<span class="fc" id="L231">      ps.setString(1, prodotto.getTitolo());</span>
+<span class="fc" id="L232">      ps.setString(2, prodotto.getDescrizione());</span>
+<span class="fc" id="L233">      ps.setString(3, prodotto.getTipo().toString());</span>
+<span class="fc" id="L234">      ps.setInt(4, prodotto.getQuantità());</span>
+<span class="fc" id="L235">      ps.setFloat(5, prodotto.getPrezzo());</span>
+<span class="fc" id="L236">      ps.setString(6, prodotto.getImmagine());</span>
+<span class="fc" id="L237">      ps.setInt(7, prodotto.getIdProdotto());</span>
+<span class="fc" id="L238">      ps.setString(8, prodotto.getPartitaIva());</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">      if (ps.executeUpdate() != 1) {</span>
+<span class="fc" id="L240">        throw new RuntimeException(&quot;UPDATE error.&quot;);</span>
       }
-<span class="nc" id="L244">    } catch (SQLException e) {</span>
-<span class="nc" id="L245">      throw new RuntimeException(e);</span>
-<span class="fc" id="L246">    }</span>
-<span class="fc" id="L247">  }</span>
+<span class="nc" id="L242">    } catch (SQLException e) {</span>
+<span class="nc" id="L243">      throw new RuntimeException(e);</span>
+<span class="fc" id="L244">    }</span>
+<span class="fc" id="L245">  }</span>
+
+
+  /**
+   * Metodo che sceglie in modo randomico un numero selezionato
+   * di oggetti, all'interno del DB, di tipo Prodotto.
+   *
+   * @param offset variabile di tipo int
+   * @param limit  variabile di tipo int
+   * @return List &amp;lt;Prodotto&amp;gt; - {@link List} di oggetti di tipo {@link Prodotto}
+   */
 
   public List&lt;Prodotto&gt; doRetrieveRandom(int offset, int limit) {
-<span class="fc" id="L250">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L251">      PreparedStatement ps = con</span>
-<span class="fc" id="L252">              .prepareStatement(</span>
-                      &quot;SELECT * FROM Prodotto as p, Fornitore as f &quot;
-                              + &quot;WHERE p.partitaIva=f.partitaIva LIMIT ?, ?&quot;);
-<span class="fc" id="L255">      ps.setInt(1, offset);</span>
-<span class="fc" id="L256">      ps.setInt(2,limit);</span>
-<span class="fc" id="L257">      ArrayList&lt;Prodotto&gt; prodotti = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L258">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L259" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L260">        Prodotto p = new Prodotto();</span>
-<span class="fc" id="L261">        p.setIdProdotto(rs.getInt(1));</span>
-<span class="fc" id="L262">        p.setPartitaIva(rs.getString(2));</span>
-<span class="fc" id="L263">        p.setTitolo(rs.getString(3));</span>
-<span class="fc" id="L264">        p.setDescrizione(rs.getString(4));</span>
-<span class="fc" id="L265">        String a = rs.getString(5);</span>
-<span class="fc" id="L266">        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);</span>
-<span class="fc" id="L267">        p.setTipo(t);</span>
-<span class="fc" id="L268">        p.setQuantità(rs.getInt(6));</span>
-<span class="fc" id="L269">        p.setPrezzo(rs.getFloat(7));</span>
-<span class="fc" id="L270">        p.setImmagine(rs.getString(8));</span>
-<span class="fc" id="L271">        prodotti.add(p);</span>
-<span class="fc" id="L272">      }</span>
-<span class="fc" id="L273">      return prodotti;</span>
-<span class="nc" id="L274">    } catch (SQLException e) {</span>
-<span class="nc" id="L275">      throw new RuntimeException(e);</span>
+<span class="fc" id="L258">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L259">      PreparedStatement ps = con</span>
+<span class="fc" id="L260">          .prepareStatement(</span>
+              &quot;SELECT * FROM Prodotto as p, Fornitore as f &quot;
+                  + &quot;WHERE p.partitaIva=f.partitaIva LIMIT ?, ?&quot;);
+<span class="fc" id="L263">      ps.setInt(1, offset);</span>
+<span class="fc" id="L264">      ps.setInt(2, limit);</span>
+<span class="fc" id="L265">      ArrayList&lt;Prodotto&gt; prodotti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L266">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L268">        Prodotto p = new Prodotto();</span>
+<span class="fc" id="L269">        p.setIdProdotto(rs.getInt(1));</span>
+<span class="fc" id="L270">        p.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L271">        p.setTitolo(rs.getString(3));</span>
+<span class="fc" id="L272">        p.setDescrizione(rs.getString(4));</span>
+<span class="fc" id="L273">        String a = rs.getString(5);</span>
+<span class="fc" id="L274">        Prodotto.Tipo t = Prodotto.Tipo.valueOf(a);</span>
+<span class="fc" id="L275">        p.setTipo(t);</span>
+<span class="fc" id="L276">        p.setQuantità(rs.getInt(6));</span>
+<span class="fc" id="L277">        p.setPrezzo(rs.getFloat(7));</span>
+<span class="fc" id="L278">        p.setImmagine(rs.getString(8));</span>
+<span class="fc" id="L279">        prodotti.add(p);</span>
+<span class="fc" id="L280">      }</span>
+<span class="fc" id="L281">      return prodotti;</span>
+<span class="nc" id="L282">    } catch (SQLException e) {</span>
+<span class="nc" id="L283">      throw new RuntimeException(e);</span>
     }
 
   }

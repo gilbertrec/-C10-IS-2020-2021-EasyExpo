@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MetodiDiPagamentoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">MetodiDiPagamentoDAO.java</span></div><h1>MetodiDiPagamentoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MetodiDiPagamentoDAO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">MetodiDiPagamentoDAO.java</span></div><h1>MetodiDiPagamentoDAO.java</h1><pre class="source lang-java linenums">package Model.DAO;
 
 import Model.POJO.MetodoPagamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @version 1.0
  * @since 2020-12-29
  */
-<span class="fc" id="L19">public class MetodiDiPagamentoDAO {</span>
+<span class="fc" id="L20">public class MetodiDiPagamentoDAO {</span>
 
   /**
    * Metodo che ritorna l'oggetto di tipo MetodoPagamento correlato ad una partitaIva data in input.
@@ -25,26 +26,26 @@ import java.util.List;
    * @return MetodoPagamento - Oggetto di tipo {@link MetodoPagamento}
    */
   public List&lt;MetodoPagamento&gt; doRetrieveAllByPartitaIva(String partitaIva) {
-<span class="fc" id="L28">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L29">      PreparedStatement ps = con</span>
-<span class="fc" id="L30">          .prepareStatement(</span>
+<span class="fc" id="L29">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L30">      PreparedStatement ps = con</span>
+<span class="fc" id="L31">          .prepareStatement(</span>
               &quot;SELECT * FROM MetodoPagamento as mp, Fornitore as f &quot;
                       + &quot;WHERE mp.partitaIva=? AND mp.partitaIva=f.partitaIva&quot;);
-<span class="fc" id="L33">      ps.setString(1, partitaIva);</span>
-<span class="fc" id="L34">      ArrayList&lt;MetodoPagamento&gt; metodiPagamenti = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L35">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">      while (rs.next()) {</span>
-<span class="fc" id="L37">        MetodoPagamento c = new MetodoPagamento();</span>
-<span class="fc" id="L38">        c.setNumeroCarta(rs.getString(1));</span>
-<span class="fc" id="L39">        c.setPartitaIva(rs.getString(2));</span>
-<span class="fc" id="L40">        c.setNomeIntestatario(rs.getString(3));</span>
-<span class="fc" id="L41">        c.setDataScadenza(rs.getDate(4));</span>
-<span class="fc" id="L42">        c.setCvv(rs.getInt(5));</span>
-<span class="fc" id="L43">        metodiPagamenti.add(c);</span>
-<span class="fc" id="L44">      }</span>
-<span class="fc" id="L45">      return metodiPagamenti;</span>
-<span class="nc" id="L46">    } catch (SQLException e) {</span>
-<span class="nc" id="L47">      throw new RuntimeException(e);</span>
+<span class="fc" id="L34">      ps.setString(1, partitaIva);</span>
+<span class="fc" id="L35">      ArrayList&lt;MetodoPagamento&gt; metodiPagamenti = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L36">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">      while (rs.next()) {</span>
+<span class="fc" id="L38">        MetodoPagamento c = new MetodoPagamento();</span>
+<span class="fc" id="L39">        c.setNumeroCarta(rs.getString(1));</span>
+<span class="fc" id="L40">        c.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L41">        c.setNomeIntestatario(rs.getString(3));</span>
+<span class="fc" id="L42">        c.setDataScadenza(rs.getDate(4));</span>
+<span class="fc" id="L43">        c.setCvv(rs.getInt(5));</span>
+<span class="fc" id="L44">        metodiPagamenti.add(c);</span>
+<span class="fc" id="L45">      }</span>
+<span class="fc" id="L46">      return metodiPagamenti;</span>
+<span class="nc" id="L47">    } catch (SQLException e) {</span>
+<span class="nc" id="L48">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -56,23 +57,23 @@ import java.util.List;
    */
 
   public MetodoPagamento doRetrieveByNumCarta(String numCarta) {
-<span class="fc" id="L59">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L60">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L60">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L61">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;SELECT * FROM MetodoPagamento WHERE numeroCarta=?&quot;);
-<span class="fc" id="L62">      ps.setString(1, numCarta);</span>
-<span class="fc" id="L63">      ResultSet rs = ps.executeQuery();</span>
-<span class="fc bfc" id="L64" title="All 2 branches covered.">      if (rs.next()) {</span>
-<span class="fc" id="L65">        MetodoPagamento c = new MetodoPagamento();</span>
-<span class="fc" id="L66">        c.setNumeroCarta(rs.getString(1));</span>
-<span class="fc" id="L67">        c.setPartitaIva(rs.getString(2));</span>
-<span class="fc" id="L68">        c.setNomeIntestatario(rs.getString(3));</span>
-<span class="fc" id="L69">        c.setDataScadenza(rs.getDate(4));</span>
-<span class="fc" id="L70">        c.setCvv(rs.getInt(5));</span>
-<span class="fc" id="L71">        return c;</span>
+<span class="fc" id="L63">      ps.setString(1, numCarta);</span>
+<span class="fc" id="L64">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">      if (rs.next()) {</span>
+<span class="fc" id="L66">        MetodoPagamento c = new MetodoPagamento();</span>
+<span class="fc" id="L67">        c.setNumeroCarta(rs.getString(1));</span>
+<span class="fc" id="L68">        c.setPartitaIva(rs.getString(2));</span>
+<span class="fc" id="L69">        c.setNomeIntestatario(rs.getString(3));</span>
+<span class="fc" id="L70">        c.setDataScadenza(rs.getDate(4));</span>
+<span class="fc" id="L71">        c.setCvv(rs.getInt(5));</span>
+<span class="fc" id="L72">        return c;</span>
       }
-<span class="fc" id="L73">      return null;</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
-<span class="nc" id="L75">      throw new RuntimeException(e);</span>
+<span class="fc" id="L74">      return null;</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L76">      throw new RuntimeException(e);</span>
     }
   }
 
@@ -82,21 +83,43 @@ import java.util.List;
    * @param metodoPagamento Oggetto di tipo {@link MetodoPagamento}
    */
   public void createMetodoPagamento(MetodoPagamento metodoPagamento) {
-<span class="fc" id="L85">    try (Connection con = DBConnection.getConnection()) {</span>
-<span class="fc" id="L86">      PreparedStatement ps = con.prepareStatement(</span>
+<span class="fc" id="L86">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L87">      PreparedStatement ps = con.prepareStatement(</span>
           &quot;INSERT INTO MetodoPagamento (numeroCarta, partitaIva, nomeIntestatario, &quot;
                   + &quot;dataScadenza, cvv) VALUES(?,?,?,?,?)&quot;);
-<span class="fc" id="L89">      ps.setString(1, metodoPagamento.getNumeroCarta());</span>
-<span class="fc" id="L90">      ps.setString(2, metodoPagamento.getPartitaIva());</span>
-<span class="fc" id="L91">      ps.setString(3, metodoPagamento.getNomeIntestatario());</span>
-<span class="fc" id="L92">      ps.setDate(4, metodoPagamento.getDataScadenza());</span>
-<span class="fc" id="L93">      ps.setInt(5, metodoPagamento.getCvv());</span>
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
-<span class="nc" id="L95">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
+<span class="fc" id="L90">      ps.setString(1, metodoPagamento.getNumeroCarta());</span>
+<span class="fc" id="L91">      ps.setString(2, metodoPagamento.getPartitaIva());</span>
+<span class="fc" id="L92">      ps.setString(3, metodoPagamento.getNomeIntestatario());</span>
+<span class="fc" id="L93">      ps.setDate(4, metodoPagamento.getDataScadenza());</span>
+<span class="fc" id="L94">      ps.setInt(5, metodoPagamento.getCvv());</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">      if (ps.executeUpdate() != 1) {</span>
+<span class="nc" id="L96">        throw new RuntimeException(&quot;INSERT error.&quot;);</span>
       }
-<span class="nc" id="L97">    } catch (SQLException e) {</span>
-<span class="nc" id="L98">      throw new RuntimeException(e);</span>
-<span class="fc" id="L99">    }</span>
-<span class="fc" id="L100">  }</span>
+<span class="nc" id="L98">    } catch (SQLException e) {</span>
+<span class="nc" id="L99">      throw new RuntimeException(e);</span>
+<span class="fc" id="L100">    }</span>
+<span class="fc" id="L101">  }</span>
+
+  /**
+   * Metodo che restituisce un booleano se la carta è già presente.
+   *
+   * @param numCarta Oggetto di tipo String
+   */
+
+  public boolean doRetrieveByNumCartaBoolean(String numCarta) {
+<span class="fc" id="L110">    boolean flag = false;</span>
+<span class="fc" id="L111">    try (Connection con = DBConnection.getConnection()) {</span>
+<span class="fc" id="L112">      PreparedStatement ps = con.prepareStatement(</span>
+          &quot;SELECT * FROM MetodoPagamento WHERE numeroCarta=?&quot;);
+<span class="fc" id="L114">      ps.setString(1, numCarta);</span>
+<span class="fc" id="L115">      ResultSet rs = ps.executeQuery();</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">      if (rs.next()) {</span>
+<span class="fc" id="L117">        return true;</span>
+      }
+<span class="fc" id="L119">      return false;</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">    } catch (SQLException e) {</span>
+<span class="nc" id="L121">      throw new RuntimeException(e);</span>
+    }
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

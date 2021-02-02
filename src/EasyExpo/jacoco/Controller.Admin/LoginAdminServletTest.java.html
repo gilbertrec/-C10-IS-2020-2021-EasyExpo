@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginAdminServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller.Admin</a> &gt; <span class="el_source">LoginAdminServletTest.java</span></div><h1>LoginAdminServletTest.java</h1><pre class="source lang-java linenums">package Controller.Admin;
+
+import Controller.MyServletException;
+import Model.DAO.AdminDAO;
+import Model.POJO.Admin;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+<span class="fc" id="L18">class LoginAdminServletTest {</span>
+  private LoginAdminServlet loginAdminServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  private Admin admin;
+  private AdminDAO adminDAO;
+
+<span class="fc" id="L28">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L32">    loginAdminServlet = new LoginAdminServlet();</span>
+<span class="fc" id="L33">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L34">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L35">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L36">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L37">    mockedSession = Mockito.mock(HttpSession.class);</span>
+
+<span class="fc" id="L39">    adminDAO = new AdminDAO();</span>
+
+<span class="fc" id="L41">    admin = new Admin();</span>
+<span class="fc" id="L42">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L46">  }</span>
+
+  @Test
+  void TestEmailPasswordSuccess() throws ServletException, IOException {
+<span class="fc" id="L50">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L51">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;lucrezia.robustelli@gmail.com&quot;);</span>
+<span class="fc" id="L52">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;lucry00*&quot;);</span>
+
+
+<span class="fc" id="L55">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+<span class="fc" id="L56">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L57">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L58">        .getRequestDispatcher(&quot;/adminHome.jsp&quot;);</span>
+
+<span class="fc" id="L60">    loginAdminServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L61">    Mockito.verify(mockedServletContext).getRequestDispatcher(&quot;/adminHome.jsp&quot;);</span>
+<span class="fc" id="L62">  }</span>
+
+  @Test
+  void TestEmailNull() throws ServletException, IOException {
+<span class="fc" id="L66">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+    //Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;lucrezia.robust@gmail.com&quot;);
+<span class="fc" id="L68">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;lucry00*&quot;);</span>
+
+<span class="fc" id="L70">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+    //Mockito.when(mockedSession.setAttribute(&quot;Errore&quot;, 1));
+<span class="fc" id="L72">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L73">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L74">        .getRequestDispatcher(&quot;/adminLoginSegreto.jsp&quot;);</span>
+
+<span class="fc" id="L76">    loginAdminServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L77">    Mockito.verify(mockedServletContext).getRequestDispatcher(&quot;/adminLoginSegreto.jsp&quot;);</span>
+
+<span class="fc" id="L79">  }</span>
+
+  @Test
+  void TestPasswordNull() throws ServletException, IOException {
+<span class="fc" id="L83">    Mockito.doReturn(mockedSession).when(mockedRequest).getSession(true);</span>
+<span class="fc" id="L84">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;lucrezia.robustelli@gmail.com&quot;);</span>
+    //Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;lcrdfvzsbfy00*&quot;);
+
+<span class="fc" id="L87">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+    //Mockito.when(mockedSession.setAttribute(&quot;Errore&quot;, 1));
+<span class="fc" id="L89">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L90">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L91">        .getRequestDispatcher(&quot;/adminLoginSegreto.jsp&quot;);</span>
+
+<span class="fc" id="L93">    loginAdminServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L94">    Mockito.verify(mockedServletContext).getRequestDispatcher(&quot;/adminLoginSegreto.jsp&quot;);</span>
+
+<span class="fc" id="L96">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L100">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L104">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

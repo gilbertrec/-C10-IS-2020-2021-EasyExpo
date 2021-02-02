@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrazioneClienteServletTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">RegistrazioneClienteServletTest.java</span></div><h1>RegistrazioneClienteServletTest.java</h1><pre class="source lang-java linenums">package Controller;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import Model.DAO.ClienteDAO;
+import Model.POJO.Cliente;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+
+<span class="fc" id="L21">class RegistrazioneClienteServletTest extends Mockito {</span>
+  private RegistrazioneClienteServlet registrazioneClienteServlet;
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private ServletContext mockedServletContext;
+  private RequestDispatcher mockedDispatcher;
+  private HttpSession mockedSession;
+  private Cliente cliente1;
+  private Cliente cliente2;
+  private String nome;
+  private String cognome;
+  private String email;
+  private String password;
+  private String passwordConferma;
+  private String luogoUbicazione;
+  private String telefono;
+  private String codiceFiscale;
+  private ClienteDAO cl;
+<span class="fc" id="L39">  MyServletException exception = null;</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L43">    registrazioneClienteServlet = new RegistrazioneClienteServlet();</span>
+<span class="fc" id="L44">    mockedRequest = Mockito.mock(HttpServletRequest.class);</span>
+<span class="fc" id="L45">    mockedResponse = Mockito.mock(HttpServletResponse.class);</span>
+<span class="fc" id="L46">    mockedServletContext = Mockito.mock(ServletContext.class);</span>
+<span class="fc" id="L47">    mockedDispatcher = Mockito.mock(RequestDispatcher.class);</span>
+<span class="fc" id="L48">    mockedSession = Mockito.mock(HttpSession.class);</span>
+
+<span class="fc" id="L50">    cl = new ClienteDAO();</span>
+<span class="fc" id="L51">    cliente1 = new Cliente();</span>
+<span class="fc" id="L52">    cliente1.setCodiceFiscale(&quot;IULGAE99C23R123R&quot;);</span>
+<span class="fc" id="L53">    cliente1.setNome(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L54">    cliente1.setCognome(&quot;Iuliano&quot;);</span>
+<span class="fc" id="L55">    cliente1.setTelefono(&quot;3998765987&quot;);</span>
+<span class="fc" id="L56">    cliente1.setEmail(&quot;gaetano99@gmail.com&quot;);</span>
+<span class="fc" id="L57">    cliente1.setPassword(&quot;gae99*&quot;);</span>
+<span class="fc" id="L58">    cliente1.setLuogoUbicazione(&quot;Terzigno&quot;);</span>
+
+<span class="fc" id="L60">    cliente2 = new Cliente();</span>
+<span class="fc" id="L61">    cliente2.setCodiceFiscale(&quot;BRZRTN02L50C278F&quot;);</span>
+<span class="fc" id="L62">    cliente2.setNome(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L63">    cliente2.setCognome(&quot;Avino&quot;);</span>
+<span class="fc" id="L64">    cliente2.setTelefono(&quot;3319636797&quot;);</span>
+<span class="fc" id="L65">    cliente2.setEmail(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L66">    cliente2.setPassword(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L67">    cliente2.setLuogoUbicazione(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L68">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L72">  }</span>
+
+  @Test
+  void TestClienteLoggato() {
+<span class="fc" id="L76">    Mockito.when(mockedSession.getAttribute(&quot;cliente&quot;)).thenReturn(String.valueOf(cliente1));</span>
+<span class="fc" id="L77">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L78">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L79">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L80">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L81">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L82">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L83">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L84">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L86">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L88">    String message = &quot;Cliente loggato.&quot;;</span>
+
+<span class="fc" id="L90">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L91">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L92">    });</span>
+
+<span class="fc" id="L94">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L95">  }</span>
+
+  @Test
+  void TestEmailFailed() {
+<span class="fc" id="L99">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L100">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L101">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L102">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L103">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L104">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L105">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L106">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L108">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L110">    String message = &quot;Email non valida.&quot;;</span>
+
+<span class="fc" id="L112">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L113">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L114">    });</span>
+
+<span class="fc" id="L116">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L117">  }</span>
+
+  @Test
+  void TestEmailEsistente() {
+<span class="fc" id="L121">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L122">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L123">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L124">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;gaetano99@gmail.com&quot;);</span>
+<span class="fc" id="L125">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L126">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L127">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L128">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L130">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L132">    String message = &quot;Email non valida.&quot;;</span>
+
+<span class="fc" id="L134">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L135">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L136">    });</span>
+
+<span class="fc" id="L138">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L139">  }</span>
+
+  @Test
+  void TestEmailNull() {
+<span class="fc" id="L143">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L144">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L145">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L146">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L147">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L148">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L149">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L151">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L153">    String message = &quot;Email non valida.&quot;;</span>
+
+<span class="fc" id="L155">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L156">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L157">    });</span>
+
+<span class="fc" id="L159">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L160">  }</span>
+
+  @Test
+  void TestPasswordSizeFailed() {
+<span class="fc" id="L164">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;pepp&quot;);</span>
+<span class="fc" id="L165">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L166">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L167">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L168">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L169">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L170">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L171">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L173">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L175">    String message = &quot;Password non valida.&quot;;</span>
+
+<span class="fc" id="L177">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L178">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L179">    });</span>
+
+<span class="fc" id="L181">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L182">  }</span>
+
+  @Test
+  void TestPasswordMatchFailed() {
+<span class="fc" id="L186">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;peasdap#*&quot;);</span>
+<span class="fc" id="L187">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;peasdap#*&quot;);</span>
+<span class="fc" id="L188">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L189">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L190">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L191">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L192">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L193">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L195">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L197">    String message = &quot;Password non valida.&quot;;</span>
+
+<span class="fc" id="L199">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L200">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L201">    });</span>
+
+<span class="fc" id="L203">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L204">  }</span>
+
+
+  @Test
+  void TestPasswordMatchFailedMinuscola() {
+<span class="fc" id="L209">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;PJHDSBJKA&quot;);</span>
+<span class="fc" id="L210">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L211">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L212">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L213">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L214">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L215">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L216">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L218">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L220">    String message = &quot;Password non valida.&quot;;</span>
+
+<span class="fc" id="L222">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L223">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L224">    });</span>
+
+<span class="fc" id="L226">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L227">  }</span>
+
+  @Test
+  void TestPasswordMatchFailedMaiuscola() {
+<span class="fc" id="L231">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;pdnksn&quot;);</span>
+<span class="fc" id="L232">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L233">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L234">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L235">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L236">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L237">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L238">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L240">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L242">    String message = &quot;Password non valida.&quot;;</span>
+
+<span class="fc" id="L244">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L245">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L246">    });</span>
+
+<span class="fc" id="L248">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L249">  }</span>
+
+  @Test
+  void TestPasswordNull() {
+<span class="fc" id="L253">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999*&quot;);</span>
+<span class="fc" id="L254">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L255">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L256">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L257">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L258">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L259">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L261">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L263">    String message = &quot;Password non valida.&quot;;</span>
+
+<span class="fc" id="L265">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L266">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L267">    });</span>
+
+<span class="fc" id="L269">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L270">  }</span>
+
+  @Test
+  void TestPasswordConfermaFailed() {
+<span class="fc" id="L274">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L275">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;pepp&quot;);</span>
+<span class="fc" id="L276">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L277">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L278">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02L50C294F&quot;);</span>
+<span class="fc" id="L279">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L280">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L281">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L283">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L285">    String message = &quot;Le password non combaciano.&quot;;</span>
+
+<span class="fc" id="L287">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L288">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L289">    });</span>
+
+<span class="fc" id="L291">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L292">  }</span>
+
+  @Test
+  void TestPasswordConfermaNull() {
+<span class="fc" id="L296">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L297">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L298">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L299">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02L50C294F&quot;);</span>
+<span class="fc" id="L300">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L301">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L302">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L304">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L306">    String message = &quot;Le password non combaciano.&quot;;</span>
+
+<span class="fc" id="L308">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L309">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L310">    });</span>
+
+<span class="fc" id="L312">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L313">  }</span>
+
+  @Test
+  void TestNomeFailed() {
+<span class="fc" id="L317">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L318">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L319">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;12&quot;);</span>
+<span class="fc" id="L320">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L321">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L322">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L323">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L324">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L326">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L328">    String message = &quot;Nome non valido.&quot;;</span>
+
+<span class="fc" id="L330">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L331">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L332">    });</span>
+
+<span class="fc" id="L334">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L335">  }</span>
+
+
+  @Test
+  void TestNomeNull() {
+<span class="fc" id="L340">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L341">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L342">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L343">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L344">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L345">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L346">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L348">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L350">    String message = &quot;Nome non valido.&quot;;</span>
+
+<span class="fc" id="L352">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L353">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L354">    });</span>
+
+<span class="fc" id="L356">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L357">  }</span>
+
+  @Test
+  void TestCognomeMatchFailed() {
+<span class="fc" id="L361">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L362">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L363">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L364">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L365">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L366">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;1&quot;);</span>
+<span class="fc" id="L367">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L368">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L370">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L372">    String message = &quot;Cognome non valido.&quot;;</span>
+
+<span class="fc" id="L374">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L375">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L376">    });</span>
+
+<span class="fc" id="L378">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L379">  }</span>
+
+  @Test
+  void TestCognomeSizeFailed() {
+<span class="fc" id="L383">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L384">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L385">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L386">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L387">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L388">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L389">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L390">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L392">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L394">    String message = &quot;Cognome non valido.&quot;;</span>
+
+<span class="fc" id="L396">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L397">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L398">    });</span>
+
+<span class="fc" id="L400">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L401">  }</span>
+
+  @Test
+  void TestCognomeNull() {
+<span class="fc" id="L405">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L406">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L407">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L408">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L409">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L410">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L411">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L413">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L415">    String message = &quot;Cognome non valido.&quot;;</span>
+
+<span class="fc" id="L417">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L418">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L419">    });</span>
+
+<span class="fc" id="L421">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L422">  }</span>
+
+  @Test
+  void TestluogoUbicazioneMatchFailed() {
+<span class="fc" id="L426">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L427">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L428">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L429">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L430">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L431">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L432">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;22&quot;);</span>
+<span class="fc" id="L433">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L435">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L437">    String message = &quot;Luogo di ubicazione non valido.&quot;;</span>
+
+<span class="fc" id="L439">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L440">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L441">    });</span>
+
+<span class="fc" id="L443">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L444">  }</span>
+
+  @Test
+  void TestluogoUbicazioneSizeFailed() {
+<span class="fc" id="L448">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L449">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L450">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L451">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L452">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L453">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L454">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;&quot;);</span>
+<span class="fc" id="L455">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L457">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L459">    String message = &quot;Luogo di ubicazione non valido.&quot;;</span>
+
+<span class="fc" id="L461">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L462">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L463">    });</span>
+
+<span class="fc" id="L465">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L466">  }</span>
+
+  @Test
+  void TestluogoUbicazioneNull() {
+<span class="fc" id="L470">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L471">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L472">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L473">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L474">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L475">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L476">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L478">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L480">    String message = &quot;Luogo di ubicazione non valido.&quot;;</span>
+
+<span class="fc" id="L482">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L483">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L484">    });</span>
+
+<span class="fc" id="L486">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L487">  }</span>
+
+  @Test
+  void TestTelefonoFailed() {
+<span class="fc" id="L491">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L492">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L493">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L494">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L495">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L496">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L497">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L498">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;11111&quot;);</span>
+
+<span class="fc" id="L500">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L502">    String message = &quot;Numero di telefono non valido.&quot;;</span>
+
+<span class="fc" id="L504">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L505">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L506">    });</span>
+
+<span class="fc" id="L508">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L509">  }</span>
+
+  @Test
+  void TestTelefonoNull() {
+<span class="fc" id="L513">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L514">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L515">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L516">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L517">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;BRZRTN02H50C294F&quot;);</span>
+<span class="fc" id="L518">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L519">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+
+<span class="fc" id="L521">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L523">    String message = &quot;Numero di telefono non valido.&quot;;</span>
+
+<span class="fc" id="L525">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L526">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L527">    });</span>
+
+<span class="fc" id="L529">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L530">  }</span>
+
+  @Test
+  void TestCodiceFiscaleFailed() {
+<span class="fc" id="L534">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L535">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L536">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L537">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L538">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;)).thenReturn(&quot;GWGWF2&quot;);</span>
+<span class="fc" id="L539">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L540">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L541">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L543">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L545">    String message = &quot;CodiceFiscale non valido.&quot;;</span>
+
+<span class="fc" id="L547">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L548">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L549">    });</span>
+
+<span class="fc" id="L551">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L552">  }</span>
+
+  @Test
+  void TestCodiceFiscaleNull() {
+<span class="fc" id="L556">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L557">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L558">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(&quot;Giuseppe&quot;);</span>
+<span class="fc" id="L559">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(&quot;peppe0113@gmail.com&quot;);</span>
+<span class="fc" id="L560">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(&quot;Avino&quot;);</span>
+<span class="fc" id="L561">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;)).thenReturn(&quot;Terzigno&quot;);</span>
+<span class="fc" id="L562">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(&quot;3319636797&quot;);</span>
+
+<span class="fc" id="L564">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L566">    String message = &quot;CodiceFiscale non valido.&quot;;</span>
+
+<span class="fc" id="L568">    exception = assertThrows(MyServletException.class, () -&gt; {</span>
+<span class="nc" id="L569">      registrazioneClienteServlet.doGet(mockedRequest, mockedResponse);</span>
+<span class="nc" id="L570">    });</span>
+
+<span class="fc" id="L572">    assertEquals(message, exception.getMessage());</span>
+<span class="fc" id="L573">  }</span>
+
+  @Test
+  void TestClienteSuccess() throws ServletException, IOException {
+<span class="fc" id="L577">    Mockito.when(mockedRequest.getParameter(&quot;password&quot;)).thenReturn(cliente2.getPassword());</span>
+<span class="fc" id="L578">    Mockito.when(mockedRequest.getParameter(&quot;passwordConferma&quot;)).thenReturn(&quot;Peppe9999_&quot;);</span>
+<span class="fc" id="L579">    Mockito.when(mockedRequest.getParameter(&quot;nome&quot;)).thenReturn(cliente2.getNome());</span>
+<span class="fc" id="L580">    Mockito.when(mockedRequest.getParameter(&quot;email&quot;)).thenReturn(cliente2.getEmail());</span>
+<span class="fc" id="L581">    Mockito.when(mockedRequest.getParameter(&quot;codiceFiscale&quot;))</span>
+<span class="fc" id="L582">        .thenReturn(cliente2.getCodiceFiscale());</span>
+<span class="fc" id="L583">    Mockito.when(mockedRequest.getParameter(&quot;cognome&quot;)).thenReturn(cliente2.getCognome());</span>
+<span class="fc" id="L584">    Mockito.when(mockedRequest.getParameter(&quot;luogoUbicazione&quot;))</span>
+<span class="fc" id="L585">        .thenReturn(cliente2.getLuogoUbicazione());</span>
+<span class="fc" id="L586">    Mockito.when(mockedRequest.getParameter(&quot;telefono&quot;)).thenReturn(cliente2.getTelefono());</span>
+
+<span class="fc" id="L588">    Mockito.when(mockedRequest.getSession()).thenReturn(mockedSession);</span>
+
+<span class="fc" id="L590">    Mockito.doReturn(mockedServletContext).when(mockedRequest).getServletContext();</span>
+<span class="fc" id="L591">    Mockito.doReturn(mockedDispatcher).when(mockedServletContext)</span>
+<span class="fc" id="L592">        .getRequestDispatcher(&quot;/login.jsp&quot;);</span>
+
+<span class="fc" id="L594">    registrazioneClienteServlet.doPost(mockedRequest, mockedResponse);</span>
+<span class="fc" id="L595">    cl.deleteCliente(cliente2.getCodiceFiscale());</span>
+
+<span class="fc" id="L597">  }</span>
+
+  @Test
+  void doPost() {
+<span class="fc" id="L601">  }</span>
+
+  @Test
+  void doGet() {
+<span class="fc" id="L605">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

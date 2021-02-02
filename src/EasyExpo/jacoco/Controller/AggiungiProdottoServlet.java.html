@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AggiungiProdottoServlet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Controller</a> &gt; <span class="el_source">AggiungiProdottoServlet.java</span></div><h1>AggiungiProdottoServlet.java</h1><pre class="source lang-java linenums">package Controller;
+
+import Model.DAO.ProdottoDAO;
+import Model.DAO.TagDAO;
+import Model.DAO.TagProdottoDAO;
+import Model.POJO.Prodotto;
+import Model.POJO.Tag;
+import Model.POJO.TagProdotto;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+/**
+ * &lt;p&gt; AggiungiProdottoServlet e' una Servlet che permette di
+ * svolgere l'aggiunta di un prodotto al catalogo
+ * personale  del fornitori &lt;/p&gt;.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2020-12-29
+ */
+
+@WebServlet(&quot;/AggiungiProdottoServlet&quot;)
+@MultipartConfig
+<span class="fc" id="L36">public class AggiungiProdottoServlet extends HttpServlet {</span>
+
+  /**
+   * doPost() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+<span class="nc" id="L46">    doGet(request, response);</span>
+<span class="nc" id="L47">  }</span>
+
+  /**
+   * doGet() method.
+   *
+   * @param request  is the servlet request.
+   * @param response is the servlet response.
+   */
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+<span class="fc" id="L58">    String partitaIva = request.getParameter(&quot;partitaIva&quot;);</span>
+<span class="fc" id="L59">    String titolo = request.getParameter(&quot;titolo&quot;);</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">    if (!(titolo != null &amp;&amp; titolo.matches(&quot;[A-Z a-z 0-9]{1,30}&quot;))) {</span>
+<span class="fc" id="L61">      throw new MyServletException(&quot;Titolo non valido.&quot;);</span>
+    }
+
+<span class="fc" id="L64">    String tipo = request.getParameter(&quot;tipo&quot;);</span>
+
+<span class="fc" id="L66">    String prezzo = request.getParameter(&quot;prezzo&quot;);</span>
+<span class="fc bfc" id="L67" title="All 4 branches covered.">    if (!(prezzo != null &amp;&amp; prezzo.matches(&quot;[0-9]{1,5}.[0-9]{2}&quot;))) {</span>
+<span class="fc" id="L68">      throw new MyServletException(&quot;Prezzo non valido.&quot;);</span>
+    }
+
+<span class="fc" id="L71">    String quantita = request.getParameter(&quot;quantita&quot;);</span>
+<span class="fc bfc" id="L72" title="All 4 branches covered.">    if (!(quantita != null &amp;&amp; quantita.matches(&quot;[0-9]{1,3}&quot;))) {</span>
+<span class="fc" id="L73">      throw new MyServletException(&quot;Quantità non valida.&quot;);</span>
+    }
+
+<span class="fc" id="L76">    String descrizione = request.getParameter(&quot;descrizione&quot;);</span>
+<span class="pc bpc" id="L77" title="1 of 4 branches missed.">    if (!(descrizione != null &amp;&amp; descrizione.matches(&quot;[A-Z a-z .,/()%”]{1,1024}&quot;))) {</span>
+<span class="fc" id="L78">      throw new MyServletException(&quot;Descrizione non valida.&quot;);</span>
+    }
+
+
+    //foto
+<span class="nc" id="L83">    Part filePart = request.getPart(&quot;foto&quot;);</span>
+<span class="nc" id="L84">    String fileName = filePart.getSubmittedFileName();</span>
+<span class="nc" id="L85">    String path =</span>
+        &quot;/Users/lucreziarobustelli/Documents/GitHub/-C10-IS-2020-2021-EasyExpo&quot;
+            + &quot;/src/EasyExpo/src/main/webapp/&quot;
+            + &quot;images&quot;;
+<span class="nc" id="L89">    File uploads = new File(path);</span>
+<span class="nc" id="L90">    int lenght = fileName.length(); //Lunghezza del Nome della foto inserita</span>
+
+    String fotoFinale;
+
+<span class="nc bnc" id="L94" title="All 2 branches missed.">    if (lenght == 0) {</span>
+<span class="nc" id="L95">      fotoFinale = &quot;&quot;;</span>
+    } else {
+<span class="nc" id="L97">      File file = File.createTempFile(fileName.substring(0, lenght - 4),</span>
+<span class="nc" id="L98">          fileName.substring(lenght - 4, lenght), uploads);</span>
+
+<span class="nc" id="L100">      try (InputStream input = filePart.getInputStream()) {</span>
+<span class="nc" id="L101">        Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);</span>
+<span class="nc" id="L102">      } catch (Exception e) {</span>
+<span class="nc" id="L103">        e.printStackTrace();</span>
+<span class="nc" id="L104">      }</span>
+
+<span class="nc" id="L106">      int lastIndex =</span>
+<span class="nc" id="L107">          file.getAbsoluteFile().toString().lastIndexOf(&quot;/&quot;) + 1; //Inizio nome della foto finale</span>
+<span class="nc" id="L108">      int totalLenght = file.getAbsoluteFile().toString().length(); //Lunghezza path assoluto</span>
+<span class="nc" id="L109">      String finalFileName = file.getAbsolutePath().toString()</span>
+<span class="nc" id="L110">          .substring(lastIndex, totalLenght); //Ricavo il nome effettivo della foto</span>
+<span class="nc" id="L111">      fotoFinale = &quot;images/&quot; + finalFileName;</span>
+    }
+
+
+<span class="nc" id="L115">    Prodotto prodotto = new Prodotto();</span>
+<span class="nc" id="L116">    prodotto.setPartitaIva(partitaIva);</span>
+<span class="nc" id="L117">    prodotto.setTitolo(titolo);</span>
+<span class="nc" id="L118">    prodotto.setDescrizione(descrizione);</span>
+<span class="nc" id="L119">    prodotto.setTipo(Prodotto.Tipo.valueOf(tipo));</span>
+<span class="nc" id="L120">    prodotto.setQuantità(Integer.parseInt(quantita));</span>
+<span class="nc" id="L121">    prodotto.setPrezzo(Float.parseFloat(prezzo));</span>
+<span class="nc" id="L122">    prodotto.setImmagine(fotoFinale);</span>
+<span class="nc" id="L123">    ProdottoDAO prodottodao = new ProdottoDAO();</span>
+<span class="nc" id="L124">    int idProdotto = prodottodao.createProdotto(prodotto);</span>
+    //tag
+
+<span class="nc" id="L127">    TagDAO tagDAO = new TagDAO();</span>
+<span class="nc" id="L128">    TagProdottoDAO tagProdottoDAO = new TagProdottoDAO();</span>
+<span class="nc" id="L129">    String valueInput = request.getParameter(&quot;tag&quot;);</span>
+<span class="nc" id="L130">    String[] tags = valueInput.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">    for (String s : tags) {</span>
+<span class="nc" id="L132">      Tag tag = new Tag();</span>
+<span class="nc" id="L133">      tag.setNome(s);</span>
+<span class="nc" id="L134">      int idTag = tagDAO.createTag(tag);</span>
+
+<span class="nc" id="L136">      TagProdotto tagProdotto = new TagProdotto(idTag, idProdotto, partitaIva);</span>
+<span class="nc" id="L137">      tagProdottoDAO.createTagProdotto(tagProdotto);</span>
+
+    }
+<span class="nc" id="L140">    List&lt;Prodotto&gt; prodotti = prodottodao.doRetrieveByPartitaIva(partitaIva);</span>
+<span class="nc" id="L141">    request.getSession().setAttribute(&quot;prodotti&quot;, prodotti);</span>
+
+<span class="nc" id="L143">    RequestDispatcher requestDispatcher =</span>
+<span class="nc" id="L144">        request.getServletContext().getRequestDispatcher(&quot;/areaFornitore.jsp&quot;);</span>
+<span class="nc" id="L145">    requestDispatcher.forward(request, response);</span>
+<span class="nc" id="L146">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

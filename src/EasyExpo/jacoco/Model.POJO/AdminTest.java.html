@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">AdminTest.java</span></div><h1>AdminTest.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L10">class AdminTest {</span>
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L14">    admin = new Admin(&quot;sabatino@gmail.com&quot;, &quot;Sabatino20_&quot;);</span>
+<span class="fc" id="L15">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L19">    admin = new Admin(&quot;sabatino@gmail.com&quot;, &quot;Sabatino20_&quot;);</span>
+<span class="fc" id="L20">  }</span>
+
+  @Test
+  void testAdminCostructorEmpty() {
+<span class="fc" id="L24">    admin = new Admin();</span>
+<span class="fc" id="L25">    assertNotNull(admin);</span>
+<span class="fc" id="L26">  }</span>
+
+  @Test
+  void getEmail() {
+<span class="fc" id="L30">    assertEquals(&quot;sabatino@gmail.com&quot;, admin.getEmail());</span>
+<span class="fc" id="L31">  }</span>
+
+  @Test
+  void setEmail() {
+<span class="fc" id="L35">    admin.setEmail(&quot;prova@gmail.com&quot;);</span>
+<span class="fc" id="L36">    assertEquals(&quot;prova@gmail.com&quot;, admin.getEmail());</span>
+<span class="fc" id="L37">  }</span>
+
+  @Test
+  void getPassword() {
+<span class="fc" id="L41">    assertEquals(&quot;Sabatino20_&quot;, admin.getPassword());</span>
+<span class="fc" id="L42">  }</span>
+
+  @Test
+  void setPassword() {
+<span class="fc" id="L46">    admin.setPassword(&quot;davide123&quot;);</span>
+<span class="fc" id="L47">    assertEquals(&quot;davide123&quot;, admin.getPassword());</span>
+<span class="fc" id="L48">  }</span>
+
+  private Admin admin;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

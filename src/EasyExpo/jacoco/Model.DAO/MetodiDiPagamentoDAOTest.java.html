@@ -1,81 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MetodiDiPagamentoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$Model_DAO_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">MetodiDiPagamentoDAOTest.java</span></div><h1>MetodiDiPagamentoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MetodiDiPagamentoDAOTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.DAO</a> &gt; <span class="el_source">MetodiDiPagamentoDAOTest.java</span></div><h1>MetodiDiPagamentoDAOTest.java</h1><pre class="source lang-java linenums">package Model.DAO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import Model.POJO.Fornitore;
 import Model.POJO.MetodoPagamento;
+import java.sql.Date;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
-import java.util.List;
+<span class="fc" id="L13">class MetodiDiPagamentoDAOTest {</span>
+  MetodiDiPagamentoDAO metodiDiPagamentoDAO;
+  MetodoPagamento metodoPagamento;
+  FornitoreDAO fornitoreDAO;
+  Fornitore fornitore;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-<span class="fc" id="L14">class MetodiDiPagamentoDAOTest {</span>
-    MetodiDiPagamentoDAO metodiDiPagamentoDAO;
-    MetodoPagamento metodoPagamento;
-    FornitoreDAO fornitoreDAO;
-    Fornitore fornitore;
-
-    @BeforeEach
-    void setUp() {
-<span class="fc" id="L22">        fornitoreDAO = new FornitoreDAO();</span>
-<span class="fc" id="L23">        fornitore =</span>
-            new Fornitore(&quot;01234567890&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,
-                &quot;Rossi123&quot;, &quot;Rossi&quot;);
-<span class="fc" id="L26">        fornitoreDAO.createFornitore(fornitore);</span>
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L21">    fornitoreDAO = new FornitoreDAO();</span>
+<span class="fc" id="L22">    fornitore =</span>
+        new Fornitore(&quot;01234567890&quot;, &quot;Mario&quot;, &quot;Rossi&quot;, &quot;1234567890&quot;, &quot;Roma&quot;, &quot;rossi@gmail.com&quot;,
+            &quot;Rossi123&quot;, &quot;Rossi&quot;);
+<span class="fc" id="L25">    fornitoreDAO.createFornitore(fornitore);</span>
 
 
-<span class="fc" id="L29">        metodiDiPagamentoDAO = new MetodiDiPagamentoDAO();</span>
-<span class="fc" id="L30">        metodoPagamento = new MetodoPagamento();</span>
-<span class="fc" id="L31">        metodoPagamento.setNumeroCarta(&quot;1234567891023456&quot;);</span>
-<span class="fc" id="L32">        metodoPagamento.setPartitaIva(&quot;01234567890&quot;);</span>
-<span class="fc" id="L33">        metodoPagamento.setNomeIntestatario(&quot;Mario&quot;);</span>
-<span class="fc" id="L34">        metodoPagamento.setDataScadenza(new Date(2022, 12, 30));</span>
-<span class="fc" id="L35">        metodoPagamento.setCvv(321);</span>
-<span class="fc" id="L36">        metodiDiPagamentoDAO.createMetodoPagamento(metodoPagamento);</span>
+<span class="fc" id="L28">    metodiDiPagamentoDAO = new MetodiDiPagamentoDAO();</span>
+<span class="fc" id="L29">    metodoPagamento = new MetodoPagamento();</span>
+<span class="fc" id="L30">    metodoPagamento.setNumeroCarta(&quot;1234567891023456&quot;);</span>
+<span class="fc" id="L31">    metodoPagamento.setPartitaIva(&quot;01234567890&quot;);</span>
+<span class="fc" id="L32">    metodoPagamento.setNomeIntestatario(&quot;Mario&quot;);</span>
+<span class="fc" id="L33">    metodoPagamento.setDataScadenza(new Date(2022, 12, 30));</span>
+<span class="fc" id="L34">    metodoPagamento.setCvv(321);</span>
+<span class="fc" id="L35">    metodiDiPagamentoDAO.createMetodoPagamento(metodoPagamento);</span>
 
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L37">  }</span>
 
-    @AfterEach
-    void tearDown() {
-<span class="fc" id="L42">        String par = fornitore.getPartitaIva();</span>
-<span class="fc" id="L43">        fornitoreDAO.deleteFornitore(par);</span>
-<span class="fc" id="L44">    }</span>
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L41">    String par = fornitore.getPartitaIva();</span>
+<span class="fc" id="L42">    fornitoreDAO.deleteFornitore(par);</span>
+<span class="fc" id="L43">  }</span>
 
-    @Test
-    void doRetrieveAllByPartitaIva() {
-<span class="fc" id="L48">        List&lt;MetodoPagamento&gt; lista = metodiDiPagamentoDAO.doRetrieveAllByPartitaIva(&quot;01234567890&quot;);</span>
-<span class="fc" id="L49">        assertEquals(&quot;01234567890&quot;, lista.get(0).getPartitaIva());</span>
-<span class="fc" id="L50">    }</span>
+  @Test
+  void doRetrieveAllByPartitaIva() {
+<span class="fc" id="L47">    List&lt;MetodoPagamento&gt; lista = metodiDiPagamentoDAO.doRetrieveAllByPartitaIva(&quot;01234567890&quot;);</span>
+<span class="fc" id="L48">    assertEquals(&quot;01234567890&quot;, lista.get(0).getPartitaIva());</span>
+<span class="fc" id="L49">  }</span>
 
-    @Test
-    void doRetrieveByNumCarta() {
-<span class="fc" id="L54">        MetodoPagamento mp = metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023456&quot;);</span>
-<span class="fc" id="L55">        assertEquals(&quot;1234567891023456&quot;, mp.getNumeroCarta());</span>
-<span class="fc" id="L56">    }</span>
+  @Test
+  void doRetrieveByNumCarta() {
+<span class="fc" id="L53">    MetodoPagamento mp = metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023456&quot;);</span>
+<span class="fc" id="L54">    assertEquals(&quot;1234567891023456&quot;, mp.getNumeroCarta());</span>
+<span class="fc" id="L55">  }</span>
 
-    @Test
-    void doRetrieveByNumCartaNull() {
-        //MetodoPagamento mp = metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023421&quot;);
-<span class="fc" id="L61">        assertEquals(null, metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023421&quot;));</span>
+  @Test
+  void doRetrieveByNumCartaBoolean() {
+<span class="fc" id="L59">    boolean flag = metodiDiPagamentoDAO.doRetrieveByNumCartaBoolean(&quot;1452896574587589&quot;);</span>
+<span class="fc" id="L60">    assertEquals(true, flag);</span>
+<span class="fc" id="L61">  }</span>
 
-<span class="fc" id="L63">    }</span>
+  @Test
+  void doRetrieveByNumCartaNull() {
+    //MetodoPagamento mp = metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023421&quot;);
+<span class="fc" id="L66">    assertEquals(null, metodiDiPagamentoDAO.doRetrieveByNumCarta(&quot;1234567891023421&quot;));</span>
 
-
-
-    @Test
-    void createMetodoPagamento() {
-<span class="fc" id="L69">        MetodoPagamento metodoPagamento1 = new MetodoPagamento();</span>
-<span class="fc" id="L70">        metodoPagamento1.setNumeroCarta(&quot;9876543211452368&quot;);</span>
-<span class="fc" id="L71">        metodoPagamento1.setPartitaIva(&quot;01234567890&quot;);</span>
-<span class="fc" id="L72">        metodoPagamento1.setNomeIntestatario(&quot;Rossi&quot;);</span>
-<span class="fc" id="L73">        metodoPagamento1.setDataScadenza(new Date(2021, 10, 25));</span>
-<span class="fc" id="L74">        metodoPagamento1.setCvv(112);</span>
-<span class="fc" id="L75">        metodiDiPagamentoDAO.createMetodoPagamento(metodoPagamento1);</span>
-<span class="fc" id="L76">        assertEquals(2, metodiDiPagamentoDAO.doRetrieveAllByPartitaIva(&quot;01234567890&quot;).size());</span>
+<span class="fc" id="L68">  }</span>
 
 
-<span class="fc" id="L79">    }</span>
+  @Test
+  void createMetodoPagamento() {
+<span class="fc" id="L73">    MetodoPagamento metodoPagamento1 = new MetodoPagamento();</span>
+<span class="fc" id="L74">    metodoPagamento1.setNumeroCarta(&quot;9876543211452368&quot;);</span>
+<span class="fc" id="L75">    metodoPagamento1.setPartitaIva(&quot;01234567890&quot;);</span>
+<span class="fc" id="L76">    metodoPagamento1.setNomeIntestatario(&quot;Rossi&quot;);</span>
+<span class="fc" id="L77">    metodoPagamento1.setDataScadenza(new Date(2021, 10, 25));</span>
+<span class="fc" id="L78">    metodoPagamento1.setCvv(112);</span>
+<span class="fc" id="L79">    metodiDiPagamentoDAO.createMetodoPagamento(metodoPagamento1);</span>
+<span class="fc" id="L80">    assertEquals(2, metodiDiPagamentoDAO.doRetrieveAllByPartitaIva(&quot;01234567890&quot;).size());</span>
+
+
+<span class="fc" id="L83">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RichiestaPreventivo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">RichiestaPreventivo.java</span></div><h1>RichiestaPreventivo.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import java.sql.Date;
+
+/**
+ * RichiestaPreventivo e' la classe che gestisce un
+ * ordinario oggetto RichiestaPreventivo.
+ *
+ * @author LUCREZIA ROBUSTELLI
+ * @version 1.0
+ * @since 2021-01-02
+ */
+public class RichiestaPreventivo {
+
+  /**
+   * Metodo costruttore della classe ProdottoRichiesta.
+   *
+   * @param idRichiesta       codice identificativo richiesta, Intero
+   * @param codiceFiscale     codice alfanumerico identificativo fornitore, String
+   * @param partitaIva        codice alfanumerico identificativo fornitore, String
+   * @param titolo            titolo della richiesta, String
+   * @param luogoEvento       ubicazione dell'evento, String
+   * @param descrizioneEvento descrizione dell'evento, String
+   * @param nota              breve testo per informazioni aggiuntive, String
+   * @param dataRichiesta     data della richiesta effettuata, Date
+   * @param stato             stato della richiesta, Stato
+   */
+  public RichiestaPreventivo(int idRichiesta, String codiceFiscale, String partitaIva,
+                             String titolo, String luogoEvento, String descrizioneEvento,
+<span class="fc" id="L30">                             String nota, Date dataRichiesta, Stato stato) {</span>
+<span class="fc" id="L31">    this.idRichiesta = idRichiesta;</span>
+<span class="fc" id="L32">    this.codiceFiscale = codiceFiscale;</span>
+<span class="fc" id="L33">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L34">    this.titolo = titolo;</span>
+<span class="fc" id="L35">    this.luogoEvento = luogoEvento;</span>
+<span class="fc" id="L36">    this.descrizioneEvento = descrizioneEvento;</span>
+<span class="fc" id="L37">    this.nota = nota;</span>
+<span class="fc" id="L38">    this.dataRichiesta = dataRichiesta;</span>
+<span class="fc" id="L39">    this.stato = stato;</span>
+<span class="fc" id="L40">  }</span>
+
+  /**
+   * Metodo costruttore di default della classe Prodotto.
+   */
+<span class="fc" id="L45">  public RichiestaPreventivo() {</span>
+
+<span class="fc" id="L47">  }</span>
+
+  /**
+   * Metodo che restituisce la data della richiesta.
+   *
+   * @return Date - getDataRichiesta
+   */
+  public Date getDataRichiesta() {
+<span class="fc" id="L55">    return dataRichiesta;</span>
+  }
+
+  /**
+   * Metodo che setta la data della richiesta.
+   *
+   * @param dataRichiesta data della richiesta effettuata, Date
+   */
+  public void setDataRichiesta(Date dataRichiesta) {
+<span class="fc" id="L64">    this.dataRichiesta = dataRichiesta;</span>
+<span class="fc" id="L65">  }</span>
+
+  /**
+   * Metodo che restituisce l'id della richiesta.
+   *
+   * @return Int - idRichiesta
+   */
+  public int getIdRichiesta() {
+<span class="fc" id="L73">    return idRichiesta;</span>
+  }
+
+  /**
+   * Metodo che setta l'id della richiesta.
+   *
+   * @param idRichiesta codice identificativo richiesta, Intero
+   */
+  public void setIdRichiesta(int idRichiesta) {
+<span class="fc" id="L82">    this.idRichiesta = idRichiesta;</span>
+<span class="fc" id="L83">  }</span>
+
+  /**
+   * Metodo che restituisce il Codice Fiscale.
+   *
+   * @return String - codiceFiscale
+   */
+  public String getCodiceFiscale() {
+<span class="fc" id="L91">    return codiceFiscale;</span>
+  }
+
+  /**
+   * Metodo che setta il Codice Fiscale.
+   *
+   * @param codiceFiscale codice alfanumerico identificativo fornitore, String
+   */
+  public void setCodiceFiscale(String codiceFiscale) {
+<span class="fc" id="L100">    this.codiceFiscale = codiceFiscale;</span>
+<span class="fc" id="L101">  }</span>
+
+  /**
+   * Metodo che restituisce la Partita Iva.
+   *
+   * @return String - PartitaIva
+   */
+  public String getPartitaIva() {
+<span class="fc" id="L109">    return partitaIva;</span>
+  }
+
+  /**
+   * Metodo che setta la Partita Iva.
+   *
+   * @param partitaIva codice alfanumerico identificativo fornitore, String
+   */
+  public void setPartitaIva(String partitaIva) {
+<span class="fc" id="L118">    this.partitaIva = partitaIva;</span>
+<span class="fc" id="L119">  }</span>
+
+  /**
+   * Metodo che restituisce il Titolo.
+   *
+   * @return String - Titolo
+   */
+  public String getTitolo() {
+<span class="fc" id="L127">    return titolo;</span>
+  }
+
+  /**
+   * Metodo che setta il Titolo.
+   *
+   * @param titolo titolo della richiesta, String
+   */
+  public void setTitolo(String titolo) {
+<span class="fc" id="L136">    this.titolo = titolo;</span>
+<span class="fc" id="L137">  }</span>
+
+  /**
+   * Metodo che restituisce il Luogo Evento.
+   *
+   * @return String - luogoEvento
+   */
+  public String getLuogoEvento() {
+<span class="fc" id="L145">    return luogoEvento;</span>
+  }
+
+  /**
+   * Metodo che setta il Luogo Evento.
+   *
+   * @param luogoEvento ubicazione dell'evento, String
+   */
+  public void setLuogoEvento(String luogoEvento) {
+<span class="fc" id="L154">    this.luogoEvento = luogoEvento;</span>
+<span class="fc" id="L155">  }</span>
+
+  /**
+   * Metodo che restituisce la Descrizione dell'evento.
+   *
+   * @return String - descrizioneEvento
+   */
+  public String getDescrizioneEvento() {
+<span class="fc" id="L163">    return descrizioneEvento;</span>
+  }
+
+  /**
+   * Metodo che setta la Descrizione dell'evento.
+   *
+   * @param descrizioneEvento descrizione dell'evento, String
+   */
+  public void setDescrizioneEvento(String descrizioneEvento) {
+<span class="fc" id="L172">    this.descrizioneEvento = descrizioneEvento;</span>
+<span class="fc" id="L173">  }</span>
+
+  /**
+   * Metodo che restituisce la Nota.
+   *
+   * @return String - nota
+   */
+  public String getNota() {
+<span class="fc" id="L181">    return nota;</span>
+  }
+
+  /**
+   * Metodo che setta la Nota.
+   *
+   * @param nota breve testo per informazioni aggiuntive, String
+   */
+  public void setNota(String nota) {
+<span class="fc" id="L190">    this.nota = nota;</span>
+<span class="fc" id="L191">  }</span>
+
+  /**
+   * Metodo che restituisce lo Stato.
+   *
+   * @return Stato - stato
+   */
+  public Stato getStato() {
+<span class="fc" id="L199">    return stato;</span>
+  }
+
+  /**
+   * Metodo che setta lo Stato.
+   *
+   * @param stato stato della richiesta, Stato
+   */
+  public void setStato(Stato stato) {
+<span class="fc" id="L208">    this.stato = stato;</span>
+<span class="fc" id="L209">  }</span>
+
+  @Override
+  public String toString() {
+<span class="nc" id="L213">    return &quot;RichiestaPreventivo{&quot;</span>
+        + &quot;idRichiesta=&quot; + idRichiesta
+        + &quot;, codiceFiscale='&quot; + codiceFiscale + '\''
+        + &quot;, partitaIva='&quot; + partitaIva + '\''
+        + &quot;, titolo='&quot; + titolo + '\''
+        + &quot;, luogoEvento='&quot; + luogoEvento + '\''
+        + &quot;, descrizioneEvento='&quot; + descrizioneEvento + '\''
+        + &quot;, nota='&quot; + nota + '\''
+        + &quot;, dataRichiesta=&quot; + dataRichiesta
+        + &quot;, stato=&quot; + stato
+        + '}';
+  }
+
+  private int idRichiesta;
+  private String codiceFiscale;
+  private String partitaIva;
+  private String titolo;
+  private String luogoEvento;
+  private String descrizioneEvento;
+  private String nota;
+  private Date dataRichiesta;
+
+  /**
+   * Classe che definisce l'enum Stato.
+   */
+<span class="fc" id="L238">  public enum Stato {</span>
+<span class="fc" id="L239">    IN_ATTESA, CONFERMATO, RIFIUTATO</span>
+  }
+
+  private Stato stato;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

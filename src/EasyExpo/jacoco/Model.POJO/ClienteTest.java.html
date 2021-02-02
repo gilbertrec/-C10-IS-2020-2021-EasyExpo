@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClienteTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EasyExpo$All_in_EasyExpo.exec</a> &gt; <a href="index.source.html" class="el_package">Model.POJO</a> &gt; <span class="el_source">ClienteTest.java</span></div><h1>ClienteTest.java</h1><pre class="source lang-java linenums">package Model.POJO;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L10">class ClienteTest {</span>
+  private Cliente cl;
+
+  @BeforeEach
+  void setUp() {
+<span class="fc" id="L15">    cl = new Cliente(&quot;DLCMLE03A31G273Y&quot;, &quot;Emilio&quot;, &quot;Dolce&quot;, &quot;1122334455&quot;, &quot;Palermo&quot;,</span>
+        &quot;emilio.ciao@aaa.com&quot;, &quot;Emilio20_&quot;);
+<span class="fc" id="L17">  }</span>
+
+  @AfterEach
+  void tearDown() {
+<span class="fc" id="L21">    cl = new Cliente(&quot;DLCMLE03A31G273Y&quot;, &quot;Emilio&quot;, &quot;Dolce&quot;, &quot;1122334455&quot;, &quot;Palermo&quot;,</span>
+        &quot;emilio.ciao@aaa.com&quot;, &quot;Emilio20_&quot;);
+<span class="fc" id="L23">  }</span>
+
+  @Test
+  void testClientCostructorEmpty() {
+<span class="fc" id="L27">    cl = new Cliente();</span>
+<span class="fc" id="L28">    assertNotNull(cl);</span>
+<span class="fc" id="L29">  }</span>
+
+  @Test
+  void getEmail() {
+<span class="fc" id="L33">    assertEquals(&quot;emilio.ciao@aaa.com&quot;, cl.getEmail());</span>
+<span class="fc" id="L34">  }</span>
+
+  @Test
+  void setEmail() {
+<span class="fc" id="L38">    cl.setEmail(&quot;gaetano.ciao@aaa.com&quot;);</span>
+<span class="fc" id="L39">    assertEquals(&quot;gaetano.ciao@aaa.com&quot;, cl.getEmail());</span>
+<span class="fc" id="L40">  }</span>
+
+  @Test
+  void getPassword() {
+<span class="fc" id="L44">    assertEquals(&quot;Emilio20_&quot;, cl.getPassword());</span>
+<span class="fc" id="L45">  }</span>
+
+  @Test
+  void setPassword() {
+<span class="fc" id="L49">    cl.setPassword(&quot;Gaetano20_&quot;);</span>
+<span class="fc" id="L50">    assertEquals(&quot;Gaetano20_&quot;, cl.getPassword());</span>
+<span class="fc" id="L51">  }</span>
+
+  @Test
+  void getCodiceFiscale() {
+<span class="fc" id="L55">    assertEquals(&quot;DLCMLE03A31G273Y&quot;, cl.getCodiceFiscale());</span>
+<span class="fc" id="L56">  }</span>
+
+  @Test
+  void setCodiceFiscale() {
+<span class="fc" id="L60">    cl.setCodiceFiscale(&quot;AVGMLE03A31G273Y&quot;);</span>
+<span class="fc" id="L61">    assertEquals(&quot;AVGMLE03A31G273Y&quot;, cl.getCodiceFiscale());</span>
+<span class="fc" id="L62">  }</span>
+
+  @Test
+  void getNome() {
+<span class="fc" id="L66">    assertEquals(&quot;Emilio&quot;, cl.getNome());</span>
+<span class="fc" id="L67">  }</span>
+
+  @Test
+  void setNome() {
+<span class="fc" id="L71">    cl.setNome(&quot;Gaetano&quot;);</span>
+<span class="fc" id="L72">    assertEquals(&quot;Gaetano&quot;, cl.getNome());</span>
+<span class="fc" id="L73">  }</span>
+
+  @Test
+  void getCognome() {
+<span class="fc" id="L77">    assertEquals(&quot;Dolce&quot;, cl.getCognome());</span>
+<span class="fc" id="L78">  }</span>
+
+  @Test
+  void setCognome() {
+<span class="fc" id="L82">    cl.setCognome(&quot;Iuliano&quot;);</span>
+<span class="fc" id="L83">    assertEquals(&quot;Iuliano&quot;, cl.getCognome());</span>
+<span class="fc" id="L84">  }</span>
+
+  @Test
+  void getTelefono() {
+<span class="fc" id="L88">    assertEquals(&quot;1122334455&quot;, cl.getTelefono());</span>
+<span class="fc" id="L89">  }</span>
+
+  @Test
+  void setTelefono() {
+<span class="fc" id="L93">    cl.setTelefono(&quot;4455667788&quot;);</span>
+<span class="fc" id="L94">    assertEquals(&quot;4455667788&quot;, cl.getTelefono());</span>
+<span class="fc" id="L95">  }</span>
+
+  @Test
+  void getLuogoUbicazione() {
+<span class="fc" id="L99">    assertEquals(&quot;Palermo&quot;, cl.getLuogoUbicazione());</span>
+<span class="fc" id="L100">  }</span>
+
+  @Test
+  void setLuogoUbicazione() {
+<span class="fc" id="L104">    cl.setLuogoUbicazione(&quot;Napoli&quot;);</span>
+<span class="fc" id="L105">    assertEquals(&quot;Napoli&quot;, cl.getLuogoUbicazione());</span>
+<span class="fc" id="L106">  }</span>
+
+  @Test
+  void setStato() {
+<span class="fc" id="L110">    cl.setStato(Cliente.Stato.SOSPESO);</span>
+<span class="fc" id="L111">    assertEquals(Cliente.Stato.SOSPESO, cl.getStato());</span>
+<span class="fc" id="L112">  }</span>
+
+  @Test
+  void getStato() {
+<span class="fc" id="L116">    assertEquals(Cliente.Stato.ATTIVO, cl.getStato());</span>
+<span class="fc" id="L117">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
