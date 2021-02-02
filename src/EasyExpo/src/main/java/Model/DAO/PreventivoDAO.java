@@ -43,6 +43,7 @@ public class PreventivoDAO {
         p.setCodiceFiscale(rs.getString(4));
         p.setDataPreventivo(rs.getDate(5));
         p.setPrezzoTotale(rs.getFloat(6));
+        p.setNota(rs.getString(7));
         return p;
       }
       return null;
