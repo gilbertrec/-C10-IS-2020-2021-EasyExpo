@@ -22,11 +22,6 @@
     <div class="position-center-center">
         <div class="container">
             <h4 style="color: #ffe115; font-weight: 900;">${prodotti.titolo}</h4>
-
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Data</li>
-            </ol>
         </div>
     </div>
 </section>

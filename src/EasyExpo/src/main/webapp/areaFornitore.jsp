@@ -53,8 +53,7 @@
             <div class="container">
                 <div class="item-display">
                     <div class="row">
-                        <div class="col-xs-6"><span
-                                class="product-num">Mostrando 1 - 10 di 30 prodotti ${num_prodotti}</span></div>
+                        <div class="col-xs-6"></div>
 
                         <!-- Products Select -->
 

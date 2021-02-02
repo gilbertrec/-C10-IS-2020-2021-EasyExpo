@@ -15,10 +15,10 @@
 <head>
     <script>
 
-        function conferma(){
+        function conferma() {
             document.getElementById('info').innerHTML = ' <h6> ${clifor.nome} ${clifor.cognome} </h6> <br> ${clifor.ragioneSociale} - ${clifor.luogoUbicazione} <br> CONTATTI: <br> ${clifor.email} <br>${clifor.telefono}';
 
-            }
+        }
 
 
     </script>
@@ -49,10 +49,6 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>PREVENTIVO ${richiesta.titolo}</h4>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">BLOg details</li>
-                </ol>
             </div>
         </div>
     </section>
@@ -89,15 +85,16 @@
 
                                     <c:choose>
                                         <c:when test="${cliente != null}">
-                                            <input class="btn" style="margin-left: 320px;" type="submit" value="CONFERMA" onclick="conferma()">
+                                            <input class="btn" style="margin-left: 320px;" type="submit"
+                                                   value="CONFERMA" onclick="conferma()">
                                         </c:when>
                                     </c:choose>
-                                    </div>
                                 </div>
                             </div>
                         </article>
                         <hr>
                     </div>
+
                     <!-- Sider Bar -->
                     <div class="col-md-3" style="padding-right: inherit">
                         <div class="shop-sidebar">
@@ -122,7 +119,9 @@
                                                                href="#."><small>€</small><%=prodotto.get(i)
                                             .getPrezzo()%> x <%=prichiesta.get(i)
                                             .getNumColli()%>
-                                        <span><% float totale = prodotto.get(i).getPrezzo() * prichiesta.get(i).getNumColli();%>
+                                        <span><%
+                                            float totale =
+                                                    prodotto.get(i).getPrezzo() * prichiesta.get(i).getNumColli();%>
                                             <%=totale%></span>
                                     </a><span><%=prodotto.get(i).getTitolo()%></span></div>
                                     <div class="media-body"><a class="media-heading" href="#."><%=prichiesta.get(i)

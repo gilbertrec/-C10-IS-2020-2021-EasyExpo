@@ -171,7 +171,6 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              style="z-index: 6; font-size:60px; color:#fff; text-transform:uppercase; white-space: nowrap;">
-                            <small class="font-regular">€</small> ${prezzo}
                         </div>
                         <!-- LAYER NR. 4 -->
                         <div class="tp-caption lfb tp-scrollbelowslider tp-resizeme"
@@ -262,7 +261,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn"></a></div>
+                             style="z-index: 8;"></div>
                     </li>
                 </ul>
             </div>
@@ -344,11 +343,6 @@
                         preventivi e poter essere in collegamento diretto con i vari Fornitori.</p>
                 </div>
 
-                <!-- Social Icons -->
-                <ul class="social_icons">
-                    <li><a href="#."><i class="icon-social-facebook"></i></a></li>
-                    <li><a href="#."><i class="icon-social-twitter"></i></a></li>
-                </ul>
             </div>
         </section>
     </div>

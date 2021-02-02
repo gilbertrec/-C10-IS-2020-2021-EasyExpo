@@ -37,10 +37,6 @@
         <div class="position-center-center">
             <div class="container">
                 <h4>${richiesta.titolo}</h4>
-                <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">BLOg details</li>
-                </ol>
             </div>
         </div>
     </section>
@@ -78,8 +74,6 @@
                                         <span>CONTATTI</span> <br>
                                         <span>${clifor.email}</span><br>
                                         <span>${clifor.telefono}</span>
-                                        <div class="admin-social"><a href="#."><i class="icon-social-facebook"></i></a>
-                                            <a href="#."><i class="icon-social-twitter"></i></a></div>
                                     </div>
                                 </div>
                             </div>
