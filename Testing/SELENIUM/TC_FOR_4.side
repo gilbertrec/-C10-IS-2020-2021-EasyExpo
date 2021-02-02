@@ -1,0 +1,1897 @@
+{
+  "id": "30f7332c-bda2-4dc1-962f-82c2ac339ae6",
+  "version": "2.0",
+  "name": "EasyExpo",
+  "url": "http://localhost:8080/EasyExpo_war/ProdottoServlet?id=1&partitaIva=01602620930",
+  "tests": [{
+    "id": "7a564411-49e4-4b0e-aadd-569bf8df9e9b",
+    "name": "TC_FOR_4.1",
+    "commands": [{
+      "id": "334d7779-dc9d-41da-9578-d77ad7f98d90",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a659edc-dcc5-445a-92a6-e5f2b7947697",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "93c32d89-06a4-4293-bb44-8bd8bd8edf30",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac1857cf-5094-46d7-a545-5eae4fe5e1e1",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "834f2d6e-7f5f-45d7-ab27-118a15cb364e",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d379fb86-f7eb-4377-a5e1-d46b5be7d78f",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "76245a9f-a1ba-4ca9-9369-fce50cfd9ef4",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64017fd8-e007-45f0-9587-7981237ad420",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "037d8b36-85c8-464a-87b2-7c1690187d49",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c276ec50-76b2-4388-b19d-1190e731d86e",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "tag2"
+    }, {
+      "id": "07013fa6-ff08-44be-93ef-51d0013c6806",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }]
+  }, {
+    "id": "e74aecc0-743e-41e4-a93f-4853bbb46644",
+    "name": "TC_FOR_4.2",
+    "commands": [{
+      "id": "f1890356-a919-402b-8b2f-0af7c86d135e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "46372289-def8-4417-83ec-67ca529a5071",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1112x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4bd891e3-9173-4f61-8f41-bae0593ddcce",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "288755c8-bff1-4cfa-9cc0-2f43e39a74e1",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d69e35b7-2e64-4e67-9218-1d9de1715121",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "f7e78251-5712-4ee8-b70e-0d846801cd9d",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b350b93-34e5-4fca-86f4-3829126ac7f5",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "124862bf-ba32-44de-b8ff-ad06a720c703",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dbd16636-90f6-4527-a844-6a340b7950db",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "549ddb5a-31f0-48f3-9447-7fc01979811a",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95ac9ce3-5dbf-4291-85a1-805c4fe3d462",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag3"
+    }, {
+      "id": "ec657877-457d-4ebf-975c-59d7aa363e22",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "152b8286-4160-40c3-af11-12544d18b9da",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "38fe50c2-78fd-47c7-be04-c9e2e43d3b82",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura chélairittaiaerasmarritaAhquantodirqual eracosadura estaselvaselvaggia"
+    }, {
+      "id": "bac941db-b4cf-437b-9b89-5fd905336b9e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8162adc2-a510-4d25-92d9-365150f3dba5",
+    "name": "TC_FOR_4.3",
+    "commands": [{
+      "id": "23e463f2-79a8-45c6-940a-462e30e035b7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a764504d-c31b-45e2-a189-ef7b3bf894bc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1112x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5e5ab6a1-685f-4371-a291-0d63694516e7",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9fa7d181-64c9-47cd-9f0a-e6778663ad3d",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa&"
+    }, {
+      "id": "0010bae2-ba16-4e15-bb1a-f7f68aa90a52",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "520b5343-8539-43ae-b345-57eefc7330cf",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "0900c985-21d4-48ff-afc0-ba660b3cc9a3",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "51847505-925f-48d7-a182-10c5a0cddc6f",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "85979952-b6f2-4558-83e6-3575a1940562",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8473873b-c061-4463-a260-a4f7de7def66",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "7bf9ab28-be3d-4210-9140-463dde1f026b",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80867d70-aff2-4ece-89eb-7e667b477dde",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag5"
+    }, {
+      "id": "7f3b6931-bee5-40ba-8c2d-9a25aabe5d7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8dd58d69-fb73-4f42-a93f-06fe4bca3e58",
+    "name": "TC_FOR_4.4",
+    "commands": [{
+      "id": "3f0284f9-e995-4cc9-b3c2-ddad41197027",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "998cfb44-cb88-4bf2-a546-1abdfc8671a1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1116x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6bb8a94a-4b8c-4955-8416-f7e3fc18149b",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "152353c0-985a-4be1-8478-33a4d2a57ac3",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "6f91def0-cbd9-4eb5-a5d8-47b2d54ffcd5",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae022e2f-b3ce-4444-b9af-6470bea6ac4a",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "68e3b416-70b0-4234-ba44-c2aeffccd9f5",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "307ea5f9-1934-43c1-80a1-c3743c45d2c1",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "4a6f39ab-54e2-4a5e-9ee9-3c7bd17eabd9",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "adb87aa5-eb31-4cf4-9644-bfe34daf4697",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag3"
+    }, {
+      "id": "b6b223be-e461-4d52-8c02-e56c468297dd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "eb89fde8-3990-4813-8719-ddd90b407a23",
+    "name": "TC_FOR_4.5",
+    "commands": [{
+      "id": "5f62efe6-50d7-4683-9a3f-eb36681ae90e",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4cd60b3b-1fe9-4226-9ce9-3856b27bcef7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1116x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b93e183-6ab0-4737-b33c-2edfcb53275c",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a60e550a-8802-40ed-9563-e3990ab4d3aa",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "11db60b3-4501-47a2-abdd-70448301c55d",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3a84674-0da5-4916-9b0d-3edfb80c8519",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "3f15ca42-6d8a-4f4e-bee3-ceea20272ca8",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e23d0042-c648-4a1c-a01b-a5ae8d173d61",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "797980c5-fdcc-478f-ad3d-2a70548e7a92",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7895363a-4808-4a82-ac6e-f8897d62ffce",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag5"
+    }, {
+      "id": "c8c1c90c-a664-407e-91d5-9593aad75f32",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5a84c2a-63e9-46a2-89b5-74527e04a355",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Descrizione     Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura\\nchélairittaiaerasmarritaAhquantodirqual eracosadura\\nestaselvaselvaggia Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura\\nchélairittaiaerasmarritaAhquantodirqual eracosadura\\nestaselvaselvaggia Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura\\nchélairittaiaerasmarritaAhquantodirqual eracosadura\\nestaselvaselvaggia"
+    }, {
+      "id": "a2b06089-f509-4a2c-806b-a71f9132de71",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "6a827a34-027a-4383-a1d7-0452be91121e",
+    "name": "TC_FOR_4.6",
+    "commands": [{
+      "id": "41f8a302-6f05-4138-8600-85f996e905c6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c16cf2d-d877-4747-b19e-f5fcc06574ba",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eaad45a1-03f5-46e5-90a4-c3fe60419aba",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d45d029-564d-48c3-ac46-229fd60c5b7e",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "8eaba391-695d-4ca8-81a1-f01d4098c0a9",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "91c5bcb8-6efa-41fb-9260-cd9e5194abd3",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "942ee5a7-e606-4a40-9bcb-e5e2d7c6772d",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f328e7a4-1215-4660-9f37-588c07b2689f",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "edaa9a4c-d494-4159-9f7b-7b757d34d8d1",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee408312-4ad9-4ac5-93f2-71bb0f4459ba",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "^Cassa audio per interno/esterno^"
+    }, {
+      "id": "b62dcdba-cfd9-4017-b8f3-de11a29ff71c",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "598fe44d-35e8-4c65-8f6d-0f120eac4b4a",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag2"
+    }, {
+      "id": "9ff29a7f-7e22-4d69-a857-6d08d545cc20",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b34f33a9-a2ba-4d6e-bf85-244906235ff9",
+    "name": "TC_FOR_4.7",
+    "commands": [{
+      "id": "2d2a48a3-d37a-4313-afdc-cc5fe2327154",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2bfce22c-4dcd-479b-8e12-7276b568fbf3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f1b89f90-3d7c-4bc9-856c-eaf43d660018",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e98eb668-d4a5-4c17-98b3-2bd57a6a6aac",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "f760ad07-a177-4448-ad31-d52f992d3d2d",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4666117-42df-4207-9891-f1765e30d3c0",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "45"
+    }, {
+      "id": "79595ef9-b773-4cdd-bc29-752e18920d9a",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d8183cc1-2d21-419c-a64f-8c45b413c055",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "b5743ccb-7a12-42b5-bb35-57e8b09f5878",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52ed666f-343c-42e1-bfbf-dda8b9760bdd",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "187454e5-4218-4f55-a460-c1b84389b443",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ecd28f33-8777-4481-b948-750ddecc2b5a",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag2"
+    }, {
+      "id": "454f83ce-ab8b-4a96-935b-7d41eef0b8cb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c44191c6-fe30-4809-93c5-e01fc280bd53",
+    "name": "TC_FOR_4.8",
+    "commands": [{
+      "id": "4f608a29-2038-40db-b0ab-d5cee0cb66fc",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90f8ec5e-d74d-4511-aeb4-c223cdb33467",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "44e14318-7c2c-44c0-92e4-6e402165d4dc",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5eb076c7-c180-4d5d-b386-0df0eee1f27c",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "61145cc3-c07b-4dfd-887a-81c5d36d3e3a",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebe262af-cedf-49d9-ad39-786eb6e43c0f",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "9a21844a-61ab-4dc9-957d-f15d213373c9",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ded6691-7990-4b05-980b-91c9571c4389",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "4ebbf11f-311b-4bf5-b5fa-dc4a0b40759f",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20ea7049-ee42-4b0b-a56b-a82cb80be5c5",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag5"
+    }, {
+      "id": "0aaa7ca6-b2e1-4022-a9ee-283417250bfa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "592312a1-fe36-4a22-8421-1ca1526bfae9",
+    "name": "TC_FOR_4.10",
+    "commands": [{
+      "id": "570eb587-55fb-4b7a-8513-4da9f902cc9d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b5968795-4791-47ce-950d-360356a4c374",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d62c6c42-249c-47ec-b051-9af4deb6f37c",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71e64b52-30ea-430a-87dc-c5cc0c9b08a1",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "2c508cbc-ac4f-4fe6-9d62-18314367ebde",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f891658-39d7-4d1b-a71b-294c355297a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "72001d3c-c010-4dfa-a466-20e874f42fc6",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "537db046-24f8-4437-b351-523a08aafcbb",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "0934e20f-f6e8-47bf-8b05-7dee756319e7",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d286334c-9f24-4495-bdf8-4c9aa1dab6df",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "a592d9b8-a4ce-46e0-9174-9e7fa1589fe6",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b018488b-e987-48b5-b7c9-f1a879f5fbc4",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura\\nchélairittaiaerasmarritaAhquantodirqual eracosadura\\nestaselvaselvaggia,"
+    }, {
+      "id": "a94ec138-5be2-4f8d-8363-25ae37a1f650",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "e3119562-35fa-4eca-8b81-81fb272eba3c",
+    "name": "TC_FOR_4.11",
+    "commands": [{
+      "id": "da114f1f-de7b-415a-b43c-1f7608d9dece",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef961d2c-2b5e-4c0d-a8aa-8c7bd0ebdbce",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "412a1148-fd73-4e25-9317-8ae150c68f36",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f07f8b78-e837-4632-aa2e-8029e0b155ac",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "e297d036-c6fe-413c-9b19-bc98248e5f11",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f921a84f-e19a-4e98-9897-eed0d7dfa75b",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "180faaa5-f5e4-4833-8fbe-b324090b2919",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afa82871-1d88-4892-88a5-df9abc8fb09e",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "aabbc3ee-c03a-4141-93c3-1b54da1516a3",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "df9a1f53-2803-4dd4-a9c9-e48b8bec5381",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "b6d26aaf-9d29-450d-8a7c-f3fce4616cc6",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c995f495-6733-4cce-aab0-43e4df891770",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "mu"
+    }, {
+      "id": "27bfe45d-77a8-4dcc-9608-fe16eb247a79",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "71d93837-9f8b-4b02-a25a-f5350199e03c",
+    "name": "TC_FOR_4.12",
+    "commands": [{
+      "id": "38bd13be-99cf-4e00-ae4d-6b736d6a8d9b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "effdba1c-139b-4ba4-a9dd-4821f6522b4b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01bf10fa-10ba-417a-a2f0-3cc6a9ca07de",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89a247ab-d32b-4bca-b3d7-4710ebd34a40",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "f646c194-4eb9-4a52-a36a-d3b972962a0d",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e65e566e-e1bb-452a-9ed6-603c9fb583ec",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "b66701c8-b744-40dc-9258-b1f3013e94f6",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4452f698-39eb-425b-81fa-7924ac008712",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "4e58f7b0-35f8-4d0a-b24f-e57d8588689c",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca021a92-3383-47f3-b279-d2a26d3ff4f5",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "f08b779e-61a6-413b-a2fb-73ace24fd9f8",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48f72ea7-a60b-4ddd-94fc-220418f2c457",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "musica,catering,"
+    }, {
+      "id": "600aec69-f422-4fbb-b6e6-1a0a1f4013e8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2a87576f-7fbb-44ff-bcb2-884e5a10aafb",
+    "name": "TC_FOR_4.9",
+    "commands": [{
+      "id": "62c56613-f60c-4d55-998a-a996649183fb",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d6fed56-87c5-4b0e-9976-1a6818c22374",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1110x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55ed9ab7-4816-4495-b47f-d455e9a961ad",
+      "comment": "",
+      "command": "click",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6cf19028-6f6e-48d3-a1af-aef7fe933ff1",
+      "comment": "",
+      "command": "type",
+      "target": "name=titolo",
+      "targets": [
+        ["name=titolo", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='titolo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "Cassa"
+    }, {
+      "id": "d5323712-a8ab-4125-89be-5baf2924a314",
+      "comment": "",
+      "command": "click",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03911ca5-f553-43fc-8c08-5d260489acc1",
+      "comment": "",
+      "command": "type",
+      "target": "name=prezzo",
+      "targets": [
+        ["name=prezzo", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='prezzo']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "50.00"
+    }, {
+      "id": "c5486231-3712-46f0-a691-f6ca95be71ce",
+      "comment": "",
+      "command": "click",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bf11e64-2722-43b9-87f6-2611271db560",
+      "comment": "",
+      "command": "type",
+      "target": "name=quantita",
+      "targets": [
+        ["name=quantita", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='quantita']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "e"
+    }, {
+      "id": "cf1f35c0-a3ae-480e-b89d-27ff257d0370",
+      "comment": "",
+      "command": "click",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "653ba009-9590-4b21-8527-b7290d9b5694",
+      "comment": "",
+      "command": "type",
+      "target": "name=descrizione",
+      "targets": [
+        ["name=descrizione", "name"],
+        ["css=textarea", "css:finder"],
+        ["xpath=//textarea[@name='descrizione']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[5]/label/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Cassa Audio per interno/esterno"
+    }, {
+      "id": "abb049da-45cf-4e9b-81c7-cd159dbbee53",
+      "comment": "",
+      "command": "click",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3643abdd-aec7-47f7-882d-c334cdcfe6ea",
+      "comment": "",
+      "command": "type",
+      "target": "name=tag",
+      "targets": [
+        ["name=tag", "name"],
+        ["css=.col-md-6:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='tag']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[7]/label/input", "xpath:idRelative"],
+        ["xpath=//li[7]/label/input", "xpath:position"]
+      ],
+      "value": "Tag5"
+    }, {
+      "id": "a0bb0d1b-62a3-42c1-b987-856ae04d6a5c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6 > .btn",
+      "targets": [
+        ["css=.col-md-6 > .btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'AGGIUNGI PRODOTTO')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "dae3c4f1-12e3-48ef-a89f-b19ca37150cf",
+    "name": "TC_FOR_4",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7a564411-49e4-4b0e-aadd-569bf8df9e9b", "e74aecc0-743e-41e4-a93f-4853bbb46644", "8162adc2-a510-4d25-92d9-365150f3dba5", "8dd58d69-fb73-4f42-a93f-06fe4bca3e58", "eb89fde8-3990-4813-8719-ddd90b407a23", "6a827a34-027a-4383-a1d7-0452be91121e", "b34f33a9-a2ba-4d6e-bf85-244906235ff9", "c44191c6-fe30-4809-93c5-e01fc280bd53", "2a87576f-7fbb-44ff-bcb2-884e5a10aafb", "592312a1-fe36-4a22-8421-1ca1526bfae9", "e3119562-35fa-4eca-8b81-81fb272eba3c", "71d93837-9f8b-4b02-a25a-f5350199e03c"]
+  }],
+  "urls": ["http://localhost:8080/EasyExpo_war/aggiuntaProdotto.jsp", "http://localhost:8080/EasyExpo_war/ProdottoServlet?id=1&partitaIva=01602620930"],
+  "plugins": []
+}
