@@ -183,7 +183,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-scrolloffset="0"
-                             style="z-index: 8;"><a href="#." class="btn">RICHIEDI ORA</a></div>
+                             style="z-index: 8;"></div>
                     </li>
                     <!-- SLIDE 3 -->
                     <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">

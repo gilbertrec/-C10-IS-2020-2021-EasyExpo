@@ -26,11 +26,13 @@
         <div class="position-center-center">
             <div class="container">
                 <h4 style="color: #ffe115; font-weight: 900">${fornitore.nome} ${fornitore.cognome}</h4>
-                <p style="color: #2d3a4b; font-size: 20px"> P. IVA : ${fornitore.partitaIva} <br>
-                    Telefono: ${fornitore.telefono}<br>
-                    Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
-                    Email: ${fornitore.email}<br>
-                    Ragione Sociale: ${fornitore.ragioneSociale}</p>
+                <c:if test="fornitore != null">
+                    <p style="color: #2d3a4b; font-size: 20px"> P. IVA : ${fornitore.partitaIva} <br>
+                        Telefono: ${fornitore.telefono}<br>
+                        Luogo di ubicazione: ${fornitore.luogoUbicazione}<br>
+                        Email: ${fornitore.email}<br>
+                        Ragione Sociale: ${fornitore.ragioneSociale}</p>
+                </c:if>
             </div>
         </div>
     </section>
