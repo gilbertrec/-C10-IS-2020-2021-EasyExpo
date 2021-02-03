@@ -1,7 +1,7 @@
 # -C10-IS-2020-2021-EasyExpo"
 
 <div align = "center">
-    <img src="/Sorgenti/logo_c10.png" width="200" height="200" alt="Logo">
+    <img src="/Sorgenti/logo_c10.png" width="400" height="250" alt="Logo">
 </div>
 
 # Introduzione
