@@ -1,10 +1,13 @@
 package Controller;
 
 import Model.DAO.AbbonamentoDAO;
+import Model.DAO.FornitoreDAO;
 import Model.DAO.MetodiDiPagamentoDAO;
 import Model.POJO.Abbonamento;
+import Model.POJO.Fornitore;
 import Model.POJO.MetodoPagamento;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -66,11 +69,12 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
     metodo.setNumeroCarta(numeroCarta);
     metodo.setPartitaIva(partitaIva);
     metodo.setCvv(Integer.parseInt(cvv));
-
-    SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+    FornitoreDAO fornitoreDao = new FornitoreDAO();
+    Fornitore fornitore = fornitoreDao.doRetrieveByPIVA(partitaIva);
 
     try {
-      java.util.Date utilDate = format.parse(dataScadenza);
+      Date data = Date.valueOf(request.getParameter("dataScadenza"));
+      java.util.Date utilDate = data;
       java.sql.Date corrente = new java.sql.Date(Calendar.getInstance().getTime().getTime());
       Calendar calendario = Calendar.getInstance();
       calendario.setTime(corrente);
@@ -78,13 +82,16 @@ public class SottoscrizioneAbbonamentoServlet extends HttpServlet {
       if (utilDate.after(sc)) {
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         metodo.setDataScadenza(sqlDate);
+        fornitore.setAbbonato(true);
+        fornitoreDao.updateBooleanFornitore(fornitore);
+        request.getSession().setAttribute("fornitore",fornitore);
       } else {
         throw new MyServletException("Carta scaduta.");
       }
-
-    } catch (ParseException e) {
+    } catch (MyServletException e) {
       e.printStackTrace();
     }
+
 
     Abbonamento abbonato = new Abbonamento();
     abbonato.setPartitaIva(partitaIva);
