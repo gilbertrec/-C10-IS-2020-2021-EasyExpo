@@ -1,0 +1,1450 @@
+{
+  "id": "5c2f8fd5-135f-4b9a-a604-945da6aba35b",
+  "version": "2.0",
+  "name": "EasyExpo2",
+  "url": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+  "tests": [{
+    "id": "8fa97f60-5962-448b-bb3b-fe8fa94bd689",
+    "name": "TC_FOR_1.1",
+    "commands": [{
+      "id": "3e521695-508c-419d-9d70-42de325505c2",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db431c48-b15c-4887-848b-dd162554602c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0da30665-a8d6-4ad4-ad38-c1f8a0b0171c",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b892b44f-78e2-48a2-a8a6-f3ac232797eb",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "70609466-4cf0-4f8b-88b4-3957c0dcc8e5",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b572c736-99eb-429d-9211-29fee4258a1d",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "242a194e-7fd4-4e8e-9923-8c9a35db8d7d",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "5ca45669-461a-4a0a-9dca-ad3624cdac7f",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae6fb965-29a4-435c-a759-bb592f4c7e73",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "4fa3bb6a-2d20-41d1-9149-694c346af91e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "11775aac-88bc-4166-9522-16b7c13c36c0",
+    "name": "TC_FOR_1.2",
+    "commands": [{
+      "id": "31bca794-78d9-43e5-a417-28549f664a2a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3f512a55-fe6d-49d7-b8ce-948c88ea41f1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8fd69697-524a-4675-87e8-86924b991787",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "06bcb136-fb21-4c6d-8aa5-2b17ccb7a280",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "381461b4-7bf9-4ef0-a645-c0c83d776067",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3c76f7f-0e23-4b8c-9870-bae193c71fbe",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Nelmezzodelcammindinostravita miritrovaiperunaselvaoscura chélairittaiaerasmarritaAhquantodirqual eracosadura estaselvaselvaggia"
+    }, {
+      "id": "3ce26c41-23ec-49fa-8648-c5c279e67858",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "093874fd-88f8-4ecc-b10c-108a6d95a4e7",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "2898e865-f57e-419f-9c35-c8146bc73ed5",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5772106d-4b19-4a12-8120-27650d13d6a2",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "588d03ae-2e85-4380-96c4-c386c2ab0b6d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "ae6ff41f-a41c-4057-91bd-c41294df062c",
+    "name": "TC_FOR_1.3",
+    "commands": [{
+      "id": "9e8ff3c2-5704-4929-841a-cc4928f3660f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4dfc1301-00f6-47ea-89b6-17ea21eb8632",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a352577-fe0c-4218-891f-69641b4f4e91",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "072e1a50-c929-46e2-ac7d-3aeed3445f91",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "e5cae755-90cf-441c-a26f-b8c9c7738ec7",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aa3a4df5-9076-46d6-a200-33e8142fe72c",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi 123"
+    }, {
+      "id": "2dd49400-2be0-45a2-8868-04ba56e0ce2f",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f53cddab-e43e-41dc-84f5-362bca237c23",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "fcd9f43a-d026-46d3-a17d-d4d7a32cfd31",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f357286-c4f9-4bf2-9148-ab063b9b4223",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "f61b187e-5a02-4d94-b00c-dbd00a61315c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "7672afd1-ebe5-4fdb-80f2-15f9fd3d1523",
+    "name": "TC_FOR_1.4",
+    "commands": [{
+      "id": "18dd5ba6-aefb-4633-b297-90ac8b33f026",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c88f955e-dbdc-490e-bba1-8436bfe8fbb8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b45e876f-f8c6-4c29-bc3a-89b8d1497f49",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a71cb4ec-ea1e-4450-985d-a8c553b4a4b9",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0b3b3cc-1ded-4f31-a5ca-027824ffb693",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi "
+    }, {
+      "id": "da06301f-b7e8-4b62-854d-07f2717bced9",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc6412a6-fb11-4200-8ec2-1f69f1ce4aec",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "9372439f-7c01-47ae-8379-098c43660751",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49b1511f-90ee-4f5b-bc38-81b3afb71cc6",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "e45ca109-74f7-42cc-b644-04cbd3689091",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f06f352d-5a96-46d3-9460-6acd62357256",
+    "name": "TC_FOR_1.5",
+    "commands": [{
+      "id": "bb33ba96-f1d6-45b6-8766-089bbeafec2d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8898a495-d249-4cfd-8dac-82f3a1124b6d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5919d755-a3f7-416e-ac1c-b60de9a979c8",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e96efa88-e322-4f8d-91ad-1d688a370001",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "ABCD123412341234"
+    }, {
+      "id": "25d8364f-ed53-4e24-a512-e780a7425996",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aba4230e-28c7-4e8a-8716-0ac6c1e38b1e",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "c1471906-6dc2-4536-abaa-1297dfce2903",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25cd7271-d64a-417b-97de-6c3d89df9a5e",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "ead75f84-c090-48e3-9f94-29625c9c0979",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "90af0081-3377-4e92-9ce5-387f4f0c41b5",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "258ec342-19e9-43a5-b27f-79faa2317faa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d69558db-d7b2-4bcd-ac35-245f85ac8893",
+    "name": "TC_FOR_1.7",
+    "commands": [{
+      "id": "cfb64f32-4403-4d66-82b0-d8226401133a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89152cb3-5cf8-405d-8730-d5101d97743e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ea4b1d6-e82c-4aa5-a744-16872996f4bf",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec208bd3-906e-4049-b35a-067e696f00b5",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "94055c63-4d95-4c16-a561-004a3ddb4951",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f3af2fa-465c-4347-8a49-aeacf91fda71",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "d0dcf9c8-f260-46ee-9cbb-09b0a81e41f2",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c374bf3-6a7d-4ede-bbaf-93c96b9dd60b",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "53c4c39e-db9d-4fbe-a499-d0b3fed43a6d",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64e74638-4885-4dbf-b0e7-42abce5b2e93",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "29d398b2-d40e-4f05-904a-e93eb219279b",
+    "name": "TC_FOR_1.8",
+    "commands": [{
+      "id": "6b6974c7-c159-45bc-85de-078c9b4dee39",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f78b6706-fb9d-4fe7-87fb-f671bb7631b7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8be554a8-3853-4171-92ac-a1a967c495d0",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a2c0d46-dd03-4b57-86cb-a381b2c4fdb4",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "6aac0a47-0709-44db-b1c2-77b0070f79a5",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63ddf96b-e6e4-4e48-80b7-3224639cd583",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "adf43dee-d8f6-491b-8aa7-061254baf78c",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "58a9f1d7-88d7-4891-900a-80374156c816",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "8d00aeb9-03bf-4ed7-8f77-392baf81118c",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00be6a07-9174-4f61-aa3a-a8749cb8dcb6",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "1234"
+    }, {
+      "id": "a56ff1a2-5a06-4950-bd26-dc7e3b0fc6e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "56ff0181-9f8e-45ff-9889-80bb10654133",
+    "name": "TC_FOR_1.9",
+    "commands": [{
+      "id": "0afa8146-6a91-41be-b145-f3cb3c8f9653",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0cd95b76-9819-4a2b-8879-e263af8b2994",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1688864c-fbdc-4e2e-83c9-db2e980da2b8",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bbbf521-d52d-41c9-8227-a4373d9bf3ef",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "a18b3ec6-85d8-4117-b2a5-35193a19acc5",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "81c095ac-0245-477b-8cb8-22f77e5b1297",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "e736cae4-80cd-4ec1-962a-d66da1b5d1ed",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cb4eb9a-05b2-4485-9873-f75650aecaf7",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b98181b-bde4-493d-80e2-dc2fa65f8e5c",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "027dbea3-7e01-4429-a3e8-55a6029b01cd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "94f903bc-2aae-4bfa-9af7-d7741a65d9cd",
+    "name": "TC_FOR_1.10",
+    "commands": [{
+      "id": "80b27516-5c6c-4fb4-89ca-d9e0276a845c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40c4a167-c329-4704-acbb-369940a7c9b6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a6d815d-d8ac-471f-89c1-2f11e7b68b25",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "791c8ffd-f5d4-48af-aade-9d0cd4e4017b",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "1a81e50c-78f4-4ecb-9cc5-81ea3536f939",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ddbd050e-39a4-49d0-8d18-10666f5946f3",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "56922e65-c54d-4735-99f4-549695f77580",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4367a17-d804-43cf-b7cb-64f4abafecc0",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2020-02-02"
+    }, {
+      "id": "0ada95ab-36f2-4559-bea6-135cfdb2feae",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d0149c4-de4e-401a-b4a7-30e252e852b0",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "6b08b01e-dfbc-45dc-8592-e89e377cfafb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "607274ca-b569-4756-8666-9865312f39e2",
+    "name": "TC_FOR_1.6",
+    "commands": [{
+      "id": "5632c21e-ce4b-4922-8d82-f087f77c1f84",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "07bc0bff-9bb0-4ac9-bc1c-a51d6c581dcd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x882",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac5414ed-6344-4f10-ab0a-fc62defb8bf6",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2413e7bd-8522-40ab-8d6f-a1b8f92d4c5a",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "4522656596232265"
+    }, {
+      "id": "39f26a67-9e0e-4cca-be1c-c50825195ab0",
+      "comment": "",
+      "command": "click",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03f242b6-9ba0-4788-8e3f-6e8715e7f6ee",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "3ed566c7-db69-4e29-b58b-2b79fc2c058c",
+      "comment": "",
+      "command": "click",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6885bc65-b509-4e5f-a54a-fc324465336f",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "f75cb6b3-ff19-4022-9885-ac265dd73011",
+      "comment": "",
+      "command": "click",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "513da5df-1c67-4548-83ec-63b5b39e20bd",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "e8c22067-d662-4dfc-9c8e-63c4586c5808",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f634ac6e-4dd9-498c-acb1-d3ed2002eebe",
+    "name": "TC_FOR_1.11",
+    "commands": [{
+      "id": "03e286a4-450a-4a86-872c-1f3c24977b5b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/EasyExpo_war/AbbonamentoServlet",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2560797d-f0f0-4874-99f2-fac9d488815b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f8ed81af-abb1-4e5a-b23b-1013e2be275d",
+      "comment": "",
+      "command": "click",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "69b4938b-61e7-47bf-a02f-41ad8730b6b4",
+      "comment": "",
+      "command": "type",
+      "target": "name=numeroCarta",
+      "targets": [
+        ["name=numeroCarta", "name"],
+        ["css=.col-md-6:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='numeroCarta']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": "1234123412341234"
+    }, {
+      "id": "44dd1086-f54d-456b-89bd-7f050234375c",
+      "comment": "",
+      "command": "type",
+      "target": "name=nomeIntestatario",
+      "targets": [
+        ["name=nomeIntestatario", "name"],
+        ["css=.col-md-6:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='nomeIntestatario']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[2]/label/input", "xpath:idRelative"],
+        ["xpath=//li[2]/label/input", "xpath:position"]
+      ],
+      "value": "Mario Rossi"
+    }, {
+      "id": "a609718f-9ef2-4286-bc4f-cf72194186c5",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "0002-02-02"
+    }, {
+      "id": "7385501e-14dd-4b42-b2af-d36306f70e4f",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "0020-02-02"
+    }, {
+      "id": "664837b2-ce40-43d9-b72a-8790c086c64f",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "0202-02-02"
+    }, {
+      "id": "9f6a6beb-3328-4591-8bca-75e42e52f218",
+      "comment": "",
+      "command": "type",
+      "target": "name=dataScadenza",
+      "targets": [
+        ["name=dataScadenza", "name"],
+        ["css=.col-md-6:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='dataScadenza']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[3]/label/input", "xpath:idRelative"],
+        ["xpath=//li[3]/label/input", "xpath:position"]
+      ],
+      "value": "2023-02-02"
+    }, {
+      "id": "f972a38c-e70c-4b59-baf1-b44246a35400",
+      "comment": "",
+      "command": "type",
+      "target": "name=cvv",
+      "targets": [
+        ["name=cvv", "name"],
+        ["css=.col-md-6:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li[4]/label/input", "xpath:idRelative"],
+        ["xpath=//li[4]/label/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "214251d3-6b4e-4428-99e8-a21e91ad309a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ABBONA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "35fb0992-3b7b-48b0-8e2d-420da481907e",
+    "name": "TC_FOR_1",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8fa97f60-5962-448b-bb3b-fe8fa94bd689", "11775aac-88bc-4166-9522-16b7c13c36c0", "ae6ff41f-a41c-4057-91bd-c41294df062c", "7672afd1-ebe5-4fdb-80f2-15f9fd3d1523", "f06f352d-5a96-46d3-9460-6acd62357256", "d69558db-d7b2-4bcd-ac35-245f85ac8893", "29d398b2-d40e-4f05-904a-e93eb219279b", "94f903bc-2aae-4bfa-9af7-d7741a65d9cd", "56ff0181-9f8e-45ff-9889-80bb10654133"]
+  }],
+  "urls": ["http://localhost:8080/EasyExpo_war/AbbonamentoServlet"],
+  "plugins": []
+}
