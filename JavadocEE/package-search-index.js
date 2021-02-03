@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Model.DAO"},{"l":"Model.POJO"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Controller"},{"l":"Controller.Admin"},{"l":"Model.DAO"},{"l":"Model.POJO"},{"l":"proxy"}];updateSearchResults();
