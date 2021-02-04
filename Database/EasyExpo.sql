@@ -155,7 +155,7 @@ INSERT INTO Fornitore VALUES
 ("03271170361", "Susanna", "Zaidane", 3249878965, "Modena", "zaidane68a@mailstop.it", sha2('SusannaZ68', 512), "privato",false, "ATTIVO"),
 ("01391350129","Filomena","Blevi", 3778254760, "Pulsano", "filly@gmail.com", sha2('FilBlevi78', 512), "privato",true, "ATTIVO"),
 ("01602620930", "Nicola", "Bortuzzo", 3934567659, "Pordenone", "absvirgilio.it", sha2('AziendaAbs*', 512), "Abs Snc",false, "SOSPESO"),
-("01234567890", "Mario", "Rossi", 321456790, "Fisciano", "mario.rossi@gmail.com", sha2('MarioRossi00_' ,512), "privato", false, "ATTIVO");
+("01234567899", "Mario", "Rossi", 321456790, "Fisciano", "mario.rossi@gmail.com", sha2('MarioRossi00_' ,512), "privato", false, "ATTIVO");
 
 INSERT INTO Admin VALUES
 ("lucrezia.robustelli@gmail.com", sha2('lucry00*', 512)),
