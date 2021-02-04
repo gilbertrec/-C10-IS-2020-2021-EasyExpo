@@ -1,27 +1,40 @@
 {
-  "id": "4def42af-d2e4-40a4-852c-1903de387dea",
+  "id": "89f15d88-7959-45c1-9fdd-ab9b50beec31",
   "version": "2.0",
-  "name": "EasyExpo",
+  "name": "TC_FOR_10",
   "url": "http://localhost:8080/EasyExpo_war/",
   "tests": [{
-    "id": "f6d94b6d-808f-429a-8a8a-05136dade883",
+    "id": "f7ee5e36-ada9-422f-9f41-03cae0c2ba76",
     "name": "TC_FOR_10.1",
     "commands": [{
-      "id": "f1fd6163-b7fd-4f5a-bf8e-5c9360e345ff",
+      "id": "7f747d1c-b392-42c1-963e-e16c2c2112d3",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/EasyExpo_war/",
       "targets": [],
       "value": ""
     }, {
-      "id": "176d739d-fdd0-4538-86bf-a079d4876722",
+      "id": "adbe9239-98c5-4339-b6a7-a0157fc24286",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1178x708",
+      "target": "1440x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "af422d91-e0ec-4ea3-a16d-7a4db7e69de1",
+      "id": "b0428638-f0db-46d1-9560-e239d5c073b7",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.col-md-12:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "117dc4cb-f819-4fdc-925f-950258e57fea",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -34,7 +47,7 @@
       ],
       "value": ""
     }, {
-      "id": "979ab9dd-39f6-4831-b56a-75a379aae501",
+      "id": "7a3ca69c-a817-4bef-8bf3-a8467e744a3c",
       "comment": "",
       "command": "click",
       "target": "css=.icon-user",
@@ -45,7 +58,7 @@
       ],
       "value": ""
     }, {
-      "id": "70caa887-2ed7-489c-9e3d-5c0095d5ee77",
+      "id": "429c2fff-0863-4043-ad3d-d387c3e019f2",
       "comment": "",
       "command": "click",
       "target": "linkText=RICHIESTE",
@@ -60,22 +73,20 @@
       ],
       "value": ""
     }, {
-      "id": "4d58a593-6374-4db4-ada6-19b794333c4d",
+      "id": "994a4076-41ab-45bd-8868-e50396c1e213",
       "comment": "",
       "command": "click",
-      "target": "linkText=READ MORE",
+      "target": "css=article:nth-child(2) .red-more:nth-child(2)",
       "targets": [
-        ["linkText=READ MORE", "linkText"],
-        ["css=.red-more:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'READ MORE')]", "xpath:link"],
-        ["xpath=//div[@id='content']/section/div/div/div/article/div/div/div[2]/a", "xpath:idRelative"],
+        ["css=article:nth-child(2) .red-more:nth-child(2)", "css:finder"],
+        ["xpath=(//a[contains(text(),'READ MORE')])[2]", "xpath:link"],
+        ["xpath=//div[@id='content']/section/div/div/div/article[2]/div/div/div[2]/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, 'SpecificaServlet?idRichiesta=1004')]", "xpath:href"],
-        ["xpath=//div[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'READ MORE')]", "xpath:innerText"]
+        ["xpath=//article[2]/div/div/div[2]/a", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "9b95ce15-e6a1-455c-9e67-5c737375fb10",
+      "id": "ce7cc80e-af30-4b33-af0c-5c6bfc857f77",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -87,7 +98,7 @@
       ],
       "value": ""
     }, {
-      "id": "66e7ba29-c108-4e10-99cc-874fc5b4f22a",
+      "id": "9b753424-d408-494e-a307-0560fa7c5203",
       "comment": "",
       "command": "click",
       "target": "name=prezzo",
@@ -100,7 +111,7 @@
       ],
       "value": ""
     }, {
-      "id": "e1251450-fce2-4a9f-bf2d-7d73d440e4d1",
+      "id": "578fcc52-d6cd-44d5-a948-fe20fe17511e",
       "comment": "",
       "command": "type",
       "target": "name=prezzo",
@@ -113,7 +124,7 @@
       ],
       "value": "1000.00"
     }, {
-      "id": "f08b6fe9-c84b-412d-bd62-a7de65e425ce",
+      "id": "faf79411-0598-4b57-b445-f85c160eb0de",
       "comment": "",
       "command": "click",
       "target": "name=nota",
@@ -126,7 +137,7 @@
       ],
       "value": ""
     }, {
-      "id": "f1a50ea3-92ed-4022-b7cb-90c281fe1211",
+      "id": "022329ef-7dc4-4769-a09a-3f32bd470acf",
       "comment": "",
       "command": "type",
       "target": "name=nota",
@@ -139,7 +150,7 @@
       ],
       "value": "Gregorio Samsa, svegliandosi una mattina da sogni agitati, si trovò trasformato, nel suo letto, in un enorme insetto immondo. Riposava sulla schiena, dura come una corazza, e sollevando un poco il capo vedeva il suo ventre arcuato, bruno e diviso"
     }, {
-      "id": "8f1cf9ca-01bc-4fce-893c-770160bfd723",
+      "id": "f0b28e05-2d36-4509-83fc-4423fa79e4fb",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -153,24 +164,37 @@
       "value": ""
     }]
   }, {
-    "id": "22174fc3-200f-4179-b9f6-a9fa52eae616",
+    "id": "f0b92376-f1ea-4e6e-bb5e-9fd548bfed56",
     "name": "TC_FOR_10.2",
     "commands": [{
-      "id": "6f340a2b-1788-4a11-8440-f06d07b85ab6",
+      "id": "9da02fcb-6381-466f-8216-4b62799b4c2d",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/EasyExpo_war/",
       "targets": [],
       "value": ""
     }, {
-      "id": "1c78a813-aebb-45ac-9da1-b572ca01aa30",
+      "id": "81abd516-8885-4e7a-b212-866d8721a895",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1178x708",
+      "target": "1440x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "b7241fab-bca9-4ac6-b40b-4876e7ecf743",
+      "id": "db932721-da90-4f91-bbd1-65257b3b9f2c",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.col-md-12:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e7afa0b7-14d9-434a-a0b8-3e0b661a7461",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -183,7 +207,7 @@
       ],
       "value": ""
     }, {
-      "id": "082a5335-2c11-4e89-a146-fade19bab93c",
+      "id": "8a1f1566-72c6-4a99-b9ff-5e77c00cc4ab",
       "comment": "",
       "command": "click",
       "target": "css=.icon-user",
@@ -194,7 +218,7 @@
       ],
       "value": ""
     }, {
-      "id": "a64f4009-812f-4385-a955-f5eeb59177de",
+      "id": "150680cf-6eb6-466a-bc2e-485b063b5ef2",
       "comment": "",
       "command": "click",
       "target": "linkText=RICHIESTE",
@@ -209,22 +233,20 @@
       ],
       "value": ""
     }, {
-      "id": "88112b06-6eeb-4c37-95f1-3c622fd78131",
+      "id": "cf22b076-54fa-45bf-81db-33bfd2d52ea6",
       "comment": "",
       "command": "click",
-      "target": "linkText=READ MORE",
+      "target": "css=article:nth-child(2) .red-more:nth-child(2)",
       "targets": [
-        ["linkText=READ MORE", "linkText"],
-        ["css=.red-more:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'READ MORE')]", "xpath:link"],
-        ["xpath=//div[@id='content']/section/div/div/div/article/div/div/div[2]/a", "xpath:idRelative"],
+        ["css=article:nth-child(2) .red-more:nth-child(2)", "css:finder"],
+        ["xpath=(//a[contains(text(),'READ MORE')])[2]", "xpath:link"],
+        ["xpath=//div[@id='content']/section/div/div/div/article[2]/div/div/div[2]/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, 'SpecificaServlet?idRichiesta=1004')]", "xpath:href"],
-        ["xpath=//div[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'READ MORE')]", "xpath:innerText"]
+        ["xpath=//article[2]/div/div/div[2]/a", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "825136c9-c1ae-4d75-8e51-b538686ecf0f",
+      "id": "156c3896-32c9-4e1c-84ee-cc9dcb03aec3",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -236,7 +258,7 @@
       ],
       "value": ""
     }, {
-      "id": "b9610a90-9562-43fb-817e-7e00f1ce7d06",
+      "id": "4559289a-bdac-4fe6-836a-23d2aec2b90a",
       "comment": "",
       "command": "click",
       "target": "name=prezzo",
@@ -249,7 +271,7 @@
       ],
       "value": ""
     }, {
-      "id": "72f945d8-4730-485a-808b-790e6863186b",
+      "id": "149d1b28-d660-4d41-b1af-1894dff12cf4",
       "comment": "",
       "command": "type",
       "target": "name=prezzo",
@@ -262,7 +284,7 @@
       ],
       "value": "1000.00"
     }, {
-      "id": "f957edbe-c2d3-4049-8757-f1ea5d8b9a75",
+      "id": "0a7d5871-cee7-42d8-8d9a-b1045cb486c3",
       "comment": "",
       "command": "click",
       "target": "name=nota",
@@ -275,7 +297,7 @@
       ],
       "value": ""
     }, {
-      "id": "d657896c-6850-49e8-8efe-bea8454d301b",
+      "id": "c4baccac-7c4a-42d0-bbcb-5009a3a6da92",
       "comment": "",
       "command": "type",
       "target": "name=nota",
@@ -288,7 +310,7 @@
       ],
       "value": "Casse **"
     }, {
-      "id": "5c58aafa-133e-4cc6-b854-ed33341f12d8",
+      "id": "863b9b85-1ab0-4094-ac2d-4ce3e92c46ea",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -302,24 +324,37 @@
       "value": ""
     }]
   }, {
-    "id": "6763d597-86a2-454a-af20-47a40a423cc4",
+    "id": "761871cf-ed8a-412e-9c49-1768d0568925",
     "name": "TC_FOR_10.3",
     "commands": [{
-      "id": "0a486452-ce44-42f5-9d40-f4d53577c2fa",
+      "id": "f81faa70-56b6-4920-80db-9f9d8446c38c",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/EasyExpo_war/",
       "targets": [],
       "value": ""
     }, {
-      "id": "93ac4e45-61a1-4db4-8dc4-2ccb62dddd1f",
+      "id": "1dbc39ad-118e-4a06-b6e2-4bcfa75d9a14",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1178x708",
+      "target": "1440x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "ac704f27-6f35-4173-981d-74dae0601382",
+      "id": "909281e0-8da8-4c52-95d0-a9b0e1ba7c28",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.col-md-12:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc15cef5-edb6-40f2-8d95-a0c48d3c1fc4",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -332,7 +367,7 @@
       ],
       "value": ""
     }, {
-      "id": "1dc0a40e-5ad7-4cea-9617-7c3eafd4b8a6",
+      "id": "bc3e081e-d261-42dd-a965-12969762ff0d",
       "comment": "",
       "command": "click",
       "target": "css=.icon-user",
@@ -343,7 +378,7 @@
       ],
       "value": ""
     }, {
-      "id": "3b0613c7-a822-4b4b-8888-e1128e970e38",
+      "id": "74ffd4b2-ded0-469d-9d85-4ab6688294cc",
       "comment": "",
       "command": "click",
       "target": "linkText=RICHIESTE",
@@ -358,22 +393,20 @@
       ],
       "value": ""
     }, {
-      "id": "3cc334f6-6b02-4288-8b26-f7e7d1635b1a",
+      "id": "eef9ecdb-db07-47d0-b650-cbf9beaeb146",
       "comment": "",
       "command": "click",
-      "target": "linkText=READ MORE",
+      "target": "css=article:nth-child(2) .red-more:nth-child(2)",
       "targets": [
-        ["linkText=READ MORE", "linkText"],
-        ["css=.red-more:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'READ MORE')]", "xpath:link"],
-        ["xpath=//div[@id='content']/section/div/div/div/article/div/div/div[2]/a", "xpath:idRelative"],
+        ["css=article:nth-child(2) .red-more:nth-child(2)", "css:finder"],
+        ["xpath=(//a[contains(text(),'READ MORE')])[2]", "xpath:link"],
+        ["xpath=//div[@id='content']/section/div/div/div/article[2]/div/div/div[2]/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, 'SpecificaServlet?idRichiesta=1004')]", "xpath:href"],
-        ["xpath=//div[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'READ MORE')]", "xpath:innerText"]
+        ["xpath=//article[2]/div/div/div[2]/a", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "5e8242e0-4edf-45aa-8604-625d175283c8",
+      "id": "ad74d6d1-af44-43f3-ac01-9352a40eda84",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -385,7 +418,7 @@
       ],
       "value": ""
     }, {
-      "id": "607149fb-64f4-4f1a-bf82-5277ae00e631",
+      "id": "5f4b6226-0206-4801-81c8-5f82b4346ba0",
       "comment": "",
       "command": "click",
       "target": "name=prezzo",
@@ -398,7 +431,7 @@
       ],
       "value": ""
     }, {
-      "id": "53a8c9a2-815c-428c-abdc-7af52208de03",
+      "id": "a5d04c6d-471d-4a96-8366-9fd5e086eb25",
       "comment": "",
       "command": "type",
       "target": "name=prezzo",
@@ -411,7 +444,7 @@
       ],
       "value": "855556,000"
     }, {
-      "id": "e00f9867-ae17-4f5a-a5df-0ab7a7d7f73e",
+      "id": "973cf772-100e-48ca-808b-f445ec8793a6",
       "comment": "",
       "command": "click",
       "target": "name=nota",
@@ -424,7 +457,7 @@
       ],
       "value": ""
     }, {
-      "id": "ba6f25dc-3f8e-4be4-9a3a-032fb235e022",
+      "id": "ffc163be-fe5c-427e-b63f-89b8013a6b0e",
       "comment": "",
       "command": "type",
       "target": "name=nota",
@@ -435,9 +468,9 @@
         ["xpath=//div[@id='content']/section[2]/div/div/div/div/div/form/ul/li[2]/label/textarea", "xpath:idRelative"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "Casse musicali"
+      "value": "Casse musicali disponibili con uno sconto"
     }, {
-      "id": "2ea218c6-225e-4464-8764-c125ca60af05",
+      "id": "8a25ce16-6c29-4065-ada3-573696c57d9b",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -451,24 +484,37 @@
       "value": ""
     }]
   }, {
-    "id": "edc2bad1-8e31-410c-8f60-74b37695166c",
+    "id": "55954a30-a5c4-422d-9e6a-df415e2d7874",
     "name": "TC_FOR_10.4",
     "commands": [{
-      "id": "f15e9173-b1a5-4f9e-bdf0-3866f621448e",
+      "id": "8234e3b7-fad6-43f7-b264-3e7804bc0ba2",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/EasyExpo_war/",
       "targets": [],
       "value": ""
     }, {
-      "id": "16d96a6e-5c29-4513-9da2-c7b419e595af",
+      "id": "9b12db4e-8344-4016-aa57-f9fa7bb20092",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1178x708",
+      "target": "1440x824",
       "targets": [],
       "value": ""
     }, {
-      "id": "2ed4b26c-4fbe-44df-88fb-a472e01931e5",
+      "id": "571f6698-2438-4327-a09a-861b035ff4c0",
+      "comment": "",
+      "command": "click",
+      "target": "name=email",
+      "targets": [
+        ["name=email", "name"],
+        ["css=.col-md-12:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='email']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/section/div/div/div/div/div/form/ul/li/label/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40b74866-4832-4f11-a29d-adbffd09c526",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -481,7 +527,7 @@
       ],
       "value": ""
     }, {
-      "id": "48c65cc9-cd15-4bf3-8787-cf68573a45da",
+      "id": "1ab6e380-57df-4747-ad29-3ad10e08dd9c",
       "comment": "",
       "command": "click",
       "target": "css=.icon-user",
@@ -492,7 +538,7 @@
       ],
       "value": ""
     }, {
-      "id": "f2cede38-d3ec-4bca-8b94-02eadcdf486a",
+      "id": "4b7f00a0-6198-4e7c-ab47-24968c1a9775",
       "comment": "",
       "command": "click",
       "target": "linkText=RICHIESTE",
@@ -507,22 +553,20 @@
       ],
       "value": ""
     }, {
-      "id": "ce974476-20ea-4290-891c-ead910364137",
+      "id": "9ab05937-07e3-483d-89db-b914196213af",
       "comment": "",
       "command": "click",
-      "target": "linkText=READ MORE",
+      "target": "css=article:nth-child(2) .red-more:nth-child(2)",
       "targets": [
-        ["linkText=READ MORE", "linkText"],
-        ["css=.red-more:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'READ MORE')]", "xpath:link"],
-        ["xpath=//div[@id='content']/section/div/div/div/article/div/div/div[2]/a", "xpath:idRelative"],
+        ["css=article:nth-child(2) .red-more:nth-child(2)", "css:finder"],
+        ["xpath=(//a[contains(text(),'READ MORE')])[2]", "xpath:link"],
+        ["xpath=//div[@id='content']/section/div/div/div/article[2]/div/div/div[2]/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, 'SpecificaServlet?idRichiesta=1004')]", "xpath:href"],
-        ["xpath=//div[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'READ MORE')]", "xpath:innerText"]
+        ["xpath=//article[2]/div/div/div[2]/a", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "37184cad-752b-4967-90f2-3fb53c90cdc5",
+      "id": "0c624b66-d99a-4d34-99dd-012e16b8115a",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -534,7 +578,7 @@
       ],
       "value": ""
     }, {
-      "id": "0b397aaa-935b-42f7-82ec-6974eba9c1e6",
+      "id": "241b0802-e030-41f8-980d-be2a1661fd9c",
       "comment": "",
       "command": "click",
       "target": "name=prezzo",
@@ -547,7 +591,7 @@
       ],
       "value": ""
     }, {
-      "id": "411d27b4-d564-4ab1-bfab-1fcda5e0df91",
+      "id": "5f70167f-7de8-4b2c-bbff-07b85895515a",
       "comment": "",
       "command": "type",
       "target": "name=prezzo",
@@ -560,7 +604,7 @@
       ],
       "value": "1000.00"
     }, {
-      "id": "58295b19-f08e-411e-81e0-f026973972fb",
+      "id": "9ced0eed-124f-41d4-8b6e-9ee11afcfe49",
       "comment": "",
       "command": "click",
       "target": "name=nota",
@@ -573,7 +617,7 @@
       ],
       "value": ""
     }, {
-      "id": "92b8f83a-086f-4f1a-acee-7d0728e56333",
+      "id": "0446ba3f-b3ed-49be-a2a0-97de22e12cd4",
       "comment": "",
       "command": "type",
       "target": "name=nota",
@@ -586,7 +630,7 @@
       ],
       "value": "Casse musicali disponibili con uno sconto"
     }, {
-      "id": "987fc5cd-9ec1-40b0-9c64-9cf5c2a5dc73",
+      "id": "b678dece-36c1-45ee-87ba-47bf097b31d3",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -601,13 +645,13 @@
     }]
   }],
   "suites": [{
-    "id": "5b58eaee-a776-4d8d-9a83-0d62f3628491",
-    "name": "TC_FOR_10",
+    "id": "87afd9dc-58df-41be-aea2-7648e93ca9fc",
+    "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["f6d94b6d-808f-429a-8a8a-05136dade883", "22174fc3-200f-4179-b9f6-a9fa52eae616", "6763d597-86a2-454a-af20-47a40a423cc4", "edc2bad1-8e31-410c-8f60-74b37695166c"]
+    "tests": []
   }],
-  "urls": ["http://localhost:8080/EasyExpo_war/CompilaPreventivoServlet", "http://localhost:8080/EasyExpo_war/SpecificaServlet?idRichiesta=1004", "http://localhost:8080/EasyExpo_war/login.jsp", "http://localhost:8080/EasyExpo_war/"],
+  "urls": ["http://localhost:8080/EasyExpo_war/"],
   "plugins": []
 }
